@@ -1,0 +1,1313 @@
+{
+  "cv_definitions": [],
+  "$schema": "https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.json",
+  "profile_uri": "https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.ms-profile.json",
+  "mhd_metadata_file_uri": {
+    "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/MHDA005011.mhd.json",
+    "source": "EDAM",
+    "accession": "EDAM:1052",
+    "name": "URL"
+  },
+  "full_dataset_uri_list": [
+    {
+      "value": "https://www.ebi.ac.uk/metabolights/MTBLS5011",
+      "source": "EDAM",
+      "accession": "EDAM:1052",
+      "name": "URL"
+    }
+  ],
+  "dataset_license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "title": "Metabolomics Analysis Identifies Glutamic acid and Cystine imbalances in COVID-19 Patients Without Comorbid Conditions. Implications on Redox Homeostasis and COVID-19 Pathophysiology",
+  "description": "<p>It is well known that the presence of comorbidities and age-related health issues may hide biochemical and metabolic features triggered by SARS-CoV-2 infection and other diseases associated to hypoxia, as they are by themselves chronic inflammatory conditions that may potentially disturb metabolic homeostasis and thereby negatively impact on COVID-19 progression. To unveil the metabolic abnormalities inherent to hypoxemia caused by COVID-19, we here applied gas chromatography coupled to mass spectrometry to analyze the main metabolic changes exhibited by a population of male patients less than 50 years of age with mild/moderate and severe COVID-19 without pre-existing comorbidities known to predispose to life-threatening complications from this infection. Several differences in serum levels of particular metabolites between normal controls and patients with COVID-19 as well as between mild/moderate and severe COVID-19 were identified. These included increased glutamic acid and reduced glutamine, cystine, threonic acid and proline levels. In particular, using the entire metabolomic fingerprint obtained, we observed that glutamine/glutamate metabolism was associated with disease severity as patients in the severe COVID-19 group presented the lowest and higher serum levels of these amino acids, respectively. These data highlight the hypoxia-derived metabolic alterations provoked by SARS-CoV-2 infection in the absence of pre-existing co-morbidities as well as the value of amino acid metabolism in determining reactive oxygen species recycling pathways, which when impaired may lead to increased oxidation of proteins and cell damage. They also provide insights on new supportive therapies for COVID-19 and other disorders that involve altered redox homeostasis and lower oxygen levels that may lead to better outcomes of disease severity.</p>",
+  "submission_date": "2022-06-06T00:00:00",
+  "public_release_date": "2024-08-26T00:00:00",
+  "submitters": [
+    {
+      "first_name": "José Carlos",
+      "last_name": "Páez-Franco",
+      "email": "paez@cic.unam.mx"
+    }
+  ],
+  "principal_investigators": [],
+  "measurement_methodology": [
+    {
+      "source": "OBI",
+      "accession": "OBI:0000470",
+      "name": "mass spectrometry"
+    }
+  ],
+  "technology_type": [
+    {
+      "source": "OBI",
+      "accession": "OBI:0000470",
+      "name": "mass spectrometry"
+    }
+  ],
+  "analysis_type": [
+    {
+      "source": "OBI",
+      "accession": "OBI:0003110",
+      "name": "gas chromatography mass spectrometry assay"
+    }
+  ],
+  "submitter_keywords": [
+    {
+      "source": "EFO",
+      "accession": "EFO:0009444",
+      "name": "hypoxia"
+    },
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:000279",
+      "name": "untargeted metabolites"
+    },
+    {
+      "source": "DOID",
+      "accession": "DOID:0080600",
+      "name": "COVID-19"
+    },
+    {
+      "source": "CHMO",
+      "accession": "CHMO:0000497",
+      "name": "gas chromatography-mass spectrometry"
+    }
+  ],
+  "study_factors": [
+    {
+      "key": {
+        "source": "EFO",
+        "accession": "EFO:0000408",
+        "name": "disease"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "pool"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "healthy"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "mild COVID"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "severe COVID"
+        }
+      ]
+    }
+  ],
+  "sample_characteristics": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITAXON",
+          "accession": "NCBITaxon:9606",
+          "name": "Homo sapiens"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "BTO",
+          "accession": "BTO:0000133",
+          "name": "blood serum"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "",
+        "accession": "",
+        "name": "sample type"
+      },
+      "values": [
+        {
+          "source": "CHMO",
+          "accession": "CHMO:0002746",
+          "name": "experimental sample"
+        },
+        {
+          "source": "MTBLS",
+          "accession": "MTBLS:placeholder",
+          "name": "pooled quality control sample"
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "name": "Chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "<p>In total 1 μL was injected (splitless) to a GC-MS system (Agilent 5977A/7890B, Santa Clara, CA, USA) with an autosampler (G4513A, Agilent) and run in a HP-5ms column (30 m x 250 μm x 0.25 μm; Agilent) with helium 99.9999% as a mobile phase and at 1 mL/min flow, 200 °C inlet temperature, 200 °C source temperature and 250 °C interface temperature. The running method consisted of 1 min hold at 60 °C with an increased ramp of 10 °C/min to 325 °C, with a final held time of 10 min. Samples were injected aleatorily and a quality control sample (a mix of all the samples) was included every 6 samples to monitor changes in instrument acquisition and to ensure reproducibility. Only those peaks with less than 30% relative standard deviation (RSD) in quality control samples were included<strong>[1]</strong>. All reagents and solvents employed were pure analytical grade materials purchased from commercial sources.</p><p><br></p><p><strong>Ref:</strong></p><p><strong>[1]</strong> Fiehn O. Metabolomics by Gas Chromatography-Mass Spectrometry: Combined Targeted and Untargeted Profiling. Curr Protoc Mol Biol. 2016 Apr 1;114:30.4.1-30.4.32. doi:10.1002/0471142727.mb3004s114. PMID:27038389.</p>",
+      "protocol_parameters": [
+        {
+          "key": {
+            "source": "OBI",
+            "accession": "OBI:0000485",
+            "name": "chromatography instrument"
+          },
+          "values": [
+            {
+              "source": "MTBLS",
+              "accession": "MTBLS:000933",
+              "name": "Agilent 7890B GC"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50004",
+            "name": "autosampler model"
+          }
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50001",
+            "name": "column model"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "DB-5ms GC (0.25 µm, 0.25 mm x 30 m; Agilent Technologies)"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50002",
+            "name": "column type"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "low polarity"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50003",
+            "name": "guard column"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Extraction",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "<p>Briefly, 35 μL of serum were mixed with 150 μL of 1:3 chloroform-methanol and 5 μL of internal standard (tridecanoic acid, methyl tricosanoate, and 5α-cholestane, 0.18 mg/mL each) and vortexed for 2 min. The mix was incubated for 20 min at -20 °C and then centrifuged at 16,000 x g during 10 min at 4 °C. The supernatant unique phase was collected, evaporated in a constant nitrogen flux, resuspended in 40 μL of methoxyamine in pyridine and incubated for 90 min at 37 °C. Thereafter, 40 μL of N-methyltrifluoroacetamide (MBSTFA) plus 1% trimethylchlorosilane (TMCS) was added to the final solution and incubated for 30 min at 37 °C.</p>",
+      "protocol_parameters": [
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50010",
+            "name": "post extraction"
+          }
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50006",
+            "name": "derivatization"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "Silylation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectormetry"
+      },
+      "description": "<p>In total 1 μL was injected (splitless) to a GC-MS system (Agilent 5977A/7890B, Santa Clara, CA, USA) with an autosampler (G4513A, Agilent) and run in a HP-5ms column (30 m x 250 μm x 0.25 μm; Agilent) with helium 99.9999% as a mobile phase and at 1 mL/min flow, 200 °C inlet temperature, 200 °C source temperature and 250 °C interface temperature. The running method consisted of 1 min hold at 60 °C with an increased ramp of 10 °C/min to 325 °C, with a final held time of 10 min. Samples were injected aleatorily and a quality control sample (a mix of all the samples) was included every 6 samples to monitor changes in instrument acquisition and to ensure reproducibility. Only those peaks with less than 30% relative standard deviation (RSD) in quality control samples were included<strong>[1]</strong>. All reagents and solvents employed were pure analytical grade materials purchased from commercial sources.</p><p><br></p><p><strong>Ref:</strong></p><p><strong>[1]</strong> Fiehn O. Metabolomics by Gas Chromatography-Mass Spectrometry: Combined Targeted and Untargeted Profiling. Curr Protoc Mol Biol. 2016 Apr 1;114:30.4.1-30.4.32. doi:10.1002/0471142727.mb3004s114. PMID:27038389.</p>",
+      "protocol_parameters": [
+        {
+          "key": {
+            "source": "MS",
+            "accession": "MS:1000465",
+            "name": "scan polarity"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "positive"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50005",
+            "name": "scan m/z range"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "50-600"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MSIO",
+            "accession": "MSIO:0000171",
+            "name": "mass spectrometry instrument"
+          },
+          "values": [
+            {
+              "source": "MTBLS",
+              "accession": "MTBLS:001012",
+              "name": "Agilent 5977A MSD"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "CHMO",
+            "accession": "CHMO:0000960",
+            "name": "ion source"
+          },
+          "values": [
+            {
+              "source": "MS",
+              "accession": "MS:1000389",
+              "name": "electron ionization"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "OBI",
+            "accession": "OBI:0000345",
+            "name": "mass analyzer"
+          },
+          "values": [
+            {
+              "source": "MS",
+              "accession": "MS:1000081",
+              "name": "quadrupole"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reported_metabolites": [
+    {
+      "name": "1,5-Anhydroglucitol"
+    },
+    {
+      "name": "3-Hydroxybutanoic acid"
+    },
+    {
+      "name": "4-Hydroxyproline"
+    },
+    {
+      "name": "Aminobutyric acid"
+    },
+    {
+      "name": "Cholesterol"
+    },
+    {
+      "name": "Citric acid"
+    },
+    {
+      "name": "Cystine"
+    },
+    {
+      "name": "Glutamic acid"
+    },
+    {
+      "name": "Glutamine"
+    },
+    {
+      "name": "Glyceric acid"
+    },
+    {
+      "name": "Glycerol"
+    },
+    {
+      "name": "Glycerol phosphate"
+    },
+    {
+      "name": "Isoleucine"
+    },
+    {
+      "name": "Leucine"
+    },
+    {
+      "name": "Linoleic acid"
+    },
+    {
+      "name": "Lysine"
+    },
+    {
+      "name": "Methionine"
+    },
+    {
+      "name": "Myo-inositol"
+    },
+    {
+      "name": "N-acetyl-L-lysine"
+    },
+    {
+      "name": "Ornithine"
+    },
+    {
+      "name": "Palmitoleic acid"
+    },
+    {
+      "name": "Phenylalanine"
+    },
+    {
+      "name": "Proline"
+    },
+    {
+      "name": "Pyroglutamic acid"
+    },
+    {
+      "name": "Serine"
+    },
+    {
+      "name": "Threonic acid"
+    },
+    {
+      "name": "Threonic acid iso"
+    },
+    {
+      "name": "Threonine"
+    },
+    {
+      "name": "Tyrosine"
+    },
+    {
+      "name": "Uric acid"
+    },
+    {
+      "name": "Valine"
+    },
+    {
+      "name": "alpha-Hydroxybutyric acid"
+    },
+    {
+      "name": "alpha-Hydroxyisovaleric acid"
+    }
+  ],
+  "repository_metadata_file_uri_list": [
+    {
+      "name": "a_MTBLS5011_GC-MS_positive__metabolite_profiling.txt",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/a_MTBLS5011_GC-MS_positive__metabolite_profiling.txt",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        },
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/a_MTBLS5011_GC-MS_positive__metabolite_profiling.txt",
+          "source": "EDAM",
+          "accession": "EDAM:1052",
+          "name": "URL"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
+    },
+    {
+      "name": "i_Investigation.txt",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/i_Investigation.txt",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        },
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/i_Investigation.txt",
+          "source": "EDAM",
+          "accession": "EDAM:1052",
+          "name": "URL"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
+    },
+    {
+      "name": "s_MTBLS5011.txt",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/s_MTBLS5011.txt",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        },
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/s_MTBLS5011.txt",
+          "source": "EDAM",
+          "accession": "EDAM:1052",
+          "name": "URL"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
+    }
+  ],
+  "raw_data_file_uri_list": [],
+  "derived_data_file_uri_list": [
+    {
+      "name": "FILES/H1.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H1.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H10.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H10.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H11.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H11.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H12.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H12.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H13.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H13.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H14.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H14.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H15.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H15.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H16.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H16.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H2.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H2.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H3.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H3.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H4.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H4.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H5.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H5.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H6.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H6.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H7.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H7.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H8.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H8.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/H9.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/H9.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M1.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M1.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M10.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M10.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M11.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M11.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M12.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M12.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M13.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M13.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M14.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M14.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M15.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M15.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M16.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M16.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M2.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M2.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M3.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M3.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M4.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M4.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M5.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M5.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M6.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M6.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M7.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M7.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M8.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M8.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/M9.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/M9.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/Pool1.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/Pool1.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/Pool2.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/Pool2.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/Pool3.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/Pool3.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/Pool4.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/Pool4.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/Pool5.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/Pool5.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/Pool6.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/Pool6.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/Pool7.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/Pool7.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/S1.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/S1.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/S2.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/S2.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/S3.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/S3.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/S4.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/S4.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/S5.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/S5.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/S6.cdf",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/S6.cdf",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    }
+  ],
+  "supplementary_file_uri_list": [
+    {
+      "name": "FILES/journal.pone.0274910.s001.docx",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/journal.pone.0274910.s001.docx",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/journal.pone.0274910.s002.docx",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/journal.pone.0274910.s002.docx",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/journal.pone.0274910.s003.docx",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/journal.pone.0274910.s003.docx",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    },
+    {
+      "name": "FILES/journal.pone.0274910.s004.docx",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/FILES/journal.pone.0274910.s004.docx",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3245",
+        "name": "Mass spectrometry data format"
+      }
+    }
+  ],
+  "result_file_uri_list": [
+    {
+      "name": "m_MTBLS5011_GC-MS_positive__metabolite_profiling_v2_maf.tsv",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS5011/m_MTBLS5011_GC-MS_positive__metabolite_profiling_v2_maf.tsv",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3475",
+        "name": "TSV"
+      }
+    }
+  ]
+}

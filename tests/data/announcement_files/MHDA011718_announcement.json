@@ -1,0 +1,1872 @@
+{
+  "cv_definitions": [],
+  "$schema": "https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.json",
+  "profile_uri": "https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.ms-profile.json",
+  "mhd_metadata_file_uri": {
+    "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/MHDA011718.mhd.json",
+    "source": "EDAM",
+    "accession": "EDAM:1052",
+    "name": "URL"
+  },
+  "full_dataset_uri_list": [
+    {
+      "value": "https://www.ebi.ac.uk/metabolights/MTBLS11718",
+      "source": "EDAM",
+      "accession": "EDAM:1052",
+      "name": "URL"
+    }
+  ],
+  "dataset_license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "title": "Gut microecology of long COVID persisting for 2 years",
+  "description": "<p>Long COVID is an emerging global public health issue. The human gut microbiota (GM) has been identified as a potentially important factor influencing the development of long COVID. This study aims to understand the prevalence, risk factors and GM of long COVID persisting for 2 years in Hainan Province, China, to aid public recognition.</p>",
+  "submission_date": "2024-11-19T00:00:00",
+  "public_release_date": "2025-03-26T00:00:00",
+  "submitters": [
+    {
+      "first_name": "Daya",
+      "last_name": "Zhang",
+      "email": "875025464@qq.com"
+    }
+  ],
+  "principal_investigators": [],
+  "measurement_methodology": [
+    {
+      "source": "OBI",
+      "accession": "OBI:0000470",
+      "name": "mass spectrometry assay"
+    }
+  ],
+  "technology_type": [
+    {
+      "source": "OBI",
+      "accession": "OBI:0000470",
+      "name": "mass spectrometry assay"
+    }
+  ],
+  "analysis_type": [
+    {
+      "source": "OBI",
+      "accession": "OBI:0003097",
+      "name": "liquid chromatography mass spectrometry assay"
+    }
+  ],
+  "submitter_keywords": [
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:placeholder",
+      "name": "prospective"
+    },
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:placeholder",
+      "name": "risk factors"
+    },
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:placeholder",
+      "name": "long-COVID"
+    },
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:placeholder",
+      "name": "SARS-CoV-2"
+    },
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:placeholder",
+      "name": "gut microbiota"
+    },
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:placeholder",
+      "name": "COVID-19"
+    },
+    {
+      "source": "MTBLS",
+      "accession": "MTBLS:placeholder",
+      "name": "prevalence"
+    }
+  ],
+  "study_factors": [
+    {
+      "key": {
+        "source": "EFO",
+        "accession": "EFO:0000408",
+        "name": "disease"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "LCOVID"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "HC"
+        }
+      ]
+    }
+  ],
+  "sample_characteristics": [
+    {
+      "key": {
+        "source": "",
+        "accession": "",
+        "name": "sample type"
+      },
+      "values": [
+        {
+          "source": "CHMO",
+          "accession": "CHMO:0002746",
+          "name": "experimental sample"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITaxon",
+          "accession": "NCBITaxon:9606",
+          "name": "Homo sapiens"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "BTO",
+          "accession": "BTO:0000440",
+          "name": "feces"
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "name": "Chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "<p>Metabolomic analyses were conducted utilizing a UHPLC system (Vanquish, Thermo Fisher Scientific) with a Waters ACQUITY UPLC HSS T3 (2.1 mm × 100 mm, 1.8 μm) column connected to an Orbitrap Exploris 120 mass spectrometer. The mobile phase comprised water containing 5 mmol/L ammonium acetate and 5 mmol/L acetic acid (component A) along with acetonitrile (component B) The auto-sampler was maintained at 4 °C, with a 2 μL injection volume.</p>",
+      "protocol_parameters": [
+        {
+          "key": {
+            "source": "OBI",
+            "accession": "OBI:0000485",
+            "name": "chromatography instrument"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "Thermo Scientific Vanquish UHPLC System"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50004",
+            "name": "autosampler model"
+          }
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50001",
+            "name": "column model"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "ACQUITY UPLC HSS T3 (1.8 µm, 2.1 mm x 100 mm; Waters)"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50002",
+            "name": "column type"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "reverse phase"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50003",
+            "name": "guard column"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Extraction",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "<p>For metabolomic analysis, 100 μL of each sample was placed in an EP tube and combined with 400 μL of methanol that included isotopically-labeled internal standards. After vortexing for 30 s, the samples underwent sonication in an ice-water bath for 10 min, followed by incubation at -40 °C for 1 h to induce protein precipitation. Following centrifugation at 12,000 rpm (13,800 x g) for 15 min at 4 °C, the supernatant was moved to a new vial. A pooled quality control sample was created by combining equal volumes of each supernatant.</p>",
+      "protocol_parameters": [
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50010",
+            "name": "post extraction"
+          }
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50006",
+            "name": "derivatization"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectormetry"
+      },
+      "description": "<p>The Orbitrap Exploris 120 mass spectrometer, operating in information-dependent acquisition (IDA) mode and managed by Xcalibur software, evaluated the full scan MS spectrum. The ESI source settings were: sheath gas flow rate of 50 Arb, auxiliary gas flow rate of 15 Arb, capillary temperature at 320 °C, full MS resolution at 60,000, MS/MS resolution at 15,000, collision energy in NCE mode at 10/30/60, and spray voltage at 3.8 kV (positive mode) or -3.4 kV (negative mode).</p>",
+      "protocol_parameters": [
+        {
+          "key": {
+            "source": "MS",
+            "accession": "MS:1000465",
+            "name": "scan polarity"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "positive"
+            },
+            {
+              "source": "",
+              "accession": "",
+              "name": "negative"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MTBLS",
+            "accession": "MTBLS:50005",
+            "name": "scan m/z range"
+          },
+          "values": [
+            {
+              "source": "",
+              "accession": "",
+              "name": "70-1200"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "MSIO",
+            "accession": "MSIO:0000171",
+            "name": "mass spectrometry instrument"
+          },
+          "values": [
+            {
+              "source": "MTBLS",
+              "accession": "MTBLS:002239",
+              "name": "Thermo Scientific Orbitrap Exploris 120"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "CHMO",
+            "accession": "CHMO:0000960",
+            "name": "ion source"
+          },
+          "values": [
+            {
+              "source": "MS",
+              "accession": "MS:1000073",
+              "name": "electrospray ionization"
+            }
+          ]
+        },
+        {
+          "key": {
+            "source": "OBI",
+            "accession": "OBI:0000345",
+            "name": "mass analyzer"
+          },
+          "values": [
+            {
+              "source": "MS",
+              "accession": "MS:1000484",
+              "name": "orbitrap"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "repository_metadata_file_uri_list": [
+    {
+      "name": "a_MTBLS11718_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/a_MTBLS11718_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        },
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/a_MTBLS11718_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
+          "source": "EDAM",
+          "accession": "EDAM:1052",
+          "name": "URL"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
+    },
+    {
+      "name": "a_MTBLS11718_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/a_MTBLS11718_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        },
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/a_MTBLS11718_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
+          "source": "EDAM",
+          "accession": "EDAM:1052",
+          "name": "URL"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
+    },
+    {
+      "name": "i_Investigation.txt",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/i_Investigation.txt",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        },
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/i_Investigation.txt",
+          "source": "EDAM",
+          "accession": "EDAM:1052",
+          "name": "URL"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
+    },
+    {
+      "name": "s_MTBLS11718.txt",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/s_MTBLS11718.txt",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        },
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/s_MTBLS11718.txt",
+          "source": "EDAM",
+          "accession": "EDAM:1052",
+          "name": "URL"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
+    }
+  ],
+  "raw_data_file_uri_list": [],
+  "derived_data_file_uri_list": [
+    {
+      "name": "FILES/NEG/CC1.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC1.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC10.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC10.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC11.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC11.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC12.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC12.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC13.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC13.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC14.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC14.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC15.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC15.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC16.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC16.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC17.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC17.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC18.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC18.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC19.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC19.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC2.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC2.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC20.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC20.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC21.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC21.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC22.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC22.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC3.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC3.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC4.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC4.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC5.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC5.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC6.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC6.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC7.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC7.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC8.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC8.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/NEG/CC9.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/NEG/CC9.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC1.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC1.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC10.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC10.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC11.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC11.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC12.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC12.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC13.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC13.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC14.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC14.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC15.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC15.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC16.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC16.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC17.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC17.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC18.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC18.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC19.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC19.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC2.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC2.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC20.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC20.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC21.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC21.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC22.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC22.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC3.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC3.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC4.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC4.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC5.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC5.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC6.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC6.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC7.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC7.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC8.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC8.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/POS/CC9.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/POS/CC9.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    }
+  ],
+  "supplementary_file_uri_list": [
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC1.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC1.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC10.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC10.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC11.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC11.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC12.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC12.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC13.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC13.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC14.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC14.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC15.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC15.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC16.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC16.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC17.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC17.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC18.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC18.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC19.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC19.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC2.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC2.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC20.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC20.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC21.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC21.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC22.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC22.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC3.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC3.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC4.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC4.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC5.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC5.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC6.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC6.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC7.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC7.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC8.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC8.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/NEG/CC9.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/NEG/CC9.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC1.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC1.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC10.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC10.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC11.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC11.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC12.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC12.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC13.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC13.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC14.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC14.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC15.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC15.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC16.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC16.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC17.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC17.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC18.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC18.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC19.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC19.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC2.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC2.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC20.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC20.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC21.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC21.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC22.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC22.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC3.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC3.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC4.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC4.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC5.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC5.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC6.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC6.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC7.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC7.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC8.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC8.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    },
+    {
+      "name": "FILES/DERIVED_FILES/POS/CC9.mzXML",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/FILES/DERIVED_FILES/POS/CC9.mzXML",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3654",
+        "name": "mzXML"
+      }
+    }
+  ],
+  "result_file_uri_list": [
+    {
+      "name": "m_MTBLS11718_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/m_MTBLS11718_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3475",
+        "name": "TSV"
+      }
+    },
+    {
+      "name": "m_MTBLS11718_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
+      "file_uri_list": [
+        {
+          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/MTBLS11718/m_MTBLS11718_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
+          "source": "NCIT",
+          "accession": "NCIT:C100047",
+          "name": "File Transfer Protocol"
+        }
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3475",
+        "name": "TSV"
+      }
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+[tool.poetry]
+name = "mhd-model"
+version = "v0.1.0"
+description = "Metabolomics Hub Common Data Model"
+authors = ["Metabolomics Hub Team <help@metabolomicshub.org>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "mhd", format = "wheel"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4"
+pydantic = "^2.10.2"
+python-dateutil = "^2.9.0.post0"
+pytz = "^2024.2"
+pyyaml = ">=6.0.2"
+email-validator = "^2.2.0"
+bioregistry = "^0.12.11"
+
+
+metabolights-utils = { version = "^1.4.2", optional = true }
+sqlalchemy = { version = ">=2.0.28", optional = true }
+psycopg2 = { version = "^2.9.10", optional = true }
+asyncpg = { version = ">=0.29.0", optional = true }
+
+
+jsonpath-ng = "^1.7.0"
+charset-normalizer = "3.4.1"
+jsonschema = "^4.24.0"
+httpx = "^0.28.1"
+reachable = "^0.7.0"
+dependency-injector = "^4.47.1"
+
+
+
+[tool.poetry.extras]
+mtbls = ["metabolights-utils", "sqlalchemy", "psycopg2", "asyncpg"]
+
+
+[tool.poetry.group.dev.dependencies]
+mkdocs-material = "^9.5.49"
+import-linter = "^2.1"
+ruff = "^0.8.3"
+commitizen = "^4.1.0"
+pre-commit = "^4.0.1"
+
+[tool.coverage.run]
+omit = [
+  ".*",
+  "*/tests/*",
+  "*/site-packages/*",
+  "*/docs/*",
+  "*/site/*",
+  "*/dist/*",
+  ".*/*",
+  "dist*/",
+  "scripts*/",
+]
+
+[tool.coverage.report]
+# fail_under = 80
+
+[tool.coverage.html]
+directory = ".coverage_html_report"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[tool.poetry.group.test.dependencies]
+pytest = ">=8.3.4"
+pytest-asyncio = "^0.24.0"
+pytest-cov = "^6.0.0"
+aiosqlite = "^0.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "3.3.0"
+tag_format = "v$major.$minor.$patch"
+version_files = [
+
+    "pyproject.toml:version",
+    "mhd/__init__.py:__version__",
+]
+bump_message = "bump: version $current_version -> $new_version"
+update_changelog_on_bump = true
+
+[tool.pytest.ini_options]
+addopts = "-ra -q -v"
+testpaths = [
+    "tests"
+]
+asyncio_default_fixture_loop_scope = "function"
+
+
+[tool.ruff.lint]
+extend-select = ["E4", "E7", "E9", "F", "I", "G", "SLF", "PTH", "Q"]
+fixable = ["ALL"]
+
+
+[tool.importlinter]
+include_external_packages = true
+root_packages = ["mhd"]
+
+[[tool.importlinter.contracts]]
+name = "Announcement File Layer Dependencies"
+type = "layers"
+layers = [
+    "mhd.model.v0_1.announcement.profiles.ms",
+    "mhd.model.v0_1.announcement.profiles.legacy",
+    "mhd.model.v0_1.announcement.profiles.base",
+    "mhd.shared",
+]
+
+[[tool.importlinter.contracts]]
+name = "MHD Common Model File Layer Dependencies"
+type = "layers"
+layers = [
+    "mhd.model.v0_1.dataset.profiles.ms",
+    "mhd.model.v0_1.dataset.profiles.legacy",
+    "mhd.model.v0_1.dataset.profiles.base",
+    "mhd.shared",
+]
+
+[[tool.importlinter.contracts]]
+name = "Annoucement Base Profile Dependencies)"
+type = "forbidden"
+source_modules = [
+   "mhd.model.v0_1.announcement.profiles.base",
+]
+forbidden_modules = [
+   "mhd.model.v0_1.announcement.profiles.ms",
+   "mhd.model.v0_1.announcement.profiles.legacy",
+   "mhd.model.v0_1.dataset",
+]
+ignore_imports = [
+]
+
+
+[[tool.importlinter.contracts]]
+name = "Annoucement MS Profile Dependencies)"
+type = "forbidden"
+source_modules = [
+   "mhd.model.v0_1.announcement.profiles.ms",
+]
+forbidden_modules = [
+   "mhd.model.mhd"
+]
+ignore_imports = [
+]
