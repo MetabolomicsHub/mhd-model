@@ -29,9 +29,13 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install
-    - name: Semantic release
-      run: |
-        GH_TOKEN="${{ secrets.GITHUB_TOKEN }}" poetry run semantic-release version
+    - id: cz
+      name: Create bump and changelog
+      uses: commitizen-tools/commitizen-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Print Version
+      run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
     - name: Build and publish to pypi
       uses: JRubics/poetry-publish@v2.0
       with:
