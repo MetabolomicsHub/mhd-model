@@ -1,0 +1,38 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true,
+        ".*cache*": true,
+        ".*coverage*": true,
+    },
+    "editor.scrollbar.verticalScrollbarSize": 0.3,
+    "editor.scrollbar.vertical": "visible",
+    "files.associations": {
+        "*.json": "json",
+        "*.py": "python"
+      },
+      "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.unusedImports": "explicit"
+        },
+
+      },
+      "python.testing.pytestArgs": [
+        "tests"
+      ],
+      "python.testing.unittestEnabled": false,
+      "python.testing.pytestEnabled": true,
+
+      "editor.defaultFormatter": "charliermarsh.ruff",
+      "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+      },
+      "python-envs.pythonProjects": [
+        {
+          "path": "",
+          "envManager": "ms-python.python:poetry",
+          "packageManager": "ms-python.python:poetry"
+        }
+      ],
+}
