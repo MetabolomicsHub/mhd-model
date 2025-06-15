@@ -1,3 +1,9 @@
+## v0.0.5 (2025-06-15)
+
+### Fix
+
+- add missing fields to mhd dataset
+
 ## v0.0.4 (2025-06-15)
 
 ### Fix
