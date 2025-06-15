@@ -1,4 +1,5 @@
-from typing import Self, Sequence
+import logging
+from typing import Any, Self, Sequence
 
 from pydantic import Field
 from typing_extensions import Annotated
@@ -14,10 +15,20 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import (
     MhDatasetBaseProfile,
 )
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
-from mhd_model.shared.model import CvTerm
+from mhd_model.model.v0_1.rules.cv_definitions import (
+    CONTROLLED_CV_DEFINITIONS,
+    OTHER_CONTROLLED_CV_DEFINITIONS,
+)
+from mhd_model.shared.model import CvDefinition, CvTerm, CvTermValue
+
+logger = logging.getLogger(__name__)
 
 
 class MhDatasetBuilder(GraphEnabledBaseDataset):
+    _cv_definitions_map: Annotated[
+        dict[str, None | CvDefinition], Field(exclude=True)
+    ] = {}
+
     type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
         "dataset"
     )
@@ -25,8 +36,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
     objects: dict[str, IdentifiableMhdModel] = {}
 
     def add(self, item: IdentifiableMhdModel) -> Self:
-        self.objects[item.id_] = item
-        return self
+        return self.add_node(item)
 
     def link(
         self,
@@ -57,14 +67,36 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         return self
 
     def add_node(self, item: IdentifiableMhdModel) -> Self:
-        self.objects[item.id_] = item
+        if item and isinstance(item, IdentifiableMhdModel) and item.id_:
+            self.objects[item.id_] = item
+
+            self.add_cv_source(item)
+        else:
+            logger.warning("Item %s is not valid. It will not be added.", item)
         return self
+
+    def add_cv_source(self, item: Any) -> Self:
+        if isinstance(item, (CvTerm, CvTermValue)):
+            if item.source and item.source not in self._cv_definitions_map:
+                logger.info("%s CV source is added.", item.source)
+                self._cv_definitions_map[item.source] = None
 
     def add_relationship(self, item: BaseMhdRelationship) -> Self:
         self.objects[item.id_] = item
         return self
 
     def create_dataset(self, start_item_refs: Sequence[str]) -> MhDatasetBaseProfile:
+        for source in self._cv_definitions_map.keys():
+            if source in CONTROLLED_CV_DEFINITIONS:
+                self.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
+            elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
+                self.cv_definitions.append(OTHER_CONTROLLED_CV_DEFINITIONS[source])
+            else:
+                self.cv_definitions.append(
+                    CvDefinition(label=source, alternative_labels=[source.lower()])
+                )
+
+        self.cv_definitions.sort(key=lambda x: x.label)
         mhd_dataset = MhDatasetBaseProfile(
             schema_name=self.schema_name, profile_uri=self.profile_uri
         )
