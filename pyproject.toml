@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mhd-model"
-version = "v0.0.5"
+version = "v0.0.6"
 description = "Metabolomics Hub Common Data Model"
 authors = ["Metabolomics Hub Team <help@metabolomicshub.org>"]
 license = "Apache-2.0"
@@ -76,6 +76,7 @@ directory = ".coverage_html_report"
 
 
 
+
 [tool.poetry.group.test.dependencies]
 pytest = ">=8.3.4"
 pytest-asyncio = "^0.24.0"
@@ -89,7 +90,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.0.5"
+version = "0.0.6"
 tag_format = "v$major.$minor.$patch"
 version_files = [
 

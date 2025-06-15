@@ -1,3 +1,9 @@
+## v0.0.6 (2025-06-15)
+
+### Fix
+
+- cv_definitions are collected when CvTerm is added.
+
 ## v0.0.5 (2025-06-15)
 
 ### Fix
