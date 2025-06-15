@@ -1,3 +1,9 @@
+## v0.0.4 (2025-06-15)
+
+### Fix
+
+- **dataset**: model updated and fixes
+
 ## v0.0.3 (2025-06-13)
 
 ### Fix
