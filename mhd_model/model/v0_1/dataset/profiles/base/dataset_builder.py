@@ -68,12 +68,17 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         mhd_dataset = MhDatasetBaseProfile(
             schema_name=self.schema_name, profile_uri=self.profile_uri
         )
+        mhd_dataset.cv_definitions = (
+            self.cv_definitions.copy() if self.cv_definitions else []
+        )
         mhd_dataset.repository_name = self.repository_name
         mhd_dataset.revision = self.revision
+        mhd_dataset.repository_identifier = self.repository_identifier
+        mhd_dataset.mhd_identifier = self.mhd_identifier
         mhd_dataset.revision_datetime = self.revision_datetime
         mhd_dataset.repository_revision = self.repository_revision
         mhd_dataset.repository_revision_datetime = self.repository_revision_datetime
-        mhd_dataset.change_log = self.change_log
+        mhd_dataset.change_log = self.change_log.copy() if self.change_log else []
 
         iterated_items: set[str] = set()
         for identifier, item in self.objects.items():
@@ -112,12 +117,19 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         dataset = cls(
             schema_name=mhd_dataset.schema_name, profile_uri=mhd_dataset.profile_uri
         )
+        dataset.cv_definitions = (
+            mhd_dataset.cv_definitions.copy() if mhd_dataset.cv_definitions else []
+        )
         dataset.repository_name = mhd_dataset.repository_name
+        dataset.mhd_identifier = mhd_dataset.mhd_identifier
+        dataset.repository_identifier = mhd_dataset.repository_identifier
         dataset.revision = mhd_dataset.revision
         dataset.revision_datetime = mhd_dataset.revision_datetime
         dataset.repository_revision = mhd_dataset.repository_revision
         dataset.repository_revision_datetime = mhd_dataset.repository_revision_datetime
-        dataset.change_log = mhd_dataset.change_log
+        dataset.change_log = (
+            mhd_dataset.change_log.copy() if mhd_dataset.change_log else []
+        )
 
         for item in mhd_dataset.graph.nodes:
             dataset.objects[item.id_] = item

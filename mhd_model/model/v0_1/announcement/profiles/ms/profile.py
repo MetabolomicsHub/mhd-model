@@ -12,7 +12,9 @@ from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     RawDataFile,
     ResultFile,
 )
-from mhd_model.model.v0_1.announcement.profiles.legacy.fields import MissingPublicationReason
+from mhd_model.model.v0_1.announcement.profiles.legacy.fields import (
+    MissingPublicationReason,
+)
 from mhd_model.model.v0_1.announcement.profiles.ms import fields
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     CvTerm,

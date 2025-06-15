@@ -1,12 +1,12 @@
-import datetime
-
-from pydantic import EmailStr, Field, HttpUrl
+from pydantic import EmailStr, Field
 from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.announcement.profiles.base import fields
-from mhd_model.model.v0_1.announcement.profiles.base.profile import AnnouncementBaseProfile
+from mhd_model.model.v0_1.announcement.profiles.base.profile import (
+    AnnouncementBaseProfile,
+)
 from mhd_model.shared.fields import Authors
-from mhd_model.shared.model import MhdConfigModel, ProfileEnabledDataset
+from mhd_model.shared.model import MhdConfigModel
 
 
 class BaseFile(MhdConfigModel):

@@ -65,7 +65,9 @@ class CvTermValue(CvTerm, QuantitativeValue):
         value_key = (
             self.value.get_unique_id()
             if isinstance(self.value, CvTerm)
-            else str(self.value) if self.value is not None else ""
+            else str(self.value)
+            if self.value is not None
+            else ""
         )
 
         return f"{super().get_unique_id()},{value_key or ''},{unit_key or ''}"
@@ -75,7 +77,9 @@ class CvTermValue(CvTerm, QuantitativeValue):
         value_key = (
             self.value.get_label()
             if isinstance(self.unit, CvTerm) and self.value
-            else str(self.value) if self.value is not None else ""
+            else str(self.value)
+            if self.value is not None
+            else ""
         )
 
         return f"[{self.source or ''}, {self.accession or ''}, {self.name or ''}, {value_key or ''}, {unit_key or ''}]"
@@ -117,5 +121,5 @@ class ProfileEnabledDataset(BaseMhdDataset):
     profile_uri: Annotated[str, Field(description="Validation Profiles")]
 
 
-class CvEnabledDataset(BaseMhdDataset):
+class CvEnabledDataset(ProfileEnabledDataset):
     cv_definitions: Annotated[list[CvDefinition], Field()] = []
