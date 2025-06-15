@@ -497,8 +497,7 @@ PROFILE_V0_1.mhd_nodes = [
                 reverse_relationship_name="has-contributor",
                 target="study",
                 min=0,
-                min_for_each_source=1,
-                max_for_each_source=1,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="person",
@@ -661,12 +660,7 @@ PROFILE_V0_1.mhd_nodes = [
                 node_type="publication",
                 node_property_name="title",
                 contraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                node_type="publication",
-                node_property_name="status_ref",
-                contraints=PropertyConstraint(required=True),
-            ),
+            )
         ],
         relationships=[
             RelationshipValidation(
@@ -1226,7 +1220,7 @@ PROFILE_V0_1.cv_nodes = [
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
                 target="characteristic-value",
-                min=2,
+                min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
@@ -1420,28 +1414,6 @@ PROFILE_V0_1.cv_nodes = [
                         relationship_name="[embedded].compression_format_ref",
                         source_node_type=None,
                         source_node_property="compression_format_ref",
-                    )
-                ],
-            ),
-            CvTermValidation(
-                node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EFO",
-                                accession="EFO:0001742",
-                                name="publication status",
-                            )
-                        )
-                    ]
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Publication Status",
-                        relationship_name="[embedded].status_ref",
-                        source_node_type="publication",
-                        source_node_property="status_ref",
                     )
                 ],
             ),
@@ -1849,7 +1821,7 @@ PROFILE_V0_1.cv_nodes = [
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
                 target="parameter-value",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
         ],

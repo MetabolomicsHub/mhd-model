@@ -293,9 +293,9 @@ class CvTermHelper:
             "local": False,
             "obsoletes": False,
             "lang": "en",
-            "isLeaf": (
-                True if parent_cv_term and parent_cv_term.allow_only_leaf else False
-            ),
+            # "isLeaf": (
+            #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
+            # ),
         }
         ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
         url = ols4_base_url + children_subpath

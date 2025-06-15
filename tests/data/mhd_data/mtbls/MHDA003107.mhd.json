@@ -983,30 +983,22 @@
         "id": "mhd--parameter-definition--24626be3-85cb-44e6-ba26-893d7477fc2a",
         "type": "parameter-definition",
         "name": "Scan polarity",
-        "parameter_type_ref": "cv--x-mtbls-parameter-type--51c3c886-b73d-5e08-9f6e-1488f0d3b691"
+        "parameter_type_ref": "cv--parameter-type--51c3c886-b73d-5e08-9f6e-1488f0d3b691"
       },
       {
         "id": "mhd--person--620bd254-a0eb-4b8d-b9ea-543c95069522",
         "type": "person",
-        "first_name": "Brent",
-        "last_name": "Stockwell",
-        "email": "bstockwell@columbia.edu",
-        "address": "Department of Biological Sciences, Columbia University, New York, NY 10027, USA"
+        "full_name": "Brent Stockwell",
+        "emails": ["bstockwell@columbia.edu"],
+        "addresses": ["Department of Biological Sciences, Columbia University, New York, NY 10027, USA"]
       },
       {
         "id": "mhd--person--c3e778ad-f6b1-4c0d-a571-5d5682f2a64b",
         "type": "person",
-        "first_name": "Fereshteh",
-        "last_name": "Zandkarimi",
-        "email": "fz2262@columbia.edu",
-        "phone": "2128542056",
-        "address": "2Mass Spectrometry Core Facility, Department of Chemistry, Columbia University, New York, NY 10027, USA"
-      },
-      {
-        "id": "mhd--person--bd279872-4d01-4ed8-9c2d-368aa2f7203b",
-        "type": "person",
-        "first_name": "Baiyu",
-        "last_name": "Qiu"
+        "full_name": "Fereshteh Zandkarimi",
+        "emails": ["fz2262@columbia.edu"],
+        "phones": ["2128542056"],
+        "addresses": ["Mass Spectrometry Core Facility, Department of Chemistry, Columbia University, New York, NY 10027, USA"]
       },
       {
         "id": "mhd--protocol--58a7c218-fae3-496c-a45e-da69cd53f0da",
@@ -1086,8 +1078,7 @@
           "Toyokuni S",
           "Uchida K",
           "Stockwell BR."
-        ],
-        "status_ref": "cv--descriptor--9ceda83e-07e2-57ef-ac95-42536d33936f"
+        ]
       },
       {
         "id": "mhd--raw-data-file--655cd839-f978-4780-b57b-735b5a3d4950",
@@ -4811,7 +4802,7 @@
         "type": "descriptor",
         "source": "OBI",
         "accession": "OBI:0000470",
-        "name": "mass spectrometry"
+        "name": "mass spectrometry assay"
       },
       {
         "id": "cv--descriptor--1156dbef-fbe4-5154-8848-8d4e4c869586",
@@ -4819,13 +4810,6 @@
         "source": "OBI",
         "accession": "OBI:0000366",
         "name": "metabolite profiling assay"
-      },
-      {
-        "id": "cv--descriptor--9ceda83e-07e2-57ef-ac95-42536d33936f",
-        "type": "descriptor",
-        "source": "EFO",
-        "accession": "EFO:0001796",
-        "name": "published"
       },
       {
         "id": "cv--descriptor--d0ce3948-925b-5b76-8f48-31991f209695",
@@ -4886,17 +4870,18 @@
       {
         "id": "cv-value--parameter-value--2b6201d6-3825-5fa0-911d-34a0e327a3f3",
         "type": "parameter-value",
-        "source": "MTBLS",
-        "accession": "MTBLS:000917",
+        "source": "MS",
+        "accession": "MS:1001764",
         "name": "Waters ACQUITY UPLC I-Class System"
       },
       {
         "id": "cv-value--parameter-value--f6fdaff2-dd15-5406-b37a-412cfe87278c",
         "type": "parameter-value",
-        "source": "MTBLS",
-        "accession": "MTBLS:000676",
-        "name": "Waters SYNAPT G2-Si HDMS"
-      },
+          "source": "MS",
+          "accession": "MS:1001764",
+          "name": "Waters ACQUITY UPLC I-Class System"
+        },
+      
       {
         "id": "cv--protocol-type--6dc3a063-6cac-5cb1-880c-2ec34014e872",
         "type": "protocol-type",
@@ -4916,7 +4901,7 @@
         "type": "protocol-type",
         "source": "CHMO",
         "accession": "CHMO:0000470",
-        "name": "mass spectormetry"
+        "name": "mass spectrometry"
       },
       {
         "id": "cv--protocol-type--160cd136-e23d-5b4c-b594-a0828d5845f4",
@@ -5094,8 +5079,8 @@
         "name": "scan m/z range"
       },
       {
-        "id": "cv--x-mtbls-parameter-type--51c3c886-b73d-5e08-9f6e-1488f0d3b691",
-        "type": "x-mtbls-parameter-type",
+        "id": "cv--parameter-type--51c3c886-b73d-5e08-9f6e-1488f0d3b691",
+        "type": "parameter-type",
         "source": "MS",
         "accession": "MS:1000465",
         "name": "scan polarity"
@@ -5172,12 +5157,26 @@
         "relationship_name": "type-of",
         "target_ref": "cv-value--characteristic-value--34cd8b17-fe99-5f3f-8794-e0312fe7265f"
       },
+            {
+        "id": "rel--relationship--be6b20c3-0a78-57fa-b4b3-0727f6b671c6",
+        "type": "relationship",
+        "source_ref": "cv--characteristic-type--06e4cc5e-6267-5808-8da5-9a410f09b0fd",
+        "relationship_name": "used-in",
+        "target_ref": "mhd--study--2dae711b-73d2-40dd-93c2-0f9477cd743a"
+      },
       {
         "id": "rel--relationship--e0a6dc45-ae81-5284-94f0-d51ac7975923",
         "type": "relationship",
         "source_ref": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680",
         "relationship_name": "type-of",
         "target_ref": "cv-value--characteristic-value--b52f2d7f-3a7d-5fd6-99ff-8c0b45345ae6"
+      },
+      {
+        "id": "rel--relationship--e0a6dc45-ae81-5284-94f0-d51ac7975dd3",
+        "type": "relationship",
+        "source_ref": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680",
+        "relationship_name": "used-in",
+        "target_ref": "mhd--study--2dae711b-73d2-40dd-93c2-0f9477cd743a"
       },
       {
         "id": "rel--relationship--63432232-3392-5eaa-a7e0-3f6cb7d0ec3b",
@@ -9824,14 +9823,7 @@
         "id": "rel--relationship--82f2a45e-87ff-5b32-bc8d-9d513aabf039",
         "type": "relationship",
         "source_ref": "mhd--person--620bd254-a0eb-4b8d-b9ea-543c95069522",
-        "relationship_name": "contributes",
-        "target_ref": "mhd--study--2dae711b-73d2-40dd-93c2-0f9477cd743a"
-      },
-      {
-        "id": "rel--relationship--79bcdc86-54f8-5631-a062-b5b02536f05c",
-        "type": "relationship",
-        "source_ref": "mhd--person--bd279872-4d01-4ed8-9c2d-368aa2f7203b",
-        "relationship_name": "contributes",
+        "relationship_name": "principal-investigator-of",
         "target_ref": "mhd--study--2dae711b-73d2-40dd-93c2-0f9477cd743a"
       },
       {
@@ -12988,15 +12980,8 @@
         "id": "rel--relationship--692f3cd3-cbb4-5a46-918d-23756e53227b",
         "type": "relationship",
         "source_ref": "mhd--study--2dae711b-73d2-40dd-93c2-0f9477cd743a",
-        "relationship_name": "has-contributor",
+        "relationship_name": "has-principal-investigator",
         "target_ref": "mhd--person--620bd254-a0eb-4b8d-b9ea-543c95069522"
-      },
-      {
-        "id": "rel--relationship--888fd136-3075-55e2-86be-f26a1b53c723",
-        "type": "relationship",
-        "source_ref": "mhd--study--2dae711b-73d2-40dd-93c2-0f9477cd743a",
-        "relationship_name": "has-contributor",
-        "target_ref": "mhd--person--bd279872-4d01-4ed8-9c2d-368aa2f7203b"
       },
       {
         "id": "rel--relationship--3bc2b1eb-b81d-53f4-853f-5d67aa9a5aae",

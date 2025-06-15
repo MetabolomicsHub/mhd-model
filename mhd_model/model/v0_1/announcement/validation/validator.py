@@ -56,10 +56,21 @@ class MhdAnnouncementFileValidator:
         self, announcement_file_json: dict[str, Any]
     ) -> list[jsonschema.ValidationError]:
         self.register_validators()
-        profile = ProfileEnabledDataset.model_validate(announcement_file_json)
+        profile: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(
+            announcement_file_json
+        )
         validator: jsonschema.protocols.Validator = ProfileValidator.new_instance(
             profile.schema_name, profile.profile_uri
         )
+        if not validator:
+            logger.error(
+                "No validator found for schema %s with profile URI %s",
+                profile.schema_name,
+                profile.profile_uri,
+            )
+            raise MhdValidationError(
+                f"No validator found for schema {profile.schema_name} with profile URI {profile.profile_uri}"
+            )
         validations = validator.iter_errors(announcement_file_json)
 
         all_errors = [x for x in validations]

@@ -8,9 +8,7 @@ from mhd_model.model.v0_1.announcement.profiles.base.profile import (
 from mhd_model.model.v0_1.announcement.profiles.legacy.profile import (
     AnnouncementLegacyProfile,
 )
-from mhd_model.model.v0_1.announcement.profiles.ms.profile import (
-    AnnouncementMsProfile,
-)
+from mhd_model.model.v0_1.announcement.profiles.ms.profile import AnnouncementMsProfile
 from mhd_model.model.v0_1.dataset.profiles.base.profile import MhDatasetBaseProfile
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile

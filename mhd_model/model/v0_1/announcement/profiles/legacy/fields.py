@@ -17,6 +17,7 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
     COMMON_URI_TYPES,
+    MISSING_PUBLICATION_REASON,
     REQUIRED_COMMON_PARAMETER_DEFINITIONS,
 )
 from mhd_model.shared.model import CvTerm, MhdConfigModel
@@ -69,7 +70,7 @@ MetabolomicsProtocol = Annotated[
     ),
 ]
 
-MetaboloteDatabaseId = Annotated[
+MetaboliteDatabaseId = Annotated[
     CvTermValue,
     Field(
         json_schema_extra={
@@ -210,6 +211,17 @@ class ExtendedCvTermKeyValue(CvTermKeyValue):
         ),
     ]
 
+
+MissingPublicationReason = Annotated[
+    CvTerm,
+    Field(
+        json_schema_extra={
+            "profileValidation": AllowedCvTerms(
+                cv_terms=list(MISSING_PUBLICATION_REASON.values())
+            ).model_dump(by_alias=True)
+        },
+    ),
+]
 
 StudyFactors = Annotated[
     list[ExtendedCvTermKeyValue],

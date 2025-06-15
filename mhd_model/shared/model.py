@@ -97,8 +97,9 @@ class Revision(MhdConfigModel):
 
 
 class BaseMhdDataset(MhdConfigModel):
-    cv_definitions: Annotated[list[CvDefinition], Field()] = []
-
+    repository_name: Annotated[None | str, Field()] = None
+    mhd_identifier: Annotated[None | str, Field()] = None
+    repository_identifier: Annotated[None | str, Field()] = None
     revision: Annotated[None | int, Field()] = None
     revision_datetime: Annotated[None | datetime.datetime, Field()] = None
     repository_revision: Annotated[None | int, Field()] = None
@@ -114,3 +115,7 @@ class ProfileEnabledDataset(BaseMhdDataset):
         str, Field(alias="$schema", description="Schema name of the file")
     ]
     profile_uri: Annotated[str, Field(description="Validation Profiles")]
+
+
+class CvEnabledDataset(BaseMhdDataset):
+    cv_definitions: Annotated[list[CvDefinition], Field()] = []

@@ -314,12 +314,11 @@
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
-|**first_name**|**required**|<code>*str*<code>|Name of person<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**last_name**|**required**|<code>*str*<code>|Last name of person<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"</code>|
-|**email**|**required**|<code>*EmailStr*<code>|Email address of person<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**phone**|optional|<code>*str*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>"+449340917271"<br>"00449340917271"</code>|
-|**address**|optional|<code>*str*<code>||
+|**full_name**|optional|<code>*str*<code>|Full name of person|
+|**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code>|
+|**emails**|optional|<code>*list[EmailStr]*<code>|Email addresses of person|
+|**phones**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>[<br>  "+449340917271",<br>  "00449340917271"<br>]</code>|
+|**addresses**|optional|<code>*list[str]*<code>||
 
 
 **Node Relationships**
@@ -442,10 +441,9 @@
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**title**|**required**|<code>*str*<code>||
-|**doi**|optional|<code>*str*<code>||
+|**doi**|**required**|<code>*str*<code>||
 |**pub_med_id**|optional|<code>*str*<code>||
 |**authors**|optional|<code>*list[Annotated]*<code>||
-|**status_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EFO, EFO:0001742, publication status]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 
 
 **Node Relationships**
@@ -651,7 +649,7 @@
 |**created_by_ref**|**required**|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**uri_list**|optional|<code>*list[KeyValue]*<code>||
+|**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**mhd_identifier**|**required**|<code>*str*<code>|Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
 |**repository_identifier**|optional|<code>*str*<code>||
 |**additional_identifiers**|optional|<code>*list[CvTermValue]*<code>|Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
@@ -660,6 +658,7 @@
 |**submission_date**|**required**|<code>*datetime*<code>||
 |**public_release_date**|**required**|<code>*datetime*<code>||
 |**dataset_license**|**required**|<code>*HttpUrl*<code>|<br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0"</code>|
+|**dataset_uri_list**|optional|<code>*list[KeyValue]*<code>||
 |**related_datasets**|optional|<code>*list[KeyValue]*<code>||
 |**protocol_refs**|**required**|<code>*list[MhdObjectId]*<code>|Target node type: <code>**protocol**</code>|
 

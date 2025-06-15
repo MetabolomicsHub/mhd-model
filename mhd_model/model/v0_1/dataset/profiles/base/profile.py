@@ -16,7 +16,7 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     MhdObjectType,
 )
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
-from mhd_model.shared.model import ProfileEnabledDataset
+from mhd_model.shared.model import CvEnabledDataset, ProfileEnabledDataset
 
 
 class MhdGraph(MhdConfigModel):
@@ -116,8 +116,7 @@ class MhdGraph(MhdConfigModel):
         return class_object
 
 
-class GraphEnabledBaseDataset(ProfileEnabledDataset):
-    repository_name: Annotated[None | str, Field()] = None
+class GraphEnabledBaseDataset(CvEnabledDataset): ...
 
 
 class MhDatasetBaseProfile(GraphEnabledBaseDataset):

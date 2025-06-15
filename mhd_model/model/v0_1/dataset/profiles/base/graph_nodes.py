@@ -33,11 +33,8 @@ class Person(BaseLabeledMhdModel):
             description="The value of this property MUST be 'person'",
         ),
     ] = "person"
-    first_name: Annotated[
-        None | str, Field(min_length=2, description="Name of person")
-    ] = None
-    last_name: Annotated[
-        None | str, Field(min_length=2, description="Last name of person")
+    full_name: Annotated[
+        None | str, Field(min_length=2, description="Full name of person")
     ] = None
     orcid: Annotated[
         None | ORCID,
@@ -47,20 +44,24 @@ class Person(BaseLabeledMhdModel):
             examples=["1234-0001-8473-1713", "1234-0001-8473-171X"],
         ),
     ] = None
-    email: Annotated[None | EmailStr, Field(description="Email address of person")] = (
-        None
-    )
-    phone: Annotated[
-        None | str,
+    emails: Annotated[
+        None | list[EmailStr], Field(description="Email addresses of person")
+    ] = None
+    phones: Annotated[
+        None | list[str],
         Field(
             description="Phone number of person (with international country code)",
-            examples=["+449340917271", "00449340917271"],
+            examples=[["+449340917271", "00449340917271"]],
         ),
     ] = None
-    address: Annotated[None | str, Field()] = None
+    addresses: Annotated[None | list[str], Field()] = None
 
     def get_label(self):
-        return self.email or self.id_
+        if self.orcid:
+            return self.orcid
+        if self.emails and self.emails[0]:
+            return self.emails[0]
+        return self.full_name or self.id_
 
 
 class Organization(BaseLabeledMhdModel):
@@ -73,7 +74,7 @@ class Organization(BaseLabeledMhdModel):
         ),
     ] = "organization"
     repository_identifier: Annotated[None | str, Field()] = None
-    name: Annotated[None | str, Field()] = None
+    name: Annotated[str, Field(min_length=2)]
     department: Annotated[None | str, Field()] = None
     unit: Annotated[None | str, Field()] = None
     address: Annotated[None | str, Field()] = None
@@ -118,7 +119,7 @@ class Study(BaseLabeledMhdModel):
         Field(examples=["https://creativecommons.org/publicdomain/zero/1.0"]),
     ] = None
 
-    uri_list: Annotated[None | list[KeyValue], Field()] = None
+    dataset_uri_list: Annotated[None | list[KeyValue], Field()] = None
     related_datasets: Annotated[None | list[KeyValue], Field()] = None
     protocol_refs: Annotated[None | list[MhdObjectId], Field()] = None
 
@@ -205,17 +206,13 @@ class Publication(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "publication"
-    title: Annotated[None | str, Field(min_length=5)] = None
-    doi: Annotated[None | DOI, Field()] = None
+    title: Annotated[str, Field(min_length=5)]
+    doi: Annotated[DOI, Field()]
     pub_med_id: Annotated[None | PubMedId, Field()] = None
     authors: Annotated[None | Authors, Field()] = None
-    status_ref: Annotated[
-        None | CvTermObjectId,
-        Field(),
-    ] = None
 
     def get_label(self):
-        return self.title or self.id_
+        return self.doi or self.title or self.id_
 
 
 class BasicAssay(BaseLabeledMhdModel):

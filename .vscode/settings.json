@@ -11,7 +11,7 @@
         "*.py": "python"
       },
       "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
           "source.unusedImports": "explicit"

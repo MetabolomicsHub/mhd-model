@@ -497,8 +497,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 reverse_relationship_name="has-contributor",
                 target="study",
                 min=0,
-                min_for_each_source=1,
-                max_for_each_source=1,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="person",
@@ -660,11 +659,6 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             NodePropertyValidation(
                 node_type="publication",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                node_type="publication",
-                node_property_name="status_ref",
                 contraints=PropertyConstraint(required=True),
             ),
         ],
@@ -1425,28 +1419,6 @@ MHD_BASE_VALIDATION.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EFO",
-                                accession="EFO:0001742",
-                                name="publication status",
-                            )
-                        )
-                    ]
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Publication Status",
-                        relationship_name="[embedded].status_ref",
-                        source_node_type="publication",
-                        source_node_property="status_ref",
-                    )
-                ],
-            ),
-            CvTermValidation(
-                node_type="descriptor",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_ANALYSIS_TYPES.values())
                 ),
@@ -1695,8 +1667,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
             ),
             RelationshipValidation(
                 source="factor-type",
-                relationship_name="type-of",
-                reverse_relationship_name="has-type",
+                relationship_name="used-in",
+                reverse_relationship_name="has-factor-type",
                 target="study",
                 min=0,
                 min_for_each_source=1,
@@ -1849,7 +1821,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
                 target="parameter-value",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
         ],
@@ -1909,6 +1881,14 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
                 target="parameter-definition",
+                min=1,
+                min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="parameter-value",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="parameter-type",
                 min=1,
                 min_for_each_source=1,
             ),

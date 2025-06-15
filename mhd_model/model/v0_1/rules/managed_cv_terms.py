@@ -88,6 +88,19 @@ COMMON_MEASUREMENT_METHODOLOGIES = {
 }
 
 
+MISSING_PUBLICATION_REASON = {
+    "MS:1002853": CvTerm(
+        source="MS",
+        accession="MS:1002853",
+        name="no associated published manuscript",
+    ),
+    "MS:1002858": CvTerm(
+        source="MS",
+        accession="MS:1002858",
+        name="Dataset with its publication pending",
+    ),
+}
+
 COMMON_CHARACTERISTIC_DEFINITIONS = {
     "NCIT:C14250": CvTerm(source="NCIT", accession="NCIT:C14250", name="organism"),
     "NCIT:C103199": CvTerm(

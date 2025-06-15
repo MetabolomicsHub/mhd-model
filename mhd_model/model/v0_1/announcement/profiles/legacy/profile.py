@@ -4,6 +4,7 @@ from pydantic import EmailStr, Field, HttpUrl
 from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.announcement.profiles.base import fields
+from mhd_model.model.v0_1.announcement.profiles.base.profile import AnnouncementBaseProfile
 from mhd_model.shared.fields import Authors
 from mhd_model.shared.model import MhdConfigModel, ProfileEnabledDataset
 
@@ -35,11 +36,10 @@ class SupplementaryFile(BaseFile):
 
 
 class AnnouncementContact(MhdConfigModel):
-    first_name: Annotated[str, Field(min_length=2)]
-    last_name: Annotated[str, Field(min_length=2)]
-    email: Annotated[EmailStr, Field()]
-    orcid: Annotated[None, fields.ORCID, Field(title="ORCID")] = None
-    affiliation: Annotated[None | str, Field()] = None
+    full_name: Annotated[str, Field(min_length=2)]
+    emails: Annotated[list[EmailStr], Field(min_length=1)]
+    orcid: Annotated[None | fields.ORCID, Field(title="ORCID")] = None
+    affiliations: Annotated[None | str, Field(min_length=1)] = None
 
 
 class AnnouncementPublication(MhdConfigModel):
@@ -52,50 +52,8 @@ class AnnouncementPublication(MhdConfigModel):
 class ReportedMetabolite(MhdConfigModel):
     name: Annotated[str, Field(min_length=1)]
     database_identifiers: Annotated[
-        None | list[fields.MetaboloteDatabaseId], Field()
+        None | list[fields.MetaboliteDatabaseId], Field()
     ] = None
 
 
-class AnnouncementLegacyProfile(ProfileEnabledDataset):
-    mhd_metadata_file_uri: Annotated[fields.CvTermUriValue, Field()]
-    full_dataset_uri_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
-
-    dataset_license: Annotated[HttpUrl, Field()]
-    title: Annotated[str, Field(min_length=5)]
-    description: Annotated[str, Field(min_length=5)]
-    submission_date: Annotated[datetime.datetime, Field()]
-    public_release_date: Annotated[datetime.datetime, Field()]
-
-    submitters: Annotated[list[AnnouncementContact], Field(min_length=1)]
-    principal_investigators: Annotated[None | list[AnnouncementContact], Field()] = None
-
-    # Targeted metabolite profiling, Untargeted metabolite profiling, ...
-    measurement_methodology: Annotated[
-        None | list[fields.MeasurementMethodology], Field()
-    ] = None
-    # NMR, MS, ...
-    technology_type: Annotated[list[fields.TechnologyType], Field(min_length=1)]
-
-    # LC-MS, GC-MS, ...
-    analysis_type: Annotated[list[fields.AnalysisType], Field(min_length=1)]
-
-    submitter_keywords: Annotated[None | list[fields.CvTermOrStr], Field()] = None
-    repository_keywords: Annotated[None | list[fields.CvTermOrStr], Field()] = None
-
-    publications: Annotated[None | list[AnnouncementPublication], Field()] = None
-
-    study_factors: Annotated[None | fields.StudyFactors, Field()] = None
-
-    sample_characteristics: Annotated[None | fields.SampleCharacteristics, Field()] = (
-        None
-    )
-
-    protocols: Annotated[None | fields.Protocols, Field()] = None
-
-    reported_metabolites: Annotated[None | list[ReportedMetabolite], Field()] = None
-
-    repository_metadata_file_uri_list: Annotated[None | list[MetadataFile], Field()]
-    raw_data_file_uri_list: Annotated[None | list[RawDataFile], Field()] = None
-    derived_data_file_uri_list: Annotated[list[DerivedDataFile], Field()] = None
-    supplementary_file_uri_list: Annotated[list[SupplementaryFile], Field()] = None
-    result_file_uri_list: Annotated[None | list[ResultFile], Field()] = None
+class AnnouncementLegacyProfile(AnnouncementBaseProfile): ...

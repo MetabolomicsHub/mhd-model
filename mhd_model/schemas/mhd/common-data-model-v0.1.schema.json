@@ -1601,7 +1601,7 @@
           "default": null,
           "title": "Label"
         },
-        "first_name": {
+        "full_name": {
           "anyOf": [
             {
               "minLength": 2,
@@ -1612,22 +1612,8 @@
             }
           ],
           "default": null,
-          "description": "Name of person",
-          "title": "First Name"
-        },
-        "last_name": {
-          "anyOf": [
-            {
-              "minLength": 2,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Last name of person",
-          "title": "Last Name"
+          "description": "Full name of person",
+          "title": "Full Name"
         },
         "orcid": {
           "anyOf": [
@@ -1647,24 +1633,30 @@
           ],
           "title": "ORCID"
         },
-        "email": {
+        "emails": {
           "anyOf": [
             {
-              "format": "email",
-              "type": "string"
+              "items": {
+                "format": "email",
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Email address of person",
-          "title": "Email"
+          "description": "Email addresses of person",
+          "title": "Emails"
         },
-        "phone": {
+        "phones": {
           "anyOf": [
             {
-              "type": "string"
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
@@ -1673,22 +1665,27 @@
           "default": null,
           "description": "Phone number of person (with international country code)",
           "examples": [
-            "+449340917271",
-            "00449340917271"
+            [
+              "+449340917271",
+              "00449340917271"
+            ]
           ],
-          "title": "Phone"
+          "title": "Phones"
         },
-        "address": {
+        "addresses": {
           "anyOf": [
             {
-              "type": "string"
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Address"
+          "title": "Addresses"
         }
       },
       "title": "Person",
@@ -2125,31 +2122,14 @@
           "title": "Label"
         },
         "title": {
-          "anyOf": [
-            {
-              "minLength": 5,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Title"
+          "minLength": 5,
+          "title": "Title",
+          "type": "string"
         },
         "doi": {
-          "anyOf": [
-            {
-              "pattern": "^10[.].+/.+$",
-              "title": "DOI",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Doi"
+          "pattern": "^10[.].+/.+$",
+          "title": "DOI",
+          "type": "string"
         },
         "pub_med_id": {
           "anyOf": [
@@ -2181,21 +2161,12 @@
           ],
           "default": null,
           "title": "Authors"
-        },
-        "status_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Status Ref"
         }
       },
+      "required": [
+        "title",
+        "doi"
+      ],
       "title": "Publication",
       "type": "object"
     },
@@ -3412,6 +3383,7 @@
             }
           ],
           "default": null,
+          "description": "URI list related to the object. Key MUST be uri type CV Term",
           "title": "Uri List"
         },
         "label": {
@@ -3534,6 +3506,21 @@
             "https://creativecommons.org/publicdomain/zero/1.0"
           ],
           "title": "Dataset License"
+        },
+        "dataset_uri_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dataset Uri List"
         },
         "related_datasets": {
           "anyOf": [
@@ -3928,13 +3915,41 @@
     }
   },
   "properties": {
-    "cv_definitions": {
-      "default": [],
-      "items": {
-        "$ref": "#/$defs/CvDefinition"
-      },
-      "title": "Cv Definitions",
-      "type": "array"
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Name"
+    },
+    "mhd_identifier": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Mhd Identifier"
+    },
+    "repository_identifier": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Identifier"
     },
     "revision": {
       "anyOf": [
@@ -4003,27 +4018,13 @@
       "description": "Revision",
       "title": "Change Log"
     },
-    "$schema": {
-      "description": "Schema name of the file",
-      "title": "Schema Name",
-      "type": "string"
-    },
-    "profile_uri": {
-      "description": "Validation Profiles",
-      "title": "Profile Uri",
-      "type": "string"
-    },
-    "repository_name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Name"
+    "cv_definitions": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/CvDefinition"
+      },
+      "title": "Cv Definitions",
+      "type": "array"
     },
     "id": {
       "anyOf": [
@@ -4079,10 +4080,6 @@
       "title": "Graph"
     }
   },
-  "required": [
-    "$schema",
-    "profile_uri"
-  ],
   "title": "MhDatasetBaseProfile",
   "type": "object"
 }

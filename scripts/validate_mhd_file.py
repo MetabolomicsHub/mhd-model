@@ -16,7 +16,7 @@ if __name__ == "__main__":
         stream=sys.stdout,
     )
 
-    study_id = "MHDA003800"
+    study_id = "MHDA003107"
     txt = Path(f"tests/data/mhd_data/mtbls/{study_id}.mhd.json").read_text()
     json_data = json.loads(txt)
 

@@ -70,7 +70,7 @@ MetabolomicsProtocol = Annotated[
     ),
 ]
 
-MetaboloteDatabaseId = Annotated[
+MetaboliteDatabaseId = Annotated[
     CvTermValue,
     Field(
         json_schema_extra={

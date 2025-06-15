@@ -2,29 +2,42 @@
   "$defs": {
     "AnnouncementContact": {
       "properties": {
-        "first_name": {
+        "full_name": {
           "minLength": 2,
-          "title": "First Name",
+          "title": "Full Name",
           "type": "string"
         },
-        "last_name": {
-          "minLength": 2,
-          "title": "Last Name",
-          "type": "string"
-        },
-        "email": {
-          "format": "email",
-          "title": "Email",
-          "type": "string"
-        },
-        "orcid": {
-          "default": null,
-          "title": "ORCID",
-          "type": "null"
-        },
-        "affiliation": {
+        "emails": {
           "anyOf": [
             {
+              "items": {
+                "format": "email",
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Emails"
+        },
+        "orcid": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
+              "profileValidation": {
+                "allowNullValue": false,
+                "defaultPrefix": "orcid",
+                "followRedirects": false,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "accessible-compact-uri",
+                "negate": false
+              },
               "type": "string"
             },
             {
@@ -32,13 +45,27 @@
             }
           ],
           "default": null,
-          "title": "Affiliation"
+          "title": "ORCID"
+        },
+        "affiliations": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Affiliations"
         }
       },
       "required": [
-        "first_name",
-        "last_name",
-        "email"
+        "full_name"
       ],
       "title": "AnnouncementContact",
       "type": "object"
@@ -112,62 +139,6 @@
         "doi"
       ],
       "title": "AnnouncementPublication",
-      "type": "object"
-    },
-    "CvDefinition": {
-      "properties": {
-        "label": {
-          "default": "",
-          "title": "Label",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "title": "Name",
-          "type": "string"
-        },
-        "uri": {
-          "default": "",
-          "title": "Uri",
-          "type": "string"
-        },
-        "prefix": {
-          "default": "",
-          "title": "Prefix",
-          "type": "string"
-        },
-        "alternative_labels": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Alternative Labels"
-        },
-        "alternative_prefixes": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Alternative Prefixes"
-        }
-      },
-      "title": "CvDefinition",
       "type": "object"
     },
     "CvTerm": {
@@ -1202,13 +1173,25 @@
     }
   },
   "properties": {
-    "cv_definitions": {
-      "default": [],
-      "items": {
-        "$ref": "#/$defs/CvDefinition"
-      },
-      "title": "Cv Definitions",
-      "type": "array"
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Name"
+    },
+    "mhd_identifier": {
+      "title": "Mhd Identifier",
+      "type": "string"
+    },
+    "repository_identifier": {
+      "title": "Repository Identifier",
+      "type": "string"
     },
     "revision": {
       "anyOf": [
@@ -1325,7 +1308,7 @@
       },
       "title": "Mhd Metadata File Uri"
     },
-    "full_dataset_uri_list": {
+    "dataset_uri_list": {
       "items": {
         "$ref": "#/$defs/CvTermValue",
         "profileValidation": {
@@ -1364,7 +1347,7 @@
         }
       },
       "minItems": 1,
-      "title": "Full Dataset Uri List",
+      "title": "Dataset Uri List",
       "type": "array"
     },
     "dataset_license": {
@@ -1563,27 +1546,11 @@
       "default": null,
       "title": "Submitter Keywords"
     },
-    "repository_keywords": {
+    "descriptors": {
       "anyOf": [
         {
           "items": {
-            "$ref": "#/$defs/CvTerm",
-            "profileValidation": {
-              "allowNullValue": false,
-              "allowedMissingCvTerms": null,
-              "allowedOtherSources": null,
-              "allowedPlaceholderValues": [
-                {
-                  "accession": "",
-                  "source": ""
-                }
-              ],
-              "inputType": "list-or-item",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "allow-any-cv-term",
-              "negate": false
-            }
+            "$ref": "#/$defs/CvTerm"
           },
           "type": "array"
         },
@@ -1592,10 +1559,13 @@
         }
       ],
       "default": null,
-      "title": "Repository Keywords"
+      "title": "Descriptors"
     },
     "publications": {
       "anyOf": [
+        {
+          "$ref": "#/$defs/CvTerm"
+        },
         {
           "items": {
             "$ref": "#/$defs/AnnouncementPublication"
@@ -1864,20 +1834,34 @@
       "title": "Raw Data File Uri List"
     },
     "derived_data_file_uri_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/DerivedDataFile"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "default": null,
-      "items": {
-        "$ref": "#/$defs/DerivedDataFile"
-      },
-      "title": "Derived Data File Uri List",
-      "type": "array"
+      "title": "Derived Data File Uri List"
     },
     "supplementary_file_uri_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/SupplementaryFile"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "default": null,
-      "items": {
-        "$ref": "#/$defs/SupplementaryFile"
-      },
-      "title": "Supplementary File Uri List",
-      "type": "array"
+      "title": "Supplementary File Uri List"
     },
     "result_file_uri_list": {
       "anyOf": [
@@ -1896,10 +1880,12 @@
     }
   },
   "required": [
+    "mhd_identifier",
+    "repository_identifier",
     "$schema",
     "profile_uri",
     "mhd_metadata_file_uri",
-    "full_dataset_uri_list",
+    "dataset_uri_list",
     "dataset_license",
     "title",
     "description",

@@ -1374,11 +1374,26 @@ class MhdModelValidator:
                 sub_path.append(sub_idx)
 
             if item.accession not in control_list:
+                if not item.type_.startswith("x-"):
+                    errors.append(
+                        jsonschema.ValidationError(
+                            message=message
+                            + f"[{item.source}, {item.accession}, {item.name}] "
+                            "is not in control list. ",
+                            validator="check-cv-term-in-control-list",
+                            context=(),
+                            path=sub_path,
+                            instance={},
+                        )
+                    )
+                continue
+            elif item.type_.startswith("x-"):
                 errors.append(
                     jsonschema.ValidationError(
                         message=message
                         + f"[{item.source}, {item.accession}, {item.name}] "
-                        "is not in control list.",
+                        f"is in common data model control list."
+                        f"Rename {item.type_} to the one defined in common data model.",
                         validator="check-cv-term-in-control-list",
                         context=(),
                         path=sub_path,
@@ -1386,6 +1401,7 @@ class MhdModelValidator:
                     )
                 )
                 continue
+
             reference = control_list[item.accession]
             if reference.name != item.name or reference.source != item.source:
                 errors.append(
@@ -1466,7 +1482,7 @@ class MhdModelValidator:
                         jsonschema.ValidationError(
                             message=f"{node.id_}: The source node at index {node_idx} has more relationships "
                             f"('{item.source} - {item.relationship_name} - {item.target}'). "
-                            f"Actual: {target_count}, Limit : {item.max_for_each_sourcex}.",
+                            f"Actual: {target_count}, Limit : {item.max_for_each_source}.",
                             validator="number-of-relationships",
                             context=(),
                             path=["nodes", node_idx],

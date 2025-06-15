@@ -256,9 +256,9 @@
           },
           "values": [
             {
-              "source": "MTBLS",
-              "accession": "MTBLS:000917",
-              "name": "Waters ACQUITY UPLC I-Class System"
+              "source": "MS",
+              "accession": "MS:1001764",
+              "name": "ACQUITY UPLC I-Class"
             }
           ]
         },
@@ -350,7 +350,7 @@
       "protocol_type": {
         "source": "CHMO",
         "accession": "CHMO:0000470",
-        "name": "mass spectormetry"
+        "name": "mass spectrometry"
       },
       "description": "<p>The Synapt G2-Si mass spectrometer equipped with a LockSpray ion source and was operated in both ESI. modes over the mass range of 50-1600 m/z. Source voltages were set to ± 2.5 kV, 30 V, and 5 V for capillary, sampling, and extraction cones, respectively. Moreover, the temperature was set to 120 °C for the source and 500 °C for sample desolvation. Gas flow rates were set at 900 L/h and 50 L/h for the desolvation gas and cone gas, respectively. Fragment ion spectra were generated using enhanced data-independent ion mobility (HDMSE) acquisition mode where data from mobility separation ions are collected in 2 channels with either low collision energy applied at 4 V or with an elevated collision energy ramp from 25 to 60 V for precursor and fragment ions, respectively. Nitrogen as the drift gas was held at a flow rate of 90 ml/min in the IMS cell with a wave velocity of 600 m/s and a wave height of 40 V.</p>",
       "protocol_parameters": [
@@ -395,9 +395,9 @@
           },
           "values": [
             {
-              "source": "MTBLS",
-              "accession": "MTBLS:000676",
-              "name": "Waters SYNAPT G2-Si HDMS"
+              "source": "MS",
+              "accession": "MS:1002726",
+              "name": "SYNAPT G2-Si"
             }
           ]
         },
