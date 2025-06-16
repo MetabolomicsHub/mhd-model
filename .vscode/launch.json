@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Run Current file",
+            "name": "mhd-model: Run Current file",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",

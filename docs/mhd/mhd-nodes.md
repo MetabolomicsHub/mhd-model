@@ -328,9 +328,9 @@
 |person|affiliated-with|affiliates|organization|0|N||
 |person|author-of|has-author|publication|0|N||
 |person|contributes|has-contributor|project|0|N||
-|person|contributes|has-contributor|study|1|1||
+|person|contributes|has-contributor|study|0|N||
 |person|described-as|describes|descriptor|0|N||
-|person|principal-investigator-of|has-principal-investigator|study|0|1|**Required min count in the dataset: 1.**|
+|person|principal-investigator-of|has-principal-investigator|study|0|N|**Required min count in the dataset: 1.**|
 |person|submits|submitted-by|study|0|1|**Required min count in the dataset: 1.**|
 
 
@@ -343,7 +343,7 @@
 |project|has-contributor|contributes|person|0|N||
 |publication|has-author|author-of|person|0|N||
 |study|has-contributor|contributes|person|0|N||
-|study|has-principal-investigator|principal-investigator-of|person|1|N|**Required min count in the dataset: 1.**|
+|study|has-principal-investigator|principal-investigator-of|person|0|N|**Required min count in the dataset: 1.**|
 |study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
 
 ### Project
@@ -667,6 +667,7 @@
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|study|defines|defined-in|characteristic-type|2|N|**Required min count in the dataset: 2.**|
 |study|described-as|describes|descriptor|0|N||
 |study|has-assay|part-of|assay|1|N|**Required min count in the dataset: 1.**|
 |study|has-characteristic-definition|used-in|characteristic-definition|2|N|**Required min count in the dataset: 2.**|
@@ -674,7 +675,7 @@
 |study|has-derived-data-file|created-in|derived-data-file|0|N||
 |study|has-factor-definition|used-in|factor-definition|0|N||
 |study|has-metadata-file|describes|metadata-file|1|N|**Required min count in the dataset: 1.**|
-|study|has-principal-investigator|principal-investigator-of|person|1|N|**Required min count in the dataset: 1.**|
+|study|has-principal-investigator|principal-investigator-of|person|0|N|**Required min count in the dataset: 1.**|
 |study|has-protocol|used-in|protocol|0|N|**Required min count in the dataset: 1.**|
 |study|has-publication|describes|publication|0|N||
 |study|has-raw-data-file|created-in|raw-data-file|1|N|**Required min count in the dataset: 1.**|
@@ -694,17 +695,17 @@
 |------|------------|------------|------|---|---|-----------|
 |assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br>**Required min count in the dataset: 1.**|
 |characteristic-definition|used-in|has-characteristic-definition|study|0|N|**Required min count in the dataset: 2.**|
-|characteristic-type|used-in|has-characteristic-type|study|1|1|**Required min count in the dataset: 2.**|
+|characteristic-type|defined-in|defines|study|1|1|**Required min count in the dataset: 2.**|
 |data-provider|provides|provided-by|study|0|N||
 |derived-data-file|created-in|has-derived-data-file|study|1|1||
 |descriptor|describes|described-as|study|0|N||
 |descriptor|keyword-of|has-repository-keyword|study|0|N||
 |factor-definition|used-in|has-factor-definition|study|0|N||
-|factor-type|type-of|has-type|study|1|1||
+|factor-type|used-in|use-factor-type|study|0|N||
 |metabolite|reported-in|reports|study|1|N||
 |metadata-file|describes|has-metadata-file|study|1|N|**Required min count in the dataset: 1.**|
-|person|contributes|has-contributor|study|1|1||
-|person|principal-investigator-of|has-principal-investigator|study|0|1|**Required min count in the dataset: 1.**|
+|person|contributes|has-contributor|study|0|N||
+|person|principal-investigator-of|has-principal-investigator|study|0|N|**Required min count in the dataset: 1.**|
 |person|submits|submitted-by|study|0|1|**Required min count in the dataset: 1.**|
 |project|has-study|part-of|study|0|N||
 |protocol|used-in|has-protocol|study|1|N|**Required min count in the dataset: 1.**|
@@ -804,14 +805,15 @@
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|characteristic-type|defined-in|defines|study|1|1|**Required min count in the dataset: 2.**|
 |characteristic-type|type-of|has-type|characteristic-value|0|N|**Required min count in the dataset: 2.**|
-|characteristic-type|used-in|has-characteristic-type|study|1|1|**Required min count in the dataset: 2.**|
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|study|defines|defined-in|characteristic-type|2|N|**Required min count in the dataset: 2.**|
 
 ### Characteristic Value
 
@@ -948,7 +950,7 @@
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |factor-type|type-of|has-type|factor-value|0|N||
-|factor-type|type-of|has-type|study|1|1||
+|factor-type|used-in|use-factor-type|study|0|N||
 
 
 **Reverse Node Relationships**
@@ -1030,13 +1032,14 @@
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-type|type-of|has-type|parameter-value|0|N|**Required min count in the dataset: 1.**|
+|parameter-type|type-of|has-type|parameter-value|0|N||
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|parameter-value|has-type|type-of|parameter-type|1|N|**Required min count in the dataset: 1.**|
 
 ### Parameter Value
 
@@ -1057,6 +1060,7 @@
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|parameter-value|has-type|type-of|parameter-type|1|N|**Required min count in the dataset: 1.**|
 |parameter-value|instance-of|has-instance|parameter-definition|1|N|**Required min count in the dataset: 1.**|
 
 
@@ -1065,7 +1069,7 @@
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |parameter-definition|has-instance|instance-of|parameter-value|0|N|**Required min count in the dataset: 1.**|
-|parameter-type|type-of|has-type|parameter-value|0|N|**Required min count in the dataset: 1.**|
+|parameter-type|type-of|has-type|parameter-value|0|N||
 
 ### Protocol Type
 

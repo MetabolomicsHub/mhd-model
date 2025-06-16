@@ -178,18 +178,18 @@ COMMON_PARAMETER_DEFINITIONS.update(
         ),
         "MTBLS:50011": CvTerm(
             source="MTBLS",
-            accession="MTBLS:50006",
+            accession="MTBLS:50011",
             name="derivatization",
         ),
         "MTBLS:50020": CvTerm(
             source="MTBLS",
-            accession="MTBLS:50005",
+            accession="MTBLS:50020",
             name="scan m/z range",
         ),
         "MTBLS:50021": CvTerm(
             source="MTBLS",
-            accession="MTBLS:50007",
-            name="FIA instrument",
+            accession="MTBLS:50021",
+            name="fia instrument",
         ),
         # column model
         # column type
@@ -246,6 +246,23 @@ REQUIRED_PARAMETER_DEFINITIONS = {
     },
     ####### OTHERS ######
     # MR Imaging, LC-DAD, GC-FID, NMR
+}
+
+COMMON_PROTOCOL_PARAMETERS = {
+    "CHMO:0000470": {
+        "MS:1000465": COMMON_PARAMETER_DEFINITIONS["MS:1000465"],
+        "MTBLS:50020": COMMON_PARAMETER_DEFINITIONS["MTBLS:50020"],
+        "MSIO:0000171": COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
+        "CHMO:0000960": COMMON_PARAMETER_DEFINITIONS["CHMO:0000960"],
+        "OBI:0000345": COMMON_PARAMETER_DEFINITIONS["OBI:0000345"],
+    },
+    "CHMO:0001000": {
+        "OBI:0000485": COMMON_PARAMETER_DEFINITIONS["OBI:0000485"],
+        "MTBLS:50001": COMMON_PARAMETER_DEFINITIONS["MTBLS:50001"],
+        "MTBLS:50002": COMMON_PARAMETER_DEFINITIONS["MTBLS:50002"],
+        "MTBLS:50003": COMMON_PARAMETER_DEFINITIONS["MTBLS:50003"],
+        "MTBLS:50004": COMMON_PARAMETER_DEFINITIONS["MTBLS:50004"],
+    },
 }
 
 COMMON_PROTOCOLS = {

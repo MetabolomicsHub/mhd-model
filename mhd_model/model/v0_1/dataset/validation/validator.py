@@ -5,6 +5,7 @@ import jsonschema
 import jsonschema.protocols
 
 from mhd_model.model.v0_1.dataset.validation.base import MhdModelValidator
+from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
 
 logger = logging.getLogger(__name__)

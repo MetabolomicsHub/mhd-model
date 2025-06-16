@@ -141,6 +141,62 @@
       "title": "AnnouncementPublication",
       "type": "object"
     },
+    "CvDefinition": {
+      "properties": {
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "title": "Name",
+          "type": "string"
+        },
+        "uri": {
+          "default": "",
+          "title": "Uri",
+          "type": "string"
+        },
+        "prefix": {
+          "default": "",
+          "title": "Prefix",
+          "type": "string"
+        },
+        "alternative_labels": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alternative Labels"
+        },
+        "alternative_prefixes": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alternative Prefixes"
+        }
+      },
+      "title": "CvDefinition",
+      "type": "object"
+    },
     "CvTerm": {
       "properties": {
         "source": {
@@ -1269,6 +1325,14 @@
       "description": "Validation Profiles",
       "title": "Profile Uri",
       "type": "string"
+    },
+    "cv_definitions": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/CvDefinition"
+      },
+      "title": "Cv Definitions",
+      "type": "array"
     },
     "mhd_metadata_file_uri": {
       "$ref": "#/$defs/CvTermValue",

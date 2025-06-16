@@ -16,7 +16,7 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     MhdObjectType,
 )
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
-from mhd_model.shared.model import CvEnabledDataset, ProfileEnabledDataset
+from mhd_model.shared.model import CvEnabledDataset
 
 
 class MhdGraph(MhdConfigModel):

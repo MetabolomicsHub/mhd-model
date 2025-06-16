@@ -110,7 +110,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         mhd_dataset.revision_datetime = self.revision_datetime
         mhd_dataset.repository_revision = self.repository_revision
         mhd_dataset.repository_revision_datetime = self.repository_revision_datetime
-        mhd_dataset.change_log = self.change_log.copy() if self.change_log else []
+        mhd_dataset.change_log = self.change_log.copy() if self.change_log else None
 
         iterated_items: set[str] = set()
         for identifier, item in self.objects.items():

@@ -16,6 +16,7 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_CHARACTERISTIC_DEFINITIONS,
     COMMON_MEASUREMENT_METHODOLOGIES,
     COMMON_PARAMETER_DEFINITIONS,
+    COMMON_PROTOCOL_PARAMETERS,
     COMMON_PROTOCOLS,
     COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_TECHNOLOGY_TYPES,
@@ -506,7 +507,6 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 target="study",
                 min=1,
                 min_for_each_source=0,
-                max_for_each_source=1,
             ),
             RelationshipValidation(
                 source="person",
@@ -967,6 +967,14 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             ),
             RelationshipValidation(
                 source="study",
+                relationship_name="defines",
+                reverse_relationship_name="defined-in",
+                target="characteristic-type",
+                min=2,
+                min_for_each_source=2,
+            ),
+            RelationshipValidation(
+                source="study",
                 relationship_name="has-derived-data-file",
                 reverse_relationship_name="created-in",
                 target="derived-data-file",
@@ -1035,7 +1043,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 reverse_relationship_name="principal-investigator-of",
                 target="person",
                 min=1,
-                min_for_each_source=1,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="study",
@@ -1225,8 +1233,8 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             ),
             RelationshipValidation(
                 source="characteristic-type",
-                relationship_name="used-in",
-                reverse_relationship_name="has-characteristic-type",
+                relationship_name="defined-in",
+                reverse_relationship_name="defines",
                 target="study",
                 min=2,
                 min_for_each_source=1,
@@ -1671,8 +1679,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 reverse_relationship_name="use-factor-type",
                 target="study",
                 min=0,
-                min_for_each_source=1,
-                max_for_each_source=1,
+                min_for_each_source=0,
             ),
         ],
     ),
@@ -1772,16 +1779,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             CvTermValidation(
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
-                    cv_terms=[
-                        CvTerm(
-                            source="MSIO",
-                            accession="MSIO:0000171",
-                            name="mass spectrometry instrument",
-                        ),
-                        CvTerm(
-                            source="MS", accession="MS:1000465", name="scan polarity"
-                        ),
-                    ]
+                    cv_terms=list(COMMON_PROTOCOL_PARAMETERS["CHMO:0000470"].values())
                 ),
                 condition=[
                     FilterCondition(
@@ -1796,13 +1794,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             CvTermValidation(
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
-                    cv_terms=[
-                        CvTerm(
-                            source="OBI",
-                            accession="OBI:0000485",
-                            name="chromatography instrument",
-                        ),
-                    ]
+                    cv_terms=list(COMMON_PROTOCOL_PARAMETERS["CHMO:0001000"].values())
                 ),
                 condition=[
                     FilterCondition(
@@ -1821,7 +1813,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
                 target="parameter-value",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
         ],
@@ -1881,6 +1873,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
                 target="parameter-definition",
+                min=1,
+                min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="parameter-value",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="parameter-type",
                 min=1,
                 min_for_each_source=1,
             ),

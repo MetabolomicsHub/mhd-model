@@ -1375,11 +1375,14 @@ class MhdModelValidator:
 
             if item.accession not in control_list:
                 if not item.type_.startswith("x-"):
+                    control_list_items = ", ".join(
+                        [str(x) for x in control_list.values()]
+                    )
                     errors.append(
                         jsonschema.ValidationError(
                             message=message
                             + f"[{item.source}, {item.accession}, {item.name}] "
-                            "is not in control list. ",
+                            f"is not in control list. Control list items: {control_list_items}",
                             validator="check-cv-term-in-control-list",
                             context=(),
                             path=sub_path,

@@ -1,6 +1,8 @@
 from pathlib import Path
 from typing import Any, OrderedDict
 
+from pydantic import BaseModel
+
 from mhd_model.model.v0_1.announcement.profiles.base.fields import (
     ExtendedCvTermKeyValue,
     Protocol,
@@ -28,6 +30,11 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     KeyValue,
 )
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
+from mhd_model.model.v0_1.rules.cv_definitions import (
+    CONTROLLED_CV_DEFINITIONS,
+    OTHER_CONTROLLED_CV_DEFINITIONS,
+)
+from mhd_model.shared.model import CvDefinition
 
 
 def update_sample_characteristics(
@@ -233,6 +240,22 @@ def convert_file(
     return file
 
 
+def collect_cvterm_sources(obj: BaseModel, cv_sources: set[str]):
+    if isinstance(obj, (CvTerm, CvTermValue)):
+        source = getattr(obj, "source", None)
+        if source:
+            cv_sources.add(source)
+    elif isinstance(obj, BaseModel):
+        for value in obj.__dict__.values():
+            collect_cvterm_sources(value, cv_sources)
+    elif isinstance(obj, list):
+        for item in obj:
+            collect_cvterm_sources(item, cv_sources)
+    elif isinstance(obj, dict):
+        for value in obj.values():
+            collect_cvterm_sources(value, cv_sources)
+
+
 def create_announcement_file(
     mhd_file: dict[str, Any],
     mhd_file_url: str,
@@ -329,7 +352,7 @@ def create_announcement_file(
                 term = CvTerm.model_validate(technology_type)
                 measurement_methodologies[term.accession] = term
 
-    full_dataset_uri_list = convert_uri_list(type_map, study.uri_list)
+    dataset_uri_list = convert_uri_list(type_map, study.uri_list)
 
     announcement = AnnouncementBaseProfile(
         mhd_identifier=study.mhd_identifier,
@@ -342,7 +365,7 @@ def create_announcement_file(
             source="EDAM",
             value=mhd_file_url,
         ),
-        full_dataset_uri_list=full_dataset_uri_list,
+        dataset_uri_list=dataset_uri_list,
         dataset_license=study.dataset_license,
         title=study.title,
         description=study.description,
@@ -362,6 +385,7 @@ def create_announcement_file(
         # study_factors=[],
         # sample_characteristics=[],
     )
+
     update_keywords(all_nodes_map, relationship_name_map, announcement)
     update_protocol_parameters(
         all_nodes_map, relationship_name_map, type_map, study, announcement
@@ -433,7 +457,19 @@ def create_announcement_file(
         if reported_metabolites:
             announcement.reported_metabolites = reported_metabolites
             announcement.reported_metabolites.sort(key=lambda x: x.name)
-
+    cv_sources = set()
+    collect_cvterm_sources(announcement, cv_sources)
+    cv_sources = list(cv_sources)
+    cv_sources.sort()
+    for source in cv_sources:
+        if source in CONTROLLED_CV_DEFINITIONS:
+            announcement.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
+        elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
+            announcement.cv_definitions.append(OTHER_CONTROLLED_CV_DEFINITIONS[source])
+        else:
+            announcement.cv_definitions.append(
+                CvDefinition(label=source, alternative_labels=[source.lower()])
+            )
     print(f"Writing to {annoucement_file_path}")
     Path(annoucement_file_path).parent.mkdir(parents=True, exist_ok=True)
     with Path(annoucement_file_path).open("w") as f:

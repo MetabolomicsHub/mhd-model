@@ -5,9 +5,6 @@ from mhd_model.convertors.v0_1.mhd2announce import create_announcement_file
 
 if __name__ == "__main__":
     study_ids = [
-        "MHDA001987",
-        "MHDA002224",
-        "MHDA002291",
         "MHDA003107",
     ]
 

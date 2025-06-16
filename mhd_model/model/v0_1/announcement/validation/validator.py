@@ -12,6 +12,7 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckCvTermKeyValue,
     CheckCvTermKeyValues,
 )
+from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
@@ -80,15 +81,16 @@ class MhdAnnouncementFileValidator:
         ):
             error.parent = parent
             if error.context:
+                null_validators = []
                 for item in error.context:
-                    if isinstance(item, jsonschema.ValidationError):
-                        item.parent = error
-                        update_context(item, error)
+                    item.parent = error
+                    update_context(item, error)
+                item.context = [x for x in item.context if x not in null_validators]
 
-        profile_validator = ProfileValidator()
+        # profile_validator = ProfileValidator()
 
         for x in all_errors:
-            if x.validator in profile_validator.validators:
-                update_context(x, x.parent)
+            # if x.validator in profile_validator.validators:
+            update_context(x, x.parent)
 
         return all_errors

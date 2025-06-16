@@ -5,7 +5,7 @@ from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.announcement.profiles.base import fields
 from mhd_model.shared.fields import Authors
-from mhd_model.shared.model import CvTerm, MhdConfigModel, ProfileEnabledDataset
+from mhd_model.shared.model import CvEnabledDataset, CvTerm, MhdConfigModel
 
 
 class BaseFile(MhdConfigModel):
@@ -55,7 +55,7 @@ class ReportedMetabolite(MhdConfigModel):
     ] = None
 
 
-class AnnouncementBaseProfile(ProfileEnabledDataset):
+class AnnouncementBaseProfile(CvEnabledDataset):
     mhd_identifier: Annotated[str, Field()]
     repository_identifier: Annotated[str, Field()]
     mhd_metadata_file_uri: Annotated[fields.CvTermUriValue, Field()]
@@ -82,6 +82,7 @@ class AnnouncementBaseProfile(ProfileEnabledDataset):
 
     submitter_keywords: Annotated[None | list[fields.CvTermOrStr], Field()] = None
     descriptors: Annotated[None | list[CvTerm], Field()] = None
+
 
     publications: Annotated[
         None | CvTerm | list[AnnouncementPublication],

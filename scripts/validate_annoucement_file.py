@@ -23,7 +23,7 @@ if __name__ == "__main__":
         stream=sys.stdout,
     )
     validator = MhdAnnouncementFileValidator()
-    test_data_file_path = "tests/data/announcement_files/MHDA001987_announcement.json"
+    test_data_file_path = "tests/data/announcement_files/MHDA003107_announcement.json"
     announcement_file_json = load_json(test_data_file_path)
     all_errors = validator.validate(announcement_file_json)
 
@@ -42,20 +42,29 @@ if __name__ == "__main__":
 
     errors: OrderedDict = OrderedDict()
     for idx, x in enumerate(all_errors, start=1):
-        match = exceptions.best_match([x])
-        error = (json_path(x.absolute_path), match.message)
+        context_errors = [x]
+        if x.validator == "anyOf" and len(x.context) > 1:
+            context_errors = [
+                x
+                for x in x.context
+                if x.validator != "type" and x.validator_value != "null"
+            ]
 
-        if match.validator in profile_validator.validators:
-            leaves = []
-            add_all_leaves(match, leaves)
-            for leaf in leaves:
-                key = json_path(leaf[0])
-                value = leaf[1].message
+        for error_item in context_errors:
+            match = exceptions.best_match([error_item])
+            error = (json_path(match.absolute_path), match.message)
+
+            if match.validator in profile_validator.validators:
+                leaves = []
+                add_all_leaves(match, leaves)
+                for leaf in leaves:
+                    key = json_path(leaf[0])
+                    value = leaf[1].message
+                    number += 1
+                    errors[str(number)] = f"{key}: {value}"
+            else:
                 number += 1
-                errors[str(number)] = f"{key}: {value}"
-        else:
-            number += 1
-            errors[str(number)] = f"{error[0]}: {error[1]}"
+                errors[str(number)] = f"{error[0]}: {error[1]}"
 
     print("-" * 80)
     for idx, x in errors.items():
