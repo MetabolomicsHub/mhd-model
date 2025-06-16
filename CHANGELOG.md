@@ -1,3 +1,9 @@
+## v0.0.7 (2025-06-16)
+
+### Fix
+
+- **mhd2announcement**: convertor is updated.
+
 ## v0.0.6 (2025-06-15)
 
 ### Fix
