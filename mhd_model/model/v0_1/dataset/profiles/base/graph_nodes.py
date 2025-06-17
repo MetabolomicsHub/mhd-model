@@ -109,7 +109,7 @@ class Study(BaseLabeledMhdModel):
     ] = "study"
     mhd_identifier: Annotated[None | MhdIdentifier, Field()] = None
     repository_identifier: Annotated[None | str, Field(min_length=2)] = None
-    additional_identifiers: Annotated[None | list[CvTermValue], Field()] = None
+    additional_identifiers: Annotated[None | list[KeyValue], Field()] = None
     title: Annotated[None | str, Field()] = None
     description: Annotated[None | str, Field()] = None
     submission_date: None | datetime.datetime = None

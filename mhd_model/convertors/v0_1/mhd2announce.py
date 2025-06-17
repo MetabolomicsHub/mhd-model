@@ -301,6 +301,17 @@ def create_announcement_file(
             )
             publications.append(item)
 
+    publication_status = None
+    if not publications:
+        if "defined-as" in relationship_name_map:
+            publication_status = list(relationship_name_map["defined-as"].values())
+            if publication_status:
+                status = publication_status[0]
+
+                publication_status = CvTerm.model_validate(
+                    nodes_map[status.target_ref].model_dump(by_alias=True)
+                )
+
     submitter_links: list[BaseMhdRelationship] = []
     if "submits" in relationship_name_map:
         submitter_links = list(relationship_name_map["submits"].values())
@@ -381,7 +392,7 @@ def create_announcement_file(
         raw_data_file_uri_list=[],
         derived_data_file_uri_list=[],
         supplementary_file_uri_list=[],
-        publications=publications if publications else None,
+        publications=publications if publications else publication_status,
         # study_factors=[],
         # sample_characteristics=[],
     )

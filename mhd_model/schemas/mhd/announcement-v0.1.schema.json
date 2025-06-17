@@ -96,16 +96,6 @@
           "anyOf": [
             {
               "pattern": "^[0-9]{1,20}$",
-              "profileValidation": {
-                "allowNullValue": false,
-                "defaultPrefix": "pmid",
-                "followRedirects": false,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "accessible-compact-uri",
-                "negate": false
-              },
               "title": "PubMed Id",
               "type": "string"
             },

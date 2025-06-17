@@ -102,6 +102,10 @@ class BaseMhdModel(IdentifiableMhdModel):
         None | list[KeyValue],
         Field(description="Key-value tags related to the object."),
     ] = None
+    descriptors: Annotated[
+        None | list[CvTerm],
+        Field(description="Descriptors of the object."),
+    ] = None
     external_references: Annotated[
         None | list[KeyValue],
         Field(description="External references related to the object."),

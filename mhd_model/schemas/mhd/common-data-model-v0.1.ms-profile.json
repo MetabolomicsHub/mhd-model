@@ -60,6 +60,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -278,6 +294,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -384,6 +416,22 @@
           "default": null,
           "description": "Key-value tags related to the object.",
           "title": "Tags"
+        },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
         },
         "external_references": {
           "anyOf": [
@@ -881,6 +929,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -1145,6 +1209,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -1264,6 +1344,22 @@
           "default": null,
           "description": "Key-value tags related to the object.",
           "title": "Tags"
+        },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
         },
         "external_references": {
           "anyOf": [
@@ -1557,6 +1653,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -1751,6 +1863,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -1915,6 +2043,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -2076,6 +2220,22 @@
           "default": null,
           "description": "Key-value tags related to the object.",
           "title": "Tags"
+        },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
         },
         "external_references": {
           "anyOf": [
@@ -2267,6 +2427,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -2454,6 +2630,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -2616,6 +2808,22 @@
           "default": null,
           "description": "Key-value tags related to the object.",
           "title": "Tags"
+        },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
         },
         "external_references": {
           "anyOf": [
@@ -2829,6 +3037,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -2991,6 +3215,22 @@
           "default": null,
           "description": "Key-value tags related to the object.",
           "title": "Tags"
+        },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
         },
         "external_references": {
           "anyOf": [
@@ -3205,6 +3445,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -3354,6 +3610,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -3428,7 +3700,7 @@
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/CvTermValue"
+                "$ref": "#/$defs/KeyValue"
               },
               "type": "array"
             },
@@ -3617,6 +3889,22 @@
           "description": "Key-value tags related to the object.",
           "title": "Tags"
         },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
         "external_references": {
           "anyOf": [
             {
@@ -3760,6 +4048,22 @@
           "default": null,
           "description": "Key-value tags related to the object.",
           "title": "Tags"
+        },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
         },
         "external_references": {
           "anyOf": [

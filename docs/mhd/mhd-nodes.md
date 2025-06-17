@@ -12,6 +12,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|Its value MUST be <code>**assay**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**repository_identifier**|**required**|<code>*str*<code>|An assay identifier that uniquely identifies the assay in repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -56,6 +57,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**characteristic-definition**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -90,6 +92,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**derived-data-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -129,6 +132,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**factor-definition**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -163,6 +167,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metabolite**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -195,6 +200,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metadata-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|**required**|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -239,6 +245,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**organization**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**repository_identifier**|optional|<code>*str*<code>||
@@ -279,6 +286,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**parameter-definition**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -312,6 +320,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The value of this property MUST be 'person'<br>Its value MUST be <code>**person**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**full_name**|optional|<code>*str*<code>|Full name of person|
@@ -356,6 +365,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**project**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -399,6 +409,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**protocol**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>||
@@ -438,6 +449,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**publication**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**title**|**required**|<code>*str*<code>||
@@ -475,6 +487,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**raw-data-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|**required**|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -512,6 +525,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**result-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|**required**|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -549,6 +563,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
@@ -586,6 +601,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|optional|<code>*str*<code>||
@@ -620,6 +636,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run-configuration**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**protocol_ref**|**required**|<code>*MhdObjectId*<code>|Target node type: <code>**protocol**</code>|
@@ -648,11 +665,12 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**study**</code>|
 |**created_by_ref**|**required**|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**mhd_identifier**|**required**|<code>*str*<code>|Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
 |**repository_identifier**|optional|<code>*str*<code>||
-|**additional_identifiers**|optional|<code>*list[CvTermValue]*<code>|Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
+|**additional_identifiers**|optional|<code>*list[KeyValue]*<code>|Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**description**|**required**|<code>*str*<code>|Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**submission_date**|**required**|<code>*datetime*<code>||
@@ -725,6 +743,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**subject**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|optional|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
@@ -759,6 +778,7 @@
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**supplementary-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**uri_list**|**required**|<code>*list[KeyValue]*<code>|URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|

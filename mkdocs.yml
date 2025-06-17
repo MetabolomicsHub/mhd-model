@@ -38,8 +38,8 @@ extra_css:
 nav:
 - index.md
 - MHD Common Data Model:
-  - mhd_model/index.md
-  - Nodes & Relationhips: mhd_model/mhd-nodes.md
+  - mhd/index.md
+  - Nodes & Relationhips: mhd/mhd-nodes.md
 
 markdown_extensions:
 # Python Markdown

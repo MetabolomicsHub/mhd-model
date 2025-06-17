@@ -109,11 +109,11 @@ PubMedId = Annotated[
     Field(
         pattern=r"^[0-9]{1,20}$",
         title="PubMed Id",
-        json_schema_extra={
-            "profileValidation": AccessibleCompactURI(default_prefix="pmid").model_dump(
-                by_alias=True
-            )
-        },
+        # json_schema_extra={
+        #     "profileValidation": AccessibleCompactURI(default_prefix="pmid").model_dump(
+        #         by_alias=True
+        #     )
+        # },
     ),
 ]
 

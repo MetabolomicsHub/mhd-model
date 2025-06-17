@@ -10,7 +10,28 @@
 Each of *MHD Domain Objects* corresponds to a concept commonly used in metabolomics dataset metadata files. 
 
 
-List of MHD Domain Objects: <code>Assay, Characteristic Definition, Derived Data File, Factor Definition, Metadata File, Metabolite, Parameter Definition, Person, Project, Protocol, Publication, Raw Data File, Result File, Sample, Sample Run, Sample Run Configuration, Study, Subject, Supplementary File </code>
+List of MHD Domain Objects: 
+
+- [Study](mhd-nodes.md#study)
+- [Publication](mhd-nodes.md#publication)
+- [Person](mhd-nodes.md#person)
+- [Organization](mhd-nodes.md#organization)
+- [Project](mhd-nodes.md#project)
+- [Factor Definition](mhd-nodes.md#factor-definition)
+- [Protocol](mhd-nodes.md#protocol)
+- [Parameter Definition](mhd-nodes.md#parameter-definition)
+- [Metadata File](mhd-nodes.md#metadata-file)
+- [Raw Data File](mhd-nodes.md#raw-data-file)
+- [Derived Data File](mhd-nodes.md#derived-data-file)
+- [Result File](mhd-nodes.md#result-file)
+- [Supplementary File](mhd-nodes.md#supplementary-file)
+- [Metabolite](mhd-nodes.md#metabolite)
+- [Assay](mhd-nodes.md#assay)
+- [Subject](mhd-nodes.md#subject)
+- [Sample](mhd-nodes.md#sample)
+- [Characteristic Definition](mhd-nodes.md#characteristic-definition)
+- [Sample Run](mhd-nodes.md#sample-run)
+- [Sample Run Configuration](mhd-nodes.md#sample-run-configuration)
 
 The following properties are common for all  *MHD Domain Objects*.
 
@@ -20,6 +41,7 @@ The following properties are common for all  *MHD Domain Objects*.
 |**type**|required|<code>*str*<code>|The type MUST be lower case and '-' seperated value of node name. e.g. raw-data-file for Raw Data File|
 |**created_by_ref**|optional|<code>*str*<code>|The id of the data provider.|
 |**tags**|optional|<code>*list of KeyValue*<code>|Key and values. key and values may be CV Term|
+|**descriptors**|optional|<code>*list of CvTerm*<code>|Descriptors for the object|
 |**external_references**|optional|<code>*list of KeyValue*<code>|List of external references that describes the resource represented by the node. Key MUST be a URI type (FTP, URL, etc.)|
 |**uri_list**|optional|<code>*list of KeyValue*<code>|List of URI addresses to access the resource represented by the node |
 
@@ -29,7 +51,7 @@ The following properties are common for all  *MHD Domain Objects*.
 
 *MHD Common Data Model* defines a set of data types (MHD Cv Term Objects) presented as CV Term. 
 
-List of MHD Cv Term Objects: <code>Characteristic Definition, Characteristic Value, Data Provider, Factor Definition, Factor Value, Parameter Definition, Parameter Value, Uri Type</code>
+List of MHD Cv Term Objects: <code>Characteristic Type, Characteristic Value, Data Provider, Factor Type, Factor Value, Parameter Type, Protocol Type, Parameter Value, Uri Type</code>
 
 The following properties are common for all  *MHD Cv Term Objects*.
 
