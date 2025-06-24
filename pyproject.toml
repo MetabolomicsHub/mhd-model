@@ -2,7 +2,7 @@
 name = "mhd-model"
 version = "v0.0.9"
 description = "Metabolomics Hub Common Data Model"
-authors = ["Metabolomics Hub Team <help@metabolomicshub.org>"]
+authors = [{"name"="Metabolomics Hub Team", "email"="help@metabolomicshub.org"}]
 license = "Apache-2.0"
 readme = "README.md"
 requires-python = ">=3.10"
