@@ -43,6 +43,7 @@ tag_format = "v$major.$minor.$patch"
 version_files = [
     "pyproject.toml:version",
     "mhd_model/__init__.py:__version__",
+    "docs/index.md",
 ]
 bump_message = "bump: version $current_version -> $new_version"
 update_changelog_on_bump = true
