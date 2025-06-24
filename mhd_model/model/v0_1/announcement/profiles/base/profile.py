@@ -35,7 +35,7 @@ class SupplementaryFile(BaseFile):
 
 
 class AnnouncementContact(MhdConfigModel):
-    full_name: Annotated[str, Field(min_length=2)]
+    full_name: Annotated[None | str, Field(min_length=2)] = None
     emails: Annotated[None | list[EmailStr], Field(min_length=1)] = None
     orcid: Annotated[None | fields.ORCID, Field(title="ORCID")] = None
     affiliations: Annotated[None | list[str], Field(min_length=1)] = None
@@ -82,7 +82,6 @@ class AnnouncementBaseProfile(CvEnabledDataset):
 
     submitter_keywords: Annotated[None | list[fields.CvTermOrStr], Field()] = None
     descriptors: Annotated[None | list[CvTerm], Field()] = None
-
 
     publications: Annotated[
         None | CvTerm | list[AnnouncementPublication],

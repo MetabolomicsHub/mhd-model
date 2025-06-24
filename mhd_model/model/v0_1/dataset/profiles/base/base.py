@@ -1,6 +1,6 @@
 import datetime
 import uuid
-from typing import Any, Self
+from typing import Any
 
 from pydantic import Field, field_validator, model_validator
 from typing_extensions import Annotated
@@ -55,9 +55,9 @@ class KeyValue(MhdConfigModel):
     ) = None
 
 
-class CvTermKeyValue(MhdConfigModel):
-    key: CvTerm
-    value: str | datetime.datetime | bool | CvTerm | CvTermValue | QuantitativeValue
+# class CvTermKeyValue(MhdConfigModel):
+#     key: CvTerm
+#     value: str | datetime.datetime | bool | CvTerm | CvTermValue | QuantitativeValue
 
 
 class IdentifiableMhdModel(MhdConfigModel):
@@ -130,7 +130,7 @@ class BaseMhdModel(IdentifiableMhdModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> Self:
+    def validate_model(cls, v: Any, handler) -> "BaseMhdModel":
         item: BaseMhdModel = handler(v)
 
         if item.type_ and not item.id_:
@@ -149,7 +149,7 @@ class BaseLabeledMhdModel(BaseMhdModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> Self:
+    def validate_model(cls, v: Any, handler) -> "BaseLabeledMhdModel":
         item: BaseLabeledMhdModel = handler(v)
 
         if item.type_ and not item.id_:
@@ -168,7 +168,7 @@ class Definition(BaseLabeledMhdModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> Self:
+    def validate_model(cls, v: Any, handler) -> "Definition":
         item: Definition = handler(v)
         if item.type_ and not item.id_:
             str_repr = item.get_unique_id()
@@ -217,7 +217,7 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> Self:
+    def validate_model(cls, v: Any, handler) -> "BasicCvTermModel":
         item: BasicCvTermModel = handler(v)
         if item.type_ and not item.id_:
             str_repr = item.get_unique_id()
@@ -249,7 +249,7 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> Self:
+    def validate_model(cls, v: Any, handler) -> "BasicCvTermValueModel":
         item: BasicCvTermValueModel = handler(v)
         if item.type_ and not item.id_:
             str_repr = item.get_unique_id()
@@ -277,7 +277,7 @@ class BaseMhdRelationship(BaseMhdModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> Self:
+    def validate_model(cls, v: Any, handler) -> "BaseMhdRelationship":
         item: BaseMhdRelationship = handler(v)
         if item.type_ and not item.id_:
             str_repr = item.get_unique_id()

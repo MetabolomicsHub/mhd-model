@@ -13,13 +13,7 @@ import jsonschema
 import reachable
 from pydantic import BaseModel, ValidationError
 
-from mhd_model.model.v0_1.announcement.profiles.base.fields import CvTermKeyValue
-from mhd_model.model.v0_1.announcement.validation.definitions import (
-    ProfileValidation,
-    ProfileValidationGroup,
-)
-from mhd_model.model.v0_1.dataset.profiles.base.base import CvTermValue
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.shared.validation.cv_term_helper import (
     CvTermHelper,
 )
@@ -32,7 +26,9 @@ from mhd_model.shared.validation.definitions import (
     AllowedCvTerms,
     CvTermPlaceholder,
     ProfileCvTermValidation,
+    ProfileValidationGroup,
 )
+from mhd_model.shared.validation.registry import ProfileValidation
 
 logger = logging.getLogger(__name__)
 

@@ -7,10 +7,6 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckCvTermKeyValue,
     CheckCvTermKeyValues,
 )
-from mhd_model.model.v0_1.dataset.profiles.base.base import (
-    CvTermValue,
-    QuantitativeValue,
-)
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ANALYSIS_TYPES,
     COMMON_MEASUREMENT_METHODOLOGIES,
@@ -20,7 +16,7 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     MISSING_PUBLICATION_REASON,
     REQUIRED_COMMON_PARAMETER_DEFINITIONS,
 )
-from mhd_model.shared.model import CvTerm, MhdConfigModel
+from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue, MhdConfigModel
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
     AllowAnyCvTerm,
@@ -31,12 +27,6 @@ from mhd_model.shared.validation.definitions import (
     ParentCvTerm,
     ProfileValidationGroup,
 )
-
-
-class CvTermKeyValue(MhdConfigModel):
-    key: Annotated[CvTerm, Field()]
-    values: Annotated[None | list[CvTerm] | list[QuantitativeValue], Field()] = None
-
 
 DOI = Annotated[
     str,

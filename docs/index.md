@@ -1,4 +1,4 @@
-# Metabolomics Hub 
+# Metabolomics Hub
 ---
 
 With the growth of public metabolomics datasets worldwide, there is an urgent need for standardized, interoperable repositories that promote international collaboration. A novel global consortium designed to standardise open data practices in the field, by creating a unified, FAIR (Findable, Accessible, Interoperable, and Reusable)-compliant infrastructure for the exchange, discovery, and reuse of metabolomics data, has been recently funded by The Chan Zuckerberg Initiative (CZI).
@@ -18,4 +18,3 @@ This initiative will implement a common data model for datasets in all data repo
 ## Metabolomics Hub Rest APIs
 * MHD Submission Rest API v0.1
 * MHD Search Rest API
-

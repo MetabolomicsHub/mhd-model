@@ -7,10 +7,10 @@
 ---
 **MHD Domain Objects**
 
-Each of *MHD Domain Objects* corresponds to a concept commonly used in metabolomics dataset metadata files. 
+Each of *MHD Domain Objects* corresponds to a concept commonly used in metabolomics dataset metadata files.
 
 
-List of MHD Domain Objects: 
+List of MHD Domain Objects:
 
 - [Study](mhd-nodes.md#study)
 - [Publication](mhd-nodes.md#publication)
@@ -49,7 +49,7 @@ The following properties are common for all  *MHD Domain Objects*.
 
 **MHD Cv Term Objects**
 
-*MHD Common Data Model* defines a set of data types (MHD Cv Term Objects) presented as CV Term. 
+*MHD Common Data Model* defines a set of data types (MHD Cv Term Objects) presented as CV Term.
 
 List of MHD Cv Term Objects: <code>Characteristic Type, Characteristic Value, Data Provider, Factor Type, Factor Value, Parameter Type, Protocol Type, Parameter Value, Uri Type</code>
 
@@ -99,7 +99,7 @@ The following string formatted JSON schema data types are also supported:
 * time: ISO 8601 time without timezone. e.g. 14:30:00
 * date-time: ISO 8601 full timestamp. e.g. 2025-05-18T14:30:00Z
 * email: RFC 5322 email address. e.g.  help@metabolomicshub.org
-* uri: Full URI. e.g. https://metabolomicshub.org/docs 
+* uri: Full URI. e.g. https://metabolomicshub.org/docs
 
 ### Node and Relationship Ids
 

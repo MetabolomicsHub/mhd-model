@@ -2,9 +2,6 @@ from typing import Annotated
 
 from pydantic import Field
 
-from mhd_model.model.v0_1.announcement.profiles.base.fields import (
-    CvTermKeyValue,
-)
 from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckCvTermKeyValue,
     CheckCvTermKeyValues,
@@ -13,7 +10,7 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ANALYSIS_TYPES,
     COMMON_TECHNOLOGY_TYPES,
 )
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.model import CvTerm, CvTermKeyValue
 from mhd_model.shared.validation.definitions import AllowedCvList, AllowedCvTerms
 
 MsTechnologyType = Annotated[

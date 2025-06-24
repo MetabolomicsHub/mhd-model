@@ -85,6 +85,11 @@ class CvTermValue(CvTerm, QuantitativeValue):
         return f"[{self.source or ''}, {self.accession or ''}, {self.name or ''}, {value_key or ''}, {unit_key or ''}]"
 
 
+class CvTermKeyValue(MhdConfigModel):
+    key: Annotated[CvTerm, Field()]
+    values: Annotated[None | list[CvTerm] | list[QuantitativeValue], Field()] = None
+
+
 class CvDefinition(MhdConfigModel):
     label: str = ""
     name: str = ""

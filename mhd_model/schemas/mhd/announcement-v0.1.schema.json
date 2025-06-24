@@ -3,9 +3,17 @@
     "AnnouncementContact": {
       "properties": {
         "full_name": {
-          "minLength": 2,
-          "title": "Full Name",
-          "type": "string"
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Full Name"
         },
         "emails": {
           "anyOf": [
@@ -64,9 +72,6 @@
           "title": "Affiliations"
         }
       },
-      "required": [
-        "full_name"
-      ],
       "title": "AnnouncementContact",
       "type": "object"
     },

@@ -12,16 +12,14 @@ from pydantic import ValidationError
 from mhd_model.model import (
     SUPPORTED_SCHEMA_MAP,
 )
-from mhd_model.model.v0_1.announcement.profiles.base.fields import CvTermKeyValue
 from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckChildCvTermKeyValues,
     CheckCvTermKeyValue,
     CheckCvTermKeyValues,
     ProfileValidation,
 )
-from mhd_model.model.v0_1.dataset.profiles.base.base import CvTermValue
 from mhd_model.schema_utils import load_mhd_json_schema
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.model import CvTerm, CvTermKeyValue
 from mhd_model.shared.validation.cv_term_helper import (
     CvTermHelper,
 )
@@ -77,7 +75,7 @@ class CheckCvTermKeyValueValidator(ProfileValidationGroupValidator):
                 message="Input must be list",
                 data=value,
             )
-        item: CvTermKeyValue = CvTermValue.model_validate(value)
+        item: CvTermKeyValue = CvTermKeyValue.model_validate(value)
         if item.key.accession != validator.cv_term_key.accession:
             return ValidationResult(
                 sub_path=sub_path,

@@ -51,19 +51,24 @@ def update_sample_characteristics(
                 study_characteristics.add(rel.target_ref)
 
         if rel.relationship_name == "has-instance":
-            if rel.source_ref not in characteristics:
-                characteristics[rel.source_ref] = []
-            characteristics[rel.source_ref].append(rel.target_ref)
+            if isinstance(source, graph_nodes.CharacteristicDefinition):
+                if rel.source_ref not in characteristics:
+                    characteristics[rel.source_ref] = []
+                characteristics[rel.source_ref].append(rel.target_ref)
     referenced_characteristics = {
         x: y for x, y in characteristics.items() if x in study_characteristics and y
     }
+    characteristic_keys = [
+        (x, all_nodes_map[x]) for x, y in referenced_characteristics.items()
+    ]
+    characteristic_keys.sort(key=lambda x: x[1].name)
 
-    for char_id, value_ids in referenced_characteristics.items():
-        characteristic = all_nodes_map[char_id]
+    for char_id, characteristic in characteristic_keys:
+        value_ids = referenced_characteristics[char_id]
         values = []
         for x in value_ids:
             val = all_nodes_map[x]
-            if val.type_.startswith("cv-value--"):
+            if val.id_.startswith("cv-value--"):
                 val = CvTermValue.model_validate(val.model_dump(by_alias=True))
             else:
                 val = CvTerm.model_validate(val.model_dump(by_alias=True))
@@ -111,13 +116,16 @@ def update_study_factors(
                 study_factors.add(rel.target_ref)
 
         if rel.relationship_name == "has-instance":
-            if rel.source_ref not in factors:
-                factors[rel.source_ref] = []
-            factors[rel.source_ref].append(rel.target_ref)
+            if isinstance(source, graph_nodes.FactorDefinition):
+                if rel.source_ref not in factors:
+                    factors[rel.source_ref] = []
+                factors[rel.source_ref].append(rel.target_ref)
     referenced_factors = {x: y for x, y in factors.items() if x in study_factors and y}
+    factor_keys = [(x, all_nodes_map[x]) for x, y in referenced_factors.items()]
+    factor_keys.sort(key=lambda x: x[1].name)
 
-    for factor_id, value_ids in referenced_factors.items():
-        factor = all_nodes_map[factor_id]
+    for factor_id, factor in factor_keys:
+        value_ids = referenced_factors[factor_id]
         values = []
         for x in value_ids:
             val = all_nodes_map[x]
@@ -145,7 +153,7 @@ def update_protocol_parameters(
     if "protocol" in type_map:
         for ref in type_map["protocol"]:
             protocol_parameters = []
-            protocol_node = type_map["protocol"].get(ref)
+            protocol_node: graph_nodes.Protocol = type_map["protocol"].get(ref)
             if not protocol_node.parameter_definition_refs:
                 continue
             for definition_key in protocol_node.parameter_definition_refs:
@@ -170,15 +178,18 @@ def update_protocol_parameters(
                         if not val:
                             continue
                         vals.append(val)
-                def_type = all_nodes_map.get(definition.parameter_type_ref)
-                key = CvTerm.model_validate(def_type.model_dump(by_alias=True))
-                param = ExtendedCvTermKeyValue(
-                    key=key,
-                    values=vals if vals else None,
-                )
-                protocol_parameters.append(param)
+                if vals:
+                    def_type = all_nodes_map.get(definition.parameter_type_ref)
+                    key = CvTerm.model_validate(def_type.model_dump(by_alias=True))
+                    param = ExtendedCvTermKeyValue(
+                        key=key,
+                        values=vals if vals else None,
+                    )
+                    protocol_parameters.append(param)
             if not protocol_parameters:
                 protocol_parameters = None
+            else:
+                protocol_parameters.sort(key=lambda x: x.key.name)
             protocol_type_object = all_nodes_map.get(
                 protocol_node.protocol_type_ref, None
             )

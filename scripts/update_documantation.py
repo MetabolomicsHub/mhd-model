@@ -391,8 +391,8 @@ def update_nodes(validation_rules_map, node_documentation, node_doc, node):
             )
 
         row.append(f"**{field_title}**")
-        row.append(f'{"**required**" if required else "optional"}')
-        row.append(f"<code>*{field_type.replace(" | ", " or ")}*<code>")
+        row.append(f"{'**required**' if required else 'optional'}")
+        row.append(f"<code>*{field_type.replace(' | ', ' or ')}*<code>")
         row.append("<br>".join(description))
 
 
