@@ -1,3 +1,9 @@
+## v0.0.12 (2025-06-24)
+
+### Fix
+
+- documentation version is integrated to cicd
+
 ## v0.0.11 (2025-06-24)
 
 ### Refactor
