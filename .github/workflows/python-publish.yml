@@ -7,25 +7,23 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: read
+  contents: write
+  id-token: write  # Required for PyPI trusted publishing
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4.2.2
       with:
         fetch-depth: 0
 
-    - name: "Set up Python"
+    - name: Set up Python
       uses: actions/setup-python@v5.6.0
       with:
         python-version-file: ".python-version"
-
 
     - name: Install uv
       uses: astral-sh/setup-uv@v6.3.0
@@ -33,22 +31,34 @@ jobs:
         enable-cache: true
         cache-dependency-glob: uv.lock
 
-    - name: Set up Python
-      run: uv sync
+    - name: Sync dependencies
+      run: uv sync --group dev
+
+    - id: version
+      name: Get current version
+      run: echo "initial_version=$(uv run cz version -p)" >> "$GITHUB_OUTPUT"
 
     - id: cz
-      name: Create bump and changelog
+      name: Bump version and generate changelog
       uses: commitizen-tools/commitizen-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Print Version
-      run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
 
-    - name: Build
+    - name: Print new version
+      run: echo "Initial ${{ steps.version.outputs.initial_version }}. Bumped to version ${{ steps.cz.outputs.version }}"
+
+    - name: Build project
       run: uv build
 
-    - name: Publish
-      run: uv publish -t ${{ secrets.PYPI_TOKEN }}
+    - uses: astral-sh/ruff-action@v3
+    - run: ruff check
+    - run: ruff format
 
-    - name: Deploy
-      run: mkdocs gh-deploy --config-file mkdocs.yml --force
+    - name: Deploy documentation
+      run: uv run mkdocs gh-deploy --config-file mkdocs.yml --force
+
+    - name: Publish to PyPI
+      if: ${{ ! startsWith(steps.cz.outputs.version, steps.version.outputs.initial_version) }}
+      run: |
+        echo "Publishing to PyPI..."
+        uv publish -t ${{ secrets.PYPI_TOKEN }}
