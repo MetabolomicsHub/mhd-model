@@ -49,3 +49,6 @@ jobs:
 
     - name: Publish
       run: uv publish -t ${{ secrets.PYPI_TOKEN }}
+
+    - name: Deploy
+      run: mkdocs gh-deploy --config-file mkdocs.yml --force
