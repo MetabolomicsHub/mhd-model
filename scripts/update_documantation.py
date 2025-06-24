@@ -1,4 +1,5 @@
 import json
+import logging
 import types
 from pathlib import Path
 from typing import (
@@ -12,6 +13,7 @@ from typing import (
 )
 
 from pydantic import BaseModel
+from pydantic.fields import FieldInfo
 from pydantic_core import PydanticUndefined
 
 from mhd_model.model.v0_1.dataset.profiles.base.base import BaseMhdModel
@@ -35,9 +37,12 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
+from scripts.utils import set_basic_logging_config
+
+logger = logging.getLogger(__name__)
 
 
-def get_relationship_rules(validations: MhDatasetValidation):
+def get_relationship_rules(validations: MhDatasetValidation) -> tuple[dict, dict]:
     relationships = {}
     reverse_relationships = {}
 
@@ -67,7 +72,7 @@ def get_relationship_rules(validations: MhDatasetValidation):
     return relationships, reverse_relationships
 
 
-def get_validation_rules(validations: MhDatasetValidation):
+def get_validation_rules(validations: MhDatasetValidation) -> dict:
     cv_term_validations_map = {}
     for nodes in [validations.mhd_nodes, validations.cv_nodes]:
         for node in nodes:
@@ -177,7 +182,7 @@ def get_custom_type_alias(annotation: Any) -> str | None:
     return None
 
 
-def get_inherited_fields(child_cls, parent_cls):
+def get_inherited_fields(child_cls: type[BaseMhdModel], parent_cls: type[BaseMhdModel]) -> list:
     inherited = []
 
     parent_hints = get_type_hints(parent_cls, include_extras=True)
@@ -193,7 +198,7 @@ def get_inherited_fields(child_cls, parent_cls):
     return inherited
 
 
-def get_property_constraint(validations_map, node, field) -> None | PropertyConstraint:
+def get_property_constraint(validations_map: dict, node: NodeValidation, field: str) -> None | PropertyConstraint:
     key = (node.node_type, field)
     if key in validations_map:
         vals = validations_map[key]
@@ -204,7 +209,7 @@ def get_property_constraint(validations_map, node, field) -> None | PropertyCons
     return None
 
 
-def get_ref_constraint(validations_map, node, field) -> None | EmbeddedRefValidation:
+def get_ref_constraint(validations_map: dict, node: NodeValidation, field: str) -> None | EmbeddedRefValidation:
     key = (node.node_type, field)
     if key in validations_map:
         vals = validations_map[key]
@@ -228,7 +233,7 @@ class NodeDocumentation(BaseModel):
     )
 
 
-def get_embedded_relationships(profile):
+def get_embedded_relationships(profile: MhDatasetValidation) -> tuple[dict, dict]:
     embedded_relationships = {}
     reverse_embedded_relationships = {}
 
@@ -254,7 +259,9 @@ def get_embedded_relationships(profile):
     return embedded_relationships, reverse_embedded_relationships
 
 
-def get_default_value(node, model, field, info):
+def get_default_value(
+    node: NodeValidation, model: BaseMhdModel, field: str, info: FieldInfo
+) -> tuple[bool | None, Any]:
     if (model is CvTermObject or model is CvTermValueObject) and field == "type_":
         return True, node.node_type
     else:
@@ -268,7 +275,12 @@ def get_default_value(node, model, field, info):
         return None, None
 
 
-def update_nodes(validation_rules_map, node_documentation, node_doc, node):
+def update_nodes(
+    validation_rules_map: dict,
+    node_documentation: dict[str, NodeDocumentation],
+    node_doc: NodeDocumentation,
+    node: NodeValidation,
+) -> None:
     node_type = node.node_type
     model = None
     if isinstance(node, CvNodeValidation):
@@ -278,7 +290,7 @@ def update_nodes(validation_rules_map, node_documentation, node_doc, node):
     elif isinstance(node, NodeValidation):
         model = MhdGraph.get_mhd_class_by_type(node.node_type)
     if not model:
-        print(f"invalid type: {node.node_type}")
+        logger.info("invalid type: %s", node.node_type)
         return
 
     # Node description
@@ -397,6 +409,7 @@ def update_nodes(validation_rules_map, node_documentation, node_doc, node):
 
 
 if __name__ == "__main__":
+    set_basic_logging_config()
     profile = MHD_MS_PROFILE_V0_1
     validation_rules_map = get_validation_rules(profile)
     relationships_map, reverse_relationships_map = get_relationship_rules(profile)

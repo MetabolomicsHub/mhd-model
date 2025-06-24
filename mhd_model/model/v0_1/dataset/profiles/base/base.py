@@ -140,7 +140,7 @@ class BaseMhdModel(IdentifiableMhdModel):
     def get_unique_id(self):
         return self.id_
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.get_unique_id())
 
 
@@ -182,7 +182,7 @@ class Definition(BaseLabeledMhdModel):
     def get_unique_id(self):
         return f"{self.name or ''},{self.definition_type.get_unique_id() if self.definition_type else ''}"
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.get_unique_id())
 
     def get_label(self):
@@ -231,7 +231,7 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
     def get_label(self):
         return self.name or self.id_ or ""
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.get_unique_id())
 
 
@@ -263,7 +263,7 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
     def get_label(self):
         return self.value or self.name or self.id_ or ""
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.get_unique_id())
 
 

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class MhdFileValidator:
-    def validate(self, json_file: dict[str, Any]):
+    def validate(self, json_file: dict[str, Any]) -> list[jsonschema.ValidationError]:
         profile: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_file)
         validator: jsonschema.protocols.Validator = MhdModelValidator.new_instance(
             profile.schema_name, profile.profile_uri

@@ -26,11 +26,13 @@ class ProfileValidation(ValidatorBaseModel):
     input_type: Literal["list-or-item", "item", "list"] = "list-or-item"
 
 
-def register_validator_class(validator_name: str, model_class: type[ProfileValidation]):
+def register_validator_class(
+    validator_name: str, model_class: type[ProfileValidation]
+) -> None:
     VALIDATORS[validator_name] = model_class
 
 
-def unregister_validator_class(validator_name: str):
+def unregister_validator_class(validator_name: str) -> None:
     validator = VALIDATORS.get(validator_name)
     if validator:
         del VALIDATORS[validator_name]

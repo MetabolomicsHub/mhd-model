@@ -1,4 +1,4 @@
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 
 from pydantic import Field, ValidationError, field_validator
 
@@ -14,7 +14,7 @@ class CvTermPlaceholder(ValidatorBaseModel):
     source: str = ""
     accession: str = ""
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return f"[{self.source}, {self.accession}]"
 
 
@@ -23,7 +23,7 @@ class ProfileCvTermValidation(ProfileValidation):
     allowed_placeholder_values: None | list[CvTermPlaceholder] = None
     allowed_other_sources: None | list[str] = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         result = [
             (
                 "Allowed Missing CV Terms: "
@@ -52,7 +52,7 @@ class AllowedCvList(ProfileCvTermValidation):
     name: str = "allowed-cv-list"
     source_names: list[str]
 
-    def __str__(self):
+    def __str__(self) -> str:
         sources = (
             "Ontology Sources:" + ", ".join(self.source_names)
             if self.source_names
@@ -73,7 +73,7 @@ class ParentCvTerm(ValidatorBaseModel):
     excluded_cv_terms: None | list[CvTerm] = None
     index_cv_terms: None | bool = True
 
-    def __str__(self):
+    def __str__(self) -> str:
         parent = str(self.cv_term)
         excludes = (
             "Excluded CV Terms: " + ", ".join([str(x) for x in self.excluded_cv_terms])
@@ -95,7 +95,7 @@ class AllowedChildrenCvTerms(ProfileCvTermValidation):
     name: str = "allowed-children-cv-terms"
     parent_cv_terms: list[ParentCvTerm]
 
-    def __str__(self):
+    def __str__(self) -> str:
         sources = (
             "Allowed Parent CV Terms: "
             + ", ".join([str(x) for x in self.parent_cv_terms])
@@ -114,7 +114,7 @@ class AllowedCvTerms(ProfileCvTermValidation):
     name: Annotated[str, Field()] = "allowed-cv-terms"
     cv_terms: None | list[CvTerm]
 
-    def __str__(self):
+    def __str__(self) -> str:
         sources = (
             "Allowed CV Terms: " + ", ".join([str(x) for x in self.cv_terms])
             if self.cv_terms
@@ -143,7 +143,7 @@ class AccessibleCompactURI(ProfileValidation):
 class AllowAnyCvTerm(ProfileCvTermValidation):
     name: str = "allow-any-cv-term"
 
-    def __str__(self):
+    def __str__(self) -> str:
         sources = "Allow any valid CV Term"
         parent_str = super().__str__()
 
@@ -160,7 +160,7 @@ class ProfileValidationGroup(ProfileValidation):
 
     @field_validator("controls", mode="before")
     @classmethod
-    def controls_validator(cls, value):
+    def controls_validator(cls, value: Any) -> None:
         if not value:
             return []
         return_value = []

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import pathlib
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 from urllib.parse import quote
 
 import bioregistry
@@ -52,7 +52,7 @@ class ChildrenSearchModel(OlsBaseModel):
 
     @field_validator("label", mode="before")
     @classmethod
-    def label_validator(cls, value) -> str:
+    def label_validator(cls, value: list[str] | Any | None) -> str:
         if value is None:
             return ""
         if isinstance(value, list):
@@ -61,11 +61,11 @@ class ChildrenSearchModel(OlsBaseModel):
 
 
 class CvTermHelper:
-    def __init__(self):
+    def __init__(self) -> None:
         self.cache: dict[str, None | dict[str, CvTerm]] = {}
         self.search_cache: dict[str, tuple[bool, str | None]] = {}
 
-    def save_children(self, parent: ParentCvTerm, children: dict[str, CvTerm]):
+    def save_children(self, parent: ParentCvTerm, children: dict[str, CvTerm]) -> None:
         file_path = self.get_children_cache_file_path(parent)
         children_dict = {x: y.model_dump() for x, y in children.items()}
         with file_path.open("w") as f:
@@ -79,7 +79,7 @@ class CvTermHelper:
                 )
             )
 
-    def get_children_cache_file_path(self, parent: ParentCvTerm):
+    def get_children_cache_file_path(self, parent: ParentCvTerm) -> pathlib.Path:
         parent_path = pathlib.Path("cache")
         parent_path.mkdir(parents=True, exist_ok=True)
         parent_option = "p" if parent.allow_parent else "_"
@@ -168,7 +168,7 @@ class CvTermHelper:
         children: list[ChildrenSearchModel],
         allow_only_leaf: bool = True,
         excluded_cv_accessions: None | set[str] = None,
-    ):
+    ) -> None:
         parent_uri = self.get_uri(cv_term)
 
         parent_uri_encoded = quote(quote(parent_uri, safe=[]))
@@ -215,7 +215,7 @@ class CvTermHelper:
                     excluded_cv_accessions=excluded_cv_accessions,
                 )
 
-    def get_uri_with_custom_convertor(self, cv_term: CvTerm):
+    def get_uri_with_custom_convertor(self, cv_term: CvTerm) -> None | str:
         source = cv_term.source
         cv_definition = CONTROLLED_CV_DEFINITIONS.get(source)
         parent_uri = None
@@ -236,7 +236,7 @@ class CvTermHelper:
         return parent_uri
         # search.page
 
-    def get_uri(self, cv_term: CvTerm):
+    def get_uri(self, cv_term: CvTerm) -> str | None:
         uri = None
         if cv_term and ":" in cv_term.accession:
             uri = self.get_uri_with_custom_convertor(cv_term)
@@ -250,7 +250,7 @@ class CvTermHelper:
 
     def check_cv_term(
         self, cv_term: CvTerm, parent_cv_term: None | ParentCvTerm = None
-    ):
+    ) -> tuple[bool, str]:
         if not cv_term.accession or not cv_term.name or not cv_term.source:
             message = f"Invalid cv term [{cv_term.source}, {cv_term.accession}, {cv_term.name}]"
             logger.error(message)

@@ -13,7 +13,7 @@ class EmbeddedRefValidation(MhdConfigModel):
     min: Annotated[None | int, Field()] = None
     max: Annotated[None | int, Field()] = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         targets = (
             "Target node type: <code>**"
             + ", ".join(self.target_ref_types)
@@ -45,7 +45,7 @@ class RelationshipValidation(MhdConfigModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> "RelationshipValidation":
+    def validate_model(cls, v: Any, handler: callable) -> "RelationshipValidation":
         item: RelationshipValidation = handler(v)
         if item.source is not None:
             item.source = item.source.lower().replace(" ", "-")

@@ -33,7 +33,7 @@ class PropertyConstraint(MhdConfigModel):
     required: None | bool = None
     allowed_types: None | NodePropertyType | list[NodePropertyType] = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         min = "Min Length: " + str(self.min_length) if self.min_length else ""
         max = "Max Length: " + str(self.max_length) if self.max_length else ""
         required = "Required" if self.required else ""
@@ -69,7 +69,7 @@ class NodeValidation(MhdConfigModel):
 
     @model_validator(mode="wrap")
     @classmethod
-    def validate_model(cls, v: Any, handler) -> "NodeValidation":
+    def validate_model(cls, v: Any, handler: callable) -> "NodeValidation":
         item: NodeValidation = handler(v)
 
         item.node_type = item.node_type.lower().replace(" ", "-")

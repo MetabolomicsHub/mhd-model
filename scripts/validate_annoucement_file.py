@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import sys
 from typing import OrderedDict
 
 import jsonschema
@@ -12,16 +11,12 @@ from mhd_model.model.v0_1.announcement.validation.validator import (
     MhdAnnouncementFileValidator,
 )
 from mhd_model.utils import json_path, load_json
+from scripts.utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO,
-        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
-        datefmt="%d/%b/%Y %H:%M:%S",
-        stream=sys.stdout,
-    )
+    set_basic_logging_config()
     validator = MhdAnnouncementFileValidator()
     test_data_file_path = "tests/data/announcement_files/MHDA003107_announcement.json"
     announcement_file_json = load_json(test_data_file_path)
@@ -32,7 +27,7 @@ if __name__ == "__main__":
 
     def add_all_leaves(
         err: jsonschema.ValidationError, leaves: list[jsonschema.ValidationError]
-    ):
+    ) -> None:
         if err.validator in profile_validator.validators:
             if not err.context:
                 leaves.append((err.absolute_path, err))
@@ -66,7 +61,7 @@ if __name__ == "__main__":
                 number += 1
                 errors[str(number)] = f"{error[0]}: {error[1]}"
 
-    print("-" * 80)
+    logger.info("-" * 80)
     for idx, x in errors.items():
-        print(idx, "|", x)
-    print("-" * 80)
+        logger.info(idx, "|", x)
+    logger.info("-" * 80)

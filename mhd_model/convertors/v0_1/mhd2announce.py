@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 from typing import Any, OrderedDict
 
@@ -35,6 +36,8 @@ from mhd_model.model.v0_1.rules.cv_definitions import (
     OTHER_CONTROLLED_CV_DEFINITIONS,
 )
 from mhd_model.shared.model import CvDefinition
+
+logger = logging.getLogger(__name__)
 
 
 def update_sample_characteristics(
@@ -293,7 +296,7 @@ def create_announcement_file(
         relationship_name_map[rel.relationship_name][rel.id_] = rel
 
     if "study" not in type_map:
-        print("Study not found for in input file")
+        logger.info("Study not found for in input file")
         return
     study: graph_nodes.Study = list(type_map["study"].values())[0]
 
@@ -492,7 +495,7 @@ def create_announcement_file(
             announcement.cv_definitions.append(
                 CvDefinition(label=source, alternative_labels=[source.lower()])
             )
-    print(f"Writing to {annoucement_file_path}")
+    logger.info("Writing to %s", annoucement_file_path)
     Path(annoucement_file_path).parent.mkdir(parents=True, exist_ok=True)
     with Path(annoucement_file_path).open("w") as f:
         f.write(

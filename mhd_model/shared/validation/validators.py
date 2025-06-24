@@ -159,7 +159,7 @@ class BaseProfileValidator(abc.ABC):
 
     def update_error_context(
         self, error: jsonschema.ValidationError, result: ValidationResult
-    ):
+    ) -> None:
         context = []
         if result.context:
             for item in result.context:
@@ -213,7 +213,7 @@ class BaseProfileValidator(abc.ABC):
             return message + f" [{jsonpath_str}: {', '.join(sub_messages)}]"
         return message
 
-    def json_path(self, field_path):
+    def json_path(self, field_path: list[str | int]) -> str:
         return ".".join([x if isinstance(x, str) else f"[{x}]" for x in field_path])
 
 
@@ -550,7 +550,7 @@ class AccessibleURIValidator(BaseProfileValidator):
     def get_profile_validation_class(self) -> type[AccessibleURI]:
         return AccessibleURI
 
-    def return_result(self, key: str, result: ValidationResult):
+    def return_result(self, key: str, result: ValidationResult) -> ValidationResult:
         if key not in self.cache:
             self.cache[key] = result
         return result

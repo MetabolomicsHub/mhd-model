@@ -33,21 +33,21 @@ class CvTerm(MhdConfigModel):
         Field(description="Label of CV term."),
     ] = ""
 
-    def get_unique_id(self):
+    def get_unique_id(self) -> str:
         return f"{self.source or ''},{self.accession or ''},{self.name or ''}"
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.get_unique_id())
 
-    def __lt__(self, other):
+    def __lt__(self, other: "CvTerm") -> bool:
         if isinstance(other, CvTerm):
             return self.get_unique_id() < other.get_unique_id()
         return NotImplemented
 
-    def get_label(self):
+    def get_label(self) -> str:
         return f"[{self.source or ''}, {self.accession or ''}, {self.name or ''}]"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.get_label()
 
 
@@ -60,7 +60,7 @@ class QuantitativeValue(MhdConfigModel):
 
 
 class CvTermValue(CvTerm, QuantitativeValue):
-    def get_unique_id(self):
+    def get_unique_id(self) -> str:
         unit_key = self.unit.get_unique_id() if self.unit else ""
         value_key = (
             self.value.get_unique_id()
@@ -72,7 +72,7 @@ class CvTermValue(CvTerm, QuantitativeValue):
 
         return f"{super().get_unique_id()},{value_key or ''},{unit_key or ''}"
 
-    def get_label(self):
+    def get_label(self) -> str:
         unit_key = self.unit.get_label() if self.unit else ""
         value_key = (
             self.value.get_label()
