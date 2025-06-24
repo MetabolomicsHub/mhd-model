@@ -1,3 +1,9 @@
+## v0.0.11 (2025-06-24)
+
+### Refactor
+
+- refactor study cicd pipeline
+
 ## v0.0.10 (2025-06-24)
 
 ### Fix
