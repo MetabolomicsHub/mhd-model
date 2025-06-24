@@ -1,3 +1,9 @@
+## v0.0.9 (2025-06-24)
+
+### Refactor
+
+- lint tools integration and code refactors to align with lint rules
+
 ## v0.0.8 (2025-06-17)
 
 ### Fix
