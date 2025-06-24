@@ -388,8 +388,30 @@
 <h2 id="mhd-common-data-model-nodes">MHD Common Data Model Nodes<a class="headerlink" href="#mhd-common-data-model-nodes" title="Permanent link">&para;</a></h2>
 <hr />
 <p><strong>MHD Domain Objects</strong></p>
-<p>Each of <em>MHD Domain Objects</em> corresponds to a concept commonly used in metabolomics dataset metadata files. </p>
-<p>List of MHD Domain Objects: <code>Assay, Characteristic Definition, Derived Data File, Factor Definition, Metadata File, Metabolite, Parameter Definition, Person, Project, Protocol, Publication, Raw Data File, Result File, Sample, Sample Run, Sample Run Configuration, Study, Subject, Supplementary File </code></p>
+<p>Each of <em>MHD Domain Objects</em> corresponds to a concept commonly used in metabolomics dataset metadata files.</p>
+<p>List of MHD Domain Objects:</p>
+<ul>
+<li><a href="mhd-nodes/#study">Study</a></li>
+<li><a href="mhd-nodes/#publication">Publication</a></li>
+<li><a href="mhd-nodes/#person">Person</a></li>
+<li><a href="mhd-nodes/#organization">Organization</a></li>
+<li><a href="mhd-nodes/#project">Project</a></li>
+<li><a href="mhd-nodes/#factor-definition">Factor Definition</a></li>
+<li><a href="mhd-nodes/#protocol">Protocol</a></li>
+<li><a href="mhd-nodes/#parameter-definition">Parameter Definition</a></li>
+<li><a href="mhd-nodes/#metadata-file">Metadata File</a></li>
+<li><a href="mhd-nodes/#raw-data-file">Raw Data File</a></li>
+<li><a href="mhd-nodes/#derived-data-file">Derived Data File</a></li>
+<li><a href="mhd-nodes/#result-file">Result File</a></li>
+<li><a href="mhd-nodes/#supplementary-file">Supplementary File</a></li>
+<li><a href="mhd-nodes/#metabolite">Metabolite</a></li>
+<li><a href="mhd-nodes/#assay">Assay</a></li>
+<li><a href="mhd-nodes/#subject">Subject</a></li>
+<li><a href="mhd-nodes/#sample">Sample</a></li>
+<li><a href="mhd-nodes/#characteristic-definition">Characteristic Definition</a></li>
+<li><a href="mhd-nodes/#sample-run">Sample Run</a></li>
+<li><a href="mhd-nodes/#sample-run-configuration">Sample Run Configuration</a></li>
+</ul>
 <p>The following properties are common for all  <em>MHD Domain Objects</em>.</p>
 <table>
 <thead>
@@ -426,6 +448,12 @@
 <td>Key and values. key and values may be CV Term</td>
 </tr>
 <tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list of CvTerm</em><code></td>
+<td>Descriptors for the object</td>
+</tr>
+<tr>
 <td><strong>external_references</strong></td>
 <td>optional</td>
 <td><code><em>list of KeyValue</em><code></td>
@@ -441,8 +469,8 @@
 </table>
 <hr />
 <p><strong>MHD Cv Term Objects</strong></p>
-<p><em>MHD Common Data Model</em> defines a set of data types (MHD Cv Term Objects) presented as CV Term. </p>
-<p>List of MHD Cv Term Objects: <code>Characteristic Definition, Characteristic Value, Data Provider, Factor Definition, Factor Value, Parameter Definition, Parameter Value, Uri Type</code></p>
+<p><em>MHD Common Data Model</em> defines a set of data types (MHD Cv Term Objects) presented as CV Term.</p>
+<p>List of MHD Cv Term Objects: <code>Characteristic Type, Characteristic Value, Data Provider, Factor Type, Factor Value, Parameter Type, Protocol Type, Parameter Value, Uri Type</code></p>
 <p>The following properties are common for all  <em>MHD Cv Term Objects</em>.</p>
 <table>
 <thead>
@@ -560,7 +588,7 @@
 <li>time: ISO 8601 time without timezone. e.g. 14:30:00</li>
 <li>date-time: ISO 8601 full timestamp. e.g. 2025-05-18T14:30:00Z</li>
 <li>email: RFC 5322 email address. e.g.  help@metabolomicshub.org</li>
-<li>uri: Full URI. e.g. https://metabolomicshub.org/docs </li>
+<li>uri: Full URI. e.g. https://metabolomicshub.org/docs</li>
 </ul>
 <h3 id="node-and-relationship-ids">Node and Relationship Ids<a class="headerlink" href="#node-and-relationship-ids" title="Permanent link">&para;</a></h3>
 <p><strong>MhdObjectId</strong></p>
