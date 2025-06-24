@@ -29,6 +29,10 @@ dev = [
     "pre-commit>=4.2.0",
     "ruff>=0.12.0",
 ]
+test = [
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+]
 
 
 [tool.commitizen]
@@ -48,8 +52,6 @@ addopts = "-ra -q -v"
 testpaths = [
     "tests"
 ]
-asyncio_default_fixture_loop_scope = "function"
-
 
 
 [tool.ruff.lint]
