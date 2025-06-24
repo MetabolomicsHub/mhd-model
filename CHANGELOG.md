@@ -1,3 +1,9 @@
+## v0.0.10 (2025-06-24)
+
+### Fix
+
+- pyproject.yaml is fixed and validate-pyproject pre-commit is added.
+
 ## v0.0.9 (2025-06-24)
 
 ### Refactor
