@@ -783,10 +783,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
@@ -992,10 +992,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1007,7 +1007,7 @@
 <td><strong>characteristic_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></td>
-<td>Target CV term type: <code><strong>characteristic-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>characteristic-type</strong></code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, organism],<br>* [NCIT, NCIT:C103199, organism part],<br>* [EFO, EFO:0000408, disease],<br>* [EFO, EFO:0000324, cell type]</code></td>
+<td>Target CV term type: <code><strong>characteristic-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>characteristic-type</strong></code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, organism],<br>* [NCIT, NCIT:C103199, organism part],<br>* [EFO, EFO:0000408, disease],<br>* [EFO, EFO:0000324, cell type],<br>* [EFO, GAZ:00000448, geographical location]</code></td>
 </tr>
 </tbody>
 </table>
@@ -1032,7 +1032,7 @@
 <td>characteristic-value</td>
 <td>0</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong><br><br>Target Validation Rules:<br><code>-----<br><strong>Conditional - (Organism)</strong><br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Organism part)</strong><br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT<br>Exceptions:<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Disease)</strong><br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP<br>-----<br><strong>Conditional - (Cell type)</strong><br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL</code><br>-----</td>
+<td><strong>Required min count in the dataset: 2.</strong><br><br>Target Validation Rules:<br><code>-----<br><strong>Conditional - (Organism)</strong><br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Organism part)</strong><br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Disease)</strong><br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Cell type)</strong><br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Geographic location - Country)</strong><br>[Source characteristic_type_ref.accession = GAZ:00000448]<br>Allowed Parent CV Terms:<br>* [NCIT, NCIT:C25464, Country]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]</code><br>-----</td>
 </tr>
 <tr>
 <td>characteristic-definition</td>
@@ -1129,10 +1129,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1325,10 +1325,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1365,7 +1365,7 @@
 <td>factor-value</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Disease)</strong><br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP</code><br>-----</td>
+<td>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Disease)</strong><br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata</code><br>-----</td>
 </tr>
 <tr>
 <td>factor-definition</td>
@@ -1462,10 +1462,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1610,10 +1610,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+<td>URL list related to the object. Key MUST be URL type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1673,7 +1673,7 @@
 <td>has-metadata-file</td>
 <td>study</td>
 <td>1</td>
-<td>N</td>
+<td>1</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
@@ -1851,10 +1851,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
@@ -1907,9 +1907,9 @@
 <td>affiliates</td>
 <td>affiliated-with</td>
 <td>person</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td></td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
 <td>organization</td>
@@ -1977,7 +1977,7 @@
 <td>affiliated-with</td>
 <td>affiliates</td>
 <td>organization</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -2059,10 +2059,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -2187,16 +2187,16 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>full_name</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Full name of person</td>
+<td>Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code></td>
 </tr>
 <tr>
 <td><strong>orcid</strong></td>
@@ -2206,9 +2206,9 @@
 </tr>
 <tr>
 <td><strong>emails</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>list[EmailStr]</em><code></td>
-<td>Email addresses of person</td>
+<td>Email addresses of person<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>phones</strong></td>
@@ -2243,7 +2243,7 @@
 <td>affiliated-with</td>
 <td>affiliates</td>
 <td>organization</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -2298,7 +2298,7 @@
 <td>submitted-by</td>
 <td>study</td>
 <td>0</td>
-<td>1</td>
+<td>N</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 </tbody>
@@ -2331,9 +2331,9 @@
 <td>affiliates</td>
 <td>affiliated-with</td>
 <td>person</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td></td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
 <td>project</td>
@@ -2367,7 +2367,7 @@
 <td>has-principal-investigator</td>
 <td>principal-investigator-of</td>
 <td>person</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
@@ -2431,16 +2431,16 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+<td>Minimum length: <code>30</code><br>Validation Rule:<br> <code>Min Length: 30, Required</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
@@ -2669,10 +2669,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -2790,7 +2790,7 @@
 <td>has-protocol</td>
 <td>used-in</td>
 <td>protocol</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
@@ -2845,10 +2845,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
@@ -3029,10 +3029,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+<td>URL list related to the object. Key MUST be URL type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -3207,10 +3207,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+<td>URL list related to the object. Key MUST be URL type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -3385,10 +3385,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -3569,10 +3569,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -3717,10 +3717,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>protocol_ref</strong></td>
@@ -3835,10 +3835,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>mhd_identifier</strong></td>
@@ -3862,7 +3862,7 @@
 <td><strong>title</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+<td>Minimum length: <code>30</code><br>Validation Rule:<br> <code>Min Length: 30, Required</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
@@ -3883,13 +3883,13 @@
 <td></td>
 </tr>
 <tr>
-<td><strong>dataset_license</strong></td>
+<td><strong>license</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>HttpUrl</em><code></td>
-<td><br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0"</code></td>
+<td><br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code></td>
 </tr>
 <tr>
-<td><strong>dataset_uri_list</strong></td>
+<td><strong>dataset_url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
 <td></td>
@@ -3999,7 +3999,7 @@
 <td>has-principal-investigator</td>
 <td>principal-investigator-of</td>
 <td>person</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
@@ -4008,7 +4008,7 @@
 <td>has-protocol</td>
 <td>used-in</td>
 <td>protocol</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
@@ -4214,7 +4214,7 @@
 <td>has-metadata-file</td>
 <td>study</td>
 <td>1</td>
-<td>N</td>
+<td>1</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
@@ -4241,7 +4241,7 @@
 <td>submitted-by</td>
 <td>study</td>
 <td>0</td>
-<td>1</td>
+<td>N</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
@@ -4358,10 +4358,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term</td>
+<td>URL list related to the object. Key MUST be URL type CV Term</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -4518,10 +4518,10 @@
 <td>External references related to the object</td>
 </tr>
 <tr>
-<td><strong>uri_list</strong></td>
+<td><strong>url_list</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>URI list related to the object. Key MUST be uri type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+<td>URL list related to the object. Key MUST be URL type CV Term<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
