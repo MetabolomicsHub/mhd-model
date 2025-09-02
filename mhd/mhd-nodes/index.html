@@ -1032,7 +1032,7 @@
 <td>characteristic-value</td>
 <td>0</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong><br><br>Target Validation Rules:<br><code>-----<br><strong>Conditional - (Organism)</strong><br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Organism part)</strong><br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Disease)</strong><br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Cell type)</strong><br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata<br>-----<br><strong>Conditional - (Geographic location - Country)</strong><br>[Source characteristic_type_ref.accession = GAZ:00000448]<br>Allowed Parent CV Terms:<br>* [NCIT, NCIT:C25464, Country]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]</code><br>-----</td>
+<td><strong>Required min count in the dataset: 2.</strong><br><br>Target Validation Rules:<br><code>-----<br><strong>Conditional - (Organism)</strong><br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Organism part)</strong><br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Disease)</strong><br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Cell type)</strong><br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Geographic location - Country)</strong><br>[Source characteristic_type_ref.accession = GAZ:00000448]<br>Allowed Parent CV Terms:<br>* [NCIT, NCIT:C25464, Country]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]</code><br>-----</td>
 </tr>
 <tr>
 <td>characteristic-definition</td>
@@ -1365,7 +1365,7 @@
 <td>factor-value</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Disease)</strong><br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata</code><br>-----</td>
+<td>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Disease)</strong><br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code><br>-----</td>
 </tr>
 <tr>
 <td>factor-definition</td>
@@ -1866,7 +1866,7 @@
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+<td>Minimum length: <code>10</code><br>Validation Rule:<br> <code>Min Length: 10, Required</code></td>
 </tr>
 <tr>
 <td><strong>department</strong></td>
@@ -2684,7 +2684,7 @@
 <td><strong>protocol_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></td>
-<td>Target CV term type: <code><strong>protocol-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>protocol-type</strong></code><br>Allowed CV Terms:<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [MS, MS:1000831, sample preparation],<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [OBI, OBI:0200000, data transform],<br>* [MI, MI:2131, metabolite identification],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [CHMO, CHMO:0001024, capillary electrophoresis],<br>* [MS, MS:1000058, flow injection analysis]<br>Exceptions:<br>Allowed Other Sources: wikidata</code></td>
+<td>Target CV term type: <code><strong>protocol-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>protocol-type</strong></code><br>Allowed CV Terms:<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [MS, MS:1000831, sample preparation],<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [OBI, OBI:0200000, data transform],<br>* [MI, MI:2131, metabolite identification],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [CHMO, CHMO:0001024, capillary electrophoresis],<br>* [MS, MS:1000058, flow injection analysis]<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
@@ -3856,7 +3856,7 @@
 <td><strong>additional_identifiers</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata</code></td>
+<td>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
@@ -4064,7 +4064,7 @@
 <td>descriptor</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata</code><br>-----</td>
+<td>Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, RRID</code><br>-----</td>
 </tr>
 <tr>
 <td>study</td>
