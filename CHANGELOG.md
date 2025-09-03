@@ -1,3 +1,9 @@
+## v0.1.0 (2025-09-03)
+
+### Feat
+
+- updates after minimum model requirements
+
 ## v0.0.13 (2025-06-24)
 
 ### Refactor
