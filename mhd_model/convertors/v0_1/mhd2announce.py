@@ -207,20 +207,20 @@ def update_protocol_parameters(
             announcement.protocols.append(protocol)
 
 
-def convert_uri_list(
-    type_map: dict[str, dict[IdentifiableMhdModel]], uri_list: None | list[KeyValue]
+def convert_url_list(
+    type_map: dict[str, dict[IdentifiableMhdModel]], url_list: None | list[KeyValue]
 ):
     converted_list = []
-    if not uri_list:
+    if not url_list:
         return converted_list
 
-    if "uri-type" in type_map:
-        for item in uri_list:
-            if item.key in type_map["uri-type"]:
-                uri_type: graph_nodes.CvTermObject = type_map["uri-type"][item.key]
-                uri = CvTermValue.model_validate(uri_type, from_attributes=True)
-                uri.value = item.value
-                converted_list.append(uri)
+    if "url-type" in type_map:
+        for item in url_list:
+            if item.key in type_map["url-type"]:
+                url_type: graph_nodes.CvTermObject = type_map["url-type"][item.key]
+                url = CvTermValue.model_validate(url_type, from_attributes=True)
+                url.value = item.value
+                converted_list.append(url)
     return converted_list
 
 
@@ -234,7 +234,7 @@ def convert_file(
     if file_type_name not in type_map or ref not in type_map[file_type_name]:
         return None
     item = type_map[file_type_name][ref]
-    uri_list = convert_uri_list(type_map, item.uri_list)
+    url_list = convert_url_list(type_map, item.url_list)
     format = None
     if item.format_ref in all_nodes_map:
         format_node = all_nodes_map[item.format_ref]
@@ -246,7 +246,7 @@ def convert_file(
 
     file = file_class(
         name=item.name,
-        file_uri_list=uri_list,
+        file_url_list=url_list,
         compression_format=compression,
         format=format,
     )
@@ -352,15 +352,15 @@ def create_announcement_file(
                         AnnouncementContact.model_validate(pi, from_attributes=True)
                     )
 
-    analysis_types: OrderedDict[str, CvTerm] = OrderedDict()
+    assay_types: OrderedDict[str, CvTerm] = OrderedDict()
     technology_types: OrderedDict[str, CvTerm] = OrderedDict()
-    measurement_methodologies: OrderedDict[str, CvTerm] = OrderedDict()
+    measurement_types: OrderedDict[str, CvTerm] = OrderedDict()
     for item in study_assays:
-        if item.analysis_type_ref in nodes_map:
-            analysis_type: graph_nodes.CvTermObject = nodes_map[item.analysis_type_ref]
-            if analysis_type.accession not in analysis_types:
-                term = CvTerm.model_validate(analysis_type)
-                analysis_types[term.accession] = term
+        if item.assay_type_ref in nodes_map:
+            assay_type: graph_nodes.CvTermObject = nodes_map[item.assay_type_ref]
+            if assay_type.accession not in assay_types:
+                term = CvTerm.model_validate(assay_type)
+                assay_types[term.accession] = term
 
         if item.technology_type_ref in nodes_map:
             technology_type: graph_nodes.CvTermObject = nodes_map[
@@ -369,15 +369,15 @@ def create_announcement_file(
             if technology_type.accession not in technology_types:
                 term = CvTerm.model_validate(technology_type)
                 technology_types[term.accession] = term
-        if item.measurement_methodology_ref in nodes_map:
-            measurement_methodology: graph_nodes.CvTermObject = nodes_map[
+        if item.measurement_type_ref in nodes_map:
+            measurement_type: graph_nodes.CvTermObject = nodes_map[
                 item.technology_type_ref
             ]
-            if measurement_methodology.accession not in measurement_methodologies:
+            if measurement_type.accession not in measurement_types:
                 term = CvTerm.model_validate(technology_type)
-                measurement_methodologies[term.accession] = term
+                measurement_types[term.accession] = term
 
-    dataset_uri_list = convert_uri_list(type_map, study.uri_list)
+    dataset_url_list = convert_url_list(type_map, study.url_list)
 
     announcement = AnnouncementBaseProfile(
         mhd_identifier=study.mhd_identifier,
@@ -390,22 +390,22 @@ def create_announcement_file(
             source="EDAM",
             value=mhd_file_url,
         ),
-        dataset_uri_list=dataset_uri_list,
-        dataset_license=study.dataset_license,
+        dataset_url_list=dataset_url_list,
+        license=study.license,
         title=study.title,
         description=study.description,
         submission_date=study.submission_date,
         public_release_date=study.public_release_date,
         submitters=submitters,
         principal_investigators=principal_investigators,
-        measurement_methodology=list(measurement_methodologies.values()),
+        measurement_type=list(measurement_types.values()),
         technology_type=list(technology_types.values()),
-        analysis_type=list(analysis_types.values()),
-        repository_metadata_file_uri_list=[],
-        result_file_uri_list=[],
-        raw_data_file_uri_list=[],
-        derived_data_file_uri_list=[],
-        supplementary_file_uri_list=[],
+        assay_type=list(assay_types.values()),
+        repository_metadata_file_url_list=[],
+        result_file_url_list=[],
+        raw_data_file_url_list=[],
+        derived_data_file_url_list=[],
+        supplementary_file_url_list=[],
         publications=publications if publications else publication_status,
         # study_factors=[],
         # sample_characteristics=[],
@@ -424,13 +424,13 @@ def create_announcement_file(
                 all_nodes_map, type_map, "metadata-file", ref, MetadataFile
             )
             if metadata:
-                announcement.repository_metadata_file_uri_list.append(metadata)
+                announcement.repository_metadata_file_url_list.append(metadata)
 
     if "result-file" in type_map:
         for ref in type_map["result-file"]:
             file = convert_file(all_nodes_map, type_map, "result-file", ref, ResultFile)
             if file:
-                announcement.result_file_uri_list.append(file)
+                announcement.result_file_url_list.append(file)
 
     if "raw-data-file" in type_map:
         for ref in type_map["raw-data-file"]:
@@ -438,21 +438,21 @@ def create_announcement_file(
                 all_nodes_map, type_map, "raw-data-file", ref, RawDataFile
             )
             if file:
-                announcement.raw_data_file_uri_list.append(file)
+                announcement.raw_data_file_url_list.append(file)
     if "derived-data-file" in type_map:
         for ref in type_map["derived-data-file"]:
             file = convert_file(
                 all_nodes_map, type_map, "derived-data-file", ref, DerivedDataFile
             )
             if file:
-                announcement.derived_data_file_uri_list.append(file)
+                announcement.derived_data_file_url_list.append(file)
     if "supplementary-file" in type_map:
         for ref in type_map["supplementary-file"]:
             file = convert_file(
                 all_nodes_map, type_map, "supplementary-file", ref, SupplementaryFile
             )
             if file:
-                announcement.supplementary_file_uri_list.append(file)
+                announcement.supplementary_file_url_list.append(file)
     identification_map = {}
     identification_links = relationship_name_map.get("identified-as")
     items = type_map.get("metabolite-identification")

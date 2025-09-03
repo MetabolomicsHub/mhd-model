@@ -182,7 +182,9 @@ def get_custom_type_alias(annotation: Any) -> str | None:
     return None
 
 
-def get_inherited_fields(child_cls: type[BaseMhdModel], parent_cls: type[BaseMhdModel]) -> list:
+def get_inherited_fields(
+    child_cls: type[BaseMhdModel], parent_cls: type[BaseMhdModel]
+) -> list:
     inherited = []
 
     parent_hints = get_type_hints(parent_cls, include_extras=True)
@@ -198,7 +200,9 @@ def get_inherited_fields(child_cls: type[BaseMhdModel], parent_cls: type[BaseMhd
     return inherited
 
 
-def get_property_constraint(validations_map: dict, node: NodeValidation, field: str) -> None | PropertyConstraint:
+def get_property_constraint(
+    validations_map: dict, node: NodeValidation, field: str
+) -> None | PropertyConstraint:
     key = (node.node_type, field)
     if key in validations_map:
         vals = validations_map[key]
@@ -209,7 +213,9 @@ def get_property_constraint(validations_map: dict, node: NodeValidation, field: 
     return None
 
 
-def get_ref_constraint(validations_map: dict, node: NodeValidation, field: str) -> None | EmbeddedRefValidation:
+def get_ref_constraint(
+    validations_map: dict, node: NodeValidation, field: str
+) -> None | EmbeddedRefValidation:
     key = (node.node_type, field)
     if key in validations_map:
         vals = validations_map[key]

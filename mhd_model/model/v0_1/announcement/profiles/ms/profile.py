@@ -36,11 +36,11 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
         MissingPublicationReason | list[AnnouncementPublication], Field()
     ]
     # LC-MS, GC-MS, ...
-    analysis_type: Annotated[list[fields.MsAnalysisType], Field(min_length=1)]
+    assay_type: Annotated[list[fields.MsAnalysisType], Field(min_length=1)]
 
     study_factors: Annotated[StudyFactors, Field()]
     sample_characteristics: Annotated[fields.ExtendedSampleCharacteristics, Field()]
     protocols: Annotated[None | Protocols, Field()] = None
 
-    raw_data_file_uri_list: Annotated[list[RawDataFile], Field(min_length=1)]
-    result_file_uri_list: Annotated[list[ResultFile], Field(min_length=1)]
+    raw_data_file_url_list: Annotated[list[RawDataFile], Field(min_length=1)]
+    result_file_url_list: Annotated[list[ResultFile], Field(min_length=1)]

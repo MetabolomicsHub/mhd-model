@@ -110,10 +110,10 @@ class BaseMhdModel(IdentifiableMhdModel):
         None | list[KeyValue],
         Field(description="External references related to the object."),
     ] = None
-    uri_list: Annotated[
+    url_list: Annotated[
         None | list[KeyValue],
         Field(
-            description="URI list related to the object. Key MUST be uri type CV Term"
+            description="URL list related to the object. Key MUST be URL type CV Term"
         ),
     ] = None
 

@@ -145,6 +145,14 @@ OTHER_CONTROLLED_CV_DEFINITIONS = {
         alternative_labels=["wikidata"],
         alternative_prefixes=["http://www.wikidata.org/wiki/"],
     ),
+    "RRID": CvDefinition(
+        label="RRID",
+        name="Research Resource Identifier",
+        uri="https://www.researchresourceidentifiers.org",
+        prefix="https://www.researchresourceidentifiers.org/",
+        alternative_labels=["rrid"],
+        alternative_prefixes=["http://www.researchresourceidentifiers.org/"],
+    ),
     "WoRMS": CvDefinition(
         label="WoRMS",
         name="World Register of Marine Species",

@@ -13,6 +13,18 @@
             "cwd": "${workspaceFolder}",
             "env": {"PYTHONPATH": "${workspaceFolder}"},
             "justMyCode": false
+        },
+        {
+            "name": "mhd-model: Update Documentation",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/update_documentation.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "justMyCode": false
         }
+
+
     ]
 }

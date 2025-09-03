@@ -10,7 +10,7 @@ from mhd_model.shared.model import CvEnabledDataset, CvTerm, MhdConfigModel
 
 class BaseFile(MhdConfigModel):
     name: Annotated[str, Field(min_length=2)]
-    file_uri_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
+    file_url_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
     compression_format: Annotated[None | fields.CompressionFormat, Field()] = None
 
 
@@ -35,7 +35,7 @@ class SupplementaryFile(BaseFile):
 
 
 class AnnouncementContact(MhdConfigModel):
-    full_name: Annotated[None | str, Field(min_length=2)] = None
+    full_name: Annotated[None | str, Field(min_length=5)] = None
     emails: Annotated[None | list[EmailStr], Field(min_length=1)] = None
     orcid: Annotated[None | fields.ORCID, Field(title="ORCID")] = None
     affiliations: Annotated[None | list[str], Field(min_length=1)] = None
@@ -59,9 +59,9 @@ class AnnouncementBaseProfile(CvEnabledDataset):
     mhd_identifier: Annotated[str, Field()]
     repository_identifier: Annotated[str, Field()]
     mhd_metadata_file_uri: Annotated[fields.CvTermUriValue, Field()]
-    dataset_uri_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
+    dataset_url_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
 
-    dataset_license: Annotated[HttpUrl, Field()]
+    license: Annotated[None | HttpUrl, Field()]
     title: Annotated[str, Field(min_length=5)]
     description: Annotated[str, Field(min_length=5)]
     submission_date: Annotated[datetime.datetime, Field()]
@@ -71,14 +71,15 @@ class AnnouncementBaseProfile(CvEnabledDataset):
     principal_investigators: Annotated[None | list[AnnouncementContact], Field()] = None
 
     # Targeted metabolite profiling, Untargeted metabolite profiling, ...
-    measurement_methodology: Annotated[
-        None | list[fields.MeasurementMethodology], Field()
-    ] = None
+    measurement_type: Annotated[None | list[fields.MeasurementType], Field()] = None
     # NMR, MS, ...
     technology_type: Annotated[list[fields.TechnologyType], Field(min_length=1)]
 
+    # Metabolomics, Lipidomics, Proteomics, ...
+    omics_type: Annotated[list[fields.OmicsType], Field(min_length=1)]
+
     # LC-MS, GC-MS, ...
-    analysis_type: Annotated[list[fields.AnalysisType], Field(min_length=1)]
+    assay_type: Annotated[list[fields.AnalysisType], Field(min_length=1)]
 
     submitter_keywords: Annotated[None | list[fields.CvTermOrStr], Field()] = None
     descriptors: Annotated[None | list[CvTerm], Field()] = None
@@ -98,11 +99,11 @@ class AnnouncementBaseProfile(CvEnabledDataset):
 
     reported_metabolites: Annotated[None | list[ReportedMetabolite], Field()] = None
 
-    repository_metadata_file_uri_list: Annotated[None | list[MetadataFile], Field()]
-    raw_data_file_uri_list: Annotated[None | list[RawDataFile], Field()] = None
-    derived_data_file_uri_list: Annotated[None | list[DerivedDataFile], Field()] = None
-    supplementary_file_uri_list: Annotated[
+    repository_metadata_file_url_list: Annotated[None | list[MetadataFile], Field()]
+    raw_data_file_url_list: Annotated[None | list[RawDataFile], Field()] = None
+    derived_data_file_url_list: Annotated[None | list[DerivedDataFile], Field()] = None
+    supplementary_file_url_list: Annotated[
         None | list[SupplementaryFile],
         Field(),
     ] = None
-    result_file_uri_list: Annotated[None | list[ResultFile], Field()] = None
+    result_file_url_list: Annotated[None | list[ResultFile], Field()] = None

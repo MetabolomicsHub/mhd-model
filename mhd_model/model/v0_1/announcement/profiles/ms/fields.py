@@ -7,7 +7,7 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckCvTermKeyValues,
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
-    COMMON_ANALYSIS_TYPES,
+    COMMON_ASSAY_TYPES,
     COMMON_TECHNOLOGY_TYPES,
 )
 from mhd_model.shared.model import CvTerm, CvTermKeyValue
@@ -38,7 +38,7 @@ ExtendedSampleCharacteristics = Annotated[
                         controls=[
                             AllowedCvList(
                                 source_names=["ENVO", "NCBITAXON"],
-                                allowed_other_sources=["wikidata"],
+                                allowed_other_sources=["wikidata", "RRID"],
                             )
                         ],
                         min_value_count=1,
@@ -50,7 +50,9 @@ ExtendedSampleCharacteristics = Annotated[
                             name="organism part",
                         ),
                         controls=[
-                            AllowedCvList(source_names=["UBERON", "BTO", "NCIT"])
+                            AllowedCvList(
+                                source_names=["UBERON", "BTO", "NCIT", "SNOMED"]
+                            )
                         ],
                         min_value_count=1,
                     ),
@@ -60,14 +62,19 @@ ExtendedSampleCharacteristics = Annotated[
                         cv_term_key=CvTerm(
                             source="EFO", accession="EFO:0000408", name="disease"
                         ),
-                        controls=[AllowedCvList(source_names=["DOID", "HP", "MP"])],
+                        controls=[
+                            AllowedCvList(
+                                source_names=["DOID", "HP", "MP", "SNOMED"],
+                                allowed_other_sources=["wikidata", "RRID"],
+                            )
+                        ],
                         min_value_count=1,
                     ),
                     CheckCvTermKeyValue(
                         cv_term_key=CvTerm(
                             source="EFO", accession="EFO:0000324", name="cell type"
                         ),
-                        controls=[AllowedCvList(source_names=["CL"])],
+                        controls=[AllowedCvList(source_names=["CL", "CLO"])],
                         min_value_count=1,
                     ),
                 ],
@@ -81,7 +88,7 @@ MsAnalysisType = Annotated[
     Field(
         json_schema_extra={
             "profileValidation": AllowedCvTerms(
-                cv_terms=list(COMMON_ANALYSIS_TYPES.values())
+                cv_terms=list(COMMON_ASSAY_TYPES.values())
             ).model_dump(by_alias=True)
         },
     ),

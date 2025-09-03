@@ -114,12 +114,12 @@ class Study(BaseLabeledMhdModel):
     description: Annotated[None | str, Field()] = None
     submission_date: None | datetime.datetime = None
     public_release_date: None | datetime.datetime = None
-    dataset_license: Annotated[
+    license: Annotated[
         None | HttpUrl,
-        Field(examples=["https://creativecommons.org/publicdomain/zero/1.0"]),
+        Field(examples=["https://creativecommons.org/publicdomain/zero/1.0/"]),
     ] = None
 
-    dataset_uri_list: Annotated[None | list[KeyValue], Field()] = None
+    dataset_url_list: Annotated[None | list[KeyValue], Field()] = None
     related_datasets: Annotated[None | list[KeyValue], Field()] = None
     protocol_refs: Annotated[None | list[MhdObjectId], Field()] = None
 
@@ -238,15 +238,18 @@ class BasicAssay(BaseLabeledMhdModel):
         None | CvTermObjectId,
         Field(),
     ] = None
-    analysis_type_ref: Annotated[
+    assay_type_ref: Annotated[
         None | CvTermObjectId,
         Field(),
     ] = None
-    measurement_methodology_ref: Annotated[
+    measurement_type_ref: Annotated[
         None | CvTermObjectId,
         Field(),
     ] = None
-
+    omics_type_ref: Annotated[
+        None | CvTermObjectId,
+        Field(),
+    ] = None
     protocol_refs: Annotated[
         None | list[MhdObjectId],
         Field(

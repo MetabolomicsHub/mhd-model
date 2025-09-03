@@ -11,7 +11,7 @@ from mhd_model.shared.model import MhdConfigModel
 
 class BaseFile(MhdConfigModel):
     name: Annotated[str, Field(min_length=2)]
-    file_uri_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
+    file_url_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
     compression_format: Annotated[None | fields.CompressionFormat, Field()] = None
 
 
@@ -36,7 +36,7 @@ class SupplementaryFile(BaseFile):
 
 
 class AnnouncementContact(MhdConfigModel):
-    full_name: Annotated[str, Field(min_length=2)]
+    full_name: Annotated[str, Field(min_length=5)]
     emails: Annotated[list[EmailStr], Field(min_length=1)]
     orcid: Annotated[None | fields.ORCID, Field(title="ORCID")] = None
     affiliations: Annotated[None | str, Field(min_length=1)] = None

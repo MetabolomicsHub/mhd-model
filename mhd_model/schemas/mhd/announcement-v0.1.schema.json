@@ -311,7 +311,7 @@
           "title": "Name",
           "type": "string"
         },
-        "file_uri_list": {
+        "file_url_list": {
           "items": {
             "$ref": "#/$defs/CvTermValue",
             "profileValidation": {
@@ -350,7 +350,7 @@
             }
           },
           "minItems": 1,
-          "title": "File Uri List",
+          "title": "File Url List",
           "type": "array"
         },
         "compression_format": {
@@ -420,7 +420,7 @@
       },
       "required": [
         "name",
-        "file_uri_list",
+        "file_url_list",
         "format"
       ],
       "title": "DerivedDataFile",
@@ -483,7 +483,7 @@
           "title": "Name",
           "type": "string"
         },
-        "file_uri_list": {
+        "file_url_list": {
           "items": {
             "$ref": "#/$defs/CvTermValue",
             "profileValidation": {
@@ -522,7 +522,7 @@
             }
           },
           "minItems": 1,
-          "title": "File Uri List",
+          "title": "File Url List",
           "type": "array"
         },
         "compression_format": {
@@ -592,7 +592,7 @@
       },
       "required": [
         "name",
-        "file_uri_list",
+        "file_url_list",
         "format"
       ],
       "title": "MetadataFile",
@@ -751,7 +751,7 @@
           "title": "Name",
           "type": "string"
         },
-        "file_uri_list": {
+        "file_url_list": {
           "items": {
             "$ref": "#/$defs/CvTermValue",
             "profileValidation": {
@@ -790,7 +790,7 @@
             }
           },
           "minItems": 1,
-          "title": "File Uri List",
+          "title": "File Url List",
           "type": "array"
         },
         "compression_format": {
@@ -871,7 +871,7 @@
       },
       "required": [
         "name",
-        "file_uri_list",
+        "file_url_list",
         "format"
       ],
       "title": "RawDataFile",
@@ -937,7 +937,7 @@
           "title": "Name",
           "type": "string"
         },
-        "file_uri_list": {
+        "file_url_list": {
           "items": {
             "$ref": "#/$defs/CvTermValue",
             "profileValidation": {
@@ -976,7 +976,7 @@
             }
           },
           "minItems": 1,
-          "title": "File Uri List",
+          "title": "File Url List",
           "type": "array"
         },
         "compression_format": {
@@ -1046,7 +1046,7 @@
       },
       "required": [
         "name",
-        "file_uri_list",
+        "file_url_list",
         "format"
       ],
       "title": "ResultFile",
@@ -1083,7 +1083,7 @@
           "title": "Name",
           "type": "string"
         },
-        "file_uri_list": {
+        "file_url_list": {
           "items": {
             "$ref": "#/$defs/CvTermValue",
             "profileValidation": {
@@ -1122,7 +1122,7 @@
             }
           },
           "minItems": 1,
-          "title": "File Uri List",
+          "title": "File Url List",
           "type": "array"
         },
         "compression_format": {
@@ -1192,7 +1192,7 @@
       },
       "required": [
         "name",
-        "file_uri_list",
+        "file_url_list",
         "format"
       ],
       "title": "SupplementaryFile",
@@ -1367,7 +1367,7 @@
       },
       "title": "Mhd Metadata File Uri"
     },
-    "dataset_uri_list": {
+    "dataset_url_list": {
       "items": {
         "$ref": "#/$defs/CvTermValue",
         "profileValidation": {
@@ -1406,15 +1406,22 @@
         }
       },
       "minItems": 1,
-      "title": "Dataset Uri List",
+      "title": "Dataset Url List",
       "type": "array"
     },
-    "dataset_license": {
-      "format": "uri",
-      "maxLength": 2083,
-      "minLength": 1,
-      "title": "Dataset License",
-      "type": "string"
+    "license": {
+      "anyOf": [
+        {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "License"
     },
     "title": {
       "minLength": 5,
@@ -1863,7 +1870,7 @@
       "default": null,
       "title": "Reported Metabolites"
     },
-    "repository_metadata_file_uri_list": {
+    "repository_metadata_file_url_list": {
       "anyOf": [
         {
           "items": {
@@ -1875,9 +1882,9 @@
           "type": "null"
         }
       ],
-      "title": "Repository Metadata File Uri List"
+      "title": "Repository Metadata File Url List"
     },
-    "raw_data_file_uri_list": {
+    "raw_data_file_url_list": {
       "anyOf": [
         {
           "items": {
@@ -1890,9 +1897,9 @@
         }
       ],
       "default": null,
-      "title": "Raw Data File Uri List"
+      "title": "Raw Data File Url List"
     },
-    "derived_data_file_uri_list": {
+    "derived_data_file_url_list": {
       "anyOf": [
         {
           "items": {
@@ -1905,9 +1912,9 @@
         }
       ],
       "default": null,
-      "title": "Derived Data File Uri List"
+      "title": "Derived Data File Url List"
     },
-    "supplementary_file_uri_list": {
+    "supplementary_file_url_list": {
       "anyOf": [
         {
           "items": {
@@ -1920,9 +1927,9 @@
         }
       ],
       "default": null,
-      "title": "Supplementary File Uri List"
+      "title": "Supplementary File Url List"
     },
-    "result_file_uri_list": {
+    "result_file_url_list": {
       "anyOf": [
         {
           "items": {
@@ -1935,7 +1942,7 @@
         }
       ],
       "default": null,
-      "title": "Result File Uri List"
+      "title": "Result File Url List"
     }
   },
   "required": [
@@ -1944,8 +1951,8 @@
     "$schema",
     "profile_uri",
     "mhd_metadata_file_uri",
-    "dataset_uri_list",
-    "dataset_license",
+    "dataset_url_list",
+    "license",
     "title",
     "description",
     "submission_date",
@@ -1953,7 +1960,7 @@
     "submitters",
     "technology_type",
     "analysis_type",
-    "repository_metadata_file_uri_list"
+    "repository_metadata_file_url_list"
   ],
   "title": "AnnouncementBaseProfile",
   "type": "object"

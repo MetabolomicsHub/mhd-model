@@ -96,7 +96,7 @@
     "accession": "EDAM:1052",
     "name": "URL"
   },
-  "dataset_uri_list": [
+  "dataset_url_list": [
     {
       "value": "https://www.ebi.ac.uk/metabolights/MTBLS3107",
       "source": "EDAM",
@@ -897,10 +897,10 @@
       "name": "TG 57:3"
     }
   ],
-  "repository_metadata_file_uri_list": [
+  "repository_metadata_file_url_list": [
     {
       "name": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
           "source": "NCIT",
@@ -922,7 +922,7 @@
     },
     {
       "name": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
           "source": "NCIT",
@@ -944,7 +944,7 @@
     },
     {
       "name": "i_Investigation.txt",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt",
           "source": "NCIT",
@@ -966,7 +966,7 @@
     },
     {
       "name": "s_MTBLS3107.txt",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt",
           "source": "NCIT",
@@ -987,10 +987,10 @@
       }
     }
   ],
-  "raw_data_file_uri_list": [
+  "raw_data_file_url_list": [
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg01.raw",
           "source": "NCIT",
@@ -1006,7 +1006,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg02.raw",
           "source": "NCIT",
@@ -1022,7 +1022,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg03.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg03.raw",
           "source": "NCIT",
@@ -1038,7 +1038,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg04.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg04.raw",
           "source": "NCIT",
@@ -1054,7 +1054,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg05.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg05.raw",
           "source": "NCIT",
@@ -1070,7 +1070,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg06.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg06.raw",
           "source": "NCIT",
@@ -1086,7 +1086,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw",
           "source": "NCIT",
@@ -1102,7 +1102,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw",
           "source": "NCIT",
@@ -1118,7 +1118,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw",
           "source": "NCIT",
@@ -1134,7 +1134,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw",
           "source": "NCIT",
@@ -1150,7 +1150,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw",
           "source": "NCIT",
@@ -1166,7 +1166,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw",
           "source": "NCIT",
@@ -1182,7 +1182,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw",
           "source": "NCIT",
@@ -1198,7 +1198,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw",
           "source": "NCIT",
@@ -1214,7 +1214,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw",
           "source": "NCIT",
@@ -1230,7 +1230,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw",
           "source": "NCIT",
@@ -1246,7 +1246,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw",
           "source": "NCIT",
@@ -1262,7 +1262,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw",
           "source": "NCIT",
@@ -1278,7 +1278,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw",
           "source": "NCIT",
@@ -1294,7 +1294,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw",
           "source": "NCIT",
@@ -1310,7 +1310,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw",
           "source": "NCIT",
@@ -1326,7 +1326,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw",
           "source": "NCIT",
@@ -1342,7 +1342,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw",
           "source": "NCIT",
@@ -1358,7 +1358,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw",
           "source": "NCIT",
@@ -1374,7 +1374,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw",
           "source": "NCIT",
@@ -1390,7 +1390,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw",
           "source": "NCIT",
@@ -1406,7 +1406,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw",
           "source": "NCIT",
@@ -1422,7 +1422,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw",
           "source": "NCIT",
@@ -1438,7 +1438,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw",
           "source": "NCIT",
@@ -1454,7 +1454,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw",
           "source": "NCIT",
@@ -1470,7 +1470,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw",
           "source": "NCIT",
@@ -1486,7 +1486,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw",
           "source": "NCIT",
@@ -1502,7 +1502,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw",
           "source": "NCIT",
@@ -1518,7 +1518,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw",
           "source": "NCIT",
@@ -1534,7 +1534,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw",
           "source": "NCIT",
@@ -1550,7 +1550,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw",
           "source": "NCIT",
@@ -1566,7 +1566,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw",
           "source": "NCIT",
@@ -1582,7 +1582,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw",
           "source": "NCIT",
@@ -1598,7 +1598,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw",
           "source": "NCIT",
@@ -1614,7 +1614,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw",
           "source": "NCIT",
@@ -1630,7 +1630,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw",
           "source": "NCIT",
@@ -1646,7 +1646,7 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw",
           "source": "NCIT",
@@ -1662,7 +1662,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos01.raw",
           "source": "NCIT",
@@ -1678,7 +1678,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos02.raw",
           "source": "NCIT",
@@ -1694,7 +1694,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos03.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos03.raw",
           "source": "NCIT",
@@ -1710,7 +1710,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos04.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos04.raw",
           "source": "NCIT",
@@ -1726,7 +1726,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos05.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos05.raw",
           "source": "NCIT",
@@ -1742,7 +1742,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos06.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos06.raw",
           "source": "NCIT",
@@ -1758,7 +1758,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw",
           "source": "NCIT",
@@ -1774,7 +1774,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw",
           "source": "NCIT",
@@ -1790,7 +1790,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw",
           "source": "NCIT",
@@ -1806,7 +1806,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw",
           "source": "NCIT",
@@ -1822,7 +1822,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw",
           "source": "NCIT",
@@ -1838,7 +1838,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw",
           "source": "NCIT",
@@ -1854,7 +1854,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw",
           "source": "NCIT",
@@ -1870,7 +1870,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw",
           "source": "NCIT",
@@ -1886,7 +1886,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw",
           "source": "NCIT",
@@ -1902,7 +1902,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw",
           "source": "NCIT",
@@ -1918,7 +1918,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw",
           "source": "NCIT",
@@ -1934,7 +1934,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw",
           "source": "NCIT",
@@ -1950,7 +1950,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw",
           "source": "NCIT",
@@ -1966,7 +1966,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw",
           "source": "NCIT",
@@ -1982,7 +1982,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw",
           "source": "NCIT",
@@ -1998,7 +1998,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw",
           "source": "NCIT",
@@ -2014,7 +2014,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw",
           "source": "NCIT",
@@ -2030,7 +2030,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw",
           "source": "NCIT",
@@ -2046,7 +2046,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw",
           "source": "NCIT",
@@ -2062,7 +2062,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw",
           "source": "NCIT",
@@ -2078,7 +2078,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw",
           "source": "NCIT",
@@ -2094,7 +2094,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw",
           "source": "NCIT",
@@ -2110,7 +2110,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw",
           "source": "NCIT",
@@ -2126,7 +2126,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw",
           "source": "NCIT",
@@ -2142,7 +2142,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw",
           "source": "NCIT",
@@ -2158,7 +2158,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw",
           "source": "NCIT",
@@ -2174,7 +2174,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw",
           "source": "NCIT",
@@ -2190,7 +2190,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw",
           "source": "NCIT",
@@ -2206,7 +2206,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw",
           "source": "NCIT",
@@ -2222,7 +2222,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw",
           "source": "NCIT",
@@ -2238,7 +2238,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw",
           "source": "NCIT",
@@ -2254,7 +2254,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw",
           "source": "NCIT",
@@ -2270,7 +2270,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw",
           "source": "NCIT",
@@ -2286,7 +2286,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw",
           "source": "NCIT",
@@ -2302,7 +2302,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw",
           "source": "NCIT",
@@ -2318,7 +2318,7 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw",
           "source": "NCIT",
@@ -2333,12 +2333,12 @@
       }
     }
   ],
-  "derived_data_file_uri_list": [],
-  "supplementary_file_uri_list": [],
-  "result_file_uri_list": [
+  "derived_data_file_url_list": [],
+  "supplementary_file_url_list": [],
+  "result_file_url_list": [
     {
       "name": "m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
           "source": "NCIT",
@@ -2360,7 +2360,7 @@
     },
     {
       "name": "m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
-      "file_uri_list": [
+      "file_url_list": [
         {
           "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
           "source": "NCIT",

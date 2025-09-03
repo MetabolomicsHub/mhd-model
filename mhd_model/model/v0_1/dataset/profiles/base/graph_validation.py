@@ -12,9 +12,10 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     PropertyConstraint,
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
-    COMMON_ANALYSIS_TYPES,
+    COMMON_ASSAY_TYPES,
     COMMON_CHARACTERISTIC_DEFINITIONS,
-    COMMON_MEASUREMENT_METHODOLOGIES,
+    COMMON_MEASUREMENT_TYPES,
+    COMMON_OMICS_TYPES,
     COMMON_PARAMETER_DEFINITIONS,
     COMMON_PROTOCOL_PARAMETERS,
     COMMON_PROTOCOLS,
@@ -63,13 +64,19 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             ),
             EmbeddedRefValidation(
                 node_type="assay",
-                node_property_name="analysis_type_ref",
+                node_property_name="assay_type_ref",
                 required=True,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
                 node_type="assay",
-                node_property_name="measurement_methodology_ref",
+                node_property_name="measurement_type_ref",
+                required=True,
+                target_ref_types=["descriptor"],
+            ),
+            EmbeddedRefValidation(
+                node_type="assay",
+                node_property_name="omics_type_ref",
                 required=True,
                 target_ref_types=["descriptor"],
             ),
@@ -260,7 +267,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         validations=[
             NodePropertyValidation(
                 node_type="metadata-file",
-                node_property_name="uri_list",
+                node_property_name="url_list",
                 contraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
@@ -295,6 +302,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 target="study",
                 min=1,
                 min_for_each_source=1,
+                max_for_each_source=1,
             ),
             RelationshipValidation(
                 source="metadata-file",
@@ -374,7 +382,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             NodePropertyValidation(
                 node_type="organization",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                contraints=PropertyConstraint(required=True, min_length=10),
             ),
         ],
         relationships=[
@@ -453,18 +461,13 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         validations=[
             NodePropertyValidation(
                 node_type="person",
-                node_property_name="first_name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                node_property_name="full_name",
+                contraints=PropertyConstraint(required=True, min_length=5),
             ),
             NodePropertyValidation(
                 node_type="person",
-                node_property_name="last_name",
-                contraints=PropertyConstraint(required=True, min_length=2),
-            ),
-            NodePropertyValidation(
-                node_type="person",
-                node_property_name="email",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                node_property_name="emails",
+                contraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],
         relationships=[
@@ -505,7 +508,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="principal-investigator-of",
                 reverse_relationship_name="has-principal-investigator",
                 target="study",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
@@ -534,7 +537,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             NodePropertyValidation(
                 node_type="project",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                contraints=PropertyConstraint(required=True, min_length=30),
             ),
         ],
         relationships=[
@@ -704,7 +707,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         validations=[
             NodePropertyValidation(
                 node_type="raw-data-file",
-                node_property_name="uri_list",
+                node_property_name="url_list",
                 contraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
@@ -752,7 +755,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         validations=[
             NodePropertyValidation(
                 node_type="result-file",
-                node_property_name="uri_list",
+                node_property_name="url_list",
                 contraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
@@ -909,7 +912,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 node_type="study",
                 node_property_name="additional_identifiers",
                 validation=AllowAnyCvTerm(
-                    allowed_other_sources=["wikidata"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
             ),
             NodePropertyValidation(
@@ -920,12 +923,12 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                contraints=PropertyConstraint(required=True, min_length=30),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="description",
-                contraints=PropertyConstraint(required=True, min_length=5),
+                contraints=PropertyConstraint(required=True, min_length=50),
             ),
             NodePropertyValidation(
                 node_type="study",
@@ -939,7 +942,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="study",
-                node_property_name="dataset_license",
+                node_property_name="license",
                 contraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
@@ -1042,7 +1045,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="has-principal-investigator",
                 reverse_relationship_name="principal-investigator-of",
                 target="person",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
@@ -1067,7 +1070,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 reverse_relationship_name="used-in",
                 target="protocol",
                 min=1,
-                min_for_each_source=0,
+                min_for_each_source=1,
             ),
             RelationshipValidation(
                 source="study",
@@ -1159,7 +1162,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         validations=[
             NodePropertyValidation(
                 node_type="supplementary-file",
-                node_property_name="uri_list",
+                node_property_name="url_list",
                 contraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
@@ -1251,14 +1254,14 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 node_type="characteristic-value",
                 validation=AllowAnyCvTerm(
                     allowed_placeholder_values=[CvTermPlaceholder()],
-                    allowed_other_sources=["wikidata"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
             ),
             CvTermValidation(
                 node_type="characteristic-value",
                 validation=AllowedCvList(
                     source_names=["ENVO", "NCBITAXON"],
-                    allowed_other_sources=["wikidata"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1273,8 +1276,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
             CvTermValidation(
                 node_type="characteristic-value",
                 validation=AllowedCvList(
-                    source_names=["UBERON", "BTO", "NCIT"],
-                    allowed_other_sources=["wikidata"],
+                    source_names=["UBERON", "BTO", "NCIT", "SNOMED"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1289,7 +1292,15 @@ MHD_BASE_VALIDATION.cv_nodes = [
             CvTermValidation(
                 node_type="characteristic-value",
                 validation=AllowedCvList(
-                    source_names=["DOID", "HP", "MP"],
+                    source_names=["DOID", "HP", "MP", "SNOMED"],
+                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_missing_cv_terms=[
+                        CvTerm(
+                            source="NCIT",
+                            accession="NCIT:C48660",
+                            name="Not Applicable",
+                        )
+                    ],
                 ),
                 condition=[
                     FilterCondition(
@@ -1304,7 +1315,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
             CvTermValidation(
                 node_type="characteristic-value",
                 validation=AllowedCvList(
-                    source_names=["CL"],
+                    source_names=["CL", "CLO"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1349,11 +1360,11 @@ MHD_BASE_VALIDATION.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="data-provider",
-                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata"]),
+                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "RRID"]),
             ),
             CvTermValidation(
                 node_type="data-provider",
-                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata"]),
+                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "RRID"]),
                 condition=[
                     FilterCondition(
                         name="Data Provider",
@@ -1427,29 +1438,27 @@ MHD_BASE_VALIDATION.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_ANALYSIS_TYPES.values())
-                ),
+                validation=AllowedCvTerms(cv_terms=list(COMMON_ASSAY_TYPES.values())),
                 condition=[
                     FilterCondition(
                         name="Analysis Type",
-                        relationship_name="[embedded].analysis_type_ref",
+                        relationship_name="[embedded].assay_type_ref",
                         source_node_type="assay",
-                        source_node_property="analysis_type_ref",
+                        source_node_property="assay_type_ref",
                     )
                 ],
             ),
             CvTermValidation(
                 node_type="descriptor",
                 validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_MEASUREMENT_METHODOLOGIES.values())
+                    cv_terms=list(COMMON_MEASUREMENT_TYPES.values())
                 ),
                 condition=[
                     FilterCondition(
-                        name="Measurement Method",
-                        relationship_name="[embedded].measurement_methodology_ref",
+                        name="Measurement Type",
+                        relationship_name="[embedded].measurement_type_ref",
                         source_node_type="assay",
-                        source_node_property="measurement_methodology_ref",
+                        source_node_property="measurement_type_ref",
                     )
                 ],
             ),
@@ -1461,7 +1470,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 condition=[
                     FilterCondition(
                         name="Technology Type",
-                        relationship_name="[embedded].measurement_methodology_ref",
+                        relationship_name="[embedded].technology_type_ref",
                         source_node_type="assay",
                         source_node_property="technology_type_ref",
                     )
@@ -1469,8 +1478,20 @@ MHD_BASE_VALIDATION.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="descriptor",
+                validation=AllowedCvTerms(cv_terms=list(COMMON_OMICS_TYPES.values())),
+                condition=[
+                    FilterCondition(
+                        name="Omics Type",
+                        relationship_name="[embedded].omics_type_ref",
+                        source_node_type="assay",
+                        source_node_property="omics_type_ref",
+                    )
+                ],
+            ),
+            CvTermValidation(
+                node_type="descriptor",
                 validation=AllowAnyCvTerm(
-                    allowed_other_sources=["wikidata"],
+                    allowed_other_sources=["wikidata", "RRID"],
                     allowed_placeholder_values=[CvTermPlaceholder()],
                 ),
                 condition=[
@@ -1690,12 +1711,13 @@ MHD_BASE_VALIDATION.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="factor-value",
-                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata"]),
+                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "RRID"]),
             ),
             CvTermValidation(
                 node_type="factor-value",
                 validation=AllowedCvList(
-                    source_names=["DOID", "HP", "MP"],
+                    source_names=["DOID", "HP", "MP", "SNOMED"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1773,7 +1795,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_PARAMETER_DEFINITIONS.values()),
-                    allowed_other_sources=["wikidata"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
             ),
             CvTermValidation(
@@ -1827,7 +1849,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 node_type="parameter-value",
                 validation=AllowAnyCvTerm(
                     allowed_placeholder_values=[CvTermPlaceholder()],
-                    allowed_other_sources=["wikidata"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
             ),
             CvTermValidation(
@@ -1894,7 +1916,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 node_type="protocol-type",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_PROTOCOLS.values()),
-                    allowed_other_sources=["wikidata"],
+                    allowed_other_sources=["wikidata", "RRID"],
                 ),
                 condition=[
                     FilterCondition(

@@ -92,7 +92,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -105,8 +105,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -326,7 +326,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -339,8 +339,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -449,7 +449,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -462,8 +462,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -961,7 +961,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -974,8 +974,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -1241,7 +1241,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -1254,8 +1254,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -1377,7 +1377,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -1390,8 +1390,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -1685,7 +1685,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -1698,8 +1698,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -1895,7 +1895,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -1908,8 +1908,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -2075,7 +2075,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -2088,8 +2088,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -2253,7 +2253,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -2266,8 +2266,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -2459,7 +2459,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -2472,8 +2472,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -2662,7 +2662,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -2675,8 +2675,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "source_ref": {
           "anyOf": [
@@ -2841,7 +2841,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -2854,8 +2854,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -3069,7 +3069,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -3082,8 +3082,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -3248,7 +3248,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -3261,8 +3261,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -3477,7 +3477,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -3490,8 +3490,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -3642,7 +3642,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -3655,8 +3655,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -3761,7 +3761,7 @@
           "default": null,
           "title": "Public Release Date"
         },
-        "dataset_license": {
+        "license": {
           "anyOf": [
             {
               "format": "uri",
@@ -3775,11 +3775,11 @@
           ],
           "default": null,
           "examples": [
-            "https://creativecommons.org/publicdomain/zero/1.0"
+            "https://creativecommons.org/publicdomain/zero/1.0/"
           ],
-          "title": "Dataset License"
+          "title": "License"
         },
-        "dataset_uri_list": {
+        "dataset_url_list": {
           "anyOf": [
             {
               "items": {
@@ -3792,7 +3792,7 @@
             }
           ],
           "default": null,
-          "title": "Dataset Uri List"
+          "title": "Dataset Url List"
         },
         "related_datasets": {
           "anyOf": [
@@ -3921,7 +3921,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -3934,8 +3934,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [
@@ -4081,7 +4081,7 @@
           "description": "External references related to the object.",
           "title": "External References"
         },
-        "uri_list": {
+        "url_list": {
           "anyOf": [
             {
               "items": {
@@ -4094,8 +4094,8 @@
             }
           ],
           "default": null,
-          "description": "URI list related to the object. Key MUST be uri type CV Term",
-          "title": "Uri List"
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
         },
         "label": {
           "anyOf": [

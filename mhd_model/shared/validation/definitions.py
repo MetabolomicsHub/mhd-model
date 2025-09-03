@@ -27,7 +27,7 @@ class ProfileCvTermValidation(ProfileValidation):
         result = [
             (
                 "Allowed Missing CV Terms: "
-                + ", ".join([str(x) for x in self.allowed_placeholder_values])
+                + ", ".join([str(x) for x in self.allowed_missing_cv_terms])
                 if self.allowed_missing_cv_terms
                 else None
             ),

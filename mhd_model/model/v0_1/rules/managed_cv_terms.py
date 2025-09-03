@@ -36,7 +36,7 @@ COMMON_TECHNOLOGY_TYPES = {
     ),
 }
 
-COMMON_ANALYSIS_TYPES = {
+COMMON_ASSAY_TYPES = {
     "OBI:0003097S": CvTerm(
         source="OBI",
         accession="OBI:0003097",
@@ -68,7 +68,7 @@ COMMON_ANALYSIS_TYPES = {
     # MRImaging
 }
 
-COMMON_MEASUREMENT_METHODOLOGIES = {
+COMMON_MEASUREMENT_TYPES = {
     "MSIO:0000100": CvTerm(
         source="MSIO",
         accession="MSIO:0000100",
@@ -87,6 +87,24 @@ COMMON_MEASUREMENT_METHODOLOGIES = {
     # TODO others?
 }
 
+COMMON_OMICS_TYPES = {
+    "EDAM:3172": CvTerm(
+        source="EDAM",
+        accession="EDAM:3172",
+        name="Metabolomics",
+    ),
+    "EDAM:0121": CvTerm(
+        source="EDAM",
+        accession="EDAM:0121",
+        name="Proteomics",
+    ),
+    "EDAM:0153": CvTerm(
+        source="EDAM",
+        accession="EDAM:0153",
+        name="Lipidomics",
+    ),
+    # TODO others?
+}
 
 MISSING_PUBLICATION_REASON = {
     "MS:1002853": CvTerm(
@@ -108,6 +126,9 @@ COMMON_CHARACTERISTIC_DEFINITIONS = {
     ),
     "EFO:0000408": CvTerm(source="EFO", accession="EFO:0000408", name="disease"),
     "EFO:0000324": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
+    "GAZ:00000448": CvTerm(
+        source="EFO", accession="GAZ:00000448", name="geographical location"
+    ),
 }
 
 

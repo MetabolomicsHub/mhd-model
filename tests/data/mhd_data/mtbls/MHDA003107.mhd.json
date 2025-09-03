@@ -109,7 +109,7 @@
         "id": "mhd--study--d33fc891-9959-4129-a5d7-901de7744418",
         "type": "study",
         "created_by_ref": "cv-value--data-provider--4375660c-3282-52a9-b68d-9054d463fc1d",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--c1e724ed-0d6d-5139-9df8-7754535e76c9",
             "value": "https://www.ebi.ac.uk/metabolights/MTBLS3107"
@@ -928,7 +928,7 @@
       {
         "id": "mhd--metadata-file--07e67566-bb44-497d-af8d-5231f8240e93",
         "type": "metadata-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
@@ -945,7 +945,7 @@
       {
         "id": "mhd--metadata-file--a6da67ec-3115-42fb-a501-1d2c6b1b1325",
         "type": "metadata-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
@@ -962,7 +962,7 @@
       {
         "id": "mhd--metadata-file--c30be86a-0e27-44ad-b2b4-e6920f1f9486",
         "type": "metadata-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt"
@@ -979,7 +979,7 @@
       {
         "id": "mhd--metadata-file--9c9dcc64-3793-43e7-ba3b-e3ada3bd5338",
         "type": "metadata-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt"
@@ -1188,7 +1188,7 @@
       {
         "id": "mhd--raw-data-file--c17c1c2e-a82c-4fd4-9e59-fff8f2e7e819",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg01.raw"
@@ -1201,7 +1201,7 @@
       {
         "id": "mhd--raw-data-file--48558de6-6bcb-4019-bbc2-2757a24c00ef",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg02.raw"
@@ -1214,7 +1214,7 @@
       {
         "id": "mhd--raw-data-file--6c2614fa-ba25-4b94-af33-a904c5518abc",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg03.raw"
@@ -1227,7 +1227,7 @@
       {
         "id": "mhd--raw-data-file--b3cbfd12-4380-4eb6-9697-da4dc3526094",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg04.raw"
@@ -1240,7 +1240,7 @@
       {
         "id": "mhd--raw-data-file--baf9101b-e364-43fa-9e80-50b3b81212e6",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg05.raw"
@@ -1253,7 +1253,7 @@
       {
         "id": "mhd--raw-data-file--ad1370f5-9890-4558-b04b-af7cce33e73e",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg06.raw"
@@ -1266,7 +1266,7 @@
       {
         "id": "mhd--raw-data-file--3d9013de-be12-49ff-b27f-ca40b365ba00",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw"
@@ -1279,7 +1279,7 @@
       {
         "id": "mhd--raw-data-file--9a713dc4-c4fc-455f-8261-01c0dfebd44a",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw"
@@ -1292,7 +1292,7 @@
       {
         "id": "mhd--raw-data-file--9bfb453f-1706-4288-9815-491ebcd723a7",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw"
@@ -1305,7 +1305,7 @@
       {
         "id": "mhd--raw-data-file--f7328e4b-c46c-481d-9491-cd8e81f1ae75",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw"
@@ -1318,7 +1318,7 @@
       {
         "id": "mhd--raw-data-file--7bb59480-7452-4fe2-bb85-9da42890ae87",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw"
@@ -1331,7 +1331,7 @@
       {
         "id": "mhd--raw-data-file--98d3e01e-759b-4b60-a850-c40531145be9",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw"
@@ -1344,7 +1344,7 @@
       {
         "id": "mhd--raw-data-file--c7d8b1f8-0c48-443d-af51-c202522d98f8",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw"
@@ -1357,7 +1357,7 @@
       {
         "id": "mhd--raw-data-file--cd2c0acf-9c0e-485c-ad70-d6c4d469ef56",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw"
@@ -1370,7 +1370,7 @@
       {
         "id": "mhd--raw-data-file--8d132ccb-c5f1-4dbb-9d62-87e4d2ab15f7",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw"
@@ -1383,7 +1383,7 @@
       {
         "id": "mhd--raw-data-file--e16ce2df-a19c-41cb-92d4-033c545b039b",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw"
@@ -1396,7 +1396,7 @@
       {
         "id": "mhd--raw-data-file--3f26f138-eab9-4273-ae2a-1f1bff78d7a1",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw"
@@ -1409,7 +1409,7 @@
       {
         "id": "mhd--raw-data-file--1d941e8d-218b-4f60-ab26-2003efea76b1",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw"
@@ -1422,7 +1422,7 @@
       {
         "id": "mhd--raw-data-file--f3879258-f7fb-49b4-865a-2ef5c32c6ed6",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw"
@@ -1435,7 +1435,7 @@
       {
         "id": "mhd--raw-data-file--2d8bdf7a-e9b9-4cc9-8b78-de46f43de72f",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw"
@@ -1448,7 +1448,7 @@
       {
         "id": "mhd--raw-data-file--813b516c-69c9-4e33-8c63-3c6a304356a0",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw"
@@ -1461,7 +1461,7 @@
       {
         "id": "mhd--raw-data-file--e75ebb64-f76c-497c-9a47-9248223f6792",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw"
@@ -1474,7 +1474,7 @@
       {
         "id": "mhd--raw-data-file--f5f07663-7f5e-4437-95ce-34bbc25c4a11",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw"
@@ -1487,7 +1487,7 @@
       {
         "id": "mhd--raw-data-file--a3ae2b21-80c1-4c98-983b-7104171f7977",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw"
@@ -1500,7 +1500,7 @@
       {
         "id": "mhd--raw-data-file--017360f0-3eb9-4d8f-94cd-9eb94839ef88",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw"
@@ -1513,7 +1513,7 @@
       {
         "id": "mhd--raw-data-file--ceee797a-6b01-4540-91fd-a0da845e9b2a",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw"
@@ -1526,7 +1526,7 @@
       {
         "id": "mhd--raw-data-file--e49d20e9-72f6-438c-a78a-5b01e8a3cd9e",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw"
@@ -1539,7 +1539,7 @@
       {
         "id": "mhd--raw-data-file--f8cb8e24-c28f-49d5-8195-82d71449e811",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw"
@@ -1552,7 +1552,7 @@
       {
         "id": "mhd--raw-data-file--2c48ad37-50f0-4942-ad63-bc9d1ae46852",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw"
@@ -1565,7 +1565,7 @@
       {
         "id": "mhd--raw-data-file--bc9a6fcc-d225-4663-a0bd-6911048918ed",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw"
@@ -1578,7 +1578,7 @@
       {
         "id": "mhd--raw-data-file--37ba4906-5867-4d2c-b779-92dd3c49fd3b",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw"
@@ -1591,7 +1591,7 @@
       {
         "id": "mhd--raw-data-file--0cce5d6e-7c70-42ee-8064-61ff9f76e8d3",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw"
@@ -1604,7 +1604,7 @@
       {
         "id": "mhd--raw-data-file--89981166-9543-4c3d-8890-76b485c38afb",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw"
@@ -1617,7 +1617,7 @@
       {
         "id": "mhd--raw-data-file--28944768-432d-4e7c-84d0-3908484eb6ec",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw"
@@ -1630,7 +1630,7 @@
       {
         "id": "mhd--raw-data-file--18155b44-a901-435f-ac7b-9236b51f7ab4",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw"
@@ -1643,7 +1643,7 @@
       {
         "id": "mhd--raw-data-file--475594ee-bfcb-4084-af4a-405a02a52127",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw"
@@ -1656,7 +1656,7 @@
       {
         "id": "mhd--raw-data-file--5e422269-0ac7-469a-bbfd-139b47fcd4b2",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw"
@@ -1669,7 +1669,7 @@
       {
         "id": "mhd--raw-data-file--7036c8ea-b063-4697-b14c-9fb78a4a24c0",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw"
@@ -1682,7 +1682,7 @@
       {
         "id": "mhd--raw-data-file--64270034-eec7-4b6e-80c9-613384455fb0",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw"
@@ -1695,7 +1695,7 @@
       {
         "id": "mhd--raw-data-file--916ca7f2-a574-4ab1-a0b5-a570a3cfbb76",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw"
@@ -1708,7 +1708,7 @@
       {
         "id": "mhd--raw-data-file--d4331c13-a022-4222-80e6-50113d08a5ee",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw"
@@ -1721,7 +1721,7 @@
       {
         "id": "mhd--raw-data-file--66721668-5f54-48db-8a12-05589d18b0de",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw"
@@ -1734,7 +1734,7 @@
       {
         "id": "mhd--raw-data-file--42b14a58-ab4d-4fd6-a92f-abc16026067f",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos01.raw"
@@ -1747,7 +1747,7 @@
       {
         "id": "mhd--raw-data-file--9af6c3a7-3ac7-4696-9ddb-9278fbb88360",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos02.raw"
@@ -1760,7 +1760,7 @@
       {
         "id": "mhd--raw-data-file--9ef8d7df-3e0b-4926-94f3-e455b256661f",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos03.raw"
@@ -1773,7 +1773,7 @@
       {
         "id": "mhd--raw-data-file--509c4fcb-250f-4dd0-99c8-6cc80fbfd87b",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos04.raw"
@@ -1786,7 +1786,7 @@
       {
         "id": "mhd--raw-data-file--68b459d2-9c98-4d3d-b6ca-4b5f15a055cd",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos05.raw"
@@ -1799,7 +1799,7 @@
       {
         "id": "mhd--raw-data-file--974741cd-568b-4421-a647-6cf9ac8844fb",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos06.raw"
@@ -1812,7 +1812,7 @@
       {
         "id": "mhd--raw-data-file--1fd07abd-bef6-4b4a-9b48-4fdc33ffcf21",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw"
@@ -1825,7 +1825,7 @@
       {
         "id": "mhd--raw-data-file--e7a40b3b-5c66-4045-8354-e3c676f963bd",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw"
@@ -1838,7 +1838,7 @@
       {
         "id": "mhd--raw-data-file--eba90365-1f63-4109-89bc-c39adfa548c4",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw"
@@ -1851,7 +1851,7 @@
       {
         "id": "mhd--raw-data-file--ccb2ca3a-dcad-40ec-b100-78fed2182936",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw"
@@ -1864,7 +1864,7 @@
       {
         "id": "mhd--raw-data-file--808a0e5b-47e8-4822-860d-089432485cf4",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw"
@@ -1877,7 +1877,7 @@
       {
         "id": "mhd--raw-data-file--de988ebd-85f0-49ee-a64a-3159159b4659",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw"
@@ -1890,7 +1890,7 @@
       {
         "id": "mhd--raw-data-file--a9632197-6808-4d9d-a90c-27cff66c21a4",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw"
@@ -1903,7 +1903,7 @@
       {
         "id": "mhd--raw-data-file--fdce8a0d-ada0-40fc-9fea-500b16bb7a5e",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw"
@@ -1916,7 +1916,7 @@
       {
         "id": "mhd--raw-data-file--d47b1769-b268-42b6-a917-6da2af4eca13",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw"
@@ -1929,7 +1929,7 @@
       {
         "id": "mhd--raw-data-file--e7cd5afc-2428-4028-95e4-08011cab36e7",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw"
@@ -1942,7 +1942,7 @@
       {
         "id": "mhd--raw-data-file--1837dd35-4e72-4d33-a8a8-e25d313e2ef4",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw"
@@ -1955,7 +1955,7 @@
       {
         "id": "mhd--raw-data-file--b0854180-f1a1-4c15-bd10-d7fcef543765",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw"
@@ -1968,7 +1968,7 @@
       {
         "id": "mhd--raw-data-file--e59e6373-50f0-48e3-9b11-971632efa002",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw"
@@ -1981,7 +1981,7 @@
       {
         "id": "mhd--raw-data-file--7622a1b8-b527-4823-9363-8bcded378659",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw"
@@ -1994,7 +1994,7 @@
       {
         "id": "mhd--raw-data-file--f4a9e52b-a168-4309-80f8-fff6f032592b",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw"
@@ -2007,7 +2007,7 @@
       {
         "id": "mhd--raw-data-file--b51081b7-cfa1-4714-9557-6cb3e3f1ae00",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw"
@@ -2020,7 +2020,7 @@
       {
         "id": "mhd--raw-data-file--ec11508f-e831-4207-afcb-1292fd2e1c70",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw"
@@ -2033,7 +2033,7 @@
       {
         "id": "mhd--raw-data-file--baa783ff-2c8c-4eae-b78d-e530c7968cf2",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw"
@@ -2046,7 +2046,7 @@
       {
         "id": "mhd--raw-data-file--b31e2089-e05e-4c53-bb0b-e2e1702484c5",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw"
@@ -2059,7 +2059,7 @@
       {
         "id": "mhd--raw-data-file--88a2db0d-9b4d-4d1b-b66e-2842bcb33747",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw"
@@ -2072,7 +2072,7 @@
       {
         "id": "mhd--raw-data-file--95a3c138-ae0d-4a0c-b608-1561af025fd3",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw"
@@ -2085,7 +2085,7 @@
       {
         "id": "mhd--raw-data-file--64d7cf67-762a-4f10-b923-ff4353582e86",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw"
@@ -2098,7 +2098,7 @@
       {
         "id": "mhd--raw-data-file--c5a545c8-1982-4b8d-8f45-e17eb82b54fb",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw"
@@ -2111,7 +2111,7 @@
       {
         "id": "mhd--raw-data-file--e25c67ea-6928-49f1-9be7-b667ad990f47",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw"
@@ -2124,7 +2124,7 @@
       {
         "id": "mhd--raw-data-file--3eea2894-2148-4f82-b80c-12777a9de97c",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw"
@@ -2137,7 +2137,7 @@
       {
         "id": "mhd--raw-data-file--49ee4560-919c-4e2a-9bf1-ca60f8d0d4d8",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw"
@@ -2150,7 +2150,7 @@
       {
         "id": "mhd--raw-data-file--52045b43-e983-47d1-8e20-c32e51aad996",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw"
@@ -2163,7 +2163,7 @@
       {
         "id": "mhd--raw-data-file--9e9226f2-e6b2-4e8a-974e-fbc1f125d4ed",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw"
@@ -2176,7 +2176,7 @@
       {
         "id": "mhd--raw-data-file--d862421c-f5af-41f7-9672-f2467e8dc731",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw"
@@ -2189,7 +2189,7 @@
       {
         "id": "mhd--raw-data-file--351b2900-036b-4c80-9d8f-d6e23edea060",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw"
@@ -2202,7 +2202,7 @@
       {
         "id": "mhd--raw-data-file--2ddfeb45-cf41-4565-8c7e-9354942c7f97",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw"
@@ -2215,7 +2215,7 @@
       {
         "id": "mhd--raw-data-file--e81d1859-675b-4f14-9f6c-73eaa9bc6db4",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw"
@@ -2228,7 +2228,7 @@
       {
         "id": "mhd--raw-data-file--a7ede477-af01-4a17-a94c-f02e12353291",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw"
@@ -2241,7 +2241,7 @@
       {
         "id": "mhd--raw-data-file--447b863d-7b45-4c55-9084-5c012f388d0f",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw"
@@ -2254,7 +2254,7 @@
       {
         "id": "mhd--raw-data-file--4f8a65e7-ca79-42fa-b492-6f95baa095fb",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw"
@@ -2267,7 +2267,7 @@
       {
         "id": "mhd--raw-data-file--4c4a4098-7066-42a9-9c86-b24717b3601e",
         "type": "raw-data-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw"
@@ -2280,7 +2280,7 @@
       {
         "id": "mhd--result-file--ace7fefc-237e-4b25-b667-fdf5a66c3646",
         "type": "result-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv"
@@ -2297,7 +2297,7 @@
       {
         "id": "mhd--result-file--c6144b1d-a4e5-4fd8-bcf4-416ec8535531",
         "type": "result-file",
-        "uri_list": [
+        "url_list": [
           {
             "key": "cv--uri-type--403dca27-f07e-5e3f-80ee-9ccc89c03548",
             "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv"
