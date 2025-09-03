@@ -34,9 +34,6 @@ test = [
     "pytest-cov>=6.2.1",
 ]
 
-[tool.setuptools]
-packages = ["mhd_model"]
-
 [tool.commitizen]
 name = "cz_conventional_commits"
 version_provider = "uv"
