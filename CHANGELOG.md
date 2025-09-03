@@ -1,3 +1,9 @@
+## v0.1.1 (2025-09-03)
+
+### Fix
+
+- packaging skip all subfolders in mhd_model
+
 ## v0.1.0 (2025-09-03)
 
 ### Feat
