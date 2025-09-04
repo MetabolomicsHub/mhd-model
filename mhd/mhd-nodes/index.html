@@ -2749,6 +2749,15 @@
 </tr>
 <tr>
 <td>protocol</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>protocol-type</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
 <td>used-in</td>
 <td>follows</td>
 <td>assay</td>
@@ -2808,6 +2817,15 @@
 <td>0</td>
 <td>N</td>
 <td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>protocol-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>protocol</td>
+<td>1</td>
+<td>N</td>
+<td></td>
 </tr>
 <tr>
 <td>study</td>
@@ -4721,6 +4739,15 @@
 <td></td>
 </tr>
 <tr>
+<td>factor-value</td>
+<td>value-of</td>
+<td>has-factor-value</td>
+<td>subject</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
 <td>sample</td>
 <td>derived-from</td>
 <td>source-of</td>
@@ -5794,7 +5821,30 @@
 </tbody>
 </table>
 <p><strong>Reverse Node Relationships</strong></p>
-<p>No relationships defined.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factor-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>factor-type</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="factor-value">Factor Value<a class="headerlink" href="#factor-value" title="Permanent link">&para;</a></h3>
 <p><strong>Properties</strong></p>
 <table>
@@ -5867,6 +5917,15 @@
 <tbody>
 <tr>
 <td>factor-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>factor-type</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-value</td>
 <td>instance-of</td>
 <td>has-instance</td>
 <td>factor-definition</td>
@@ -5880,6 +5939,15 @@
 <td>has-factor-value</td>
 <td>sample</td>
 <td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-value</td>
+<td>value-of</td>
+<td>has-factor-value</td>
+<td>subject</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -6294,9 +6362,55 @@
 </tbody>
 </table>
 <p><strong>Node Relationships</strong></p>
-<p>No relationships defined.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>protocol</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Reverse Node Relationships</strong></p>
-<p>No relationships defined.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>protocol-type</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="url-type">Url Type<a class="headerlink" href="#url-type" title="Permanent link">&para;</a></h3>
 <p><strong>Properties</strong></p>
 <table>
