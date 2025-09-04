@@ -687,9 +687,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#uri-type" class="md-nav__link">
+  <a href="#url-type" class="md-nav__link">
     <span class="md-ellipsis">
-      Uri Type
+      Url Type
     </span>
   </a>
   
@@ -762,7 +762,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -828,7 +828,7 @@
 <td><strong>omics_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>descriptor</strong></code><br>Allowed CV Terms:<br>* [EDAM, EDAM:3172, Metabolomics],<br>* [EDAM, EDAM:0121, Proteomics],<br>* [EDAM, EDAM:0153, Lipidomics]</code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>descriptor</strong></code><br>Allowed CV Terms:<br>* [EDAM, EDAM:3172, Metabolomics],<br>* [EDAM, EDAM:0153, Lipidomics],<br>* [EDAM, EDAM:3955, Fluxomics]</code></td>
 </tr>
 <tr>
 <td><strong>protocol_refs</strong></td>
@@ -863,9 +863,9 @@
 <td>described-as</td>
 <td>describes</td>
 <td>descriptor</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td>A link to a descriptor that describes the assay.</td>
+<td>A link to a descriptor that describes the assay.<br><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
 <td>assay</td>
@@ -977,7 +977,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -1038,7 +1038,7 @@
 <td>characteristic-value</td>
 <td>0</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong><br><br>Target Validation Rules:<br><code>-----<br><strong>Conditional - (Organism)</strong><br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Organism part)</strong><br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Disease)</strong><br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Cell type)</strong><br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata, RRID<br>-----<br><strong>Conditional - (Geographic location - Country)</strong><br>[Source characteristic_type_ref.accession = GAZ:00000448]<br>Allowed Parent CV Terms:<br>* [NCIT, NCIT:C25464, Country]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]</code><br>-----</td>
+<td><strong>Required min count in the dataset: 2.</strong><br><br>Target Validation Rules:<br><code>-----<br><strong>Conditional - (Organism)</strong><br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br><strong>Conditional - (Organism part)</strong><br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br><strong>Conditional - (Disease)</strong><br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br><strong>Conditional - (Cell type)</strong><br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata, ILX<br>-----<br><strong>Conditional - (Geographic location - Country)</strong><br>[Source characteristic_type_ref.accession = GAZ:00000448]<br>Allowed Parent CV Terms:<br>* [NCIT, NCIT:C25464, Country]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]</code><br>-----</td>
 </tr>
 <tr>
 <td>characteristic-definition</td>
@@ -1114,7 +1114,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -1310,7 +1310,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -1371,7 +1371,7 @@
 <td>factor-value</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Disease)</strong><br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code><br>-----</td>
+<td>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Disease)</strong><br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----</td>
 </tr>
 <tr>
 <td>factor-definition</td>
@@ -1447,7 +1447,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -1595,7 +1595,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -1836,7 +1836,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -2044,7 +2044,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -2172,7 +2172,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -2416,7 +2416,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -2446,7 +2446,7 @@
 <td><strong>title</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Minimum length: <code>30</code><br>Validation Rule:<br> <code>Min Length: 30, Required</code></td>
+<td>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
@@ -2654,7 +2654,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -2690,7 +2690,7 @@
 <td><strong>protocol_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></td>
-<td>Target CV term type: <code><strong>protocol-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>protocol-type</strong></code><br>Allowed CV Terms:<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [MS, MS:1000831, sample preparation],<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [OBI, OBI:0200000, data transform],<br>* [MI, MI:2131, metabolite identification],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [CHMO, CHMO:0001024, capillary electrophoresis],<br>* [MS, MS:1000058, flow injection analysis]<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>Target CV term type: <code><strong>protocol-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>protocol-type</strong></code><br>Allowed CV Terms:<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [MS, MS:1000831, sample preparation],<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [OBI, OBI:0200000, data transform],<br>* [MI, MI:2131, metabolite identification],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [CHMO, CHMO:0001024, capillary electrophoresis],<br>* [MS, MS:1000058, flow injection analysis]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
@@ -2830,7 +2830,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -3014,7 +3014,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -3192,7 +3192,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -3370,7 +3370,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -3554,7 +3554,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -3702,7 +3702,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -3820,7 +3820,7 @@
 <td><strong>created_by_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -3862,19 +3862,19 @@
 <td><strong>additional_identifiers</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></td>
-<td>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Minimum length: <code>30</code><br>Validation Rule:<br> <code>Min Length: 30, Required</code></td>
+<td>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code></td>
+<td>Minimum length: <code>60</code><br>Validation Rule:<br> <code>Min Length: 60, Required</code></td>
 </tr>
 <tr>
 <td><strong>submission_date</strong></td>
@@ -4070,7 +4070,7 @@
 <td>descriptor</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, RRID</code><br>-----</td>
+<td>Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, ILX</code><br>-----</td>
 </tr>
 <tr>
 <td>study</td>
@@ -4343,7 +4343,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -4418,6 +4418,15 @@
 <td>value-of</td>
 <td>characteristic-value</td>
 <td>2</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>has-factor-value</td>
+<td>value-of</td>
+<td>factor-value</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -4503,7 +4512,7 @@
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></td>
-<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, RRID</code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
@@ -5237,9 +5246,9 @@
 <td>described-as</td>
 <td>describes</td>
 <td>descriptor</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td>A link to a descriptor that describes the assay.</td>
+<td>A link to a descriptor that describes the assay.<br><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
 <td>derived-data-file</td>
@@ -5614,6 +5623,15 @@
 </tr>
 <tr>
 <td>sample</td>
+<td>has-factor-value</td>
+<td>value-of</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
 <td>has-factor-value</td>
 <td>value-of</td>
 <td>factor-value</td>
@@ -6029,7 +6047,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="uri-type">Uri Type<a class="headerlink" href="#uri-type" title="Permanent link">&para;</a></h3>
+<h3 id="url-type">Url Type<a class="headerlink" href="#url-type" title="Permanent link">&para;</a></h3>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6051,7 +6069,7 @@
 <td><strong>type</strong></td>
 <td>optional</td>
 <td><code><em>MhdObjectType</em><code></td>
-<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>uri-type</strong></code></td>
+<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>url-type</strong></code></td>
 </tr>
 <tr>
 <td><strong>source</strong></td>
