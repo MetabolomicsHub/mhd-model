@@ -1984,7 +1984,6 @@
         "description": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {

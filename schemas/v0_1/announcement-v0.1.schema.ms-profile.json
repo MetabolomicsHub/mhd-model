@@ -537,13 +537,13 @@
               "type": "null"
             }
           ],
+          "default": null,
           "title": "Format"
         }
       },
       "required": [
         "name",
-        "url_list",
-        "format"
+        "url_list"
       ],
       "title": "MetadataFile",
       "type": "object"
@@ -810,7 +810,9 @@
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
+                  "allowedOtherSources": [
+                    "REFMET"
+                  ],
                   "allowedPlaceholderValues": null,
                   "inputType": "list-or-item",
                   "listJoinOperator": "all",
@@ -1228,12 +1230,12 @@
       "title": "License"
     },
     "title": {
-      "minLength": 5,
+      "minLength": 25,
       "title": "Title",
       "type": "string"
     },
     "description": {
-      "minLength": 5,
+      "minLength": 60,
       "title": "Description",
       "type": "string"
     },
@@ -1248,12 +1250,19 @@
       "type": "string"
     },
     "submitters": {
-      "items": {
-        "$ref": "#/$defs/AnnouncementContact"
-      },
-      "minItems": 1,
-      "title": "Submitters",
-      "type": "array"
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementContact"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Submitters"
     },
     "principal_investigators": {
       "items": {
@@ -1340,40 +1349,47 @@
       "type": "array"
     },
     "omics_type": {
-      "items": {
-        "$ref": "#/$defs/CvTerm",
-        "profileValidation": {
-          "allowNullValue": false,
-          "allowedMissingCvTerms": null,
-          "allowedOtherSources": null,
-          "allowedPlaceholderValues": null,
-          "cvTerms": [
-            {
-              "accession": "EDAM:3172",
-              "name": "Metabolomics",
-              "source": "EDAM"
-            },
-            {
-              "accession": "EDAM:0153",
-              "name": "Lipidomics",
-              "source": "EDAM"
-            },
-            {
-              "accession": "EDAM:3955",
-              "name": "Fluxomics",
-              "source": "EDAM"
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm",
+            "profileValidation": {
+              "allowNullValue": false,
+              "allowedMissingCvTerms": null,
+              "allowedOtherSources": null,
+              "allowedPlaceholderValues": null,
+              "cvTerms": [
+                {
+                  "accession": "EDAM:3172",
+                  "name": "Metabolomics",
+                  "source": "EDAM"
+                },
+                {
+                  "accession": "EDAM:0153",
+                  "name": "Lipidomics",
+                  "source": "EDAM"
+                },
+                {
+                  "accession": "EDAM:3955",
+                  "name": "Fluxomics",
+                  "source": "EDAM"
+                }
+              ],
+              "inputType": "list-or-item",
+              "listJoinOperator": "all",
+              "minimum": null,
+              "name": "allowed-cv-terms",
+              "negate": false
             }
-          ],
-          "inputType": "list-or-item",
-          "listJoinOperator": "all",
-          "minimum": null,
-          "name": "allowed-cv-terms",
-          "negate": false
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
         }
-      },
-      "minItems": 1,
-      "title": "Omics Type",
-      "type": "array"
+      ],
+      "title": "Omics Type"
     },
     "assay_type": {
       "items": {
@@ -1518,22 +1534,18 @@
               {
                 "allowNullValue": false,
                 "allowedMissingCvTerms": null,
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": [
+                  {
+                    "accession": "",
+                    "source": ""
+                  }
                 ],
-                "allowedPlaceholderValues": null,
                 "inputType": "list-or-item",
                 "listJoinOperator": "all",
                 "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "DOID",
-                  "HP",
-                  "MP",
-                  "SNOMED"
-                ]
+                "name": "allow-any-cv-term",
+                "negate": false
               }
             ],
             "cvTermKey": {
