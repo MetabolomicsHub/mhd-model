@@ -1,0 +1,6954 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://metabolomicshub.org/site/mhd/mhd-ms-nodes/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../mhd-legacy-nodes/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>MetabolomicsHub Dataset - Metabolomics Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#metabolomics-hub-common-data-model-nodes-mhd-ms-profile" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Metabolomics Hub" class="md-header__button md-logo" aria-label="Metabolomics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mhd-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Metabolomics Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MetabolomicsHub Dataset
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Metabolomics Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  MHD Common Data Model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Metabolomics Hub" class="md-nav__button md-logo" aria-label="Metabolomics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mhd-logo.png" alt="logo">
+
+    </a>
+    Metabolomics Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metabolomics Hub
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    MHD Common Data Model
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            MHD Common Data Model
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Profiles
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Profiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    MetabolomicsHub Dataset
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    MetabolomicsHub Dataset
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#required-nodes-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Nodes &amp; Relationships
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mhd-domain-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      MHD Domain Objects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MHD Domain Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#characteristic-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Characteristic Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derived-data-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Derived Data File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factor-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factor Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metabolite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metabolite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person" class="md-nav__link">
+    <span class="md-ellipsis">
+      Person
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-data-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raw Data File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-run-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Run Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specimen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specimen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#study" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subject
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supplementary-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supplementary File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mhd-cv-term-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      MHD CV Term Objects
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MHD CV Term Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#characteristic-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Characteristic Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#characteristic-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Characteristic Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descriptor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descriptor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factor-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factor Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factor-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Factor Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metabolite-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metabolite Identifier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol Type
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mhd-legacy-nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Legacy Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="metabolomics-hub-common-data-model-nodes-mhd-ms-profile">Metabolomics Hub Common Data Model Nodes - MHD MS Profile<a class="headerlink" href="#metabolomics-hub-common-data-model-nodes-mhd-ms-profile" title="Permanent link">&para;</a></h1>
+<h2 id="required-nodes-relationships">Required Nodes &amp; Relationships<a class="headerlink" href="#required-nodes-relationships" title="Permanent link">&para;</a></h2>
+<p><strong>Required MHD Nodes</strong></p>
+<p><code>Assay, Characteristic Definition, Metadata File, Organization, Parameter Definition, Person, Protocol, Raw Data File, Sample, Sample Run, Study, Subject</code></p>
+<p><strong>Required MHD CV Terms</strong></p>
+<p><code>Characteristic Type, Characteristic Value, Data Provider, Descriptor, Parameter Type, Parameter Value, Protocol Type</code></p>
+<p><strong>Required Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source Node</th>
+<th>Relationship</th>
+<th>Target Node</th>
+<th>Min</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assay</td>
+<td>[embedded] - assay_type</td>
+<td>Descriptor</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Assay</td>
+<td>[embedded] - measurement_type</td>
+<td>Descriptor</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Assay</td>
+<td>[embedded] - metadata_file</td>
+<td>Metadata File</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Assay</td>
+<td>[embedded] - omics_type</td>
+<td>Descriptor</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Assay</td>
+<td>[embedded] - sample_run</td>
+<td>Sample Run</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Assay</td>
+<td>[embedded] - technology_type</td>
+<td>Descriptor</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Assay</td>
+<td>described-as</td>
+<td>Descriptor</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Assay</td>
+<td>part-of</td>
+<td>Study</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Characteristic Definition</td>
+<td>[embedded] - characteristic_type</td>
+<td>Characteristic Type</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Characteristic Definition</td>
+<td>used-in</td>
+<td>Study</td>
+<td>2</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Characteristic Type</td>
+<td>defined-in</td>
+<td>Study</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Characteristic Value</td>
+<td>instance-of</td>
+<td>Characteristic Definition</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Characteristic Value</td>
+<td>value-of</td>
+<td>Subject</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Data Provider</td>
+<td>provides</td>
+<td>Study</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Metadata File</td>
+<td>describes</td>
+<td>Study</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Parameter Definition</td>
+<td>[embedded] - parameter_type</td>
+<td>Parameter Type</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Parameter Type</td>
+<td>has-instance</td>
+<td>Parameter Definition</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Parameter Type</td>
+<td>type-of</td>
+<td>Parameter Value</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Parameter Value</td>
+<td>has-type</td>
+<td>Parameter Type</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Parameter Value</td>
+<td>instance-of</td>
+<td>Parameter Definition</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Person</td>
+<td>affiliated-with</td>
+<td>Organization</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>[embedded] - protocol_type</td>
+<td>Protocol Type</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>has-type</td>
+<td>Protocol Type</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>used-in</td>
+<td>Study</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Protocol Type</td>
+<td>type-of</td>
+<td>Protocol</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Raw Data File</td>
+<td>created-in</td>
+<td>Study</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Sample</td>
+<td>derived-from</td>
+<td>Subject</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Sample</td>
+<td>used-in</td>
+<td>Study</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>defines</td>
+<td>Characteristic Type</td>
+<td>2</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>has-assay</td>
+<td>Assay</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>has-characteristic-definition</td>
+<td>Characteristic Definition</td>
+<td>2</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>has-metadata-file</td>
+<td>Metadata File</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>has-principal-investigator</td>
+<td>Person</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>has-protocol</td>
+<td>Protocol</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>has-raw-data-file</td>
+<td>Raw Data File</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>submitted-by</td>
+<td>Person</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Subject</td>
+<td>source-of</td>
+<td>Sample</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mhd-domain-objects">MHD Domain Objects<a class="headerlink" href="#mhd-domain-objects" title="Permanent link">&para;</a></h2>
+<h3 id="assay">Assay<a class="headerlink" href="#assay" title="Permanent link">&para;</a></h3>
+<p>Assay node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>Its value MUST be <code><strong>assay</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>An assay identifier that uniquely identifies the assay in repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Name of the assay. It SHOULD be unique in a study<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>metadata_file_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>Target node type: <code><strong>metadata-file</strong></code><br>Validation Rule:<br> <code>Target node type: <code><strong>metadata-file</strong></code></code></td>
+</tr>
+<tr>
+<td><strong>technology_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>descriptor</strong></code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code></td>
+</tr>
+<tr>
+<td><strong>assay_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>descriptor</strong></code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code></td>
+</tr>
+<tr>
+<td><strong>measurement_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>descriptor</strong></code><br>Allowed CV Terms:<br>* [MSIO, MSIO:0000100, targeted metabolite profiling],<br>* [MSIO, MSIO:0000101, untargeted metabolite profiling],<br>* [OBI, OBI:0000366, metabolite profiling assay]</code></td>
+</tr>
+<tr>
+<td><strong>omics_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>descriptor</strong></code><br>Allowed CV Terms:<br>* [EDAM, EDAM:3172, Metabolomics],<br>* [EDAM, EDAM:0153, Lipidomics],<br>* [EDAM, EDAM:3955, Fluxomics]</code></td>
+</tr>
+<tr>
+<td><strong>protocol_refs</strong></td>
+<td>optional</td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code><strong>protocol</strong></code><br>Validation Rule:<br> <code>Target node type: <code><strong>protocol</strong></code></code></td>
+</tr>
+<tr>
+<td><strong>sample_run_refs</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Target node type: <code><strong>sample-run</strong></code><br>Validation Rule:<br> <code>Target node type: <code><strong>sample-run</strong></code></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assay</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>1</td>
+<td>N</td>
+<td>A link to a descriptor that describes the assay.<br><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>assay</td>
+<td>follows</td>
+<td>used-in</td>
+<td>protocol</td>
+<td>0</td>
+<td>N</td>
+<td>A link to a protocol conducted in assay.</td>
+</tr>
+<tr>
+<td>assay</td>
+<td>part-of</td>
+<td>has-assay</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td>A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedded Relationships</strong>: <code>descriptor, metadata-file, protocol, sample-run</code></p>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>assay</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>used-in</td>
+<td>follows</td>
+<td>assay</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-assay</td>
+<td>part-of</td>
+<td>assay</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="characteristic-definition">Characteristic Definition<a class="headerlink" href="#characteristic-definition" title="Permanent link">&para;</a></h3>
+<p>Characteristic Definition node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 2, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>characteristic-definition</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>characteristic_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target CV term type: <code><strong>characteristic-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>characteristic-type</strong></code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, organism],<br>* [NCIT, NCIT:C103199, organism part],<br>* [EFO, EFO:0000408, disease],<br>* [EFO, EFO:0000324, cell type]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-definition</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong><br><br>Target Validation Rules:<br><code>-----<br><strong>Conditional - (Organism)</strong><br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br><strong>Conditional - (Organism part)</strong><br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED, MSIO<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br><strong>Conditional - (Disease)</strong><br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br><strong>Conditional - (Cell type)</strong><br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata, ILX</code><br>-----</td>
+</tr>
+<tr>
+<td>characteristic-definition</td>
+<td>used-in</td>
+<td>has-characteristic-definition</td>
+<td>study</td>
+<td>2</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedded Relationships</strong>: <code>characteristic-type</code></p>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-value</td>
+<td>instance-of</td>
+<td>has-instance</td>
+<td>characteristic-definition</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-characteristic-definition</td>
+<td>used-in</td>
+<td>characteristic-definition</td>
+<td>2</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="derived-data-file">Derived Data File<a class="headerlink" href="#derived-data-file" title="Permanent link">&para;</a></h3>
+<p>Derived Data File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>derived-data-file</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td>optional</td>
+<td><code><em>int</em><code></td>
+<td>The size of the file in bytes, representing the total amount of data contained in the file</td>
+</tr>
+<tr>
+<td><strong>hash_sha256</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered</td>
+</tr>
+<tr>
+<td><strong>format_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>compression_format_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>extension</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>derived-data-file</td>
+<td>created-in</td>
+<td>has-derived-data-file</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>derived-data-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td>A link to a descriptor that describes the derived data file.</td>
+</tr>
+<tr>
+<td>derived-data-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>derived-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>derived-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-derived-data-file</td>
+<td>created-in</td>
+<td>derived-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="factor-definition">Factor Definition<a class="headerlink" href="#factor-definition" title="Permanent link">&para;</a></h3>
+<p>Factor Definition node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>factor-definition</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>factor_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target CV term type: <code><strong>factor-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>factor-type</strong></code><br>Allowed CV Terms:<br>* [EFO, EFO:0000408, disease]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factor-definition</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Disease)</strong><br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----</td>
+</tr>
+<tr>
+<td>factor-definition</td>
+<td>used-in</td>
+<td>has-factor-definition</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedded Relationships</strong>: <code>factor-type</code></p>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factor-value</td>
+<td>instance-of</td>
+<td>has-instance</td>
+<td>factor-definition</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-factor-definition</td>
+<td>used-in</td>
+<td>factor-definition</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metabolite">Metabolite<a class="headerlink" href="#metabolite" title="Permanent link">&para;</a></h3>
+<p>Metabolite node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>metabolite</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metabolite</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>identified-as</td>
+<td>reported-identifier-of</td>
+<td>metabolite-identifier</td>
+<td>0</td>
+<td>N</td>
+<td>Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code><br>-----</td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>reported-in</td>
+<td>reports</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite-identifier</td>
+<td>reported-identifier-of</td>
+<td>identified-as</td>
+<td>metabolite</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>reports</td>
+<td>reported-in</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metadata-file">Metadata File<a class="headerlink" href="#metadata-file" title="Permanent link">&para;</a></h3>
+<p>Metadata File node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>metadata-file</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td>optional</td>
+<td><code><em>int</em><code></td>
+<td>The size of the file in bytes, representing the total amount of data contained in the file</td>
+</tr>
+<tr>
+<td><strong>hash_sha256</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered</td>
+</tr>
+<tr>
+<td><strong>format_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>compression_format_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>extension</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metadata-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>describes</td>
+<td>has-metadata-file</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>derived-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>raw-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>result-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>supplementary-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>derived-data-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>raw-data-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>result-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-metadata-file</td>
+<td>describes</td>
+<td>metadata-file</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>supplementary-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="organization">Organization<a class="headerlink" href="#organization" title="Permanent link">&para;</a></h3>
+<p>Organization node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>organization</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>10</code><br>Validation Rule:<br> <code>Min Length: 10, Required</code></td>
+</tr>
+<tr>
+<td><strong>department</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>unit</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>address</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organization</td>
+<td>affiliates</td>
+<td>affiliated-with</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>coordinates</td>
+<td>coordinated-by</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>funds</td>
+<td>funded-by</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>funds</td>
+<td>funded-by</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>manages</td>
+<td>managed-by</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>affiliated-with</td>
+<td>affiliates</td>
+<td>organization</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>coordinated-by</td>
+<td>coordinates</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>funded-by</td>
+<td>funds</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>managed-by</td>
+<td>manages</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>funded-by</td>
+<td>funds</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameter-definition">Parameter Definition<a class="headerlink" href="#parameter-definition" title="Permanent link">&para;</a></h3>
+<p>Parameter Definition node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>parameter-definition</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>parameter_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target node type: <code><strong>parameter-type</strong></code><br>Validation Rule:<br> <code>Target node type: <code><strong>parameter-type</strong></code></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameter-definition</td>
+<td>defined-in</td>
+<td>has-parameter-definition</td>
+<td>protocol</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>parameter-definition</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>parameter-value</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong><br>Target Validation Rule:<br><code>-----<br><strong>Conditional - (Mass spectrometry instrument)</strong><br>[Source parameter_type_ref.accession = MSIO:0000171]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Excluded CV Terms:<br>* [MS, MS:1000491, Dionex instrument model],<br>* [MS, MS:1000488, Hitachi instrument model]</code><br>-----</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedded Relationships</strong>: <code>parameter-type</code></p>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameter-type</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>parameter-definition</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>parameter-value</td>
+<td>instance-of</td>
+<td>has-instance</td>
+<td>parameter-definition</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>has-parameter-definition</td>
+<td>defined-in</td>
+<td>parameter-definition</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="person">Person<a class="headerlink" href="#person" title="Permanent link">&para;</a></h3>
+<p>Person node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The value of this property MUST be 'person'<br>Its value MUST be <code><strong>person</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>full_name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code></td>
+</tr>
+<tr>
+<td><strong>orcid</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code></td>
+</tr>
+<tr>
+<td><strong>emails</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[EmailStr]</em><code></td>
+<td>Email addresses of person<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>phones</strong></td>
+<td>optional</td>
+<td><code><em>list[str]</em><code></td>
+<td>Phone number of person (with international country code)<br><br>Example: <br><code>[<br>  "+449340917271",<br>  "00449340917271"<br>]</code></td>
+</tr>
+<tr>
+<td><strong>addresses</strong></td>
+<td>optional</td>
+<td><code><em>list[str]</em><code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>person</td>
+<td>affiliated-with</td>
+<td>affiliates</td>
+<td>organization</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>author-of</td>
+<td>has-author</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>contributes</td>
+<td>has-contributor</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>contributes</td>
+<td>has-contributor</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>principal-investigator-of</td>
+<td>has-principal-investigator</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>person</td>
+<td>submits</td>
+<td>submitted-by</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>affiliates</td>
+<td>affiliated-with</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>has-contributor</td>
+<td>contributes</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>publication</td>
+<td>has-author</td>
+<td>author-of</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-contributor</td>
+<td>contributes</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-principal-investigator</td>
+<td>principal-investigator-of</td>
+<td>person</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>submitted-by</td>
+<td>submits</td>
+<td>person</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="project">Project<a class="headerlink" href="#project" title="Permanent link">&para;</a></h3>
+<p>Project node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>project</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code></td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>grant_identifiers</strong></td>
+<td>optional</td>
+<td><code><em>list[Annotated]</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>doi</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>project</td>
+<td>coordinated-by</td>
+<td>coordinates</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>funded-by</td>
+<td>funds</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>has-contributor</td>
+<td>contributes</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>has-publication</td>
+<td>describes</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>has-study</td>
+<td>part-of</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>managed-by</td>
+<td>manages</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>coordinates</td>
+<td>coordinated-by</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>funds</td>
+<td>funded-by</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>manages</td>
+<td>managed-by</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>contributes</td>
+<td>has-contributor</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>publication</td>
+<td>describes</td>
+<td>has-publication</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>part-of</td>
+<td>has-study</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="protocol">Protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h3>
+<p>Protocol node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>protocol</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>protocol_type_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>Target CV term type: <code><strong>protocol-type</strong></code><br>Validation Rules:<br> <code>Target node type: <code><strong>protocol-type</strong></code><br>Allowed CV Terms:<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [MS, MS:1000831, sample preparation],<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [OBI, OBI:0200000, data transform],<br>* [MI, MI:2131, metabolite identification],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [CHMO, CHMO:0001024, capillary electrophoresis],<br>* [MS, MS:1000058, flow injection analysis]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>parameter_definition_refs</strong></td>
+<td>optional</td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Target node type: <code><strong>parameter-definition</strong></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>has-parameter-definition</td>
+<td>defined-in</td>
+<td>parameter-definition</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>protocol-type</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>used-in</td>
+<td>follows</td>
+<td>assay</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>used-in</td>
+<td>has-protocol</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embedded Relationships</strong>: <code>protocol-type</code></p>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assay</td>
+<td>follows</td>
+<td>used-in</td>
+<td>protocol</td>
+<td>0</td>
+<td>N</td>
+<td>A link to a protocol conducted in assay.</td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>protocol</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>parameter-definition</td>
+<td>defined-in</td>
+<td>has-parameter-definition</td>
+<td>protocol</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>protocol-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>protocol</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-protocol</td>
+<td>used-in</td>
+<td>protocol</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="publication">Publication<a class="headerlink" href="#publication" title="Permanent link">&para;</a></h3>
+<p>Publication node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>publication</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>doi</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>pub_med_id</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>authors</strong></td>
+<td>optional</td>
+<td><code><em>list[Annotated]</em><code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>publication</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>publication</td>
+<td>describes</td>
+<td>has-publication</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>publication</td>
+<td>describes</td>
+<td>has-publication</td>
+<td>study</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>publication</td>
+<td>has-author</td>
+<td>author-of</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>author-of</td>
+<td>has-author</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>has-publication</td>
+<td>describes</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-publication</td>
+<td>describes</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="raw-data-file">Raw Data File<a class="headerlink" href="#raw-data-file" title="Permanent link">&para;</a></h3>
+<p>Raw Data File node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>raw-data-file</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td>optional</td>
+<td><code><em>int</em><code></td>
+<td>The size of the file in bytes, representing the total amount of data contained in the file</td>
+</tr>
+<tr>
+<td><strong>hash_sha256</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered</td>
+</tr>
+<tr>
+<td><strong>format_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>compression_format_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>extension</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>raw-data-file</td>
+<td>created-in</td>
+<td>has-raw-data-file</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>raw-data-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>raw-data-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>raw-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>raw-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-raw-data-file</td>
+<td>created-in</td>
+<td>raw-data-file</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="result-file">Result File<a class="headerlink" href="#result-file" title="Permanent link">&para;</a></h3>
+<p>Result File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>result-file</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td>optional</td>
+<td><code><em>int</em><code></td>
+<td>The size of the file in bytes, representing the total amount of data contained in the file</td>
+</tr>
+<tr>
+<td><strong>hash_sha256</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered</td>
+</tr>
+<tr>
+<td><strong>format_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>compression_format_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>extension</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result-file</td>
+<td>created-in</td>
+<td>has-result-file</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>result-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>result-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>result-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>result-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-result-file</td>
+<td>created-in</td>
+<td>result-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sample">Sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h3>
+<p>Sample node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>sample</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>additional_identifiers</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTermValue]</em><code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sample</td>
+<td>derived-from</td>
+<td>source-of</td>
+<td>subject</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>derived-from</td>
+<td>source-of</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>has-factor-value</td>
+<td>value-of</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>used-in</td>
+<td>has-sample</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>sample</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-value</td>
+<td>value-of</td>
+<td>has-factor-value</td>
+<td>sample</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>specimen</td>
+<td>source-of</td>
+<td>derived-from</td>
+<td>sample</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-sample</td>
+<td>used-in</td>
+<td>sample</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>source-of</td>
+<td>derived-from</td>
+<td>sample</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sample-run">Sample Run<a class="headerlink" href="#sample-run" title="Permanent link">&para;</a></h3>
+<p>Sample Run node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>sample-run</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>sample_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>Target node type: <code><strong>sample</strong></code></td>
+</tr>
+<tr>
+<td><strong>sample_run_configuration_refs</strong></td>
+<td>optional</td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Target node type: <code><strong>sample-run-configuration</strong></code></td>
+</tr>
+<tr>
+<td><strong>raw_data_file_refs</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Minimum length: <code>1</code><br>Target node type: <code><strong>raw-data-file</strong></code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>derived_data_file_refs</strong></td>
+<td>optional</td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Target node type: <code><strong>derived-data-file</strong></code></td>
+</tr>
+<tr>
+<td><strong>result_file_refs</strong></td>
+<td>optional</td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Target node type: <code><strong>result-file</strong></code></td>
+</tr>
+<tr>
+<td><strong>supplementary_file_refs</strong></td>
+<td>optional</td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Target node type: <code><strong>supplementary-file</strong></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sample-run</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>sample-run</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sample-run-configuration">Sample Run Configuration<a class="headerlink" href="#sample-run-configuration" title="Permanent link">&para;</a></h3>
+<p>Sample Run Configuration node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>sample-run-configuration</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>protocol_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>Target node type: <code><strong>protocol</strong></code></td>
+</tr>
+<tr>
+<td><strong>parameter_value_refs</strong></td>
+<td>optional</td>
+<td><code><em>list[MhdObjectId or CvTermObjectId or CvTermValueObjectId]</em><code></td>
+<td>Target node type: <code><strong>parameter-value</strong></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sample-run-configuration</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>sample-run-configuration</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="specimen">Specimen<a class="headerlink" href="#specimen" title="Permanent link">&para;</a></h3>
+<p>Specimen node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>specimen</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>additional_identifiers</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTermValue]</em><code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>specimen</td>
+<td>derived-from</td>
+<td>source-of</td>
+<td>subject</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>specimen</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>specimen</td>
+<td>has-characteristic-value</td>
+<td>value-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>specimen</td>
+<td>source-of</td>
+<td>derived-from</td>
+<td>sample</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-value</td>
+<td>value-of</td>
+<td>has-characteristic-value</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>keyword-of</td>
+<td>has-repository-keyword</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>derived-from</td>
+<td>source-of</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>source-of</td>
+<td>derived-from</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="study">Study<a class="headerlink" href="#study" title="Permanent link">&para;</a></h3>
+<p>Study node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>study</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>mhd_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>additional_identifiers</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code></td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>60</code><br>Validation Rule:<br> <code>Min Length: 60, Required</code></td>
+</tr>
+<tr>
+<td><strong>submission_date</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>datetime</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>public_release_date</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>datetime</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>license</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>HttpUrl</em><code></td>
+<td><br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code></td>
+</tr>
+<tr>
+<td><strong>grant_identifiers</strong></td>
+<td>optional</td>
+<td><code><em>list[Annotated]</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>dataset_url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>related_datasets</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>protocol_refs</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[MhdObjectId]</em><code></td>
+<td>Target node type: <code><strong>protocol</strong></code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>study</td>
+<td>defines</td>
+<td>defined-in</td>
+<td>characteristic-type</td>
+<td>2</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>funded-by</td>
+<td>funds</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-assay</td>
+<td>part-of</td>
+<td>assay</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-characteristic-definition</td>
+<td>used-in</td>
+<td>characteristic-definition</td>
+<td>2</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-contributor</td>
+<td>contributes</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-derived-data-file</td>
+<td>created-in</td>
+<td>derived-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-factor-definition</td>
+<td>used-in</td>
+<td>factor-definition</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-metadata-file</td>
+<td>describes</td>
+<td>metadata-file</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-principal-investigator</td>
+<td>principal-investigator-of</td>
+<td>person</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-protocol</td>
+<td>used-in</td>
+<td>protocol</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-publication</td>
+<td>describes</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-raw-data-file</td>
+<td>created-in</td>
+<td>raw-data-file</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-repository-keyword</td>
+<td>keyword-of</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-result-file</td>
+<td>created-in</td>
+<td>result-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-sample</td>
+<td>used-in</td>
+<td>sample</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-submitter-keyword</td>
+<td>keyword-of</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td>Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, ILX</code><br>-----</td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-supplementary-file</td>
+<td>created-in</td>
+<td>supplementary-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>part-of</td>
+<td>has-study</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>provided-by</td>
+<td>provides</td>
+<td>data-provider</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>reports</td>
+<td>reported-in</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>submitted-by</td>
+<td>submits</td>
+<td>person</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assay</td>
+<td>part-of</td>
+<td>has-assay</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td>A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>characteristic-definition</td>
+<td>used-in</td>
+<td>has-characteristic-definition</td>
+<td>study</td>
+<td>2</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>characteristic-type</td>
+<td>defined-in</td>
+<td>defines</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>data-provider</td>
+<td>provides</td>
+<td>provided-by</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>derived-data-file</td>
+<td>created-in</td>
+<td>has-derived-data-file</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>keyword-of</td>
+<td>has-repository-keyword</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-definition</td>
+<td>used-in</td>
+<td>has-factor-definition</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>reported-in</td>
+<td>reports</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>describes</td>
+<td>has-metadata-file</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>funds</td>
+<td>funded-by</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>contributes</td>
+<td>has-contributor</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>principal-investigator-of</td>
+<td>has-principal-investigator</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>person</td>
+<td>submits</td>
+<td>submitted-by</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>project</td>
+<td>has-study</td>
+<td>part-of</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>used-in</td>
+<td>has-protocol</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>publication</td>
+<td>describes</td>
+<td>has-publication</td>
+<td>study</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>raw-data-file</td>
+<td>created-in</td>
+<td>has-raw-data-file</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>result-file</td>
+<td>created-in</td>
+<td>has-result-file</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>used-in</td>
+<td>has-sample</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>supplementary-file</td>
+<td>created-in</td>
+<td>has-supplementary-file</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="subject">Subject<a class="headerlink" href="#subject" title="Permanent link">&para;</a></h3>
+<p>Subject node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>subject</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td>optional</td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>subject_type</strong></td>
+<td>optional</td>
+<td><code><em>CvTerm</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>additional_identifiers</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTermValue]</em><code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>subject</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>has-characteristic-value</td>
+<td>value-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>has-factor-value</td>
+<td>value-of</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>source-of</td>
+<td>derived-from</td>
+<td>sample</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>source-of</td>
+<td>derived-from</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-value</td>
+<td>value-of</td>
+<td>has-characteristic-value</td>
+<td>subject</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>subject</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-value</td>
+<td>value-of</td>
+<td>has-factor-value</td>
+<td>subject</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>derived-from</td>
+<td>source-of</td>
+<td>subject</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>specimen</td>
+<td>derived-from</td>
+<td>source-of</td>
+<td>subject</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supplementary-file">Supplementary File<a class="headerlink" href="#supplementary-file" title="Permanent link">&para;</a></h3>
+<p>Supplementary File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the object<br>Its value MUST be <code><strong>supplementary-file</strong></code></td>
+</tr>
+<tr>
+<td><strong>created_by_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property of the data-provider who created the object<br>Target CV term type: <code><strong>data-provider</strong></code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code></td>
+</tr>
+<tr>
+<td><strong>tags</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>Key-value tags related to the object</td>
+</tr>
+<tr>
+<td><strong>descriptors</strong></td>
+<td>optional</td>
+<td><code><em>list[CvTerm]</em><code></td>
+<td>Descriptors of the object</td>
+</tr>
+<tr>
+<td><strong>external_references</strong></td>
+<td>optional</td>
+<td><code><em>list[KeyValue]</em><code></td>
+<td>External references related to the object</td>
+</tr>
+<tr>
+<td><strong>url_list</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>list[AnyUrl]</em><code></td>
+<td>URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td>Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
+</tr>
+<tr>
+<td><strong>size</strong></td>
+<td>optional</td>
+<td><code><em>int</em><code></td>
+<td>The size of the file in bytes, representing the total amount of data contained in the file</td>
+</tr>
+<tr>
+<td><strong>hash_sha256</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered</td>
+</tr>
+<tr>
+<td><strong>format_ref</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>compression_format_ref</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code><strong>descriptor</strong></code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code></td>
+</tr>
+<tr>
+<td><strong>extension</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>supplementary-file</td>
+<td>created-in</td>
+<td>has-supplementary-file</td>
+<td>study</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>supplementary-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>supplementary-file</td>
+<td>referenced-in</td>
+<td>references</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>supplementary-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>references</td>
+<td>referenced-in</td>
+<td>supplementary-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-supplementary-file</td>
+<td>created-in</td>
+<td>supplementary-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mhd-cv-term-objects">MHD CV Term Objects<a class="headerlink" href="#mhd-cv-term-objects" title="Permanent link">&para;</a></h2>
+<h3 id="characteristic-type">Characteristic Type<a class="headerlink" href="#characteristic-type" title="Permanent link">&para;</a></h3>
+<p>Characteristic Type node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 2, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>characteristic-type</strong></code></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-type</td>
+<td>defined-in</td>
+<td>defines</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>characteristic-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>characteristic-type</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>defines</td>
+<td>defined-in</td>
+<td>characteristic-type</td>
+<td>2</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="characteristic-value">Characteristic Value<a class="headerlink" href="#characteristic-value" title="Permanent link">&para;</a></h3>
+<p>Characteristic Value node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term Value object<br>Its value MUST be <code><strong>characteristic-value</strong></code></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>optional</td>
+<td><code><em>str or int or float or Decimal</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>unit</strong></td>
+<td>optional</td>
+<td><code><em>UnitCvTerm</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>characteristic-type</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>characteristic-value</td>
+<td>instance-of</td>
+<td>has-instance</td>
+<td>characteristic-definition</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>characteristic-value</td>
+<td>value-of</td>
+<td>has-characteristic-value</td>
+<td>subject</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>characteristic-value</td>
+<td>value-of</td>
+<td>has-characteristic-value</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>characteristic-definition</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>characteristic-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 2.</strong></td>
+</tr>
+<tr>
+<td>specimen</td>
+<td>has-characteristic-value</td>
+<td>value-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>has-characteristic-value</td>
+<td>value-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-provider">Data Provider<a class="headerlink" href="#data-provider" title="Permanent link">&para;</a></h3>
+<p>Data Provider node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: 1 </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term Value object<br>Its value MUST be <code><strong>data-provider</strong></code></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>unit</strong></td>
+<td>optional</td>
+<td><code><em>UnitCvTerm</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data-provider</td>
+<td>provides</td>
+<td>provided-by</td>
+<td>study</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>study</td>
+<td>provided-by</td>
+<td>provides</td>
+<td>data-provider</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="descriptor">Descriptor<a class="headerlink" href="#descriptor" title="Permanent link">&para;</a></h3>
+<p>Descriptor node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>descriptor</strong></code></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>assay</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>raw-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>derived-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>supplementary-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>result-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>organization</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>person</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>project</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>publication</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>protocol</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>sample</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>subject</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>sample-run</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>describes</td>
+<td>described-as</td>
+<td>sample-run-configuration</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>keyword-of</td>
+<td>has-repository-keyword</td>
+<td>study</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptor</td>
+<td>keyword-of</td>
+<td>has-repository-keyword</td>
+<td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assay</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>1</td>
+<td>N</td>
+<td>A link to a descriptor that describes the assay.<br><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>derived-data-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td>A link to a descriptor that describes the derived data file.</td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>organization</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>person</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>project</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>publication</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>raw-data-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>result-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample-run</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample-run-configuration</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>specimen</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-repository-keyword</td>
+<td>keyword-of</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>study</td>
+<td>has-submitter-keyword</td>
+<td>keyword-of</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>supplementary-file</td>
+<td>described-as</td>
+<td>describes</td>
+<td>descriptor</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="factor-type">Factor Type<a class="headerlink" href="#factor-type" title="Permanent link">&para;</a></h3>
+<p>Factor Type node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>factor-type</strong></code></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factor-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factor-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>factor-type</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="factor-value">Factor Value<a class="headerlink" href="#factor-value" title="Permanent link">&para;</a></h3>
+<p>Factor Value node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term Value object<br>Its value MUST be <code><strong>factor-value</strong></code></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>optional</td>
+<td><code><em>str or int or float or Decimal</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>unit</strong></td>
+<td>optional</td>
+<td><code><em>UnitCvTerm</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factor-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>factor-type</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-value</td>
+<td>instance-of</td>
+<td>has-instance</td>
+<td>factor-definition</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-value</td>
+<td>value-of</td>
+<td>has-factor-value</td>
+<td>sample</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-value</td>
+<td>value-of</td>
+<td>has-factor-value</td>
+<td>subject</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>factor-definition</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>factor-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
+<td>has-factor-value</td>
+<td>value-of</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>has-factor-value</td>
+<td>value-of</td>
+<td>factor-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metabolite-identifier">Metabolite Identifier<a class="headerlink" href="#metabolite-identifier" title="Permanent link">&para;</a></h3>
+<p>Metabolite Identifier node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>metabolite-identifier</strong></code></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metabolite-identifier</td>
+<td>reported-identifier-of</td>
+<td>identified-as</td>
+<td>metabolite</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metabolite</td>
+<td>identified-as</td>
+<td>reported-identifier-of</td>
+<td>metabolite-identifier</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameter-type">Parameter Type<a class="headerlink" href="#parameter-type" title="Permanent link">&para;</a></h3>
+<p>Parameter Type node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>parameter-type</strong></code></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameter-type</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>parameter-definition</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>parameter-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>parameter-value</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameter-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>parameter-type</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameter-value">Parameter Value<a class="headerlink" href="#parameter-value" title="Permanent link">&para;</a></h3>
+<p>Parameter Value node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermValueObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term Value object<br>Its value MUST be <code><strong>parameter-value</strong></code></td>
+</tr>
+<tr>
+<td><strong>value</strong></td>
+<td>optional</td>
+<td><code><em>str or int or float or Decimal</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>unit</strong></td>
+<td>optional</td>
+<td><code><em>UnitCvTerm</em><code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameter-value</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>parameter-type</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>parameter-value</td>
+<td>instance-of</td>
+<td>has-instance</td>
+<td>parameter-definition</td>
+<td>1</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parameter-definition</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>parameter-value</td>
+<td>0</td>
+<td>N</td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
+</tr>
+<tr>
+<td>parameter-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>parameter-value</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="protocol-type">Protocol Type<a class="headerlink" href="#protocol-type" title="Permanent link">&para;</a></h3>
+<p>Protocol Type node is <strong>required in the MHD MS Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></td>
+<td>The type property identifies type of the CV Term object<br>Its value MUST be <code><strong>protocol-type</strong></code></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol-type</td>
+<td>type-of</td>
+<td>has-type</td>
+<td>protocol</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reverse Node Relationships</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relationship</th>
+<th>Reverse Name</th>
+<th>Target</th>
+<th>Min</th>
+<th>Max</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol</td>
+<td>has-type</td>
+<td>type-of</td>
+<td>protocol-type</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: MHD Common Data Model v0.1">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                MHD Common Data Model v0.1
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../mhd-legacy-nodes/" class="md-footer__link md-footer__link--next" aria-label="Next: Legacy Dataset">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Legacy Dataset
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/MetaboLights" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bsky.app/profile/metabolights.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.footnote.tooltips", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
