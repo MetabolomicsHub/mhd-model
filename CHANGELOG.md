@@ -1,3 +1,10 @@
+## v0.1.2 (2025-09-05)
+
+### Fix
+
+- legacy model updates
+- model review and update documentation.
+
 ## v0.1.1 (2025-09-03)
 
 ### Fix
