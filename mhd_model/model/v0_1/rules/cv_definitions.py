@@ -145,6 +145,13 @@ OTHER_CONTROLLED_CV_DEFINITIONS = {
         alternative_labels=["wikidata"],
         alternative_prefixes=["http://www.wikidata.org/wiki/"],
     ),
+    "REFMET": CvDefinition(
+        label="REFMET",
+        name="Reference list of Metabolite names",
+        uri="https://www.metabolomicsworkbench.org/databases/refmet/refmet_details.php",
+        prefix="https://www.metabolomicsworkbench.org/databases/refmet/refmet_details.php?REFMET_ID=",
+        alternative_labels=["refmet", "REFMET"],
+    ),
     "ILX": CvDefinition(
         label="ILX",
         name="InterLex Identifier",

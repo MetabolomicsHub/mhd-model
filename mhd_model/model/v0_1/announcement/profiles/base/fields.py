@@ -25,11 +25,9 @@ from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,
-    AllowedCvList,
     AllowedCvTerms,
     CvTermPlaceholder,
     ParentCvTerm,
-    ProfileValidationGroup,
 )
 
 DOI = Annotated[
@@ -79,7 +77,8 @@ MetaboliteDatabaseId = Annotated[
                         allow_only_leaf=False,
                         index_cv_terms=False,
                     )
-                ]
+                ],
+                allowed_other_sources=["REFMET"],
             ).model_dump(by_alias=True)
         }
     ),
@@ -111,33 +110,13 @@ PubMedId = Annotated[
     ),
 ]
 
-PublicationStatus = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EFO",
-                            accession="EFO:0001742",
-                            name="publication status",
-                        )
-                    )
-                ]
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
 
 FactorDefinition = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
             "profileValidation": AllowAnyCvTerm(
-                allowed_placeholder_values=[
-                    CvTermPlaceholder(source="MHD", accession="MHD:000001")
-                ],
+                allowed_placeholder_values=[CvTermPlaceholder(source="", accession="")],
             ).model_dump(by_alias=True)
         }
     ),
@@ -218,9 +197,10 @@ StudyFactors = Annotated[
                             source="EFO", accession="EFO:0000408", name="disease"
                         ),
                         controls=[
-                            AllowedCvList(
-                                source_names=["DOID", "HP", "MP", "SNOMED"],
-                                allowed_other_sources=["wikidata", "ILX"],
+                            AllowAnyCvTerm(
+                                allowed_placeholder_values=[
+                                    CvTermPlaceholder(source="", accession="")
+                                ]
                             )
                         ],
                         min_value_count=1,
@@ -457,33 +437,6 @@ SupplementaryFileFormat = Annotated[
                         ),
                         index_cv_terms=False,
                     )
-                ]
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
-
-FileContent = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="MS",
-                            accession="MS:1000524",
-                            name="data file content",
-                        ),
-                    ),
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="NCIT",
-                            accession="NCIT:C25474",
-                            name="Data",
-                        ),
-                        allow_only_leaf=False,
-                    ),
                 ]
             ).model_dump(by_alias=True)
         }

@@ -24,7 +24,6 @@ from mhd_model.shared.validation.definitions import (
     AllowedCvTerms,
     CvTermPlaceholder,
     ParentCvTerm,
-    ProfileValidationGroup,
 )
 
 DOI = Annotated[
@@ -103,25 +102,6 @@ PubMedId = Annotated[
         #         by_alias=True
         #     )
         # },
-    ),
-]
-
-PublicationStatus = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EFO",
-                            accession="EFO:0001742",
-                            name="publication status",
-                        )
-                    )
-                ]
-            ).model_dump(by_alias=True)
-        }
     ),
 ]
 
@@ -450,33 +430,6 @@ SupplementaryFileFormat = Annotated[
                         ),
                         index_cv_terms=False,
                     )
-                ]
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
-
-FileContent = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="MS",
-                            accession="MS:1000524",
-                            name="data file content",
-                        ),
-                    ),
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="NCIT",
-                            accession="NCIT:C25474",
-                            name="Data",
-                        ),
-                        allow_only_leaf=False,
-                    ),
                 ]
             ).model_dump(by_alias=True)
         }

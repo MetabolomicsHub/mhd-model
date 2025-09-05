@@ -40,6 +40,10 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
+from scripts.update_profiles import (
+    update_annoucement_file_profiles,
+    update_mhd_file_profiles,
+)
 from scripts.utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
@@ -419,7 +423,9 @@ def update_nodes(
 
 if __name__ == "__main__":
     set_basic_logging_config()
-    profile = MHD_MS_PROFILE_V0_1
+
+    update_annoucement_file_profiles()
+    update_mhd_file_profiles()
 
     for profile, target_file_name, profile_name in [
         (MHD_MS_PROFILE_V0_1, "mhd-ms-nodes.md", "MHD MS Profile"),

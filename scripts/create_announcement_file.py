@@ -1,11 +1,12 @@
 import json
 from pathlib import Path
 
-from mhd_model.convertors.v0_1.mhd2announce import create_announcement_file
+from mhd_model.convertors.v0_1.legacy.mhd2announce import create_announcement_file
 from scripts.utils import set_basic_logging_config
 
 if __name__ == "__main__":
     set_basic_logging_config()
+
     study_ids = [
         "MHDA003107",
     ]

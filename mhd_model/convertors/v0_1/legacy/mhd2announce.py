@@ -217,15 +217,15 @@ def convert_file(
 ):
     if file_type_name not in type_map or ref not in type_map[file_type_name]:
         return None
-    item = type_map[file_type_name][ref]
+    item: graph_nodes.BaseFile = type_map[file_type_name][ref]
     url_list = item.url_list
     format = None
     if item.format_ref in all_nodes_map:
-        format_node = all_nodes_map[item.format_ref]
+        format_node: BaseMhdModel = all_nodes_map[item.format_ref]
         format = CvTerm.model_validate(format_node.model_dump(by_alias=True))
     compression = None
     if item.compression_format_ref in all_nodes_map:
-        compression_node = all_nodes_map[item.compression_format_ref]
+        compression_node: BaseMhdModel = all_nodes_map[item.compression_format_ref]
         compression = CvTerm.model_validate(compression_node.model_dump(by_alias=True))
 
     file = file_class(
@@ -258,8 +258,8 @@ def create_announcement_file(
     mhd_file: dict[str, Any],
     mhd_file_url: str,
     annoucement_file_path: str,
-    announcement_schema_name: str = "https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.json",
-    announcement_profile_uri="https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.ms-profile.json",
+    announcement_schema_name: str = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+    announcement_profile_uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.ms-profile.json",
 ):
     mhd_dataset = MhDatasetMsProfile.model_validate(mhd_file)
     nodes_map = {x.id_: x for x in mhd_dataset.graph.nodes}

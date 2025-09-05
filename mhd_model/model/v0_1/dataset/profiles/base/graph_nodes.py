@@ -90,7 +90,7 @@ class Project(BaseLabeledMhdModel):
         ),
     ] = "project"
     title: Annotated[None | str, Field(min_length=2)] = None
-    description: Annotated[None | str, Field(min_length=2)] = None
+    description: Annotated[None | str, Field()] = None
     grant_identifiers: Annotated[None | list[GrantId], Field()] = None
     doi: Annotated[None | DOI, Field()] = None
 

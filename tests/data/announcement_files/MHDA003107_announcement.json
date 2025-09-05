@@ -1,8 +1,8 @@
 {
   "mhd_identifier": "MHDT003107",
   "repository_identifier": "MTBLS3107",
-  "$schema": "https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.json",
-  "profile_uri": "https://www.metabolomicshub.org/schemas/v0.1/announcement-v0.1.schema.ms-profile.json",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.ms-profile.json",
   "cv_definitions": [
     {
       "label": "BTO",

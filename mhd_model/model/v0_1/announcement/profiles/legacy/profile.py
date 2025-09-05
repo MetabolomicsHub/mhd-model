@@ -1,11 +1,10 @@
-from pydantic import AnyUrl, EmailStr, Field
+from pydantic import AnyUrl, Field
 from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.announcement.profiles.base import fields
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseProfile,
 )
-from mhd_model.shared.fields import Authors
 from mhd_model.shared.model import MhdConfigModel
 
 
@@ -16,44 +15,9 @@ class BaseFile(MhdConfigModel):
 
 
 class MetadataFile(BaseFile):
-    format: Annotated[None | fields.MetadataFileFormat, Field()]
+    format: Annotated[None | fields.MetadataFileFormat, Field()] = None
+    extension: Annotated[None | str, Field(min_length=2)] = None
 
 
-class RawDataFile(BaseFile):
-    format: Annotated[None | fields.RawDataFileFormat, Field()]
-
-
-class ResultFile(BaseFile):
-    format: Annotated[None | fields.ResultFileFormat, Field()]
-
-
-class DerivedDataFile(BaseFile):
-    format: Annotated[None | fields.DerivedFileFormat, Field()]
-
-
-class SupplementaryFile(BaseFile):
-    format: Annotated[fields.SupplementaryFileFormat, Field()]
-
-
-class AnnouncementContact(MhdConfigModel):
-    full_name: Annotated[str, Field(min_length=5)]
-    emails: Annotated[list[EmailStr], Field(min_length=1)]
-    orcid: Annotated[None | fields.ORCID, Field(title="ORCID")] = None
-    affiliations: Annotated[None | str, Field(min_length=1)] = None
-
-
-class AnnouncementPublication(MhdConfigModel):
-    title: Annotated[str, Field(min_length=5)]
-    doi: Annotated[fields.DOI, Field()]
-    pub_med_id: Annotated[None | fields.PubMedId, Field()] = None
-    authors: Annotated[None | Authors, Field()] = None
-
-
-class ReportedMetabolite(MhdConfigModel):
-    name: Annotated[str, Field(min_length=1)]
-    database_identifiers: Annotated[
-        None | list[fields.MetaboliteDatabaseId], Field()
-    ] = None
-
-
-class AnnouncementLegacyProfile(AnnouncementBaseProfile): ...
+class AnnouncementLegacyProfile(AnnouncementBaseProfile):
+    repository_metadata_file_list: Annotated[list[MetadataFile], Field()]

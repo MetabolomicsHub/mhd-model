@@ -15,7 +15,7 @@ class BaseFile(MhdConfigModel):
 
 
 class MetadataFile(BaseFile):
-    format: Annotated[None | fields.MetadataFileFormat, Field()]
+    format: Annotated[None | fields.MetadataFileFormat, Field()] = None
 
 
 class RawDataFile(BaseFile):
@@ -62,24 +62,24 @@ class AnnouncementBaseProfile(CvEnabledDataset):
     dataset_url_list: Annotated[list[AnyUrl], Field(min_length=1)]
 
     license: Annotated[None | HttpUrl, Field()]
-    title: Annotated[str, Field(min_length=5)]
-    description: Annotated[str, Field(min_length=5)]
+    title: Annotated[str, Field(min_length=25)]
+    description: Annotated[str, Field(min_length=60)]
     submission_date: Annotated[datetime.datetime, Field()]
     public_release_date: Annotated[datetime.datetime, Field()]
 
-    submitters: Annotated[list[AnnouncementContact], Field(min_length=1)]
+    submitters: Annotated[None | list[AnnouncementContact], Field(min_length=1)]
     principal_investigators: Annotated[None | list[AnnouncementContact], Field()] = None
 
     # Targeted metabolite profiling, Untargeted metabolite profiling, ...
     measurement_type: Annotated[None | list[fields.MeasurementType], Field()] = None
     # NMR, MS, ...
-    technology_type: Annotated[list[fields.TechnologyType], Field(min_length=1)]
+    technology_type: Annotated[None | list[fields.TechnologyType], Field(min_length=1)]
 
     # Metabolomics, Lipidomics, Proteomics, ...
-    omics_type: Annotated[list[fields.OmicsType], Field(min_length=1)]
+    omics_type: Annotated[None | list[fields.OmicsType], Field(min_length=1)]
 
     # LC-MS, GC-MS, ...
-    assay_type: Annotated[list[fields.AnalysisType], Field(min_length=1)]
+    assay_type: Annotated[None | list[fields.AnalysisType], Field(min_length=1)]
 
     submitter_keywords: Annotated[None | list[fields.CvTermOrStr], Field()] = None
     descriptors: Annotated[None | list[CvTerm], Field()] = None

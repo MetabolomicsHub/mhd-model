@@ -18,57 +18,66 @@ from scripts.utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
 
+BASE_DIR_LIST = [
+    "mhd_model/schemas/mhd",
+    "docs/schemas/v0_1",
+]
+
 
 def update_annoucement_file_profiles() -> None:
-    profile_path = "mhd_model/schemas/mhd/announcement-v0.1.schema.json"
-    with pathlib.Path(profile_path).open("w") as f:
-        json.dump(AnnouncementBaseProfile.model_json_schema(), f, indent=2)
-    logger.info(
-        "Base announcement profile file on directory '%s' is updated.",
-        profile_path,
-    )
+    for base_dir in BASE_DIR_LIST:
+        pathlib.Path(base_dir).mkdir(parents=True, exist_ok=True)
+        profile_path = f"{base_dir}/announcement-v0.1.schema.json"
+        with pathlib.Path(profile_path).open("w") as f:
+            json.dump(AnnouncementBaseProfile.model_json_schema(), f, indent=2)
+        logger.info(
+            "Base announcement profile file on directory '%s' is updated.",
+            profile_path,
+        )
 
-    profile_path = "mhd_model/schemas/mhd/announcement-v0.1.schema.ms-profile.json"
-    with pathlib.Path(profile_path).open("w") as f:
-        json.dump(AnnouncementMsProfile.model_json_schema(), f, indent=2)
-    logger.info(
-        "MS announcement profile file on directory '%s' is updated.",
-        profile_path,
-    )
+        profile_path = f"{base_dir}/announcement-v0.1.schema.ms-profile.json"
+        with pathlib.Path(profile_path).open("w") as f:
+            json.dump(AnnouncementMsProfile.model_json_schema(), f, indent=2)
+        logger.info(
+            "MS announcement profile file on directory '%s' is updated.",
+            profile_path,
+        )
 
-    profile_path = "mhd_model/schemas/mhd/announcement-v0.1.schema.legacy-profile.json"
-    with pathlib.Path(profile_path).open("w") as f:
-        json.dump(AnnouncementLegacyProfile.model_json_schema(), f, indent=2)
-    logger.info(
-        "Legacy announcement profile file on directory '%s' is updated.",
-        profile_path,
-    )
+        profile_path = f"{base_dir}/announcement-v0.1.schema.legacy-profile.json"
+        with pathlib.Path(profile_path).open("w") as f:
+            json.dump(AnnouncementLegacyProfile.model_json_schema(), f, indent=2)
+        logger.info(
+            "Legacy announcement profile file on directory '%s' is updated.",
+            profile_path,
+        )
 
 
 def update_mhd_file_profiles() -> None:
-    profile_path = "mhd_model/schemas/mhd/common-data-model-v0.1.schema.json"
-    with pathlib.Path(profile_path).open("w") as f:
-        json.dump(MhDatasetBaseProfile.model_json_schema(), f, indent=2)
-    logger.info(
-        "MHD common data model schema file on directory '%s' is updated.",
-        profile_path,
-    )
+    for base_dir in BASE_DIR_LIST:
+        pathlib.Path(base_dir).mkdir(parents=True, exist_ok=True)
+        profile_path = f"{base_dir}/common-data-model-v0.1.schema.json"
+        with pathlib.Path(profile_path).open("w") as f:
+            json.dump(MhDatasetBaseProfile.model_json_schema(), f, indent=2)
+        logger.info(
+            "MHD common data model schema file on directory '%s' is updated.",
+            profile_path,
+        )
 
-    profile_path = "mhd_model/schemas/mhd/common-data-model-v0.1.ms-profile.json"
-    with pathlib.Path(profile_path).open("w") as f:
-        json.dump(MhDatasetMsProfile.model_json_schema(), f, indent=2)
-    logger.info(
-        "MHD MS common data model profile file on directory '%s' is updated.",
-        profile_path,
-    )
+        profile_path = f"{base_dir}/common-data-model-v0.1.ms-profile.json"
+        with pathlib.Path(profile_path).open("w") as f:
+            json.dump(MhDatasetMsProfile.model_json_schema(), f, indent=2)
+        logger.info(
+            "MHD MS common data model profile file on directory '%s' is updated.",
+            profile_path,
+        )
 
-    profile_path = "mhd_model/schemas/mhd/common-data-model-v0.1.legacy-profile.json"
-    with pathlib.Path(profile_path).open("w") as f:
-        json.dump(MhDatasetLegacyProfile.model_json_schema(), f, indent=2)
-    logger.info(
-        "MHD legacy common data model profile file on directory '%s' is updated.",
-        profile_path,
-    )
+        profile_path = f"{base_dir}/common-data-model-v0.1.legacy-profile.json"
+        with pathlib.Path(profile_path).open("w") as f:
+            json.dump(MhDatasetLegacyProfile.model_json_schema(), f, indent=2)
+        logger.info(
+            "MHD legacy common data model profile file on directory '%s' is updated.",
+            profile_path,
+        )
 
 
 if __name__ == "__main__":
