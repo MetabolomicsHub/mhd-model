@@ -1,6 +1,6 @@
 import datetime
 
-from pydantic import EmailStr, Field, HttpUrl
+from pydantic import AnyUrl, EmailStr, Field, HttpUrl
 from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.announcement.profiles.base import fields
@@ -10,12 +10,12 @@ from mhd_model.shared.model import CvEnabledDataset, CvTerm, MhdConfigModel
 
 class BaseFile(MhdConfigModel):
     name: Annotated[str, Field(min_length=2)]
-    file_url_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
+    url_list: Annotated[list[AnyUrl], Field(min_length=1)]
     compression_format: Annotated[None | fields.CompressionFormat, Field()] = None
 
 
 class MetadataFile(BaseFile):
-    format: Annotated[fields.MetadataFileFormat, Field()]
+    format: Annotated[None | fields.MetadataFileFormat, Field()]
 
 
 class RawDataFile(BaseFile):
@@ -23,15 +23,15 @@ class RawDataFile(BaseFile):
 
 
 class ResultFile(BaseFile):
-    format: Annotated[fields.ResultFileFormat, Field()]
+    format: Annotated[None | fields.ResultFileFormat, Field()]
 
 
 class DerivedDataFile(BaseFile):
-    format: Annotated[fields.DerivedFileFormat, Field()]
+    format: Annotated[None | fields.DerivedFileFormat, Field()]
 
 
 class SupplementaryFile(BaseFile):
-    format: Annotated[fields.SupplementaryFileFormat, Field()]
+    format: Annotated[None | fields.SupplementaryFileFormat, Field()]
 
 
 class AnnouncementContact(MhdConfigModel):
@@ -58,8 +58,8 @@ class ReportedMetabolite(MhdConfigModel):
 class AnnouncementBaseProfile(CvEnabledDataset):
     mhd_identifier: Annotated[str, Field()]
     repository_identifier: Annotated[str, Field()]
-    mhd_metadata_file_uri: Annotated[fields.CvTermUriValue, Field()]
-    dataset_url_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
+    mhd_metadata_file_url: Annotated[AnyUrl, Field()]
+    dataset_url_list: Annotated[list[AnyUrl], Field(min_length=1)]
 
     license: Annotated[None | HttpUrl, Field()]
     title: Annotated[str, Field(min_length=5)]
@@ -91,19 +91,17 @@ class AnnouncementBaseProfile(CvEnabledDataset):
 
     study_factors: Annotated[None | fields.StudyFactors, Field()] = None
 
-    sample_characteristics: Annotated[None | fields.SampleCharacteristics, Field()] = (
-        None
-    )
+    characteristic_values: Annotated[None | fields.CharacteristicValues, Field()] = None
 
     protocols: Annotated[None | fields.Protocols, Field()] = None
 
     reported_metabolites: Annotated[None | list[ReportedMetabolite], Field()] = None
 
-    repository_metadata_file_url_list: Annotated[None | list[MetadataFile], Field()]
-    raw_data_file_url_list: Annotated[None | list[RawDataFile], Field()] = None
-    derived_data_file_url_list: Annotated[None | list[DerivedDataFile], Field()] = None
-    supplementary_file_url_list: Annotated[
+    repository_metadata_file_list: Annotated[None | list[MetadataFile], Field()]
+    raw_data_file_list: Annotated[None | list[RawDataFile], Field()] = None
+    derived_data_file_list: Annotated[None | list[DerivedDataFile], Field()] = None
+    supplementary_file_list: Annotated[
         None | list[SupplementaryFile],
         Field(),
     ] = None
-    result_file_url_list: Annotated[None | list[ResultFile], Field()] = None
+    result_file_list: Annotated[None | list[ResultFile], Field()] = None

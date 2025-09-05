@@ -21,7 +21,6 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_PROTOCOLS,
     COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_TECHNOLOGY_TYPES,
-    COMMON_URI_TYPES,
 )
 from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import (
@@ -89,7 +88,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             EmbeddedRefValidation(
                 node_type="assay",
                 node_property_name="sample_run_refs",
-                required=False,
+                required=True,
                 target_ref_types=["sample-run"],
             ),
         ],
@@ -100,9 +99,8 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
                 target="descriptor",
-                min=0,
-                min_for_each_source=0,
-                max_for_each_source=0,
+                min=1,
+                min_for_each_source=1,
             ),
             RelationshipValidation(
                 description="A link to a study that the assay was conducted as part of it "
@@ -123,16 +121,6 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 target="protocol",
                 min=0,
                 min_for_each_source=0,
-            ),
-            RelationshipValidation(
-                description="A link to a descriptor that describes the assay.",
-                source="assay",
-                relationship_name="has-derived-data-file",
-                reverse_relationship_name="created-in",
-                target="derived-data-file",
-                min=0,
-                min_for_each_source=0,
-                max_for_each_source=0,
             ),
         ],
     ),
@@ -167,7 +155,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 reverse_relationship_name="has-characteristic-definition",
                 target="study",
                 min=2,
-                min_for_each_source=0,
+                min_for_each_source=2,
             ),
         ],
     ),
@@ -192,15 +180,6 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="referenced-in",
                 reverse_relationship_name="references",
                 target="metadata-file",
-                min=0,
-                min_for_each_source=0,
-                max_for_each_source=0,
-            ),
-            RelationshipValidation(
-                source="derived-data-file",
-                relationship_name="created-in",
-                reverse_relationship_name="has-derived-data-file",
-                target="assay",
                 min=0,
                 min_for_each_source=0,
                 max_for_each_source=0,
@@ -280,13 +259,16 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 node_property_name="format_ref",
                 contraints=PropertyConstraint(required=True),
             ),
-            NodePropertyValidation(
-                node_type="metadata-file",
-                node_property_name="extension",
-                contraints=PropertyConstraint(required=True),
-            ),
         ],
         relationships=[
+            RelationshipValidation(
+                source="metadata-file",
+                relationship_name="described-as",
+                reverse_relationship_name="describes",
+                target="descriptor",
+                min=0,
+                min_for_each_source=0,
+            ),
             RelationshipValidation(
                 source="metadata-file",
                 relationship_name="referenced-in",
@@ -377,7 +359,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
     ),
     NodeValidation(
         node_type="organization",
-        min=0,
+        min=1,
         validations=[
             NodePropertyValidation(
                 node_type="organization",
@@ -391,6 +373,14 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="funds",
                 reverse_relationship_name="funded-by",
                 target="project",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="organization",
+                relationship_name="funds",
+                reverse_relationship_name="funded-by",
+                target="study",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -430,7 +420,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
     ),
     NodeValidation(
         node_type="parameter-definition",
-        min=0,
+        min=1,
         validations=[
             EmbeddedRefValidation(
                 node_type="parameter-definition",
@@ -450,6 +440,14 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
                 target="parameter-value",
+                min=1,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="parameter-definition",
+                relationship_name="defined-in",
+                reverse_relationship_name="has-parameter-definition",
+                target="protocol",
                 min=1,
                 min_for_each_source=0,
             ),
@@ -536,7 +534,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="project",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True, min_length=30),
+                contraints=PropertyConstraint(required=True, min_length=25),
             ),
         ],
         relationships=[
@@ -600,7 +598,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
     ),
     NodeValidation(
         node_type="protocol",
-        min=0,
+        min=1,
         validations=[
             NodePropertyValidation(
                 node_type="protocol",
@@ -651,6 +649,15 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 target="study",
                 min=1,
                 min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="protocol",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="protocol-type",
+                min=0,
+                min_for_each_source=1,
+                max_for_each_source=1,
             ),
         ],
     ),
@@ -797,7 +804,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
     ),
     NodeValidation(
         node_type="sample",
-        min=0,
+        min=1,
         validations=[
             NodePropertyValidation(
                 node_type="sample",
@@ -808,11 +815,6 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 node_type="sample",
                 node_property_name="repository_identifier",
                 contraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                node_type="sample",
-                node_property_name="subject_refs",
-                contraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],
         relationships=[
@@ -849,11 +851,19 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min=0,
                 min_for_each_source=1,
             ),
+            RelationshipValidation(
+                source="sample",
+                relationship_name="derived-from",
+                reverse_relationship_name="source-of",
+                target="specimen",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     NodeValidation(
         node_type="sample-run",
-        min=0,
+        min=1,
         validations=[
             NodePropertyValidation(
                 node_type="sample-run",
@@ -889,7 +899,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
-                source="raw-data-file",
+                source="sample-run-configuration",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
                 target="descriptor",
@@ -911,7 +921,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 node_type="study",
                 node_property_name="additional_identifiers",
                 validation=AllowAnyCvTerm(
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
             ),
             NodePropertyValidation(
@@ -922,12 +932,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True, min_length=30),
+                contraints=PropertyConstraint(required=True, min_length=25),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="description",
-                contraints=PropertyConstraint(required=True, min_length=5),
+                contraints=PropertyConstraint(required=True, min_length=60),
             ),
             NodePropertyValidation(
                 node_type="study",
@@ -953,11 +963,27 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         relationships=[
             RelationshipValidation(
                 source="study",
+                relationship_name="provided-by",
+                reverse_relationship_name="provides",
+                target="data-provider",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="study",
                 relationship_name="has-assay",
                 reverse_relationship_name="part-of",
                 target="assay",
                 min=1,
                 min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="study",
+                relationship_name="funded-by",
+                reverse_relationship_name="funds",
+                target="organization",
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="study",
@@ -1114,6 +1140,56 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
     ),
     NodeValidation(
+        node_type="specimen",
+        min=0,
+        validations=[
+            NodePropertyValidation(
+                node_type="specimen",
+                node_property_name="name",
+                contraints=PropertyConstraint(required=True, min_length=1),
+            ),
+            NodePropertyValidation(
+                node_type="specimen",
+                node_property_name="repository_identifier",
+                contraints=PropertyConstraint(required=True, min_length=1),
+            ),
+        ],
+        relationships=[
+            RelationshipValidation(
+                source="specimen",
+                relationship_name="described-as",
+                reverse_relationship_name="describes",
+                target="descriptor",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="specimen",
+                relationship_name="has-characteristic-value",
+                reverse_relationship_name="value-of",
+                target="characteristic-value",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="specimen",
+                relationship_name="source-of",
+                reverse_relationship_name="derived-from",
+                target="sample",
+                min=0,
+                min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="specimen",
+                relationship_name="derived-from",
+                reverse_relationship_name="source-of",
+                target="subject",
+                min=0,
+                min_for_each_source=1,
+            ),
+        ],
+    ),
+    NodeValidation(
         node_type="subject",
         min=1,
         validations=[
@@ -1143,7 +1219,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 reverse_relationship_name="value-of",
                 target="characteristic-value",
                 min=0,
-                min_for_each_source=2,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="subject",
@@ -1152,6 +1228,22 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 target="sample",
                 min=0,
                 min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="subject",
+                relationship_name="has-factor-value",
+                reverse_relationship_name="value-of",
+                target="factor-value",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="subject",
+                relationship_name="source-of",
+                reverse_relationship_name="derived-from",
+                target="specimen",
+                min=0,
+                min_for_each_source=0,
             ),
         ],
     ),
@@ -1207,7 +1299,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
 MHD_MS_PROFILE_V0_1.cv_nodes = [
     CvNodeValidation(
         node_type="characteristic-type",
-        min=1,
+        min=2,
         validations=[
             CvTermValidation(
                 node_type="characteristic-type",
@@ -1253,14 +1345,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="characteristic-value",
                 validation=AllowAnyCvTerm(
                     allowed_placeholder_values=[CvTermPlaceholder()],
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
             ),
             CvTermValidation(
                 node_type="characteristic-value",
                 validation=AllowedCvList(
                     source_names=["ENVO", "NCBITAXON"],
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1275,8 +1367,8 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             CvTermValidation(
                 node_type="characteristic-value",
                 validation=AllowedCvList(
-                    source_names=["UBERON", "BTO", "NCIT", "SNOMED"],
-                    allowed_other_sources=["wikidata", "RRID"],
+                    source_names=["UBERON", "BTO", "NCIT", "SNOMED", "MSIO"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1292,7 +1384,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="characteristic-value",
                 validation=AllowedCvList(
                     source_names=["DOID", "HP", "MP", "SNOMED"],
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1308,7 +1400,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="characteristic-value",
                 validation=AllowedCvList(
                     source_names=["CL", "CLO"],
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                     allowed_missing_cv_terms=[
                         CvTerm(
                             source="NCIT",
@@ -1327,38 +1419,38 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                     )
                 ],
             ),
-            CvTermValidation(
-                node_type="characteristic-value",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="NCIT",
-                                accession="NCIT:C25464",
-                                name="Country",
-                            ),
-                            index_cv_terms=True,
-                            allow_only_leaf=True,
-                        )
-                    ],
-                    allowed_missing_cv_terms=[
-                        CvTerm(
-                            source="NCIT",
-                            accession="NCIT:C48660",
-                            name="Not Applicable",
-                        )
-                    ],
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Geographic location - Country",
-                        relationship_name="has-instance",
-                        source_node_type="characteristic-definition",
-                        source_node_property="characteristic_type_ref.accession",
-                        source_node_value="GAZ:00000448",
-                    )
-                ],
-            ),
+            # CvTermValidation(
+            #     node_type="characteristic-value",
+            #     validation=AllowedChildrenCvTerms(
+            #         parent_cv_terms=[
+            #             ParentCvTerm(
+            #                 cv_term=CvTerm(
+            #                     source="NCIT",
+            #                     accession="NCIT:C25464",
+            #                     name="Country",
+            #                 ),
+            #                 index_cv_terms=True,
+            #                 allow_only_leaf=True,
+            #             )
+            #         ],
+            #         allowed_missing_cv_terms=[
+            #             CvTerm(
+            #                 source="NCIT",
+            #                 accession="NCIT:C48660",
+            #                 name="Not Applicable",
+            #             )
+            #         ],
+            #     ),
+            #     condition=[
+            #         FilterCondition(
+            #             name="Geographic location - Country",
+            #             relationship_name="has-instance",
+            #             source_node_type="characteristic-definition",
+            #             source_node_property="characteristic_type_ref.accession",
+            #             source_node_value="GAZ:00000448",
+            #         )
+            #     ],
+            # ),
         ],
         relationships=[
             RelationshipValidation(
@@ -1377,6 +1469,22 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min=0,
                 min_for_each_source=1,
             ),
+            RelationshipValidation(
+                source="characteristic-value",
+                relationship_name="value-of",
+                reverse_relationship_name="has-characteristic-value",
+                target="specimen",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="characteristic-value",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="characteristic-type",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     CvNodeValidation(
@@ -1384,6 +1492,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         has_value=True,
         value_required=True,
         min=1,
+        max=1,
         validations=[
             NodePropertyValidation(
                 node_type="data-provider",
@@ -1392,11 +1501,11 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="data-provider",
-                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "RRID"]),
+                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
             ),
             CvTermValidation(
                 node_type="data-provider",
-                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "RRID"]),
+                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
                 condition=[
                     FilterCondition(
                         name="Data Provider",
@@ -1414,13 +1523,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 reverse_relationship_name="provided-by",
                 target="study",
                 min=0,
-                min_for_each_source=0,
+                min_for_each_source=1,
+                max_for_each_source=1,
             ),
         ],
     ),
     CvNodeValidation(
         node_type="descriptor",
-        min=0,
+        min=1,
         validations=[
             CvTermValidation(
                 node_type="descriptor",
@@ -1523,7 +1633,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             CvTermValidation(
                 node_type="descriptor",
                 validation=AllowAnyCvTerm(
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                     allowed_placeholder_values=[CvTermPlaceholder()],
                 ),
                 condition=[
@@ -1696,6 +1806,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min=0,
                 min_for_each_source=0,
             ),
+            RelationshipValidation(
+                source="descriptor",
+                relationship_name="keyword-of",
+                reverse_relationship_name="has-repository-keyword",
+                target="specimen",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     CvNodeValidation(
@@ -1726,14 +1844,6 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min=0,
                 min_for_each_source=0,
             ),
-            RelationshipValidation(
-                source="factor-type",
-                relationship_name="used-in",
-                reverse_relationship_name="use-factor-type",
-                target="study",
-                min=0,
-                min_for_each_source=0,
-            ),
         ],
     ),
     CvNodeValidation(
@@ -1743,13 +1853,13 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="factor-value",
-                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "RRID"]),
+                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
             ),
             CvTermValidation(
                 node_type="factor-value",
                 validation=AllowedCvList(
                     source_names=["DOID", "HP", "MP", "SNOMED"],
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1765,6 +1875,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         relationships=[
             RelationshipValidation(
                 source="factor-value",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="factor-type",
+                min=0,
+                min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="factor-value",
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
                 target="factor-definition",
@@ -1778,6 +1896,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 target="sample",
                 min=0,
                 min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="factor-value",
+                relationship_name="value-of",
+                reverse_relationship_name="has-factor-value",
+                target="subject",
+                min=0,
+                min_for_each_source=0,
             ),
         ],
     ),
@@ -1821,13 +1947,13 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
     ),
     CvNodeValidation(
         node_type="parameter-type",
-        min=0,
+        min=1,
         validations=[
             CvTermValidation(
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_PARAMETER_DEFINITIONS.values()),
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
             ),
             CvTermValidation(
@@ -1868,20 +1994,28 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 reverse_relationship_name="has-type",
                 target="parameter-value",
                 min=0,
-                min_for_each_source=0,
+                min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="parameter-type",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="parameter-definition",
+                min=0,
+                min_for_each_source=1,
             ),
         ],
     ),
     CvNodeValidation(
         node_type="parameter-value",
         has_value=True,
-        min=0,
+        min=1,
         validations=[
             CvTermValidation(
                 node_type="parameter-value",
                 validation=AllowAnyCvTerm(
                     allowed_placeholder_values=[CvTermPlaceholder()],
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
             ),
             CvTermValidation(
@@ -1942,13 +2076,13 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
     ),
     CvNodeValidation(
         node_type="protocol-type",
-        min=0,
+        min=1,
         validations=[
             CvTermValidation(
                 node_type="protocol-type",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_PROTOCOLS.values()),
-                    allowed_other_sources=["wikidata", "RRID"],
+                    allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
                     FilterCondition(
@@ -1960,15 +2094,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
         ],
-        relationships=[],
-    ),
-    CvNodeValidation(
-        node_type="uri-type",
-        min=0,
-        validations=[
-            CvTermValidation(
-                node_type="uri-type",
-                validation=AllowedCvTerms(cv_terms=list(COMMON_URI_TYPES.values())),
+        relationships=[
+            RelationshipValidation(
+                source="protocol-type",
+                relationship_name="type-of",
+                reverse_relationship_name="has-type",
+                target="protocol",
+                min=0,
+                min_for_each_source=1,
             ),
         ],
     ),

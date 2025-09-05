@@ -2,7 +2,7 @@ import datetime
 import uuid
 from typing import Any
 
-from pydantic import Field, field_validator, model_validator
+from pydantic import AnyUrl, Field, field_validator, model_validator
 from typing_extensions import Annotated
 
 from mhd_model.shared.model import (
@@ -111,10 +111,8 @@ class BaseMhdModel(IdentifiableMhdModel):
         Field(description="External references related to the object."),
     ] = None
     url_list: Annotated[
-        None | list[KeyValue],
-        Field(
-            description="URL list related to the object. Key MUST be URL type CV Term"
-        ),
+        None | list[AnyUrl],
+        Field(description="URL list related to the object."),
     ] = None
 
     @field_validator("id_", mode="before")

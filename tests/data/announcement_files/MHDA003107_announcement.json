@@ -90,7 +90,7 @@
       "prefix": "http://purl.obolibrary.org/obo/OBI_"
     }
   ],
-  "mhd_metadata_file_uri": {
+  "mhd_metadata_file_url": {
     "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MHDA003107/MHDA003107.mhd.json",
     "source": "EDAM",
     "accession": "EDAM:1052",
@@ -276,7 +276,7 @@
       ]
     }
   ],
-  "sample_characteristics": [
+  "characteristic_definitions": [
     {
       "key": {
         "source": "NCIT",
@@ -897,7 +897,7 @@
       "name": "TG 57:3"
     }
   ],
-  "repository_metadata_file_url_list": [
+  "repository_metadata_file_list": [
     {
       "name": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
       "file_url_list": [
@@ -987,7 +987,7 @@
       }
     }
   ],
-  "raw_data_file_url_list": [
+  "raw_data_file_list": [
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg01.raw",
       "file_url_list": [
@@ -2333,9 +2333,9 @@
       }
     }
   ],
-  "derived_data_file_url_list": [],
-  "supplementary_file_url_list": [],
-  "result_file_url_list": [
+  "derived_data_file_list": [],
+  "supplementary_file_list": [],
+  "result_file_list": [
     {
       "name": "m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
       "file_url_list": [

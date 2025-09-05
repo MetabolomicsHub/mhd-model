@@ -34,6 +34,7 @@ class MhdGraph(MhdConfigModel):
             | graph_nodes.Publication
             | graph_nodes.BasicAssay
             | graph_nodes.Assay
+            | graph_nodes.Specimen
             | graph_nodes.Subject
             | graph_nodes.Sample
             | graph_nodes.SampleRun

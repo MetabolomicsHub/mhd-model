@@ -172,7 +172,7 @@
           "default": null,
           "title": "Technology Type Ref"
         },
-        "analysis_type_ref": {
+        "assay_type_ref": {
           "anyOf": [
             {
               "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -183,9 +183,9 @@
             }
           ],
           "default": null,
-          "title": "Analysis Type Ref"
+          "title": "Assay Type Ref"
         },
-        "measurement_methodology_ref": {
+        "measurement_type_ref": {
           "anyOf": [
             {
               "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -196,7 +196,20 @@
             }
           ],
           "default": null,
-          "title": "Measurement Methodology Ref"
+          "title": "Measurement Type Ref"
+        },
+        "omics_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Omics Type Ref"
         },
         "protocol_refs": {
           "anyOf": [
@@ -529,7 +542,7 @@
           "default": null,
           "title": "Technology Type Ref"
         },
-        "analysis_type_ref": {
+        "assay_type_ref": {
           "anyOf": [
             {
               "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -540,9 +553,9 @@
             }
           ],
           "default": null,
-          "title": "Analysis Type Ref"
+          "title": "Assay Type Ref"
         },
-        "measurement_methodology_ref": {
+        "measurement_type_ref": {
           "anyOf": [
             {
               "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -553,7 +566,20 @@
             }
           ],
           "default": null,
-          "title": "Measurement Methodology Ref"
+          "title": "Measurement Type Ref"
+        },
+        "omics_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Omics Type Ref"
         },
         "protocol_refs": {
           "anyOf": [
@@ -1542,6 +1568,9 @@
               },
               {
                 "$ref": "#/$defs/Assay"
+              },
+              {
+                "$ref": "#/$defs/Specimen"
               },
               {
                 "$ref": "#/$defs/Subject"
@@ -3135,22 +3164,6 @@
           ],
           "default": null,
           "title": "Additional Identifiers"
-        },
-        "subject_refs": {
-          "anyOf": [
-            {
-              "items": {
-                "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Subject Refs"
         }
       },
       "title": "Sample",
@@ -3550,6 +3563,169 @@
       "title": "SampleRunConfiguration",
       "type": "object"
     },
+    "Specimen": {
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property uniquely identifies the object.",
+          "title": "Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "specimen",
+          "description": "The type property identifies type of the object",
+          "title": "Type"
+        },
+        "created_by_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property of the data-provider who created the object.",
+          "title": "Created By Ref"
+        },
+        "tags": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Key-value tags related to the object.",
+          "title": "Tags"
+        },
+        "descriptors": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Descriptors of the object.",
+          "title": "Descriptors"
+        },
+        "external_references": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External references related to the object.",
+          "title": "External References"
+        },
+        "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL list related to the object. Key MUST be URL type CV Term",
+          "title": "Url List"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repository Identifier"
+        },
+        "additional_identifiers": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTermValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Additional Identifiers"
+        }
+      },
+      "title": "Specimen",
+      "type": "object"
+    },
     "Study": {
       "properties": {
         "id": {
@@ -3779,6 +3955,22 @@
           ],
           "title": "License"
         },
+        "grant_identifiers": {
+          "anyOf": [
+            {
+              "items": {
+                "minLength": 2,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grant Identifiers"
+        },
         "dataset_url_list": {
           "anyOf": [
             {
@@ -3984,6 +4176,21 @@
           ],
           "default": null,
           "title": "Repository Identifier"
+        },
+        "additional_identifiers": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTermValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Additional Identifiers"
         }
       },
       "title": "Subject",

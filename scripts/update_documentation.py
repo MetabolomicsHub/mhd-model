@@ -22,6 +22,9 @@ from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import (
     CvTermValueObject,
 )
 from mhd_model.model.v0_1.dataset.profiles.base.profile import MhdGraph
+from mhd_model.model.v0_1.dataset.profiles.legacy.graph_validation import (
+    MHD_LEGACY_PROFILE_V0_1,
+)
 from mhd_model.model.v0_1.dataset.profiles.ms.graph_validation import (
     MHD_MS_PROFILE_V0_1,
 )
@@ -417,187 +420,354 @@ def update_nodes(
 if __name__ == "__main__":
     set_basic_logging_config()
     profile = MHD_MS_PROFILE_V0_1
-    validation_rules_map = get_validation_rules(profile)
-    relationships_map, reverse_relationships_map = get_relationship_rules(profile)
-    common_fields = {x for x in BaseMhdModel.model_fields}
-    NO_CONDITION_KEY = (None, None, None, None, None, None)
-    node_documentation: OrderedDict[str, NodeDocumentation] = OrderedDict()
-    embedded_relationships, reverse_embedded_relationships = get_embedded_relationships(
-        profile
-    )
 
-    for nodes in [profile.mhd_nodes, profile.cv_nodes]:
-        for node in nodes:
-            node_type = node.node_type
+    for profile, target_file_name, profile_name in [
+        (MHD_MS_PROFILE_V0_1, "mhd-ms-nodes.md", "MHD MS Profile"),
+        (MHD_LEGACY_PROFILE_V0_1, "mhd-legacy-nodes.md", "MHD Legacy Profile"),
+    ]:
+        validation_rules_map = get_validation_rules(profile)
+        relationships_map, reverse_relationships_map = get_relationship_rules(profile)
+        common_fields = {x for x in BaseMhdModel.model_fields}
+        NO_CONDITION_KEY = (None, None, None, None, None, None)
+        node_documentation: OrderedDict[str, NodeDocumentation] = OrderedDict()
+        embedded_relationships, reverse_embedded_relationships = (
+            get_embedded_relationships(profile)
+        )
 
-            name = " ".join(x.capitalize() for x in node_type.replace("-", " ").split())
-            node_documentation[node_type] = NodeDocumentation(
-                node_type=node_type, name=name
-            )
-
-    for nodes in [profile.mhd_nodes, profile.cv_nodes]:
-        for node in nodes:
-            update_nodes(
-                validation_rules_map,
-                node_documentation,
-                node_documentation[node.node_type],
-                node,
-            )
-
-            node_type = node.node_type
-            node_doc = node_documentation[node_type]
-
-            for relationships, target_map in [
-                (relationships_map, node_doc.relationships),
-                (reverse_relationships_map, node_doc.reverse_relationships),
-            ]:
-                if node_type not in relationships:
-                    continue
-                if node_type in embedded_relationships:
-                    embedded_targets = embedded_relationships[node_type]
-                    references = {}
-                    for x in embedded_targets.values():
-                        for y in x.target_ref_types:
-                            if y not in references:
-                                references[y] = set()
-                            if x.node_property_name:
-                                references[y].add(x.node_property_name)
-
-                    node_doc.embedded_relationships = (
-                        "<code>"
-                        + ", ".join(sorted([x for x in references.keys()]))
-                        + "</code>"
-                    )
-                node_relationships = relationships[node_type]
-                for rels in node_relationships.values():
-                    for rel_item in rels.values():
-                        for rel in rel_item:
-                            rel_key = (
-                                rel.source or "",
-                                rel.source_property_name or "",
-                                rel.relationship_name,
-                                rel.target or "",
-                            )
-                            field_key = (rel.source, None)
-                            rules = []
-                            if field_key in validation_rules_map:
-                                node_rules = validation_rules_map[field_key]
-                                for k, v in node_rules.items():
-                                    if (
-                                        k[0] == node_type
-                                        and k[1] == rel.relationship_name
-                                    ):
-                                        if k[6] is not None:
-                                            for val in v:
-                                                rule = f"**Conditional - ({k[4]})**<br>[Source {k[5]} = {k[6]}]<br>{str(val)}"
-                                                rules.append(rule)
-                                        else:
-                                            for val in v:
-                                                rules.append(str(val))
-                            rule_desc = None
-                            if rules:
-                                rule_desc = (
-                                    (
-                                        (
-                                            "<br>Target Validation Rules:"
-                                            if len(rules) > 1
-                                            else "Target Validation Rule:"
-                                        )
-                                        + "<br><code>-----<br>"
-                                        + "<br>-----<br>".join([str(x) for x in rules])
-                                        + "</code><br>-----"
-                                    )
-                                    .replace("\n", "<br>")
-                                    .replace(" [", "<br>* [")
-                                )
-
-                            desc = rel.description
-                            min_in_dataset = None
-                            max_in_dataset = None
-                            if rel.min is not None and rel.min > 0:
-                                prefix = "Required min count in the dataset"
-                                min_in_dataset = f"**{prefix}: {rel.min}.**"
-
-                            if rel.max is not None and rel.min > 0:
-                                prefix = "Allowed max count in the dataset"
-                                max_in_dataset = f"**{prefix}: {rel.max}.**"
-
-                            description = "<br>".join(
-                                [
-                                    x
-                                    for x in (
-                                        desc,
-                                        min_in_dataset,
-                                        max_in_dataset,
-                                        rule_desc,
-                                    )
-                                    if x
-                                ]
-                            )
-
-                            # if rel_key not in node_doc.relationships:
-                            target_map[rel_key] = [
-                                rel.source or "",
-                                rel.relationship_name or "",
-                                rel.reverse_relationship_name or "",
-                                rel.target or "",
-                                (
-                                    str(rel.min_for_each_source)
-                                    if rel.min_for_each_source
-                                    else "0"
-                                ),
-                                (
-                                    str(rel.max_for_each_source)
-                                    if rel.max_for_each_source
-                                    else "N"
-                                ),
-                                description or "",
-                            ]
-
-                    # node_doc.relationships[]
-    parent = Path("docs/mhd")
-    parent.mkdir(parents=True, exist_ok=True)
-    target_path = parent / Path("mhd-nodes.md")
-    with target_path.open("w") as f:
-        f.write("# Metabolomics Hub Common Data Model Nodes\n\n")
-
-        for nodes, header in [
-            (profile.mhd_nodes, "MHD Domain Objects"),
-            (profile.cv_nodes, "MHD CV Term Objects"),
-        ]:
-            f.write(f"## {header}\n\n")
+        for nodes in [profile.mhd_nodes, profile.cv_nodes]:
             for node in nodes:
                 node_type = node.node_type
+
+                name = " ".join(
+                    x.capitalize() for x in node_type.replace("-", " ").split()
+                )
+                node_documentation[node_type] = NodeDocumentation(
+                    node_type=node_type, name=name
+                )
+
+        for nodes in [profile.mhd_nodes, profile.cv_nodes]:
+            for node in nodes:
+                update_nodes(
+                    validation_rules_map,
+                    node_documentation,
+                    node_documentation[node.node_type],
+                    node,
+                )
+
+                node_type = node.node_type
                 node_doc = node_documentation[node_type]
-                f.write(f"### {node_doc.name}\n\n")
-                f.write("**Properties**\n\n")
-                f.write("|Property Name|Necessity|Type|Description|\n")
-                f.write("|-------------|---------|----|-----------|\n")
-                for row in node_doc.properties.values():
-                    f.write(f"|{'|'.join(row)}|\n")
-                f.write("\n")
-                source_rels = list(node_doc.relationships.values())
-                source_rels.sort(key=lambda x: (x[0], x[1], x[2]))
-                target_rels = list(node_doc.reverse_relationships.values())
-                target_rels.sort(key=lambda x: (x[0], x[1], x[2]))
-                for rel, embedded_rels, rel_name in [
-                    (
-                        source_rels,
-                        node_doc.embedded_relationships,
-                        "**Node Relationships**",
-                    ),
-                    (target_rels, None, "**Reverse Node Relationships**"),
+
+                for relationships, target_map in [
+                    (relationships_map, node_doc.relationships),
+                    (reverse_relationships_map, node_doc.reverse_relationships),
                 ]:
-                    f.write(f"\n{rel_name}\n\n")
+                    if node_type not in relationships:
+                        continue
+                    if node_type in embedded_relationships:
+                        embedded_targets = embedded_relationships[node_type]
+                        references = {}
+                        for x in embedded_targets.values():
+                            for y in x.target_ref_types:
+                                if y not in references:
+                                    references[y] = set()
+                                if x.node_property_name:
+                                    references[y].add(x.node_property_name)
+
+                        node_doc.embedded_relationships = (
+                            "<code>"
+                            + ", ".join(sorted([x for x in references.keys()]))
+                            + "</code>"
+                        )
+                    node_relationships = relationships[node_type]
+                    for rels in node_relationships.values():
+                        for rel_item in rels.values():
+                            for rel in rel_item:
+                                rel_key = (
+                                    rel.source or "",
+                                    rel.source_property_name or "",
+                                    rel.relationship_name,
+                                    rel.target or "",
+                                )
+                                field_key = (rel.source, None)
+                                rules = []
+                                if field_key in validation_rules_map:
+                                    node_rules = validation_rules_map[field_key]
+                                    for k, v in node_rules.items():
+                                        if (
+                                            k[0] == node_type
+                                            and k[1] == rel.relationship_name
+                                        ):
+                                            if k[6] is not None:
+                                                for val in v:
+                                                    rule = f"**Conditional - ({k[4]})**<br>[Source {k[5]} = {k[6]}]<br>{str(val)}"
+                                                    rules.append(rule)
+                                            else:
+                                                for val in v:
+                                                    rules.append(str(val))
+                                rule_desc = None
+                                if rules:
+                                    rule_desc = (
+                                        (
+                                            (
+                                                "<br>Target Validation Rules:"
+                                                if len(rules) > 1
+                                                else "Target Validation Rule:"
+                                            )
+                                            + "<br><code>-----<br>"
+                                            + "<br>-----<br>".join(
+                                                [str(x) for x in rules]
+                                            )
+                                            + "</code><br>-----"
+                                        )
+                                        .replace("\n", "<br>")
+                                        .replace(" [", "<br>* [")
+                                    )
+
+                                desc = rel.description
+                                min_in_dataset = None
+                                max_in_dataset = None
+                                if rel.min is not None and rel.min > 0:
+                                    prefix = "Required min count in the dataset"
+                                    min_in_dataset = f"**{prefix}: {rel.min}.**"
+
+                                if rel.max is not None and rel.min > 0:
+                                    prefix = "Allowed max count in the dataset"
+                                    max_in_dataset = f"**{prefix}: {rel.max}.**"
+
+                                description = "<br>".join(
+                                    [
+                                        x
+                                        for x in (
+                                            desc,
+                                            min_in_dataset,
+                                            max_in_dataset,
+                                            rule_desc,
+                                        )
+                                        if x
+                                    ]
+                                )
+
+                                # if rel_key not in node_doc.relationships:
+                                target_map[rel_key] = [
+                                    rel.source or "",
+                                    rel.relationship_name or "",
+                                    rel.reverse_relationship_name or "",
+                                    rel.target or "",
+                                    (
+                                        str(rel.min_for_each_source)
+                                        if rel.min_for_each_source
+                                        else "0"
+                                    ),
+                                    (
+                                        str(rel.max_for_each_source)
+                                        if rel.max_for_each_source
+                                        else "N"
+                                    ),
+                                    description or "",
+                                ]
+
+                        # node_doc.relationships[]
+        parent = Path("docs/mhd")
+        parent.mkdir(parents=True, exist_ok=True)
+        target_path = parent / Path(target_file_name)
+        with target_path.open("w") as f:
+            f.write(f"# Metabolomics Hub Common Data Model Nodes - {profile_name}\n\n")
+            required_node_items = [x for x in profile.mhd_nodes if x.min > 0]
+            required_cv_term_items = [x for x in profile.cv_nodes if x.min > 0]
+            required_node_names = {x.node_type for x in required_node_items}
+            required_node_names.update({x.node_type for x in required_cv_term_items})
+            required_nodes = ", ".join(
+                [
+                    node_documentation[x.node_type].name
+                    for x in profile.mhd_nodes
+                    if x.min > 0
+                ]
+            )
+            optional_nodes = ", ".join(
+                [
+                    node_documentation[x.node_type].name
+                    for x in profile.mhd_nodes
+                    if x.min == 0
+                ]
+            )
+
+            required_cv_terms = ", ".join(
+                [
+                    node_documentation[x.node_type].name
+                    for x in profile.cv_nodes
+                    if x.min > 0
+                ]
+            )
+            optional_cv_terms = ", ".join(
+                [
+                    node_documentation[x.node_type].name
+                    for x in profile.cv_nodes
+                    if x.min == 0
+                ]
+            )
+            required_links = []
+            required_embedded_required_nodes = set()
+            for validation_nodes in [profile.mhd_nodes, profile.cv_nodes]:
+                for node_item in validation_nodes:
+                    item: NodeValidation = node_item
+                    if item.min == 0:
+                        continue
+                    for val_item in item.validations:
+                        if (
+                            isinstance(val_item, EmbeddedRefValidation)
+                            and val_item.required
+                        ):
+                            if not val_item.target_ref_types:
+                                logger.warning(
+                                    "No target types defined for embedded ref in",
+                                    item.node_type,
+                                )
+                            required_embedded_required_nodes.update(
+                                val_item.target_ref_types
+                            )
+                            field_name = val_item.node_property_name.removesuffix(
+                                "_refs"
+                            ).removesuffix("_ref")
+                            required_links.extend(
+                                [
+                                    (
+                                        val_item.node_type,
+                                        f"[embedded] - {field_name}",
+                                        x,
+                                        1,
+                                        None
+                                        if val_item.node_property_name.endswith("_refs")
+                                        else 1,
+                                    )
+                                    for x in val_item.target_ref_types
+                                ]
+                            )
+                    for relation in item.relationships:
+                        source_node = relation.source
+                        target_node = relation.target
+                        if (
+                            relation.min_for_each_source
+                            and relation.min_for_each_source > 0
+                            and relation.source in required_node_names
+                        ):
+                            source_node = relation.source
+                            target_node = relation.target
+                            relation_name = relation.relationship_name
+                            min_val = relation.min_for_each_source
+                            max_val = relation.max_for_each_source
+                            required_links.append(
+                                (
+                                    source_node,
+                                    relation_name,
+                                    target_node,
+                                    min_val,
+                                    max_val,
+                                )
+                            )
+
+            f.write(
+                f"## Required Nodes & Relationships \n\n "
+                f"**Required MHD Nodes**\n\n<code>{required_nodes}</code>\n\n "
+                f"**Required MHD CV Terms**\n\n<code>{required_cv_terms}</code>\n\n"
+            )
+            if required_links:
+                required_links.sort(key=lambda x: (x[0], x[1], x[2]))
+                f.write("**Required Relationships**\n\n")
+                f.write("|Source Node|Relationship|Target Node|Min|Max|\n")
+                f.write("|-----------|------------|-----------|---|---|\n")
+                for (
+                    source_node,
+                    relation_name,
+                    target_node,
+                    min_val,
+                    max_val,
+                ) in required_links:
+                    source_name = (
+                        node_documentation[source_node].name
+                        if source_node in node_documentation
+                        else source_node
+                    )
+                    target_name = (
+                        node_documentation[target_node].name
+                        if target_node in node_documentation
+                        else target_node
+                    )
+                    f.write(
+                        f"|{source_name}|{relation_name}|{target_name}|{min_val if min_val is not None else 0}|{max_val if max_val is not None else 'N (unbounded)'}|\n"
+                    )
+                f.write("\n")
+            # if required_embedded_required_nodes:
+            #     required_embedded_required_nodes = sorted(
+            #         required_embedded_required_nodes
+            #     )
+            #     required_embedded_required_node_names = [
+            #         node_documentation[x].name if x in node_documentation else x
+            #         for x in required_embedded_required_nodes
+            #     ]
+            #     f.write(
+            #         f"**Required Embedded Nodes**\n\n<code>{', '.join(required_embedded_required_node_names)}</code>\n\n"
+            #     )
+            # f.write(
+            #     f"## Optional Nodes \n\n**MHD Nodes**\n\n: <code>{optional_nodes}</code>\n\n **MHD CV Terms**: <code>{optional_cv_terms}</code>\n\n"
+            # )
+
+            for nodes, header in [
+                (profile.mhd_nodes, "MHD Domain Objects"),
+                (profile.cv_nodes, "MHD CV Term Objects"),
+            ]:
+                f.write(f"## {header}\n\n")
+                for node_item in nodes:
+                    node: NodeValidation = node_item
+                    node_type = node.node_type
+                    node_doc = node_documentation[node_type]
+                    f.write(f"### {node_doc.name}\n\n")
+
+                    if node.min > 0:
+                        f.write(
+                            f"{node_doc.name} node is **required in the {profile_name}.**"
+                        )
+                    else:
+                        f.write(
+                            f"{node_doc.name} node is optional in the  {profile_name}."
+                        )
 
                     f.write(
-                        "|Source|Relationship|Reverse Name|Target|Min|Max|Description|\n"
+                        f" <code>Minimum: {node.min}, Maximum: "
+                        f"{node.max if node.max is not None else 'N (unbounded)'} </code>\n\n"
                     )
-                    f.write(
-                        "|------|------------|------------|------|---|---|-----------|\n"
-                    )
-                    for row in rel:
+
+                    f.write("**Properties**\n\n")
+                    f.write("|Property Name|Necessity|Type|Description|\n")
+                    f.write("|-------------|---------|----|-----------|\n")
+                    for row in node_doc.properties.values():
                         f.write(f"|{'|'.join(row)}|\n")
                     f.write("\n")
-                    if embedded_rels:
-                        f.write(f"\n**Embedded Relationships**: {embedded_rels}\n\n")
+                    source_rels = list(node_doc.relationships.values())
+                    source_rels.sort(key=lambda x: (x[0], x[1], x[2]))
+                    target_rels = list(node_doc.reverse_relationships.values())
+                    target_rels.sort(key=lambda x: (x[0], x[1], x[2]))
+                    for rel, embedded_rels, rel_name in [
+                        (
+                            source_rels,
+                            node_doc.embedded_relationships,
+                            "**Node Relationships**",
+                        ),
+                        (target_rels, None, "**Reverse Node Relationships**"),
+                    ]:
+                        f.write(f"\n{rel_name}\n\n")
+                        if not rel:
+                            f.write("No relationships defined.\n\n")
+                            continue
+                        f.write(
+                            "|Source|Relationship|Reverse Name|Target|Min|Max|Description|\n"
+                        )
+                        f.write(
+                            "|------|------------|------------|------|---|---|-----------|\n"
+                        )
+                        for row in rel:
+                            f.write(f"|{'|'.join(row)}|\n")
+                        f.write("\n")
+                        if embedded_rels:
+                            f.write(
+                                f"\n**Embedded Relationships**: {embedded_rels}\n\n"
+                            )

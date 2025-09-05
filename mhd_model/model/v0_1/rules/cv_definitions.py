@@ -145,13 +145,13 @@ OTHER_CONTROLLED_CV_DEFINITIONS = {
         alternative_labels=["wikidata"],
         alternative_prefixes=["http://www.wikidata.org/wiki/"],
     ),
-    "RRID": CvDefinition(
-        label="RRID",
-        name="Research Resource Identifier",
-        uri="https://www.researchresourceidentifiers.org",
-        prefix="https://www.researchresourceidentifiers.org/",
-        alternative_labels=["rrid"],
-        alternative_prefixes=["http://www.researchresourceidentifiers.org/"],
+    "ILX": CvDefinition(
+        label="ILX",
+        name="InterLex Identifier",
+        uri="http://www.interlex.org",
+        prefix="http://uri.interlex.org/user/ilx_",
+        alternative_labels=["ilx"],
+        alternative_prefixes=["http://uri.interlex.org/user/ilx_"],
     ),
     "WoRMS": CvDefinition(
         label="WoRMS",

@@ -12,26 +12,27 @@ Each of *MHD Domain Objects* corresponds to a concept commonly used in metabolom
 
 List of MHD Domain Objects:
 
-- [Study](mhd-nodes.md#study)
-- [Publication](mhd-nodes.md#publication)
-- [Person](mhd-nodes.md#person)
-- [Organization](mhd-nodes.md#organization)
-- [Project](mhd-nodes.md#project)
-- [Factor Definition](mhd-nodes.md#factor-definition)
-- [Protocol](mhd-nodes.md#protocol)
-- [Parameter Definition](mhd-nodes.md#parameter-definition)
-- [Metadata File](mhd-nodes.md#metadata-file)
-- [Raw Data File](mhd-nodes.md#raw-data-file)
-- [Derived Data File](mhd-nodes.md#derived-data-file)
-- [Result File](mhd-nodes.md#result-file)
-- [Supplementary File](mhd-nodes.md#supplementary-file)
-- [Metabolite](mhd-nodes.md#metabolite)
-- [Assay](mhd-nodes.md#assay)
-- [Subject](mhd-nodes.md#subject)
-- [Sample](mhd-nodes.md#sample)
-- [Characteristic Definition](mhd-nodes.md#characteristic-definition)
-- [Sample Run](mhd-nodes.md#sample-run)
-- [Sample Run Configuration](mhd-nodes.md#sample-run-configuration)
+- [Study](mhd-ms-nodes.md#study)
+- [Publication](mhd-ms-nodes.md#publication)
+- [Person](mhd-ms-nodes.md#person)
+- [Organization](mhd-ms-nodes.md#organization)
+- [Project](mhd-ms-nodes.md#project)
+- [Factor Definition](mhd-ms-nodes.md#factor-definition)
+- [Protocol](mhd-ms-nodes.md#protocol)
+- [Parameter Definition](mhd-ms-nodes.md#parameter-definition)
+- [Metadata File](mhd-ms-nodes.md#metadata-file)
+- [Raw Data File](mhd-ms-nodes.md#raw-data-file)
+- [Derived Data File](mhd-ms-nodes.md#derived-data-file)
+- [Result File](mhd-ms-nodes.md#result-file)
+- [Supplementary File](mhd-ms-nodes.md#supplementary-file)
+- [Metabolite](mhd-ms-nodes.md#metabolite)
+- [Assay](mhd-ms-nodes.md#assay)
+- [Subject](mhd-ms-nodes.md#subject)
+- [Specimen](mhd-ms-nodes.md#specimen)
+- [Sample](mhd-ms-nodes.md#sample)
+- [Characteristic Definition](mhd-ms-nodes.md#characteristic-definition)
+- [Sample Run](mhd-ms-nodes.md#sample-run)
+- [Sample Run Configuration](mhd-ms-nodes.md#sample-run-configuration)
 
 The following properties are common for all  *MHD Domain Objects*.
 
@@ -43,7 +44,7 @@ The following properties are common for all  *MHD Domain Objects*.
 |**tags**|optional|<code>*list of KeyValue*<code>|Key and values. key and values may be CV Term|
 |**descriptors**|optional|<code>*list of CvTerm*<code>|Descriptors for the object|
 |**external_references**|optional|<code>*list of KeyValue*<code>|List of external references that describes the resource represented by the node. Key MUST be a URI type (FTP, URL, etc.)|
-|**uri_list**|optional|<code>*list of KeyValue*<code>|List of URI addresses to access the resource represented by the node |
+|**url_list**|optional|<code>*list of AnyUrl*<code>|List of URI addresses to access the resource represented by the node |
 
 ---
 
@@ -65,7 +66,7 @@ The following properties are common for all  *MHD Cv Term Objects*.
 ## MHD Common Data Model Relationships
 
 A relationship is a link between MHD Domain Objects or MHD Cv Term Objects that describes the way in which the objects are related. Relationships can be represented using an MHD Relationship Object or a property (embedded relationship)  in a node. Property names that used as embedded relationship in a node end with <code>_ref</code> or <code>_refs</code> (for multiple), and their values are id's of target nodes.
-
+ 
 *MHD Relationship Object* has the following properties.
 
 
@@ -76,7 +77,7 @@ A relationship is a link between MHD Domain Objects or MHD Cv Term Objects that 
 |**created_by_ref**|optional|<code>*str*<code>|The id of the data provider.|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key and values. key and values may be CV Term|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|List of external references that describes the resource represented by the relationship. Key MUST be a URI type (FTP, URL, etc.)|
-|**uri_list**|optional|<code>*list[KeyValue]*<code>|List of URI addresses to access the resource represented by the relationship |
+|**url_list**|optional|<code>*list[KeyValue]*<code>|List of URI addresses to access the resource represented by the relationship |
 |**source_ref**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId*<code>|The id of source node|
 |**relationship_name**|required|<code>*str*<code>|Relationship name|
 |**target_ref**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId*<code>|The id of target node|

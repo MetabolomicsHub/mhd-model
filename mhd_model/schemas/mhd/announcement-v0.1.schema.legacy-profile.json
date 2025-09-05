@@ -5,7 +5,7 @@
         "full_name": {
           "anyOf": [
             {
-              "minLength": 2,
+              "minLength": 5,
               "type": "string"
             },
             {
@@ -311,46 +311,14 @@
           "title": "Name",
           "type": "string"
         },
-        "file_url_list": {
+        "url_list": {
           "items": {
-            "$ref": "#/$defs/CvTermValue",
-            "profileValidation": {
-              "allowNullValue": false,
-              "controls": [
-                {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
-                  "cvTerms": [
-                    {
-                      "accession": "EDAM:1052",
-                      "name": "URL",
-                      "source": "EDAM"
-                    },
-                    {
-                      "accession": "NCIT:C100047",
-                      "name": "File Transfer Protocol",
-                      "source": "NCIT"
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "all",
-                  "minimum": null,
-                  "name": "allowed-cv-terms",
-                  "negate": false
-                }
-              ],
-              "inputType": "list-or-item",
-              "joinOperator": "and",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "validation-group",
-              "negate": false
-            }
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
           },
           "minItems": 1,
-          "title": "File Url List",
+          "title": "Url List",
           "type": "array"
         },
         "compression_format": {
@@ -390,37 +358,44 @@
           "title": "Compression Format"
         },
         "format": {
-          "$ref": "#/$defs/CvTerm",
-          "profileValidation": {
-            "allowNullValue": false,
-            "allowedMissingCvTerms": null,
-            "allowedOtherSources": null,
-            "allowedPlaceholderValues": null,
-            "inputType": "list-or-item",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "allowed-children-cv-terms",
-            "negate": false,
-            "parentCvTerms": [
-              {
-                "allowOnlyLeaf": false,
-                "allowParent": false,
-                "cvTerm": {
-                  "accession": "EDAM:1915",
-                  "name": "Format",
-                  "source": "EDAM"
-                },
-                "excludedCvTerms": null,
-                "indexCvTerms": false
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  }
+                ]
               }
-            ]
-          },
+            },
+            {
+              "type": "null"
+            }
+          ],
           "title": "Format"
         }
       },
       "required": [
         "name",
-        "file_url_list",
+        "url_list",
         "format"
       ],
       "title": "DerivedDataFile",
@@ -483,46 +458,14 @@
           "title": "Name",
           "type": "string"
         },
-        "file_url_list": {
+        "url_list": {
           "items": {
-            "$ref": "#/$defs/CvTermValue",
-            "profileValidation": {
-              "allowNullValue": false,
-              "controls": [
-                {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
-                  "cvTerms": [
-                    {
-                      "accession": "EDAM:1052",
-                      "name": "URL",
-                      "source": "EDAM"
-                    },
-                    {
-                      "accession": "NCIT:C100047",
-                      "name": "File Transfer Protocol",
-                      "source": "NCIT"
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "all",
-                  "minimum": null,
-                  "name": "allowed-cv-terms",
-                  "negate": false
-                }
-              ],
-              "inputType": "list-or-item",
-              "joinOperator": "and",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "validation-group",
-              "negate": false
-            }
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
           },
           "minItems": 1,
-          "title": "File Url List",
+          "title": "Url List",
           "type": "array"
         },
         "compression_format": {
@@ -562,37 +505,44 @@
           "title": "Compression Format"
         },
         "format": {
-          "$ref": "#/$defs/CvTerm",
-          "profileValidation": {
-            "allowNullValue": false,
-            "allowedMissingCvTerms": null,
-            "allowedOtherSources": null,
-            "allowedPlaceholderValues": null,
-            "inputType": "list-or-item",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "allowed-children-cv-terms",
-            "negate": false,
-            "parentCvTerms": [
-              {
-                "allowOnlyLeaf": false,
-                "allowParent": false,
-                "cvTerm": {
-                  "accession": "EDAM:1915",
-                  "name": "Format",
-                  "source": "EDAM"
-                },
-                "excludedCvTerms": null,
-                "indexCvTerms": false
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  }
+                ]
               }
-            ]
-          },
+            },
+            {
+              "type": "null"
+            }
+          ],
           "title": "Format"
         }
       },
       "required": [
         "name",
-        "file_url_list",
+        "url_list",
         "format"
       ],
       "title": "MetadataFile",
@@ -751,46 +701,14 @@
           "title": "Name",
           "type": "string"
         },
-        "file_url_list": {
+        "url_list": {
           "items": {
-            "$ref": "#/$defs/CvTermValue",
-            "profileValidation": {
-              "allowNullValue": false,
-              "controls": [
-                {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
-                  "cvTerms": [
-                    {
-                      "accession": "EDAM:1052",
-                      "name": "URL",
-                      "source": "EDAM"
-                    },
-                    {
-                      "accession": "NCIT:C100047",
-                      "name": "File Transfer Protocol",
-                      "source": "NCIT"
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "all",
-                  "minimum": null,
-                  "name": "allowed-cv-terms",
-                  "negate": false
-                }
-              ],
-              "inputType": "list-or-item",
-              "joinOperator": "and",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "validation-group",
-              "negate": false
-            }
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
           },
           "minItems": 1,
-          "title": "File Url List",
+          "title": "Url List",
           "type": "array"
         },
         "compression_format": {
@@ -871,7 +789,7 @@
       },
       "required": [
         "name",
-        "file_url_list",
+        "url_list",
         "format"
       ],
       "title": "RawDataFile",
@@ -937,46 +855,14 @@
           "title": "Name",
           "type": "string"
         },
-        "file_url_list": {
+        "url_list": {
           "items": {
-            "$ref": "#/$defs/CvTermValue",
-            "profileValidation": {
-              "allowNullValue": false,
-              "controls": [
-                {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
-                  "cvTerms": [
-                    {
-                      "accession": "EDAM:1052",
-                      "name": "URL",
-                      "source": "EDAM"
-                    },
-                    {
-                      "accession": "NCIT:C100047",
-                      "name": "File Transfer Protocol",
-                      "source": "NCIT"
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "all",
-                  "minimum": null,
-                  "name": "allowed-cv-terms",
-                  "negate": false
-                }
-              ],
-              "inputType": "list-or-item",
-              "joinOperator": "and",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "validation-group",
-              "negate": false
-            }
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
           },
           "minItems": 1,
-          "title": "File Url List",
+          "title": "Url List",
           "type": "array"
         },
         "compression_format": {
@@ -1016,37 +902,44 @@
           "title": "Compression Format"
         },
         "format": {
-          "$ref": "#/$defs/CvTerm",
-          "profileValidation": {
-            "allowNullValue": false,
-            "allowedMissingCvTerms": null,
-            "allowedOtherSources": null,
-            "allowedPlaceholderValues": null,
-            "inputType": "list-or-item",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "allowed-children-cv-terms",
-            "negate": false,
-            "parentCvTerms": [
-              {
-                "allowOnlyLeaf": false,
-                "allowParent": false,
-                "cvTerm": {
-                  "accession": "EDAM:1915",
-                  "name": "Format",
-                  "source": "EDAM"
-                },
-                "excludedCvTerms": null,
-                "indexCvTerms": false
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  }
+                ]
               }
-            ]
-          },
+            },
+            {
+              "type": "null"
+            }
+          ],
           "title": "Format"
         }
       },
       "required": [
         "name",
-        "file_url_list",
+        "url_list",
         "format"
       ],
       "title": "ResultFile",
@@ -1083,46 +976,14 @@
           "title": "Name",
           "type": "string"
         },
-        "file_url_list": {
+        "url_list": {
           "items": {
-            "$ref": "#/$defs/CvTermValue",
-            "profileValidation": {
-              "allowNullValue": false,
-              "controls": [
-                {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
-                  "cvTerms": [
-                    {
-                      "accession": "EDAM:1052",
-                      "name": "URL",
-                      "source": "EDAM"
-                    },
-                    {
-                      "accession": "NCIT:C100047",
-                      "name": "File Transfer Protocol",
-                      "source": "NCIT"
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "all",
-                  "minimum": null,
-                  "name": "allowed-cv-terms",
-                  "negate": false
-                }
-              ],
-              "inputType": "list-or-item",
-              "joinOperator": "and",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "validation-group",
-              "negate": false
-            }
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
           },
           "minItems": 1,
-          "title": "File Url List",
+          "title": "Url List",
           "type": "array"
         },
         "compression_format": {
@@ -1162,37 +1023,44 @@
           "title": "Compression Format"
         },
         "format": {
-          "$ref": "#/$defs/CvTerm",
-          "profileValidation": {
-            "allowNullValue": false,
-            "allowedMissingCvTerms": null,
-            "allowedOtherSources": null,
-            "allowedPlaceholderValues": null,
-            "inputType": "list-or-item",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "allowed-children-cv-terms",
-            "negate": false,
-            "parentCvTerms": [
-              {
-                "allowOnlyLeaf": false,
-                "allowParent": false,
-                "cvTerm": {
-                  "accession": "EDAM:1915",
-                  "name": "Format",
-                  "source": "EDAM"
-                },
-                "excludedCvTerms": null,
-                "indexCvTerms": false
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  }
+                ]
               }
-            ]
-          },
+            },
+            {
+              "type": "null"
+            }
+          ],
           "title": "Format"
         }
       },
       "required": [
         "name",
-        "file_url_list",
+        "url_list",
         "format"
       ],
       "title": "SupplementaryFile",
@@ -1329,81 +1197,17 @@
       "title": "Cv Definitions",
       "type": "array"
     },
-    "mhd_metadata_file_uri": {
-      "$ref": "#/$defs/CvTermValue",
-      "profileValidation": {
-        "allowNullValue": false,
-        "controls": [
-          {
-            "allowNullValue": false,
-            "allowedMissingCvTerms": null,
-            "allowedOtherSources": null,
-            "allowedPlaceholderValues": null,
-            "cvTerms": [
-              {
-                "accession": "EDAM:1052",
-                "name": "URL",
-                "source": "EDAM"
-              },
-              {
-                "accession": "NCIT:C100047",
-                "name": "File Transfer Protocol",
-                "source": "NCIT"
-              }
-            ],
-            "inputType": "list-or-item",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "allowed-cv-terms",
-            "negate": false
-          }
-        ],
-        "inputType": "list-or-item",
-        "joinOperator": "and",
-        "listJoinOperator": "all",
-        "minimum": null,
-        "name": "validation-group",
-        "negate": false
-      },
-      "title": "Mhd Metadata File Uri"
+    "mhd_metadata_file_url": {
+      "format": "uri",
+      "minLength": 1,
+      "title": "Mhd Metadata File Url",
+      "type": "string"
     },
     "dataset_url_list": {
       "items": {
-        "$ref": "#/$defs/CvTermValue",
-        "profileValidation": {
-          "allowNullValue": false,
-          "controls": [
-            {
-              "allowNullValue": false,
-              "allowedMissingCvTerms": null,
-              "allowedOtherSources": null,
-              "allowedPlaceholderValues": null,
-              "cvTerms": [
-                {
-                  "accession": "EDAM:1052",
-                  "name": "URL",
-                  "source": "EDAM"
-                },
-                {
-                  "accession": "NCIT:C100047",
-                  "name": "File Transfer Protocol",
-                  "source": "NCIT"
-                }
-              ],
-              "inputType": "list-or-item",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "allowed-cv-terms",
-              "negate": false
-            }
-          ],
-          "inputType": "list-or-item",
-          "joinOperator": "and",
-          "listJoinOperator": "all",
-          "minimum": null,
-          "name": "validation-group",
-          "negate": false
-        }
+        "format": "uri",
+        "minLength": 1,
+        "type": "string"
       },
       "minItems": 1,
       "title": "Dataset Url List",
@@ -1466,7 +1270,7 @@
       "default": null,
       "title": "Principal Investigators"
     },
-    "measurement_methodology": {
+    "measurement_type": {
       "anyOf": [
         {
           "items": {
@@ -1507,7 +1311,7 @@
         }
       ],
       "default": null,
-      "title": "Measurement Methodology"
+      "title": "Measurement Type"
     },
     "technology_type": {
       "items": {
@@ -1540,7 +1344,43 @@
       "title": "Technology Type",
       "type": "array"
     },
-    "analysis_type": {
+    "omics_type": {
+      "items": {
+        "$ref": "#/$defs/CvTerm",
+        "profileValidation": {
+          "allowNullValue": false,
+          "allowedMissingCvTerms": null,
+          "allowedOtherSources": null,
+          "allowedPlaceholderValues": null,
+          "cvTerms": [
+            {
+              "accession": "EDAM:3172",
+              "name": "Metabolomics",
+              "source": "EDAM"
+            },
+            {
+              "accession": "EDAM:0153",
+              "name": "Lipidomics",
+              "source": "EDAM"
+            },
+            {
+              "accession": "EDAM:3955",
+              "name": "Fluxomics",
+              "source": "EDAM"
+            }
+          ],
+          "inputType": "list-or-item",
+          "listJoinOperator": "all",
+          "minimum": null,
+          "name": "allowed-cv-terms",
+          "negate": false
+        }
+      },
+      "minItems": 1,
+      "title": "Omics Type",
+      "type": "array"
+    },
+    "assay_type": {
       "items": {
         "$ref": "#/$defs/CvTerm",
         "profileValidation": {
@@ -1578,7 +1418,7 @@
         }
       },
       "minItems": 1,
-      "title": "Analysis Type",
+      "title": "Assay Type",
       "type": "array"
     },
     "submitter_keywords": {
@@ -1666,7 +1506,10 @@
                   {
                     "allowNullValue": false,
                     "allowedMissingCvTerms": null,
-                    "allowedOtherSources": null,
+                    "allowedOtherSources": [
+                      "wikidata",
+                      "ILX"
+                    ],
                     "allowedPlaceholderValues": null,
                     "inputType": "list-or-item",
                     "listJoinOperator": "all",
@@ -1674,7 +1517,10 @@
                     "name": "allowed-cv-list",
                     "negate": false,
                     "sourceNames": [
-                      "DOID"
+                      "DOID",
+                      "HP",
+                      "MP",
+                      "SNOMED"
                     ]
                   }
                 ],
@@ -1703,7 +1549,7 @@
       "default": null,
       "title": "Study Factors"
     },
-    "sample_characteristics": {
+    "characteristic_values": {
       "anyOf": [
         {
           "items": {
@@ -1760,7 +1606,7 @@
         }
       ],
       "default": null,
-      "title": "Sample Characteristics"
+      "title": "Characteristic Values"
     },
     "protocols": {
       "anyOf": [
@@ -1870,7 +1716,7 @@
       "default": null,
       "title": "Reported Metabolites"
     },
-    "repository_metadata_file_url_list": {
+    "repository_metadata_file_list": {
       "anyOf": [
         {
           "items": {
@@ -1882,9 +1728,9 @@
           "type": "null"
         }
       ],
-      "title": "Repository Metadata File Url List"
+      "title": "Repository Metadata File List"
     },
-    "raw_data_file_url_list": {
+    "raw_data_file_list": {
       "anyOf": [
         {
           "items": {
@@ -1897,9 +1743,9 @@
         }
       ],
       "default": null,
-      "title": "Raw Data File Url List"
+      "title": "Raw Data File List"
     },
-    "derived_data_file_url_list": {
+    "derived_data_file_list": {
       "anyOf": [
         {
           "items": {
@@ -1912,9 +1758,9 @@
         }
       ],
       "default": null,
-      "title": "Derived Data File Url List"
+      "title": "Derived Data File List"
     },
-    "supplementary_file_url_list": {
+    "supplementary_file_list": {
       "anyOf": [
         {
           "items": {
@@ -1927,9 +1773,9 @@
         }
       ],
       "default": null,
-      "title": "Supplementary File Url List"
+      "title": "Supplementary File List"
     },
-    "result_file_url_list": {
+    "result_file_list": {
       "anyOf": [
         {
           "items": {
@@ -1942,7 +1788,7 @@
         }
       ],
       "default": null,
-      "title": "Result File Url List"
+      "title": "Result File List"
     }
   },
   "required": [
@@ -1950,7 +1796,7 @@
     "repository_identifier",
     "$schema",
     "profile_uri",
-    "mhd_metadata_file_uri",
+    "mhd_metadata_file_url",
     "dataset_url_list",
     "license",
     "title",
@@ -1959,8 +1805,9 @@
     "public_release_date",
     "submitters",
     "technology_type",
-    "analysis_type",
-    "repository_metadata_file_url_list"
+    "omics_type",
+    "assay_type",
+    "repository_metadata_file_list"
   ],
   "title": "AnnouncementLegacyProfile",
   "type": "object"

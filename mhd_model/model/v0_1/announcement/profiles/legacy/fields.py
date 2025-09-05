@@ -12,7 +12,6 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_MEASUREMENT_TYPES,
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
-    COMMON_URI_TYPES,
     MISSING_PUBLICATION_REASON,
     REQUIRED_COMMON_PARAMETER_DEFINITIONS,
 )
@@ -161,7 +160,7 @@ ProtocolName = Annotated[
     ),
 ]
 
-SampleCharacteristics = Annotated[
+CharacteristicValues = Annotated[
     list[CvTermKeyValue],
     Field(
         json_schema_extra={
@@ -227,7 +226,7 @@ StudyFactors = Annotated[
                         controls=[
                             AllowedCvList(
                                 source_names=["DOID", "HP", "MP", "SNOMED"],
-                                allowed_other_sources=["wikidata", "RRID"],
+                                allowed_other_sources=["wikidata", "ILX"],
                             )
                         ],
                         min_value_count=1,
@@ -324,22 +323,6 @@ AnalysisType = Annotated[
             "profileValidation": AllowedCvTerms(
                 cv_terms=list(COMMON_ASSAY_TYPES.values())
             ).model_dump(by_alias=True)
-        },
-    ),
-]
-
-CvTermUriValue = Annotated[
-    CvTermValue,
-    Field(
-        json_schema_extra={
-            "profileValidation": ProfileValidationGroup(
-                controls=[
-                    AllowedCvTerms(
-                        cv_terms=list(COMMON_URI_TYPES.values()),
-                    ),
-                    # AccessibleURI(),
-                ]
-            ).model_dump(serialize_as_any=True, by_alias=True)
         },
     ),
 ]

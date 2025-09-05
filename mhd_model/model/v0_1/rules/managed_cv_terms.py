@@ -11,16 +11,6 @@ MANAGED_CV_TERM_OBJECTS = {
     "parameter-type",
     "parameter-value",
     "protocol-type",
-    "uri-type",
-}
-
-COMMON_URI_TYPES = {
-    "EDAM:1052": CvTerm(source="EDAM", accession="EDAM:1052", name="URL"),
-    "NCIT:C100047": CvTerm(
-        source="NCIT",
-        accession="NCIT:C100047",
-        name="File Transfer Protocol",
-    ),
 }
 
 COMMON_TECHNOLOGY_TYPES = {
@@ -93,15 +83,15 @@ COMMON_OMICS_TYPES = {
         accession="EDAM:3172",
         name="Metabolomics",
     ),
-    "EDAM:0121": CvTerm(
-        source="EDAM",
-        accession="EDAM:0121",
-        name="Proteomics",
-    ),
     "EDAM:0153": CvTerm(
         source="EDAM",
         accession="EDAM:0153",
         name="Lipidomics",
+    ),
+    "EDAM:3955": CvTerm(
+        source="EDAM",
+        accession="EDAM:3955",
+        name="Fluxomics",
     ),
     # TODO others?
 }
@@ -126,9 +116,9 @@ COMMON_CHARACTERISTIC_DEFINITIONS = {
     ),
     "EFO:0000408": CvTerm(source="EFO", accession="EFO:0000408", name="disease"),
     "EFO:0000324": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
-    "GAZ:00000448": CvTerm(
-        source="EFO", accession="GAZ:00000448", name="geographical location"
-    ),
+    # "GAZ:00000448": CvTerm(
+    #     source="EFO", accession="GAZ:00000448", name="geographical location"
+    # ),
 }
 
 

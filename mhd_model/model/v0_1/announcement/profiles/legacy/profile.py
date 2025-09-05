@@ -1,4 +1,4 @@
-from pydantic import EmailStr, Field
+from pydantic import AnyUrl, EmailStr, Field
 from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.announcement.profiles.base import fields
@@ -11,24 +11,24 @@ from mhd_model.shared.model import MhdConfigModel
 
 class BaseFile(MhdConfigModel):
     name: Annotated[str, Field(min_length=2)]
-    file_url_list: Annotated[list[fields.CvTermUriValue], Field(min_length=1)]
+    url_list: Annotated[list[AnyUrl], Field(min_length=1)]
     compression_format: Annotated[None | fields.CompressionFormat, Field()] = None
 
 
 class MetadataFile(BaseFile):
-    format: Annotated[fields.MetadataFileFormat, Field()]
+    format: Annotated[None | fields.MetadataFileFormat, Field()]
 
 
 class RawDataFile(BaseFile):
-    format: Annotated[fields.RawDataFileFormat, Field()]
+    format: Annotated[None | fields.RawDataFileFormat, Field()]
 
 
 class ResultFile(BaseFile):
-    format: Annotated[fields.ResultFileFormat, Field()]
+    format: Annotated[None | fields.ResultFileFormat, Field()]
 
 
 class DerivedDataFile(BaseFile):
-    format: Annotated[fields.DerivedFileFormat, Field()]
+    format: Annotated[None | fields.DerivedFileFormat, Field()]
 
 
 class SupplementaryFile(BaseFile):

@@ -24,7 +24,7 @@ MsTechnologyType = Annotated[
     ),
 ]
 
-ExtendedSampleCharacteristics = Annotated[
+ExtendedCharacteristicValues = Annotated[
     list[CvTermKeyValue],
     Field(
         min_length=1,
@@ -38,7 +38,7 @@ ExtendedSampleCharacteristics = Annotated[
                         controls=[
                             AllowedCvList(
                                 source_names=["ENVO", "NCBITAXON"],
-                                allowed_other_sources=["wikidata", "RRID"],
+                                allowed_other_sources=["wikidata", "ILX"],
                             )
                         ],
                         min_value_count=1,
@@ -51,7 +51,7 @@ ExtendedSampleCharacteristics = Annotated[
                         ),
                         controls=[
                             AllowedCvList(
-                                source_names=["UBERON", "BTO", "NCIT", "SNOMED"]
+                                source_names=["UBERON", "BTO", "NCIT", "SNOMED", "MSIO"]
                             )
                         ],
                         min_value_count=1,
@@ -65,7 +65,7 @@ ExtendedSampleCharacteristics = Annotated[
                         controls=[
                             AllowedCvList(
                                 source_names=["DOID", "HP", "MP", "SNOMED"],
-                                allowed_other_sources=["wikidata", "RRID"],
+                                allowed_other_sources=["wikidata", "ILX"],
                             )
                         ],
                         min_value_count=1,

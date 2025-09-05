@@ -39,8 +39,8 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
     assay_type: Annotated[list[fields.MsAnalysisType], Field(min_length=1)]
 
     study_factors: Annotated[StudyFactors, Field()]
-    sample_characteristics: Annotated[fields.ExtendedSampleCharacteristics, Field()]
+    characteristic_values: Annotated[fields.ExtendedCharacteristicValues, Field()]
     protocols: Annotated[None | Protocols, Field()] = None
 
-    raw_data_file_url_list: Annotated[list[RawDataFile], Field(min_length=1)]
-    result_file_url_list: Annotated[list[ResultFile], Field(min_length=1)]
+    raw_data_file_list: Annotated[list[RawDataFile], Field(min_length=1)]
+    result_file_list: Annotated[list[ResultFile], Field(min_length=1)]

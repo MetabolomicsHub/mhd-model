@@ -28,7 +28,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     CvTerm,
     CvTermValue,
     IdentifiableMhdModel,
-    KeyValue,
 )
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
 from mhd_model.model.v0_1.rules.cv_definitions import (
@@ -40,13 +39,13 @@ from mhd_model.shared.model import CvDefinition
 logger = logging.getLogger(__name__)
 
 
-def update_sample_characteristics(
+def update_characteristic_values(
     all_nodes_map: dict[str, IdentifiableMhdModel],
     relationships_map: dict[str, BaseMhdRelationship],
     announcement: AnnouncementMsProfile,
 ):
     study_characteristics = set()
-    characteristics: OrderedDict[str, list[str]] = OrderedDict()
+    characteristic_values: OrderedDict[str, list[str]] = OrderedDict()
     for rel in relationships_map.values():
         source = all_nodes_map[rel.source_ref]
         if rel.relationship_name == "has-characteristic-definition":
@@ -55,11 +54,13 @@ def update_sample_characteristics(
 
         if rel.relationship_name == "has-instance":
             if isinstance(source, graph_nodes.CharacteristicDefinition):
-                if rel.source_ref not in characteristics:
-                    characteristics[rel.source_ref] = []
-                characteristics[rel.source_ref].append(rel.target_ref)
+                if rel.source_ref not in characteristic_values:
+                    characteristic_values[rel.source_ref] = []
+                characteristic_values[rel.source_ref].append(rel.target_ref)
     referenced_characteristics = {
-        x: y for x, y in characteristics.items() if x in study_characteristics and y
+        x: y
+        for x, y in characteristic_values.items()
+        if x in study_characteristics and y
     }
     characteristic_keys = [
         (x, all_nodes_map[x]) for x, y in referenced_characteristics.items()
@@ -78,9 +79,9 @@ def update_sample_characteristics(
             values.append(val)
         type_node = all_nodes_map.get(characteristic.characteristic_type_ref, None)
         key = CvTerm.model_validate(type_node.model_dump(by_alias=True))
-        if not announcement.sample_characteristics:
-            announcement.sample_characteristics = []
-        announcement.sample_characteristics.append(
+        if not announcement.characteristic_values:
+            announcement.characteristic_values = []
+        announcement.characteristic_values.append(
             ExtendedCvTermKeyValue(key=key, values=values)
         )
 
@@ -207,23 +208,6 @@ def update_protocol_parameters(
             announcement.protocols.append(protocol)
 
 
-def convert_url_list(
-    type_map: dict[str, dict[IdentifiableMhdModel]], url_list: None | list[KeyValue]
-):
-    converted_list = []
-    if not url_list:
-        return converted_list
-
-    if "url-type" in type_map:
-        for item in url_list:
-            if item.key in type_map["url-type"]:
-                url_type: graph_nodes.CvTermObject = type_map["url-type"][item.key]
-                url = CvTermValue.model_validate(url_type, from_attributes=True)
-                url.value = item.value
-                converted_list.append(url)
-    return converted_list
-
-
 def convert_file(
     all_nodes_map,
     type_map: dict[str, dict[str, IdentifiableMhdModel]],
@@ -234,7 +218,7 @@ def convert_file(
     if file_type_name not in type_map or ref not in type_map[file_type_name]:
         return None
     item = type_map[file_type_name][ref]
-    url_list = convert_url_list(type_map, item.url_list)
+    url_list = item.url_list
     format = None
     if item.format_ref in all_nodes_map:
         format_node = all_nodes_map[item.format_ref]
@@ -246,7 +230,7 @@ def convert_file(
 
     file = file_class(
         name=item.name,
-        file_url_list=url_list,
+        url_list=url_list,
         compression_format=compression,
         format=format,
     )
@@ -377,14 +361,14 @@ def create_announcement_file(
                 term = CvTerm.model_validate(technology_type)
                 measurement_types[term.accession] = term
 
-    dataset_url_list = convert_url_list(type_map, study.url_list)
+    dataset_url_list = study.url_list
 
     announcement = AnnouncementBaseProfile(
         mhd_identifier=study.mhd_identifier,
         repository_identifier=study.repository_identifier,
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
-        mhd_metadata_file_uri=CvTermValue(
+        mhd_metadata_file_url=CvTermValue(
             accession="EDAM:1052",
             name="URL",
             source="EDAM",
@@ -401,14 +385,14 @@ def create_announcement_file(
         measurement_type=list(measurement_types.values()),
         technology_type=list(technology_types.values()),
         assay_type=list(assay_types.values()),
-        repository_metadata_file_url_list=[],
-        result_file_url_list=[],
-        raw_data_file_url_list=[],
-        derived_data_file_url_list=[],
-        supplementary_file_url_list=[],
+        repository_metadata_file_list=[],
+        result_file_list=[],
+        raw_data_file_list=[],
+        derived_data_file_list=[],
+        supplementary_file_list=[],
         publications=publications if publications else publication_status,
         # study_factors=[],
-        # sample_characteristics=[],
+        # characteristic_values=[],
     )
 
     update_keywords(all_nodes_map, relationship_name_map, announcement)
@@ -416,7 +400,7 @@ def create_announcement_file(
         all_nodes_map, relationship_name_map, type_map, study, announcement
     )
     update_study_factors(all_nodes_map, relationships_map, announcement)
-    update_sample_characteristics(all_nodes_map, relationships_map, announcement)
+    update_characteristic_values(all_nodes_map, relationships_map, announcement)
 
     if "metadata-file" in type_map:
         for ref in type_map["metadata-file"]:
@@ -424,13 +408,13 @@ def create_announcement_file(
                 all_nodes_map, type_map, "metadata-file", ref, MetadataFile
             )
             if metadata:
-                announcement.repository_metadata_file_url_list.append(metadata)
+                announcement.repository_metadata_file_list.append(metadata)
 
     if "result-file" in type_map:
         for ref in type_map["result-file"]:
             file = convert_file(all_nodes_map, type_map, "result-file", ref, ResultFile)
             if file:
-                announcement.result_file_url_list.append(file)
+                announcement.result_file_list.append(file)
 
     if "raw-data-file" in type_map:
         for ref in type_map["raw-data-file"]:
@@ -438,21 +422,21 @@ def create_announcement_file(
                 all_nodes_map, type_map, "raw-data-file", ref, RawDataFile
             )
             if file:
-                announcement.raw_data_file_url_list.append(file)
+                announcement.raw_data_file_list.append(file)
     if "derived-data-file" in type_map:
         for ref in type_map["derived-data-file"]:
             file = convert_file(
                 all_nodes_map, type_map, "derived-data-file", ref, DerivedDataFile
             )
             if file:
-                announcement.derived_data_file_url_list.append(file)
+                announcement.derived_data_file_list.append(file)
     if "supplementary-file" in type_map:
         for ref in type_map["supplementary-file"]:
             file = convert_file(
                 all_nodes_map, type_map, "supplementary-file", ref, SupplementaryFile
             )
             if file:
-                announcement.supplementary_file_url_list.append(file)
+                announcement.supplementary_file_list.append(file)
     identification_map = {}
     identification_links = relationship_name_map.get("identified-as")
     items = type_map.get("metabolite-identification")

@@ -1,6 +1,6 @@
 import datetime
 
-from pydantic import EmailStr, Field, HttpUrl
+from pydantic import AnyUrl, EmailStr, Field, HttpUrl
 from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
@@ -118,8 +118,8 @@ class Study(BaseLabeledMhdModel):
         None | HttpUrl,
         Field(examples=["https://creativecommons.org/publicdomain/zero/1.0/"]),
     ] = None
-
-    dataset_url_list: Annotated[None | list[KeyValue], Field()] = None
+    grant_identifiers: Annotated[None | list[GrantId], Field()] = None
+    dataset_url_list: Annotated[None | list[AnyUrl], Field()] = None
     related_datasets: Annotated[None | list[KeyValue], Field()] = None
     protocol_refs: Annotated[None | list[MhdObjectId], Field()] = None
 
@@ -292,7 +292,24 @@ class Subject(BaseLabeledMhdModel):
     name: Annotated[None | str, Field()] = None
     subject_type: Annotated[None | CvTerm, Field()] = None
     repository_identifier: Annotated[None | str, Field()] = None
-    # characteristic_values: Annotated[None | list[DefinitionValue], Field()] = None
+    additional_identifiers: Annotated[None | list[CvTermValue], Field()] = None
+
+    def get_label(self):
+        return self.name or self.id_
+
+
+class Specimen(BaseLabeledMhdModel):
+    type_: Annotated[
+        None | MhdObjectType,
+        Field(
+            frozen=True,
+            description="The type property identifies type of the object",
+            alias="type",
+        ),
+    ] = "specimen"
+    name: Annotated[None | str, Field()] = None
+    repository_identifier: Annotated[None | str, Field()] = None
+    additional_identifiers: Annotated[None | list[CvTermValue], Field()] = None
 
     def get_label(self):
         return self.name or self.id_
@@ -310,10 +327,6 @@ class Sample(BaseLabeledMhdModel):
     name: Annotated[None | str, Field()] = None
     repository_identifier: Annotated[None | str, Field()] = None
     additional_identifiers: Annotated[None | list[CvTermValue], Field()] = None
-    subject_refs: Annotated[
-        None | list[MhdObjectId],
-        Field(),
-    ] = None
 
     def get_label(self):
         return self.name or self.id_

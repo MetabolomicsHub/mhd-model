@@ -39,7 +39,9 @@ nav:
 - index.md
 - MHD Common Data Model:
   - mhd/index.md
-  - Nodes & Relationhips: mhd/mhd-nodes.md
+  - Profiles:
+    - MetabolomicsHub Dataset : mhd/mhd-ms-nodes.md
+    - Legacy Dataset: mhd/mhd-legacy-nodes.md
 
 markdown_extensions:
 # Python Markdown
