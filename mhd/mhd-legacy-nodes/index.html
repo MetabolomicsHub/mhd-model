@@ -854,11 +854,11 @@
 <td>N (unbounded)</td>
 </tr>
 <tr>
+<td>Characteristic Value</td>
+<td>has-type</td>
 <td>Characteristic Type</td>
-<td>defined-in</td>
-<td>Study</td>
 <td>1</td>
-<td>1</td>
+<td>N (unbounded)</td>
 </tr>
 <tr>
 <td>Characteristic Value</td>
@@ -887,6 +887,13 @@
 <td>Metadata File</td>
 <td>1</td>
 <td>N (unbounded)</td>
+</tr>
+<tr>
+<td>Study</td>
+<td>provided-by</td>
+<td>Data Provider</td>
+<td>1</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -2009,7 +2016,7 @@
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></td>
-<td>Minimum length: <code>10</code><br>Validation Rule:<br> <code>Min Length: 10, Required</code></td>
+<td>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code></td>
 </tr>
 <tr>
 <td><strong>department</strong></td>
@@ -2289,6 +2296,15 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>parameter-type</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>parameter-definition</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
 <tr>
 <td>parameter-value</td>
 <td>instance-of</td>
@@ -2911,8 +2927,8 @@
 <td>has-type</td>
 <td>type-of</td>
 <td>protocol-type</td>
-<td>1</td>
-<td>1</td>
+<td>0</td>
+<td>N</td>
 <td></td>
 </tr>
 <tr>
@@ -2982,7 +2998,7 @@
 <td>type-of</td>
 <td>has-type</td>
 <td>protocol</td>
-<td>1</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -3658,6 +3674,15 @@
 </tr>
 <tr>
 <td>sample</td>
+<td>has-characteristic-value</td>
+<td>value-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>sample</td>
 <td>has-factor-value</td>
 <td>value-of</td>
 <td>factor-value</td>
@@ -3690,6 +3715,15 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>characteristic-value</td>
+<td>value-of</td>
+<td>has-characteristic-value</td>
+<td>sample</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
 <tr>
 <td>descriptor</td>
 <td>describes</td>
@@ -3731,7 +3765,7 @@
 <td>source-of</td>
 <td>derived-from</td>
 <td>sample</td>
-<td>1</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -4329,15 +4363,6 @@
 <tbody>
 <tr>
 <td>study</td>
-<td>defines</td>
-<td>defined-in</td>
-<td>characteristic-type</td>
-<td>0</td>
-<td>N</td>
-<td></td>
-</tr>
-<tr>
-<td>study</td>
 <td>described-as</td>
 <td>describes</td>
 <td>descriptor</td>
@@ -4503,8 +4528,8 @@
 <td>provided-by</td>
 <td>provides</td>
 <td>data-provider</td>
-<td>0</td>
-<td>N</td>
+<td>1</td>
+<td>1</td>
 <td></td>
 </tr>
 <tr>
@@ -4558,15 +4583,6 @@
 <td>1</td>
 <td>N</td>
 <td></td>
-</tr>
-<tr>
-<td>characteristic-type</td>
-<td>defined-in</td>
-<td>defines</td>
-<td>study</td>
-<td>1</td>
-<td>1</td>
-<td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 <tr>
 <td>data-provider</td>
@@ -4841,9 +4857,9 @@
 <td>has-characteristic-value</td>
 <td>value-of</td>
 <td>characteristic-value</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td></td>
+<td>Target Validation Rule:<br><code>-----<br>Ontology Sources:ENVO<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----</td>
 </tr>
 <tr>
 <td>subject</td>
@@ -4859,7 +4875,7 @@
 <td>source-of</td>
 <td>derived-from</td>
 <td>sample</td>
-<td>1</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -5176,15 +5192,6 @@
 <tbody>
 <tr>
 <td>characteristic-type</td>
-<td>defined-in</td>
-<td>defines</td>
-<td>study</td>
-<td>1</td>
-<td>1</td>
-<td><strong>Required min count in the dataset: 1.</strong></td>
-</tr>
-<tr>
-<td>characteristic-type</td>
 <td>type-of</td>
 <td>has-type</td>
 <td>characteristic-value</td>
@@ -5213,16 +5220,7 @@
 <td>has-type</td>
 <td>type-of</td>
 <td>characteristic-type</td>
-<td>0</td>
-<td>N</td>
-<td></td>
-</tr>
-<tr>
-<td>study</td>
-<td>defines</td>
-<td>defined-in</td>
-<td>characteristic-type</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -5304,7 +5302,7 @@
 <td>has-type</td>
 <td>type-of</td>
 <td>characteristic-type</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -5331,6 +5329,15 @@
 <td>value-of</td>
 <td>has-characteristic-value</td>
 <td>specimen</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>characteristic-value</td>
+<td>value-of</td>
+<td>has-characteristic-value</td>
+<td>sample</td>
 <td>0</td>
 <td>N</td>
 <td></td>
@@ -5370,6 +5377,15 @@
 <td></td>
 </tr>
 <tr>
+<td>sample</td>
+<td>has-characteristic-value</td>
+<td>value-of</td>
+<td>characteristic-value</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
 <td>specimen</td>
 <td>has-characteristic-value</td>
 <td>value-of</td>
@@ -5383,7 +5399,7 @@
 <td>has-characteristic-value</td>
 <td>value-of</td>
 <td>characteristic-value</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -5490,8 +5506,8 @@
 <td>provided-by</td>
 <td>provides</td>
 <td>data-provider</td>
-<td>0</td>
-<td>N</td>
+<td>1</td>
+<td>1</td>
 <td></td>
 </tr>
 </tbody>
@@ -6336,6 +6352,15 @@
 <tbody>
 <tr>
 <td>parameter-type</td>
+<td>has-instance</td>
+<td>instance-of</td>
+<td>parameter-definition</td>
+<td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>parameter-type</td>
 <td>type-of</td>
 <td>has-type</td>
 <td>parameter-value</td>
@@ -6559,7 +6584,7 @@
 <td>type-of</td>
 <td>has-type</td>
 <td>protocol</td>
-<td>1</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -6584,8 +6609,8 @@
 <td>has-type</td>
 <td>type-of</td>
 <td>protocol-type</td>
-<td>1</td>
-<td>1</td>
+<td>0</td>
+<td>N</td>
 <td></td>
 </tr>
 </tbody>
