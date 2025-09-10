@@ -10,7 +10,7 @@
 <link href="../mhd-ms-nodes/" rel="next"/>
 <link href="../../assets/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-<title>Base Dataset - Metabolomics Hub</title>
+<title>Profile 1 - Base Dataset - Metabolomics Hub</title>
 <link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -47,7 +47,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Base Dataset
+              Profile 1 - Base Dataset
             
           </span>
 </div>
@@ -178,14 +178,14 @@
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    Base Dataset
+    Profile 1 - Base Dataset
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
-    Base Dataset
+    Profile 1 - Base Dataset
     
   </span>
 </a>
@@ -454,7 +454,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../mhd-ms-nodes/">
 <span class="md-ellipsis">
-    MetabolomicsHub Dataset
+    Profile 2 - MetabolomicsHub Dataset
     
   </span>
 </a>
@@ -462,7 +462,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="../mhd-legacy-nodes/">
 <span class="md-ellipsis">
-    Legacy Dataset
+    Profile 3 - Legacy Dataset
     
   </span>
 </a>
@@ -481,6 +481,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="metabolomics-hub-common-data-model-nodes-mhd-base-profile">Metabolomics Hub Common Data Model Nodes - MHD Base Profile<a class="headerlink" href="#metabolomics-hub-common-data-model-nodes-mhd-base-profile" title="Permanent link">¶</a></h1>
+<p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json</a> </p>
 <h2 id="required-nodes-relationships">Required Nodes &amp; Relationships<a class="headerlink" href="#required-nodes-relationships" title="Permanent link">¶</a></h2>
 <p><strong>Required MHD Nodes</strong></p>
 <p><code>Study</code></p>
@@ -488,7 +489,6 @@
 <p><code>Data Provider</code></p>
 <p>The following graph shows only required nodes and required relationships. Relationships that start with 'embedded - ' show required node property.</p>
 <pre class="mermaid"><code>graph LR
-  Study[Study] ==&gt;|embedded - created_by| Data_Provider[Data Provider];
   Study[Study] ==&gt;|provided-by| Data_Provider[Data Provider];
   Data_Provider[Data Provider] ==&gt;|provides| Study[Study];
 </code></pre>
@@ -513,17 +513,33 @@
 </tr>
 <tr>
 <td>Study</td>
-<td>[embedded] - created_by</td>
+<td>provided-by</td>
 <td>Data Provider</td>
 <td>1</td>
 <td>1</td>
 </tr>
+</tbody>
+</table>
+<p><strong>Required Node Properties</strong></p>
+<table>
+<thead>
 <tr>
-<td>Study</td>
-<td>provided-by</td>
-<td>Data Provider</td>
-<td>1</td>
-<td>N (unbounded)</td>
+<th>Source Node</th>
+<th>Property Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data-provider</td>
+<td>value</td>
+</tr>
+<tr>
+<td>study</td>
+<td>mhd_identifier</td>
+</tr>
+<tr>
+<td>study</td>
+<td>repository_identifier</td>
 </tr>
 </tbody>
 </table>
@@ -770,7 +786,7 @@
 <td><strong>protocol_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br/>Target node type: <code><strong>protocol</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>protocol</strong></code></code></td>
+<td>The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br/>Target node type: <code><strong>protocol</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>protocol</strong></code><br/>Target node type: <code><strong>protocol</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>sample_run_refs</strong></td>
@@ -4072,7 +4088,7 @@
 </tr>
 <tr>
 <td><strong>created_by_ref</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>CvTermValueObjectId</em><code></code></code></td>
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>data-provider</strong></code><br/>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
@@ -4116,35 +4132,35 @@
 <td><strong>additional_identifiers</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
-<td>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>25</code><br/>Validation Rule:<br/> <code>Min Length: 25, Required</code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>60</code><br/>Validation Rule:<br/> <code>Min Length: 60, Required</code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>submission_date</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>datetime</em><code></code></code></td>
 <td></td>
 </tr>
 <tr>
 <td><strong>public_release_date</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>datetime</em><code></code></code></td>
 <td></td>
 </tr>
 <tr>
 <td><strong>license</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>HttpUrl</em><code></code></code></td>
 <td><br/>Example: <br/><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code></td>
 </tr>
@@ -4156,7 +4172,7 @@
 </tr>
 <tr>
 <td><strong>dataset_url_list</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
 <td></td>
 </tr>
@@ -4168,7 +4184,7 @@
 </tr>
 <tr>
 <td><strong>protocol_refs</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
 <td>Target node type: <code><strong>protocol</strong></code></td>
 </tr>
@@ -4356,7 +4372,7 @@
 <td>provides</td>
 <td>data-provider</td>
 <td>1</td>
-<td>N</td>
+<td>1</td>
 <td></td>
 </tr>
 <tr>
@@ -4379,7 +4395,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Embedded Relationships</strong>: <code>data-provider</code></p>
+<p><strong>Embedded Relationships</strong>: <code>data-provider, protocol</code></p>
 <p><strong>Reverse Node Relationships</strong></p>
 <table>
 <thead>
@@ -4998,7 +5014,7 @@
 </tr>
 <tr>
 <td><strong>name</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td>Label of CV term</td>
 </tr>
@@ -5317,7 +5333,7 @@
 <td>provides</td>
 <td>data-provider</td>
 <td>1</td>
-<td>N</td>
+<td>1</td>
 <td></td>
 </tr>
 </tbody>
@@ -6414,13 +6430,13 @@
               </div>
 </div>
 </a>
-<a aria-label="Next: MetabolomicsHub Dataset" class="md-footer__link md-footer__link--next" href="../mhd-ms-nodes/">
+<a aria-label="Next: Profile 2 - MetabolomicsHub Dataset" class="md-footer__link md-footer__link--next" href="../mhd-ms-nodes/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                MetabolomicsHub Dataset
+                Profile 2 - MetabolomicsHub Dataset
               </div>
 </div>
 <div class="md-footer__button md-icon">
