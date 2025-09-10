@@ -14,7 +14,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="mhd-ms-nodes/">
+        <link rel="next" href="mhd-base-nodes/">
       
       
       <link rel="icon" href="../assets/favicon.ico">
@@ -350,6 +350,8 @@
       
         
       
+        
+      
     
     
     
@@ -383,6 +385,29 @@
             Profiles
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mhd-base-nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Base Dataset
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -505,43 +530,43 @@
 <tr>
 <td><strong>id</strong></td>
 <td>required</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>The id property uniquely identifies the object. All <em>MHD Domain Objects</em> have <u><em>unique identifiers</em></u> even if their values are exactly same.</td>
 </tr>
 <tr>
 <td><strong>type</strong></td>
 <td>required</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>The type MUST be lower case and '-' seperated value of node name. e.g. raw-data-file for Raw Data File</td>
 </tr>
 <tr>
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>The id of the data provider.</td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
 <td>optional</td>
-<td><code><em>list of KeyValue</em><code></td>
+<td><code><em>list of KeyValue</em></code></td>
 <td>Key and values. key and values may be CV Term</td>
 </tr>
 <tr>
 <td><strong>descriptors</strong></td>
 <td>optional</td>
-<td><code><em>list of CvTerm</em><code></td>
+<td><code><em>list of CvTerm</em></code></td>
 <td>Descriptors for the object</td>
 </tr>
 <tr>
 <td><strong>external_references</strong></td>
 <td>optional</td>
-<td><code><em>list of KeyValue</em><code></td>
+<td><code><em>list of KeyValue</em></code></td>
 <td>List of external references that describes the resource represented by the node. Key MUST be a URI type (FTP, URL, etc.)</td>
 </tr>
 <tr>
 <td><strong>url_list</strong></td>
 <td>optional</td>
-<td><code><em>list of AnyUrl</em><code></td>
+<td><code><em>list of AnyUrl</em></code></td>
 <td>List of URI addresses to access the resource represented by the node</td>
 </tr>
 </tbody>
@@ -564,13 +589,13 @@
 <tr>
 <td><strong>id</strong></td>
 <td>required</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>The id property uniquely identifies the object. All <em>MHD Cv Term Objects</em> have <u><em>same identifiers</em></u> if their values are exactly same.</td>
 </tr>
 <tr>
 <td><strong>type</strong></td>
 <td>required</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>The type MUST be lower case and '-' seperated value of node name. e.g. parameter-value for Paramter Value</td>
 </tr>
 </tbody>
@@ -592,67 +617,67 @@
 <tr>
 <td><strong>id</strong></td>
 <td>required</td>
-<td><code><em>MhdRelationshipObjectId</em><code></td>
+<td><code><em>MhdRelationshipObjectId</em></code></td>
 <td>The id property uniquely identifies the object.</td>
 </tr>
 <tr>
 <td><strong>type</strong></td>
 <td>required</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>The type MUST be 'relationship'</td>
 </tr>
 <tr>
 <td><strong>created_by_ref</strong></td>
 <td>optional</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>The id of the data provider.</td>
 </tr>
 <tr>
 <td><strong>tags</strong></td>
 <td>optional</td>
-<td><code><em>list[KeyValue]</em><code></td>
+<td><code><em>list[KeyValue]</em></code></td>
 <td>Key and values. key and values may be CV Term</td>
 </tr>
 <tr>
 <td><strong>external_references</strong></td>
 <td>optional</td>
-<td><code><em>list[KeyValue]</em><code></td>
+<td><code><em>list[KeyValue]</em></code></td>
 <td>List of external references that describes the resource represented by the relationship. Key MUST be a URI type (FTP, URL, etc.)</td>
 </tr>
 <tr>
 <td><strong>url_list</strong></td>
 <td>optional</td>
-<td><code><em>list[KeyValue]</em><code></td>
+<td><code><em>list[KeyValue]</em></code></td>
 <td>List of URI addresses to access the resource represented by the relationship</td>
 </tr>
 <tr>
 <td><strong>source_ref</strong></td>
 <td>required</td>
-<td><code><em>CvTermValueObjectId or CvTermObjectId or MhdObjectId</em><code></td>
+<td><code><em>CvTermValueObjectId or CvTermObjectId or MhdObjectId</em></code></td>
 <td>The id of source node</td>
 </tr>
 <tr>
 <td><strong>relationship_name</strong></td>
 <td>required</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>Relationship name</td>
 </tr>
 <tr>
 <td><strong>target_ref</strong></td>
 <td>required</td>
-<td><code><em>CvTermValueObjectId or CvTermObjectId or MhdObjectId</em><code></td>
+<td><code><em>CvTermValueObjectId or CvTermObjectId or MhdObjectId</em></code></td>
 <td>The id of target node</td>
 </tr>
 <tr>
 <td><strong>source_role</strong></td>
 <td>optional</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>Role name of source node</td>
 </tr>
 <tr>
 <td><strong>target_role</strong></td>
 <td>optional</td>
-<td><code><em>str</em><code></td>
+<td><code><em>str</em></code></td>
 <td>Role name of target node</td>
 </tr>
 </tbody>
@@ -835,13 +860,13 @@
 <tr>
 <td><strong>key</strong></td>
 <td>required</td>
-<td><code><em>str or CvTermObjectId or MhdObjectId or CvTerm</em><code></td>
+<td><code><em>str or CvTermObjectId or MhdObjectId or CvTerm</em></code></td>
 <td>Key of the object. It can be a id of a node, str or CV Term</td>
 </tr>
 <tr>
 <td><strong>value</strong></td>
 <td>required</td>
-<td><code><em>CvTermValueObjectId or CvTermObjectId or MhdObjectId or str or CvTerm or CvTermValue or QuantitativeValue</em><code></td>
+<td><code><em>CvTermValueObjectId or CvTermObjectId or MhdObjectId or str or CvTerm or CvTermValue or QuantitativeValue</em></code></td>
 <td>Value of the object. It can be a id of a node, str, CV Term or Cv Term Value</td>
 </tr>
 </tbody>
@@ -900,13 +925,13 @@
         
         
           
-          <a href="mhd-ms-nodes/" class="md-footer__link md-footer__link--next" aria-label="Next: MetabolomicsHub Dataset">
+          <a href="mhd-base-nodes/" class="md-footer__link md-footer__link--next" aria-label="Next: Base Dataset">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                MetabolomicsHub Dataset
+                Base Dataset
               </div>
             </div>
             <div class="md-footer__button md-icon">
