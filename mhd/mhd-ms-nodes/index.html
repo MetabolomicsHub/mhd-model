@@ -489,19 +489,19 @@
 <p><code>Characteristic Type, Characteristic Value, Data Provider, Descriptor, Parameter Type, Parameter Value, Protocol Type</code></p>
 <p>The following graph shows only required nodes and required relationships. Relationships that start with 'embedded - ' show required node property.</p>
 <pre class="mermaid"><code>graph LR
-  Assay[Assay] ==&gt;|embedded - metadata_file| Metadata_File[Metadata File];
-  Assay[Assay] ==&gt;|embedded - technology_type| Descriptor[Descriptor];
-  Assay[Assay] ==&gt;|embedded - assay_type| Descriptor[Descriptor];
-  Assay[Assay] ==&gt;|embedded - measurement_type| Descriptor[Descriptor];
-  Assay[Assay] ==&gt;|embedded - omics_type| Descriptor[Descriptor];
-  Assay[Assay] ==&gt;|embedded - sample_run| Sample_Run[Sample Run];
-  Characteristic_Definition[Characteristic Definition] ==&gt;|embedded - characteristic_type| Characteristic_Type[Characteristic Type];
-  Parameter_Definition[Parameter Definition] ==&gt;|embedded - parameter_type| Parameter_Type[Parameter Type];
-  Protocol[Protocol] ==&gt;|embedded - protocol_type| Protocol_Type[Protocol Type];
-  Sample_Run[Sample Run] ==&gt;|embedded - sample| Sample[Sample];
-  Sample_Run[Sample Run] ==&gt;|embedded - raw_data_file| Raw_Data_File[Raw Data File];
-  Study[Study] ==&gt;|embedded - created_by| Data_Provider[Data Provider];
-  Study[Study] ==&gt;|embedded - protocol| Protocol[Protocol];
+  Assay[Assay] ==&gt;|embedded - metadata_file_ref| Metadata_File[Metadata File];
+  Assay[Assay] ==&gt;|embedded - technology_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==&gt;|embedded - assay_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==&gt;|embedded - measurement_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==&gt;|embedded - omics_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==&gt;|embedded - sample_run_refs| Sample_Run[Sample Run];
+  Characteristic_Definition[Characteristic Definition] ==&gt;|embedded - characteristic_type_ref| Characteristic_Type[Characteristic Type];
+  Parameter_Definition[Parameter Definition] ==&gt;|embedded - parameter_type_ref| Parameter_Type[Parameter Type];
+  Protocol[Protocol] ==&gt;|embedded - protocol_type_ref| Protocol_Type[Protocol Type];
+  Sample_Run[Sample Run] ==&gt;|embedded - sample_ref| Sample[Sample];
+  Sample_Run[Sample Run] ==&gt;|embedded - raw_data_file_refs| Raw_Data_File[Raw Data File];
+  Study[Study] ==&gt;|embedded - created_by_ref| Data_Provider[Data Provider];
+  Study[Study] ==&gt;|embedded - protocol_refs| Protocol[Protocol];
   Assay[Assay] ==&gt;|described-as| Descriptor[Descriptor];
   Assay[Assay] ==&gt;|part-of| Study[Study];
   Assay[Assay] ==&gt;|follows| Protocol[Protocol];
@@ -546,42 +546,42 @@
 <tbody>
 <tr>
 <td>Assay</td>
-<td>[embedded] - assay_type</td>
+<td>[embedded] - assay_type_ref</td>
 <td>Descriptor</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr>
 <td>Assay</td>
-<td>[embedded] - measurement_type</td>
+<td>[embedded] - measurement_type_ref</td>
 <td>Descriptor</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr>
 <td>Assay</td>
-<td>[embedded] - metadata_file</td>
+<td>[embedded] - metadata_file_ref</td>
 <td>Metadata File</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr>
 <td>Assay</td>
-<td>[embedded] - omics_type</td>
+<td>[embedded] - omics_type_ref</td>
 <td>Descriptor</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr>
 <td>Assay</td>
-<td>[embedded] - sample_run</td>
+<td>[embedded] - sample_run_refs</td>
 <td>Sample Run</td>
 <td>1</td>
 <td>N (unbounded)</td>
 </tr>
 <tr>
 <td>Assay</td>
-<td>[embedded] - technology_type</td>
+<td>[embedded] - technology_type_ref</td>
 <td>Descriptor</td>
 <td>1</td>
 <td>1</td>
@@ -609,7 +609,7 @@
 </tr>
 <tr>
 <td>Characteristic Definition</td>
-<td>[embedded] - characteristic_type</td>
+<td>[embedded] - characteristic_type_ref</td>
 <td>Characteristic Type</td>
 <td>1</td>
 <td>1</td>
@@ -658,7 +658,7 @@
 </tr>
 <tr>
 <td>Parameter Definition</td>
-<td>[embedded] - parameter_type</td>
+<td>[embedded] - parameter_type_ref</td>
 <td>Parameter Type</td>
 <td>1</td>
 <td>1</td>
@@ -700,7 +700,7 @@
 </tr>
 <tr>
 <td>Protocol</td>
-<td>[embedded] - protocol_type</td>
+<td>[embedded] - protocol_type_ref</td>
 <td>Protocol Type</td>
 <td>1</td>
 <td>1</td>
@@ -749,28 +749,28 @@
 </tr>
 <tr>
 <td>Sample Run</td>
-<td>[embedded] - raw_data_file</td>
+<td>[embedded] - raw_data_file_refs</td>
 <td>Raw Data File</td>
 <td>1</td>
 <td>N (unbounded)</td>
 </tr>
 <tr>
 <td>Sample Run</td>
-<td>[embedded] - sample</td>
+<td>[embedded] - sample_ref</td>
 <td>Sample</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr>
 <td>Study</td>
-<td>[embedded] - created_by</td>
+<td>[embedded] - created_by_ref</td>
 <td>Data Provider</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr>
 <td>Study</td>
-<td>[embedded] - protocol</td>
+<td>[embedded] - protocol_refs</td>
 <td>Protocol</td>
 <td>1</td>
 <td>N (unbounded)</td>

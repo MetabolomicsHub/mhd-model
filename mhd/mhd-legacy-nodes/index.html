@@ -488,8 +488,8 @@
 <p><code>Characteristic Type, Characteristic Value, Data Provider</code></p>
 <p>The following graph shows only required nodes and required relationships. Relationships that start with 'embedded - ' show required node property.</p>
 <pre class="mermaid"><code>graph LR
-  Characteristic_Definition[Characteristic Definition] ==&gt;|embedded - characteristic_type| Characteristic_Type[Characteristic Type];
-  Study[Study] ==&gt;|embedded - created_by| Data_Provider[Data Provider];
+  Characteristic_Definition[Characteristic Definition] ==&gt;|embedded - characteristic_type_ref| Characteristic_Type[Characteristic Type];
+  Study[Study] ==&gt;|embedded - created_by_ref| Data_Provider[Data Provider];
   Characteristic_Definition[Characteristic Definition] ==&gt;|has-type| Characteristic_Type[Characteristic Type];
   Characteristic_Definition[Characteristic Definition] ==&gt;|used-in| Study[Study];
   Metadata_File[Metadata File] ==&gt;|describes| Study[Study];
@@ -514,7 +514,7 @@
 <tbody>
 <tr>
 <td>Characteristic Definition</td>
-<td>[embedded] - characteristic_type</td>
+<td>[embedded] - characteristic_type_ref</td>
 <td>Characteristic Type</td>
 <td>1</td>
 <td>1</td>
@@ -563,7 +563,7 @@
 </tr>
 <tr>
 <td>Study</td>
-<td>[embedded] - created_by</td>
+<td>[embedded] - created_by_ref</td>
 <td>Data Provider</td>
 <td>1</td>
 <td>1</td>
