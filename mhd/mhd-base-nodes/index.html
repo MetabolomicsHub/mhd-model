@@ -786,7 +786,7 @@
 <td><strong>protocol_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br/>Target node type: <code><strong>protocol</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>protocol</strong></code><br/>Target node type: <code><strong>protocol</strong></code></code></td>
+<td>The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br/>Target node type: <code><strong>protocol</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>protocol</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>sample_run_refs</strong></td>
@@ -1283,7 +1283,7 @@
 <td><strong>factor_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>factor-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>factor-type</strong></code><br/>Allowed CV Terms:<br/>* [EFO, EFO:0000408, disease]</code></td>
+<td>Target node type: <code><strong>factor-type</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>factor-type</strong></code></code></td>
 </tr>
 </tbody>
 </table>
@@ -4186,7 +4186,7 @@
 <td><strong>protocol_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>protocol</strong></code></td>
+<td>Target node type: <code><strong>protocol</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>protocol</strong></code></code></td>
 </tr>
 </tbody>
 </table>
@@ -5805,7 +5805,7 @@
 </tr>
 <tr>
 <td><strong>name</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td>Label of CV term</td>
 </tr>
@@ -6147,7 +6147,7 @@
 </tr>
 <tr>
 <td><strong>name</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td>Label of CV term</td>
 </tr>
@@ -6349,7 +6349,7 @@
 </tr>
 <tr>
 <td><strong>name</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td>Label of CV term</td>
 </tr>
