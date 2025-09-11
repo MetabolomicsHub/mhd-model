@@ -1,3 +1,9 @@
+## v0.1.4 (2025-09-11)
+
+### Fix
+
+- dataset builder init method gets class name
+
 ## v0.1.3 (2025-09-11)
 
 ### Fix
