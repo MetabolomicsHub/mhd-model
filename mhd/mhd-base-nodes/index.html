@@ -6,11 +6,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://metabolomicshub.org/site/mhd/mhd-base-nodes/" rel="canonical"/>
-<link href="../" rel="prev"/>
-<link href="../mhd-ms-nodes/" rel="next"/>
+<link href="../mhd-legacy-nodes/" rel="prev"/>
 <link href="../../assets/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-<title>Profile 1 - Blank Dataset - Metabolomics Hub</title>
+<title>Empty Dataset - Metabolomics Hub</title>
 <link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -47,7 +46,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Profile 1 - Blank Dataset
+              Empty Dataset
             
           </span>
 </div>
@@ -174,18 +173,34 @@
             Profiles
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mhd-ms-nodes/">
+<span class="md-ellipsis">
+    Profile 1 - MetabolomicsHub Dataset
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mhd-legacy-nodes/">
+<span class="md-ellipsis">
+    Profile 2 - Legacy Dataset
+    
+  </span>
+</a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    Profile 1 - Blank Dataset
+    Empty Dataset
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
-    Profile 1 - Blank Dataset
+    Empty Dataset
     
   </span>
 </a>
@@ -199,13 +214,6 @@
 <a class="md-nav__link" href="#required-nodes-relationships">
 <span class="md-ellipsis">
       Required Nodes &amp; Relationships
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#model-graph">
-<span class="md-ellipsis">
-      Model Graph
     </span>
 </a>
 </li>
@@ -448,24 +456,15 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#model-graph">
+<span class="md-ellipsis">
+      Model Graph
+    </span>
+</a>
+</li>
 </ul>
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../mhd-ms-nodes/">
-<span class="md-ellipsis">
-    Profile 2 - MetabolomicsHub Dataset
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../mhd-legacy-nodes/">
-<span class="md-ellipsis">
-    Profile 3 - Legacy Dataset
-    
-  </span>
-</a>
 </li>
 </ul>
 </nav>
@@ -543,147 +542,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="model-graph">Model Graph<a class="headerlink" href="#model-graph" title="Permanent link">¶</a></h2>
-<p>The following graph shows all (required and optional) nodes and relationships.</p>
-<pre class="mermaid"><code>graph LR
-  Assay[Assay] ==&gt;|described-as| Descriptor[Descriptor];
-  Assay[Assay] ==&gt;|part-of| Study[Study];
-  Assay[Assay] ==&gt;|follows| Protocol[Protocol];
-  Characteristic_Definition[Characteristic Definition] ==&gt;|has-instance| Characteristic_Value[Characteristic Value];
-  Characteristic_Definition[Characteristic Definition] ==&gt;|has-type| Characteristic_Type[Characteristic Type];
-  Characteristic_Definition[Characteristic Definition] ==&gt;|used-in| Study[Study];
-  Derived_Data_File[Derived Data File] ==&gt;|referenced-in| Metadata_File[Metadata File];
-  Derived_Data_File[Derived Data File] ==&gt;|created-in| Study[Study];
-  Derived_Data_File[Derived Data File] ==&gt;|described-as| Descriptor[Descriptor];
-  Factor_Definition[Factor Definition] ==&gt;|has-type| Factor_Type[Factor Type];
-  Factor_Definition[Factor Definition] ==&gt;|has-instance| Factor_Value[Factor Value];
-  Factor_Definition[Factor Definition] ==&gt;|used-in| Study[Study];
-  Metabolite[Metabolite] ==&gt;|identified-as| Metabolite_Identifier[Metabolite Identifier];
-  Metabolite[Metabolite] ==&gt;|described-as| Descriptor[Descriptor];
-  Metabolite[Metabolite] ==&gt;|reported-in| Study[Study];
-  Metadata_File[Metadata File] ==&gt;|described-as| Descriptor[Descriptor];
-  Metadata_File[Metadata File] ==&gt;|referenced-in| Metadata_File[Metadata File];
-  Metadata_File[Metadata File] ==&gt;|describes| Study[Study];
-  Metadata_File[Metadata File] ==&gt;|references| Derived_Data_File[Derived Data File];
-  Metadata_File[Metadata File] ==&gt;|references| Raw_Data_File[Raw Data File];
-  Metadata_File[Metadata File] ==&gt;|references| Result_File[Result File];
-  Metadata_File[Metadata File] ==&gt;|references| Supplementary_File[Supplementary File];
-  Organization[Organization] ==&gt;|funds| Project[Project];
-  Organization[Organization] ==&gt;|funds| Study[Study];
-  Organization[Organization] ==&gt;|manages| Project[Project];
-  Organization[Organization] ==&gt;|coordinates| Project[Project];
-  Organization[Organization] ==&gt;|affiliates| Person[Person];
-  Organization[Organization] ==&gt;|described-as| Descriptor[Descriptor];
-  Parameter_Definition[Parameter Definition] ==&gt;|has-instance| Parameter_Value[Parameter Value];
-  Parameter_Definition[Parameter Definition] ==&gt;|has-type| Parameter_Type[Parameter Type];
-  Parameter_Definition[Parameter Definition] ==&gt;|defined-in| Protocol[Protocol];
-  Person[Person] ==&gt;|described-as| Descriptor[Descriptor];
-  Person[Person] ==&gt;|affiliated-with| Organization[Organization];
-  Person[Person] ==&gt;|contributes| Project[Project];
-  Person[Person] ==&gt;|contributes| Study[Study];
-  Person[Person] ==&gt;|principal-investigator-of| Study[Study];
-  Person[Person] ==&gt;|submits| Study[Study];
-  Person[Person] ==&gt;|author-of| Publication[Publication];
-  Project[Project] ==&gt;|described-as| Descriptor[Descriptor];
-  Project[Project] ==&gt;|funded-by| Organization[Organization];
-  Project[Project] ==&gt;|managed-by| Organization[Organization];
-  Project[Project] ==&gt;|coordinated-by| Organization[Organization];
-  Project[Project] ==&gt;|has-contributor| Person[Person];
-  Project[Project] ==&gt;|has-publication| Publication[Publication];
-  Project[Project] ==&gt;|has-study| Study[Study];
-  Protocol[Protocol] ==&gt;|described-as| Descriptor[Descriptor];
-  Protocol[Protocol] ==&gt;|used-in| Assay[Assay];
-  Protocol[Protocol] ==&gt;|has-parameter-definition| Parameter_Definition[Parameter Definition];
-  Protocol[Protocol] ==&gt;|used-in| Study[Study];
-  Protocol[Protocol] ==&gt;|has-type| Protocol_Type[Protocol Type];
-  Publication[Publication] ==&gt;|described-as| Descriptor[Descriptor];
-  Publication[Publication] ==&gt;|describes| Project[Project];
-  Publication[Publication] ==&gt;|describes| Study[Study];
-  Publication[Publication] ==&gt;|has-author| Person[Person];
-  Raw_Data_File[Raw Data File] ==&gt;|described-as| Descriptor[Descriptor];
-  Raw_Data_File[Raw Data File] ==&gt;|created-in| Study[Study];
-  Raw_Data_File[Raw Data File] ==&gt;|referenced-in| Metadata_File[Metadata File];
-  Result_File[Result File] ==&gt;|described-as| Descriptor[Descriptor];
-  Result_File[Result File] ==&gt;|created-in| Study[Study];
-  Result_File[Result File] ==&gt;|referenced-in| Metadata_File[Metadata File];
-  Sample[Sample] ==&gt;|described-as| Descriptor[Descriptor];
-  Sample[Sample] ==&gt;|has-factor-value| Factor_Value[Factor Value];
-  Sample[Sample] ==&gt;|used-in| Study[Study];
-  Sample[Sample] ==&gt;|derived-from| Subject[Subject];
-  Sample[Sample] ==&gt;|derived-from| Specimen[Specimen];
-  Sample[Sample] ==&gt;|has-characteristic-value| Characteristic_Value[Characteristic Value];
-  Sample_Run[Sample Run] ==&gt;|described-as| Descriptor[Descriptor];
-  Sample_Run_Configuration[Sample Run Configuration] ==&gt;|described-as| Descriptor[Descriptor];
-  Specimen[Specimen] ==&gt;|described-as| Descriptor[Descriptor];
-  Specimen[Specimen] ==&gt;|has-characteristic-value| Characteristic_Value[Characteristic Value];
-  Specimen[Specimen] ==&gt;|source-of| Sample[Sample];
-  Specimen[Specimen] ==&gt;|derived-from| Subject[Subject];
-  Study[Study] ==&gt;|provided-by| Data_Provider[Data Provider];
-  Study[Study] ==&gt;|has-assay| Assay[Assay];
-  Study[Study] ==&gt;|funded-by| Organization[Organization];
-  Study[Study] ==&gt;|has-characteristic-definition| Characteristic_Definition[Characteristic Definition];
-  Study[Study] ==&gt;|has-derived-data-file| Derived_Data_File[Derived Data File];
-  Study[Study] ==&gt;|described-as| Descriptor[Descriptor];
-  Study[Study] ==&gt;|has-factor-definition| Factor_Definition[Factor Definition];
-  Study[Study] ==&gt;|has-repository-keyword| Descriptor[Descriptor];
-  Study[Study] ==&gt;|has-submitter-keyword| Descriptor[Descriptor];
-  Study[Study] ==&gt;|reports| Metabolite[Metabolite];
-  Study[Study] ==&gt;|has-metadata-file| Metadata_File[Metadata File];
-  Study[Study] ==&gt;|has-contributor| Person[Person];
-  Study[Study] ==&gt;|has-principal-investigator| Person[Person];
-  Study[Study] ==&gt;|submitted-by| Person[Person];
-  Study[Study] ==&gt;|part-of| Project[Project];
-  Study[Study] ==&gt;|has-protocol| Protocol[Protocol];
-  Study[Study] ==&gt;|has-publication| Publication[Publication];
-  Study[Study] ==&gt;|has-raw-data-file| Raw_Data_File[Raw Data File];
-  Study[Study] ==&gt;|has-result-file| Result_File[Result File];
-  Study[Study] ==&gt;|has-sample| Sample[Sample];
-  Study[Study] ==&gt;|has-supplementary-file| Supplementary_File[Supplementary File];
-  Subject[Subject] ==&gt;|described-as| Descriptor[Descriptor];
-  Subject[Subject] ==&gt;|has-characteristic-value| Characteristic_Value[Characteristic Value];
-  Subject[Subject] ==&gt;|source-of| Sample[Sample];
-  Subject[Subject] ==&gt;|has-factor-value| Factor_Value[Factor Value];
-  Subject[Subject] ==&gt;|source-of| Specimen[Specimen];
-  Supplementary_File[Supplementary File] ==&gt;|described-as| Descriptor[Descriptor];
-  Supplementary_File[Supplementary File] ==&gt;|created-in| Study[Study];
-  Supplementary_File[Supplementary File] ==&gt;|referenced-in| Metadata_File[Metadata File];
-  Characteristic_Type[Characteristic Type] ==&gt;|type-of| Characteristic_Definition[Characteristic Definition];
-  Characteristic_Value[Characteristic Value] ==&gt;|instance-of| Characteristic_Definition[Characteristic Definition];
-  Characteristic_Value[Characteristic Value] ==&gt;|value-of| Subject[Subject];
-  Characteristic_Value[Characteristic Value] ==&gt;|value-of| Specimen[Specimen];
-  Characteristic_Value[Characteristic Value] ==&gt;|value-of| Sample[Sample];
-  Data_Provider[Data Provider] ==&gt;|provides| Study[Study];
-  Descriptor[Descriptor] ==&gt;|describes| Assay[Assay];
-  Descriptor[Descriptor] ==&gt;|describes| Study[Study];
-  Descriptor[Descriptor] ==&gt;|describes| Metadata_File[Metadata File];
-  Descriptor[Descriptor] ==&gt;|describes| Raw_Data_File[Raw Data File];
-  Descriptor[Descriptor] ==&gt;|describes| Derived_Data_File[Derived Data File];
-  Descriptor[Descriptor] ==&gt;|describes| Supplementary_File[Supplementary File];
-  Descriptor[Descriptor] ==&gt;|describes| Result_File[Result File];
-  Descriptor[Descriptor] ==&gt;|describes| Metabolite[Metabolite];
-  Descriptor[Descriptor] ==&gt;|describes| Organization[Organization];
-  Descriptor[Descriptor] ==&gt;|describes| Person[Person];
-  Descriptor[Descriptor] ==&gt;|describes| Project[Project];
-  Descriptor[Descriptor] ==&gt;|describes| Publication[Publication];
-  Descriptor[Descriptor] ==&gt;|describes| Protocol[Protocol];
-  Descriptor[Descriptor] ==&gt;|describes| Sample[Sample];
-  Descriptor[Descriptor] ==&gt;|describes| Subject[Subject];
-  Descriptor[Descriptor] ==&gt;|describes| Sample_Run[Sample Run];
-  Descriptor[Descriptor] ==&gt;|describes| Sample_Run_Configuration[Sample Run Configuration];
-  Descriptor[Descriptor] ==&gt;|describes| Metabolite[Metabolite];
-  Descriptor[Descriptor] ==&gt;|keyword-of| Study[Study];
-  Descriptor[Descriptor] ==&gt;|keyword-of| Study[Study];
-  Descriptor[Descriptor] ==&gt;|keyword-of| Specimen[Specimen];
-  Factor_Type[Factor Type] ==&gt;|type-of| Factor_Definition[Factor Definition];
-  Factor_Value[Factor Value] ==&gt;|instance-of| Factor_Definition[Factor Definition];
-  Factor_Value[Factor Value] ==&gt;|value-of| Sample[Sample];
-  Factor_Value[Factor Value] ==&gt;|value-of| Specimen[Specimen];
-  Factor_Value[Factor Value] ==&gt;|value-of| Subject[Subject];
-  Metabolite_Identifier[Metabolite Identifier] ==&gt;|reported-identifier-of| Metabolite[Metabolite];
-  Parameter_Type[Parameter Type] ==&gt;|type-of| Parameter_Definition[Parameter Definition];
-  Parameter_Value[Parameter Value] ==&gt;|instance-of| Parameter_Definition[Parameter Definition];
-  Protocol_Type[Protocol Type] ==&gt;|type-of| Protocol[Protocol];
-</code></pre>
 <h2 id="mhd-domain-objects">MHD Domain Objects<a class="headerlink" href="#mhd-domain-objects" title="Permanent link">¶</a></h2>
 <h3 id="assay">Assay<a class="headerlink" href="#assay" title="Permanent link">¶</a></h3>
 <p>Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
@@ -6405,6 +6263,147 @@
 </tr>
 </tbody>
 </table>
+<h2 id="model-graph">Model Graph<a class="headerlink" href="#model-graph" title="Permanent link">¶</a></h2>
+<p>The following graph shows all (required and optional) nodes and relationships.</p>
+<pre class="mermaid"><code>graph LR
+  Assay[Assay] ==&gt;|described-as| Descriptor[Descriptor];
+  Assay[Assay] ==&gt;|part-of| Study[Study];
+  Assay[Assay] ==&gt;|follows| Protocol[Protocol];
+  Characteristic_Definition[Characteristic Definition] ==&gt;|has-instance| Characteristic_Value[Characteristic Value];
+  Characteristic_Definition[Characteristic Definition] ==&gt;|has-type| Characteristic_Type[Characteristic Type];
+  Characteristic_Definition[Characteristic Definition] ==&gt;|used-in| Study[Study];
+  Derived_Data_File[Derived Data File] ==&gt;|referenced-in| Metadata_File[Metadata File];
+  Derived_Data_File[Derived Data File] ==&gt;|created-in| Study[Study];
+  Derived_Data_File[Derived Data File] ==&gt;|described-as| Descriptor[Descriptor];
+  Factor_Definition[Factor Definition] ==&gt;|has-type| Factor_Type[Factor Type];
+  Factor_Definition[Factor Definition] ==&gt;|has-instance| Factor_Value[Factor Value];
+  Factor_Definition[Factor Definition] ==&gt;|used-in| Study[Study];
+  Metabolite[Metabolite] ==&gt;|identified-as| Metabolite_Identifier[Metabolite Identifier];
+  Metabolite[Metabolite] ==&gt;|described-as| Descriptor[Descriptor];
+  Metabolite[Metabolite] ==&gt;|reported-in| Study[Study];
+  Metadata_File[Metadata File] ==&gt;|described-as| Descriptor[Descriptor];
+  Metadata_File[Metadata File] ==&gt;|referenced-in| Metadata_File[Metadata File];
+  Metadata_File[Metadata File] ==&gt;|describes| Study[Study];
+  Metadata_File[Metadata File] ==&gt;|references| Derived_Data_File[Derived Data File];
+  Metadata_File[Metadata File] ==&gt;|references| Raw_Data_File[Raw Data File];
+  Metadata_File[Metadata File] ==&gt;|references| Result_File[Result File];
+  Metadata_File[Metadata File] ==&gt;|references| Supplementary_File[Supplementary File];
+  Organization[Organization] ==&gt;|funds| Project[Project];
+  Organization[Organization] ==&gt;|funds| Study[Study];
+  Organization[Organization] ==&gt;|manages| Project[Project];
+  Organization[Organization] ==&gt;|coordinates| Project[Project];
+  Organization[Organization] ==&gt;|affiliates| Person[Person];
+  Organization[Organization] ==&gt;|described-as| Descriptor[Descriptor];
+  Parameter_Definition[Parameter Definition] ==&gt;|has-instance| Parameter_Value[Parameter Value];
+  Parameter_Definition[Parameter Definition] ==&gt;|has-type| Parameter_Type[Parameter Type];
+  Parameter_Definition[Parameter Definition] ==&gt;|defined-in| Protocol[Protocol];
+  Person[Person] ==&gt;|described-as| Descriptor[Descriptor];
+  Person[Person] ==&gt;|affiliated-with| Organization[Organization];
+  Person[Person] ==&gt;|contributes| Project[Project];
+  Person[Person] ==&gt;|contributes| Study[Study];
+  Person[Person] ==&gt;|principal-investigator-of| Study[Study];
+  Person[Person] ==&gt;|submits| Study[Study];
+  Person[Person] ==&gt;|author-of| Publication[Publication];
+  Project[Project] ==&gt;|described-as| Descriptor[Descriptor];
+  Project[Project] ==&gt;|funded-by| Organization[Organization];
+  Project[Project] ==&gt;|managed-by| Organization[Organization];
+  Project[Project] ==&gt;|coordinated-by| Organization[Organization];
+  Project[Project] ==&gt;|has-contributor| Person[Person];
+  Project[Project] ==&gt;|has-publication| Publication[Publication];
+  Project[Project] ==&gt;|has-study| Study[Study];
+  Protocol[Protocol] ==&gt;|described-as| Descriptor[Descriptor];
+  Protocol[Protocol] ==&gt;|used-in| Assay[Assay];
+  Protocol[Protocol] ==&gt;|has-parameter-definition| Parameter_Definition[Parameter Definition];
+  Protocol[Protocol] ==&gt;|used-in| Study[Study];
+  Protocol[Protocol] ==&gt;|has-type| Protocol_Type[Protocol Type];
+  Publication[Publication] ==&gt;|described-as| Descriptor[Descriptor];
+  Publication[Publication] ==&gt;|describes| Project[Project];
+  Publication[Publication] ==&gt;|describes| Study[Study];
+  Publication[Publication] ==&gt;|has-author| Person[Person];
+  Raw_Data_File[Raw Data File] ==&gt;|described-as| Descriptor[Descriptor];
+  Raw_Data_File[Raw Data File] ==&gt;|created-in| Study[Study];
+  Raw_Data_File[Raw Data File] ==&gt;|referenced-in| Metadata_File[Metadata File];
+  Result_File[Result File] ==&gt;|described-as| Descriptor[Descriptor];
+  Result_File[Result File] ==&gt;|created-in| Study[Study];
+  Result_File[Result File] ==&gt;|referenced-in| Metadata_File[Metadata File];
+  Sample[Sample] ==&gt;|described-as| Descriptor[Descriptor];
+  Sample[Sample] ==&gt;|has-factor-value| Factor_Value[Factor Value];
+  Sample[Sample] ==&gt;|used-in| Study[Study];
+  Sample[Sample] ==&gt;|derived-from| Subject[Subject];
+  Sample[Sample] ==&gt;|derived-from| Specimen[Specimen];
+  Sample[Sample] ==&gt;|has-characteristic-value| Characteristic_Value[Characteristic Value];
+  Sample_Run[Sample Run] ==&gt;|described-as| Descriptor[Descriptor];
+  Sample_Run_Configuration[Sample Run Configuration] ==&gt;|described-as| Descriptor[Descriptor];
+  Specimen[Specimen] ==&gt;|described-as| Descriptor[Descriptor];
+  Specimen[Specimen] ==&gt;|has-characteristic-value| Characteristic_Value[Characteristic Value];
+  Specimen[Specimen] ==&gt;|source-of| Sample[Sample];
+  Specimen[Specimen] ==&gt;|derived-from| Subject[Subject];
+  Study[Study] ==&gt;|provided-by| Data_Provider[Data Provider];
+  Study[Study] ==&gt;|has-assay| Assay[Assay];
+  Study[Study] ==&gt;|funded-by| Organization[Organization];
+  Study[Study] ==&gt;|has-characteristic-definition| Characteristic_Definition[Characteristic Definition];
+  Study[Study] ==&gt;|has-derived-data-file| Derived_Data_File[Derived Data File];
+  Study[Study] ==&gt;|described-as| Descriptor[Descriptor];
+  Study[Study] ==&gt;|has-factor-definition| Factor_Definition[Factor Definition];
+  Study[Study] ==&gt;|has-repository-keyword| Descriptor[Descriptor];
+  Study[Study] ==&gt;|has-submitter-keyword| Descriptor[Descriptor];
+  Study[Study] ==&gt;|reports| Metabolite[Metabolite];
+  Study[Study] ==&gt;|has-metadata-file| Metadata_File[Metadata File];
+  Study[Study] ==&gt;|has-contributor| Person[Person];
+  Study[Study] ==&gt;|has-principal-investigator| Person[Person];
+  Study[Study] ==&gt;|submitted-by| Person[Person];
+  Study[Study] ==&gt;|part-of| Project[Project];
+  Study[Study] ==&gt;|has-protocol| Protocol[Protocol];
+  Study[Study] ==&gt;|has-publication| Publication[Publication];
+  Study[Study] ==&gt;|has-raw-data-file| Raw_Data_File[Raw Data File];
+  Study[Study] ==&gt;|has-result-file| Result_File[Result File];
+  Study[Study] ==&gt;|has-sample| Sample[Sample];
+  Study[Study] ==&gt;|has-supplementary-file| Supplementary_File[Supplementary File];
+  Subject[Subject] ==&gt;|described-as| Descriptor[Descriptor];
+  Subject[Subject] ==&gt;|has-characteristic-value| Characteristic_Value[Characteristic Value];
+  Subject[Subject] ==&gt;|source-of| Sample[Sample];
+  Subject[Subject] ==&gt;|has-factor-value| Factor_Value[Factor Value];
+  Subject[Subject] ==&gt;|source-of| Specimen[Specimen];
+  Supplementary_File[Supplementary File] ==&gt;|described-as| Descriptor[Descriptor];
+  Supplementary_File[Supplementary File] ==&gt;|created-in| Study[Study];
+  Supplementary_File[Supplementary File] ==&gt;|referenced-in| Metadata_File[Metadata File];
+  Characteristic_Type[Characteristic Type] ==&gt;|type-of| Characteristic_Definition[Characteristic Definition];
+  Characteristic_Value[Characteristic Value] ==&gt;|instance-of| Characteristic_Definition[Characteristic Definition];
+  Characteristic_Value[Characteristic Value] ==&gt;|value-of| Subject[Subject];
+  Characteristic_Value[Characteristic Value] ==&gt;|value-of| Specimen[Specimen];
+  Characteristic_Value[Characteristic Value] ==&gt;|value-of| Sample[Sample];
+  Data_Provider[Data Provider] ==&gt;|provides| Study[Study];
+  Descriptor[Descriptor] ==&gt;|describes| Assay[Assay];
+  Descriptor[Descriptor] ==&gt;|describes| Study[Study];
+  Descriptor[Descriptor] ==&gt;|describes| Metadata_File[Metadata File];
+  Descriptor[Descriptor] ==&gt;|describes| Raw_Data_File[Raw Data File];
+  Descriptor[Descriptor] ==&gt;|describes| Derived_Data_File[Derived Data File];
+  Descriptor[Descriptor] ==&gt;|describes| Supplementary_File[Supplementary File];
+  Descriptor[Descriptor] ==&gt;|describes| Result_File[Result File];
+  Descriptor[Descriptor] ==&gt;|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==&gt;|describes| Organization[Organization];
+  Descriptor[Descriptor] ==&gt;|describes| Person[Person];
+  Descriptor[Descriptor] ==&gt;|describes| Project[Project];
+  Descriptor[Descriptor] ==&gt;|describes| Publication[Publication];
+  Descriptor[Descriptor] ==&gt;|describes| Protocol[Protocol];
+  Descriptor[Descriptor] ==&gt;|describes| Sample[Sample];
+  Descriptor[Descriptor] ==&gt;|describes| Subject[Subject];
+  Descriptor[Descriptor] ==&gt;|describes| Sample_Run[Sample Run];
+  Descriptor[Descriptor] ==&gt;|describes| Sample_Run_Configuration[Sample Run Configuration];
+  Descriptor[Descriptor] ==&gt;|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==&gt;|keyword-of| Study[Study];
+  Descriptor[Descriptor] ==&gt;|keyword-of| Study[Study];
+  Descriptor[Descriptor] ==&gt;|keyword-of| Specimen[Specimen];
+  Factor_Type[Factor Type] ==&gt;|type-of| Factor_Definition[Factor Definition];
+  Factor_Value[Factor Value] ==&gt;|instance-of| Factor_Definition[Factor Definition];
+  Factor_Value[Factor Value] ==&gt;|value-of| Sample[Sample];
+  Factor_Value[Factor Value] ==&gt;|value-of| Specimen[Specimen];
+  Factor_Value[Factor Value] ==&gt;|value-of| Subject[Subject];
+  Metabolite_Identifier[Metabolite Identifier] ==&gt;|reported-identifier-of| Metabolite[Metabolite];
+  Parameter_Type[Parameter Type] ==&gt;|type-of| Parameter_Definition[Parameter Definition];
+  Parameter_Value[Parameter Value] ==&gt;|instance-of| Parameter_Definition[Parameter Definition];
+  Protocol_Type[Protocol Type] ==&gt;|type-of| Protocol[Protocol];
+</code></pre>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
@@ -6417,7 +6416,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: MHD Common Data Model v0.1" class="md-footer__link md-footer__link--prev" href="../">
+<a aria-label="Previous: Profile 2 - Legacy Dataset" class="md-footer__link md-footer__link--prev" href="../mhd-legacy-nodes/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -6426,21 +6425,8 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                MHD Common Data Model v0.1
+                Profile 2 - Legacy Dataset
               </div>
-</div>
-</a>
-<a aria-label="Next: Profile 2 - MetabolomicsHub Dataset" class="md-footer__link md-footer__link--next" href="../mhd-ms-nodes/">
-<div class="md-footer__title">
-<span class="md-footer__direction">
-                Next
-              </span>
-<div class="md-ellipsis">
-                Profile 2 - MetabolomicsHub Dataset
-              </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
 </div>
 </a>
 </nav>
