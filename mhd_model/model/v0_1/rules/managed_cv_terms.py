@@ -240,21 +240,6 @@ REQUIRED_PARAMETER_DEFINITIONS = {
             "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
         }
     },
-    "MALDI-MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    "MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    "MSImaging": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
     ####### OTHERS ######
     # MR Imaging, LC-DAD, GC-FID, NMR
 }

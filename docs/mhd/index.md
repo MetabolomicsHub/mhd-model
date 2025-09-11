@@ -38,13 +38,13 @@ The following properties are common for all  *MHD Domain Objects*.
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|required|<code>*str*<code>|The id property uniquely identifies the object. All *MHD Domain Objects* have <u>*unique identifiers*</u> even if their values are exactly same.|
-|**type**|required|<code>*str*<code>|The type MUST be lower case and '-' seperated value of node name. e.g. raw-data-file for Raw Data File|
-|**created_by_ref**|optional|<code>*str*<code>|The id of the data provider.|
-|**tags**|optional|<code>*list of KeyValue*<code>|Key and values. key and values may be CV Term|
-|**descriptors**|optional|<code>*list of CvTerm*<code>|Descriptors for the object|
-|**external_references**|optional|<code>*list of KeyValue*<code>|List of external references that describes the resource represented by the node. Key MUST be a URI type (FTP, URL, etc.)|
-|**url_list**|optional|<code>*list of AnyUrl*<code>|List of URI addresses to access the resource represented by the node |
+|**id**|required|<code>*str*</code>|The id property uniquely identifies the object. All *MHD Domain Objects* have <u>*unique identifiers*</u> even if their values are exactly same.|
+|**type**|required|<code>*str*</code>|The type MUST be lower case and '-' seperated value of node name. e.g. raw-data-file for Raw Data File|
+|**created_by_ref**|optional|<code>*str*</code>|The id of the data provider.|
+|**tags**|optional|<code>*list of KeyValue*</code>|Key and values. key and values may be CV Term|
+|**descriptors**|optional|<code>*list of CvTerm*</code>|Descriptors for the object|
+|**external_references**|optional|<code>*list of KeyValue*</code>|List of external references that describes the resource represented by the node. Key MUST be a URI type (FTP, URL, etc.)|
+|**url_list**|optional|<code>*list of AnyUrl*</code>|List of URI addresses to access the resource represented by the node |
 
 ---
 
@@ -58,8 +58,8 @@ The following properties are common for all  *MHD Cv Term Objects*.
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|required|<code>*str*<code>|The id property uniquely identifies the object. All *MHD Cv Term Objects* have <u>*same identifiers*</u> if their values are exactly same.|
-|**type**|required|<code>*str*<code>|The type MUST be lower case and '-' seperated value of node name. e.g. parameter-value for Paramter Value|
+|**id**|required|<code>*str*</code>|The id property uniquely identifies the object. All *MHD Cv Term Objects* have <u>*same identifiers*</u> if their values are exactly same.|
+|**type**|required|<code>*str*</code>|The type MUST be lower case and '-' seperated value of node name. e.g. parameter-value for Paramter Value|
 
 ---
 
@@ -72,17 +72,17 @@ A relationship is a link between MHD Domain Objects or MHD Cv Term Objects that 
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|required|<code>*MhdRelationshipObjectId*<code>|The id property uniquely identifies the object.|
-|**type**|required|<code>*str*<code>|The type MUST be 'relationship'|
-|**created_by_ref**|optional|<code>*str*<code>|The id of the data provider.|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key and values. key and values may be CV Term|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|List of external references that describes the resource represented by the relationship. Key MUST be a URI type (FTP, URL, etc.)|
-|**url_list**|optional|<code>*list[KeyValue]*<code>|List of URI addresses to access the resource represented by the relationship |
-|**source_ref**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId*<code>|The id of source node|
-|**relationship_name**|required|<code>*str*<code>|Relationship name|
-|**target_ref**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId*<code>|The id of target node|
-|**source_role**|optional|<code>*str*<code>|Role name of source node|
-|**target_role**|optional|<code>*str*<code>|Role name of target node|
+|**id**|required|<code>*MhdRelationshipObjectId*</code>|The id property uniquely identifies the object.|
+|**type**|required|<code>*str*</code>|The type MUST be 'relationship'|
+|**created_by_ref**|optional|<code>*str*</code>|The id of the data provider.|
+|**tags**|optional|<code>*list[KeyValue]*</code>|Key and values. key and values may be CV Term|
+|**external_references**|optional|<code>*list[KeyValue]*</code>|List of external references that describes the resource represented by the relationship. Key MUST be a URI type (FTP, URL, etc.)|
+|**url_list**|optional|<code>*list[KeyValue]*</code>|List of URI addresses to access the resource represented by the relationship |
+|**source_ref**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId*</code>|The id of source node|
+|**relationship_name**|required|<code>*str*</code>|Relationship name|
+|**target_ref**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId*</code>|The id of target node|
+|**source_role**|optional|<code>*str*</code>|Role name of source node|
+|**target_role**|optional|<code>*str*</code>|Role name of target node|
 
 
 ---
@@ -201,5 +201,5 @@ rel--relationship--99be6a20-0e5a-4c2d-9177-f261193dc30c
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**key**|required|<code>*str or CvTermObjectId or MhdObjectId or CvTerm*<code>|Key of the object. It can be a id of a node, str or CV Term|
-|**value**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId or str or CvTerm or CvTermValue or QuantitativeValue*<code>|Value of the object. It can be a id of a node, str, CV Term or Cv Term Value|
+|**key**|required|<code>*str or CvTermObjectId or MhdObjectId or CvTerm*</code>|Key of the object. It can be a id of a node, str or CV Term|
+|**value**|required|<code>*CvTermValueObjectId or CvTermObjectId or MhdObjectId or str or CvTerm or CvTermValue or QuantitativeValue*</code>|Value of the object. It can be a id of a node, str, CV Term or Cv Term Value|

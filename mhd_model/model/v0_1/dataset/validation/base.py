@@ -5,7 +5,11 @@ from typing import Any, Generator, OrderedDict
 import jsonschema
 from jsonschema import ValidationError, protocols, validators
 
-from mhd_model.model import SUPPORTED_SCHEMA_MAP
+from mhd_model.model import (
+    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
+    MHD_MODEL_V0_1_MS_PROFILE_NAME,
+    SUPPORTED_SCHEMA_MAP,
+)
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
     IdentifiableMhdModel,
@@ -16,6 +20,9 @@ from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import (
 )
 from mhd_model.model.v0_1.dataset.profiles.base.profile import MhdGraph
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
+from mhd_model.model.v0_1.dataset.profiles.legacy.graph_validation import (
+    MHD_LEGACY_PROFILE_V0_1,
+)
 from mhd_model.model.v0_1.dataset.profiles.ms.graph_validation import (
     MHD_MS_PROFILE_V0_1,
 )
@@ -49,9 +56,9 @@ IdentifiableElementDict = OrderedDict[str, IdentifiableMhdModel]
 
 
 class MhdModelValidator:
-    def __init__(self):
+    def __init__(self, node_validation: MhDatasetValidation):
         self.cv_helper = CvTermHelper()
-        self.node_validation: MhDatasetValidation = MHD_MS_PROFILE_V0_1
+        self.node_validation: MhDatasetValidation = node_validation
 
     def anyOf(self, validator, anyOf, instance, schema):
         node_class = None
@@ -745,9 +752,9 @@ class MhdModelValidator:
                 continue
             targets = target_rels.get(value.id_)
             for target_ref in targets.keys():
-                if not nodes_by_type.get(condition_item.source_node_type):
+                if not nodes_by_type.get(condition_item.start_node_type):
                     continue
-                target_nodes = nodes_by_type.get(condition_item.source_node_type)
+                target_nodes = nodes_by_type.get(condition_item.start_node_type)
                 if not target_nodes:
                     continue
                 target_tuple = target_nodes.get(target_ref)
@@ -755,7 +762,7 @@ class MhdModelValidator:
                     target = target_tuple[1]
                     if hasattr(target, "accession"):
                         accession = getattr(target, "accession")
-                        if accession == condition_item.source_node_value:
+                        if accession == condition_item.expression_value:
                             run_validation = True
                             break
             if run_validation:
@@ -1155,10 +1162,10 @@ class MhdModelValidator:
         if not check.condition:
             return list(current_nodes.values())
         for condition in check.condition:
-            source_node_type = condition.source_node_type
-            source_property = condition.source_node_property
+            source_node_type = condition.start_node_type
+            source_property = condition.expression
             relationship_name = condition.relationship_name
-            source_value = condition.source_node_value
+            source_value = condition.expression_value
             relationships = relationships_index.get(relationship_name, {})
             source_nodes = nodes_by_type.get(source_node_type)
             if source_nodes and source_property and source_value:
@@ -1254,7 +1261,7 @@ class MhdModelValidator:
             reference = control_list[item.accession]
             if reference.name != item.name or reference.source != item.source:
                 return jsonschema.ValidationError(
-                    message=f"{item.type_} node at {idx} with value [{item.source}, {item.accession}, {item.name}] "
+                    message=f"{item.type_} {item.id_}: node at {idx} with value [{item.source}, {item.accession}, {item.name}] "
                     "does not match the reference term. Reference term: "
                     f"[{reference.source}, {reference.accession}, {reference.name}].",
                     validator="check-cv-term",
@@ -1408,7 +1415,7 @@ class MhdModelValidator:
             if reference.name != item.name or reference.source != item.source:
                 errors.append(
                     jsonschema.ValidationError(
-                        message=f"{item.type_} node at {idx} with value [{item.source}, {item.accession}, {item.name}] "
+                        message=f"{item.type_} {item.id_}: node at {idx} with value [{item.source}, {item.accession}, {item.name}] "
                         "does not match the reference term. Reference term: "
                         f"[{reference.source}, {reference.accession}, {reference.name}].",
                         validator="check-cv-term-in-control-list",
@@ -1545,15 +1552,6 @@ class MhdModelValidator:
     def new_instance(
         schema_uri: None | str, profile_uri: None | str
     ) -> protocols.Validator:
-        mhd_model_validator = MhdModelValidator()
-
-        validator = validators.extend(
-            jsonschema.Draft202012Validator,
-            validators={
-                "mhdGraphValidation": mhd_model_validator.validate_graph,
-                "anyOf": mhd_model_validator.anyOf,
-            },
-        )
         if not schema_uri:
             schema_uri = SUPPORTED_SCHEMA_MAP.schemas[
                 SUPPORTED_SCHEMA_MAP.default_schema_uri
@@ -1563,7 +1561,28 @@ class MhdModelValidator:
             if not profile_uri:
                 profile_uri = schema.default_profile_uri
 
-            if schema.supported_profiles.get(profile_uri):
+            if (
+                schema.supported_profiles.get(profile_uri)
+                and profile_uri in MHD_PROFILE_VALIDATIONS_V0_1
+            ):
                 _, schema_file = load_mhd_json_schema(profile_uri)
+                node_validation = MHD_PROFILE_VALIDATIONS_V0_1[profile_uri]
+
+                mhd_model_validator = MhdModelValidator(node_validation)
+
+                validator = validators.extend(
+                    jsonschema.Draft202012Validator,
+                    validators={
+                        "mhdGraphValidation": mhd_model_validator.validate_graph,
+                        "anyOf": mhd_model_validator.anyOf,
+                    },
+                )
+                logger.info("Loaded schema: %s, profile: %s.", schema_uri, profile_uri)
                 return validator(schema_file)
         return None
+
+
+MHD_PROFILE_VALIDATIONS_V0_1 = {
+    MHD_MODEL_V0_1_MS_PROFILE_NAME: MHD_MS_PROFILE_V0_1,
+    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME: MHD_LEGACY_PROFILE_V0_1,
+}

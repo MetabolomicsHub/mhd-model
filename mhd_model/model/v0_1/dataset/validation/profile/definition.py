@@ -1,6 +1,6 @@
 from typing import Annotated, Any, Literal
 
-from pydantic import Field, model_validator
+from pydantic import AnyUrl, Field, model_validator
 
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
@@ -18,9 +18,9 @@ from mhd_model.shared.validation.definitions import (
 class FilterCondition(MhdConfigModel):
     name: Annotated[str, Field()]
     relationship_name: Annotated[str, Field()]
-    source_node_type: Annotated[None | str, Field()]
-    source_node_property: Annotated[None | str, Field()] = None
-    source_node_value: Annotated[None | str | CvTerm, Field()] = None
+    start_node_type: Annotated[None | str, Field()]
+    expression: Annotated[None | str, Field()] = None
+    expression_value: Annotated[None | str | CvTerm, Field()] = None
 
 
 NodePropertyType = Literal["int", "str", "float", "CvTerm", "CvTermValue"]
@@ -41,6 +41,7 @@ class PropertyConstraint(MhdConfigModel):
 
 
 class CvTermValidation(MhdConfigModel):
+    min_count: Annotated[int, Field()] = 0
     node_type: Annotated[str, Field()]
     node_property_name: Annotated[None | str, Field()] = None
     validation: Annotated[
@@ -84,3 +85,4 @@ class CvNodeValidation(NodeValidation):
 class MhDatasetValidation(MhdConfigModel):
     mhd_nodes: Annotated[list[NodeValidation], Field()] = []
     cv_nodes: Annotated[list[CvNodeValidation], Field()] = []
+    schema: Annotated[AnyUrl, Field()]

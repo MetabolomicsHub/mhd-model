@@ -1,3 +1,4 @@
+from mhd_model.model import MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     RelationshipValidation,
@@ -19,7 +20,6 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_PARAMETER_DEFINITIONS,
     COMMON_PROTOCOL_PARAMETERS,
     COMMON_PROTOCOLS,
-    COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_TECHNOLOGY_TYPES,
 )
 from mhd_model.shared.model import CvTerm
@@ -32,12 +32,14 @@ from mhd_model.shared.validation.definitions import (
     ParentCvTerm,
 )
 
-MHD_BASE_VALIDATION = MhDatasetValidation()
+MHD_BASE_VALIDATION_V0_1 = MhDatasetValidation(
+    schema=MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME
+)
 
-MHD_BASE_VALIDATION.mhd_nodes = [
+MHD_BASE_VALIDATION_V0_1.mhd_nodes = [
     NodeValidation(
         node_type="assay",
-        min=1,
+        min=0,
         validations=[
             NodePropertyValidation(
                 node_type="assay",
@@ -110,9 +112,9 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="part-of",
                 reverse_relationship_name="has-assay",
                 target="study",
-                min=1,
-                min_for_each_source=1,
-                max_for_each_source=1,
+                min=0,
+                min_for_each_source=0,
+                max_for_each_source=0,
             ),
             RelationshipValidation(
                 description="A link to a protocol conducted in assay.",
@@ -127,7 +129,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
     ),
     NodeValidation(
         node_type="characteristic-definition",
-        min=2,
+        min=0,
         validations=[
             EmbeddedRefValidation(
                 node_type="characteristic-definition",
@@ -149,6 +151,15 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 target="characteristic-value",
                 min=2,
                 min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="characteristic-definition",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="characteristic-type",
+                min=0,
+                min_for_each_source=1,
+                max_for_each_source=1,
             ),
             RelationshipValidation(
                 source="characteristic-definition",
@@ -225,6 +236,15 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         relationships=[
             RelationshipValidation(
                 source="factor-definition",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="factor-type",
+                min=0,
+                min_for_each_source=0,
+                max_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="factor-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
                 target="factor-value",
@@ -243,7 +263,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
     ),
     NodeValidation(
         node_type="metadata-file",
-        min=1,
+        min=0,
         validations=[
             NodePropertyValidation(
                 node_type="metadata-file",
@@ -258,11 +278,6 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             NodePropertyValidation(
                 node_type="metadata-file",
                 node_property_name="format_ref",
-                contraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                node_type="metadata-file",
-                node_property_name="extension",
                 contraints=PropertyConstraint(required=True),
             ),
         ],
@@ -288,7 +303,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="describes",
                 reverse_relationship_name="has-metadata-file",
                 target="study",
-                min=1,
+                min=0,
                 min_for_each_source=1,
                 max_for_each_source=1,
             ),
@@ -446,22 +461,31 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
                 target="parameter-value",
-                min=1,
+                min=0,
                 min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="parameter-definition",
+                relationship_name="has-type",
+                reverse_relationship_name="type-of",
+                target="parameter-type",
+                min=0,
+                min_for_each_source=1,
+                max_for_each_source=1,
             ),
             RelationshipValidation(
                 source="parameter-definition",
                 relationship_name="defined-in",
                 reverse_relationship_name="has-parameter-definition",
                 target="protocol",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
         ],
     ),
     NodeValidation(
         node_type="person",
-        min=1,
+        min=0,
         validations=[
             NodePropertyValidation(
                 node_type="person",
@@ -520,9 +544,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="submits",
                 reverse_relationship_name="submitted-by",
                 target="study",
-                min=1,
+                min=0,
                 min_for_each_source=0,
-                max_for_each_source=1,
             ),
             RelationshipValidation(
                 source="person",
@@ -646,7 +669,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="has-parameter-definition",
                 reverse_relationship_name="defined-in",
                 target="parameter-definition",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
@@ -654,7 +677,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="used-in",
                 reverse_relationship_name="has-protocol",
                 target="study",
-                min=1,
+                min=0,
                 min_for_each_source=1,
             ),
             RelationshipValidation(
@@ -716,7 +739,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
     ),
     NodeValidation(
         node_type="raw-data-file",
-        min=1,
+        min=0,
         validations=[
             NodePropertyValidation(
                 node_type="raw-data-file",
@@ -727,11 +750,6 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 node_type="raw-data-file",
                 node_property_name="name",
                 contraints=PropertyConstraint(required=True, min_length=2),
-            ),
-            NodePropertyValidation(
-                node_type="raw-data-file",
-                node_property_name="format_ref",
-                contraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -748,9 +766,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="created-in",
                 reverse_relationship_name="has-raw-data-file",
                 target="study",
-                min=1,
+                min=0,
                 min_for_each_source=1,
-                max_for_each_source=1,
             ),
             RelationshipValidation(
                 source="raw-data-file",
@@ -775,11 +792,6 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 node_type="result-file",
                 node_property_name="name",
                 contraints=PropertyConstraint(required=True, min_length=2),
-            ),
-            NodePropertyValidation(
-                node_type="result-file",
-                node_property_name="format_ref",
-                contraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -866,21 +878,31 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 min=0,
                 min_for_each_source=0,
             ),
+            RelationshipValidation(
+                source="sample",
+                relationship_name="has-characteristic-value",
+                reverse_relationship_name="value-of",
+                target="characteristic-value",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     NodeValidation(
         node_type="sample-run",
         min=0,
         validations=[
-            NodePropertyValidation(
+            EmbeddedRefValidation(
                 node_type="sample-run",
                 node_property_name="sample_ref",
-                contraints=PropertyConstraint(required=True),
+                required=True,
+                target_ref_types=["sample"],
             ),
-            NodePropertyValidation(
+            EmbeddedRefValidation(
                 node_type="sample-run",
                 node_property_name="raw_data_file_refs",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                required=True,
+                target_ref_types=["raw-data-file"],
             ),
         ],
         relationships=[
@@ -898,15 +920,16 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         node_type="sample-run-configuration",
         min=0,
         validations=[
-            NodePropertyValidation(
+            EmbeddedRefValidation(
                 node_type="sample-run-configuration",
                 node_property_name="protocol_ref",
-                contraints=PropertyConstraint(required=True),
-            )
+                required=True,
+                target_ref_types=["protocol"],
+            ),
         ],
         relationships=[
             RelationshipValidation(
-                source="raw-data-file",
+                source="sample-run-configuration",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
                 target="descriptor",
@@ -919,17 +942,11 @@ MHD_BASE_VALIDATION.mhd_nodes = [
         node_type="study",
         min=1,
         validations=[
-            NodePropertyValidation(
+            EmbeddedRefValidation(
                 node_type="study",
                 node_property_name="created_by_ref",
-                contraints=PropertyConstraint(required=True),
-            ),
-            CvTermValidation(
-                node_type="study",
-                node_property_name="additional_identifiers",
-                validation=AllowAnyCvTerm(
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
+                required=False,
+                target_ref_types=["data-provider"],
             ),
             NodePropertyValidation(
                 node_type="study",
@@ -938,33 +955,14 @@ MHD_BASE_VALIDATION.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="study",
-                node_property_name="title",
-                contraints=PropertyConstraint(required=True, min_length=25),
+                node_property_name="repository_identifier",
+                contraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                node_type="study",
-                node_property_name="description",
-                contraints=PropertyConstraint(required=True, min_length=60),
-            ),
-            NodePropertyValidation(
-                node_type="study",
-                node_property_name="submission_date",
-                contraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                node_type="study",
-                node_property_name="public_release_date",
-                contraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                node_type="study",
-                node_property_name="license",
-                contraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
+            EmbeddedRefValidation(
                 node_type="study",
                 node_property_name="protocol_refs",
-                contraints=PropertyConstraint(required=True),
+                required=False,
+                target_ref_types=["protocol"],
             ),
         ],
         relationships=[
@@ -974,7 +972,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 reverse_relationship_name="provides",
                 target="data-provider",
                 min=0,
-                min_for_each_source=0,
+                min_for_each_source=1,
+                max_for_each_source=1,
             ),
             RelationshipValidation(
                 source="study",
@@ -997,16 +996,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="has-characteristic-definition",
                 reverse_relationship_name="used-in",
                 target="characteristic-definition",
-                min=2,
-                min_for_each_source=2,
-            ),
-            RelationshipValidation(
-                source="study",
-                relationship_name="defines",
-                reverse_relationship_name="defined-in",
-                target="characteristic-type",
-                min=2,
-                min_for_each_source=2,
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="study",
@@ -1061,8 +1052,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="has-metadata-file",
                 reverse_relationship_name="describes",
                 target="metadata-file",
-                min=1,
-                min_for_each_source=1,
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="study",
@@ -1085,8 +1076,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="submitted-by",
                 reverse_relationship_name="submits",
                 target="person",
-                min=1,
-                min_for_each_source=1,
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="study",
@@ -1101,8 +1092,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="has-protocol",
                 reverse_relationship_name="used-in",
                 target="protocol",
-                min=1,
-                min_for_each_source=1,
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="study",
@@ -1117,8 +1108,8 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 relationship_name="has-raw-data-file",
                 reverse_relationship_name="created-in",
                 target="raw-data-file",
-                min=1,
-                min_for_each_source=1,
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="study",
@@ -1148,7 +1139,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
     ),
     NodeValidation(
         node_type="specimen",
-        min=1,
+        min=0,
         validations=[
             NodePropertyValidation(
                 node_type="specimen",
@@ -1198,7 +1189,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
     ),
     NodeValidation(
         node_type="subject",
-        min=1,
+        min=0,
         validations=[
             NodePropertyValidation(
                 node_type="subject",
@@ -1226,7 +1217,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 reverse_relationship_name="value-of",
                 target="characteristic-value",
                 min=0,
-                min_for_each_source=2,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="subject",
@@ -1234,7 +1225,7 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 reverse_relationship_name="derived-from",
                 target="sample",
                 min=0,
-                min_for_each_source=1,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="subject",
@@ -1268,11 +1259,6 @@ MHD_BASE_VALIDATION.mhd_nodes = [
                 node_property_name="name",
                 contraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                node_type="supplementary-file",
-                node_property_name="format_ref",
-                contraints=PropertyConstraint(required=True),
-            ),
         ],
         relationships=[
             RelationshipValidation(
@@ -1303,11 +1289,16 @@ MHD_BASE_VALIDATION.mhd_nodes = [
     ),
 ]
 
-MHD_BASE_VALIDATION.cv_nodes = [
+MHD_BASE_VALIDATION_V0_1.cv_nodes = [
     CvNodeValidation(
         node_type="characteristic-type",
-        min=1,
+        min=0,
         validations=[
+            NodePropertyValidation(
+                node_type="characteristic-type",
+                node_property_name="name",
+                contraints=PropertyConstraint(required=True),
+            ),
             CvTermValidation(
                 node_type="characteristic-type",
                 validation=AllowedCvTerms(
@@ -1317,8 +1308,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Characteristic Type",
                         relationship_name="[embedded].characteristic_type_ref",
-                        source_node_type="characteristic-definition",
-                        source_node_property="characteristic_type_ref",
+                        start_node_type="characteristic-definition",
+                        expression="characteristic_type_ref",
                     )
                 ],
             ),
@@ -1328,25 +1319,16 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 source="characteristic-type",
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
-                target="characteristic-value",
-                min=2,
+                target="characteristic-definition",
+                min=0,
                 min_for_each_source=0,
-            ),
-            RelationshipValidation(
-                source="characteristic-type",
-                relationship_name="defined-in",
-                reverse_relationship_name="defines",
-                target="study",
-                min=2,
-                min_for_each_source=1,
-                max_for_each_source=1,
             ),
         ],
     ),
     CvNodeValidation(
         node_type="characteristic-value",
         has_value=True,
-        min=1,
+        min=0,
         validations=[
             CvTermValidation(
                 node_type="characteristic-value",
@@ -1362,8 +1344,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
                 target="characteristic-definition",
-                min=1,
-                min_for_each_source=1,
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 source="characteristic-value",
@@ -1383,9 +1365,9 @@ MHD_BASE_VALIDATION.cv_nodes = [
             ),
             RelationshipValidation(
                 source="characteristic-value",
-                relationship_name="has-type",
-                reverse_relationship_name="type-of",
-                target="characteristic-type",
+                relationship_name="value-of",
+                reverse_relationship_name="has-characteristic-value",
+                target="sample",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1413,8 +1395,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Data Provider",
                         relationship_name="[embedded].created_by_ref",
-                        source_node_type=None,
-                        source_node_property="created_by_ref",
+                        start_node_type=None,
+                        expression="created_by_ref",
                     )
                 ],
             ),
@@ -1426,7 +1408,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 reverse_relationship_name="provided-by",
                 target="study",
                 min=0,
-                min_for_each_source=0,
+                min_for_each_source=1,
+                max_for_each_source=1,
             ),
         ],
     ),
@@ -1452,8 +1435,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="File Format",
                         relationship_name="[embedded].format_ref",
-                        source_node_type=None,
-                        source_node_property="format_ref",
+                        start_node_type=None,
+                        expression="format_ref",
                     )
                 ],
             ),
@@ -1475,8 +1458,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="File Format",
                         relationship_name="[embedded].compression_format_ref",
-                        source_node_type=None,
-                        source_node_property="compression_format_ref",
+                        start_node_type=None,
+                        expression="compression_format_ref",
                     )
                 ],
             ),
@@ -1487,8 +1470,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Analysis Type",
                         relationship_name="[embedded].assay_type_ref",
-                        source_node_type="assay",
-                        source_node_property="assay_type_ref",
+                        start_node_type="assay",
+                        expression="assay_type_ref",
                     )
                 ],
             ),
@@ -1501,8 +1484,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Measurement Type",
                         relationship_name="[embedded].measurement_type_ref",
-                        source_node_type="assay",
-                        source_node_property="measurement_type_ref",
+                        start_node_type="assay",
+                        expression="measurement_type_ref",
                     )
                 ],
             ),
@@ -1515,8 +1498,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Technology Type",
                         relationship_name="[embedded].technology_type_ref",
-                        source_node_type="assay",
-                        source_node_property="technology_type_ref",
+                        start_node_type="assay",
+                        expression="technology_type_ref",
                     )
                 ],
             ),
@@ -1527,8 +1510,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Omics Type",
                         relationship_name="[embedded].omics_type_ref",
-                        source_node_type="assay",
-                        source_node_property="omics_type_ref",
+                        start_node_type="assay",
+                        expression="omics_type_ref",
                     )
                 ],
             ),
@@ -1542,7 +1525,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Keyword",
                         relationship_name="has-submitter-keyword",
-                        source_node_type="study",
+                        start_node_type="study",
                     )
                 ],
             ),
@@ -1722,19 +1705,10 @@ MHD_BASE_VALIDATION.cv_nodes = [
         node_type="factor-type",
         min=0,
         validations=[
-            CvTermValidation(
+            NodePropertyValidation(
                 node_type="factor-type",
-                validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_STUDY_FACTOR_DEFINITIONS.values())
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Factor Type",
-                        relationship_name="[embedded].factor_type_ref",
-                        source_node_type="factor-definition",
-                        source_node_property="factor_type_ref",
-                    )
-                ],
+                node_property_name="name",
+                contraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -1742,7 +1716,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 source="factor-type",
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
-                target="factor-value",
+                target="factor-definition",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1755,7 +1729,10 @@ MHD_BASE_VALIDATION.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="factor-value",
-                validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
+                validation=AllowAnyCvTerm(
+                    allowed_other_sources=["wikidata", "ILX"],
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                ),
             ),
             CvTermValidation(
                 node_type="factor-value",
@@ -1767,22 +1744,14 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Disease",
                         relationship_name="has-instance",
-                        source_node_type="factor-definition",
-                        source_node_property="factor_type_ref.accession",
-                        source_node_value="EFO:0000408",
+                        start_node_type="factor-definition",
+                        expression="factor_type_ref.accession",
+                        expression_value="EFO:0000408",
                     )
                 ],
             ),
         ],
         relationships=[
-            RelationshipValidation(
-                source="factor-value",
-                relationship_name="has-type",
-                reverse_relationship_name="type-of",
-                target="factor-type",
-                min=0,
-                min_for_each_source=1,
-            ),
             RelationshipValidation(
                 source="factor-value",
                 relationship_name="instance-of",
@@ -1796,6 +1765,14 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 relationship_name="value-of",
                 reverse_relationship_name="has-factor-value",
                 target="sample",
+                min=0,
+                min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="factor-value",
+                relationship_name="value-of",
+                reverse_relationship_name="has-factor-value",
+                target="specimen",
                 min=0,
                 min_for_each_source=1,
             ),
@@ -1831,7 +1808,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Reported Metabolite Identifier",
                         relationship_name="identified-as",
-                        source_node_type="metabolite",
+                        start_node_type="metabolite",
                     )
                 ],
             ),
@@ -1851,6 +1828,11 @@ MHD_BASE_VALIDATION.cv_nodes = [
         node_type="parameter-type",
         min=0,
         validations=[
+            NodePropertyValidation(
+                node_type="parameter-type",
+                node_property_name="name",
+                contraints=PropertyConstraint(required=True),
+            ),
             CvTermValidation(
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
@@ -1867,9 +1849,9 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Mass spectrometry protocol",
                         relationship_name="[embedded].parameter_type_ref",
-                        source_node_type="parameter-definition",
-                        source_node_property="[defined-in].protocol_type_ref.accession",
-                        source_node_value="CHMO:0000470",
+                        start_node_type="parameter-definition",
+                        expression="[defined-in].protocol_type_ref.accession",
+                        expression_value="CHMO:0000470",
                     ),
                 ],
             ),
@@ -1882,9 +1864,9 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Chromatography protocol",
                         relationship_name="[embedded].parameter_definition_refs.parameter_type_ref",
-                        source_node_type="protocol",
-                        source_node_property="protocol_type_ref.accession",
-                        source_node_value="CHMO:0001000",
+                        start_node_type="protocol",
+                        expression="protocol_type_ref.accession",
+                        expression_value="CHMO:0001000",
                     )
                 ],
             ),
@@ -1894,7 +1876,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 source="parameter-type",
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
-                target="parameter-value",
+                target="parameter-definition",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1942,9 +1924,9 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Mass spectrometry instrument",
                         relationship_name="has-instance",
-                        source_node_type="parameter-definition",
-                        source_node_property="parameter_type_ref.accession",
-                        source_node_value="MSIO:0000171",
+                        start_node_type="parameter-definition",
+                        expression="parameter_type_ref.accession",
+                        expression_value="MSIO:0000171",
                     )
                 ],
             ),
@@ -1955,15 +1937,7 @@ MHD_BASE_VALIDATION.cv_nodes = [
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
                 target="parameter-definition",
-                min=1,
-                min_for_each_source=1,
-            ),
-            RelationshipValidation(
-                source="parameter-value",
-                relationship_name="has-type",
-                reverse_relationship_name="type-of",
-                target="parameter-type",
-                min=1,
+                min=0,
                 min_for_each_source=1,
             ),
         ],
@@ -1972,6 +1946,11 @@ MHD_BASE_VALIDATION.cv_nodes = [
         node_type="protocol-type",
         min=0,
         validations=[
+            NodePropertyValidation(
+                node_type="protocol-type",
+                node_property_name="name",
+                contraints=PropertyConstraint(required=True),
+            ),
             CvTermValidation(
                 node_type="protocol-type",
                 validation=AllowedCvTerms(
@@ -1982,8 +1961,8 @@ MHD_BASE_VALIDATION.cv_nodes = [
                     FilterCondition(
                         name="Protocol Type",
                         relationship_name="[embedded].protocol_type_ref",
-                        source_node_type="protocol",
-                        source_node_property="protocol_type_ref",
+                        start_node_type="protocol",
+                        expression="protocol_type_ref",
                     )
                 ],
             ),
@@ -2001,6 +1980,6 @@ MHD_BASE_VALIDATION.cv_nodes = [
     ),
 ]
 
-MHD_BASE_VALIDATION.mhd_nodes.sort(key=lambda x: x.node_type)
+MHD_BASE_VALIDATION_V0_1.mhd_nodes.sort(key=lambda x: x.node_type)
 
-MHD_BASE_VALIDATION.cv_nodes.sort(key=lambda x: x.node_type)
+MHD_BASE_VALIDATION_V0_1.cv_nodes.sort(key=lambda x: x.node_type)

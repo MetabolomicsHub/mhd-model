@@ -1,56 +1,173 @@
 # Metabolomics Hub Common Data Model Nodes - MHD MS Profile
 
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json</a> 
+
 ## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
-<code>Assay, Characteristic Definition, Metadata File, Organization, Parameter Definition, Person, Protocol, Raw Data File, Sample, Sample Run, Study, Subject</code>
+<code>Assay, Characteristic Definition, Metadata File, Organization, Parameter Definition, Person, Protocol, Sample, Sample Run, Study, Subject</code>
 
  **Required MHD CV Terms**
 
 <code>Characteristic Type, Characteristic Value, Data Provider, Descriptor, Parameter Type, Parameter Value, Protocol Type</code>
 
+The following graph shows only required nodes and required relationships. Relationships that start with 'embedded - ' show required node property.
+
+``` mermaid
+graph LR
+  Assay[Assay] ==>|embedded - metadata_file_ref| Metadata_File[Metadata File];
+  Assay[Assay] ==>|embedded - technology_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==>|embedded - assay_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==>|embedded - measurement_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==>|embedded - omics_type_ref| Descriptor[Descriptor];
+  Assay[Assay] ==>|embedded - sample_run_refs| Sample_Run[Sample Run];
+  Characteristic_Definition[Characteristic Definition] ==>|embedded - characteristic_type_ref| Characteristic_Type[Characteristic Type];
+  Parameter_Definition[Parameter Definition] ==>|embedded - parameter_type_ref| Parameter_Type[Parameter Type];
+  Protocol[Protocol] ==>|embedded - protocol_type_ref| Protocol_Type[Protocol Type];
+  Sample_Run[Sample Run] ==>|embedded - sample_ref| Sample[Sample];
+  Sample_Run[Sample Run] ==>|embedded - raw_data_file_refs| Raw_Data_File[Raw Data File];
+  Study[Study] ==>|embedded - created_by_ref| Data_Provider[Data Provider];
+  Study[Study] ==>|embedded - protocol_refs| Protocol[Protocol];
+  Assay[Assay] ==>|described-as| Descriptor[Descriptor];
+  Assay[Assay] ==>|part-of| Study[Study];
+  Assay[Assay] ==>|follows| Protocol[Protocol];
+  Characteristic_Definition[Characteristic Definition] ==>|has-type| Characteristic_Type[Characteristic Type];
+  Characteristic_Definition[Characteristic Definition] ==>|used-in| Study[Study];
+  Metadata_File[Metadata File] ==>|describes| Study[Study];
+  Parameter_Definition[Parameter Definition] ==>|has-type| Parameter_Type[Parameter Type];
+  Parameter_Definition[Parameter Definition] ==>|defined-in| Protocol[Protocol];
+  Person[Person] ==>|affiliated-with| Organization[Organization];
+  Protocol[Protocol] ==>|used-in| Study[Study];
+  Protocol[Protocol] ==>|has-type| Protocol_Type[Protocol Type];
+  Raw_Data_File[Raw Data File] ==>|created-in| Study[Study];
+  Sample[Sample] ==>|used-in| Study[Study];
+  Sample[Sample] ==>|derived-from| Subject[Subject];
+  Study[Study] ==>|provided-by| Data_Provider[Data Provider];
+  Study[Study] ==>|has-assay| Assay[Assay];
+  Study[Study] ==>|has-characteristic-definition| Characteristic_Definition[Characteristic Definition];
+  Study[Study] ==>|has-metadata-file| Metadata_File[Metadata File];
+  Study[Study] ==>|has-principal-investigator| Person[Person];
+  Study[Study] ==>|submitted-by| Person[Person];
+  Study[Study] ==>|has-protocol| Protocol[Protocol];
+  Subject[Subject] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
+  Subject[Subject] ==>|source-of| Sample[Sample];
+  Characteristic_Type[Characteristic Type] ==>|type-of| Characteristic_Definition[Characteristic Definition];
+  Characteristic_Value[Characteristic Value] ==>|instance-of| Characteristic_Definition[Characteristic Definition];
+  Data_Provider[Data Provider] ==>|provides| Study[Study];
+  Parameter_Type[Parameter Type] ==>|type-of| Parameter_Definition[Parameter Definition];
+  Parameter_Value[Parameter Value] ==>|instance-of| Parameter_Definition[Parameter Definition];
+  Protocol_Type[Protocol Type] ==>|type-of| Protocol[Protocol];
+```
+
 **Required Relationships**
 
 |Source Node|Relationship|Target Node|Min|Max|
 |-----------|------------|-----------|---|---|
-|Assay|[embedded] - assay_type|Descriptor|1|1|
-|Assay|[embedded] - measurement_type|Descriptor|1|1|
-|Assay|[embedded] - metadata_file|Metadata File|1|1|
-|Assay|[embedded] - omics_type|Descriptor|1|1|
-|Assay|[embedded] - sample_run|Sample Run|1|N (unbounded)|
-|Assay|[embedded] - technology_type|Descriptor|1|1|
+|Assay|[embedded] - assay_type_ref|Descriptor|1|1|
+|Assay|[embedded] - measurement_type_ref|Descriptor|1|1|
+|Assay|[embedded] - metadata_file_ref|Metadata File|1|1|
+|Assay|[embedded] - omics_type_ref|Descriptor|1|1|
+|Assay|[embedded] - sample_run_refs|Sample Run|1|N (unbounded)|
+|Assay|[embedded] - technology_type_ref|Descriptor|1|1|
 |Assay|described-as|Descriptor|1|N (unbounded)|
+|Assay|follows|Protocol|1|N (unbounded)|
 |Assay|part-of|Study|1|1|
-|Characteristic Definition|[embedded] - characteristic_type|Characteristic Type|1|1|
+|Characteristic Definition|[embedded] - characteristic_type_ref|Characteristic Type|1|1|
+|Characteristic Definition|has-type|Characteristic Type|1|1|
 |Characteristic Definition|used-in|Study|2|N (unbounded)|
-|Characteristic Type|defined-in|Study|1|1|
+|Characteristic Type|type-of|Characteristic Definition|1|N (unbounded)|
 |Characteristic Value|instance-of|Characteristic Definition|1|N (unbounded)|
-|Characteristic Value|value-of|Subject|1|N (unbounded)|
 |Data Provider|provides|Study|1|1|
 |Metadata File|describes|Study|1|1|
-|Parameter Definition|[embedded] - parameter_type|Parameter Type|1|1|
-|Parameter Type|has-instance|Parameter Definition|1|N (unbounded)|
-|Parameter Type|type-of|Parameter Value|1|N (unbounded)|
-|Parameter Value|has-type|Parameter Type|1|N (unbounded)|
+|Parameter Definition|[embedded] - parameter_type_ref|Parameter Type|1|1|
+|Parameter Definition|defined-in|Protocol|1|N (unbounded)|
+|Parameter Definition|has-type|Parameter Type|1|1|
+|Parameter Type|type-of|Parameter Definition|1|N (unbounded)|
 |Parameter Value|instance-of|Parameter Definition|1|N (unbounded)|
 |Person|affiliated-with|Organization|1|N (unbounded)|
-|Protocol|[embedded] - protocol_type|Protocol Type|1|1|
+|Protocol|[embedded] - protocol_type_ref|Protocol Type|1|1|
 |Protocol|has-type|Protocol Type|1|1|
 |Protocol|used-in|Study|1|N (unbounded)|
 |Protocol Type|type-of|Protocol|1|N (unbounded)|
-|Raw Data File|created-in|Study|1|1|
+|Raw Data File|created-in|Study|1|N (unbounded)|
 |Sample|derived-from|Subject|1|N (unbounded)|
 |Sample|used-in|Study|1|1|
-|Study|defines|Characteristic Type|2|N (unbounded)|
+|Sample Run|[embedded] - raw_data_file_refs|Raw Data File|1|N (unbounded)|
+|Sample Run|[embedded] - sample_ref|Sample|1|1|
+|Study|[embedded] - created_by_ref|Data Provider|1|1|
+|Study|[embedded] - protocol_refs|Protocol|1|N (unbounded)|
 |Study|has-assay|Assay|1|N (unbounded)|
 |Study|has-characteristic-definition|Characteristic Definition|2|N (unbounded)|
 |Study|has-metadata-file|Metadata File|1|N (unbounded)|
 |Study|has-principal-investigator|Person|1|N (unbounded)|
 |Study|has-protocol|Protocol|1|N (unbounded)|
-|Study|has-raw-data-file|Raw Data File|1|N (unbounded)|
+|Study|provided-by|Data Provider|1|1|
 |Study|submitted-by|Person|1|N (unbounded)|
+|Subject|has-characteristic-value|Characteristic Value|1|N (unbounded)|
 |Subject|source-of|Sample|1|N (unbounded)|
+
+**Required Node Properties**
+
+|Source Node|Property Name|
+|-----------|------------|
+|assay|assay_type_ref|
+|assay|measurement_type_ref|
+|assay|metadata_file_ref|
+|assay|name|
+|assay|omics_type_ref|
+|assay|repository_identifier|
+|assay|sample_run_refs|
+|assay|technology_type_ref|
+|characteristic-definition|characteristic_type_ref|
+|characteristic-definition|name|
+|characteristic-type|name|
+|data-provider|value|
+|metadata-file|format_ref|
+|metadata-file|name|
+|metadata-file|url_list|
+|organization|name|
+|parameter-definition|name|
+|parameter-definition|parameter_type_ref|
+|parameter-type|name|
+|person|emails|
+|person|full_name|
+|protocol|description|
+|protocol|name|
+|protocol|protocol_type_ref|
+|protocol-type|name|
+|raw-data-file|extension|
+|raw-data-file|name|
+|raw-data-file|url_list|
+|sample|name|
+|sample|repository_identifier|
+|sample-run|raw_data_file_refs|
+|sample-run|sample_ref|
+|study|created_by_ref|
+|study|dataset_url_list|
+|study|description|
+|study|license|
+|study|mhd_identifier|
+|study|protocol_refs|
+|study|public_release_date|
+|study|repository_identifier|
+|study|submission_date|
+|study|title|
+|subject|name|
+|subject|repository_identifier|
+
+**Additional Requirements**
+
+The following nodes are required with the specified value.
+
+|Source Node|Minimum Node Count|Property / Relationship|Value|
+|-----------|-----------|------------|------------|
+|characteristic-definition|1|characteristic_type_ref|[EFO, EFO:0000324, cell type]|
+|characteristic-definition|1|characteristic_type_ref|[EFO, EFO:0000408, disease]|
+|characteristic-definition|1|characteristic_type_ref|[NCIT, NCIT:C103199, organism part]|
+|characteristic-definition|1|characteristic_type_ref|[NCIT, NCIT:C14250, organism]|
+|parameter-definition|1|[defined-in].protocol_type_ref|[CHMO, CHMO:0000470, mass spectrometry]|
+|parameter-definition|1|parameter_type_ref|[MSIO, MSIO:0000171, mass spectrometry instrument]|
 
 ## MHD Domain Objects
 
@@ -85,7 +202,7 @@ Assay node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |assay|described-as|describes|descriptor|1|N|A link to a descriptor that describes the assay.<br>**Required min count in the dataset: 1.**|
-|assay|follows|used-in|protocol|0|N|A link to a protocol conducted in assay.|
+|assay|follows|used-in|protocol|1|N|A link to a protocol conducted in assay.|
 |assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br>**Required min count in the dataset: 1.**|
 
 
@@ -124,6 +241,7 @@ Characteristic Definition node is **required in the MHD MS Profile.** <code>Mini
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |characteristic-definition|has-instance|instance-of|characteristic-value|0|N|**Required min count in the dataset: 2.**<br><br>Target Validation Rules:<br><code>-----<br>**Conditional - (Organism)**<br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Organism part)**<br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED, MSIO<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Disease)**<br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Cell type)**<br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
+|characteristic-definition|has-type|type-of|characteristic-type|1|1||
 |characteristic-definition|used-in|has-characteristic-definition|study|2|N|**Required min count in the dataset: 2.**|
 
 
@@ -134,6 +252,7 @@ Characteristic Definition node is **required in the MHD MS Profile.** <code>Mini
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|characteristic-type|type-of|has-type|characteristic-definition|1|N|**Required min count in the dataset: 2.**|
 |characteristic-value|instance-of|has-instance|characteristic-definition|1|N|**Required min count in the dataset: 2.**|
 |study|has-characteristic-definition|used-in|characteristic-definition|2|N|**Required min count in the dataset: 2.**|
 
@@ -201,7 +320,8 @@ Factor Definition node is optional in the  MHD MS Profile. <code>Minimum: 0, Max
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |factor-definition|has-instance|instance-of|factor-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Disease)**<br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
-|factor-definition|used-in|has-factor-definition|study|0|N||
+|factor-definition|has-type|type-of|factor-type|1|1||
+|factor-definition|used-in|has-factor-definition|study|1|N||
 
 
 **Embedded Relationships**: <code>factor-type</code>
@@ -211,6 +331,7 @@ Factor Definition node is optional in the  MHD MS Profile. <code>Minimum: 0, Max
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|factor-type|type-of|has-type|factor-definition|1|N||
 |factor-value|instance-of|has-instance|factor-definition|1|N||
 |study|has-factor-definition|used-in|factor-definition|0|N||
 
@@ -365,8 +486,9 @@ Parameter Definition node is **required in the MHD MS Profile.** <code>Minimum: 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-definition|defined-in|has-parameter-definition|protocol|0|N|**Required min count in the dataset: 1.**|
+|parameter-definition|defined-in|has-parameter-definition|protocol|1|N|**Required min count in the dataset: 1.**|
 |parameter-definition|has-instance|instance-of|parameter-value|0|N|**Required min count in the dataset: 1.**<br>Target Validation Rule:<br><code>-----<br>**Conditional - (Mass spectrometry instrument)**<br>[Source parameter_type_ref.accession = MSIO:0000171]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Excluded CV Terms:<br>* [MS, MS:1000491, Dionex instrument model],<br>* [MS, MS:1000488, Hitachi instrument model]</code><br>-----|
+|parameter-definition|has-type|type-of|parameter-type|1|1||
 
 
 **Embedded Relationships**: <code>parameter-type</code>
@@ -376,7 +498,7 @@ Parameter Definition node is **required in the MHD MS Profile.** <code>Minimum: 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-type|has-instance|instance-of|parameter-definition|1|N||
+|parameter-type|type-of|has-type|parameter-definition|1|N||
 |parameter-value|instance-of|has-instance|parameter-definition|1|N|**Required min count in the dataset: 1.**|
 |protocol|has-parameter-definition|defined-in|parameter-definition|0|N|**Required min count in the dataset: 1.**|
 
@@ -512,9 +634,9 @@ Protocol node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|assay|follows|used-in|protocol|0|N|A link to a protocol conducted in assay.|
+|assay|follows|used-in|protocol|1|N|A link to a protocol conducted in assay.|
 |descriptor|describes|described-as|protocol|0|N||
-|parameter-definition|defined-in|has-parameter-definition|protocol|0|N|**Required min count in the dataset: 1.**|
+|parameter-definition|defined-in|has-parameter-definition|protocol|1|N|**Required min count in the dataset: 1.**|
 |protocol-type|type-of|has-type|protocol|1|N||
 |study|has-protocol|used-in|protocol|1|N|**Required min count in the dataset: 1.**|
 
@@ -560,7 +682,7 @@ Publication node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: 
 
 ### Raw Data File
 
-Raw Data File node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Raw Data File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -576,16 +698,16 @@ Raw Data File node is **required in the MHD MS Profile.** <code>Minimum: 1, Maxi
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|**required**|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
-|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
+|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|raw-data-file|created-in|has-raw-data-file|study|1|1|**Required min count in the dataset: 1.**|
+|raw-data-file|created-in|has-raw-data-file|study|1|N||
 |raw-data-file|described-as|describes|descriptor|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 
@@ -596,7 +718,7 @@ Raw Data File node is **required in the MHD MS Profile.** <code>Minimum: 1, Maxi
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|raw-data-file|0|N||
 |metadata-file|references|referenced-in|raw-data-file|0|N||
-|study|has-raw-data-file|created-in|raw-data-file|1|N|**Required min count in the dataset: 1.**|
+|study|has-raw-data-file|created-in|raw-data-file|0|N||
 
 ### Result File
 
@@ -616,9 +738,9 @@ Result File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: 
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|**required**|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
-|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
+|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
 **Node Relationships**
@@ -665,6 +787,7 @@ Sample node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N 
 |sample|derived-from|source-of|subject|1|N||
 |sample|derived-from|source-of|specimen|0|N||
 |sample|described-as|describes|descriptor|0|N||
+|sample|has-characteristic-value|value-of|characteristic-value|0|N||
 |sample|has-factor-value|value-of|factor-value|0|N||
 |sample|used-in|has-sample|study|1|1||
 
@@ -673,6 +796,7 @@ Sample node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|characteristic-value|value-of|has-characteristic-value|sample|0|N||
 |descriptor|describes|described-as|sample|0|N||
 |factor-value|value-of|has-factor-value|sample|1|N||
 |specimen|source-of|derived-from|sample|1|N||
@@ -695,9 +819,9 @@ Sample Run node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|optional|<code>*str*<code>||
-|**sample_ref**|**required**|<code>*MhdObjectId*<code>|Target node type: <code>**sample**</code>|
+|**sample_ref**|**required**|<code>*MhdObjectId*<code>|Target node type: <code>**sample**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample**</code></code>|
 |**sample_run_configuration_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**sample-run-configuration**</code>|
-|**raw_data_file_refs**|**required**|<code>*list[MhdObjectId]*<code>|Minimum length: <code>1</code><br>Target node type: <code>**raw-data-file**</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**raw_data_file_refs**|**required**|<code>*list[MhdObjectId]*<code>|Target node type: <code>**raw-data-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**raw-data-file**</code></code>|
 |**derived_data_file_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**derived-data-file**</code>|
 |**result_file_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**result-file**</code>|
 |**supplementary_file_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**supplementary-file**</code>|
@@ -708,6 +832,9 @@ Sample Run node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |sample-run|described-as|describes|descriptor|0|N||
+
+
+**Embedded Relationships**: <code>raw-data-file, sample</code>
 
 
 **Reverse Node Relationships**
@@ -731,7 +858,7 @@ Sample Run Configuration node is optional in the  MHD MS Profile. <code>Minimum:
 |**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**protocol_ref**|**required**|<code>*MhdObjectId*<code>|Target node type: <code>**protocol**</code>|
+|**protocol_ref**|**required**|<code>*MhdObjectId*<code>|Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 |**parameter_value_refs**|optional|<code>*list[MhdObjectId or CvTermObjectId or CvTermValueObjectId]*<code>|Target node type: <code>**parameter-value**</code>|
 
 
@@ -740,6 +867,9 @@ Sample Run Configuration node is optional in the  MHD MS Profile. <code>Minimum:
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |sample-run-configuration|described-as|describes|descriptor|0|N||
+
+
+**Embedded Relationships**: <code>protocol</code>
 
 
 **Reverse Node Relationships**
@@ -784,12 +914,13 @@ Specimen node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (
 |------|------------|------------|------|---|---|-----------|
 |characteristic-value|value-of|has-characteristic-value|specimen|0|N||
 |descriptor|keyword-of|has-repository-keyword|specimen|0|N||
+|factor-value|value-of|has-factor-value|specimen|1|N||
 |sample|derived-from|source-of|specimen|0|N||
 |subject|source-of|derived-from|specimen|0|N||
 
 ### Study
 
-Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: 1 </code>
 
 **Properties**
 
@@ -797,13 +928,13 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**study**</code>|
-|**created_by_ref**|**required**|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**created_by_ref**|**required**|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rules:<br> <code>Target node type: <code>**data-provider**</code><br>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**mhd_identifier**|**required**|<code>*str*<code>|Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
-|**repository_identifier**|optional|<code>*str*<code>||
+|**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifiers**|optional|<code>*list[KeyValue]*<code>|Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**description**|**required**|<code>*str*<code>|Minimum length: <code>60</code><br>Validation Rule:<br> <code>Min Length: 60, Required</code>|
@@ -811,16 +942,15 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |**public_release_date**|**required**|<code>*datetime*<code>||
 |**license**|**required**|<code>*HttpUrl*<code>|<br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
 |**grant_identifiers**|optional|<code>*list[Annotated]*<code>||
-|**dataset_url_list**|optional|<code>*list[AnyUrl]*<code>||
+|**dataset_url_list**|**required**|<code>*list[AnyUrl]*<code>||
 |**related_datasets**|optional|<code>*list[KeyValue]*<code>||
-|**protocol_refs**|**required**|<code>*list[MhdObjectId]*<code>|Target node type: <code>**protocol**</code>|
+|**protocol_refs**|**required**|<code>*list[MhdObjectId]*<code>|Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|study|defines|defined-in|characteristic-type|2|N|**Required min count in the dataset: 2.**|
 |study|described-as|describes|descriptor|0|N||
 |study|funded-by|funds|organization|0|N||
 |study|has-assay|part-of|assay|1|N|**Required min count in the dataset: 1.**|
@@ -832,16 +962,19 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |study|has-principal-investigator|principal-investigator-of|person|1|N|**Required min count in the dataset: 1.**|
 |study|has-protocol|used-in|protocol|1|N|**Required min count in the dataset: 1.**|
 |study|has-publication|describes|publication|0|N||
-|study|has-raw-data-file|created-in|raw-data-file|1|N|**Required min count in the dataset: 1.**|
+|study|has-raw-data-file|created-in|raw-data-file|0|N||
 |study|has-repository-keyword|keyword-of|descriptor|0|N||
 |study|has-result-file|created-in|result-file|0|N||
 |study|has-sample|used-in|sample|0|N||
 |study|has-submitter-keyword|keyword-of|descriptor|0|N|Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |study|has-supplementary-file|created-in|supplementary-file|0|N||
 |study|part-of|has-study|project|0|N||
-|study|provided-by|provides|data-provider|0|N||
+|study|provided-by|provides|data-provider|1|1||
 |study|reports|reported-in|metabolite|0|N||
 |study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
+
+
+**Embedded Relationships**: <code>data-provider, protocol</code>
 
 
 **Reverse Node Relationships**
@@ -850,12 +983,11 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |------|------------|------------|------|---|---|-----------|
 |assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br>**Required min count in the dataset: 1.**|
 |characteristic-definition|used-in|has-characteristic-definition|study|2|N|**Required min count in the dataset: 2.**|
-|characteristic-type|defined-in|defines|study|1|1|**Required min count in the dataset: 2.**|
 |data-provider|provides|provided-by|study|1|1||
 |derived-data-file|created-in|has-derived-data-file|study|1|1||
 |descriptor|describes|described-as|study|0|N||
 |descriptor|keyword-of|has-repository-keyword|study|0|N||
-|factor-definition|used-in|has-factor-definition|study|0|N||
+|factor-definition|used-in|has-factor-definition|study|1|N||
 |metabolite|reported-in|reports|study|1|N||
 |metadata-file|describes|has-metadata-file|study|1|1|**Required min count in the dataset: 1.**|
 |organization|funds|funded-by|study|0|N||
@@ -865,7 +997,7 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |project|has-study|part-of|study|0|N||
 |protocol|used-in|has-protocol|study|1|N|**Required min count in the dataset: 1.**|
 |publication|describes|has-publication|study|0|1||
-|raw-data-file|created-in|has-raw-data-file|study|1|1|**Required min count in the dataset: 1.**|
+|raw-data-file|created-in|has-raw-data-file|study|1|N||
 |result-file|created-in|has-result-file|study|1|N||
 |sample|used-in|has-sample|study|1|1||
 |supplementary-file|created-in|has-supplementary-file|study|1|N||
@@ -896,7 +1028,7 @@ Subject node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |subject|described-as|describes|descriptor|0|N||
-|subject|has-characteristic-value|value-of|characteristic-value|0|N||
+|subject|has-characteristic-value|value-of|characteristic-value|1|N||
 |subject|has-factor-value|value-of|factor-value|0|N||
 |subject|source-of|derived-from|sample|1|N||
 |subject|source-of|derived-from|specimen|0|N||
@@ -906,7 +1038,7 @@ Subject node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-value|value-of|has-characteristic-value|subject|1|N||
+|characteristic-value|value-of|has-characteristic-value|subject|0|N||
 |descriptor|describes|described-as|subject|0|N||
 |factor-value|value-of|has-factor-value|subject|0|N||
 |sample|derived-from|source-of|subject|1|N||
@@ -930,7 +1062,7 @@ Supplementary File node is optional in the  MHD MS Profile. <code>Minimum: 0, Ma
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|**required**|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
@@ -966,23 +1098,21 @@ Characteristic Type node is **required in the MHD MS Profile.** <code>Minimum: 2
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**characteristic-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
-|**name**|optional|<code>*str*<code>|Label of CV term|
+|**name**|**required**|<code>*str*<code>|Label of CV term|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-type|defined-in|defines|study|1|1|**Required min count in the dataset: 2.**|
-|characteristic-type|type-of|has-type|characteristic-value|0|N|**Required min count in the dataset: 2.**|
+|characteristic-type|type-of|has-type|characteristic-definition|1|N|**Required min count in the dataset: 2.**|
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-value|has-type|type-of|characteristic-type|0|N||
-|study|defines|defined-in|characteristic-type|2|N|**Required min count in the dataset: 2.**|
+|characteristic-definition|has-type|type-of|characteristic-type|1|1||
 
 ### Characteristic Value
 
@@ -1005,10 +1135,10 @@ Characteristic Value node is **required in the MHD MS Profile.** <code>Minimum: 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-value|has-type|type-of|characteristic-type|0|N||
 |characteristic-value|instance-of|has-instance|characteristic-definition|1|N|**Required min count in the dataset: 2.**|
-|characteristic-value|value-of|has-characteristic-value|subject|1|N||
+|characteristic-value|value-of|has-characteristic-value|subject|0|N||
 |characteristic-value|value-of|has-characteristic-value|specimen|0|N||
+|characteristic-value|value-of|has-characteristic-value|sample|0|N||
 
 
 **Reverse Node Relationships**
@@ -1016,9 +1146,9 @@ Characteristic Value node is **required in the MHD MS Profile.** <code>Minimum: 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |characteristic-definition|has-instance|instance-of|characteristic-value|0|N|**Required min count in the dataset: 2.**|
-|characteristic-type|type-of|has-type|characteristic-value|0|N|**Required min count in the dataset: 2.**|
+|sample|has-characteristic-value|value-of|characteristic-value|0|N||
 |specimen|has-characteristic-value|value-of|characteristic-value|0|N||
-|subject|has-characteristic-value|value-of|characteristic-value|0|N||
+|subject|has-characteristic-value|value-of|characteristic-value|1|N||
 
 ### Data Provider
 
@@ -1048,7 +1178,7 @@ Data Provider node is **required in the MHD MS Profile.** <code>Minimum: 1, Maxi
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|study|provided-by|provides|data-provider|0|N||
+|study|provided-by|provides|data-provider|1|1||
 
 ### Descriptor
 
@@ -1127,21 +1257,21 @@ Factor Type node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: 
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**factor-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
-|**name**|optional|<code>*str*<code>|Label of CV term|
+|**name**|**required**|<code>*str*<code>|Label of CV term|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-type|type-of|has-type|factor-value|0|N||
+|factor-type|type-of|has-type|factor-definition|1|N||
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-value|has-type|type-of|factor-type|1|N||
+|factor-definition|has-type|type-of|factor-type|1|1||
 
 ### Factor Value
 
@@ -1164,9 +1294,9 @@ Factor Value node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum:
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-value|has-type|type-of|factor-type|1|N||
 |factor-value|instance-of|has-instance|factor-definition|1|N||
 |factor-value|value-of|has-factor-value|sample|1|N||
+|factor-value|value-of|has-factor-value|specimen|1|N||
 |factor-value|value-of|has-factor-value|subject|0|N||
 
 
@@ -1175,7 +1305,6 @@ Factor Value node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum:
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |factor-definition|has-instance|instance-of|factor-value|0|N||
-|factor-type|type-of|has-type|factor-value|0|N||
 |sample|has-factor-value|value-of|factor-value|0|N||
 |subject|has-factor-value|value-of|factor-value|0|N||
 
@@ -1219,22 +1348,21 @@ Parameter Type node is **required in the MHD MS Profile.** <code>Minimum: 1, Max
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**parameter-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
-|**name**|optional|<code>*str*<code>|Label of CV term|
+|**name**|**required**|<code>*str*<code>|Label of CV term|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-type|has-instance|instance-of|parameter-definition|1|N||
-|parameter-type|type-of|has-type|parameter-value|1|N||
+|parameter-type|type-of|has-type|parameter-definition|1|N||
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-value|has-type|type-of|parameter-type|1|N|**Required min count in the dataset: 1.**|
+|parameter-definition|has-type|type-of|parameter-type|1|1||
 
 ### Parameter Value
 
@@ -1257,7 +1385,6 @@ Parameter Value node is **required in the MHD MS Profile.** <code>Minimum: 1, Ma
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-value|has-type|type-of|parameter-type|1|N|**Required min count in the dataset: 1.**|
 |parameter-value|instance-of|has-instance|parameter-definition|1|N|**Required min count in the dataset: 1.**|
 
 
@@ -1266,7 +1393,6 @@ Parameter Value node is **required in the MHD MS Profile.** <code>Minimum: 1, Ma
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |parameter-definition|has-instance|instance-of|parameter-value|0|N|**Required min count in the dataset: 1.**|
-|parameter-type|type-of|has-type|parameter-value|1|N||
 
 ### Protocol Type
 
@@ -1280,7 +1406,7 @@ Protocol Type node is **required in the MHD MS Profile.** <code>Minimum: 1, Maxi
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**protocol-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
-|**name**|optional|<code>*str*<code>|Label of CV term|
+|**name**|**required**|<code>*str*<code>|Label of CV term|
 
 
 **Node Relationships**
@@ -1296,3 +1422,148 @@ Protocol Type node is **required in the MHD MS Profile.** <code>Minimum: 1, Maxi
 |------|------------|------------|------|---|---|-----------|
 |protocol|has-type|type-of|protocol-type|1|1||
 
+
+## Model Graph
+
+The following graph shows all (required and optional) nodes and relationships.
+
+``` mermaid
+graph LR
+  Assay[Assay] ==>|described-as| Descriptor[Descriptor];
+  Assay[Assay] ==>|part-of| Study[Study];
+  Assay[Assay] ==>|follows| Protocol[Protocol];
+  Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
+  Characteristic_Definition[Characteristic Definition] ==>|has-type| Characteristic_Type[Characteristic Type];
+  Characteristic_Definition[Characteristic Definition] ==>|used-in| Study[Study];
+  Derived_Data_File[Derived Data File] ==>|referenced-in| Metadata_File[Metadata File];
+  Derived_Data_File[Derived Data File] ==>|created-in| Study[Study];
+  Derived_Data_File[Derived Data File] ==>|described-as| Descriptor[Descriptor];
+  Factor_Definition[Factor Definition] ==>|has-type| Factor_Type[Factor Type];
+  Factor_Definition[Factor Definition] ==>|has-instance| Factor_Value[Factor Value];
+  Factor_Definition[Factor Definition] ==>|used-in| Study[Study];
+  Metabolite[Metabolite] ==>|identified-as| Metabolite_Identifier[Metabolite Identifier];
+  Metabolite[Metabolite] ==>|described-as| Descriptor[Descriptor];
+  Metabolite[Metabolite] ==>|reported-in| Study[Study];
+  Metadata_File[Metadata File] ==>|described-as| Descriptor[Descriptor];
+  Metadata_File[Metadata File] ==>|referenced-in| Metadata_File[Metadata File];
+  Metadata_File[Metadata File] ==>|describes| Study[Study];
+  Metadata_File[Metadata File] ==>|references| Derived_Data_File[Derived Data File];
+  Metadata_File[Metadata File] ==>|references| Raw_Data_File[Raw Data File];
+  Metadata_File[Metadata File] ==>|references| Result_File[Result File];
+  Metadata_File[Metadata File] ==>|references| Supplementary_File[Supplementary File];
+  Organization[Organization] ==>|funds| Project[Project];
+  Organization[Organization] ==>|funds| Study[Study];
+  Organization[Organization] ==>|manages| Project[Project];
+  Organization[Organization] ==>|coordinates| Project[Project];
+  Organization[Organization] ==>|affiliates| Person[Person];
+  Organization[Organization] ==>|described-as| Descriptor[Descriptor];
+  Parameter_Definition[Parameter Definition] ==>|has-instance| Parameter_Value[Parameter Value];
+  Parameter_Definition[Parameter Definition] ==>|has-type| Parameter_Type[Parameter Type];
+  Parameter_Definition[Parameter Definition] ==>|defined-in| Protocol[Protocol];
+  Person[Person] ==>|described-as| Descriptor[Descriptor];
+  Person[Person] ==>|affiliated-with| Organization[Organization];
+  Person[Person] ==>|contributes| Project[Project];
+  Person[Person] ==>|contributes| Study[Study];
+  Person[Person] ==>|principal-investigator-of| Study[Study];
+  Person[Person] ==>|submits| Study[Study];
+  Person[Person] ==>|author-of| Publication[Publication];
+  Project[Project] ==>|described-as| Descriptor[Descriptor];
+  Project[Project] ==>|funded-by| Organization[Organization];
+  Project[Project] ==>|managed-by| Organization[Organization];
+  Project[Project] ==>|coordinated-by| Organization[Organization];
+  Project[Project] ==>|has-contributor| Person[Person];
+  Project[Project] ==>|has-publication| Publication[Publication];
+  Project[Project] ==>|has-study| Study[Study];
+  Protocol[Protocol] ==>|described-as| Descriptor[Descriptor];
+  Protocol[Protocol] ==>|used-in| Assay[Assay];
+  Protocol[Protocol] ==>|has-parameter-definition| Parameter_Definition[Parameter Definition];
+  Protocol[Protocol] ==>|used-in| Study[Study];
+  Protocol[Protocol] ==>|has-type| Protocol_Type[Protocol Type];
+  Publication[Publication] ==>|described-as| Descriptor[Descriptor];
+  Publication[Publication] ==>|describes| Project[Project];
+  Publication[Publication] ==>|describes| Study[Study];
+  Publication[Publication] ==>|has-author| Person[Person];
+  Raw_Data_File[Raw Data File] ==>|described-as| Descriptor[Descriptor];
+  Raw_Data_File[Raw Data File] ==>|created-in| Study[Study];
+  Raw_Data_File[Raw Data File] ==>|referenced-in| Metadata_File[Metadata File];
+  Result_File[Result File] ==>|described-as| Descriptor[Descriptor];
+  Result_File[Result File] ==>|created-in| Study[Study];
+  Result_File[Result File] ==>|referenced-in| Metadata_File[Metadata File];
+  Sample[Sample] ==>|described-as| Descriptor[Descriptor];
+  Sample[Sample] ==>|has-factor-value| Factor_Value[Factor Value];
+  Sample[Sample] ==>|used-in| Study[Study];
+  Sample[Sample] ==>|derived-from| Subject[Subject];
+  Sample[Sample] ==>|derived-from| Specimen[Specimen];
+  Sample[Sample] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
+  Sample_Run[Sample Run] ==>|described-as| Descriptor[Descriptor];
+  Sample_Run_Configuration[Sample Run Configuration] ==>|described-as| Descriptor[Descriptor];
+  Specimen[Specimen] ==>|described-as| Descriptor[Descriptor];
+  Specimen[Specimen] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
+  Specimen[Specimen] ==>|source-of| Sample[Sample];
+  Specimen[Specimen] ==>|derived-from| Subject[Subject];
+  Study[Study] ==>|provided-by| Data_Provider[Data Provider];
+  Study[Study] ==>|has-assay| Assay[Assay];
+  Study[Study] ==>|funded-by| Organization[Organization];
+  Study[Study] ==>|has-characteristic-definition| Characteristic_Definition[Characteristic Definition];
+  Study[Study] ==>|has-derived-data-file| Derived_Data_File[Derived Data File];
+  Study[Study] ==>|described-as| Descriptor[Descriptor];
+  Study[Study] ==>|has-factor-definition| Factor_Definition[Factor Definition];
+  Study[Study] ==>|has-repository-keyword| Descriptor[Descriptor];
+  Study[Study] ==>|has-submitter-keyword| Descriptor[Descriptor];
+  Study[Study] ==>|reports| Metabolite[Metabolite];
+  Study[Study] ==>|has-metadata-file| Metadata_File[Metadata File];
+  Study[Study] ==>|has-contributor| Person[Person];
+  Study[Study] ==>|has-principal-investigator| Person[Person];
+  Study[Study] ==>|submitted-by| Person[Person];
+  Study[Study] ==>|part-of| Project[Project];
+  Study[Study] ==>|has-protocol| Protocol[Protocol];
+  Study[Study] ==>|has-publication| Publication[Publication];
+  Study[Study] ==>|has-raw-data-file| Raw_Data_File[Raw Data File];
+  Study[Study] ==>|has-result-file| Result_File[Result File];
+  Study[Study] ==>|has-sample| Sample[Sample];
+  Study[Study] ==>|has-supplementary-file| Supplementary_File[Supplementary File];
+  Subject[Subject] ==>|described-as| Descriptor[Descriptor];
+  Subject[Subject] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
+  Subject[Subject] ==>|source-of| Sample[Sample];
+  Subject[Subject] ==>|has-factor-value| Factor_Value[Factor Value];
+  Subject[Subject] ==>|source-of| Specimen[Specimen];
+  Supplementary_File[Supplementary File] ==>|described-as| Descriptor[Descriptor];
+  Supplementary_File[Supplementary File] ==>|created-in| Study[Study];
+  Supplementary_File[Supplementary File] ==>|referenced-in| Metadata_File[Metadata File];
+  Characteristic_Type[Characteristic Type] ==>|type-of| Characteristic_Definition[Characteristic Definition];
+  Characteristic_Value[Characteristic Value] ==>|instance-of| Characteristic_Definition[Characteristic Definition];
+  Characteristic_Value[Characteristic Value] ==>|value-of| Subject[Subject];
+  Characteristic_Value[Characteristic Value] ==>|value-of| Specimen[Specimen];
+  Characteristic_Value[Characteristic Value] ==>|value-of| Sample[Sample];
+  Data_Provider[Data Provider] ==>|provides| Study[Study];
+  Descriptor[Descriptor] ==>|describes| Assay[Assay];
+  Descriptor[Descriptor] ==>|describes| Study[Study];
+  Descriptor[Descriptor] ==>|describes| Metadata_File[Metadata File];
+  Descriptor[Descriptor] ==>|describes| Raw_Data_File[Raw Data File];
+  Descriptor[Descriptor] ==>|describes| Derived_Data_File[Derived Data File];
+  Descriptor[Descriptor] ==>|describes| Supplementary_File[Supplementary File];
+  Descriptor[Descriptor] ==>|describes| Result_File[Result File];
+  Descriptor[Descriptor] ==>|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==>|describes| Organization[Organization];
+  Descriptor[Descriptor] ==>|describes| Person[Person];
+  Descriptor[Descriptor] ==>|describes| Project[Project];
+  Descriptor[Descriptor] ==>|describes| Publication[Publication];
+  Descriptor[Descriptor] ==>|describes| Protocol[Protocol];
+  Descriptor[Descriptor] ==>|describes| Sample[Sample];
+  Descriptor[Descriptor] ==>|describes| Subject[Subject];
+  Descriptor[Descriptor] ==>|describes| Sample_Run[Sample Run];
+  Descriptor[Descriptor] ==>|describes| Sample_Run_Configuration[Sample Run Configuration];
+  Descriptor[Descriptor] ==>|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==>|keyword-of| Study[Study];
+  Descriptor[Descriptor] ==>|keyword-of| Study[Study];
+  Descriptor[Descriptor] ==>|keyword-of| Specimen[Specimen];
+  Factor_Type[Factor Type] ==>|type-of| Factor_Definition[Factor Definition];
+  Factor_Value[Factor Value] ==>|instance-of| Factor_Definition[Factor Definition];
+  Factor_Value[Factor Value] ==>|value-of| Sample[Sample];
+  Factor_Value[Factor Value] ==>|value-of| Specimen[Specimen];
+  Factor_Value[Factor Value] ==>|value-of| Subject[Subject];
+  Metabolite_Identifier[Metabolite Identifier] ==>|reported-identifier-of| Metabolite[Metabolite];
+  Parameter_Type[Parameter Type] ==>|type-of| Parameter_Definition[Parameter Definition];
+  Parameter_Value[Parameter Value] ==>|instance-of| Parameter_Definition[Parameter Definition];
+  Protocol_Type[Protocol Type] ==>|type-of| Protocol[Protocol];
+```

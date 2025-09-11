@@ -32,40 +32,48 @@ class SupportedSchemaMap(BaseModel):
     schemas: dict[str, SupportedSchema]
 
 
+ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json"
+ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.ms-profile.json"
+ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json"
+
+MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json"
+MHD_MODEL_V0_1_MS_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json"
+MHD_MODEL_V0_1_LEGACY_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json"
+
 SUPPORTED_SCHEMA_MAP = SupportedSchemaMap(
-    default_schema_uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+    default_schema_uri=ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
     schemas={
-        "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json": SupportedSchema(
-            uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+        ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME: SupportedSchema(
+            uri=ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
             file_path="mhd_model/schemas/mhd/announcement-v0.1.schema.json",
             class_type=AnnouncementBaseProfile.__qualname__,
-            default_profile_uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.ms-profile.json",
+            default_profile_uri=ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
             supported_profiles={
-                "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.ms-profile.json": SupportedJsonSchema(
-                    uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.ms-profile.json",
+                ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME: SupportedJsonSchema(
+                    uri=ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
                     file_path="mhd_model/schemas/mhd/announcement-v0.1.schema.ms-profile.json",
                     class_type=AnnouncementMsProfile.__qualname__,
                 ),
-                "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json": SupportedJsonSchema(
-                    uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+                ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME: SupportedJsonSchema(
+                    uri=ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
                     file_path="mhd_model/schemas/mhd/announcement-v0.1.schema.legacy-profile.json",
                     class_type=AnnouncementLegacyProfile.__qualname__,
                 ),
             },
         ),
-        "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json": SupportedSchema(
-            uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json",
+        MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME: SupportedSchema(
+            uri=MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME,
             file_path="mhd_model/schemas/mhd/common-data-model-v0.1.schema.json",
             class_type=MhDatasetBaseProfile.__qualname__,
-            default_profile_uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json",
+            default_profile_uri=MHD_MODEL_V0_1_MS_PROFILE_NAME,
             supported_profiles={
-                "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json": SupportedJsonSchema(
-                    uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json",
+                MHD_MODEL_V0_1_MS_PROFILE_NAME: SupportedJsonSchema(
+                    uri=MHD_MODEL_V0_1_MS_PROFILE_NAME,
                     file_path="mhd_model/schemas/mhd/common-data-model-v0.1.ms-profile.json",
                     class_type=MhDatasetMsProfile.__qualname__,
                 ),
-                "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json": SupportedJsonSchema(
-                    uri="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json",
+                MHD_MODEL_V0_1_LEGACY_PROFILE_NAME: SupportedJsonSchema(
+                    uri=MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
                     file_path="mhd_model/schemas/mhd/common-data-model-v0.1.legacy-profile.json",
                     class_type=MhDatasetLegacyProfile.__qualname__,
                 ),

@@ -21,6 +21,9 @@ from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import (
     CvTermObject,
     CvTermValueObject,
 )
+from mhd_model.model.v0_1.dataset.profiles.base.graph_validation import (
+    MHD_BASE_VALIDATION_V0_1,
+)
 from mhd_model.model.v0_1.dataset.profiles.base.profile import MhdGraph
 from mhd_model.model.v0_1.dataset.profiles.legacy.graph_validation import (
     MHD_LEGACY_PROFILE_V0_1,
@@ -40,6 +43,7 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
+from mhd_model.model.v0_1.rules.predefined_cv_terms import PREDEFINED_CV_TERMS
 from scripts.update_profiles import (
     update_annoucement_file_profiles,
     update_mhd_file_profiles,
@@ -105,23 +109,23 @@ def get_validation_rules(validations: MhDatasetValidation) -> dict:
                     cv_term_validations_map[field_key][key].append(validation)
                 else:
                     for cond_item in condition:
-                        if cond_item.source_node_value:
-                            field_key = (cond_item.source_node_type, None)
+                        if cond_item.expression_value:
+                            field_key = (cond_item.start_node_type, None)
                         else:
                             field_key = (
-                                cond_item.source_node_type,
-                                cond_item.source_node_property,
+                                cond_item.start_node_type,
+                                cond_item.expression,
                             )
                         if field_key not in cv_term_validations_map:
                             cv_term_validations_map[field_key] = {}
                         cond_key = (
-                            cond_item.source_node_type,
+                            cond_item.start_node_type,
                             cond_item.relationship_name,
                             node_type,
                             property_name,
                             cond_item.name,
-                            cond_item.source_node_property,
-                            cond_item.source_node_value,
+                            cond_item.expression,
+                            cond_item.expression_value,
                         )
                         if cond_key not in cv_term_validations_map[field_key]:
                             cv_term_validations_map[field_key][cond_key] = []
@@ -246,9 +250,14 @@ class NodeDocumentation(BaseModel):
     )
 
 
-def get_embedded_relationships(profile: MhDatasetValidation) -> tuple[dict, dict]:
-    embedded_relationships = {}
-    reverse_embedded_relationships = {}
+def get_embedded_relationships(
+    profile: MhDatasetValidation,
+) -> tuple[
+    dict[str, dict[str, EmbeddedRefValidation]],
+    dict[str, dict[str, EmbeddedRefValidation]],
+]:
+    embedded_relationships: dict[str, dict[str, EmbeddedRefValidation]] = {}
+    reverse_embedded_relationships: dict[str, dict[str, EmbeddedRefValidation]] = {}
 
     for node in profile.mhd_nodes:
         node_type = node.node_type
@@ -430,6 +439,7 @@ if __name__ == "__main__":
     for profile, target_file_name, profile_name in [
         (MHD_MS_PROFILE_V0_1, "mhd-ms-nodes.md", "MHD MS Profile"),
         (MHD_LEGACY_PROFILE_V0_1, "mhd-legacy-nodes.md", "MHD Legacy Profile"),
+        (MHD_BASE_VALIDATION_V0_1, "mhd-base-nodes.md", "MHD Base Profile"),
     ]:
         validation_rules_map = get_validation_rules(profile)
         relationships_map, reverse_relationships_map = get_relationship_rules(profile)
@@ -631,9 +641,8 @@ if __name__ == "__main__":
                             required_embedded_required_nodes.update(
                                 val_item.target_ref_types
                             )
-                            field_name = val_item.node_property_name.removesuffix(
-                                "_refs"
-                            ).removesuffix("_ref")
+                            field_name = val_item.node_property_name
+
                             required_links.extend(
                                 [
                                     (
@@ -648,13 +657,56 @@ if __name__ == "__main__":
                                     for x in val_item.target_ref_types
                                 ]
                             )
+            all_required_nodes = set(required_embedded_required_nodes)
+            all_required_nodes.update(required_node_names)
+            required_properties = []
+            additional_requirements = []
+            for validation_nodes in [profile.mhd_nodes, profile.cv_nodes]:
+                for node_item in validation_nodes:
+                    item: NodeValidation = node_item
+                    if item.node_type not in all_required_nodes:
+                        continue
+                    for property_validation in item.validations:
+                        if isinstance(property_validation, EmbeddedRefValidation):
+                            contraints = property_validation
+                        elif isinstance(property_validation, NodePropertyValidation):
+                            contraints = property_validation.contraints
+                        else:
+                            if (
+                                property_validation.min_count > 0
+                                and isinstance(property_validation, CvTermValidation)
+                                and property_validation.condition
+                            ):
+                                cond = property_validation.condition[0]
+                                if (
+                                    cond.start_node_type
+                                    and cond.expression
+                                    and cond.expression_value
+                                ):
+                                    additional_requirements.append(
+                                        (
+                                            cond.start_node_type,
+                                            cond.expression,
+                                            cond.expression_value,
+                                            property_validation.min_count,
+                                        )
+                                    )
+
+                            continue
+                        if hasattr(contraints, "required") and contraints.required:
+                            required_properties.append(
+                                (
+                                    item.node_type,
+                                    property_validation.node_property_name,
+                                )
+                            )
                     for relation in item.relationships:
                         source_node = relation.source
                         target_node = relation.target
                         if (
                             relation.min_for_each_source
                             and relation.min_for_each_source > 0
-                            and relation.source in required_node_names
+                            and relation.source in all_required_nodes
                         ):
                             source_node = relation.source
                             target_node = relation.target
@@ -670,13 +722,46 @@ if __name__ == "__main__":
                                     max_val,
                                 )
                             )
-
+            f.write(
+                f'Profile Schema: <a href="{profile.schema}" target="_blank">{profile.schema}</a> \n\n'
+            )
+            profile
             f.write(
                 f"## Required Nodes & Relationships \n\n "
                 f"**Required MHD Nodes**\n\n<code>{required_nodes}</code>\n\n "
                 f"**Required MHD CV Terms**\n\n<code>{required_cv_terms}</code>\n\n"
             )
             if required_links:
+                f.write(
+                    "The following graph shows only required "
+                    "nodes and required relationships. Relationships that start with 'embedded - ' show required node property.\n\n"
+                )
+                f.write("``` mermaid\n")
+                f.write("graph LR\n")
+                for (
+                    source_node,
+                    relation_name,
+                    target_node,
+                    min_val,
+                    max_val,
+                ) in required_links:
+                    # if "embedded" in relation_name:
+                    #     continue
+                    source_name = (
+                        node_documentation[source_node].name
+                        if source_node in node_documentation
+                        else source_node
+                    )
+                    target_name = (
+                        node_documentation[target_node].name
+                        if target_node in node_documentation
+                        else target_node
+                    )
+                    f.write(
+                        f"  {source_name.replace(' ', '_')}[{source_name}] ==>|{relation_name.replace('[embedded]', 'embedded')}| {target_name.replace(' ', '_')}[{target_name}];\n"
+                    )
+                f.write("```\n\n")
+
                 required_links.sort(key=lambda x: (x[0], x[1], x[2]))
                 f.write("**Required Relationships**\n\n")
                 f.write("|Source Node|Relationship|Target Node|Min|Max|\n")
@@ -702,20 +787,33 @@ if __name__ == "__main__":
                         f"|{source_name}|{relation_name}|{target_name}|{min_val if min_val is not None else 0}|{max_val if max_val is not None else 'N (unbounded)'}|\n"
                     )
                 f.write("\n")
-            # if required_embedded_required_nodes:
-            #     required_embedded_required_nodes = sorted(
-            #         required_embedded_required_nodes
-            #     )
-            #     required_embedded_required_node_names = [
-            #         node_documentation[x].name if x in node_documentation else x
-            #         for x in required_embedded_required_nodes
-            #     ]
-            #     f.write(
-            #         f"**Required Embedded Nodes**\n\n<code>{', '.join(required_embedded_required_node_names)}</code>\n\n"
-            #     )
-            # f.write(
-            #     f"## Optional Nodes \n\n**MHD Nodes**\n\n: <code>{optional_nodes}</code>\n\n **MHD CV Terms**: <code>{optional_cv_terms}</code>\n\n"
-            # )
+
+                f.write("**Required Node Properties**\n\n")
+                f.write("|Source Node|Property Name|\n")
+                f.write("|-----------|------------|\n")
+                required_properties.sort()
+                for node_type, node_name in required_properties:
+                    f.write(f"|{node_type}|{node_name}|\n")
+                f.write("\n")
+            if additional_requirements:
+                f.write("**Additional Requirements**\n\n")
+                f.write(
+                    "The following nodes are required with the specified value.\n\n"
+                )
+                f.write(
+                    "|Source Node|Minimum Node Count|Property / Relationship|Value|\n"
+                )
+                f.write("|-----------|-----------|------------|------------|\n")
+                additional_requirements.sort(key=lambda x: (x[0], x[1], x[2] or ""))
+                for source, cond, val, min_count in additional_requirements:
+                    if val in PREDEFINED_CV_TERMS:
+                        cond_name = cond.replace(".accession", "")
+                        f.write(
+                            f"|{source}|{min_count}|{cond_name}|{PREDEFINED_CV_TERMS[val]}|\n"
+                        )
+                    else:
+                        f.write(f"|{source}|{min_count}|{cond}|{val}|\n")
+                f.write("\n")
 
             for nodes, header in [
                 (profile.mhd_nodes, "MHD Domain Objects"),
@@ -777,3 +875,28 @@ if __name__ == "__main__":
                             f.write(
                                 f"\n**Embedded Relationships**: {embedded_rels}\n\n"
                             )
+
+            f.write("\n## Model Graph\n\n")
+            f.write(
+                "The following graph shows all (required and optional) "
+                "nodes and relationships.\n\n"
+            )
+            f.write("``` mermaid\n")
+            f.write("graph LR\n")
+            for nodes, header in [
+                (profile.mhd_nodes, "MHD Domain Objects"),
+                (profile.cv_nodes, "MHD CV Term Objects"),
+            ]:
+                for node_item in nodes:
+                    node: NodeValidation = node_item
+                    for rel in node.relationships:
+                        source_node_doc = node_documentation[rel.source]
+                        source_name = source_node_doc.name
+                        target_node_doc = node_documentation[rel.target]
+                        target_name = target_node_doc.name
+
+                        relation_name = rel.relationship_name
+                        f.write(
+                            f"  {source_name.replace(' ', '_')}[{source_name}] ==>|{relation_name}| {target_name.replace(' ', '_')}[{target_name}];\n"
+                        )
+            f.write("```\n")

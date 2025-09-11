@@ -53,3 +53,14 @@ class RelationshipValidation(MhdConfigModel):
             item.target = item.target.lower().replace(" ", "-")
         item.relationship_name = item.relationship_name.lower().replace(" ", "-")
         return item
+
+
+class RequiredRelationshipValidation(RelationshipValidation):
+    description: Annotated[None | str, Field()] = None
+    source: Annotated[None | str, Field()]
+    relationship_name: Annotated[str, Field()]
+    reverse_relationship_name: Annotated[None | str, Field()]
+    target: Annotated[None | str, Field()]
+    min_for_each_source: Annotated[int, Field()] = 1
+    expression: Annotated[str, Field()]
+    expected_value: Annotated[str, Field()]
