@@ -1,3 +1,9 @@
+## v0.1.3 (2025-09-11)
+
+### Fix
+
+- model and documentation updates
+
 ## v0.1.2 (2025-09-05)
 
 ### Fix
