@@ -13,8 +13,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import MhDatasetBaseProf
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
 
-__version__ = "v0.1"
-
 
 class SupportedJsonSchema(BaseModel):
     uri: str
@@ -81,3 +79,17 @@ SUPPORTED_SCHEMA_MAP = SupportedSchemaMap(
         ),
     },
 )
+
+__all__ = [
+    "v0_1",
+    "SupportedJsonSchema",
+    "SupportedSchema",
+    "SupportedSchemaMap",
+    "SUPPORTED_SCHEMA_MAP",
+    "ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME",
+    "ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME",
+    "ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME",
+    "MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME",
+    "MHD_MODEL_V0_1_MS_PROFILE_NAME",
+    "MHD_MODEL_V0_1_LEGACY_PROFILE_NAME",
+]
