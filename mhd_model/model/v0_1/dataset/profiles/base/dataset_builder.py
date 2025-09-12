@@ -82,7 +82,6 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             if source_uppercase and source_uppercase not in self._cv_definitions_map:
                 logger.info("%s CV source is added.", item.source)
                 self._cv_definitions_map[item.source] = None
-            
 
     def add_relationship(self, item: BaseMhdRelationship) -> Self:
         self.objects[item.id_] = item
