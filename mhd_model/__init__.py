@@ -11,7 +11,7 @@ from . import (
     utils,
 )
 
-__version__ = "v0.1.7"
+__version__ = "v0.1.8"
 
 application_root_path = pathlib.Path(__file__).parent.parent
 
