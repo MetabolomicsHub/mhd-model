@@ -31,6 +31,7 @@ class PropertyConstraint(MhdConfigModel):
     max_length: None | int = None
     null_allowed: None | bool = None
     required: None | bool = None
+    pattern: None | str = None
     allowed_types: None | NodePropertyType | list[NodePropertyType] = None
 
     def __str__(self) -> str:

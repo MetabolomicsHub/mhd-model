@@ -18,7 +18,6 @@ from mhd_model.shared.fields import (
     ORCID,
     Authors,
     GrantId,
-    MhdIdentifier,
     PubMedId,
 )
 from mhd_model.shared.model import CvTerm, CvTermValue
@@ -107,7 +106,7 @@ class Study(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "study"
-    mhd_identifier: Annotated[None | MhdIdentifier, Field()] = None
+    mhd_identifier: Annotated[None | str, Field()] = None
     repository_identifier: Annotated[None | str, Field(min_length=2)] = None
     additional_identifiers: Annotated[None | list[KeyValue], Field()] = None
     title: Annotated[None | str, Field()] = None

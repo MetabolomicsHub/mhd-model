@@ -56,7 +56,7 @@ class ReportedMetabolite(MhdConfigModel):
 
 
 class AnnouncementBaseProfile(CvEnabledDataset):
-    mhd_identifier: Annotated[str, Field()]
+    mhd_identifier: Annotated[None | str, Field()]
     repository_identifier: Annotated[str, Field()]
     mhd_metadata_file_url: Annotated[AnyUrl, Field()]
     dataset_url_list: Annotated[list[AnyUrl], Field(min_length=1)]

@@ -632,7 +632,20 @@ class MhdModelValidator:
                                 instance={},
                             )
                         )
-
+                if item.contraints.pattern and val is not None:
+                    if not re.match(item.contraints.pattern, val):
+                        sub_path = [path, node_idx] if path else [node_idx]
+                        errors.append(
+                            jsonschema.ValidationError(
+                                message=f"{node_data.id_}: '{node_data.type_}' node at index "
+                                f"{node_idx} has a property named '{item.node_property_name}' "
+                                f"that violates pattern rule. Actual: {val}, Expected pattern: {item.contraints.pattern}",
+                                validator="check-property-constraint",
+                                context=(),
+                                path=sub_path,
+                                instance={},
+                            )
+                        )
                 if not min_length_violation and item.contraints.required:
                     if not val:
                         sub_path = [path, node_idx] if path else [node_idx]
