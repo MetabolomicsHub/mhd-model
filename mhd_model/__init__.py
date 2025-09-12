@@ -1,15 +1,6 @@
 import pathlib
 import sys
 
-from . import (
-    convertors,
-    domain_utils,
-    model,
-    schema_utils,
-    schemas,
-    shared,
-    utils,
-)
 
 __version__ = "v0.1.7"
 

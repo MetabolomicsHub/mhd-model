@@ -5,7 +5,7 @@ from typing import Any, Generator, OrderedDict
 import jsonschema
 from jsonschema import ValidationError, protocols, validators
 
-from mhd_model.model import (
+from mhd_model.model.definitions import (
     MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
     MHD_MODEL_V0_1_MS_PROFILE_NAME,
     SUPPORTED_SCHEMA_MAP,

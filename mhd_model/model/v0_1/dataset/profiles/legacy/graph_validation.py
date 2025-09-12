@@ -1,4 +1,4 @@
-from mhd_model.model import MHD_MODEL_V0_1_LEGACY_PROFILE_NAME
+from mhd_model.model.definitions import MHD_MODEL_V0_1_LEGACY_PROFILE_NAME
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     RelationshipValidation,

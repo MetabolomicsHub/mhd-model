@@ -9,7 +9,7 @@ import reachable
 from jsonschema import protocols, validators
 from pydantic import ValidationError
 
-from mhd_model.model import (
+from mhd_model.model.definitions import (
     SUPPORTED_SCHEMA_MAP,
 )
 from mhd_model.model.v0_1.announcement.validation.definitions import (

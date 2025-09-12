@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Any
 
 import mhd_model
-from mhd_model.model import SUPPORTED_SCHEMA_MAP
+from mhd_model.model.definitions import SUPPORTED_SCHEMA_MAP
 from mhd_model.utils import load_json
 
 
