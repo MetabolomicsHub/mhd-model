@@ -1,3 +1,9 @@
+## v0.1.13 (2025-09-12)
+
+### Fix
+
+- submitter link is defined as required.
+
 ## v0.1.12 (2025-09-12)
 
 ### Fix
