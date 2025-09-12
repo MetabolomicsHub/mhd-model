@@ -5,7 +5,7 @@ import sys
 __version__ = "v0.1.8"
 =======
 
-__version__ = "v0.1.9"
+__version__ = "v0.1.10"
 >>>>>>> 582ab5a6f38d964d8479c4756fbd617b22d36477
 
 application_root_path = pathlib.Path(__file__).parent.parent
