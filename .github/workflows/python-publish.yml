@@ -34,6 +34,10 @@ jobs:
     - name: Sync dependencies
       run: uv sync --group dev
 
+    - uses: astral-sh/ruff-action@v3
+    - run: ruff check
+    - run: ruff format
+
     - id: version
       name: Get current version
       run: echo "initial_version=$(uv run cz version -p)" >> "$GITHUB_OUTPUT"
@@ -49,10 +53,6 @@ jobs:
 
     - name: Build project
       run: uv build
-
-    - uses: astral-sh/ruff-action@v3
-    - run: ruff check
-    - run: ruff format
 
     - name: Deploy documentation
       run: uv run mkdocs gh-deploy --config-file mkdocs.yml --force
