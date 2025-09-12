@@ -1,3 +1,10 @@
+## v0.1.12 (2025-09-12)
+
+### Fix
+
+- remove mhd_identifier validation for legacy profile
+- make mhd_identifier optional for base model.
+
 ## v0.1.11 (2025-09-12)
 
 ### Fix
