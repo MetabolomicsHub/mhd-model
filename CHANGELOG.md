@@ -1,3 +1,9 @@
+## v0.1.8 (2025-09-12)
+
+### Fix
+
+- mhd_identifier is not required for legacy datasets. __all__ fields are updated.
+
 ## v0.1.7 (2025-09-11)
 
 ### Fix
