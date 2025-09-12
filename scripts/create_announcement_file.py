@@ -9,10 +9,6 @@ from scripts.utils import set_basic_logging_config
 if __name__ == "__main__":
     set_basic_logging_config()
 
-    study_ids = [
-        "MHDA003107",
-    ]
-
     files = list(Path("tests/data/mhd_data/mtbls").glob("*.mhd.json"))
     for file in files:
         txt = file.read_text()

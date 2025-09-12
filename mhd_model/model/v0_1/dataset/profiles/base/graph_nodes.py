@@ -115,7 +115,7 @@ class Study(BaseLabeledMhdModel):
     public_release_date: None | datetime.datetime = None
     license: Annotated[
         None | HttpUrl,
-        Field(examples=["https://creativecommons.org/publicdomain/zero/1.0/"]),
+        Field(examples=[HttpUrl("https://creativecommons.org/publicdomain/zero/1.0/")]),
     ] = None
     grant_identifiers: Annotated[None | list[GrantId], Field()] = None
     dataset_url_list: Annotated[None | list[AnyUrl], Field()] = None

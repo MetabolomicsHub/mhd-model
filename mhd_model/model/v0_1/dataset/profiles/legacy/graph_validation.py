@@ -533,7 +533,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="submits",
                 reverse_relationship_name="submitted-by",
                 target="study",
-                min=0,
+                min=1,
                 min_for_each_source=0,
             ),
             RelationshipValidation(

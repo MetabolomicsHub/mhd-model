@@ -1,0 +1,339 @@
+{
+  "repository_name": "MetaboLights",
+  "repository_identifier": "MTBLS3107",
+  "repository_revision": 1,
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "BTO",
+      "name": "The BRENDA Tissue Ontology (BTO)",
+      "uri": "http://purl.obolibrary.org/obo/bto.owl",
+      "prefix": "http://purl.obolibrary.org/obo/BTO_"
+    },
+    {
+      "label": "NCBITaxon",
+      "name": "",
+      "uri": "",
+      "prefix": "",
+      "alternative_labels": [
+        "ncbitaxon"
+      ]
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "type": "legacy-dataset",
+  "name": "MTBLS3107 MetabolomicsHub Legacy Dataset",
+  "graph": {
+    "start_item_refs": [
+      "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+    ],
+    "nodes": [
+      {
+        "id": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "type": "study",
+        "created_by_ref": "cv-value--data-provider--4375660c-3282-52a9-b68d-9054d463fc1d",
+        "repository_identifier": "MTBLS3107",
+        "title": "Fatal COVID-19 pulmonary disease involves ferroptosis.",
+        "description": "<p>SARS-CoV-2 infection causes severe pulmonary manifestations, with poorly understood mechanisms and limited treatment options. Hyperferritinemia and disrupted lung iron homeostasis in COVID-19 patients imply that ferroptosis, an iron-dependent cell death, may occur. Immunostaining and lipidomic analysis in COVID-19 lung autopsies reveal increases in ferroptosis markers, including transferrin receptor 1 and malondialdehyde accumulation in fatal cases. COVID-19 lungs display dysregulation of lipids involved in metabolism and ferroptosis. We find increased ferritin light chain associated with severe COVID-19 lung pathology. Iron overload promotes ferroptosis in both primary cells and cancerous lung epithelial cells. In addition, ferroptosis markers strongly correlate with lung injury severity in a COVID-19 lung disease model using male Syrian hamsters. These results reveal a role for ferroptosis in COVID-19 pulmonary disease; pharmacological ferroptosis inhibition may serve as an adjuvant therapy to prevent lung damage during SARS-CoV-2 infection.</p>",
+        "submission_date": "2021-07-09T00:00:00",
+        "public_release_date": "2024-07-11T00:00:00",
+        "dataset_url_list": [
+          "https://www.ebi.ac.uk/metabolights/MTBLS3107"
+        ]
+      },
+      {
+        "id": "mhd--characteristic-definition--18734289-4cf9-4d00-a99d-e6a5eb7a7877",
+        "type": "characteristic-definition",
+        "name": "organism",
+        "characteristic_type_ref": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680"
+      },
+      {
+        "id": "mhd--characteristic-definition--e8227a39-14fe-43c8-b09c-4525f6a966ea",
+        "type": "characteristic-definition",
+        "name": "organism part",
+        "characteristic_type_ref": "cv--characteristic-type--06e4cc5e-6267-5808-8da5-9a410f09b0fd"
+      },
+      {
+        "id": "mhd--metadata-file--cdeb82d9-5d2d-4ede-8b66-c29607215e98",
+        "type": "metadata-file",
+        "url_list": [
+          "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
+          "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
+        ],
+        "name": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
+      },
+      {
+        "id": "mhd--metadata-file--96a22ad9-097a-4274-9667-d8740f34032d",
+        "type": "metadata-file",
+        "url_list": [
+          "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
+          "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
+        ],
+        "name": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
+      },
+      {
+        "id": "mhd--metadata-file--300f74a6-cd36-4835-9e33-b575c506729d",
+        "type": "metadata-file",
+        "url_list": [
+          "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt",
+          "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt"
+        ],
+        "name": "i_Investigation.txt"
+      },
+      {
+        "id": "mhd--metadata-file--c854283a-31f9-45e9-8e5e-fd2302d494d2",
+        "type": "metadata-file",
+        "url_list": [
+          "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt",
+          "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt"
+        ],
+        "name": "s_MTBLS3107.txt"
+      },
+      {
+        "id": "mhd--person--2c2c0eef-9024-4d03-b221-7392fe73a981",
+        "type": "person",
+        "full_name": "Fereshteh Zandkarimi"
+      },
+      {
+        "id": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680",
+        "type": "characteristic-type",
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      {
+        "id": "cv--characteristic-type--06e4cc5e-6267-5808-8da5-9a410f09b0fd",
+        "type": "characteristic-type",
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      {
+        "id": "cv-value--characteristic-value--b52f2d7f-3a7d-5fd6-99ff-8c0b45345ae6",
+        "type": "characteristic-value",
+        "source": "NCBITaxon",
+        "accession": "NCBITaxon:9606",
+        "name": "Homo sapiens"
+      },
+      {
+        "id": "cv-value--characteristic-value--34cd8b17-fe99-5f3f-8794-e0312fe7265f",
+        "type": "characteristic-value",
+        "source": "BTO",
+        "accession": "BTO:0000763",
+        "name": "lung"
+      },
+      {
+        "id": "cv-value--data-provider--4375660c-3282-52a9-b68d-9054d463fc1d",
+        "type": "data-provider",
+        "value": "MetaboLights",
+        "source": "NCIT",
+        "accession": "NCIT:C189151",
+        "name": "Study Data Repository"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel--relationship--be6b20c3-0a78-57fa-b4b3-0727f6b671c5",
+        "type": "relationship",
+        "source_ref": "cv--characteristic-type--06e4cc5e-6267-5808-8da5-9a410f09b0fd",
+        "relationship_name": "type-of",
+        "target_ref": "cv-value--characteristic-value--34cd8b17-fe99-5f3f-8794-e0312fe7265f"
+      },
+      {
+        "id": "rel--relationship--a044370a-515d-5eff-a4bd-a5a642721fb9",
+        "type": "relationship",
+        "source_ref": "cv--characteristic-type--06e4cc5e-6267-5808-8da5-9a410f09b0fd",
+        "relationship_name": "type-of",
+        "target_ref": "mhd--characteristic-definition--e8227a39-14fe-43c8-b09c-4525f6a966ea"
+      },
+      {
+        "id": "rel--relationship--e0a6dc45-ae81-5284-94f0-d51ac7975923",
+        "type": "relationship",
+        "source_ref": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680",
+        "relationship_name": "type-of",
+        "target_ref": "cv-value--characteristic-value--b52f2d7f-3a7d-5fd6-99ff-8c0b45345ae6"
+      },
+      {
+        "id": "rel--relationship--a807b72d-5747-5c73-b753-49129cf8f73f",
+        "type": "relationship",
+        "source_ref": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680",
+        "relationship_name": "type-of",
+        "target_ref": "mhd--characteristic-definition--18734289-4cf9-4d00-a99d-e6a5eb7a7877"
+      },
+      {
+        "id": "rel--relationship--0a1322ae-13fd-5645-9bc0-f54320e8a2c2",
+        "type": "relationship",
+        "source_ref": "cv-value--characteristic-value--34cd8b17-fe99-5f3f-8794-e0312fe7265f",
+        "relationship_name": "has-type",
+        "target_ref": "cv--characteristic-type--06e4cc5e-6267-5808-8da5-9a410f09b0fd"
+      },
+      {
+        "id": "rel--relationship--f1899866-8dd7-593b-bf29-c60df90acb37",
+        "type": "relationship",
+        "source_ref": "cv-value--characteristic-value--34cd8b17-fe99-5f3f-8794-e0312fe7265f",
+        "relationship_name": "instance-of",
+        "target_ref": "mhd--characteristic-definition--e8227a39-14fe-43c8-b09c-4525f6a966ea"
+      },
+      {
+        "id": "rel--relationship--c20a23ff-8c5e-51ef-b175-6fc37b4efaec",
+        "type": "relationship",
+        "source_ref": "cv-value--characteristic-value--b52f2d7f-3a7d-5fd6-99ff-8c0b45345ae6",
+        "relationship_name": "has-type",
+        "target_ref": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680"
+      },
+      {
+        "id": "rel--relationship--9688416e-eb7e-5f90-b408-34aadab05536",
+        "type": "relationship",
+        "source_ref": "cv-value--characteristic-value--b52f2d7f-3a7d-5fd6-99ff-8c0b45345ae6",
+        "relationship_name": "instance-of",
+        "target_ref": "mhd--characteristic-definition--18734289-4cf9-4d00-a99d-e6a5eb7a7877"
+      },
+      {
+        "id": "rel--relationship--665b7248-2fef-5965-a03d-24268f5917d7",
+        "type": "relationship",
+        "source_ref": "cv-value--data-provider--4375660c-3282-52a9-b68d-9054d463fc1d",
+        "relationship_name": "provides",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--0410c4aa-2cee-5473-b3af-805bc90f0478",
+        "type": "relationship",
+        "source_ref": "mhd--characteristic-definition--18734289-4cf9-4d00-a99d-e6a5eb7a7877",
+        "relationship_name": "has-instance",
+        "target_ref": "cv-value--characteristic-value--b52f2d7f-3a7d-5fd6-99ff-8c0b45345ae6"
+      },
+      {
+        "id": "rel--relationship--24a4a18d-f7a0-5c74-b541-effe88ff6600",
+        "type": "relationship",
+        "source_ref": "mhd--characteristic-definition--18734289-4cf9-4d00-a99d-e6a5eb7a7877",
+        "relationship_name": "has-type",
+        "target_ref": "cv--characteristic-type--53caec3d-a05b-537d-96de-cc914a2bc680"
+      },
+      {
+        "id": "rel--relationship--c3db5b7f-bb11-5fab-a635-6641c29e5cd4",
+        "type": "relationship",
+        "source_ref": "mhd--characteristic-definition--18734289-4cf9-4d00-a99d-e6a5eb7a7877",
+        "relationship_name": "used-in",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--870b61b8-c7fc-50c6-945d-eb1fe5d3a311",
+        "type": "relationship",
+        "source_ref": "mhd--characteristic-definition--e8227a39-14fe-43c8-b09c-4525f6a966ea",
+        "relationship_name": "has-instance",
+        "target_ref": "cv-value--characteristic-value--34cd8b17-fe99-5f3f-8794-e0312fe7265f"
+      },
+      {
+        "id": "rel--relationship--dc888727-825f-515e-be61-685b37cc7765",
+        "type": "relationship",
+        "source_ref": "mhd--characteristic-definition--e8227a39-14fe-43c8-b09c-4525f6a966ea",
+        "relationship_name": "has-type",
+        "target_ref": "cv--characteristic-type--06e4cc5e-6267-5808-8da5-9a410f09b0fd"
+      },
+      {
+        "id": "rel--relationship--75897ace-7597-58a8-b061-5f577be1eea7",
+        "type": "relationship",
+        "source_ref": "mhd--characteristic-definition--e8227a39-14fe-43c8-b09c-4525f6a966ea",
+        "relationship_name": "used-in",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--063b9413-b2c3-5c38-b33a-368c882d2d84",
+        "type": "relationship",
+        "source_ref": "mhd--metadata-file--300f74a6-cd36-4835-9e33-b575c506729d",
+        "relationship_name": "describes",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--77cc3ab8-f9d9-58c3-9b4d-f75453920cd4",
+        "type": "relationship",
+        "source_ref": "mhd--metadata-file--96a22ad9-097a-4274-9667-d8740f34032d",
+        "relationship_name": "describes",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--98aa9e74-7e0a-589b-9049-72aa0f5bf51b",
+        "type": "relationship",
+        "source_ref": "mhd--metadata-file--c854283a-31f9-45e9-8e5e-fd2302d494d2",
+        "relationship_name": "describes",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--0fe1e02f-3393-5212-9ef7-34774a205b27",
+        "type": "relationship",
+        "source_ref": "mhd--metadata-file--cdeb82d9-5d2d-4ede-8b66-c29607215e98",
+        "relationship_name": "describes",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--d145d21d-1dcf-5f12-b75b-81637c5d7472",
+        "type": "relationship",
+        "source_ref": "mhd--person--2c2c0eef-9024-4d03-b221-7392fe73a981",
+        "relationship_name": "submits",
+        "target_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954"
+      },
+      {
+        "id": "rel--relationship--4e35a93a-6cad-5136-bcd6-067d60ec858e",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "has-characteristic-definition",
+        "target_ref": "mhd--characteristic-definition--18734289-4cf9-4d00-a99d-e6a5eb7a7877"
+      },
+      {
+        "id": "rel--relationship--82460ef4-b717-539c-9a6d-e3e363158ff2",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "has-characteristic-definition",
+        "target_ref": "mhd--characteristic-definition--e8227a39-14fe-43c8-b09c-4525f6a966ea"
+      },
+      {
+        "id": "rel--relationship--cc76297f-af74-59d1-ad73-056fb6a698f0",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "has-metadata-file",
+        "target_ref": "mhd--metadata-file--300f74a6-cd36-4835-9e33-b575c506729d"
+      },
+      {
+        "id": "rel--relationship--c3e40370-5337-5306-9ee9-ae774e746c0c",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "has-metadata-file",
+        "target_ref": "mhd--metadata-file--96a22ad9-097a-4274-9667-d8740f34032d"
+      },
+      {
+        "id": "rel--relationship--fac6d268-d403-5175-827b-e21385a7d5cc",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "has-metadata-file",
+        "target_ref": "mhd--metadata-file--c854283a-31f9-45e9-8e5e-fd2302d494d2"
+      },
+      {
+        "id": "rel--relationship--14bbb6b0-9fac-566d-8adc-1125f4a09192",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "has-metadata-file",
+        "target_ref": "mhd--metadata-file--cdeb82d9-5d2d-4ede-8b66-c29607215e98"
+      },
+      {
+        "id": "rel--relationship--91ee3b21-e524-5da4-b037-321299003752",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "provided-by",
+        "target_ref": "cv-value--data-provider--4375660c-3282-52a9-b68d-9054d463fc1d"
+      },
+      {
+        "id": "rel--relationship--3d892a7b-3033-5f26-a4e3-20296c9b2f69",
+        "type": "relationship",
+        "source_ref": "mhd--study--20cd5bb7-f767-4731-9783-430560de8954",
+        "relationship_name": "submitted-by",
+        "target_ref": "mhd--person--2c2c0eef-9024-4d03-b221-7392fe73a981"
+      }
+    ]
+  }
+}

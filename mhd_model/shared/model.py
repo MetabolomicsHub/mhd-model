@@ -95,8 +95,8 @@ class CvDefinition(MhdConfigModel):
     name: str = ""
     uri: str = ""
     prefix: str = ""
-    alternative_labels: None | list[str] = None
-    alternative_prefixes: None | list[str] = None
+    alternative_labels: Annotated[None | list[str], Field(exclude=True)] = None
+    alternative_prefixes: Annotated[None | list[str], Field(exclude=True)] = None
 
 
 class Revision(MhdConfigModel):

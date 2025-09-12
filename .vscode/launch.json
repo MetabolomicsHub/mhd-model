@@ -35,6 +35,16 @@
             "env": {"PYTHONPATH": "${workspaceFolder}"},
             "justMyCode": false
         },
+        {
+            "name": "mhd-model: Create Announcement File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/create_announcement_file.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "justMyCode": false
+        },
 
 
     ]

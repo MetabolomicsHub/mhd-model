@@ -114,19 +114,19 @@ CONTROLLED_CV_DEFINITIONS = {
 
 OTHER_CONTROLLED_CV_DEFINITIONS = {
     "DOI": CvDefinition(
-        label="doi",
+        label="DOI",
         name="Digital Object Identifier",
         uri="https://www.doi.org",
         prefix="https://www.doi.org/",
-        alternative_labels=["DOI"],
+        alternative_labels=["doi"],
         alternative_prefixes=["http://www.doi.org/"],
     ),
     "ORCID": CvDefinition(
-        label="orcid",
+        label="ORCID",
         name="Digital Object Identifier",
         uri="https://orcid.org",
         prefix="https://orcid.org/",
-        alternative_labels=["ORCID"],
+        alternative_labels=["orcid"],
         alternative_prefixes=["http://orcid.org/"],
     ),
     "PMID": CvDefinition(
@@ -160,12 +160,12 @@ OTHER_CONTROLLED_CV_DEFINITIONS = {
         alternative_labels=["ilx"],
         alternative_prefixes=["http://uri.interlex.org/user/ilx_"],
     ),
-    "WoRMS": CvDefinition(
-        label="WoRMS",
+    "WORMS": CvDefinition(
+        label="WORMS",
         name="World Register of Marine Species",
         uri="https://www.marinespecies.org",
         prefix="https://www.marinespecies.org/aphia.php?p=taxdetails&id=",
-        alternative_labels=["WORMS", "worms"],
+        alternative_labels=["WORMS", "worms", "WoRMS"],
         alternative_prefixes=[
             "http://www.marinespecies.org/aphia.php?p=taxdetails&id="
         ],

@@ -15,6 +15,7 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import (
     MhDatasetBaseProfile,
 )
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
+from mhd_model.model.v0_1.dataset.validation.utils import search_ontology_definition
 from mhd_model.model.v0_1.rules.cv_definitions import (
     CONTROLLED_CV_DEFINITIONS,
     OTHER_CONTROLLED_CV_DEFINITIONS,
@@ -77,9 +78,11 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
 
     def add_cv_source(self, item: Any) -> Self:
         if isinstance(item, (CvTerm, CvTermValue)):
-            if item.source and item.source not in self._cv_definitions_map:
+            source_uppercase = item.source.upper() if item.source else ""
+            if source_uppercase and source_uppercase not in self._cv_definitions_map:
                 logger.info("%s CV source is added.", item.source)
                 self._cv_definitions_map[item.source] = None
+            
 
     def add_relationship(self, item: BaseMhdRelationship) -> Self:
         self.objects[item.id_] = item
@@ -88,15 +91,26 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
     def create_dataset(
         self, start_item_refs: Sequence[str], dataset_class: type[MhDatasetBaseProfile]
     ) -> MhDatasetBaseProfile:
+        cv_definitions_map: dict[str, CvDefinition] = {}
+
         for source in self._cv_definitions_map.keys():
+            if not source:
+                continue
             if source in CONTROLLED_CV_DEFINITIONS:
-                self.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
+                cv_definition = CONTROLLED_CV_DEFINITIONS[source]
+                self.cv_definitions.append(cv_definition)
+                cv_definitions_map[source] = cv_definition
             elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
-                self.cv_definitions.append(OTHER_CONTROLLED_CV_DEFINITIONS[source])
+                cv_definition = OTHER_CONTROLLED_CV_DEFINITIONS[source]
+                self.cv_definitions.append(cv_definition)
+                cv_definitions_map[source] = cv_definition
             else:
-                self.cv_definitions.append(
-                    CvDefinition(label=source, alternative_labels=[source.lower()])
-                )
+                cv_definition = search_ontology_definition(source)
+                if not cv_definition:
+                    self.cv_definitions.append(CvDefinition(label=source))
+                else:
+                    self.cv_definitions.append(cv_definition)
+                cv_definitions_map[source] = cv_definition
 
         self.cv_definitions.sort(key=lambda x: x.label)
         mhd_dataset = dataset_class(
