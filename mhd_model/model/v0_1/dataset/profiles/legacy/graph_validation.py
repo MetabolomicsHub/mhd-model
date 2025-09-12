@@ -479,7 +479,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
     ),
     NodeValidation(
         node_type="person",
-        min=0,
+        min=1,
         validations=[
             NodePropertyValidation(
                 node_type="person",
@@ -1090,8 +1090,8 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="submitted-by",
                 reverse_relationship_name="submits",
                 target="person",
-                min=0,
-                min_for_each_source=0,
+                min=1,
+                min_for_each_source=1,
             ),
             RelationshipValidation(
                 source="study",

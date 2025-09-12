@@ -116,9 +116,11 @@
             {
               "items": {
                 "minLength": 2,
+                "title": "Author",
                 "type": "string"
               },
               "minItems": 1,
+              "title": "Authors",
               "type": "array"
             },
             {
@@ -1107,8 +1109,15 @@
       "title": "Repository Name"
     },
     "mhd_identifier": {
-      "title": "Mhd Identifier",
-      "type": "string"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Mhd Identifier"
     },
     "repository_identifier": {
       "title": "Repository Identifier",

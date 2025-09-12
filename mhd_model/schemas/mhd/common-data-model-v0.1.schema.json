@@ -1774,6 +1774,7 @@
           "anyOf": [
             {
               "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
+              "title": "ORCID",
               "type": "string"
             },
             {
@@ -1998,6 +1999,7 @@
             {
               "items": {
                 "minLength": 2,
+                "title": "Grant Identifier",
                 "type": "string"
               },
               "type": "array"
@@ -2358,9 +2360,11 @@
             {
               "items": {
                 "minLength": 2,
+                "title": "Author",
                 "type": "string"
               },
               "minItems": 1,
+              "title": "Authors",
               "type": "array"
             },
             {
@@ -3884,7 +3888,6 @@
         "mhd_identifier": {
           "anyOf": [
             {
-              "pattern": "MHD[A-Z][0-9]{6,6}",
               "type": "string"
             },
             {
@@ -3995,6 +3998,7 @@
             {
               "items": {
                 "minLength": 2,
+                "title": "Grant Identifier",
                 "type": "string"
               },
               "type": "array"

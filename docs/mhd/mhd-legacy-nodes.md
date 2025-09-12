@@ -6,7 +6,7 @@ Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_
 
  **Required MHD Nodes**
 
-<code>Characteristic Definition, Metadata File, Study</code>
+<code>Characteristic Definition, Metadata File, Person, Study</code>
 
  **Required MHD CV Terms**
 
@@ -24,6 +24,7 @@ graph LR
   Study[Study] ==>|provided-by| Data_Provider[Data Provider];
   Study[Study] ==>|has-characteristic-definition| Characteristic_Definition[Characteristic Definition];
   Study[Study] ==>|has-metadata-file| Metadata_File[Metadata File];
+  Study[Study] ==>|submitted-by| Person[Person];
   Characteristic_Type[Characteristic Type] ==>|type-of| Characteristic_Definition[Characteristic Definition];
   Characteristic_Value[Characteristic Value] ==>|instance-of| Characteristic_Definition[Characteristic Definition];
   Data_Provider[Data Provider] ==>|provides| Study[Study];
@@ -44,6 +45,7 @@ graph LR
 |Study|has-characteristic-definition|Characteristic Definition|1|N (unbounded)|
 |Study|has-metadata-file|Metadata File|1|N (unbounded)|
 |Study|provided-by|Data Provider|1|1|
+|Study|submitted-by|Person|1|N (unbounded)|
 
 **Required Node Properties**
 
@@ -55,10 +57,10 @@ graph LR
 |data-provider|value|
 |metadata-file|name|
 |metadata-file|url_list|
+|person|full_name|
 |study|created_by_ref|
 |study|dataset_url_list|
 |study|description|
-|study|mhd_identifier|
 |study|public_release_date|
 |study|repository_identifier|
 |study|submission_date|
@@ -407,7 +409,7 @@ Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum:
 
 ### Person
 
-Person node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -450,7 +452,7 @@ Person node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N
 |publication|has-author|author-of|person|0|N||
 |study|has-contributor|contributes|person|0|N||
 |study|has-principal-investigator|principal-investigator-of|person|0|N||
-|study|submitted-by|submits|person|0|N||
+|study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
 
 ### Project
 
@@ -836,7 +838,7 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
 |**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**mhd_identifier**|**required**|<code>*str*<code>|Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
+|**mhd_identifier**|optional|<code>*str*<code>||
 |**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifiers**|optional|<code>*list[KeyValue]*<code>||
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
@@ -874,7 +876,7 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |study|part-of|has-study|project|0|N||
 |study|provided-by|provides|data-provider|1|1||
 |study|reports|reported-in|metabolite|0|N||
-|study|submitted-by|submits|person|0|N||
+|study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
 
 
 **Embedded Relationships**: <code>data-provider</code>
