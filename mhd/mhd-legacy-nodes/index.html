@@ -484,7 +484,7 @@
 <p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a> </p>
 <h2 id="required-nodes-relationships">Required Nodes &amp; Relationships<a class="headerlink" href="#required-nodes-relationships" title="Permanent link">¶</a></h2>
 <p><strong>Required MHD Nodes</strong></p>
-<p><code>Characteristic Definition, Metadata File, Study</code></p>
+<p><code>Characteristic Definition, Metadata File, Person, Study</code></p>
 <p><strong>Required MHD CV Terms</strong></p>
 <p><code>Characteristic Type, Characteristic Value, Data Provider</code></p>
 <p>The following graph shows only required nodes and required relationships. Relationships that start with 'embedded - ' show required node property.</p>
@@ -497,6 +497,7 @@
   Study[Study] ==&gt;|provided-by| Data_Provider[Data Provider];
   Study[Study] ==&gt;|has-characteristic-definition| Characteristic_Definition[Characteristic Definition];
   Study[Study] ==&gt;|has-metadata-file| Metadata_File[Metadata File];
+  Study[Study] ==&gt;|submitted-by| Person[Person];
   Characteristic_Type[Characteristic Type] ==&gt;|type-of| Characteristic_Definition[Characteristic Definition];
   Characteristic_Value[Characteristic Value] ==&gt;|instance-of| Characteristic_Definition[Characteristic Definition];
   Data_Provider[Data Provider] ==&gt;|provides| Study[Study];
@@ -590,6 +591,13 @@
 <td>1</td>
 <td>1</td>
 </tr>
+<tr>
+<td>Study</td>
+<td>submitted-by</td>
+<td>Person</td>
+<td>1</td>
+<td>N (unbounded)</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Required Node Properties</strong></p>
@@ -626,6 +634,10 @@
 <td>url_list</td>
 </tr>
 <tr>
+<td>person</td>
+<td>full_name</td>
+</tr>
+<tr>
 <td>study</td>
 <td>created_by_ref</td>
 </tr>
@@ -636,10 +648,6 @@
 <tr>
 <td>study</td>
 <td>description</td>
-</tr>
-<tr>
-<td>study</td>
-<td>mhd_identifier</td>
 </tr>
 <tr>
 <td>study</td>
@@ -2153,7 +2161,7 @@
 </tbody>
 </table>
 <h3 id="person">Person<a class="headerlink" href="#person" title="Permanent link">¶</a></h3>
-<p>Person node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Person node is <strong>required in the MHD Legacy Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -2391,9 +2399,9 @@
 <td>submitted-by</td>
 <td>submits</td>
 <td>person</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td></td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 </tbody>
 </table>
@@ -4113,9 +4121,9 @@
 </tr>
 <tr>
 <td><strong>mhd_identifier</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>8</code><br/>Validation Rule:<br/> <code>Min Length: 8, Required</code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
@@ -4384,9 +4392,9 @@
 <td>submitted-by</td>
 <td>submits</td>
 <td>person</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td></td>
+<td><strong>Required min count in the dataset: 1.</strong></td>
 </tr>
 </tbody>
 </table>
