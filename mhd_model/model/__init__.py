@@ -13,6 +13,8 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import MhDatasetBaseProf
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
 
+from . import v0_1
+
 
 class SupportedJsonSchema(BaseModel):
     uri: str

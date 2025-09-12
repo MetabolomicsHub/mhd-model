@@ -25,9 +25,6 @@ logger = logging.getLogger(__name__)
 
 
 class MhDatasetBuilder(GraphEnabledBaseDataset):
-    def __init__(self, dataset_class: type[MhDatasetBaseProfile] = MhDatasetBaseProfile):
-        self.dataset_class =  dataset_class
-
     _cv_definitions_map: Annotated[
         dict[str, None | CvDefinition], Field(exclude=True)
     ] = {}
@@ -88,7 +85,9 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         self.objects[item.id_] = item
         return self
 
-    def create_dataset(self, start_item_refs: Sequence[str]) -> MhDatasetBaseProfile:
+    def create_dataset(
+        self, start_item_refs: Sequence[str], dataset_class: type[MhDatasetBaseProfile]
+    ) -> MhDatasetBaseProfile:
         for source in self._cv_definitions_map.keys():
             if source in CONTROLLED_CV_DEFINITIONS:
                 self.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
@@ -100,7 +99,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
                 )
 
         self.cv_definitions.sort(key=lambda x: x.label)
-        mhd_dataset = self.dataset_class(
+        mhd_dataset = dataset_class(
             schema_name=self.schema_name, profile_uri=self.profile_uri
         )
         mhd_dataset.cv_definitions = (

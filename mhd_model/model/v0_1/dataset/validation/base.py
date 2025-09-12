@@ -1440,11 +1440,24 @@ class MhdModelValidator:
         items = []
         errors = []
         for idx, x in relationships.values():
-            if (
-                item.source == nodes[x.source_ref].type_
-                and item.target == nodes[x.target_ref].type_
-            ):
+            target_node = nodes.get(x.target_ref)
+
+            source_node = nodes.get(x.source_ref)
+            if item.source == source_node.type_ and item.target == target_node.type_:
                 items.append(x)
+            elif target_node.type_.startswith("x-") or source_node.type_.startswith(
+                "x-"
+            ):
+                expected_source = (
+                    item.source == source_node.type_
+                    or item.source.endswith(f"-{item.source}")
+                )
+                expected_target = (
+                    item.target == target_node.type_
+                    or item.target.endswith(f"-{item.target}")
+                )
+                if expected_source and expected_target:
+                    items.append(x)
         if len(items) < item.min:
             errors.append(
                 jsonschema.ValidationError(
