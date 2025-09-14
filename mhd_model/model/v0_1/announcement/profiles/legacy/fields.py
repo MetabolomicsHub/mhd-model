@@ -2,6 +2,9 @@ from typing import Annotated
 
 from pydantic import Field
 
+from mhd_model.model.v0_1.announcement.profiles.base.profile import (
+    AnnouncementProtocol,
+)
 from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckChildCvTermKeyValues,
     CheckCvTermKeyValue,
@@ -10,14 +13,13 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_MEASUREMENT_TYPES,
+    COMMON_OMICS_TYPES,
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
-    MISSING_PUBLICATION_REASON,
     REQUIRED_COMMON_PARAMETER_DEFINITIONS,
 )
-from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue, MhdConfigModel
+from mhd_model.shared.model import CvTerm, CvTermKeyValue
 from mhd_model.shared.validation.definitions import (
-    AccessibleCompactURI,
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,
     AllowedCvList,
@@ -25,120 +27,6 @@ from mhd_model.shared.validation.definitions import (
     CvTermPlaceholder,
     ParentCvTerm,
 )
-
-DOI = Annotated[
-    str,
-    Field(
-        pattern=r"^10[.].+/.+$",
-        json_schema_extra={
-            "profileValidation": AccessibleCompactURI(default_prefix="doi").model_dump(
-                by_alias=True
-            )
-        },
-    ),
-]
-
-MetabolomicsProtocol = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            accession="OBI:0000272",
-                            source="EFO",
-                            name="protocol",
-                        ),
-                        allow_only_leaf=False,
-                    )
-                ]
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
-
-MetaboliteDatabaseId = Annotated[
-    CvTermValue,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            accession="CHEMINF:000464",
-                            source="CHEMINF",
-                            name="chemical database identifier",
-                        ),
-                        allow_only_leaf=False,
-                        index_cv_terms=False,
-                    )
-                ]
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
-
-
-ORCID = Annotated[
-    str,
-    Field(
-        pattern=r"^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
-        json_schema_extra={
-            "profileValidation": AccessibleCompactURI(
-                default_prefix="orcid"
-            ).model_dump(by_alias=True)
-        },
-    ),
-]
-
-PubMedId = Annotated[
-    str,
-    Field(
-        pattern=r"^[0-9]{1,20}$",
-        title="PubMed Id",
-        # json_schema_extra={
-        #     "profileValidation": AccessibleCompactURI(default_prefix="pmid").model_dump(
-        #         by_alias=True
-        #     )
-        # },
-    ),
-]
-
-FactorDefinition = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowAnyCvTerm(
-                allowed_placeholder_values=[
-                    CvTermPlaceholder(source="MHD", accession="MHD:000001")
-                ],
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
-
-CvTermOrStr = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowAnyCvTerm(
-                allowed_placeholder_values=[CvTermPlaceholder(source="", accession="")],
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
-
-ProtocolName = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedCvTerms(
-                cv_terms=list(COMMON_PROTOCOLS.values())
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
 
 CharacteristicValues = Annotated[
     list[CvTermKeyValue],
@@ -152,9 +40,7 @@ CharacteristicValues = Annotated[
                         ),
                         controls=[
                             AllowAnyCvTerm(
-                                allowed_placeholder_values=[
-                                    CvTermPlaceholder(source="", accession="")
-                                ]
+                                allowed_placeholder_values=[CvTermPlaceholder()]
                             )
                         ],
                         min_value_count=1,
@@ -172,25 +58,12 @@ class ExtendedCvTermKeyValue(CvTermKeyValue):
         Field(
             json_schema_extra={
                 "profileValidation": AllowAnyCvTerm(
-                    allowed_placeholder_values=[
-                        CvTermPlaceholder(source="", accession="")
-                    ],
+                    allowed_placeholder_values=[CvTermPlaceholder()],
                 ).model_dump(by_alias=True)
             }
         ),
     ]
 
-
-MissingPublicationReason = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedCvTerms(
-                cv_terms=list(MISSING_PUBLICATION_REASON.values())
-            ).model_dump(by_alias=True)
-        },
-    ),
-]
 
 StudyFactors = Annotated[
     list[ExtendedCvTermKeyValue],
@@ -206,6 +79,7 @@ StudyFactors = Annotated[
                         controls=[
                             AllowedCvList(
                                 source_names=["DOID", "HP", "MP", "SNOMED"],
+                                allowed_placeholder_values=[CvTermPlaceholder()],
                                 allowed_other_sources=["wikidata", "ILX"],
                             )
                         ],
@@ -217,16 +91,20 @@ StudyFactors = Annotated[
     ),
 ]
 
-
-class Protocol(MhdConfigModel):
-    name: Annotated[None | str, Field()] = None
-    protocol_type: Annotated[ProtocolName, Field()]
-    description: Annotated[None | str, Field()] = None
-    protocol_parameters: Annotated[None | list[ExtendedCvTermKeyValue], Field()] = None
-
+ProtocolType = Annotated[
+    CvTerm,
+    Field(
+        json_schema_extra={
+            "profileValidation": AllowedCvTerms(
+                cv_terms=list(COMMON_PROTOCOLS.values()),
+                allowed_placeholder_values=[CvTermPlaceholder()],
+            ).model_dump(by_alias=True)
+        }
+    ),
+]
 
 Protocols = Annotated[
-    list[Protocol],
+    list[AnnouncementProtocol],
     Field(
         json_schema_extra={
             "profileValidation": CheckChildCvTermKeyValues(
@@ -248,28 +126,17 @@ Protocols = Annotated[
                                                 accession="MS:1000031",
                                                 name="instrument model",
                                             ),
-                                            excluded_cv_terms=[
-                                                CvTerm(
-                                                    source="MS",
-                                                    accession="MS:1000491",
-                                                    name="Dionex instrument model",
-                                                ),
-                                                CvTerm(
-                                                    source="MS",
-                                                    accession="MS:1000488",
-                                                    name="Hitachi instrument model",
-                                                ),
-                                            ],
                                             allow_only_leaf=True,
                                         ),
-                                    ]
+                                    ],
+                                    allowed_placeholder_values=[CvTermPlaceholder()],
                                 )
                             ],
                         )
                     ]
                 ),
             ).model_dump(serialize_as_any=True, by_alias=True)
-        }
+        },
     ),
 ]
 
@@ -278,7 +145,20 @@ MeasurementType = Annotated[
     Field(
         json_schema_extra={
             "profileValidation": AllowedCvTerms(
-                cv_terms=list(COMMON_MEASUREMENT_TYPES.values())
+                cv_terms=list(COMMON_MEASUREMENT_TYPES.values()),
+                allowed_placeholder_values=[CvTermPlaceholder()],
+            ).model_dump(by_alias=True)
+        },
+    ),
+]
+
+OmicsType = Annotated[
+    CvTerm,
+    Field(
+        json_schema_extra={
+            "profileValidation": AllowedCvTerms(
+                cv_terms=list(COMMON_OMICS_TYPES.values()),
+                allowed_placeholder_values=[CvTermPlaceholder()],
             ).model_dump(by_alias=True)
         },
     ),
@@ -289,19 +169,21 @@ TechnologyType = Annotated[
     Field(
         json_schema_extra={
             "profileValidation": AllowedCvTerms(
-                cv_terms=list(COMMON_TECHNOLOGY_TYPES.values())
+                cv_terms=list(COMMON_TECHNOLOGY_TYPES.values()),
+                allowed_placeholder_values=[CvTermPlaceholder()],
             ).model_dump(by_alias=True)
         },
     ),
 ]
 
 
-AnalysisType = Annotated[
+AssayType = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
             "profileValidation": AllowedCvTerms(
-                cv_terms=list(COMMON_ASSAY_TYPES.values())
+                cv_terms=list(COMMON_ASSAY_TYPES.values()),
+                allowed_placeholder_values=[CvTermPlaceholder()],
             ).model_dump(by_alias=True)
         },
     ),

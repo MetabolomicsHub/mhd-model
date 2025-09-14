@@ -1,23 +1,27 @@
-from pydantic import AnyUrl, Field
+import datetime
+
+from pydantic import Field
 from typing_extensions import Annotated
 
-from mhd_model.model.v0_1.announcement.profiles.base import fields
+from mhd_model.model.v0_1.announcement.profiles.base import profile as base_profile
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseProfile,
 )
-from mhd_model.shared.model import MhdConfigModel
+from mhd_model.model.v0_1.announcement.profiles.legacy import fields as legacy_fields
 
 
-class BaseFile(MhdConfigModel):
-    name: Annotated[str, Field(min_length=2)]
-    url_list: Annotated[list[AnyUrl], Field(min_length=1)]
-    compression_format: Annotated[None | fields.CompressionFormat, Field()] = None
-
-
-class MetadataFile(BaseFile):
-    format: Annotated[None | fields.MetadataFileFormat, Field()] = None
-    extension: Annotated[None | str, Field(min_length=2)] = None
+class AnnouncementContact(base_profile.AnnouncementContact):
+    full_name: Annotated[str, Field(min_length=5)] = None
 
 
 class AnnouncementLegacyProfile(AnnouncementBaseProfile):
-    repository_metadata_file_list: Annotated[list[MetadataFile], Field()]
+    submitters: Annotated[list[AnnouncementContact], Field(min_length=1)]
+    repository_metadata_file_list: Annotated[
+        list[base_profile.AnnouncementBaseFile], Field()
+    ]
+    protocols: Annotated[None | legacy_fields.Protocols, Field()] = None
+    characteristic_values: Annotated[legacy_fields.CharacteristicValues, Field()] = None
+    description: Annotated[str, Field(min_length=60)]
+    submission_date: Annotated[datetime.datetime, Field()]
+    public_release_date: Annotated[datetime.datetime, Field()]
+    submitters: Annotated[list[AnnouncementContact], Field(min_length=1)]

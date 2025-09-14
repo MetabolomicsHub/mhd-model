@@ -205,7 +205,7 @@ class Publication(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "publication"
-    title: Annotated[str, Field(min_length=5)]
+    title: Annotated[str, Field(min_length=10)]
     doi: Annotated[DOI, Field()]
     pub_med_id: Annotated[None | PubMedId, Field()] = None
     authors: Annotated[None | Authors, Field()] = None

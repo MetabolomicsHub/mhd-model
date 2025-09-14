@@ -1,0 +1,99 @@
+{
+  "repository_identifier": "MTBLS3107",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "BTO",
+      "name": "The BRENDA Tissue Ontology (BTO)",
+      "uri": "http://purl.obolibrary.org/obo/bto.owl",
+      "prefix": "http://purl.obolibrary.org/obo/BTO_"
+    },
+    {
+      "label": "NCBITaxon",
+      "name": "",
+      "uri": "",
+      "prefix": ""
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "mhd_metadata_file_url": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107_minimum/MTBLS3107_minimum.mhd.json",
+  "dataset_url_list": [
+    "https://www.ebi.ac.uk/metabolights/MTBLS3107"
+  ],
+  "title": "Fatal COVID-19 pulmonary disease involves ferroptosis.",
+  "description": "<p>SARS-CoV-2 infection causes severe pulmonary manifestations, with poorly understood mechanisms and limited treatment options. Hyperferritinemia and disrupted lung iron homeostasis in COVID-19 patients imply that ferroptosis, an iron-dependent cell death, may occur. Immunostaining and lipidomic analysis in COVID-19 lung autopsies reveal increases in ferroptosis markers, including transferrin receptor 1 and malondialdehyde accumulation in fatal cases. COVID-19 lungs display dysregulation of lipids involved in metabolism and ferroptosis. We find increased ferritin light chain associated with severe COVID-19 lung pathology. Iron overload promotes ferroptosis in both primary cells and cancerous lung epithelial cells. In addition, ferroptosis markers strongly correlate with lung injury severity in a COVID-19 lung disease model using male Syrian hamsters. These results reveal a role for ferroptosis in COVID-19 pulmonary disease; pharmacological ferroptosis inhibition may serve as an adjuvant therapy to prevent lung damage during SARS-CoV-2 infection.</p>",
+  "submission_date": "2021-07-09T00:00:00",
+  "public_release_date": "2024-07-11T00:00:00",
+  "submitters": [
+    {
+      "full_name": "Fereshteh Zandkarimi"
+    }
+  ],
+  "characteristic_values": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITaxon",
+          "accession": "NCBITaxon:9606",
+          "name": "Homo sapiens"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "BTO",
+          "accession": "BTO:0000763",
+          "name": "lung"
+        }
+      ]
+    }
+  ],
+  "protocols": [],
+  "repository_metadata_file_list": [
+    {
+      "name": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
+      ]
+    },
+    {
+      "name": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
+      ]
+    },
+    {
+      "name": "i_Investigation.txt",
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt"
+      ]
+    },
+    {
+      "name": "s_MTBLS3107.txt",
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt"
+      ]
+    }
+  ]
+}

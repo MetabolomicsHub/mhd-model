@@ -8,17 +8,20 @@ from scripts.utils import set_basic_logging_config
 
 if __name__ == "__main__":
     set_basic_logging_config()
+    mtbls_public_ftp_base_url: str = (
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public"
+    )
 
-    files = list(Path("tests/data/mhd_data/mtbls").glob("*.mhd.json"))
+    files = list(Path("tests/data/mhd_data/legacy").glob("*.mhd.json"))
     for file in files:
         txt = file.read_text()
         mhd_data_json = json.loads(txt)
         study_id = file.name.removesuffix(".mhd.json")
-        # txt = None
-        public_ftp_base_url: str = (
-            "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public"
-        )
-        mhd_file_url = f"{public_ftp_base_url}/{study_id}/{study_id}.mhd.json"
+        if study_id.startswith("MTBLS"):
+            mhd_file_url = f"{mtbls_public_ftp_base_url}/{study_id}/{study_id}.mhd.json"
+        else:
+            mhd_file_url = None
+
         Path("tests/data/announcement_files").mkdir(parents=True, exist_ok=True)
         annoucement_file_path = (
             f"tests/data/announcement_files/{study_id}_announcement.json"

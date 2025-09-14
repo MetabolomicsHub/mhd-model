@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 if __name__ == "__main__":
     set_basic_logging_config()
 
-    study_id = "MHDL003107"
-    file_path = f"tests/data/mhd_data/mtbls/{study_id}.mhd.json"
+    study_id = "MSV000099062"
+    file_path = f"tests/data/mhd_data/legacy/{study_id}.mhd.json"
     validation_errors = validate_mhd_file(file_path)
 
     if validation_errors:

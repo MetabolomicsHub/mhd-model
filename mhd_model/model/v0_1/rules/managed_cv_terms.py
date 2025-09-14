@@ -69,11 +69,6 @@ COMMON_MEASUREMENT_TYPES = {
         accession="MSIO:0000101",
         name="untargeted metabolite profiling",
     ),
-    "OBI:0000366": CvTerm(
-        source="OBI",
-        accession="OBI:0000366",
-        name="metabolite profiling assay",
-    ),
     # TODO others?
 }
 

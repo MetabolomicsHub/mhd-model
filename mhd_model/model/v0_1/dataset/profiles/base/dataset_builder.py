@@ -86,9 +86,10 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
                 self._cv_definitions_map[source_uppercase] = None
             if source_uppercase != item.source:
                 logger.info(
-                    "CV source '%s' is converted to uppercase '%s'.",
+                    "CV source '%s' is converted to uppercase '%s'. %s",
                     item.source,
                     source_uppercase,
+                    item,
                 )
                 item.source = source_uppercase
         return self
