@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.10"
 
 [[package]]
@@ -991,6 +991,11 @@ dependencies = [
     { name = "reachable" },
 ]
 
+[package.optional-dependencies]
+neo4j = [
+    { name = "neo4j" },
+]
+
 [package.dev-dependencies]
 dev = [
     { name = "commitizen" },
@@ -1014,12 +1019,14 @@ requires-dist = [
     { name = "jsonpath-ng", specifier = ">=1.7.0" },
     { name = "jsonschema", specifier = ">=4.24.0" },
     { name = "mkdocs-mermaid2-plugin", specifier = ">=1.2.2" },
+    { name = "neo4j", marker = "extra == 'neo4j'", specifier = ">=5.28.2" },
     { name = "pydantic", specifier = ">=2.11.7" },
     { name = "python-dateutil", specifier = ">=2.9.0.post0" },
     { name = "pytz", specifier = ">=2025.2" },
     { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "reachable", specifier = ">=0.7.0" },
 ]
+provides-extras = ["neo4j"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -1130,6 +1137,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/cf/c7/da345a948fb09129c524e81209c32c07c56f5e30786b973116247c4eba61/more_click-0.1.2.tar.gz", hash = "sha256:085da66d5a9b823c5d912a888dca1fa0c8b3a14ed1b21ea9c8a1b814857a3981", size = 8040, upload-time = "2022-12-06T11:45:11.395Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ad/8e/4e25da8883c5d661eaf4225a951046b8f4466e75eadb8594e204550b3179/more_click-0.1.2-py3-none-any.whl", hash = "sha256:f6387af37ef7e7423bd94b72a81a53c79c5086a3bfe5cc035da534ff0c2a0a9e", size = 6680, upload-time = "2022-12-06T11:45:08.907Z" },
+]
+
+[[package]]
+name = "neo4j"
+version = "5.28.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytz" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/50/69/4862fabc082f2447131aada5c91736155349d77ebf443af7f59553b7b789/neo4j-5.28.2.tar.gz", hash = "sha256:7d38e27e4f987a45cc9052500c6ee27325cb23dae6509037fe31dd7ddaed70c7", size = 231874, upload-time = "2025-07-30T06:04:34.669Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/04/00/1f74089c06aec1fac9390e2300a6a6b2381e0dac281783d64ccca9d681fd/neo4j-5.28.2-py3-none-any.whl", hash = "sha256:5c53b5c3eee6dee7e920c9724391aa38d7135a651e71b766da00533b92a91a94", size = 313156, upload-time = "2025-07-30T06:04:31.438Z" },
 ]
 
 [[package]]

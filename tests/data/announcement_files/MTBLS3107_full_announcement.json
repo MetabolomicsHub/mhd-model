@@ -1,5 +1,4 @@
 {
-  "mhd_identifier": "MTBLS3107",
   "repository_identifier": "MTBLS3107",
   "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
   "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
@@ -65,10 +64,10 @@
       "prefix": "http://purl.obolibrary.org/obo/MSIO_"
     },
     {
-      "label": "NCBITaxon",
-      "name": "",
-      "uri": "",
-      "prefix": ""
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
     },
     {
       "label": "NCIT",
@@ -267,7 +266,7 @@
       },
       "values": [
         {
-          "source": "NCBITaxon",
+          "source": "NCBITAXON",
           "accession": "NCBITaxon:9606",
           "name": "Homo sapiens"
         }

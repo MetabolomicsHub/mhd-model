@@ -11,7 +11,7 @@ from mhd_model.model.v0_1.announcement.profiles.legacy import fields as legacy_f
 
 
 class AnnouncementContact(base_profile.AnnouncementContact):
-    full_name: Annotated[str, Field(min_length=5)] = None
+    full_name: Annotated[str, Field(min_length=5)]
 
 
 class AnnouncementLegacyProfile(AnnouncementBaseProfile):

@@ -45,6 +45,16 @@
             "env": {"PYTHONPATH": "${workspaceFolder}"},
             "justMyCode": false
         },
+        {
+            "name": "mhd-model: Create SDRF File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/create_sdrf_files.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "justMyCode": false
+        },
 
 
     ]

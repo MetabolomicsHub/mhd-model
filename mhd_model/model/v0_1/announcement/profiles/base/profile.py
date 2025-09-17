@@ -83,6 +83,7 @@ class AnnouncementProtocol(AnnouncementBaseModel):
     protocol_parameters: Annotated[
         None | list[fields.ExtendedCvTermKeyValue], Field()
     ] = None
+    relates_assay_names: Annotated[None | list[str], Field()] = None
 
 
 class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):

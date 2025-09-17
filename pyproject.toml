@@ -22,6 +22,11 @@ dependencies = [
     "reachable>=0.7.0",
 ]
 
+[project.optional-dependencies]
+neo4j = [
+    "neo4j>=5.28.2",
+]
+
 [dependency-groups]
 dev = [
     "commitizen>=4.8.3",
@@ -85,6 +90,7 @@ layers = [
     "mhd_model.model.v0_1.dataset.profiles.base",
     "mhd_model.shared",
 ]
+
 
 [[tool.importlinter.contracts]]
 name = "Annoucement Base Profile Dependencies"

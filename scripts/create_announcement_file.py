@@ -11,7 +11,7 @@ if __name__ == "__main__":
     mtbls_public_ftp_base_url: str = (
         "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public"
     )
-
+    mw_public_ftp_base_url: str = "ftp://www.metabolomicsworkbench.org/Studies"
     files = list(Path("tests/data/mhd_data/legacy").glob("*.mhd.json"))
     for file in files:
         txt = file.read_text()
@@ -19,6 +19,8 @@ if __name__ == "__main__":
         study_id = file.name.removesuffix(".mhd.json")
         if study_id.startswith("MTBLS"):
             mhd_file_url = f"{mtbls_public_ftp_base_url}/{study_id}/{study_id}.mhd.json"
+        elif study_id.startswith("ST"):
+            mhd_file_url = f"{mw_public_ftp_base_url}/{study_id}/{study_id}.mhd.json"
         else:
             mhd_file_url = None
 

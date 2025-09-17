@@ -1,0 +1,2558 @@
+{
+  "repository_identifier": "ST004188",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "CHMO",
+      "name": "Chemical Methods Ontology",
+      "uri": "http://purl.obolibrary.org/obo/chmo.owl",
+      "prefix": "http://purl.obolibrary.org/obo/CHMO_"
+    },
+    {
+      "label": "EDAM",
+      "name": "The ontology of data analysis and management",
+      "uri": "http://edamontology.org",
+      "prefix": "http://edamontology.org/format_"
+    },
+    {
+      "label": "EFO",
+      "name": "Experimental Factor Ontology",
+      "uri": "http://www.ebi.ac.uk/efo/efo.owl",
+      "prefix": "http://www.ebi.ac.uk/efo/EFO_"
+    },
+    {
+      "label": "MS",
+      "name": "MS",
+      "uri": "http://purl.obolibrary.org/obo/ms.owl",
+      "prefix": "http://purl.obolibrary.org/obo/MS_"
+    },
+    {
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "mhd_metadata_file_url": "ftp://www.metabolomicsworkbench.org/Studies/ST004188/ST004188.mhd.json",
+  "dataset_url_list": [
+    "https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST004188"
+  ],
+  "title": "Discovery and Validation of Metabolic Biomarkers for ''Liver Qi Stagnation'' and ''Liver-Gallbladder Damp-Heat'' Syndromes in Cholelithiasis: Urine targeted",
+  "description": "In order to explore the metabolic differences between the two main traditional Chinese medicine syndromes of gallstones - Liver Qi Stagnation (LQS) and Liver and Gallbladder Damp Heat (LGDH), this study employed three targeted metabolomics methods for the analysis of urine. Our aim was to identify objective biomarkers in urine for the differentiation of the diseases and to elucidate the underlying biological basis. A total of 204 metabolites were collected from the urine.",
+  "submission_date": "2025-09-17T14:59:34.682424Z",
+  "public_release_date": "2025-09-17T14:59:34.682424Z",
+  "submitters": [
+    {
+      "full_name": "Yunshu Zhang",
+      "emails": [
+        "zys1986062186@163.com"
+      ]
+    }
+  ],
+  "principal_investigators": [
+    {
+      "full_name": "Ma yunshu",
+      "emails": [
+        "zys1986062186@163.com"
+      ]
+    }
+  ],
+  "study_factors": [
+    {
+      "key": {
+        "source": "",
+        "accession": "",
+        "name": "factor"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Liver  Qi Stagnation"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Health"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Liver-Gallbladder Damp-Heat"
+        }
+      ]
+    }
+  ],
+  "characteristic_values": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITAXON",
+          "accession": "NCBITAXON:9606",
+          "name": "Homo sapiens"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Urine"
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "name": "sample collection",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0005518",
+        "name": "sample collection protocol"
+      },
+      "description": "In this study, 91 participants were recruited, comprising 33 healthy controls (HC), 30 cholelithiasis patients with LQS syndrome, and 28 with LGDH syndrome. Serum and urine samples were analyzed using a two-pronged strategy."
+    },
+    {
+      "name": "sample preparation",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "Samples were prepared by three seperate protocols. Among them, the first one was for amine acids and nucleosides, the second one was for bile acids and fatty acids, the third was for bacteria-derived metabolites, Details are shown in the uploaded file."
+    },
+    {
+      "name": "treatment",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0003969",
+        "name": "treatment protocol"
+      },
+      "description": "No treatment was involved in this study."
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "Ten levels of working solutions were generated through serial dilution from the mixed stock solutions and prepared for calibration.The metabolites were ionized by a TurboVTM heated electrospray ionization source and scheduled MRM was conducted in both positive and negative modes. Polarity switching (for MRM) was used and detail information for instrument setting parameters was shown in the uploaded file. The optimal parameters of mass spectrometer were as follows: curtain gas, 35 psi; ion source gas 1, 50 psi; ion source gas 2, 50 psi; CE in negative mode, -4.5 kV; CE in positive mode, 5.5kV; ion source temperature 550 ℃. The mass chromatogram peaks of metabolites were extracted and integrated using the in-house software OS (AB Sciex, Singapore). Each peak was automatically identified based on the retention time and MRM parameters of standards, with an overall afterward manual check. And the quantitative results for each metabolite were calculated by correcting with isotopically labelled internal standards as well as utilizing the standard curve for each analyte. The wiff file provided includes all the samples in the batch. The sample names and sample ID are consistent."
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "Ten levels of working solutions were generated through serial dilution from the mixed stock solutions and prepared for calibration.The metabolites were ionized by a TurboVTM heated electrospray ionization source and scheduled MRM was conducted in both positive and negative modes. Polarity switching (for MRM) was used and detail information for instrument setting parameters was shown in the uploaded file. The optimal parameters of mass spectrometer were as follows: curtain gas, 35 psi; ion source gas 1, 50 psi; ion source gas 2, 50 psi; CE in negative mode, -4.5 kV; CE in positive mode, 5.5kV; ion source temperature 550 ℃. The mass chromatogram peaks of metabolites were extracted and integrated using the in-house software OS (AB Sciex, Singapore). Each peak was automatically identified based on the retention time and MRM parameters of standards, with an overall afterward manual check. And the quantitative results for each metabolite were calculated by correcting with isotopically labelled internal standards as well as utilizing the standard curve for each analyte. The wiff file provided includes all the samples in the batch. The sample names and sample ID are consistent."
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "Ten levels of working solutions were generated through serial dilution from the mixed stock solutions and prepared for calibration.The metabolites were ionized by a TurboVTM heated electrospray ionization source and scheduled MRM was conducted in both positive and negative modes. Polarity switching (for MRM) was used and detail information for instrument setting parameters was shown in the uploaded file. The optimal parameters of mass spectrometer were as follows: curtain gas, 35 psi; ion source gas 1, 50 psi; ion source gas 2, 50 psi; CE in negative mode, -4.5 kV; CE in positive mode, 5.5kV; ion source temperature 550 ℃. The mass chromatogram peaks of metabolites were extracted and integrated using the in-house software OS (AB Sciex, Singapore). Each peak was automatically identified based on the retention time and MRM parameters of standards, with an overall afterward manual check. And the quantitative results for each metabolite were calculated by correcting with isotopically labelled internal standards as well as utilizing the standard curve for each analyte. The wiff file provided includes all the samples in the batch. The sample names and sample ID are consistent."
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "Amine acids and nucleosides were separated on an Acquity UPLC BEH Amide column (1.7 μm, 2.1mm × 100 mm, Waters). The mobile phase was consisting of acetonitrile-water solution (9:1) as phase A, and acetonitrile-water solution (5:5) as phase B with 10 mM ammonium formate and 1% formic acid as additives in both phases. The binary gradient condition was set as follows: 0-0.5 min at 0% B, 0.5-12.0 min from 0 to 40%, 12.0-15.0 min from 40% to 70%, 15.0-16.0 min at 70%, 16.0-17.0 min from 70% to 0%B with additional 3 min for re-equilibration. The column was kept at 50 °C and the total flow rate was set at 0.3 mL/min."
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "The separation was performed using a Hypersil GOLD column (1.9 μm, 2.1 mm × 100 mm, Thermo) at a column temperature of 50 °C. The mobile phase consisted of 2 mM ammonium acetate in water (A), and acetonitrile (B). The binary gradient condition was optimized as follows: 0-0.5 min at 17% B, 0.5-12.0 min from 17% to 30%, 12.0-15.5 min from 30% to 55%, 15.5-16.5 min at 55%, and 24.5-27.0 min at 95% with another 3 min for equilibration with total flow rate set at 0.4 mL/min."
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "Bacteria-derived metabolites were separated on a PFP C18 column (2 μm, 2.1mm × 100 mm, ACE). The mobile phase was consisting of 0.01% formic acid -water solution (phase A) and acetonitrile (phase B). The binary gradient condition was set as follows: 0-1.0 min at 5% B, 1.0-9.0 min from 5 to 75%, 9.0-9.5 min from 75% to 95%, 9.5-12.0 min at 95%, 12.5 min at 5%B with 2.5 min for re-equilibration and the column was maintained at 40 °C. The total flow rate was set at 0.3 mL/min."
+    }
+  ],
+  "reported_metabolites": [
+    {
+      "name": "1,5-Anhydrosorbitol"
+    },
+    {
+      "name": "1-Methylguanosine"
+    },
+    {
+      "name": "1-Methylhistidine"
+    },
+    {
+      "name": "1-Methylinosine"
+    },
+    {
+      "name": "1-Methylnicotinamide"
+    },
+    {
+      "name": "12-oxoCDCA"
+    },
+    {
+      "name": "2'-O-Methyluridine"
+    },
+    {
+      "name": "2-Oxoarginine"
+    },
+    {
+      "name": "2-Pyrrolidinone"
+    },
+    {
+      "name": "3-Amino-2-piperidone"
+    },
+    {
+      "name": "3-Aminobutanoic acid"
+    },
+    {
+      "name": "3-Hydroxyanthranilic acid"
+    },
+    {
+      "name": "3-Hydroxykynurenine"
+    },
+    {
+      "name": "3-Hydroxypropionic acid"
+    },
+    {
+      "name": "3-Indolebutyric acid"
+    },
+    {
+      "name": "3-Methoxytyrosine"
+    },
+    {
+      "name": "3-Methylhistidine"
+    },
+    {
+      "name": "3-OxoDCA"
+    },
+    {
+      "name": "3epi-DCA"
+    },
+    {
+      "name": "4-Acetamidobutanoic acid"
+    },
+    {
+      "name": "4-Guanidinobutanoic acid"
+    },
+    {
+      "name": "4-Pyridoxic acid"
+    },
+    {
+      "name": "5,6-Dihydrouridine"
+    },
+    {
+      "name": "5-Methoxyindoleacetate"
+    },
+    {
+      "name": "5-Methyluridine"
+    },
+    {
+      "name": "7-Methylguanine"
+    },
+    {
+      "name": "7-oxoDCA"
+    },
+    {
+      "name": "Acetylglycine"
+    },
+    {
+      "name": "Adenosine"
+    },
+    {
+      "name": "Alanine"
+    },
+    {
+      "name": "Aminoadipic acid"
+    },
+    {
+      "name": "Anserine"
+    },
+    {
+      "name": "Arginine"
+    },
+    {
+      "name": "Ascorbic acid"
+    },
+    {
+      "name": "Asparagine"
+    },
+    {
+      "name": "Aspartic acid"
+    },
+    {
+      "name": "Beta-Alanine"
+    },
+    {
+      "name": "Betaine"
+    },
+    {
+      "name": "Biliverdin"
+    },
+    {
+      "name": "Biotin"
+    },
+    {
+      "name": "CA"
+    },
+    {
+      "name": "CDCA"
+    },
+    {
+      "name": "CDCA-3S"
+    },
+    {
+      "name": "Carnitine"
+    },
+    {
+      "name": "Carnosine"
+    },
+    {
+      "name": "Choline"
+    },
+    {
+      "name": "Citrulline"
+    },
+    {
+      "name": "Creatine"
+    },
+    {
+      "name": "Creatinine"
+    },
+    {
+      "name": "Cystine"
+    },
+    {
+      "name": "Cytidine"
+    },
+    {
+      "name": "DCA"
+    },
+    {
+      "name": "DCA-3S"
+    },
+    {
+      "name": "DL-Norvaline"
+    },
+    {
+      "name": "Dihydrothymine"
+    },
+    {
+      "name": "Enterodiol"
+    },
+    {
+      "name": "Ergothineine"
+    },
+    {
+      "name": "Ethanolamine"
+    },
+    {
+      "name": "FFA(10:1n8)"
+    },
+    {
+      "name": "FFA(12:0-DC)"
+    },
+    {
+      "name": "FFA(18:0)-2-OH"
+    },
+    {
+      "name": "FFA(18:1n7)"
+    },
+    {
+      "name": "FFA(18:1n9)"
+    },
+    {
+      "name": "FFA(18:2n6)"
+    },
+    {
+      "name": "FFA(18:2n7)"
+    },
+    {
+      "name": "FFA(18:4)"
+    },
+    {
+      "name": "FFA(19:1)-isomer"
+    },
+    {
+      "name": "FFA(19:1n9)"
+    },
+    {
+      "name": "FFA(20:0)-isomer"
+    },
+    {
+      "name": "FFA(20:2)"
+    },
+    {
+      "name": "FFA(20:3n3,6)"
+    },
+    {
+      "name": "FFA(20:4n6)"
+    },
+    {
+      "name": "FFA(22:1n9)"
+    },
+    {
+      "name": "FFA(22:2)"
+    },
+    {
+      "name": "FFA(22:3)-isomer_1"
+    },
+    {
+      "name": "FFA(22:3)-isomer_2"
+    },
+    {
+      "name": "FFA(22:3n3)"
+    },
+    {
+      "name": "FFA(22:4n6)"
+    },
+    {
+      "name": "FFA(22:5n3)"
+    },
+    {
+      "name": "FFA(22:5n6)"
+    },
+    {
+      "name": "FFA(22:6n3)"
+    },
+    {
+      "name": "FFA(8:0)-3-OH"
+    },
+    {
+      "name": "GCA"
+    },
+    {
+      "name": "GCA-3S"
+    },
+    {
+      "name": "GCDCA-3S"
+    },
+    {
+      "name": "GDCA"
+    },
+    {
+      "name": "GDCA-3S"
+    },
+    {
+      "name": "GLCA-3S"
+    },
+    {
+      "name": "Glutamic acid"
+    },
+    {
+      "name": "Glutamine"
+    },
+    {
+      "name": "Glutarate"
+    },
+    {
+      "name": "Glycine"
+    },
+    {
+      "name": "Guanidoacetic acid"
+    },
+    {
+      "name": "HCA"
+    },
+    {
+      "name": "HDCA"
+    },
+    {
+      "name": "Histamine"
+    },
+    {
+      "name": "Histidine"
+    },
+    {
+      "name": "Homo-L-Arg"
+    },
+    {
+      "name": "Homovanillic acid sulfate"
+    },
+    {
+      "name": "Hydroxyproline"
+    },
+    {
+      "name": "Hypoxanthine"
+    },
+    {
+      "name": "Imidazolepropionic acid"
+    },
+    {
+      "name": "Indole-3-acetic acid"
+    },
+    {
+      "name": "Indole-3-aldehyde"
+    },
+    {
+      "name": "Indoleacetic Acid"
+    },
+    {
+      "name": "Iodide"
+    },
+    {
+      "name": "Iso-DCA"
+    },
+    {
+      "name": "Isoleucine"
+    },
+    {
+      "name": "Kynurenine"
+    },
+    {
+      "name": "L-Proline"
+    },
+    {
+      "name": "LCA-3S"
+    },
+    {
+      "name": "Leucine"
+    },
+    {
+      "name": "Leucyl-glycine"
+    },
+    {
+      "name": "Lysine"
+    },
+    {
+      "name": "Melatonin"
+    },
+    {
+      "name": "Methionine"
+    },
+    {
+      "name": "Methionine sulfoxide"
+    },
+    {
+      "name": "N,N-Dimethylglycine"
+    },
+    {
+      "name": "N-Acetyglutamic acid"
+    },
+    {
+      "name": "N-Acetyglutamine"
+    },
+    {
+      "name": "N-Acetyl-L-alanine"
+    },
+    {
+      "name": "N-Acetyl-L-phenylalanine"
+    },
+    {
+      "name": "N-Acetyl-beta-alanine"
+    },
+    {
+      "name": "N-Acetylcadaverine"
+    },
+    {
+      "name": "N-Acetylhistidine"
+    },
+    {
+      "name": "N-Acetylleucine"
+    },
+    {
+      "name": "N-Acetylornithine"
+    },
+    {
+      "name": "N-Acetylthreonine"
+    },
+    {
+      "name": "N-Acetyltryptophan"
+    },
+    {
+      "name": "N-Acetyltyrosine"
+    },
+    {
+      "name": "N-Acetylvaline"
+    },
+    {
+      "name": "N-Acetymethionine(NAM)"
+    },
+    {
+      "name": "N-Alpha-acetyllysine"
+    },
+    {
+      "name": "N-Formyl-L-methionine"
+    },
+    {
+      "name": "N-Formylkenurenine"
+    },
+    {
+      "name": "N-a-Acetyl-L-arginine"
+    },
+    {
+      "name": "N1-Acetylspermidine"
+    },
+    {
+      "name": "N1-Methyl-2-pyridone-5-carboxamide"
+    },
+    {
+      "name": "N2,N2-Dimethylguanosine"
+    },
+    {
+      "name": "N2-Methylguanine"
+    },
+    {
+      "name": "N6-Acetyl-L-lysine"
+    },
+    {
+      "name": "N8-Acetylspermidine"
+    },
+    {
+      "name": "Niacinamide"
+    },
+    {
+      "name": "NorCA"
+    },
+    {
+      "name": "O-Acetylserine"
+    },
+    {
+      "name": "Ornithine"
+    },
+    {
+      "name": "Orotic acid"
+    },
+    {
+      "name": "Pantothenic acid"
+    },
+    {
+      "name": "Pantothenol"
+    },
+    {
+      "name": "Phenylacetylglutamine"
+    },
+    {
+      "name": "Phenylacetylglutamine(PAGln)"
+    },
+    {
+      "name": "Phenylalanine"
+    },
+    {
+      "name": "Phenylethylamine"
+    },
+    {
+      "name": "Phytanic acid"
+    },
+    {
+      "name": "Pipecolic acid"
+    },
+    {
+      "name": "Pseudouridine"
+    },
+    {
+      "name": "Putrescine"
+    },
+    {
+      "name": "Pyroglutamic acid"
+    },
+    {
+      "name": "S-Adenosylhomocysteine"
+    },
+    {
+      "name": "Sarcosine"
+    },
+    {
+      "name": "Serine"
+    },
+    {
+      "name": "Serotonin"
+    },
+    {
+      "name": "Sphinganine"
+    },
+    {
+      "name": "Succinic acid"
+    },
+    {
+      "name": "Symmetric dimethylarginine"
+    },
+    {
+      "name": "T-alpha-MCA"
+    },
+    {
+      "name": "T-beta-MCA"
+    },
+    {
+      "name": "TCDCA-3S"
+    },
+    {
+      "name": "TDCA-3S"
+    },
+    {
+      "name": "TLCA-3S"
+    },
+    {
+      "name": "Taurine"
+    },
+    {
+      "name": "Threonine"
+    },
+    {
+      "name": "Thymidine"
+    },
+    {
+      "name": "Trigonelline"
+    },
+    {
+      "name": "Trimethylamine"
+    },
+    {
+      "name": "Trimethylamine N-oxide"
+    },
+    {
+      "name": "Tryptamine"
+    },
+    {
+      "name": "Tryptophan"
+    },
+    {
+      "name": "Tryptophan betaine"
+    },
+    {
+      "name": "Tyramine"
+    },
+    {
+      "name": "Tyrosine"
+    },
+    {
+      "name": "UCA"
+    },
+    {
+      "name": "Uracil"
+    },
+    {
+      "name": "Uric acid"
+    },
+    {
+      "name": "Uridine"
+    },
+    {
+      "name": "Urocanic acid"
+    },
+    {
+      "name": "Valine"
+    },
+    {
+      "name": "Xanthine"
+    },
+    {
+      "name": "Xanthurenic acid"
+    },
+    {
+      "name": "alpha-Aminobutyric acid"
+    },
+    {
+      "name": "alpha-MCA"
+    },
+    {
+      "name": "dopamine"
+    },
+    {
+      "name": "gamma-Aminobutyric acid"
+    },
+    {
+      "name": "hydroxytryptophan"
+    },
+    {
+      "name": "indoxyl sulfate"
+    },
+    {
+      "name": "kynurenic acid"
+    },
+    {
+      "name": "kynurenine"
+    },
+    {
+      "name": "omega-MCA"
+    },
+    {
+      "name": "p-Cresol sulfate"
+    },
+    {
+      "name": "spermidine"
+    }
+  ],
+  "repository_metadata_file_list": [
+    {
+      "name": "ST004188_AN006956.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004188&ANALYSIS_ID=AN006956"
+      ]
+    },
+    {
+      "name": "ST004188_AN006957.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004188&ANALYSIS_ID=AN006957"
+      ]
+    },
+    {
+      "name": "ST004188_AN006958.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004188&ANALYSIS_ID=AN006958"
+      ]
+    }
+  ],
+  "raw_data_file_list": [
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN1.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN10.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN10.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN11.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN12.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN13.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN13.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN15.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN16.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN17.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN18.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN19.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN19.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN2.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN20.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN21.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN22.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN23.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN23.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN24.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN25.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN26.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN26.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN27.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN28.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN29.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN3.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN31.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN32.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN32.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN33.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN34.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN34.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN35.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN35.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN4.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN5.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN6.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN6.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN7.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN7.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN8.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-DN9.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-DN9.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN1.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN10.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN10.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN11.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN12.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN13.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN13.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN14.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN14.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN15.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN16.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN17.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN18.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN19.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN19.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN2.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN20.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN21.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN22.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN23.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN23.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN24.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN25.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN26.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN26.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN27.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN28.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN29.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN3.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN30.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN30.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN31.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN33.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN4.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN5.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN6.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN6.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-QN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-QN8.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN1.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN11.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN12.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN15.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN16.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN17.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN18.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN20.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN21.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN22.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN24.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN25.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN27.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN28.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN29.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN3.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN30.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN30.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN31.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN32.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN32.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN33.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN34.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN34.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN36.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN36.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN37.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN37.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN38.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN38.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN4.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN6.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN6.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN8.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-SN9.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-SN9.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-UQC-1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-UQC-1.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-UQC-2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-UQC-2.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-UQC-3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-UQC-3.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-UQC-4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-UQC-4.mzML"
+      ]
+    },
+    {
+      "name": "M1/DataM1-DSZ-SSY-20230518-UQC-5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M1/DataM1-DSZ-SSY-20230518-UQC-5.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN1.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN10.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN10.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN11.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN12.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN13.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN13.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN15.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN16.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN17.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN18.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN19.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN19.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN2.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN20.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN21.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN22.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN23.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN23.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN24.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN25.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN26.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN26.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN27.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN28.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN29.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN3.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN31.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN32.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN32.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN33.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN34.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN34.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN35.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN35.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN4.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN5.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN6.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN6.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN7.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN7.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN8.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-DN9.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-DN9.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN1.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN10.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN10.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN11.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN12.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN13.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN13.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN14.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN14.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN15.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN16.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN17.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN18.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN19.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN19.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN2.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN20.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN21.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN22.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN23.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN23.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN24.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN25.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN26.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN26.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN27.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN28.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN29.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN3.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN30.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN30.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN31.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN33.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN4.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN5.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN6.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN6.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-QN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-QN8.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN1.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN11.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN12.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN15.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN16.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN17.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN18.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN20.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN21.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN22.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN24.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN25.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN27.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN28.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN29.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN3.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN30.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN30.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN31.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN32.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN32.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN33.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN34.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN34.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN36.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN36.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN37.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN37.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN38.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN38.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN4.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN6.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN6.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN8.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-SN9.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-SN9.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-UQC-1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-UQC-1.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-UQC-2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-UQC-2.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-UQC-3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-UQC-3.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-UQC-4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-UQC-4.mzML"
+      ]
+    },
+    {
+      "name": "M2/DataM2-DSZ-SSY-20230511-UQC-5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M2/DataM2-DSZ-SSY-20230511-UQC-5.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN1.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN10.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN10.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN11.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN12.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN13.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN13.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN15(3).mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN15(3).mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN16.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN17.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN18.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN19.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN19.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN2.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN20.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN21.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN22.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN23.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN23.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN24.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN25.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN26.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN26.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN27.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN28.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN29.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN3.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN31.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN32.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN32.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN33.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN34.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN34.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN35.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN35.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN4.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN5.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN6(4).mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN6(4).mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN7.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN7.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN8.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-DN9.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-DN9.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN1.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN10.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN10.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN11.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN12.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN13.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN13.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN14.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN14.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN15.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN16.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN17.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN18.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN19.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN19.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN2.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN20.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN21.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN22.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN23.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN23.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN24.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN25.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN26.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN26.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN27.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN28.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN29.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN3(3).mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN3(3).mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN30.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN30.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN31.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN33.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN4.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN5.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN6.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN6.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-QN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-QN8.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN1.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN11.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN11.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN12.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN12.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN15.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN15.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN16.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN16.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN17.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN17.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN18.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN18.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN20.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN20.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN21.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN21.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN22.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN22.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN24.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN24.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN25.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN25.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN27.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN27.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN28.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN28.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN29.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN29.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN3.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN30.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN30.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN31.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN31.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN32.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN32.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN33.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN33.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN34.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN34.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN36.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN36.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN37.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN37.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN38.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN38.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN4.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN6(2).mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN6(2).mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN8.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN8.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-SN9.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-SN9.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-UQC-1.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-UQC-1.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-UQC-2.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-UQC-2.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-UQC-3.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-UQC-3.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-UQC-4.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-UQC-4.mzML"
+      ]
+    },
+    {
+      "name": "M4/DataM4-DSZ-SSY-20230506-UQC-5.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004188:M4/DataM4-DSZ-SSY-20230506-UQC-5.mzML"
+      ]
+    }
+  ]
+}

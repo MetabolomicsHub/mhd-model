@@ -375,7 +375,7 @@ def create_announcement_file(
         reported_metabolites=reported_metabolites or None,
         protocols=protocols,
         study_factors=study_factors or None,
-        characteristic_values=characteristic_values or None,
+        characteristic_values=characteristic_values,
     )
     cv_sources = set()
     collect_cvterm_sources(announcement, cv_sources)

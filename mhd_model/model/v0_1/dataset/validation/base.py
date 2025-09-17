@@ -3,13 +3,8 @@ import re
 from typing import Any, Generator, OrderedDict
 
 import jsonschema
-from jsonschema import ValidationError, protocols, validators
+from jsonschema import ValidationError, protocols
 
-from mhd_model.model.definitions import (
-    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
-    MHD_MODEL_V0_1_MS_PROFILE_NAME,
-    SUPPORTED_SCHEMA_MAP,
-)
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
     IdentifiableMhdModel,
@@ -20,12 +15,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import (
 )
 from mhd_model.model.v0_1.dataset.profiles.base.profile import MhdGraph
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
-from mhd_model.model.v0_1.dataset.profiles.legacy.graph_validation import (
-    MHD_LEGACY_PROFILE_V0_1,
-)
-from mhd_model.model.v0_1.dataset.profiles.ms.graph_validation import (
-    MHD_MS_PROFILE_V0_1,
-)
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     RelationshipValidation,
@@ -38,7 +27,6 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import MANAGED_CV_TERM_OBJECTS
-from mhd_model.schema_utils import load_mhd_json_schema
 from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 from mhd_model.shared.validation.definitions import (
@@ -1573,42 +1561,3 @@ class MhdModelValidator:
                         )
 
         return errors
-
-    @staticmethod
-    def new_instance(
-        schema_uri: None | str, profile_uri: None | str
-    ) -> protocols.Validator:
-        if not schema_uri:
-            schema_uri = SUPPORTED_SCHEMA_MAP.schemas[
-                SUPPORTED_SCHEMA_MAP.default_schema_uri
-            ]
-        if schema_uri in SUPPORTED_SCHEMA_MAP.schemas:
-            schema = SUPPORTED_SCHEMA_MAP.schemas.get(schema_uri)
-            if not profile_uri:
-                profile_uri = schema.default_profile_uri
-
-            if (
-                schema.supported_profiles.get(profile_uri)
-                and profile_uri in MHD_PROFILE_VALIDATIONS_V0_1
-            ):
-                _, schema_file = load_mhd_json_schema(profile_uri)
-                node_validation = MHD_PROFILE_VALIDATIONS_V0_1[profile_uri]
-
-                mhd_model_validator = MhdModelValidator(node_validation)
-
-                validator = validators.extend(
-                    jsonschema.Draft202012Validator,
-                    validators={
-                        "mhdGraphValidation": mhd_model_validator.validate_graph,
-                        "anyOf": mhd_model_validator.anyOf,
-                    },
-                )
-                logger.info("Loaded schema: %s, profile: %s.", schema_uri, profile_uri)
-                return validator(schema_file)
-        return None
-
-
-MHD_PROFILE_VALIDATIONS_V0_1 = {
-    MHD_MODEL_V0_1_MS_PROFILE_NAME: MHD_MS_PROFILE_V0_1,
-    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME: MHD_LEGACY_PROFILE_V0_1,
-}

@@ -1,0 +1,453 @@
+{
+  "repository_identifier": "ST000253",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "CHMO",
+      "name": "Chemical Methods Ontology",
+      "uri": "http://purl.obolibrary.org/obo/chmo.owl",
+      "prefix": "http://purl.obolibrary.org/obo/CHMO_"
+    },
+    {
+      "label": "EDAM",
+      "name": "The ontology of data analysis and management",
+      "uri": "http://edamontology.org",
+      "prefix": "http://edamontology.org/format_"
+    },
+    {
+      "label": "EFO",
+      "name": "Experimental Factor Ontology",
+      "uri": "http://www.ebi.ac.uk/efo/efo.owl",
+      "prefix": "http://www.ebi.ac.uk/efo/EFO_"
+    },
+    {
+      "label": "MS",
+      "name": "MS",
+      "uri": "http://purl.obolibrary.org/obo/ms.owl",
+      "prefix": "http://purl.obolibrary.org/obo/MS_"
+    },
+    {
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "mhd_metadata_file_url": "ftp://www.metabolomicsworkbench.org/Studies/ST000253/ST000253.mhd.json",
+  "dataset_url_list": [
+    "https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST000253"
+  ],
+  "title": "NIH WCMC Pilot & Feasibility Project: Metabolomics of Neonatal Pulmonary Hypertension",
+  "description": "Targeted metabolomic analyses of oxylipins were performed on 16 rat plasma and lung samples collected from rats euthanized at 14 days following exposure to growth restriction and/or hyperoxia. Samples were analyzed by UPLC-MS/MS using a Waters Acquity UPLC and detected on an API 4000 QTrap (AB Sciex, Framingham, MA, USA) by multiple reaction monitoring (MRM) after negative mode electrospray ionization.",
+  "submission_date": "2015-09-03T00:00:00",
+  "public_release_date": "2015-09-03T00:00:00",
+  "submitters": [
+    {
+      "full_name": "John Newman",
+      "emails": [
+        "john.newman@ars.usda.gov"
+      ]
+    }
+  ],
+  "principal_investigators": [
+    {
+      "full_name": "Stephen Wedgwood",
+      "emails": [
+        "stephen.wedwood@ucdmc.ucdavis.edu"
+      ]
+    }
+  ],
+  "study_factors": [
+    {
+      "key": {
+        "source": "EFO",
+        "accession": "EFO:0000727",
+        "name": "treatment"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "AN: Room Air, normal litter (no restricted nutritional intake)"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "OR: 75% oxygen, restricted intake"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "AR: Room Air, restricted intake"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "ON: 75% oxygen, normal litter"
+        }
+      ]
+    }
+  ],
+  "characteristic_values": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITAXON",
+          "accession": "NCBITAXON:10116",
+          "name": "Rattus norvegicus"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Plasma"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Lung"
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "name": "sample collection",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0005518",
+        "name": "sample collection protocol"
+      }
+    },
+    {
+      "name": "sample preparation",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "Tissues were pulverized on dry ice, enriched with deuterated surrogates, antioxidants (BHT and EDTA), and the total lipid extract was isolated using 10:8:11 cyclohexane/2-propanol/ammonium acetate (v/v/v). Subsequently, esterified oxylipins were liberated via sodium methoxide. Next, the remaining extract was eluted through a Waters Oasis-HLB cartridge. Plasma was added directly to a Waters Ostro plate, mixed with the surrogates, antioxidants, and acetonitrile and the extract eluted through. Both tissue and plasma extracts were dried, reconstituted in 100?L 50:50 methanol:acetonitrile with internal standards 1?phenyl?3?hexanoic acid urea and 1?cyclohexyl?3-dodecanoic acid urea (Sigma-Aldrich, St. Louis, MO) and filtered at 0.1 µm."
+    },
+    {
+      "name": "treatment",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0003969",
+        "name": "treatment protocol"
+      },
+      "description": "Litters of 10 pups (N, normal intake) or litters of 17 pups (R, restricted intake). Normal and restriced intake pups were exposed to 75% oxygen (O, oxygen) in a Plexiglass chamber or to 21% oxygen (A, room air) continuously for 14 days,"
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "Plasma results"
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "Lung results"
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "Oxylipin analysis"
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "Oxylipin analysis"
+    }
+  ],
+  "reported_metabolites": [
+    {
+      "name": "11(12)-EpETE"
+    },
+    {
+      "name": "11(12)-EpETrE"
+    },
+    {
+      "name": "11,12,15-THET"
+    },
+    {
+      "name": "11,12-DiHETrE"
+    },
+    {
+      "name": "11-HETE"
+    },
+    {
+      "name": "12(13)-Ep-9-KODE"
+    },
+    {
+      "name": "12(13)-EpODE"
+    },
+    {
+      "name": "12(13)-EpOME"
+    },
+    {
+      "name": "12,13-DiHODE"
+    },
+    {
+      "name": "12,13-DiHOME"
+    },
+    {
+      "name": "12-HEPE"
+    },
+    {
+      "name": "12-HETE"
+    },
+    {
+      "name": "12-HpETE screen"
+    },
+    {
+      "name": "13-HODE"
+    },
+    {
+      "name": "13-HOTE"
+    },
+    {
+      "name": "13-HpODE screen"
+    },
+    {
+      "name": "13-KODE"
+    },
+    {
+      "name": "14(15)-EpETE"
+    },
+    {
+      "name": "14(15)-EpETrE"
+    },
+    {
+      "name": "14,15-DiHETE"
+    },
+    {
+      "name": "14,15-DiHETrE"
+    },
+    {
+      "name": "14-HDoHE"
+    },
+    {
+      "name": "15(16)-EpODE"
+    },
+    {
+      "name": "15,16-DiHODE"
+    },
+    {
+      "name": "15-HEPE"
+    },
+    {
+      "name": "15-HETE"
+    },
+    {
+      "name": "15-HETrE"
+    },
+    {
+      "name": "15-HpETE screen"
+    },
+    {
+      "name": "15-KETE"
+    },
+    {
+      "name": "15-deoxy PGJ2"
+    },
+    {
+      "name": "16(17)-EpDPE"
+    },
+    {
+      "name": "17(18)-EpETE"
+    },
+    {
+      "name": "17,18-DiHETE"
+    },
+    {
+      "name": "17-HDoHE"
+    },
+    {
+      "name": "19(20)-EpDPE"
+    },
+    {
+      "name": "19,20-DiHDoPA"
+    },
+    {
+      "name": "20-HETE"
+    },
+    {
+      "name": "20-carboxy-LTB4"
+    },
+    {
+      "name": "20-hydroxy-LTB4"
+    },
+    {
+      "name": "4-HDoHE"
+    },
+    {
+      "name": "5,15-DiHETE"
+    },
+    {
+      "name": "5,6-DiHETrE"
+    },
+    {
+      "name": "5-HEPE"
+    },
+    {
+      "name": "5-HETE"
+    },
+    {
+      "name": "5-HpETE screen"
+    },
+    {
+      "name": "5-KETE"
+    },
+    {
+      "name": "6-keto PGF1a"
+    },
+    {
+      "name": "6-trans-LTB4"
+    },
+    {
+      "name": "8(9)-EpETrE"
+    },
+    {
+      "name": "8,15-DiHETE"
+    },
+    {
+      "name": "8,9-DiHETrE"
+    },
+    {
+      "name": "8-HETE"
+    },
+    {
+      "name": "9(10)-EpODE"
+    },
+    {
+      "name": "9(10)-EpOME"
+    },
+    {
+      "name": "9,10-13-TriHOME"
+    },
+    {
+      "name": "9,10-DiHODE"
+    },
+    {
+      "name": "9,10-DiHOME"
+    },
+    {
+      "name": "9,12,13-TriHOME"
+    },
+    {
+      "name": "9-HEPE"
+    },
+    {
+      "name": "9-HETE"
+    },
+    {
+      "name": "9-HODE"
+    },
+    {
+      "name": "9-HOTE"
+    },
+    {
+      "name": "9-HpODE screen"
+    },
+    {
+      "name": "9-KODE"
+    },
+    {
+      "name": "Hepoxilin A3"
+    },
+    {
+      "name": "LTB4"
+    },
+    {
+      "name": "LTB5"
+    },
+    {
+      "name": "LTE4"
+    },
+    {
+      "name": "Lipoxin A4"
+    },
+    {
+      "name": "PGD2"
+    },
+    {
+      "name": "PGE1"
+    },
+    {
+      "name": "PGE2"
+    },
+    {
+      "name": "PGE3"
+    },
+    {
+      "name": "PGF2a"
+    },
+    {
+      "name": "PGF3"
+    },
+    {
+      "name": "PGJ2/ d 12-PGJ2"
+    },
+    {
+      "name": "Resolvin D1"
+    },
+    {
+      "name": "Resolvin E1"
+    },
+    {
+      "name": "Sum-TriHOME"
+    },
+    {
+      "name": "TXB2"
+    }
+  ],
+  "repository_metadata_file_list": [
+    {
+      "name": "ST000253_AN000400.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST000253&ANALYSIS_ID=AN000400"
+      ]
+    },
+    {
+      "name": "ST000253_AN000401.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST000253&ANALYSIS_ID=AN000401"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,726 @@
+{
+  "repository_identifier": "ST004177",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "CHMO",
+      "name": "Chemical Methods Ontology",
+      "uri": "http://purl.obolibrary.org/obo/chmo.owl",
+      "prefix": "http://purl.obolibrary.org/obo/CHMO_"
+    },
+    {
+      "label": "EDAM",
+      "name": "The ontology of data analysis and management",
+      "uri": "http://edamontology.org",
+      "prefix": "http://edamontology.org/format_"
+    },
+    {
+      "label": "EFO",
+      "name": "Experimental Factor Ontology",
+      "uri": "http://www.ebi.ac.uk/efo/efo.owl",
+      "prefix": "http://www.ebi.ac.uk/efo/EFO_"
+    },
+    {
+      "label": "MS",
+      "name": "MS",
+      "uri": "http://purl.obolibrary.org/obo/ms.owl",
+      "prefix": "http://purl.obolibrary.org/obo/MS_"
+    },
+    {
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "mhd_metadata_file_url": "ftp://www.metabolomicsworkbench.org/Studies/ST004177/ST004177.mhd.json",
+  "dataset_url_list": [
+    "https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST004177"
+  ],
+  "title": "Plasma Organic acids Analysis in Thai EGFR-mutated Non-Small Cell Lung Cancer Patients",
+  "description": "Lung cancer remains the leading cause of cancer-related deaths worldwide, emphasizing an urgent need for effective, non-invasive diagnostic and prognostic biomarkers. Metabolic reprogramming driven by oncogenic driver alterations, especially EGFR mutations in non-small cell lung cancer (NSCLC), provides promising metabolic signatures detectable in plasma. This study aimed to identify plasma metabolomic biomarkers distinguishing healthy individuals from NSCLC patients and to further stratify NSCLC patients by EGFR mutation status and EGFR tyrosine kinase inhibitor (TKI) resistance. Using gas chromatography-mass spectrometry (GC-MS), we quantified 11 organic acids of 78 individuals, including NSCLC patients and healthy controls.",
+  "submission_date": "2025-09-17T14:59:37.642288Z",
+  "public_release_date": "2025-09-17T14:59:37.642288Z",
+  "submitters": [
+    {
+      "full_name": "Sakda Khoomrung",
+      "emails": [
+        "siriphan.man@mahidol.edu"
+      ]
+    }
+  ],
+  "principal_investigators": [
+    {
+      "full_name": "Sakda Khoomrung",
+      "emails": [
+        "siriphan.man@mahidol.edu"
+      ]
+    }
+  ],
+  "study_factors": [
+    {
+      "key": {
+        "source": "EFO",
+        "accession": "EFO:0000408",
+        "name": "disease"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Healthy"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "NSCLC"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "",
+        "accession": "",
+        "name": "egfr mutation"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "n/a"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Yes"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "No"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "EFO",
+        "accession": "EFO:0000727",
+        "name": "treatment"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "n/a"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Naïve"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "TKI resistant"
+        }
+      ]
+    }
+  ],
+  "characteristic_values": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITAXON",
+          "accession": "NCBITAXON:9606",
+          "name": "Homo sapiens"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Plasma"
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "name": "sample collection",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0005518",
+        "name": "sample collection protocol"
+      },
+      "description": "Blood was drawn directly into Cell-Free DNA BCT® tubes to stabilize cell-free DNA. Plasma was separated from cellular components by centrifugation. For NSCLC patients, plasma was first subjected to EGFR mutation analysis. Plasma aliquots from all participants were stored at −80°C until subsequent analysis."
+    },
+    {
+      "name": "sample preparation",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "For organic acids, plasma samples (50 µL) was diluted with 75 µL of ultra-pure water (Type I) in a 4 mL HPLC vial. Then, 50 µL of trans-cinnamic acid (0.5 mM) was added into the vial as an internal standard, followed by 400 µl of diethyl ether to extract organic acid from samples. The vial containing the mixture was vortexed for 2 min. After that, the mixture was centrifuged at 1400 rpm for 5 min using a concentrator. The 100 µL of the upper layer was collected and transferred into an autosampler crimp top vial using a positive displacement micropipette. After the organic layer was transferred, 50 µL of MTBSTFA was added as the derivatizing agent. The autosampler vial was sealed with an aluminum crimp cap with PTFE/Silicone septa. The vial was then incubated at 80 ºC for 40 min. After incubation, samples were analyzed using GC-MS."
+    },
+    {
+      "name": "treatment",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0003969",
+        "name": "treatment protocol"
+      },
+      "description": "Treatment-naïve NSCLC patients had never received any systemic treatment for lung cancer. EGFR TKI-resistant NSCLC patients had evidence of disease progression according to the Response Evaluation Criteria In Solid Tumors (RECIST) version 1.1 after receiving first- or second-generation EGFR TKI treatment. All EGFR TKI-resistant NSCLC patients had acquired EGFR T790M mutation."
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "The mass spectrometer was operated in Multiple Reaction Monitoring (MRM) mode. MS data was acquired using MassHunter software (version 10.0). The calibration curves were performed using the mixture of volatile (formic acid, acetic acid, propionic acid, isobutyric acid, butyric acid, isovaleric acid, valeric acid, isocaproic acid, hexanoic acid and heptanoic acid) and non-volatile (lactic acid, pyruvic acid, oxalic acid, malonic acid, methyl malonic acid, succinic acid, fumaric acid, malic acid) organic acids at different concentrations ranged from 0.78 ppm to 25 ppm. Qualitative and quantitative analyses were performed on Agilent MassHunter software (version 10.0 Agilent Technologies, USA), and exported into Microsoft Excel for further data processing."
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "The chromatographic analysis was performed on a gas chromatography (Agilent; 7890B) equipped with a mass spectrometer (Agilent, 7000D) and PAL auto sampler system. Aliquots of the derivatized amino acids (1 µl) were injected by using split mode at 1:20 split ratio at 280°C into a DB-1MS column (30 m x 0.25um x 0.25 mm i.d.). Helium was used as a carrier gas with a constant flow rate of 1.1 ml/min. The initial oven temperature was controlled at 80°C, held for 3 min. The GC oven was programmed as follows: ramp from 80°C to 160°C (50 °C/min), held for 3 min and ramp from 160°C to 340°C (80 °C/min). The transfer line, ion source (EI), and quadrupole were set as 325 °C, 240 °C, and 180 °C, respectively"
+    }
+  ],
+  "reported_metabolites": [
+    {
+      "name": "Acetic acid"
+    },
+    {
+      "name": "Butyric acid"
+    },
+    {
+      "name": "Formic acid"
+    },
+    {
+      "name": "Fumaric acid"
+    },
+    {
+      "name": "Hexanoic acid"
+    },
+    {
+      "name": "Isobutyric acid"
+    },
+    {
+      "name": "Lactic acid"
+    },
+    {
+      "name": "Oxalic acid"
+    },
+    {
+      "name": "Propionic acid"
+    },
+    {
+      "name": "Pyruvic acid"
+    },
+    {
+      "name": "Succinic acid"
+    }
+  ],
+  "repository_metadata_file_list": [
+    {
+      "name": "ST004177_AN006932.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004177&ANALYSIS_ID=AN006932"
+      ]
+    }
+  ],
+  "raw_data_file_list": [
+    {
+      "name": "A01.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A01.D"
+      ]
+    },
+    {
+      "name": "A02.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A02.D"
+      ]
+    },
+    {
+      "name": "A13.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A13.D"
+      ]
+    },
+    {
+      "name": "A14.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A14.D"
+      ]
+    },
+    {
+      "name": "A20.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A20.D"
+      ]
+    },
+    {
+      "name": "A22.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A22.D"
+      ]
+    },
+    {
+      "name": "A23.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A23.D"
+      ]
+    },
+    {
+      "name": "A24.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A24.D"
+      ]
+    },
+    {
+      "name": "A25.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A25.D"
+      ]
+    },
+    {
+      "name": "A26.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A26.D"
+      ]
+    },
+    {
+      "name": "A27.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A27.D"
+      ]
+    },
+    {
+      "name": "A28.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A28.D"
+      ]
+    },
+    {
+      "name": "A29.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A29.D"
+      ]
+    },
+    {
+      "name": "A30.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A30.D"
+      ]
+    },
+    {
+      "name": "A31.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A31.D"
+      ]
+    },
+    {
+      "name": "A32.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A32.D"
+      ]
+    },
+    {
+      "name": "A33.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A33.D"
+      ]
+    },
+    {
+      "name": "A34.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A34.D"
+      ]
+    },
+    {
+      "name": "A35-2.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A35-2.D"
+      ]
+    },
+    {
+      "name": "A36.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A36.D"
+      ]
+    },
+    {
+      "name": "A37.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A37.D"
+      ]
+    },
+    {
+      "name": "A38.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A38.D"
+      ]
+    },
+    {
+      "name": "A39.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A39.D"
+      ]
+    },
+    {
+      "name": "A40.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A40.D"
+      ]
+    },
+    {
+      "name": "A41.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A41.D"
+      ]
+    },
+    {
+      "name": "A42.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A42.D"
+      ]
+    },
+    {
+      "name": "A43.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A43.D"
+      ]
+    },
+    {
+      "name": "A45.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A45.D"
+      ]
+    },
+    {
+      "name": "A46.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:A46.D"
+      ]
+    },
+    {
+      "name": "B01.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B01.D"
+      ]
+    },
+    {
+      "name": "B02.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B02.D"
+      ]
+    },
+    {
+      "name": "B05.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B05.D"
+      ]
+    },
+    {
+      "name": "B06.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B06.D"
+      ]
+    },
+    {
+      "name": "B07.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B07.D"
+      ]
+    },
+    {
+      "name": "B08.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B08.D"
+      ]
+    },
+    {
+      "name": "B09.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B09.D"
+      ]
+    },
+    {
+      "name": "B10.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B10.D"
+      ]
+    },
+    {
+      "name": "B11.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B11.D"
+      ]
+    },
+    {
+      "name": "B12.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B12.D"
+      ]
+    },
+    {
+      "name": "B13.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B13.D"
+      ]
+    },
+    {
+      "name": "B14.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B14.D"
+      ]
+    },
+    {
+      "name": "B15.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B15.D"
+      ]
+    },
+    {
+      "name": "B16.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B16.D"
+      ]
+    },
+    {
+      "name": "B17.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B17.D"
+      ]
+    },
+    {
+      "name": "B18.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B18.D"
+      ]
+    },
+    {
+      "name": "B19.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B19.D"
+      ]
+    },
+    {
+      "name": "B21.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B21.D"
+      ]
+    },
+    {
+      "name": "B22.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B22.D"
+      ]
+    },
+    {
+      "name": "B23.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B23.D"
+      ]
+    },
+    {
+      "name": "B24.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B24.D"
+      ]
+    },
+    {
+      "name": "B25.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B25.D"
+      ]
+    },
+    {
+      "name": "B26.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B26.D"
+      ]
+    },
+    {
+      "name": "B27.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B27.D"
+      ]
+    },
+    {
+      "name": "B28.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B28.D"
+      ]
+    },
+    {
+      "name": "B30.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B30.D"
+      ]
+    },
+    {
+      "name": "B33.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B33.D"
+      ]
+    },
+    {
+      "name": "B34.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B34.D"
+      ]
+    },
+    {
+      "name": "B42.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:B42.D"
+      ]
+    },
+    {
+      "name": "C01.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C01.D"
+      ]
+    },
+    {
+      "name": "C02.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C02.D"
+      ]
+    },
+    {
+      "name": "C03.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C03.D"
+      ]
+    },
+    {
+      "name": "C04.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C04.D"
+      ]
+    },
+    {
+      "name": "C05.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C05.D"
+      ]
+    },
+    {
+      "name": "C06.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C06.D"
+      ]
+    },
+    {
+      "name": "C07.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C07.D"
+      ]
+    },
+    {
+      "name": "C08.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C08.D"
+      ]
+    },
+    {
+      "name": "C09.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C09.D"
+      ]
+    },
+    {
+      "name": "C10.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:C10.D"
+      ]
+    },
+    {
+      "name": "D01.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D01.D"
+      ]
+    },
+    {
+      "name": "D02.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D02.D"
+      ]
+    },
+    {
+      "name": "D03.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D03.D"
+      ]
+    },
+    {
+      "name": "D04.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D04.D"
+      ]
+    },
+    {
+      "name": "D05.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D05.D"
+      ]
+    },
+    {
+      "name": "D06.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D06.D"
+      ]
+    },
+    {
+      "name": "D08.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D08.D"
+      ]
+    },
+    {
+      "name": "D09.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D09.D"
+      ]
+    },
+    {
+      "name": "D10.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D10.D"
+      ]
+    },
+    {
+      "name": "D11.D",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004177:D11.D"
+      ]
+    }
+  ]
+}
