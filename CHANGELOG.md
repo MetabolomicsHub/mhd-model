@@ -1,3 +1,9 @@
+## v0.1.21 (2025-09-18)
+
+### Fix
+
+- announcement file validation updates for legacy
+
 ## v0.1.20 (2025-09-18)
 
 ### Fix
