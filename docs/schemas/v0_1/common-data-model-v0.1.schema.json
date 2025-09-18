@@ -2341,7 +2341,7 @@
           "title": "DOI",
           "type": "string"
         },
-        "pub_med_id": {
+        "pubmed_id": {
           "anyOf": [
             {
               "pattern": "^[0-9]{1,20}$",
@@ -2353,7 +2353,7 @@
             }
           ],
           "default": null,
-          "title": "Pub Med Id"
+          "title": "Pubmed Id"
         },
         "authors": {
           "anyOf": [

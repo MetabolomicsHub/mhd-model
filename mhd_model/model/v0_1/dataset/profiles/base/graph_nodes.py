@@ -207,7 +207,7 @@ class Publication(BaseLabeledMhdModel):
     ] = "publication"
     title: Annotated[str, Field(min_length=10)]
     doi: Annotated[DOI, Field()]
-    pub_med_id: Annotated[None | PubMedId, Field()] = None
+    pubmed_id: Annotated[None | PubMedId, Field()] = None
     authors: Annotated[None | Authors, Field()] = None
 
     def get_label(self):

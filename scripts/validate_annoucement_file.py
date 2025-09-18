@@ -18,7 +18,9 @@ logger = logging.getLogger(__name__)
 if __name__ == "__main__":
     set_basic_logging_config()
     validator = MhdAnnouncementFileValidator()
-    test_data_file_path = "tests/data/announcement_files/MHDA003107.announcement.json"
+    test_data_file_path = (
+        "tests/data/announcement_files/legacy/ST0000253.announcement.json"
+    )
     announcement_file_json = load_json(test_data_file_path)
     all_errors = validator.validate(announcement_file_json)
 
@@ -63,5 +65,5 @@ if __name__ == "__main__":
 
     logger.info("-" * 80)
     for idx, x in errors.items():
-        logger.info(idx, "|", x)
+        logger.info("%s | %s", idx, x)
     logger.info("-" * 80)

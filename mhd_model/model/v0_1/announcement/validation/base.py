@@ -441,10 +441,10 @@ class ProfileValidator:
     def new_instance(
         schema_uri: None | str, profile_uri: None | str
     ) -> protocols.Validator:
-        profile_validatior = ProfileValidator()
+        profile_validator = ProfileValidator()
         validator = validators.extend(
             jsonschema.Draft202012Validator,
-            validators={"profileValidation": profile_validatior.validate_instance},
+            validators={"profileValidation": profile_validator.validate_instance},
         )
         if not schema_uri:
             schema_uri = SUPPORTED_SCHEMA_MAP.schemas[

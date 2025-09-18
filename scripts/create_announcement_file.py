@@ -24,8 +24,8 @@ if __name__ == "__main__":
         else:
             mhd_file_url = None
 
-        Path("tests/data/announcement_files").mkdir(parents=True, exist_ok=True)
+        Path("tests/data/announcement_files/legacy").mkdir(parents=True, exist_ok=True)
         announcement_file_path = (
-            f"tests/data/announcement_files/{study_id}.announcement.json"
+            f"tests/data/announcement_files/legacy/{study_id}.announcement.json"
         )
         create_announcement_file(mhd_data_json, mhd_file_url, announcement_file_path)

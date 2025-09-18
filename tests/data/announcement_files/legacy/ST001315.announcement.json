@@ -1,0 +1,1803 @@
+{
+  "repository_identifier": "ST001315",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "CHMO",
+      "name": "Chemical Methods Ontology",
+      "uri": "http://purl.obolibrary.org/obo/chmo.owl",
+      "prefix": "http://purl.obolibrary.org/obo/CHMO_"
+    },
+    {
+      "label": "EDAM",
+      "name": "The ontology of data analysis and management",
+      "uri": "http://edamontology.org",
+      "prefix": "http://edamontology.org/format_"
+    },
+    {
+      "label": "EFO",
+      "name": "Experimental Factor Ontology",
+      "uri": "http://www.ebi.ac.uk/efo/efo.owl",
+      "prefix": "http://www.ebi.ac.uk/efo/EFO_"
+    },
+    {
+      "label": "MS",
+      "name": "MS",
+      "uri": "http://purl.obolibrary.org/obo/ms.owl",
+      "prefix": "http://purl.obolibrary.org/obo/MS_"
+    },
+    {
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "mhd_metadata_file_url": "ftp://www.metabolomicsworkbench.org/Studies/ST001315/ST001315.mhd.json",
+  "dataset_url_list": [
+    "https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST001315"
+  ],
+  "title": "Retargeting azithromycin-like compounds as antimalarials with dual modality",
+  "description": "Resistance to front-line antimalarials (artemisinin combination therapies) is spreading, and development of new drug treatment strategies to rapidly kill Plasmodium parasites that cause malaria are urgently needed. Here, we show that azithromycin—a clinically used macrolide antibiotic that targets the bacterium-like ribosome of the malaria parasites apicoplast organelle and causes a slow-killing ‘delayed death’ phenotype—can also rapidly kill parasites throughout the asexual blood-stages of the lifecycle via a ‘quick-killing’ mechanism of action. Investigation of 84 azithromycin analogues revealed nanomolar quick-killing potency that is directed against the very earliest stage of parasite development within red blood cells. Indeed, the best analogue exhibited 1600-fold higher potency than azithromycin for in vitro treatment windows less than 48 hours. Analogues were also effective against the zoonotic malaria parasite P. knowlesi, and against both multi-drug and artemisinin resistant P. falciparum lines. Metabolomic profiles of azithromycin analogue treated parasites were similar to those of chloroquine treated parasites, suggesting that the quick-killing mechanism of action may in part be localised to the parasite food vacuole. However, metabolomic signatures associated with mitochondrial disruption were also present. In addition, unlike chloroquine, azithromycin and analogues were active across blood stage development, including merozoite invasion, suggesting that these macrolides have a multi-factorial mechanism of quick-killing activity. The positioning of functional groups added to azithromycin and its quick-killing analogues altered their activity against bacterial-like ribosomes but had minimal change on quick-killing activity, which suggests that apicoplast-targeting, delayed-death activity can either be preserved or removed independently of quick-killing. Apicoplast minus parasites remained susceptible to both azithromycin and its analogues, further demonstrating that quick-killing is independent of apicoplast-targeting, delayed-death activity. Therefore, development of azithromycin and analogues as antimalarials offers the possibility of targeting parasites through both a quick-killing and delayed death mechanism of action in a single, multifactorial chemotype.",
+  "submission_date": "2025-09-18T14:46:40.617870Z",
+  "public_release_date": "2025-09-18T14:46:40.617870Z",
+  "submitters": [
+    {
+      "full_name": "Ghizal Siddiqui",
+      "emails": [
+        "ghizal.siddiqui@monash.edu"
+      ]
+    }
+  ],
+  "principal_investigators": [
+    {
+      "full_name": "Ghizal Siddiqui",
+      "emails": [
+        "ghizal.siddiqui@monash.edu"
+      ]
+    }
+  ],
+  "study_factors": [
+    {
+      "key": {
+        "source": "",
+        "accession": "",
+        "name": "experiment"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "2"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "1"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "EFO",
+        "accession": "EFO:0000727",
+        "name": "treatment"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Dihydroartemisinin"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Ethanol control"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "GSK71"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "GSK66"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "GSK5"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "azithromycin"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Chloroquine"
+        }
+      ]
+    }
+  ],
+  "characteristic_values": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITAXON",
+          "accession": "NCBITaxon:5833",
+          "name": "Plasmodium falciparum"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Blood (whole)"
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "name": "sample collection",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0005518",
+        "name": "sample collection protocol"
+      },
+      "description": "For metabolomics experiments, two 150 mL flasks at 6% haematocrit containing tightly synchronised ~30-34 hr trophozoites were harvested via magnet purification (Miltenyi Biotech). Infected RBC density was quantitated by flow cytometry and 2 mL of 3x 107 parasites were added to and incubated in 24 well microtiter plates for 1 hr at 37oC to stabilise the culture. Drugs (5x IC50) were added and incubated for a further 2 hrs prior to removal of the supernatant, 2x washes with 800 L ice-cold 1 x PBS with cells pelleted via centrifugation at 400 x g for 5 mins at 4oC. The cell pellets were resuspended in 150 L of ice-cold extraction buffer (MeOH) containing 1 µM internal standards; CHAPS and PIPES, and incubated on ice for 1 hr with shaking at 200 rpm. Insoluble material was pelleted with centrifugation at 14,800 x g for 10 mins at 4 oC and 120 µL of supernatant was collected and stored at -80 ºC until analysis."
+    },
+    {
+      "name": "sample preparation",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "2x washes with 800 L ice-cold 1 x PBS with cells pelleted via centrifugation at 400 x g for 5 mins at 4oC. The cell pellets were resuspended in 150 L of ice-cold extraction buffer (MeOH) containing 1 µM internal standards; CHAPS and PIPES, and incubated on ice for 1 hr with shaking at 200 rpm. Insoluble material was pelleted with centrifugation at 14,800 x g for 10 mins at 4 oC and 120 µL of supernatant was collected and stored at -80 ºC until analysis."
+    },
+    {
+      "name": "treatment",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0003969",
+        "name": "treatment protocol"
+      },
+      "description": "Drugs (5x IC50) (azithromycin, dihydroartemisinin, chloroquine, GSK-5, GSK71, GSK-66 and ethanol control) were added and incubated for a further 2 hrs prior to removal of the supernatant"
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "Liquid chromatography-mass spectrometry (LC-MS) data was acquired on a Q-Exactive Orbitrap mass spectrometer (Thermo Scientific) coupled with high-performance liquid chromatography system (HPLC, Dionex Ultimate® 3000 RS, Thermo Scientific) as per previously described 49. Briefly, chromatographic separation was performed on a ZIC-pHILIC column equipped with a guard (5 µm, 4.6 × 150 mm, SeQuant®, Merck). The mobile phase (A) was 20 mM ammonium carbonate (Sigma Aldrich), (B) acetonitrile (Burdick and Jackson) and needle wash solution was 50% isopropanol. The column flow rate was maintained at 0.3 ml/min with temperature at 25 ºC and the gradient program was as follows: 80% B decreasing to 50% B over 15 min, then to 5% B at 18 min until 21 min, increasing to 80% B at 24 min until 32 min. Total run time was 32 min with an injection volume of 10 µL. Mass spectrometer was operated in full scan mode with positive and negative polarity switching at 35k resolution at 200 m/z, with detection range of 85 to 1275 m/z, AGC target was 1e6 ions with a maximum injection time of 50 ms. Electro-spray ionization source (HESI) was set to 4.0 kV voltage for positive and negative mode, sheath gas was set to 50, aux gas to 20 and sweep gas to 2 arbitrary units, capillary temperature 300 °C, probe heater temperature 120 °C. The samples were analyzed as a single batch to avoid batch-to-batch variation and randomized to account for LCMS system drift over time. Repeated analysis of pooled quality control samples was performed throughout the batch to confirm signal reproducibility."
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "Liquid chromatography-mass spectrometry (LC-MS) data was acquired on a Q-Exactive Orbitrap mass spectrometer (Thermo Scientific) coupled with high-performance liquid chromatography system (HPLC, Dionex Ultimate® 3000 RS, Thermo Scientific) as per previously described 49. Briefly, chromatographic separation was performed on a ZIC-pHILIC column equipped with a guard (5 µm, 4.6 × 150 mm, SeQuant®, Merck). The mobile phase (A) was 20 mM ammonium carbonate (Sigma Aldrich), (B) acetonitrile (Burdick and Jackson) and needle wash solution was 50% isopropanol. The column flow rate was maintained at 0.3 ml/min with temperature at 25 ºC and the gradient program was as follows: 80% B decreasing to 50% B over 15 min, then to 5% B at 18 min until 21 min, increasing to 80% B at 24 min until 32 min. Total run time was 32 min with an injection volume of 10 µL. Mass spectrometer was operated in full scan mode with positive and negative polarity switching at 35k resolution at 200 m/z, with detection range of 85 to 1275 m/z, AGC target was 1e6 ions with a maximum injection time of 50 ms. Electro-spray ionization source (HESI) was set to 4.0 kV voltage for positive and negative mode, sheath gas was set to 50, aux gas to 20 and sweep gas to 2 arbitrary units, capillary temperature 300 °C, probe heater temperature 120 °C. The samples were analyzed as a single batch to avoid batch-to-batch variation and randomized to account for LCMS system drift over time. Repeated analysis of pooled quality control samples was performed throughout the batch to confirm signal reproducibility."
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      }
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      }
+    }
+  ],
+  "reported_metabolites": [
+    {
+      "name": "(24R,24'R)-Fucosterol epoxide"
+    },
+    {
+      "name": "(6R)-6-(L-Erythro-1,2-Dihydroxypropyl)-5,6,7,8-tetrahydro-4a-hydroxypterin"
+    },
+    {
+      "name": "(R)-2-Hydroxyglutarate"
+    },
+    {
+      "name": "(R)-S-Lactoylglutathione"
+    },
+    {
+      "name": "(R,R)-Tartaric acid"
+    },
+    {
+      "name": "(S)-2-Aceto-2-hydroxybutanoate"
+    },
+    {
+      "name": "(S)-AMPA"
+    },
+    {
+      "name": "(S)-Dihydroorotate"
+    },
+    {
+      "name": "(S)-Lactate"
+    },
+    {
+      "name": "(S)-Malate"
+    },
+    {
+      "name": "14-Methyl-8Z-hexadecen-1-ol"
+    },
+    {
+      "name": "2'-azido-2'-deoxyuridine-5'-diphosphate"
+    },
+    {
+      "name": "2,3-Dimethylmaleate"
+    },
+    {
+      "name": "2,7-Anhydro-alpha-N-acetylneuraminic acid"
+    },
+    {
+      "name": "2-C-Methyl-D-erythritol 4-phosphate"
+    },
+    {
+      "name": "2-Deoxy-D-ribose 5-phosphate"
+    },
+    {
+      "name": "2-Hydroxy-2,4-pentadienoate"
+    },
+    {
+      "name": "2-Oxoglutarate"
+    },
+    {
+      "name": "2-Phospho-D-glycerate"
+    },
+    {
+      "name": "2-phosphono-3-sulfoproprionate"
+    },
+    {
+      "name": "3-(Pyrazol-1-yl)-L-alanine"
+    },
+    {
+      "name": "3-Propylmalate"
+    },
+    {
+      "name": "3-[4-amino-3-hydroxybutyl]-hydroxy-carbamoyl-propanoate"
+    },
+    {
+      "name": "3-deoxy-D-galactose"
+    },
+    {
+      "name": "3-oxohexacosanoic acid"
+    },
+    {
+      "name": "3Z,6Z,9Z,12Z,15Z-Tricosapentaene"
+    },
+    {
+      "name": "4-(L-Alanin-3-yl)-2-hydroxy-cis,cis-muconate 6-semialdehyde"
+    },
+    {
+      "name": "4-Amino-4-deoxychorismate"
+    },
+    {
+      "name": "4-Aminobutanal"
+    },
+    {
+      "name": "4-Aminobutanoate"
+    },
+    {
+      "name": "4-Hexyloxyphenol"
+    },
+    {
+      "name": "4-Hydroxyphenylglyoxylate"
+    },
+    {
+      "name": "4-Trimethylammoniobutanoate"
+    },
+    {
+      "name": "5'-Methylthioadenosine"
+    },
+    {
+      "name": "5,6-Dihydrothymine"
+    },
+    {
+      "name": "5-6-Dihydrouridine"
+    },
+    {
+      "name": "5-Aminolevulinate"
+    },
+    {
+      "name": "5-Hydroxyconiferaldehyde"
+    },
+    {
+      "name": "5-Oxoproline"
+    },
+    {
+      "name": "5-Pyridoxolactone"
+    },
+    {
+      "name": "5-Valerolactone"
+    },
+    {
+      "name": "5beta-cholestan-3alpha,4alpha,11beta,12beta,21-pentol-3,21-disulphate"
+    },
+    {
+      "name": "6,7-Dimethyl-8-(1-D-ribityl)lumazine"
+    },
+    {
+      "name": "6-formyl-H2-pterin"
+    },
+    {
+      "name": "9-Oxononanoic acid"
+    },
+    {
+      "name": "9-mercaptodethiobiotin"
+    },
+    {
+      "name": "AMP"
+    },
+    {
+      "name": "Adenine"
+    },
+    {
+      "name": "Adenosine"
+    },
+    {
+      "name": "Adrenochrome"
+    },
+    {
+      "name": "Ala-Ala-Ala"
+    },
+    {
+      "name": "Ala-Ala-Ala-Pro"
+    },
+    {
+      "name": "Ala-Ala-Asp-Tyr"
+    },
+    {
+      "name": "Ala-Ala-Ser"
+    },
+    {
+      "name": "Ala-Asn"
+    },
+    {
+      "name": "Ala-Asn-Gly"
+    },
+    {
+      "name": "Ala-Asp-Gly-Arg"
+    },
+    {
+      "name": "Ala-Asp-Gly-Pro"
+    },
+    {
+      "name": "Ala-Asp-Gly-Tyr"
+    },
+    {
+      "name": "Ala-Asp-Pro"
+    },
+    {
+      "name": "Ala-Asp-Ser-Arg"
+    },
+    {
+      "name": "Ala-Glu-Glu-His"
+    },
+    {
+      "name": "Ala-Gly-Pro"
+    },
+    {
+      "name": "Ala-Ile-Ile-Lys"
+    },
+    {
+      "name": "Ala-Leu-Asn-Pro"
+    },
+    {
+      "name": "Ala-Leu-Asn-Ser"
+    },
+    {
+      "name": "Ala-Leu-Met-Tyr"
+    },
+    {
+      "name": "Ala-Leu-Met-Val"
+    },
+    {
+      "name": "Ala-Leu-Thr-Ala"
+    },
+    {
+      "name": "Ala-Leu-Trp-Ser"
+    },
+    {
+      "name": "Ala-Lys-Ala-Ala"
+    },
+    {
+      "name": "Ala-Lys-Asp-Pro"
+    },
+    {
+      "name": "Ala-Lys-Lys-Asp"
+    },
+    {
+      "name": "Ala-Lys-Met-Trp"
+    },
+    {
+      "name": "Ala-Met-Asp-Tyr"
+    },
+    {
+      "name": "Ala-Phe-Gln-Gln"
+    },
+    {
+      "name": "Ala-Phe-Thr-Ser"
+    },
+    {
+      "name": "Ala-Pro"
+    },
+    {
+      "name": "Ala-Thr-Ala-Gln"
+    },
+    {
+      "name": "Ala-Val-Gly-Pro"
+    },
+    {
+      "name": "Arg-Leu-Lys-Asp"
+    },
+    {
+      "name": "Arg-OEt"
+    },
+    {
+      "name": "Asn-Leu-Pro-Pro"
+    },
+    {
+      "name": "Asn-Lys-Gly-Pro"
+    },
+    {
+      "name": "Asn-Pro"
+    },
+    {
+      "name": "Asp-Cys-Cys-Ser"
+    },
+    {
+      "name": "Asp-Gln"
+    },
+    {
+      "name": "Asp-Glu-Ile-Phe"
+    },
+    {
+      "name": "Asp-Ile-Ile-Met"
+    },
+    {
+      "name": "Asp-Leu-Lys-Asp"
+    },
+    {
+      "name": "Asp-Met-Pro-Ser"
+    },
+    {
+      "name": "Asp-Val-Pro-Ser"
+    },
+    {
+      "name": "Aspartyl-L-proline"
+    },
+    {
+      "name": "Azelaic acid"
+    },
+    {
+      "name": "Bile salt"
+    },
+    {
+      "name": "Bis(2-ethylhexyl)phthalate"
+    },
+    {
+      "name": "C25-Allenic-apo-aldehyde"
+    },
+    {
+      "name": "CDP"
+    },
+    {
+      "name": "CDP-choline"
+    },
+    {
+      "name": "CDP-ethanolamine"
+    },
+    {
+      "name": "CMP"
+    },
+    {
+      "name": "CMP-2-aminoethylphosphonate"
+    },
+    {
+      "name": "CMP-N-trimethyl-2-aminoethylphosphonate"
+    },
+    {
+      "name": "Chenodeoxyglycocholate"
+    },
+    {
+      "name": "Cholesterolsulfate"
+    },
+    {
+      "name": "Choline"
+    },
+    {
+      "name": "Choline phosphate"
+    },
+    {
+      "name": "Citrate"
+    },
+    {
+      "name": "Creatine"
+    },
+    {
+      "name": "Cyclic ADP-ribose"
+    },
+    {
+      "name": "Cys-Leu-Cys-Tyr"
+    },
+    {
+      "name": "Cys-Phe-Cys-Gln"
+    },
+    {
+      "name": "D-4'-Phosphopantothenate"
+    },
+    {
+      "name": "D-Erythrose"
+    },
+    {
+      "name": "D-Fructose 6-phosphate"
+    },
+    {
+      "name": "D-Galactose"
+    },
+    {
+      "name": "D-Gluconic acid"
+    },
+    {
+      "name": "D-Glucono-1,5-lactone"
+    },
+    {
+      "name": "D-Glucose 6-phosphate"
+    },
+    {
+      "name": "D-Mannitol 1-phosphate"
+    },
+    {
+      "name": "D-Mycinose"
+    },
+    {
+      "name": "D-Ribose"
+    },
+    {
+      "name": "D-Ribose 5-phosphate"
+    },
+    {
+      "name": "D-Sedoheptulose 7-phosphate"
+    },
+    {
+      "name": "D-myo-Inositol 1,2-cyclic phosphate"
+    },
+    {
+      "name": "DG(32:0)"
+    },
+    {
+      "name": "DG(34:1)"
+    },
+    {
+      "name": "DG(34:3)"
+    },
+    {
+      "name": "DG(36:2)"
+    },
+    {
+      "name": "DG(36:3)"
+    },
+    {
+      "name": "Darlingine"
+    },
+    {
+      "name": "Deamino-NAD+"
+    },
+    {
+      "name": "Dethiobiotin"
+    },
+    {
+      "name": "Diethanolamine"
+    },
+    {
+      "name": "Dihydrobiopterin"
+    },
+    {
+      "name": "Dihydrozeatin-O-glucoside"
+    },
+    {
+      "name": "Epsilon-(gamma-Glutamyl)-lysine"
+    },
+    {
+      "name": "Ergothioneine"
+    },
+    {
+      "name": "Erythrophleguine"
+    },
+    {
+      "name": "Ethanolamine phosphate"
+    },
+    {
+      "name": "FA (19:1)"
+    },
+    {
+      "name": "FA (20:4)"
+    },
+    {
+      "name": "FA (6:1)"
+    },
+    {
+      "name": "FA dioxo(10:0)"
+    },
+    {
+      "name": "FA hydroxy(10:0)"
+    },
+    {
+      "name": "FA hydroxy(16:0)] hexadecanoic acid"
+    },
+    {
+      "name": "FA hydroxy(6:0)"
+    },
+    {
+      "name": "FA methyl(18:0)"
+    },
+    {
+      "name": "FA oxo(7:0)"
+    },
+    {
+      "name": "Febrifugine"
+    },
+    {
+      "name": "Fumarate"
+    },
+    {
+      "name": "Furfural diethyl acetal"
+    },
+    {
+      "name": "GDP"
+    },
+    {
+      "name": "GDP-mannose"
+    },
+    {
+      "name": "GMP"
+    },
+    {
+      "name": "Gamma-Glutamyltyrosine"
+    },
+    {
+      "name": "GammaGlutamylglutamicacid"
+    },
+    {
+      "name": "Gammaglutamylornithine"
+    },
+    {
+      "name": "Gln-Ser"
+    },
+    {
+      "name": "Gln-Thr-Trp-Pro"
+    },
+    {
+      "name": "Glu-Ala-Pro"
+    },
+    {
+      "name": "Glu-Ala-Val"
+    },
+    {
+      "name": "Glu-Arg"
+    },
+    {
+      "name": "Glu-Asp-Val"
+    },
+    {
+      "name": "Glu-Glu-Gln-His"
+    },
+    {
+      "name": "Glu-Glu-His"
+    },
+    {
+      "name": "Glu-Glu-Lys-Pro"
+    },
+    {
+      "name": "Glu-Glu-Pro"
+    },
+    {
+      "name": "Glu-Glu-Pro-Thr"
+    },
+    {
+      "name": "Glu-Ile-Gln-Lys"
+    },
+    {
+      "name": "Glu-Ser"
+    },
+    {
+      "name": "Glu-Thr"
+    },
+    {
+      "name": "Glutamylalanine"
+    },
+    {
+      "name": "Glutathione"
+    },
+    {
+      "name": "Glutathione disulfide"
+    },
+    {
+      "name": "Gly-Arg"
+    },
+    {
+      "name": "Gly-Gly-Arg"
+    },
+    {
+      "name": "Gly-Ser"
+    },
+    {
+      "name": "Glycerone phosphate"
+    },
+    {
+      "name": "Glycerophosphoglycerol"
+    },
+    {
+      "name": "Glycyl-leucine"
+    },
+    {
+      "name": "Guanine"
+    },
+    {
+      "name": "Guanosine"
+    },
+    {
+      "name": "HEPES"
+    },
+    {
+      "name": "Heliamine"
+    },
+    {
+      "name": "Hercynine"
+    },
+    {
+      "name": "His-Leu"
+    },
+    {
+      "name": "Hydantoin-5-propionate"
+    },
+    {
+      "name": "Hydroxymethylphosphonate"
+    },
+    {
+      "name": "Hydroxypyruvate"
+    },
+    {
+      "name": "Hypaphorine"
+    },
+    {
+      "name": "Hypoxanthine"
+    },
+    {
+      "name": "IMP"
+    },
+    {
+      "name": "Icosatrienoic acid"
+    },
+    {
+      "name": "Ile-Arg"
+    },
+    {
+      "name": "Ile-Asn"
+    },
+    {
+      "name": "Ile-Lys"
+    },
+    {
+      "name": "Ile-Lys-Pro"
+    },
+    {
+      "name": "Ile-Ser"
+    },
+    {
+      "name": "Ile-Thr"
+    },
+    {
+      "name": "Ile-Val"
+    },
+    {
+      "name": "Kinobscurinone"
+    },
+    {
+      "name": "L-Alanine"
+    },
+    {
+      "name": "L-Arginine"
+    },
+    {
+      "name": "L-Asparagine"
+    },
+    {
+      "name": "L-Aspartate"
+    },
+    {
+      "name": "L-Carnitine"
+    },
+    {
+      "name": "L-Citrulline"
+    },
+    {
+      "name": "L-Cystine"
+    },
+    {
+      "name": "L-Glutamate"
+    },
+    {
+      "name": "L-Glutamine"
+    },
+    {
+      "name": "L-Leucine"
+    },
+    {
+      "name": "L-Lysine"
+    },
+    {
+      "name": "L-Methionine"
+    },
+    {
+      "name": "L-Ornithine"
+    },
+    {
+      "name": "L-Phenylalanine"
+    },
+    {
+      "name": "L-Pipecolate"
+    },
+    {
+      "name": "L-Proline"
+    },
+    {
+      "name": "L-Serine"
+    },
+    {
+      "name": "L-Threonine"
+    },
+    {
+      "name": "L-Tryptophan"
+    },
+    {
+      "name": "L-Tyrosine"
+    },
+    {
+      "name": "L-Tyrosyl-L-arginine"
+    },
+    {
+      "name": "L-Valine"
+    },
+    {
+      "name": "L-alanyl-L-α-thiophenylglycine"
+    },
+    {
+      "name": "L-alpha-Amino-gamma-oxalylaminobutyric acid"
+    },
+    {
+      "name": "L-beta-aspartyl-L-alanine"
+    },
+    {
+      "name": "L-beta-aspartyl-L-leucine"
+    },
+    {
+      "name": "L-gamma-glutamyl-L-isoleucine"
+    },
+    {
+      "name": "L-isoleucyl-L-proline"
+    },
+    {
+      "name": "Lys-Asn"
+    },
+    {
+      "name": "Lys-Gly"
+    },
+    {
+      "name": "Lys-Lys-Met-Val"
+    },
+    {
+      "name": "Lys-Lys-Val-Val"
+    },
+    {
+      "name": "Lys-Pro"
+    },
+    {
+      "name": "Lys-Ser"
+    },
+    {
+      "name": "Lys-Thr"
+    },
+    {
+      "name": "Lys-Trp"
+    },
+    {
+      "name": "Lys-Tyr"
+    },
+    {
+      "name": "Lys-Val"
+    },
+    {
+      "name": "LysoPC(16:0)"
+    },
+    {
+      "name": "LysoPC(18:0)"
+    },
+    {
+      "name": "LysoPC(18:1)"
+    },
+    {
+      "name": "LysoPC(O-16:1)"
+    },
+    {
+      "name": "LysoPE(18:1)"
+    },
+    {
+      "name": "LysoPE(20:4)"
+    },
+    {
+      "name": "MOPS"
+    },
+    {
+      "name": "Mannitol"
+    },
+    {
+      "name": "Met-Cys-Cys"
+    },
+    {
+      "name": "Methacholine"
+    },
+    {
+      "name": "Mukaadial"
+    },
+    {
+      "name": "Muramic acid"
+    },
+    {
+      "name": "N-Acetyl-D-mannosaminolactone"
+    },
+    {
+      "name": "N-Acetyl-L-citrulline"
+    },
+    {
+      "name": "N-Acetyl-L-glutamate"
+    },
+    {
+      "name": "N-Acetyl-aspartyl-glutamate"
+    },
+    {
+      "name": "N-Acetyllactosamine"
+    },
+    {
+      "name": "N-Acetylornithine"
+    },
+    {
+      "name": "N-Carbamoyl-L-aspartate"
+    },
+    {
+      "name": "N-Succinyl-L-glutamate"
+    },
+    {
+      "name": "N-gamma-Acetyldiaminobutyrate"
+    },
+    {
+      "name": "N-hydroxy DAP"
+    },
+    {
+      "name": "N-hydroxyisoleucine"
+    },
+    {
+      "name": "N-α-acetyl lysine methyl ester"
+    },
+    {
+      "name": "N2-Succinyl-L-arginine"
+    },
+    {
+      "name": "N5-acetyl-N5-hydroxy-L-ornithine"
+    },
+    {
+      "name": "N5-formyl-N5-hydroxy-L-ornithine"
+    },
+    {
+      "name": "N6,N6,N6-Trimethyl-L-lysine"
+    },
+    {
+      "name": "N6-Acetyl-N6-hydroxy-L-lysine"
+    },
+    {
+      "name": "NAD+"
+    },
+    {
+      "name": "NADP+"
+    },
+    {
+      "name": "Ne,Ne dimethyllysine"
+    },
+    {
+      "name": "Nicotinamide"
+    },
+    {
+      "name": "Nicotinamide D-ribonucleotide"
+    },
+    {
+      "name": "Nicotinate"
+    },
+    {
+      "name": "Nicotine"
+    },
+    {
+      "name": "Norophthalmicacid"
+    },
+    {
+      "name": "O-Acetyl-L-homoserine"
+    },
+    {
+      "name": "O-Acetylcarnitine"
+    },
+    {
+      "name": "O-Phospho-L-serine"
+    },
+    {
+      "name": "Orotate"
+    },
+    {
+      "name": "Orthophosphate"
+    },
+    {
+      "name": "Oxalate"
+    },
+    {
+      "name": "PA(32:0)"
+    },
+    {
+      "name": "PA(34:1)"
+    },
+    {
+      "name": "PA(34:2)"
+    },
+    {
+      "name": "PA(P-42:4)"
+    },
+    {
+      "name": "PC(30:0)"
+    },
+    {
+      "name": "PC(32:0)"
+    },
+    {
+      "name": "PC(34:1)"
+    },
+    {
+      "name": "PC(34:2)"
+    },
+    {
+      "name": "PC(36:4)"
+    },
+    {
+      "name": "PC(38:2)"
+    },
+    {
+      "name": "PC(38:5)"
+    },
+    {
+      "name": "PC(38:6)"
+    },
+    {
+      "name": "PC(40:6)"
+    },
+    {
+      "name": "PC(40:7)"
+    },
+    {
+      "name": "PD 123177"
+    },
+    {
+      "name": "PE(31:4)"
+    },
+    {
+      "name": "PE(32:0)"
+    },
+    {
+      "name": "PE(32:1)"
+    },
+    {
+      "name": "PE(34:1)"
+    },
+    {
+      "name": "PE(34:3)"
+    },
+    {
+      "name": "PE(35:1)"
+    },
+    {
+      "name": "PE(36:1)"
+    },
+    {
+      "name": "PE(36:2)"
+    },
+    {
+      "name": "PE(36:3)"
+    },
+    {
+      "name": "PE(36:4)"
+    },
+    {
+      "name": "PE(36:5)"
+    },
+    {
+      "name": "PE(38:1)"
+    },
+    {
+      "name": "PE(38:5)"
+    },
+    {
+      "name": "PE(38:6)"
+    },
+    {
+      "name": "PE(39:2)"
+    },
+    {
+      "name": "PE(O-38:5)"
+    },
+    {
+      "name": "PG(32:1)"
+    },
+    {
+      "name": "PG(33:1)"
+    },
+    {
+      "name": "PG(34:1)"
+    },
+    {
+      "name": "PG(34:2)"
+    },
+    {
+      "name": "PG(36:1)"
+    },
+    {
+      "name": "PG(36:2)"
+    },
+    {
+      "name": "PG(38:4)"
+    },
+    {
+      "name": "PG(38:5)"
+    },
+    {
+      "name": "PG(40:5)"
+    },
+    {
+      "name": "PG(41:2)"
+    },
+    {
+      "name": "PI(34:1)"
+    },
+    {
+      "name": "PI(36:1)"
+    },
+    {
+      "name": "PI(36:2)"
+    },
+    {
+      "name": "PI(36:3)"
+    },
+    {
+      "name": "PI(36:4)"
+    },
+    {
+      "name": "PI(38:4)"
+    },
+    {
+      "name": "PI(38:5)"
+    },
+    {
+      "name": "PI(40:5)"
+    },
+    {
+      "name": "PS(34:0)"
+    },
+    {
+      "name": "PS(34:1)"
+    },
+    {
+      "name": "PS(36:0)"
+    },
+    {
+      "name": "PS(36:2)"
+    },
+    {
+      "name": "PS(36:3)"
+    },
+    {
+      "name": "PS(36:4)"
+    },
+    {
+      "name": "PS(36:5)"
+    },
+    {
+      "name": "PS(38:4)"
+    },
+    {
+      "name": "PS(38:6)"
+    },
+    {
+      "name": "PS(38:7)"
+    },
+    {
+      "name": "PS(40:5)"
+    },
+    {
+      "name": "PS(40:6)"
+    },
+    {
+      "name": "PS(40:7)"
+    },
+    {
+      "name": "PS(52:0)"
+    },
+    {
+      "name": "PS(O-20:0/0:0)"
+    },
+    {
+      "name": "PS(O-36:1)"
+    },
+    {
+      "name": "Phosphodimethylethanolamine"
+    },
+    {
+      "name": "Phosphoenolpyruvate"
+    },
+    {
+      "name": "Phosphonoacetaldehyde"
+    },
+    {
+      "name": "Phytuberin"
+    },
+    {
+      "name": "Piperidine"
+    },
+    {
+      "name": "Prekinamycin"
+    },
+    {
+      "name": "Pro-Arg"
+    },
+    {
+      "name": "Pro-His"
+    },
+    {
+      "name": "Pro-Thr-Ser-Ser"
+    },
+    {
+      "name": "Pro-Thr-Trp-Pro"
+    },
+    {
+      "name": "Proclavaminic acid"
+    },
+    {
+      "name": "Pyridoxine"
+    },
+    {
+      "name": "Rishitin"
+    },
+    {
+      "name": "S-Adenosyl-L-homocysteine"
+    },
+    {
+      "name": "S-Adenosyl-L-methionine"
+    },
+    {
+      "name": "S-Inosyl-L-homocysteine"
+    },
+    {
+      "name": "SM(d18:0/24:1(15Z)(OH))"
+    },
+    {
+      "name": "SM(d18:1/24:1(15Z))"
+    },
+    {
+      "name": "SM(d32:1)"
+    },
+    {
+      "name": "SM(d33:1)"
+    },
+    {
+      "name": "SM(d34:1)"
+    },
+    {
+      "name": "SM(d34:2)"
+    },
+    {
+      "name": "SM(d40:2)"
+    },
+    {
+      "name": "SM(d42:3)"
+    },
+    {
+      "name": "Sedoheptulose"
+    },
+    {
+      "name": "Ser-Arg"
+    },
+    {
+      "name": "Sinalbin"
+    },
+    {
+      "name": "Slaframine"
+    },
+    {
+      "name": "Succinate"
+    },
+    {
+      "name": "Succinyladenosine"
+    },
+    {
+      "name": "Sulfate"
+    },
+    {
+      "name": "TG(61:11)"
+    },
+    {
+      "name": "Temurin"
+    },
+    {
+      "name": "Thiamin"
+    },
+    {
+      "name": "Thiamin diphosphate"
+    },
+    {
+      "name": "Thr-Ala-Pro"
+    },
+    {
+      "name": "Thr-Arg"
+    },
+    {
+      "name": "Thr-Trp-Pro"
+    },
+    {
+      "name": "Trp-Asn"
+    },
+    {
+      "name": "Trp-Gly"
+    },
+    {
+      "name": "UDP"
+    },
+    {
+      "name": "UDP-N-acetyl-D-galactosamine"
+    },
+    {
+      "name": "UDP-glucose"
+    },
+    {
+      "name": "UMP"
+    },
+    {
+      "name": "Val-Arg"
+    },
+    {
+      "name": "Val-Val"
+    },
+    {
+      "name": "Zinnimidine"
+    },
+    {
+      "name": "[FA (11:0)] undecanoic acid"
+    },
+    {
+      "name": "[FA (18:1)] 9Z-octadecenoic acid"
+    },
+    {
+      "name": "[FA (22:5)] 7Z,10Z,13Z,16Z,19Z-docosapentaenoic acid"
+    },
+    {
+      "name": "[FA hydroxy(11:2/11:2)] 2R,9R-dihydroxy-3S,4S,7S,8S-diepoxy-5E,10-undecadien-1-ol"
+    },
+    {
+      "name": "[FA trihydroxy(4:0)] 2,3,4-trihydroxy-butanoic acid"
+    },
+    {
+      "name": "[PG (16:0)] 1-hexadecanoyl-sn-glycero-3-phospho-(1'-sn-glycerol)"
+    },
+    {
+      "name": "[PG (18:0)] 1-octadecanoyl-sn-glycero-3-phospho-(1'-sn-glycerol)"
+    },
+    {
+      "name": "[PG (18:1)] 1-(9E-octadecenoyl)-sn-glycero-3-phospho-(1'-sn-glycerol)"
+    },
+    {
+      "name": "[PI(18:0)] 1-octadecanoyl-sn-glycero-3-phospho-(1'-myo-inositol)"
+    },
+    {
+      "name": "[PI(36:0)"
+    },
+    {
+      "name": "[SP (16:0)] N-(hexadecanoyl)-sphing-4-enine"
+    },
+    {
+      "name": "[SP (24:0)] N-(15Z-tetracosenoyl)-sphing-4-enine"
+    },
+    {
+      "name": "[SP amino(18:0/2:0)] 2S-aminooctadecane-1,3R-diol"
+    },
+    {
+      "name": "[ST (12:0) homo-seco-cholestatrien-tetrol"
+    },
+    {
+      "name": "[ST (3:0)] cholest-5Z,7Z,24-trien-3beta-ol"
+    },
+    {
+      "name": "[ST] (5Z,7E)-9,10-seco-5,7,10(19)-cholestatriene"
+    },
+    {
+      "name": "alpha-Ribazole"
+    },
+    {
+      "name": "beta-Alanyl-L-arginine"
+    },
+    {
+      "name": "beta-Citryl-L-glutamic acid"
+    },
+    {
+      "name": "butyrylcholine"
+    },
+    {
+      "name": "dAMP"
+    },
+    {
+      "name": "dGDP"
+    },
+    {
+      "name": "dTDP-3-amino-2,3,6-trideoxy-D-threo-hexopyranos-4-ulose"
+    },
+    {
+      "name": "demethyl-phosphinothricin"
+    },
+    {
+      "name": "dihydrothymidine"
+    },
+    {
+      "name": "ferric dicitrate"
+    },
+    {
+      "name": "formycin A"
+    },
+    {
+      "name": "fosmidomycin"
+    },
+    {
+      "name": "furaneol glucopyranoside"
+    },
+    {
+      "name": "gamma-Glutamyl-gamma-aminobutyraldehyde"
+    },
+    {
+      "name": "gamma-Glutamyl-gamma-aminobutyrate"
+    },
+    {
+      "name": "gamma-L-Glutamyl-L-cysteine"
+    },
+    {
+      "name": "gamma-L-Glutamylputrescine"
+    },
+    {
+      "name": "p-aminobenzoyl glutamate"
+    },
+    {
+      "name": "phosphinomethylisomalate"
+    },
+    {
+      "name": "psicoselysine"
+    },
+    {
+      "name": "sn-Glycerol 3-phosphate"
+    },
+    {
+      "name": "sn-glycero-3-Phosphocholine"
+    },
+    {
+      "name": "sn-glycero-3-Phosphoethanolamine"
+    },
+    {
+      "name": "sodium dodecyl sulfate"
+    },
+    {
+      "name": "α-(2,6-anhydro-3-deoxy-D-arabino-heptulopyranosid)onate 7-phosphate"
+    }
+  ],
+  "repository_metadata_file_list": [
+    {
+      "name": "ST001315_AN002189.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST001315&ANALYSIS_ID=AN002189"
+      ]
+    },
+    {
+      "name": "ST001315_AN002190.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST001315&ANALYSIS_ID=AN002190"
+      ]
+    }
+  ],
+  "raw_data_file_list": [
+    {
+      "name": "Az_E1_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Az_E1_1"
+      ]
+    },
+    {
+      "name": "Az_E1_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Az_E1_2"
+      ]
+    },
+    {
+      "name": "Az_E1_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Az_E1_3"
+      ]
+    },
+    {
+      "name": "Az_E2_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Az_E2_1"
+      ]
+    },
+    {
+      "name": "Az_E2_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Az_E2_2"
+      ]
+    },
+    {
+      "name": "Az_E2_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Az_E2_3"
+      ]
+    },
+    {
+      "name": "CQ_E1_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:CQ_E1_1"
+      ]
+    },
+    {
+      "name": "CQ_E1_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:CQ_E1_2"
+      ]
+    },
+    {
+      "name": "CQ_E1_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:CQ_E1_3"
+      ]
+    },
+    {
+      "name": "CQ_E2_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:CQ_E2_1"
+      ]
+    },
+    {
+      "name": "CQ_E2_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:CQ_E2_2"
+      ]
+    },
+    {
+      "name": "CQ_E2_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:CQ_E2_3"
+      ]
+    },
+    {
+      "name": "Control_E1_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Control_E1_1"
+      ]
+    },
+    {
+      "name": "Control_E1_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Control_E1_2"
+      ]
+    },
+    {
+      "name": "Control_E1_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Control_E1_3"
+      ]
+    },
+    {
+      "name": "Control_E2_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Control_E2_1"
+      ]
+    },
+    {
+      "name": "Control_E2_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Control_E2_2"
+      ]
+    },
+    {
+      "name": "Control_E2_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:Control_E2_3"
+      ]
+    },
+    {
+      "name": "DHA_E1_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:DHA_E1_1"
+      ]
+    },
+    {
+      "name": "DHA_E1_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:DHA_E1_2"
+      ]
+    },
+    {
+      "name": "DHA_E1_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:DHA_E1_3"
+      ]
+    },
+    {
+      "name": "DHA_E2_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:DHA_E2_1"
+      ]
+    },
+    {
+      "name": "DHA_E2_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:DHA_E2_2"
+      ]
+    },
+    {
+      "name": "DHA_E2_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:DHA_E2_3"
+      ]
+    },
+    {
+      "name": "GSK18_E1_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK18_E1_1"
+      ]
+    },
+    {
+      "name": "GSK18_E1_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK18_E1_2"
+      ]
+    },
+    {
+      "name": "GSK18_E1_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK18_E1_3"
+      ]
+    },
+    {
+      "name": "GSK18_E2_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK18_E2_1"
+      ]
+    },
+    {
+      "name": "GSK18_E2_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK18_E2_2"
+      ]
+    },
+    {
+      "name": "GSK18_E2_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK18_E2_3"
+      ]
+    },
+    {
+      "name": "GSK20_E1_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK20_E1_1"
+      ]
+    },
+    {
+      "name": "GSK20_E1_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK20_E1_2"
+      ]
+    },
+    {
+      "name": "GSK20_E1_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK20_E1_3"
+      ]
+    },
+    {
+      "name": "GSK20_E2_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK20_E2_1"
+      ]
+    },
+    {
+      "name": "GSK20_E2_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK20_E2_2"
+      ]
+    },
+    {
+      "name": "GSK20_E2_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK20_E2_3"
+      ]
+    },
+    {
+      "name": "GSK36_E1_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK36_E1_1"
+      ]
+    },
+    {
+      "name": "GSK36_E1_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK36_E1_2"
+      ]
+    },
+    {
+      "name": "GSK36_E1_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK36_E1_3"
+      ]
+    },
+    {
+      "name": "GSK36_E2_1",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK36_E2_1"
+      ]
+    },
+    {
+      "name": "GSK36_E2_2",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK36_E2_2"
+      ]
+    },
+    {
+      "name": "GSK36_E2_3",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST001315:GSK36_E2_3"
+      ]
+    }
+  ]
+}

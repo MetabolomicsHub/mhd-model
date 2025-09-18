@@ -61,7 +61,7 @@ class AnnouncementPublication(AnnouncementBaseModel):
 
     title: Annotated[str, Field(min_length=10)]
     doi: Annotated[fields.DOI, Field()]
-    pub_med_id: Annotated[None | fields.PubMedId, Field()] = None
+    pubmed_id: Annotated[None | fields.PubMedId, Field()] = None
     authors: Annotated[None | Authors, Field()] = None
 
 
@@ -89,12 +89,12 @@ class AnnouncementProtocol(AnnouncementBaseModel):
 class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
     """Base profile for announcement files."""
 
-    mhd_identifier: Annotated[None | str, Field()]
+    mhd_identifier: Annotated[None | str, Field()] = None
     repository_identifier: Annotated[str, Field()]
     mhd_metadata_file_url: Annotated[AnyUrl, Field()]
     dataset_url_list: Annotated[list[AnyUrl], Field(min_length=1)]
 
-    license: Annotated[None | HttpUrl, Field()]
+    license: Annotated[None | HttpUrl, Field()] = None
     title: Annotated[str, Field(min_length=25)]
     description: Annotated[None | str, Field(min_length=60)]
     submission_date: Annotated[None | datetime.datetime, Field()]

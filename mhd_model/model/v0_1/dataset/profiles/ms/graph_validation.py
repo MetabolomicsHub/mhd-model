@@ -473,7 +473,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             ),
             RelationshipValidation(
                 source="parameter-definition",
-                relationship_name="defined-in",
+                relationship_name="used-in",
                 reverse_relationship_name="has-parameter-definition",
                 target="protocol",
                 min=1,
@@ -642,7 +642,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="protocol",
                 node_property_name="description",
-                contraints=PropertyConstraint(required=True),
+                contraints=PropertyConstraint(required=False),
             ),
         ],
         relationships=[
@@ -665,7 +665,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             RelationshipValidation(
                 source="protocol",
                 relationship_name="has-parameter-definition",
-                reverse_relationship_name="defined-in",
+                reverse_relationship_name="used-in",
                 target="parameter-definition",
                 min=1,
                 min_for_each_source=0,

@@ -1,0 +1,847 @@
+{
+  "repository_identifier": "ST004122",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "CHMO",
+      "name": "Chemical Methods Ontology",
+      "uri": "http://purl.obolibrary.org/obo/chmo.owl",
+      "prefix": "http://purl.obolibrary.org/obo/CHMO_"
+    },
+    {
+      "label": "EDAM",
+      "name": "The ontology of data analysis and management",
+      "uri": "http://edamontology.org",
+      "prefix": "http://edamontology.org/format_"
+    },
+    {
+      "label": "EFO",
+      "name": "Experimental Factor Ontology",
+      "uri": "http://www.ebi.ac.uk/efo/efo.owl",
+      "prefix": "http://www.ebi.ac.uk/efo/EFO_"
+    },
+    {
+      "label": "MS",
+      "name": "MS",
+      "uri": "http://purl.obolibrary.org/obo/ms.owl",
+      "prefix": "http://purl.obolibrary.org/obo/MS_"
+    },
+    {
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "mhd_metadata_file_url": "ftp://www.metabolomicsworkbench.org/Studies/ST004122/ST004122.mhd.json",
+  "dataset_url_list": [
+    "https://www.metabolomicsworkbench.org/data/DRCCMetadata.php?Mode=Study&StudyID=ST004122"
+  ],
+  "title": "Untargeted rhizosphere metabolomics of Artemisia argyi under cadmium stress with synthetic microbial community inoculation",
+  "description": "This study investigated rhizosphere metabolic responses of Artemisia argyi to inoculation with a native two-member synthetic microbial community (SynCom) in cadmium-contaminated soils. Pot experiments were conducted using soils from a historically polluted mining area in Hunan Province, China, with SynCom-inoculated and uninoculated plants grown for 60 days under 400 mg/kg Cd stress. Rhizosphere soil metabolites were extracted with methanol containing an internal standard and analyzed by UHPLC-Q Exactive MS in positive and negative ionization modes. Untargeted metabolomics revealed 39% fatty acyls, 14% organooxygen compounds, and 11% carboxylic acids and derivatives as dominant classes. SynCom inoculation significantly upregulated key intermediates in microbial respiration and carbon metabolism (e.g., 6-phosphogluconic acid, succinic acid, fumaric acid) and biomarkers of microbial biomass and root-derived carbon input (lanosterin, β-sitosterol). Enrichment of signaling molecules such as nobiletin suggested enhanced antioxidative capacity and potential chemoattraction of beneficial microbes including Pseudomonas, Rahnella, and functional partners. These results indicate that SynCom inoculation reshapes rhizosphere metabolic networks to promote carbon retention and microbial resilience under heavy metal stress.",
+  "submission_date": "2025-09-18T14:46:40.197560Z",
+  "public_release_date": "2025-09-18T14:46:40.197560Z",
+  "submitters": [
+    {
+      "full_name": "Xiao He",
+      "emails": [
+        "hexiao0507@gmail.com"
+      ]
+    }
+  ],
+  "principal_investigators": [
+    {
+      "full_name": "Xiao He",
+      "emails": [
+        "hexiao0507@gmail.com"
+      ]
+    }
+  ],
+  "study_factors": [
+    {
+      "key": {
+        "source": "",
+        "accession": "",
+        "name": "ionmode"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "Negative"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "Positive"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "EFO",
+        "accession": "EFO:0000727",
+        "name": "treatment"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "No SynCom"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "SynCom inoculation"
+        }
+      ]
+    }
+  ],
+  "characteristic_values": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITAXON",
+          "accession": "NCBITaxon:259893",
+          "name": "Artemisia argyi"
+        }
+      ]
+    },
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C103199",
+        "name": "organism part"
+      },
+      "values": [
+        {
+          "source": "",
+          "accession": "",
+          "name": "rhizosphere soil"
+        }
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "name": "sample collection",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0005518",
+        "name": "sample collection protocol"
+      },
+      "description": "Rhizosphere soil was collected from Artemisia argyi plants grown in a greenhouse pot experiment under cadmium stress. Plants received either no inoculum (control) or a native two-member SynCom. At harvest, roots were gently shaken to remove bulk soil; tightly adhered rhizosphere soil was brushed/vortexed from roots into sterile 2 mL tubes, immediately placed on ice, flash-frozen in liquid nitrogen within 30 min, and stored at −80 °C until extraction for LC-MS metabolomics."
+    },
+    {
+      "name": "sample preparation",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "Fresh rhizosphere soil samples of Artemisia argyi were collected in the field, immediately frozen in liquid nitrogen, and stored at –80 °C until extraction. For LC-MS analysis, 100 mg of freeze-dried and homogenized soil was extracted with 1 mL of 70% methanol (v/v) containing an internal standard. The mixture was vortexed for 3 min and sonicated in an ice-water bath for 10 min, followed by incubation at –20 °C for 1 h. Samples were centrifuged at 12,000 rpm for 10 min at 4 °C, and the supernatant was filtered through a 0.22 μm PTFE membrane and stored at –80 °C prior to LC-MS analysis. For GC-MS analysis, 100 mg of homogenized soil was extracted with 1 mL of methanol:chloroform:water (2.5:1:1, v/v/v), vortexed, sonicated, and centrifuged as above. The polar phase was transferred to a fresh vial, dried under vacuum, derivatized with 20 mg/mL methoxyamine hydrochloride in pyridine at 37 °C for 90 min, followed by silylation with MSTFA at 37 °C for 30 min, and stored at –80 °C until injection."
+    },
+    {
+      "name": "treatment",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0003969",
+        "name": "treatment protocol"
+      },
+      "description": "Artemisia argyi plants were grown in pots containing cadmium-contaminated mining soil with or without inoculation of a native synthetic microbial community."
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "LC–MS analysis was performed on a Vanquish UHPLC system (Thermo Fisher Scientific, USA) coupled to a Q Exactive Orbitrap mass spectrometer with an electrospray ionization (ESI) source operating in positive ion mode. Full MS-ddMS² acquisition was applied with sheath gas pressure 40 arb, aux gas flow 10 arb, spray voltage +3.50 kV, capillary temperature 325 °C, MS1 scan range m/z 100–1000, resolving power 70,000 (MS1) and 17,500 (MS2), normalized collision energy 30 eV, dynamic exclusion enabled."
+    },
+    {
+      "name": "mass spectrometry",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0000470",
+        "name": "mass spectrometry"
+      },
+      "description": "LC–MS analysis was performed on a Vanquish UHPLC system (Thermo Fisher Scientific, USA) coupled to a Q Exactive Orbitrap mass spectrometer with an electrospray ionization (ESI) source operating in negative ion mode. Full MS-ddMS² acquisition was applied with sheath gas pressure 40 arb, aux gas flow 10 arb, spray voltage –2.50 kV, capillary temperature 325 °C, MS1 scan range m/z 100–1000, resolving power 70,000 (MS1) and 17,500 (MS2), normalized collision energy 30 eV, dynamic exclusion enabled."
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "Positive mode: Reversed-phase UHPLC separation of rhizosphere metabolite extracts was performed on a Thermo Vanquish system equipped with a Waters ACQUITY UPLC HSS T3 column (100 × 2.1 mm, 1.8 μm). The mobile phases consisted of Solvent A2 (0.1% formic acid in water) and Solvent B2 (0.1% formic acid in acetonitrile). A gradient elution was applied (0–1 min, 8% B2; 1–8 min, 8–98% B2; 8–10 min, 98% B2; 10–10.1 min, 98–8% B2; 10.1–12 min, 8% B2). The flow rate was 0.30 mL/min with a column temperature maintained at 40 °C."
+    },
+    {
+      "name": "chromatography",
+      "protocol_type": {
+        "source": "CHMO",
+        "accession": "CHMO:0001000",
+        "name": "chromatography"
+      },
+      "description": "Negative mode: Reversed-phase UHPLC separation of rhizosphere metabolite extracts was performed on a Thermo Vanquish system using the same Waters ACQUITY UPLC HSS T3 column (100 × 2.1 mm, 1.8 μm). The mobile phases consisted of Solvent A3 (5 mM ammonium formate in water) and Solvent B3 (acetonitrile). A gradient elution was applied (0–1 min, 8% B3; 1–8 min, 8–98% B3; 8–10 min, 98% B3; 10–10.1 min, 98–8% B3; 10.1–12 min, 8% B3). The flow rate was 0.30 mL/min with a column temperature maintained at 40 °C."
+    }
+  ],
+  "reported_metabolites": [
+    {
+      "name": "(2Z,4S,5R)-2-Amino-4,5,6-trihydroxyhex-2-enoate"
+    },
+    {
+      "name": "(3S,5S)-Carbapenam-3-carboxylic acid"
+    },
+    {
+      "name": "(6Z)-Octadecenoic acid"
+    },
+    {
+      "name": "(R) 2,3-Dihydroxy-3-methylvalerate"
+    },
+    {
+      "name": "(R)-2-O-Sulfolactate"
+    },
+    {
+      "name": "(R)-5,6-Dihydrothymine"
+    },
+    {
+      "name": "1,2,3-Trihydroxybenzene"
+    },
+    {
+      "name": "1-Hexadecanol"
+    },
+    {
+      "name": "1-Kestose"
+    },
+    {
+      "name": "1-Pyrroline-2-carboxylic acid"
+    },
+    {
+      "name": "1-palmitoylglycerophosphocholine"
+    },
+    {
+      "name": "12,13-DHOME"
+    },
+    {
+      "name": "13-L-Hydroperoxylinoleic acid"
+    },
+    {
+      "name": "13S-hydroxyoctadecadienoic acid"
+    },
+    {
+      "name": "2,3-Butanediol"
+    },
+    {
+      "name": "2-Amino-2-deoxy-D-gluconate"
+    },
+    {
+      "name": "2-Amino-4-nitrotoluene"
+    },
+    {
+      "name": "2-Aminobenzoic acid"
+    },
+    {
+      "name": "2-Aminoisobutyric acid"
+    },
+    {
+      "name": "2-Aminophenol"
+    },
+    {
+      "name": "2-Deoxy-D-glucose"
+    },
+    {
+      "name": "2-Deoxystreptamine"
+    },
+    {
+      "name": "2-Heptanone"
+    },
+    {
+      "name": "2-Hydroxy-3-(4-hydroxyphenyl)propenoic acid"
+    },
+    {
+      "name": "2-Ketobutyric acid"
+    },
+    {
+      "name": "2-Methoxyestradiol"
+    },
+    {
+      "name": "2-Oxo-4-methylthiobutanoic acid"
+    },
+    {
+      "name": "2-Pyrocatechuic acid"
+    },
+    {
+      "name": "3,4-Methylenedioxyamphetamine"
+    },
+    {
+      "name": "3-(2-Hydroxyphenyl)propanoic acid"
+    },
+    {
+      "name": "3-Dehydroshikimate"
+    },
+    {
+      "name": "3-Hydroxybenzyl alcohol glucoside"
+    },
+    {
+      "name": "3-Hydroxymethylglutaric acid"
+    },
+    {
+      "name": "3-Hydroxyphenylacetic acid"
+    },
+    {
+      "name": "3-Methyladenine"
+    },
+    {
+      "name": "3-Methylindole"
+    },
+    {
+      "name": "3-Sulfinylpyruvic acid"
+    },
+    {
+      "name": "4-Hydroxy-3-(3-methyl-2-butenyl)acetophenone"
+    },
+    {
+      "name": "4-Hydroxycinnamic acid"
+    },
+    {
+      "name": "4-Hydroxycinnamoylmethane"
+    },
+    {
+      "name": "4-Hydroxycoumarin"
+    },
+    {
+      "name": "4-Hydroxyphenylacetaldehyde"
+    },
+    {
+      "name": "4-Pyridoxic acid"
+    },
+    {
+      "name": "5-Aminoimidazole-4-carboxamide"
+    },
+    {
+      "name": "5-Aminopentanoic acid"
+    },
+    {
+      "name": "5-Hydroxyindoleacetic acid"
+    },
+    {
+      "name": "5-Hydroxypentanoic acid"
+    },
+    {
+      "name": "5a-Cholest-8-en-3b-ol"
+    },
+    {
+      "name": "5alpha-Cholestanone"
+    },
+    {
+      "name": "6-Hydroxynicotinic acid"
+    },
+    {
+      "name": "9,10-Dihydroxystearate"
+    },
+    {
+      "name": "Acacetin"
+    },
+    {
+      "name": "Acetylcysteine"
+    },
+    {
+      "name": "Acetylphosphate"
+    },
+    {
+      "name": "Agmatine"
+    },
+    {
+      "name": "Aldosterone"
+    },
+    {
+      "name": "Alpha-Linolenic acid"
+    },
+    {
+      "name": "Anabasine"
+    },
+    {
+      "name": "Arachidic acid"
+    },
+    {
+      "name": "Arachidonic acid"
+    },
+    {
+      "name": "Behenic acid"
+    },
+    {
+      "name": "Benzoate"
+    },
+    {
+      "name": "Betaine"
+    },
+    {
+      "name": "Biochanin A"
+    },
+    {
+      "name": "Bovinic acid"
+    },
+    {
+      "name": "Caproic acid"
+    },
+    {
+      "name": "Caprylic acid"
+    },
+    {
+      "name": "Capsidiol"
+    },
+    {
+      "name": "Carbendazim"
+    },
+    {
+      "name": "Catechol"
+    },
+    {
+      "name": "Cellobiose"
+    },
+    {
+      "name": "Chavicol"
+    },
+    {
+      "name": "Cholesterol"
+    },
+    {
+      "name": "Cholesterol sulfate"
+    },
+    {
+      "name": "Choline"
+    },
+    {
+      "name": "Cinnamaldehyde"
+    },
+    {
+      "name": "Confertifolin"
+    },
+    {
+      "name": "Coumafuryl"
+    },
+    {
+      "name": "Creatinine"
+    },
+    {
+      "name": "D-Arabinose"
+    },
+    {
+      "name": "D-Arabitol"
+    },
+    {
+      "name": "D-Fructose"
+    },
+    {
+      "name": "D-Lyxose"
+    },
+    {
+      "name": "D-Psicose"
+    },
+    {
+      "name": "D-Xylitol"
+    },
+    {
+      "name": "Daidzin"
+    },
+    {
+      "name": "Dehydroepiandrosterone"
+    },
+    {
+      "name": "Deoxyuridine"
+    },
+    {
+      "name": "Deoxyuridine-5'-triphosphate"
+    },
+    {
+      "name": "Desaminotyrosine"
+    },
+    {
+      "name": "Dihydrothymine"
+    },
+    {
+      "name": "Dihydrouracil"
+    },
+    {
+      "name": "Dimethylglycine"
+    },
+    {
+      "name": "Diphenylamine"
+    },
+    {
+      "name": "Docosatetraenoyl Ethanolamide"
+    },
+    {
+      "name": "Dodecanedioic acid"
+    },
+    {
+      "name": "Epinephrine"
+    },
+    {
+      "name": "Epsilon-caprolactam"
+    },
+    {
+      "name": "Erucic acid"
+    },
+    {
+      "name": "Gamma-Linolenic acid"
+    },
+    {
+      "name": "Genistin"
+    },
+    {
+      "name": "Glutaric acid"
+    },
+    {
+      "name": "Glycitein"
+    },
+    {
+      "name": "Glycyrrhetinate"
+    },
+    {
+      "name": "Guanidinosuccinic acid"
+    },
+    {
+      "name": "Guanidoacetic acid"
+    },
+    {
+      "name": "Heptanoic acid"
+    },
+    {
+      "name": "Homovanillic acid"
+    },
+    {
+      "name": "Hydroxykynurenine"
+    },
+    {
+      "name": "Hydroxyphenyllactic acid"
+    },
+    {
+      "name": "Indole"
+    },
+    {
+      "name": "Isonicotinic acid"
+    },
+    {
+      "name": "Jasmonic acid"
+    },
+    {
+      "name": "Kaempferide"
+    },
+    {
+      "name": "Ketoleucine"
+    },
+    {
+      "name": "L-2,4-diaminobutyric acid"
+    },
+    {
+      "name": "L-2-Hydroxyglutaric acid"
+    },
+    {
+      "name": "L-Arabinose"
+    },
+    {
+      "name": "L-Fucose"
+    },
+    {
+      "name": "L-Glutamine"
+    },
+    {
+      "name": "L-Histidinol"
+    },
+    {
+      "name": "L-Iditol"
+    },
+    {
+      "name": "L-Valine"
+    },
+    {
+      "name": "Linoleic acid"
+    },
+    {
+      "name": "LysoPA(16_0_0_0)"
+    },
+    {
+      "name": "Maltol"
+    },
+    {
+      "name": "Mandelic acid"
+    },
+    {
+      "name": "Mannitol"
+    },
+    {
+      "name": "Methyl jasmonate"
+    },
+    {
+      "name": "N,N-Dimethylaniline"
+    },
+    {
+      "name": "N,N-Dimethylsphingosine"
+    },
+    {
+      "name": "N-Acetyl-D-glucosamine"
+    },
+    {
+      "name": "N-methyl-L-glutamic Acid"
+    },
+    {
+      "name": "Neocnidilide"
+    },
+    {
+      "name": "Niacinamide"
+    },
+    {
+      "name": "Nicotine"
+    },
+    {
+      "name": "Nicotinic acid"
+    },
+    {
+      "name": "Norepinephrine"
+    },
+    {
+      "name": "Nornicotine"
+    },
+    {
+      "name": "OPEO"
+    },
+    {
+      "name": "Octadecanamide"
+    },
+    {
+      "name": "Oleamide"
+    },
+    {
+      "name": "Oleic acid"
+    },
+    {
+      "name": "Palmitic acid"
+    },
+    {
+      "name": "Palmitoleic acid"
+    },
+    {
+      "name": "Pelargonic acid"
+    },
+    {
+      "name": "Pentadecanoic acid"
+    },
+    {
+      "name": "Phenyl acetate"
+    },
+    {
+      "name": "Phenylacetaldehyde"
+    },
+    {
+      "name": "Phenylacetic acid"
+    },
+    {
+      "name": "Phenylethylamine"
+    },
+    {
+      "name": "Phosphonoacetate"
+    },
+    {
+      "name": "Phosphorylcholine"
+    },
+    {
+      "name": "Phthalic acid"
+    },
+    {
+      "name": "Pimelic acid"
+    },
+    {
+      "name": "Porphobilinogen"
+    },
+    {
+      "name": "Pyridoxine"
+    },
+    {
+      "name": "Resorcinol monoacetate"
+    },
+    {
+      "name": "Riboflavin"
+    },
+    {
+      "name": "Scopoline"
+    },
+    {
+      "name": "Se-Methylselenocysteine"
+    },
+    {
+      "name": "Serotonin"
+    },
+    {
+      "name": "Sorbitol"
+    },
+    {
+      "name": "Spermidine"
+    },
+    {
+      "name": "Sphinganine"
+    },
+    {
+      "name": "Sphingosine"
+    },
+    {
+      "name": "Spiroxamine"
+    },
+    {
+      "name": "Stearic acid"
+    },
+    {
+      "name": "Stearidonic acid"
+    },
+    {
+      "name": "Swainsonine"
+    },
+    {
+      "name": "Tetracosanoic acid"
+    },
+    {
+      "name": "Tetrahydrodipicolinate"
+    },
+    {
+      "name": "Thiabendazole"
+    },
+    {
+      "name": "Thymidine"
+    },
+    {
+      "name": "Trigonelline"
+    },
+    {
+      "name": "Uric acid"
+    },
+    {
+      "name": "all-trans-Retinoic acid"
+    },
+    {
+      "name": "alpha-Tocopherol"
+    },
+    {
+      "name": "erythro-3-Hydroxy-Ls-aspartate"
+    },
+    {
+      "name": "gamma-Glutamylcysteine"
+    },
+    {
+      "name": "m-Cresol"
+    },
+    {
+      "name": "myo-Inositol"
+    },
+    {
+      "name": "p-Octopamine"
+    },
+    {
+      "name": "threo-3-Hydroxy-D-aspartate"
+    },
+    {
+      "name": "trans-1,2-Cyclohexanediol"
+    }
+  ],
+  "repository_metadata_file_list": [
+    {
+      "name": "ST004122_AN006834.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004122&ANALYSIS_ID=AN006834"
+      ]
+    },
+    {
+      "name": "ST004122_AN006835.txt",
+      "url_list": [
+        "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004122&ANALYSIS_ID=AN006835"
+      ]
+    }
+  ],
+  "raw_data_file_list": [
+    {
+      "name": "N_1_neg.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_1_neg.mzML"
+      ]
+    },
+    {
+      "name": "N_1_pos.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_1_pos.mzML"
+      ]
+    },
+    {
+      "name": "N_2_neg.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_2_neg.mzML"
+      ]
+    },
+    {
+      "name": "N_2_pos.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_2_pos.mzML"
+      ]
+    },
+    {
+      "name": "N_3_neg.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_3_neg.mzML"
+      ]
+    },
+    {
+      "name": "N_3_pos.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_3_pos.mzML"
+      ]
+    },
+    {
+      "name": "Syn_1_neg.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_1_neg.mzML"
+      ]
+    },
+    {
+      "name": "Syn_1_pos.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_1_pos.mzML"
+      ]
+    },
+    {
+      "name": "Syn_2_neg.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_2_neg.mzML"
+      ]
+    },
+    {
+      "name": "Syn_2_pos.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_2_pos.mzML"
+      ]
+    },
+    {
+      "name": "Syn_3_neg.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_3_neg.mzML"
+      ]
+    },
+    {
+      "name": "Syn_3_pos.mzML",
+      "url_list": [
+        "https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_3_pos.mzML"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Metabolomics Hub Common Data Model Nodes - MHD Base Profile
+# MetabolomicsHub Common Data Model Nodes - MHD Base Profile
 
 Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json</a> 
 
@@ -352,9 +352,9 @@ Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-definition|defined-in|has-parameter-definition|protocol|0|N||
 |parameter-definition|has-instance|instance-of|parameter-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Mass spectrometry instrument)**<br>[Source parameter_type_ref.accession = MSIO:0000171]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Excluded CV Terms:<br>* [MS, MS:1000491, Dionex instrument model],<br>* [MS, MS:1000488, Hitachi instrument model]</code><br>-----|
 |parameter-definition|has-type|type-of|parameter-type|1|1||
+|parameter-definition|used-in|has-parameter-definition|protocol|0|N||
 
 
 **Embedded Relationships**: <code>parameter-type</code>
@@ -366,7 +366,7 @@ Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0
 |------|------------|------------|------|---|---|-----------|
 |parameter-type|type-of|has-type|parameter-definition|0|N||
 |parameter-value|instance-of|has-instance|parameter-definition|1|N||
-|protocol|has-parameter-definition|defined-in|parameter-definition|0|N||
+|protocol|has-parameter-definition|used-in|parameter-definition|0|N||
 
 ### Person
 
@@ -478,7 +478,7 @@ Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>||
 |**protocol_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**protocol-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**protocol-type**</code><br>Allowed CV Terms:<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [MS, MS:1000831, sample preparation],<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [OBI, OBI:0200000, data transform],<br>* [MI, MI:2131, metabolite identification],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [CHMO, CHMO:0001024, capillary electrophoresis],<br>* [MS, MS:1000058, flow injection analysis]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**description**|**required**|<code>*str*<code>||
+|**description**|optional|<code>*str*<code>|Validation Rule:<br> <code></code>|
 |**parameter_definition_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**parameter-definition**</code>|
 
 
@@ -487,7 +487,7 @@ Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |protocol|described-as|describes|descriptor|0|N||
-|protocol|has-parameter-definition|defined-in|parameter-definition|0|N||
+|protocol|has-parameter-definition|used-in|parameter-definition|0|N||
 |protocol|has-type|type-of|protocol-type|1|1||
 |protocol|used-in|follows|assay|0|N||
 |protocol|used-in|has-protocol|study|1|N||
@@ -502,7 +502,7 @@ Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N
 |------|------------|------------|------|---|---|-----------|
 |assay|follows|used-in|protocol|0|N|A link to a protocol conducted in assay.|
 |descriptor|describes|described-as|protocol|0|N||
-|parameter-definition|defined-in|has-parameter-definition|protocol|0|N||
+|parameter-definition|used-in|has-parameter-definition|protocol|0|N||
 |protocol-type|type-of|has-type|protocol|1|N||
 |study|has-protocol|used-in|protocol|0|N||
 
@@ -523,7 +523,7 @@ Publication node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**title**|**required**|<code>*str*<code>||
 |**doi**|**required**|<code>*str*<code>||
-|**pub_med_id**|optional|<code>*str*<code>||
+|**pubmed_id**|optional|<code>*str*<code>||
 |**authors**|optional|<code>*list[Annotated]*<code>||
 
 
@@ -1325,7 +1325,7 @@ graph LR
   Organization[Organization] ==>|described-as| Descriptor[Descriptor];
   Parameter_Definition[Parameter Definition] ==>|has-instance| Parameter_Value[Parameter Value];
   Parameter_Definition[Parameter Definition] ==>|has-type| Parameter_Type[Parameter Type];
-  Parameter_Definition[Parameter Definition] ==>|defined-in| Protocol[Protocol];
+  Parameter_Definition[Parameter Definition] ==>|used-in| Protocol[Protocol];
   Person[Person] ==>|described-as| Descriptor[Descriptor];
   Person[Person] ==>|affiliated-with| Organization[Organization];
   Person[Person] ==>|contributes| Project[Project];

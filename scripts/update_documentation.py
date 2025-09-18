@@ -590,7 +590,7 @@ if __name__ == "__main__":
         parent.mkdir(parents=True, exist_ok=True)
         target_path = parent / Path(target_file_name)
         with target_path.open("w") as f:
-            f.write(f"# Metabolomics Hub Common Data Model Nodes - {profile_name}\n\n")
+            f.write(f"# MetabolomicsHub Common Data Model Nodes - {profile_name}\n\n")
             required_node_items = [x for x in profile.mhd_nodes if x.min > 0]
             required_cv_term_items = [x for x in profile.cv_nodes if x.min > 0]
             required_node_names = {x.node_type for x in required_node_items}

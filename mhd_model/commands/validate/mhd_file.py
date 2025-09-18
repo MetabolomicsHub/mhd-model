@@ -22,7 +22,7 @@ def validate_mhd_file_task(
     mhd_model_file_path: str,
     output_path: None | str,
 ):
-    """Validate MHD announcement file.
+    """Validate MHD model file.
 
     Args:
 
@@ -39,24 +39,25 @@ def validate_mhd_file_task(
         profile: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(
             announcement_file_json
         )
+        click.echo(
+            f"{mhd_study_id}: {mhd_model_file_path} MHD file validation started."
+        )
         click.echo(f"Used schema: {profile.schema_name}")
         click.echo(f"Validation profile: {profile.profile_uri}")
         all_errors = validate_mhd_file(mhd_model_file_path)
-        if all_errors:
-            click.echo(
-                f"{mhd_study_id}: "
-                f"{mhd_model_file_path} has ({len(all_errors)}) validation errors."
-            )
 
     except Exception as ex:
         import traceback
 
         traceback.print_exc()
-        all_errors = {"exception": str(ex)}
+        all_errors = [("exception", str(ex))]
 
     errors_list = []
     for key, error in all_errors:
-        errors_list.append({"key": key, "error": error.message})
+        if hasattr(error, "message"):
+            errors_list.append({"key": key, "error": error.message})
+        else:
+            errors_list.append({"key": key, "error": error})
 
     if output_path:
         output_file = Path(output_path)
@@ -68,12 +69,17 @@ def validate_mhd_file_task(
             }
             json.dump(result, f, indent=4)
     if not errors_list:
-        click.echo(f"{mhd_study_id}: {mhd_model_file_path} validated successfully.")
+        click.echo(
+            f"{mhd_study_id}: File '{mhd_model_file_path}' is validated successfully."
+        )
         exit(0)
+
+    click.echo("")
     click.echo(
         f"{mhd_study_id}: {mhd_model_file_path} has ({len(errors_list)}) validation errors."
     )
-    for item in errors_list:
-        click.echo(f"{item.get('key')}: {item.get('error')}")
-
+    click.echo("-" * 100)
+    for idx, item in enumerate(errors_list, start=1):
+        click.echo(f"{idx}\t{item.get('key')}\t{item.get('error')}")
+    click.echo("-" * 100)
     exit(1)
