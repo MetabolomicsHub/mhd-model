@@ -20,7 +20,7 @@ from mhd_model.utils import json_path
 @click.option(
     "--output-path",
     default=None,
-    help="Validation output ",
+    help="Validation output file path",
 )
 @click.argument("mhd_study_id")
 @click.argument("announcement_file_path")

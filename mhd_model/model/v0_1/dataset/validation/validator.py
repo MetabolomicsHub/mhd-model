@@ -3,7 +3,7 @@ from typing import Any
 
 import jsonschema
 import jsonschema.protocols
-from jsonschema import protocols
+from jsonschema import protocols, validators
 
 from mhd_model.model.definitions import (
     MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
@@ -20,7 +20,6 @@ from mhd_model.model.v0_1.dataset.validation.base import MhdModelValidator
 from mhd_model.schema_utils import load_mhd_json_schema
 from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
-from mhd_model.shared.validation import validators
 from mhd_model.utils import json_path, load_json
 
 logger = logging.getLogger(__name__)
@@ -79,6 +78,25 @@ def new_validator(
             )
             logger.info("Loaded schema: %s, profile: %s.", schema_uri, profile_uri)
             return validator(schema_file)
+    return None
+
+
+def get_profile(schema_uri: None | str, profile_uri: None | str) -> protocols.Validator:
+    if not schema_uri:
+        schema_uri = SUPPORTED_SCHEMA_MAP.schemas[
+            SUPPORTED_SCHEMA_MAP.default_schema_uri
+        ]
+    if schema_uri in SUPPORTED_SCHEMA_MAP.schemas:
+        schema = SUPPORTED_SCHEMA_MAP.schemas.get(schema_uri)
+        if not profile_uri:
+            profile_uri = schema.default_profile_uri
+
+        if (
+            schema.supported_profiles.get(profile_uri)
+            and profile_uri in MHD_PROFILE_VALIDATIONS_V0_1
+        ):
+            return MHD_PROFILE_VALIDATIONS_V0_1[profile_uri]
+
     return None
 
 

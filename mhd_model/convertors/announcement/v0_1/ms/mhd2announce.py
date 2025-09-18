@@ -261,7 +261,7 @@ def collect_cvterm_sources(obj: BaseModel, cv_sources: set[str]):
 def create_announcement_file(
     mhd_file: dict[str, Any],
     mhd_file_url: str,
-    annoucement_file_path: str,
+    announcement_file_path: str,
     announcement_schema_name: str = ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
     announcement_profile_uri=ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
 ):
@@ -493,9 +493,9 @@ def create_announcement_file(
             announcement.cv_definitions.append(
                 CvDefinition(label=source, alternative_labels=[source.lower()])
             )
-    logger.info("Writing to %s", annoucement_file_path)
-    Path(annoucement_file_path).parent.mkdir(parents=True, exist_ok=True)
-    with Path(annoucement_file_path).open("w") as f:
+    logger.info("Writing to %s", announcement_file_path)
+    Path(announcement_file_path).parent.mkdir(parents=True, exist_ok=True)
+    with Path(announcement_file_path).open("w") as f:
         f.write(
             announcement.model_dump_json(indent=2, by_alias=True, exclude_none=True)
         )

@@ -600,9 +600,9 @@ def find_all_linked_nodes(
     #         announcement.cv_definitions.append(
     #             CvDefinition(label=source, alternative_labels=[source.lower()])
     #         )
-    # logger.info("Writing to %s", annoucement_file_path)
-    # Path(annoucement_file_path).parent.mkdir(parents=True, exist_ok=True)
-    # with Path(annoucement_file_path).open("w") as f:
+    # logger.info("Writing to %s", announcement_file_path)
+    # Path(announcement_file_path).parent.mkdir(parents=True, exist_ok=True)
+    # with Path(announcement_file_path).open("w") as f:
     #     f.write(
     #         announcement.model_dump_json(indent=2, by_alias=True, exclude_none=True)
     #     )
