@@ -77,4 +77,3 @@ def validate_mhd_file_task(
         click.echo(f"{item.get('key')}: {item.get('error')}")
 
     exit(1)
-

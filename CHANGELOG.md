@@ -1,3 +1,9 @@
+## v0.1.19 (2025-09-18)
+
+### Fix
+
+- mhd model validation command is added.
+
 ## v0.1.18 (2025-09-18)
 
 ### Fix
