@@ -25,7 +25,7 @@
           "Data transformation",
           "Metabolite identification"
         ],
-        "name": "Fatal COVID-19 pulmonary disease involves ferroptosis."
+        "label": "Fatal COVID-19 pulmonary disease involves ferroptosis."
       }
     },
     {
@@ -93,7 +93,8 @@
           "200523-QC-Neg04",
           "200523-QC-Neg05",
           "200523-QC-Neg06"
-        ]
+        ],
+        "label": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
       }
     },
     {
@@ -161,7 +162,8 @@
           "200523-QC-Pos04",
           "200523-QC-Pos05",
           "200523-QC-Pos06"
-        ]
+        ],
+        "label": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
       }
     },
     {
@@ -172,7 +174,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "organism",
-        "characteristic_type": "organism"
+        "characteristic_type": "organism",
+        "label": "organism"
       }
     },
     {
@@ -183,7 +186,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "organism part",
-        "characteristic_type": "organism part"
+        "characteristic_type": "organism part",
+        "label": "organism part"
       }
     },
     {
@@ -194,7 +198,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "sample type",
-        "characteristic_type": "sample type"
+        "characteristic_type": "sample type",
+        "label": "sample type"
       }
     },
     {
@@ -205,7 +210,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "variant",
-        "characteristic_type": "variant"
+        "characteristic_type": "variant",
+        "label": "variant"
       }
     },
     {
@@ -216,7 +222,8 @@
       "properties": {
         "type_": "factor-definition",
         "name": "Disease",
-        "factor_type": "disease"
+        "factor_type": "disease",
+        "label": "Disease"
       }
     },
     {
@@ -227,7 +234,8 @@
       "properties": {
         "type_": "factor-definition",
         "name": "Replicate",
-        "factor_type": "replicate"
+        "factor_type": "replicate",
+        "label": "Replicate"
       }
     },
     {
@@ -237,7 +245,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "CE 20:1"
+        "name": "CE 20:1",
+        "label": "CE 20:1"
       }
     },
     {
@@ -247,7 +256,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "CE 20:2"
+        "name": "CE 20:2",
+        "label": "CE 20:2"
       }
     },
     {
@@ -257,7 +267,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "CE 22:3"
+        "name": "CE 22:3",
+        "label": "CE 22:3"
       }
     },
     {
@@ -267,7 +278,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "CE 22:4"
+        "name": "CE 22:4",
+        "label": "CE 22:4"
       }
     },
     {
@@ -277,7 +289,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Cholesterol"
+        "name": "Cholesterol",
+        "label": "Cholesterol"
       }
     },
     {
@@ -287,7 +300,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 16:0_16:0"
+        "name": "DG 16:0_16:0",
+        "label": "DG 16:0_16:0"
       }
     },
     {
@@ -297,7 +311,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 16:0_18:0"
+        "name": "DG 16:0_18:0",
+        "label": "DG 16:0_18:0"
       }
     },
     {
@@ -307,7 +322,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 16:0_18:1"
+        "name": "DG 16:0_18:1",
+        "label": "DG 16:0_18:1"
       }
     },
     {
@@ -317,7 +333,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 18:0_20:4"
+        "name": "DG 18:0_20:4",
+        "label": "DG 18:0_20:4"
       }
     },
     {
@@ -327,7 +344,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 34:0"
+        "name": "DG 34:0",
+        "label": "DG 34:0"
       }
     },
     {
@@ -337,7 +355,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 36:1a"
+        "name": "DG 36:1a",
+        "label": "DG 36:1a"
       }
     },
     {
@@ -347,7 +366,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 36:1b"
+        "name": "DG 36:1b",
+        "label": "DG 36:1b"
       }
     },
     {
@@ -357,7 +377,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 36:2"
+        "name": "DG 36:2",
+        "label": "DG 36:2"
       }
     },
     {
@@ -367,7 +388,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 38:4"
+        "name": "DG 38:4",
+        "label": "DG 38:4"
       }
     },
     {
@@ -377,7 +399,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG 38:5"
+        "name": "DG 38:5",
+        "label": "DG 38:5"
       }
     },
     {
@@ -387,7 +410,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "DG40:8"
+        "name": "DG40:8",
+        "label": "DG40:8"
       }
     },
     {
@@ -397,7 +421,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 14:1"
+        "name": "FA 14:1",
+        "label": "FA 14:1"
       }
     },
     {
@@ -407,7 +432,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 16:1"
+        "name": "FA 16:1",
+        "label": "FA 16:1"
       }
     },
     {
@@ -417,7 +443,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 20:1"
+        "name": "FA 20:1",
+        "label": "FA 20:1"
       }
     },
     {
@@ -427,7 +454,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 20:2"
+        "name": "FA 20:2",
+        "label": "FA 20:2"
       }
     },
     {
@@ -437,7 +465,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 20:3"
+        "name": "FA 20:3",
+        "label": "FA 20:3"
       }
     },
     {
@@ -447,7 +476,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 20:4"
+        "name": "FA 20:4",
+        "label": "FA 20:4"
       }
     },
     {
@@ -457,7 +487,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 22:2"
+        "name": "FA 22:2",
+        "label": "FA 22:2"
       }
     },
     {
@@ -467,7 +498,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 22:4"
+        "name": "FA 22:4",
+        "label": "FA 22:4"
       }
     },
     {
@@ -477,7 +509,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 22:5"
+        "name": "FA 22:5",
+        "label": "FA 22:5"
       }
     },
     {
@@ -487,7 +520,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 22:6"
+        "name": "FA 22:6",
+        "label": "FA 22:6"
       }
     },
     {
@@ -497,7 +531,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "FA 24:2"
+        "name": "FA 24:2",
+        "label": "FA 24:2"
       }
     },
     {
@@ -507,7 +542,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPC 16:0"
+        "name": "LPC 16:0",
+        "label": "LPC 16:0"
       }
     },
     {
@@ -517,7 +553,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPC 17:1"
+        "name": "LPC 17:1",
+        "label": "LPC 17:1"
       }
     },
     {
@@ -527,7 +564,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPC 18:1"
+        "name": "LPC 18:1",
+        "label": "LPC 18:1"
       }
     },
     {
@@ -537,7 +575,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPC 18:2"
+        "name": "LPC 18:2",
+        "label": "LPC 18:2"
       }
     },
     {
@@ -547,7 +586,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPC 20:4"
+        "name": "LPC 20:4",
+        "label": "LPC 20:4"
       }
     },
     {
@@ -557,7 +597,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPC O-18:1"
+        "name": "LPC O-18:1",
+        "label": "LPC O-18:1"
       }
     },
     {
@@ -567,7 +608,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPE O-16:0"
+        "name": "LPE O-16:0",
+        "label": "LPE O-16:0"
       }
     },
     {
@@ -577,7 +619,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPE O-16:1"
+        "name": "LPE O-16:1",
+        "label": "LPE O-16:1"
       }
     },
     {
@@ -587,7 +630,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPE O-18:2"
+        "name": "LPE O-18:2",
+        "label": "LPE O-18:2"
       }
     },
     {
@@ -597,7 +641,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "LPI 18:0"
+        "name": "LPI 18:0",
+        "label": "LPI 18:0"
       }
     },
     {
@@ -607,7 +652,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "NeuAcHexCer 38:0;O2"
+        "name": "NeuAcHexCer 38:0;O2",
+        "label": "NeuAcHexCer 38:0;O2"
       }
     },
     {
@@ -617,7 +663,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "NeuAcHexCer 38:1;O2"
+        "name": "NeuAcHexCer 38:1;O2",
+        "label": "NeuAcHexCer 38:1;O2"
       }
     },
     {
@@ -627,7 +674,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "NeuAcHexCer 40:1;O2"
+        "name": "NeuAcHexCer 40:1;O2",
+        "label": "NeuAcHexCer 40:1;O2"
       }
     },
     {
@@ -637,7 +685,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 16:0_16:0"
+        "name": "PC 16:0_16:0",
+        "label": "PC 16:0_16:0"
       }
     },
     {
@@ -647,7 +696,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 16:0_17:0"
+        "name": "PC 16:0_17:0",
+        "label": "PC 16:0_17:0"
       }
     },
     {
@@ -657,7 +707,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 16:0_20:5"
+        "name": "PC 16:0_20:5",
+        "label": "PC 16:0_20:5"
       }
     },
     {
@@ -667,7 +718,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 16:1_20:4"
+        "name": "PC 16:1_20:4",
+        "label": "PC 16:1_20:4"
       }
     },
     {
@@ -677,7 +729,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 18:0_20:5"
+        "name": "PC 18:0_20:5",
+        "label": "PC 18:0_20:5"
       }
     },
     {
@@ -687,7 +740,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 34:3"
+        "name": "PC 34:3",
+        "label": "PC 34:3"
       }
     },
     {
@@ -697,7 +751,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 36:1"
+        "name": "PC 36:1",
+        "label": "PC 36:1"
       }
     },
     {
@@ -707,7 +762,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PC 38:5"
+        "name": "PC 38:5",
+        "label": "PC 38:5"
       }
     },
     {
@@ -717,7 +773,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE 16:1_20:4"
+        "name": "PE 16:1_20:4",
+        "label": "PE 16:1_20:4"
       }
     },
     {
@@ -727,7 +784,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE 16:1_22:5"
+        "name": "PE 16:1_22:5",
+        "label": "PE 16:1_22:5"
       }
     },
     {
@@ -737,7 +795,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE 18:0_20:5"
+        "name": "PE 18:0_20:5",
+        "label": "PE 18:0_20:5"
       }
     },
     {
@@ -747,7 +806,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE 36:5"
+        "name": "PE 36:5",
+        "label": "PE 36:5"
       }
     },
     {
@@ -757,7 +817,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE 38:1"
+        "name": "PE 38:1",
+        "label": "PE 38:1"
       }
     },
     {
@@ -767,7 +828,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE O-35:2"
+        "name": "PE O-35:2",
+        "label": "PE O-35:2"
       }
     },
     {
@@ -777,7 +839,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE O-36:6"
+        "name": "PE O-36:6",
+        "label": "PE O-36:6"
       }
     },
     {
@@ -787,7 +850,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE O-38:5"
+        "name": "PE O-38:5",
+        "label": "PE O-38:5"
       }
     },
     {
@@ -797,7 +861,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE P-16:0_20:5"
+        "name": "PE P-16:0_20:5",
+        "label": "PE P-16:0_20:5"
       }
     },
     {
@@ -807,7 +872,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE P-18:1_17:0"
+        "name": "PE P-18:1_17:0",
+        "label": "PE P-18:1_17:0"
       }
     },
     {
@@ -817,7 +883,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE P-18:1_20:4"
+        "name": "PE P-18:1_20:4",
+        "label": "PE P-18:1_20:4"
       }
     },
     {
@@ -827,7 +894,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE P-18:1_20:5"
+        "name": "PE P-18:1_20:5",
+        "label": "PE P-18:1_20:5"
       }
     },
     {
@@ -837,7 +905,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PE P-36:1"
+        "name": "PE P-36:1",
+        "label": "PE P-36:1"
       }
     },
     {
@@ -847,7 +916,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 16:0_16:0"
+        "name": "PG 16:0_16:0",
+        "label": "PG 16:0_16:0"
       }
     },
     {
@@ -857,7 +927,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 16:0_18:0"
+        "name": "PG 16:0_18:0",
+        "label": "PG 16:0_18:0"
       }
     },
     {
@@ -867,7 +938,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 16:0_18:1a"
+        "name": "PG 16:0_18:1a",
+        "label": "PG 16:0_18:1a"
       }
     },
     {
@@ -877,7 +949,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 16:0_18:1b"
+        "name": "PG 16:0_18:1b",
+        "label": "PG 16:0_18:1b"
       }
     },
     {
@@ -887,7 +960,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 16:0_22:6"
+        "name": "PG 16:0_22:6",
+        "label": "PG 16:0_22:6"
       }
     },
     {
@@ -897,7 +971,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 16:1_20:4"
+        "name": "PG 16:1_20:4",
+        "label": "PG 16:1_20:4"
       }
     },
     {
@@ -907,7 +982,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 18:0_18:1"
+        "name": "PG 18:0_18:1",
+        "label": "PG 18:0_18:1"
       }
     },
     {
@@ -917,7 +993,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 18:0_22:6a"
+        "name": "PG 18:0_22:6a",
+        "label": "PG 18:0_22:6a"
       }
     },
     {
@@ -927,7 +1004,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 18:0_22:6b"
+        "name": "PG 18:0_22:6b",
+        "label": "PG 18:0_22:6b"
       }
     },
     {
@@ -937,7 +1015,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 18:1_18:1"
+        "name": "PG 18:1_18:1",
+        "label": "PG 18:1_18:1"
       }
     },
     {
@@ -947,7 +1026,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 22:6_22:6"
+        "name": "PG 22:6_22:6",
+        "label": "PG 22:6_22:6"
       }
     },
     {
@@ -957,7 +1037,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "PG 36:1"
+        "name": "PG 36:1",
+        "label": "PG 36:1"
       }
     },
     {
@@ -967,7 +1048,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "SM 38:1;O2"
+        "name": "SM 38:1;O2",
+        "label": "SM 38:1;O2"
       }
     },
     {
@@ -977,7 +1059,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "SM 40:1;O2"
+        "name": "SM 40:1;O2",
+        "label": "SM 40:1;O2"
       }
     },
     {
@@ -987,7 +1070,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "SM 41:1;O2"
+        "name": "SM 41:1;O2",
+        "label": "SM 41:1;O2"
       }
     },
     {
@@ -997,7 +1081,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "SM 42:1;O2"
+        "name": "SM 42:1;O2",
+        "label": "SM 42:1;O2"
       }
     },
     {
@@ -1007,7 +1092,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "SM 42:2;O2"
+        "name": "SM 42:2;O2",
+        "label": "SM 42:2;O2"
       }
     },
     {
@@ -1017,7 +1103,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "SM 43:2;O2"
+        "name": "SM 43:2;O2",
+        "label": "SM 43:2;O2"
       }
     },
     {
@@ -1027,7 +1114,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "SM 44:2;O2"
+        "name": "SM 44:2;O2",
+        "label": "SM 44:2;O2"
       }
     },
     {
@@ -1037,7 +1125,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TAG 18:1_20:1_22:3"
+        "name": "TAG 18:1_20:1_22:3",
+        "label": "TAG 18:1_20:1_22:3"
       }
     },
     {
@@ -1047,7 +1136,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG  16:0_26:1"
+        "name": "TG  16:0_26:1",
+        "label": "TG  16:0_26:1"
       }
     },
     {
@@ -1057,7 +1147,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG  16:0_28:1"
+        "name": "TG  16:0_28:1",
+        "label": "TG  16:0_28:1"
       }
     },
     {
@@ -1067,7 +1158,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_16:1_12:1"
+        "name": "TG 16:0_16:1_12:1",
+        "label": "TG 16:0_16:1_12:1"
       }
     },
     {
@@ -1077,7 +1169,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_16:1_14:0"
+        "name": "TG 16:0_16:1_14:0",
+        "label": "TG 16:0_16:1_14:0"
       }
     },
     {
@@ -1087,7 +1180,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_16:1_14:1"
+        "name": "TG 16:0_16:1_14:1",
+        "label": "TG 16:0_16:1_14:1"
       }
     },
     {
@@ -1097,7 +1191,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_16:1_16:2"
+        "name": "TG 16:0_16:1_16:2",
+        "label": "TG 16:0_16:1_16:2"
       }
     },
     {
@@ -1107,7 +1202,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_16:1_17:1"
+        "name": "TG 16:0_16:1_17:1",
+        "label": "TG 16:0_16:1_17:1"
       }
     },
     {
@@ -1117,7 +1213,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_16:2_16:2"
+        "name": "TG 16:0_16:2_16:2",
+        "label": "TG 16:0_16:2_16:2"
       }
     },
     {
@@ -1127,7 +1224,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_18:1_17:1"
+        "name": "TG 16:0_18:1_17:1",
+        "label": "TG 16:0_18:1_17:1"
       }
     },
     {
@@ -1137,7 +1235,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_18:1_17:2"
+        "name": "TG 16:0_18:1_17:2",
+        "label": "TG 16:0_18:1_17:2"
       }
     },
     {
@@ -1147,7 +1246,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_18:1_22:4"
+        "name": "TG 16:0_18:1_22:4",
+        "label": "TG 16:0_18:1_22:4"
       }
     },
     {
@@ -1157,7 +1257,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_32:1"
+        "name": "TG 16:0_32:1",
+        "label": "TG 16:0_32:1"
       }
     },
     {
@@ -1167,7 +1268,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_33:1"
+        "name": "TG 16:0_33:1",
+        "label": "TG 16:0_33:1"
       }
     },
     {
@@ -1177,7 +1279,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_34:5"
+        "name": "TG 16:0_34:5",
+        "label": "TG 16:0_34:5"
       }
     },
     {
@@ -1187,7 +1290,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_36:3"
+        "name": "TG 16:0_36:3",
+        "label": "TG 16:0_36:3"
       }
     },
     {
@@ -1197,7 +1301,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_36:4"
+        "name": "TG 16:0_36:4",
+        "label": "TG 16:0_36:4"
       }
     },
     {
@@ -1207,7 +1312,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_38:5"
+        "name": "TG 16:0_38:5",
+        "label": "TG 16:0_38:5"
       }
     },
     {
@@ -1217,7 +1323,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:0_38:6"
+        "name": "TG 16:0_38:6",
+        "label": "TG 16:0_38:6"
       }
     },
     {
@@ -1227,7 +1334,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:1_32:1"
+        "name": "TG 16:1_32:1",
+        "label": "TG 16:1_32:1"
       }
     },
     {
@@ -1237,7 +1345,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:1_34:2"
+        "name": "TG 16:1_34:2",
+        "label": "TG 16:1_34:2"
       }
     },
     {
@@ -1247,7 +1356,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:1_34:3"
+        "name": "TG 16:1_34:3",
+        "label": "TG 16:1_34:3"
       }
     },
     {
@@ -1257,7 +1367,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:1_43:2"
+        "name": "TG 16:1_43:2",
+        "label": "TG 16:1_43:2"
       }
     },
     {
@@ -1267,7 +1378,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 16:1_43:4"
+        "name": "TG 16:1_43:4",
+        "label": "TG 16:1_43:4"
       }
     },
     {
@@ -1277,7 +1389,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 17:0_18:1_20:2"
+        "name": "TG 17:0_18:1_20:2",
+        "label": "TG 17:0_18:1_20:2"
       }
     },
     {
@@ -1287,7 +1400,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:0_18:0_18:0"
+        "name": "TG 18:0_18:0_18:0",
+        "label": "TG 18:0_18:0_18:0"
       }
     },
     {
@@ -1297,7 +1411,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:0_36:3"
+        "name": "TG 18:0_36:3",
+        "label": "TG 18:0_36:3"
       }
     },
     {
@@ -1307,7 +1422,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_18:1_18:2"
+        "name": "TG 18:1_18:1_18:2",
+        "label": "TG 18:1_18:1_18:2"
       }
     },
     {
@@ -1317,7 +1433,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_18:2_18:2"
+        "name": "TG 18:1_18:2_18:2",
+        "label": "TG 18:1_18:2_18:2"
       }
     },
     {
@@ -1327,7 +1444,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_18:2_20:3"
+        "name": "TG 18:1_18:2_20:3",
+        "label": "TG 18:1_18:2_20:3"
       }
     },
     {
@@ -1337,7 +1455,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_18:2_22:5"
+        "name": "TG 18:1_18:2_22:5",
+        "label": "TG 18:1_18:2_22:5"
       }
     },
     {
@@ -1347,7 +1466,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_24:1_22:4"
+        "name": "TG 18:1_24:1_22:4",
+        "label": "TG 18:1_24:1_22:4"
       }
     },
     {
@@ -1357,7 +1477,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_32:1"
+        "name": "TG 18:1_32:1",
+        "label": "TG 18:1_32:1"
       }
     },
     {
@@ -1367,7 +1488,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_34:4"
+        "name": "TG 18:1_34:4",
+        "label": "TG 18:1_34:4"
       }
     },
     {
@@ -1377,7 +1499,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_35:2"
+        "name": "TG 18:1_35:2",
+        "label": "TG 18:1_35:2"
       }
     },
     {
@@ -1387,7 +1510,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_38:3"
+        "name": "TG 18:1_38:3",
+        "label": "TG 18:1_38:3"
       }
     },
     {
@@ -1397,7 +1521,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_38:6"
+        "name": "TG 18:1_38:6",
+        "label": "TG 18:1_38:6"
       }
     },
     {
@@ -1407,7 +1532,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_40:4"
+        "name": "TG 18:1_40:4",
+        "label": "TG 18:1_40:4"
       }
     },
     {
@@ -1417,7 +1543,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_40:5"
+        "name": "TG 18:1_40:5",
+        "label": "TG 18:1_40:5"
       }
     },
     {
@@ -1427,7 +1554,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_40:6"
+        "name": "TG 18:1_40:6",
+        "label": "TG 18:1_40:6"
       }
     },
     {
@@ -1437,7 +1565,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:1_42:8"
+        "name": "TG 18:1_42:8",
+        "label": "TG 18:1_42:8"
       }
     },
     {
@@ -1447,7 +1576,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:2_28:1"
+        "name": "TG 18:2_28:1",
+        "label": "TG 18:2_28:1"
       }
     },
     {
@@ -1457,7 +1587,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 18:2_31:1"
+        "name": "TG 18:2_31:1",
+        "label": "TG 18:2_31:1"
       }
     },
     {
@@ -1467,7 +1598,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 20:0_40:4"
+        "name": "TG 20:0_40:4",
+        "label": "TG 20:0_40:4"
       }
     },
     {
@@ -1477,7 +1609,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 20:1_20:3_20:3"
+        "name": "TG 20:1_20:3_20:3",
+        "label": "TG 20:1_20:3_20:3"
       }
     },
     {
@@ -1487,7 +1620,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 20:1_40:5"
+        "name": "TG 20:1_40:5",
+        "label": "TG 20:1_40:5"
       }
     },
     {
@@ -1497,7 +1631,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 20:4_38:0"
+        "name": "TG 20:4_38:0",
+        "label": "TG 20:4_38:0"
       }
     },
     {
@@ -1507,7 +1642,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 48:0"
+        "name": "TG 48:0",
+        "label": "TG 48:0"
       }
     },
     {
@@ -1517,7 +1653,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 57:3"
+        "name": "TG 57:3",
+        "label": "TG 57:3"
       }
     },
     {
@@ -1527,7 +1664,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "TG 57:3"
+        "name": "TG 57:3",
+        "label": "TG 57:3"
       }
     },
     {
@@ -1543,7 +1681,8 @@
         ],
         "name": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
         "format": "ISA-TAB",
-        "extension": ".txt"
+        "extension": ".txt",
+        "label": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
       }
     },
     {
@@ -1559,7 +1698,8 @@
         ],
         "name": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
         "format": "ISA-TAB",
-        "extension": ".txt"
+        "extension": ".txt",
+        "label": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
       }
     },
     {
@@ -1575,7 +1715,8 @@
         ],
         "name": "i_Investigation.txt",
         "format": "ISA-TAB",
-        "extension": ".txt"
+        "extension": ".txt",
+        "label": "i_Investigation.txt"
       }
     },
     {
@@ -1591,7 +1732,8 @@
         ],
         "name": "s_MTBLS3107.txt",
         "format": "ISA-TAB",
-        "extension": ".txt"
+        "extension": ".txt",
+        "label": "s_MTBLS3107.txt"
       }
     },
     {
@@ -1601,8 +1743,9 @@
       ],
       "properties": {
         "type_": "organization",
-        "name": "mhd--organization--52c5d882-d203-4e01-a7ee-d100febb72c6",
-        "address": "2Mass Spectrometry Core Facility, Department of Chemistry, Columbia University, New York, NY 10027, USA"
+        "name": "Chemistry",
+        "address": "2Mass Spectrometry Core Facility, Department of Chemistry, Columbia University, New York, NY 10027, USA",
+        "label": "mhd--organization--52c5d882-d203-4e01-a7ee-d100febb72c6"
       }
     },
     {
@@ -1612,8 +1755,9 @@
       ],
       "properties": {
         "type_": "organization",
-        "name": "mhd--organization--b7f0d9ad-834d-47ed-9372-82f29fb0afaf",
-        "address": "Department of Biological Sciences, Columbia University, New York, NY 10027, USA"
+        "name": "Biological Sciences",
+        "address": "Department of Biological Sciences, Columbia University, New York, NY 10027, USA",
+        "label": "mhd--organization--b7f0d9ad-834d-47ed-9372-82f29fb0afaf"
       }
     },
     {
@@ -1624,7 +1768,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Autosampler model",
-        "parameter_type": "autosampler model"
+        "parameter_type": "autosampler model",
+        "label": "Autosampler model"
       }
     },
     {
@@ -1635,7 +1780,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Chromatography Instrument",
-        "parameter_type": "chromatography instrument"
+        "parameter_type": "chromatography instrument",
+        "label": "Chromatography Instrument"
       }
     },
     {
@@ -1646,7 +1792,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Column model",
-        "parameter_type": "column model"
+        "parameter_type": "column model",
+        "label": "Column model"
       }
     },
     {
@@ -1657,7 +1804,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Column type",
-        "parameter_type": "column type"
+        "parameter_type": "column type",
+        "label": "Column type"
       }
     },
     {
@@ -1668,7 +1816,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Derivatization",
-        "parameter_type": "derivatization"
+        "parameter_type": "derivatization",
+        "label": "Derivatization"
       }
     },
     {
@@ -1679,7 +1828,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Guard column",
-        "parameter_type": "guard column"
+        "parameter_type": "guard column",
+        "label": "Guard column"
       }
     },
     {
@@ -1690,7 +1840,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Instrument",
-        "parameter_type": "mass spectrometry instrument"
+        "parameter_type": "mass spectrometry instrument",
+        "label": "Instrument"
       }
     },
     {
@@ -1701,7 +1852,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Ion source",
-        "parameter_type": "ion source"
+        "parameter_type": "ion source",
+        "label": "Ion source"
       }
     },
     {
@@ -1712,7 +1864,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Mass analyzer",
-        "parameter_type": "mass analyzer"
+        "parameter_type": "mass analyzer",
+        "label": "Mass analyzer"
       }
     },
     {
@@ -1723,7 +1876,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Post Extraction",
-        "parameter_type": "post extraction"
+        "parameter_type": "post extraction",
+        "label": "Post Extraction"
       }
     },
     {
@@ -1734,7 +1888,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Scan m/z range",
-        "parameter_type": "scan m/z range"
+        "parameter_type": "scan m/z range",
+        "label": "Scan m/z range"
       }
     },
     {
@@ -1745,7 +1900,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "Scan polarity",
-        "parameter_type": "scan polarity"
+        "parameter_type": "scan polarity",
+        "label": "Scan polarity"
       }
     },
     {
@@ -1756,7 +1912,7 @@
       "properties": {
         "type_": "person",
         "full_name": "Baiyu Qiu",
-        "name": "Baiyu Qiu"
+        "label": "Baiyu Qiu"
       }
     },
     {
@@ -1773,7 +1929,7 @@
         "addresses": [
           "Department of Biological Sciences, Columbia University, New York, NY 10027, USA"
         ],
-        "name": "bstockwell@columbia.edu"
+        "label": "bstockwell@columbia.edu"
       }
     },
     {
@@ -1793,7 +1949,7 @@
         "addresses": [
           "2Mass Spectrometry Core Facility, Department of Chemistry, Columbia University, New York, NY 10027, USA"
         ],
-        "name": "fz2262@columbia.edu"
+        "label": "fz2262@columbia.edu"
       }
     },
     {
@@ -1812,7 +1968,8 @@
           "Column model",
           "Column type",
           "Guard column"
-        ]
+        ],
+        "label": "Chromatography"
       }
     },
     {
@@ -1824,7 +1981,8 @@
         "type_": "protocol",
         "name": "Data transformation",
         "protocol_type": "data transform",
-        "description": "<p>The <strong>raw</strong> LC-MS data files were converted to the <strong>netCDF</strong> format using the <strong>DataBridge tool</strong> implemented in <strong>MassLynx software (v4.2, Waters)</strong>. Then, they were subjected to peak-picking, retention time alignment and grouping using the <strong>XCMS package</strong> in the <strong>R (v4.0)</strong> environment. Statistical analysis was performed in <strong>R (v4.0)</strong> environment and <strong>MetaboAnalyst R (v3.0)</strong>. The extracted lipid features were normalized by total protein concentrations, median normalization and log-transformed within each sample before statistical analyses. Group differences were calculated using the <strong>Welch t-test</strong>. The <strong>Benjamin-Hochberg (BH) method</strong> was also applied for multiple testing corrections, and the adjusted p values were calculated to control the <strong>false discovery rate</strong> for each test. The adjusted p values lower than 0.05 were considered statistically significant (<strong>FDR-corrected p&lt;0.05</strong>) with a <strong>fold change threshold</strong> of 1.5 was considered as statistically significant.</p>"
+        "description": "<p>The <strong>raw</strong> LC-MS data files were converted to the <strong>netCDF</strong> format using the <strong>DataBridge tool</strong> implemented in <strong>MassLynx software (v4.2, Waters)</strong>. Then, they were subjected to peak-picking, retention time alignment and grouping using the <strong>XCMS package</strong> in the <strong>R (v4.0)</strong> environment. Statistical analysis was performed in <strong>R (v4.0)</strong> environment and <strong>MetaboAnalyst R (v3.0)</strong>. The extracted lipid features were normalized by total protein concentrations, median normalization and log-transformed within each sample before statistical analyses. Group differences were calculated using the <strong>Welch t-test</strong>. The <strong>Benjamin-Hochberg (BH) method</strong> was also applied for multiple testing corrections, and the adjusted p values were calculated to control the <strong>false discovery rate</strong> for each test. The adjusted p values lower than 0.05 were considered statistically significant (<strong>FDR-corrected p&lt;0.05</strong>) with a <strong>fold change threshold</strong> of 1.5 was considered as statistically significant.</p>",
+        "label": "Data transformation"
       }
     },
     {
@@ -1840,7 +1998,8 @@
         "parameter_definition_list": [
           "Post Extraction",
           "Derivatization"
-        ]
+        ],
+        "label": "Extraction"
       }
     },
     {
@@ -1859,7 +2018,8 @@
           "Instrument",
           "Ion source",
           "Mass analyzer"
-        ]
+        ],
+        "label": "Mass spectrometry"
       }
     },
     {
@@ -1871,7 +2031,8 @@
         "type_": "protocol",
         "name": "Metabolite identification",
         "protocol_type": "metabolite identification",
-        "description": "<p>Identification of detected lipid features was initially obtained by searching monoisotopic masses against the available online databases such as <strong>METLIN</strong>, <strong>Lipid MAPS</strong>, and <strong>HMDB</strong> with a mass tolerance of 5 ppm. Moreover, isotopic patterns and retention time of each lipid precursor ion were assessed. Structural elucidation of lipids confirmed by inspecting the diagnostic fragment ions and corresponding acyl chain fragment information obtained by UPLC-HDMSE. The nomenclature and shortened annotation of lipids proposed by the <strong>Lipid Maps Consortium</strong> were employed<strong>[1]</strong>.</p><p><br></p><p><strong>Ref:</strong></p><p><strong>[1]</strong> Liebisch G, Fahy E, Aoki J, Dennis EA, Durand T, Ejsing CS, Fedorova M, Feussner I, Griffiths WJ, K\u00f6feler H, Merrill AH Jr, Murphy RC, O'Donnell VB, Oskolkova O, Subramaniam S, Wakelam MJO, Spener F. Update on LIPID MAPS classification, nomenclature, and shorthand notation for MS-derived lipid structures. J Lipid Res. 2020 Dec;61(12):1539-1555. doi:10.1194/jlr.S120001025. PMID: 33037133.</p>"
+        "description": "<p>Identification of detected lipid features was initially obtained by searching monoisotopic masses against the available online databases such as <strong>METLIN</strong>, <strong>Lipid MAPS</strong>, and <strong>HMDB</strong> with a mass tolerance of 5 ppm. Moreover, isotopic patterns and retention time of each lipid precursor ion were assessed. Structural elucidation of lipids confirmed by inspecting the diagnostic fragment ions and corresponding acyl chain fragment information obtained by UPLC-HDMSE. The nomenclature and shortened annotation of lipids proposed by the <strong>Lipid Maps Consortium</strong> were employed<strong>[1]</strong>.</p><p><br></p><p><strong>Ref:</strong></p><p><strong>[1]</strong> Liebisch G, Fahy E, Aoki J, Dennis EA, Durand T, Ejsing CS, Fedorova M, Feussner I, Griffiths WJ, K\u00f6feler H, Merrill AH Jr, Murphy RC, O'Donnell VB, Oskolkova O, Subramaniam S, Wakelam MJO, Spener F. Update on LIPID MAPS classification, nomenclature, and shorthand notation for MS-derived lipid structures. J Lipid Res. 2020 Dec;61(12):1539-1555. doi:10.1194/jlr.S120001025. PMID: 33037133.</p>",
+        "label": "Metabolite identification"
       }
     },
     {
@@ -1883,7 +2044,8 @@
         "type_": "protocol",
         "name": "Sample collection",
         "protocol_type": "sample collection protocol",
-        "description": "<p><strong>Study participant details:</strong></p><p>The study involving human subject was conducted under the Institutional Review Board of Columbia University (AAAT0388, approved 04/28/2020). All human samples were obtained from the Columbia University tissue bank. Severe COVID-19 lung autopsies with ALI and non-ALI pathology were collected from patients deceased from respiratory failure caused by SARS-CoV-2 infection. Severe lung explants were collected from patients with severe COVID-19 disease. Mild COVID-19 lung explants/biopsies were selected from patients recovered from SARS-CoV-2 infection. Control lungs were selected from resections of pneumothorax lungs and neoplastic lungs that had no lung injury and were not infected with SARS-CoV-2. Non-COVID-19 control lung autopsies with ALI were collected from patients deceased from respiratory failure before the pandemic. Both male and female patients were equally involved. The sex and age of all subjects involved are provided in <strong>Data S1</strong> in the paper associated with this study. Consents were obtained for all patient samples obtained from the Columbia University tissue bank. The initial and last laboratory ferritin test records were obtained from severe COVID-19 patients involved in this study. Patient serum was collected during routine blood test and an immunoassay against ferritin was performed on the Roche analyzer in the Automated Lab.</p><p><br></p><p><strong>Tissue pathology examination:</strong></p><p>Lung tissue block smaller than 4 mm x 4 mm x 4 mm were fixed in 4% paraformaldehyde (PFA) for over 24 h. Tissues were washed 3 times with PBS and then paraffinized using Sakura VIP 5 tissue processor. Paraffinized tissues were sectioned at 5 mm and mounted onto slides. FFPE tissue sections were stained with hematoxylin and eosin (H&amp;E) and scanned using Leica AT2 whole slide digital imaging at 40x. The scanned whole slide images were annotated for injury and image border using QuPath (v0.4.3). Percentage injured area was calculated by dividing the sum of injured areas by total area and multiplying by 100%. For kidney and heart tissue evaluation, a practicing renal/cardiovascular pathologist blind to the animals' conditions/treatments performed light microscopic evaluated of H&amp;E FFPE tissue from the sampled kidneys and hearts. </p><p><br></p>"
+        "description": "<p><strong>Study participant details:</strong></p><p>The study involving human subject was conducted under the Institutional Review Board of Columbia University (AAAT0388, approved 04/28/2020). All human samples were obtained from the Columbia University tissue bank. Severe COVID-19 lung autopsies with ALI and non-ALI pathology were collected from patients deceased from respiratory failure caused by SARS-CoV-2 infection. Severe lung explants were collected from patients with severe COVID-19 disease. Mild COVID-19 lung explants/biopsies were selected from patients recovered from SARS-CoV-2 infection. Control lungs were selected from resections of pneumothorax lungs and neoplastic lungs that had no lung injury and were not infected with SARS-CoV-2. Non-COVID-19 control lung autopsies with ALI were collected from patients deceased from respiratory failure before the pandemic. Both male and female patients were equally involved. The sex and age of all subjects involved are provided in <strong>Data S1</strong> in the paper associated with this study. Consents were obtained for all patient samples obtained from the Columbia University tissue bank. The initial and last laboratory ferritin test records were obtained from severe COVID-19 patients involved in this study. Patient serum was collected during routine blood test and an immunoassay against ferritin was performed on the Roche analyzer in the Automated Lab.</p><p><br></p><p><strong>Tissue pathology examination:</strong></p><p>Lung tissue block smaller than 4 mm x 4 mm x 4 mm were fixed in 4% paraformaldehyde (PFA) for over 24 h. Tissues were washed 3 times with PBS and then paraffinized using Sakura VIP 5 tissue processor. Paraffinized tissues were sectioned at 5 mm and mounted onto slides. FFPE tissue sections were stained with hematoxylin and eosin (H&amp;E) and scanned using Leica AT2 whole slide digital imaging at 40x. The scanned whole slide images were annotated for injury and image border using QuPath (v0.4.3). Percentage injured area was calculated by dividing the sum of injured areas by total area and multiplying by 100%. For kidney and heart tissue evaluation, a practicing renal/cardiovascular pathologist blind to the animals' conditions/treatments performed light microscopic evaluated of H&amp;E FFPE tissue from the sampled kidneys and hearts. </p><p><br></p>",
+        "label": "Sample collection"
       }
     },
     {
@@ -1909,7 +2071,7 @@
           "Uchida K",
           "Stockwell BR."
         ],
-        "name": "10.1038/s41467-024-48055-0"
+        "label": "10.1038/s41467-024-48055-0"
       }
     },
     {
@@ -1924,7 +2086,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-QC-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-QC-Neg01.raw"
       }
     },
     {
@@ -1939,7 +2102,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-QC-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-QC-Neg02.raw"
       }
     },
     {
@@ -1954,7 +2118,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-QC-Neg03.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-QC-Neg03.raw"
       }
     },
     {
@@ -1969,7 +2134,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-QC-Neg04.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-QC-Neg04.raw"
       }
     },
     {
@@ -1984,7 +2150,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-QC-Neg05.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-QC-Neg05.raw"
       }
     },
     {
@@ -1999,7 +2166,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-QC-Neg06.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-QC-Neg06.raw"
       }
     },
     {
@@ -2014,7 +2182,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw"
       }
     },
     {
@@ -2029,7 +2198,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw"
       }
     },
     {
@@ -2044,7 +2214,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw"
       }
     },
     {
@@ -2059,7 +2230,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw"
       }
     },
     {
@@ -2074,7 +2246,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw"
       }
     },
     {
@@ -2089,7 +2262,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw"
       }
     },
     {
@@ -2104,7 +2278,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw"
       }
     },
     {
@@ -2119,7 +2294,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw"
       }
     },
     {
@@ -2134,7 +2310,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw"
       }
     },
     {
@@ -2149,7 +2326,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw"
       }
     },
     {
@@ -2164,7 +2342,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw"
       }
     },
     {
@@ -2179,7 +2358,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw"
       }
     },
     {
@@ -2194,7 +2374,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw"
       }
     },
     {
@@ -2209,7 +2390,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw"
       }
     },
     {
@@ -2224,7 +2406,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw"
       }
     },
     {
@@ -2239,7 +2422,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw"
       }
     },
     {
@@ -2254,7 +2438,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw"
       }
     },
     {
@@ -2269,7 +2454,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw"
       }
     },
     {
@@ -2284,7 +2470,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw"
       }
     },
     {
@@ -2299,7 +2486,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw"
       }
     },
     {
@@ -2314,7 +2502,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw"
       }
     },
     {
@@ -2329,7 +2518,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw"
       }
     },
     {
@@ -2344,7 +2534,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw"
       }
     },
     {
@@ -2359,7 +2550,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw"
       }
     },
     {
@@ -2374,7 +2566,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw"
       }
     },
     {
@@ -2389,7 +2582,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw"
       }
     },
     {
@@ -2404,7 +2598,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw"
       }
     },
     {
@@ -2419,7 +2614,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw"
       }
     },
     {
@@ -2434,7 +2630,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw"
       }
     },
     {
@@ -2449,7 +2646,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw"
       }
     },
     {
@@ -2464,7 +2662,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw"
       }
     },
     {
@@ -2479,7 +2678,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw"
       }
     },
     {
@@ -2494,7 +2694,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw"
       }
     },
     {
@@ -2509,7 +2710,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw"
       }
     },
     {
@@ -2524,7 +2726,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw"
       }
     },
     {
@@ -2539,7 +2742,8 @@
         ],
         "name": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw"
       }
     },
     {
@@ -2554,7 +2758,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-QC-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-QC-Pos01.raw"
       }
     },
     {
@@ -2569,7 +2774,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-QC-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-QC-Pos02.raw"
       }
     },
     {
@@ -2584,7 +2790,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-QC-Pos03.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-QC-Pos03.raw"
       }
     },
     {
@@ -2599,7 +2806,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-QC-Pos04.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-QC-Pos04.raw"
       }
     },
     {
@@ -2614,7 +2822,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-QC-Pos05.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-QC-Pos05.raw"
       }
     },
     {
@@ -2629,7 +2838,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-QC-Pos06.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-QC-Pos06.raw"
       }
     },
     {
@@ -2644,7 +2854,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw"
       }
     },
     {
@@ -2659,7 +2870,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw"
       }
     },
     {
@@ -2674,7 +2886,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw"
       }
     },
     {
@@ -2689,7 +2902,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw"
       }
     },
     {
@@ -2704,7 +2918,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw"
       }
     },
     {
@@ -2719,7 +2934,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw"
       }
     },
     {
@@ -2734,7 +2950,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw"
       }
     },
     {
@@ -2749,7 +2966,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw"
       }
     },
     {
@@ -2764,7 +2982,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw"
       }
     },
     {
@@ -2779,7 +2998,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw"
       }
     },
     {
@@ -2794,7 +3014,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw"
       }
     },
     {
@@ -2809,7 +3030,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw"
       }
     },
     {
@@ -2824,7 +3046,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw"
       }
     },
     {
@@ -2839,7 +3062,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw"
       }
     },
     {
@@ -2854,7 +3078,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw"
       }
     },
     {
@@ -2869,7 +3094,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw"
       }
     },
     {
@@ -2884,7 +3110,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw"
       }
     },
     {
@@ -2899,7 +3126,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw"
       }
     },
     {
@@ -2914,7 +3142,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw"
       }
     },
     {
@@ -2929,7 +3158,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw"
       }
     },
     {
@@ -2944,7 +3174,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw"
       }
     },
     {
@@ -2959,7 +3190,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw"
       }
     },
     {
@@ -2974,7 +3206,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw"
       }
     },
     {
@@ -2989,7 +3222,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw"
       }
     },
     {
@@ -3004,7 +3238,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw"
       }
     },
     {
@@ -3019,7 +3254,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw"
       }
     },
     {
@@ -3034,7 +3270,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw"
       }
     },
     {
@@ -3049,7 +3286,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw"
       }
     },
     {
@@ -3064,7 +3302,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw"
       }
     },
     {
@@ -3079,7 +3318,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw"
       }
     },
     {
@@ -3094,7 +3334,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw"
       }
     },
     {
@@ -3109,7 +3350,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw"
       }
     },
     {
@@ -3124,7 +3366,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw"
       }
     },
     {
@@ -3139,7 +3382,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw"
       }
     },
     {
@@ -3154,7 +3398,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw"
       }
     },
     {
@@ -3169,7 +3414,8 @@
         ],
         "name": "FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw",
         "format": "Waters RAW",
-        "extension": ".raw"
+        "extension": ".raw",
+        "label": "FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw"
       }
     },
     {
@@ -3185,7 +3431,8 @@
         ],
         "name": "m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
         "format": "TSV",
-        "extension": ".tsv"
+        "extension": ".tsv",
+        "label": "m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv"
       }
     },
     {
@@ -3201,7 +3448,8 @@
         ],
         "name": "m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
         "format": "TSV",
-        "extension": ".tsv"
+        "extension": ".tsv",
+        "label": "m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv"
       }
     },
     {
@@ -3212,7 +3460,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Neg01",
-        "repository_identifier": "200523-QC-Neg01"
+        "repository_identifier": "200523-QC-Neg01",
+        "label": "200523-QC-Neg01"
       }
     },
     {
@@ -3223,7 +3472,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Neg02",
-        "repository_identifier": "200523-QC-Neg02"
+        "repository_identifier": "200523-QC-Neg02",
+        "label": "200523-QC-Neg02"
       }
     },
     {
@@ -3234,7 +3484,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Neg03",
-        "repository_identifier": "200523-QC-Neg03"
+        "repository_identifier": "200523-QC-Neg03",
+        "label": "200523-QC-Neg03"
       }
     },
     {
@@ -3245,7 +3496,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Neg04",
-        "repository_identifier": "200523-QC-Neg04"
+        "repository_identifier": "200523-QC-Neg04",
+        "label": "200523-QC-Neg04"
       }
     },
     {
@@ -3256,7 +3508,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Neg05",
-        "repository_identifier": "200523-QC-Neg05"
+        "repository_identifier": "200523-QC-Neg05",
+        "label": "200523-QC-Neg05"
       }
     },
     {
@@ -3267,7 +3520,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Neg06",
-        "repository_identifier": "200523-QC-Neg06"
+        "repository_identifier": "200523-QC-Neg06",
+        "label": "200523-QC-Neg06"
       }
     },
     {
@@ -3278,7 +3532,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Pos01",
-        "repository_identifier": "200523-QC-Pos01"
+        "repository_identifier": "200523-QC-Pos01",
+        "label": "200523-QC-Pos01"
       }
     },
     {
@@ -3289,7 +3544,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Pos02",
-        "repository_identifier": "200523-QC-Pos02"
+        "repository_identifier": "200523-QC-Pos02",
+        "label": "200523-QC-Pos02"
       }
     },
     {
@@ -3300,7 +3556,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Pos03",
-        "repository_identifier": "200523-QC-Pos03"
+        "repository_identifier": "200523-QC-Pos03",
+        "label": "200523-QC-Pos03"
       }
     },
     {
@@ -3311,7 +3568,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Pos04",
-        "repository_identifier": "200523-QC-Pos04"
+        "repository_identifier": "200523-QC-Pos04",
+        "label": "200523-QC-Pos04"
       }
     },
     {
@@ -3322,7 +3580,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Pos05",
-        "repository_identifier": "200523-QC-Pos05"
+        "repository_identifier": "200523-QC-Pos05",
+        "label": "200523-QC-Pos05"
       }
     },
     {
@@ -3333,7 +3592,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-QC-Pos06",
-        "repository_identifier": "200523-QC-Pos06"
+        "repository_identifier": "200523-QC-Pos06",
+        "label": "200523-QC-Pos06"
       }
     },
     {
@@ -3344,7 +3604,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample1-Neg01",
-        "repository_identifier": "200523-Sample1-Neg01"
+        "repository_identifier": "200523-Sample1-Neg01",
+        "label": "200523-Sample1-Neg01"
       }
     },
     {
@@ -3355,7 +3616,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample1-Neg02",
-        "repository_identifier": "200523-Sample1-Neg02"
+        "repository_identifier": "200523-Sample1-Neg02",
+        "label": "200523-Sample1-Neg02"
       }
     },
     {
@@ -3366,7 +3628,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample1-Pos01",
-        "repository_identifier": "200523-Sample1-Pos01"
+        "repository_identifier": "200523-Sample1-Pos01",
+        "label": "200523-Sample1-Pos01"
       }
     },
     {
@@ -3377,7 +3640,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample1-Pos02",
-        "repository_identifier": "200523-Sample1-Pos02"
+        "repository_identifier": "200523-Sample1-Pos02",
+        "label": "200523-Sample1-Pos02"
       }
     },
     {
@@ -3388,7 +3652,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample10-Neg01",
-        "repository_identifier": "200523-Sample10-Neg01"
+        "repository_identifier": "200523-Sample10-Neg01",
+        "label": "200523-Sample10-Neg01"
       }
     },
     {
@@ -3399,7 +3664,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample10-Neg02",
-        "repository_identifier": "200523-Sample10-Neg02"
+        "repository_identifier": "200523-Sample10-Neg02",
+        "label": "200523-Sample10-Neg02"
       }
     },
     {
@@ -3410,7 +3676,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample10-Pos01",
-        "repository_identifier": "200523-Sample10-Pos01"
+        "repository_identifier": "200523-Sample10-Pos01",
+        "label": "200523-Sample10-Pos01"
       }
     },
     {
@@ -3421,7 +3688,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample10-Pos02",
-        "repository_identifier": "200523-Sample10-Pos02"
+        "repository_identifier": "200523-Sample10-Pos02",
+        "label": "200523-Sample10-Pos02"
       }
     },
     {
@@ -3432,7 +3700,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample11-Neg01",
-        "repository_identifier": "200523-Sample11-Neg01"
+        "repository_identifier": "200523-Sample11-Neg01",
+        "label": "200523-Sample11-Neg01"
       }
     },
     {
@@ -3443,7 +3712,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample11-Neg02",
-        "repository_identifier": "200523-Sample11-Neg02"
+        "repository_identifier": "200523-Sample11-Neg02",
+        "label": "200523-Sample11-Neg02"
       }
     },
     {
@@ -3454,7 +3724,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample11-Pos01",
-        "repository_identifier": "200523-Sample11-Pos01"
+        "repository_identifier": "200523-Sample11-Pos01",
+        "label": "200523-Sample11-Pos01"
       }
     },
     {
@@ -3465,7 +3736,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample11-Pos02",
-        "repository_identifier": "200523-Sample11-Pos02"
+        "repository_identifier": "200523-Sample11-Pos02",
+        "label": "200523-Sample11-Pos02"
       }
     },
     {
@@ -3476,7 +3748,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample12-Neg01",
-        "repository_identifier": "200523-Sample12-Neg01"
+        "repository_identifier": "200523-Sample12-Neg01",
+        "label": "200523-Sample12-Neg01"
       }
     },
     {
@@ -3487,7 +3760,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample12-Neg02",
-        "repository_identifier": "200523-Sample12-Neg02"
+        "repository_identifier": "200523-Sample12-Neg02",
+        "label": "200523-Sample12-Neg02"
       }
     },
     {
@@ -3498,7 +3772,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample12-Pos01",
-        "repository_identifier": "200523-Sample12-Pos01"
+        "repository_identifier": "200523-Sample12-Pos01",
+        "label": "200523-Sample12-Pos01"
       }
     },
     {
@@ -3509,7 +3784,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample12-Pos02",
-        "repository_identifier": "200523-Sample12-Pos02"
+        "repository_identifier": "200523-Sample12-Pos02",
+        "label": "200523-Sample12-Pos02"
       }
     },
     {
@@ -3520,7 +3796,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample13-Neg01",
-        "repository_identifier": "200523-Sample13-Neg01"
+        "repository_identifier": "200523-Sample13-Neg01",
+        "label": "200523-Sample13-Neg01"
       }
     },
     {
@@ -3531,7 +3808,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample13-Neg02",
-        "repository_identifier": "200523-Sample13-Neg02"
+        "repository_identifier": "200523-Sample13-Neg02",
+        "label": "200523-Sample13-Neg02"
       }
     },
     {
@@ -3542,7 +3820,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample13-Pos01",
-        "repository_identifier": "200523-Sample13-Pos01"
+        "repository_identifier": "200523-Sample13-Pos01",
+        "label": "200523-Sample13-Pos01"
       }
     },
     {
@@ -3553,7 +3832,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample13-Pos02",
-        "repository_identifier": "200523-Sample13-Pos02"
+        "repository_identifier": "200523-Sample13-Pos02",
+        "label": "200523-Sample13-Pos02"
       }
     },
     {
@@ -3564,7 +3844,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample2-Neg01",
-        "repository_identifier": "200523-Sample2-Neg01"
+        "repository_identifier": "200523-Sample2-Neg01",
+        "label": "200523-Sample2-Neg01"
       }
     },
     {
@@ -3575,7 +3856,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample2-Neg02",
-        "repository_identifier": "200523-Sample2-Neg02"
+        "repository_identifier": "200523-Sample2-Neg02",
+        "label": "200523-Sample2-Neg02"
       }
     },
     {
@@ -3586,7 +3868,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample2-Pos01",
-        "repository_identifier": "200523-Sample2-Pos01"
+        "repository_identifier": "200523-Sample2-Pos01",
+        "label": "200523-Sample2-Pos01"
       }
     },
     {
@@ -3597,7 +3880,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample2-Pos02",
-        "repository_identifier": "200523-Sample2-Pos02"
+        "repository_identifier": "200523-Sample2-Pos02",
+        "label": "200523-Sample2-Pos02"
       }
     },
     {
@@ -3608,7 +3892,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample3-Neg01",
-        "repository_identifier": "200523-Sample3-Neg01"
+        "repository_identifier": "200523-Sample3-Neg01",
+        "label": "200523-Sample3-Neg01"
       }
     },
     {
@@ -3619,7 +3904,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample3-Neg02",
-        "repository_identifier": "200523-Sample3-Neg02"
+        "repository_identifier": "200523-Sample3-Neg02",
+        "label": "200523-Sample3-Neg02"
       }
     },
     {
@@ -3630,7 +3916,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample3-Pos01",
-        "repository_identifier": "200523-Sample3-Pos01"
+        "repository_identifier": "200523-Sample3-Pos01",
+        "label": "200523-Sample3-Pos01"
       }
     },
     {
@@ -3641,7 +3928,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample3-Pos02",
-        "repository_identifier": "200523-Sample3-Pos02"
+        "repository_identifier": "200523-Sample3-Pos02",
+        "label": "200523-Sample3-Pos02"
       }
     },
     {
@@ -3652,7 +3940,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample4-Neg01",
-        "repository_identifier": "200523-Sample4-Neg01"
+        "repository_identifier": "200523-Sample4-Neg01",
+        "label": "200523-Sample4-Neg01"
       }
     },
     {
@@ -3663,7 +3952,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample4-Neg02",
-        "repository_identifier": "200523-Sample4-Neg02"
+        "repository_identifier": "200523-Sample4-Neg02",
+        "label": "200523-Sample4-Neg02"
       }
     },
     {
@@ -3674,7 +3964,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample4-Pos01",
-        "repository_identifier": "200523-Sample4-Pos01"
+        "repository_identifier": "200523-Sample4-Pos01",
+        "label": "200523-Sample4-Pos01"
       }
     },
     {
@@ -3685,7 +3976,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample4-Pos02",
-        "repository_identifier": "200523-Sample4-Pos02"
+        "repository_identifier": "200523-Sample4-Pos02",
+        "label": "200523-Sample4-Pos02"
       }
     },
     {
@@ -3696,7 +3988,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample5-Neg01",
-        "repository_identifier": "200523-Sample5-Neg01"
+        "repository_identifier": "200523-Sample5-Neg01",
+        "label": "200523-Sample5-Neg01"
       }
     },
     {
@@ -3707,7 +4000,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample5-Neg02",
-        "repository_identifier": "200523-Sample5-Neg02"
+        "repository_identifier": "200523-Sample5-Neg02",
+        "label": "200523-Sample5-Neg02"
       }
     },
     {
@@ -3718,7 +4012,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample5-Pos01",
-        "repository_identifier": "200523-Sample5-Pos01"
+        "repository_identifier": "200523-Sample5-Pos01",
+        "label": "200523-Sample5-Pos01"
       }
     },
     {
@@ -3729,7 +4024,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample5-Pos02",
-        "repository_identifier": "200523-Sample5-Pos02"
+        "repository_identifier": "200523-Sample5-Pos02",
+        "label": "200523-Sample5-Pos02"
       }
     },
     {
@@ -3740,7 +4036,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample6-Neg01",
-        "repository_identifier": "200523-Sample6-Neg01"
+        "repository_identifier": "200523-Sample6-Neg01",
+        "label": "200523-Sample6-Neg01"
       }
     },
     {
@@ -3751,7 +4048,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample6-Neg02",
-        "repository_identifier": "200523-Sample6-Neg02"
+        "repository_identifier": "200523-Sample6-Neg02",
+        "label": "200523-Sample6-Neg02"
       }
     },
     {
@@ -3762,7 +4060,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample6-Pos01",
-        "repository_identifier": "200523-Sample6-Pos01"
+        "repository_identifier": "200523-Sample6-Pos01",
+        "label": "200523-Sample6-Pos01"
       }
     },
     {
@@ -3773,7 +4072,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample6-Pos02",
-        "repository_identifier": "200523-Sample6-Pos02"
+        "repository_identifier": "200523-Sample6-Pos02",
+        "label": "200523-Sample6-Pos02"
       }
     },
     {
@@ -3784,7 +4084,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample7-Neg01",
-        "repository_identifier": "200523-Sample7-Neg01"
+        "repository_identifier": "200523-Sample7-Neg01",
+        "label": "200523-Sample7-Neg01"
       }
     },
     {
@@ -3795,7 +4096,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample7-Neg02",
-        "repository_identifier": "200523-Sample7-Neg02"
+        "repository_identifier": "200523-Sample7-Neg02",
+        "label": "200523-Sample7-Neg02"
       }
     },
     {
@@ -3806,7 +4108,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample7-Pos01",
-        "repository_identifier": "200523-Sample7-Pos01"
+        "repository_identifier": "200523-Sample7-Pos01",
+        "label": "200523-Sample7-Pos01"
       }
     },
     {
@@ -3817,7 +4120,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample7-Pos02",
-        "repository_identifier": "200523-Sample7-Pos02"
+        "repository_identifier": "200523-Sample7-Pos02",
+        "label": "200523-Sample7-Pos02"
       }
     },
     {
@@ -3828,7 +4132,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample8-Neg01",
-        "repository_identifier": "200523-Sample8-Neg01"
+        "repository_identifier": "200523-Sample8-Neg01",
+        "label": "200523-Sample8-Neg01"
       }
     },
     {
@@ -3839,7 +4144,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample8-Neg02",
-        "repository_identifier": "200523-Sample8-Neg02"
+        "repository_identifier": "200523-Sample8-Neg02",
+        "label": "200523-Sample8-Neg02"
       }
     },
     {
@@ -3850,7 +4156,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample8-Pos01",
-        "repository_identifier": "200523-Sample8-Pos01"
+        "repository_identifier": "200523-Sample8-Pos01",
+        "label": "200523-Sample8-Pos01"
       }
     },
     {
@@ -3861,7 +4168,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample8-Pos02",
-        "repository_identifier": "200523-Sample8-Pos02"
+        "repository_identifier": "200523-Sample8-Pos02",
+        "label": "200523-Sample8-Pos02"
       }
     },
     {
@@ -3872,7 +4180,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample9-Neg01",
-        "repository_identifier": "200523-Sample9-Neg01"
+        "repository_identifier": "200523-Sample9-Neg01",
+        "label": "200523-Sample9-Neg01"
       }
     },
     {
@@ -3883,7 +4192,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample9-Neg02",
-        "repository_identifier": "200523-Sample9-Neg02"
+        "repository_identifier": "200523-Sample9-Neg02",
+        "label": "200523-Sample9-Neg02"
       }
     },
     {
@@ -3894,7 +4204,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample9-Pos01",
-        "repository_identifier": "200523-Sample9-Pos01"
+        "repository_identifier": "200523-Sample9-Pos01",
+        "label": "200523-Sample9-Pos01"
       }
     },
     {
@@ -3905,7 +4216,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-Sample9-Pos02",
-        "repository_identifier": "200523-Sample9-Pos02"
+        "repository_identifier": "200523-Sample9-Pos02",
+        "label": "200523-Sample9-Pos02"
       }
     },
     {
@@ -3916,7 +4228,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC1-Neg01",
-        "repository_identifier": "200523-SampleC1-Neg01"
+        "repository_identifier": "200523-SampleC1-Neg01",
+        "label": "200523-SampleC1-Neg01"
       }
     },
     {
@@ -3927,7 +4240,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC1-Neg02",
-        "repository_identifier": "200523-SampleC1-Neg02"
+        "repository_identifier": "200523-SampleC1-Neg02",
+        "label": "200523-SampleC1-Neg02"
       }
     },
     {
@@ -3938,7 +4252,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC1-Pos01",
-        "repository_identifier": "200523-SampleC1-Pos01"
+        "repository_identifier": "200523-SampleC1-Pos01",
+        "label": "200523-SampleC1-Pos01"
       }
     },
     {
@@ -3949,7 +4264,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC1-Pos02",
-        "repository_identifier": "200523-SampleC1-Pos02"
+        "repository_identifier": "200523-SampleC1-Pos02",
+        "label": "200523-SampleC1-Pos02"
       }
     },
     {
@@ -3960,7 +4276,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC2-Neg01",
-        "repository_identifier": "200523-SampleC2-Neg01"
+        "repository_identifier": "200523-SampleC2-Neg01",
+        "label": "200523-SampleC2-Neg01"
       }
     },
     {
@@ -3971,7 +4288,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC2-Neg02",
-        "repository_identifier": "200523-SampleC2-Neg02"
+        "repository_identifier": "200523-SampleC2-Neg02",
+        "label": "200523-SampleC2-Neg02"
       }
     },
     {
@@ -3982,7 +4300,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC2-Pos01",
-        "repository_identifier": "200523-SampleC2-Pos01"
+        "repository_identifier": "200523-SampleC2-Pos01",
+        "label": "200523-SampleC2-Pos01"
       }
     },
     {
@@ -3993,7 +4312,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC2-Pos02",
-        "repository_identifier": "200523-SampleC2-Pos02"
+        "repository_identifier": "200523-SampleC2-Pos02",
+        "label": "200523-SampleC2-Pos02"
       }
     },
     {
@@ -4004,7 +4324,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC3-Neg01",
-        "repository_identifier": "200523-SampleC3-Neg01"
+        "repository_identifier": "200523-SampleC3-Neg01",
+        "label": "200523-SampleC3-Neg01"
       }
     },
     {
@@ -4015,7 +4336,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC3-Neg02",
-        "repository_identifier": "200523-SampleC3-Neg02"
+        "repository_identifier": "200523-SampleC3-Neg02",
+        "label": "200523-SampleC3-Neg02"
       }
     },
     {
@@ -4026,7 +4348,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC3-Pos01",
-        "repository_identifier": "200523-SampleC3-Pos01"
+        "repository_identifier": "200523-SampleC3-Pos01",
+        "label": "200523-SampleC3-Pos01"
       }
     },
     {
@@ -4037,7 +4360,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC3-Pos02",
-        "repository_identifier": "200523-SampleC3-Pos02"
+        "repository_identifier": "200523-SampleC3-Pos02",
+        "label": "200523-SampleC3-Pos02"
       }
     },
     {
@@ -4048,7 +4372,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC4-Neg01",
-        "repository_identifier": "200523-SampleC4-Neg01"
+        "repository_identifier": "200523-SampleC4-Neg01",
+        "label": "200523-SampleC4-Neg01"
       }
     },
     {
@@ -4059,7 +4384,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC4-Neg02",
-        "repository_identifier": "200523-SampleC4-Neg02"
+        "repository_identifier": "200523-SampleC4-Neg02",
+        "label": "200523-SampleC4-Neg02"
       }
     },
     {
@@ -4070,7 +4396,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC4-Pos01",
-        "repository_identifier": "200523-SampleC4-Pos01"
+        "repository_identifier": "200523-SampleC4-Pos01",
+        "label": "200523-SampleC4-Pos01"
       }
     },
     {
@@ -4081,7 +4408,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC4-Pos02",
-        "repository_identifier": "200523-SampleC4-Pos02"
+        "repository_identifier": "200523-SampleC4-Pos02",
+        "label": "200523-SampleC4-Pos02"
       }
     },
     {
@@ -4092,7 +4420,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC5-Neg01",
-        "repository_identifier": "200523-SampleC5-Neg01"
+        "repository_identifier": "200523-SampleC5-Neg01",
+        "label": "200523-SampleC5-Neg01"
       }
     },
     {
@@ -4103,7 +4432,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC5-Neg02",
-        "repository_identifier": "200523-SampleC5-Neg02"
+        "repository_identifier": "200523-SampleC5-Neg02",
+        "label": "200523-SampleC5-Neg02"
       }
     },
     {
@@ -4114,7 +4444,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC5-Pos01",
-        "repository_identifier": "200523-SampleC5-Pos01"
+        "repository_identifier": "200523-SampleC5-Pos01",
+        "label": "200523-SampleC5-Pos01"
       }
     },
     {
@@ -4125,7 +4456,8 @@
       "properties": {
         "type_": "sample",
         "name": "200523-SampleC5-Pos02",
-        "repository_identifier": "200523-SampleC5-Pos02"
+        "repository_identifier": "200523-SampleC5-Pos02",
+        "label": "200523-SampleC5-Pos02"
       }
     },
     {
@@ -4140,7 +4472,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-QC-Neg01.raw"
-        ]
+        ],
+        "label": "200523-QC-Neg01"
       }
     },
     {
@@ -4155,7 +4488,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-QC-Neg02.raw"
-        ]
+        ],
+        "label": "200523-QC-Neg02"
       }
     },
     {
@@ -4170,7 +4504,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-QC-Neg03.raw"
-        ]
+        ],
+        "label": "200523-QC-Neg03"
       }
     },
     {
@@ -4185,7 +4520,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-QC-Neg04.raw"
-        ]
+        ],
+        "label": "200523-QC-Neg04"
       }
     },
     {
@@ -4200,7 +4536,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-QC-Neg05.raw"
-        ]
+        ],
+        "label": "200523-QC-Neg05"
       }
     },
     {
@@ -4215,7 +4552,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-QC-Neg06.raw"
-        ]
+        ],
+        "label": "200523-QC-Neg06"
       }
     },
     {
@@ -4230,7 +4568,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-QC-Pos01.raw"
-        ]
+        ],
+        "label": "200523-QC-Pos01"
       }
     },
     {
@@ -4245,7 +4584,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-QC-Pos02.raw"
-        ]
+        ],
+        "label": "200523-QC-Pos02"
       }
     },
     {
@@ -4260,7 +4600,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-QC-Pos03.raw"
-        ]
+        ],
+        "label": "200523-QC-Pos03"
       }
     },
     {
@@ -4275,7 +4616,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-QC-Pos04.raw"
-        ]
+        ],
+        "label": "200523-QC-Pos04"
       }
     },
     {
@@ -4290,7 +4632,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-QC-Pos05.raw"
-        ]
+        ],
+        "label": "200523-QC-Pos05"
       }
     },
     {
@@ -4305,7 +4648,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-QC-Pos06.raw"
-        ]
+        ],
+        "label": "200523-QC-Pos06"
       }
     },
     {
@@ -4320,7 +4664,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample1-Neg01"
       }
     },
     {
@@ -4335,7 +4680,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample1-Neg02"
       }
     },
     {
@@ -4350,7 +4696,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample1-Pos01"
       }
     },
     {
@@ -4365,7 +4712,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample1-Pos02"
       }
     },
     {
@@ -4380,7 +4728,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample10-Neg01"
       }
     },
     {
@@ -4395,7 +4744,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample10-Neg02"
       }
     },
     {
@@ -4410,7 +4760,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample10-Pos01"
       }
     },
     {
@@ -4425,7 +4776,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample10-Pos02"
       }
     },
     {
@@ -4440,7 +4792,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample11-Neg01"
       }
     },
     {
@@ -4455,7 +4808,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample11-Neg02"
       }
     },
     {
@@ -4470,7 +4824,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample11-Pos01"
       }
     },
     {
@@ -4485,7 +4840,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample11-Pos02"
       }
     },
     {
@@ -4500,7 +4856,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample12-Neg01"
       }
     },
     {
@@ -4515,7 +4872,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample12-Neg02"
       }
     },
     {
@@ -4530,7 +4888,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample12-Pos01"
       }
     },
     {
@@ -4545,7 +4904,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample12-Pos02"
       }
     },
     {
@@ -4560,7 +4920,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample13-Neg01"
       }
     },
     {
@@ -4575,7 +4936,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample13-Neg02"
       }
     },
     {
@@ -4590,7 +4952,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample13-Pos01"
       }
     },
     {
@@ -4605,7 +4968,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample13-Pos02"
       }
     },
     {
@@ -4620,7 +4984,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample2-Neg01"
       }
     },
     {
@@ -4635,7 +5000,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample2-Neg02"
       }
     },
     {
@@ -4650,7 +5016,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample2-Pos01"
       }
     },
     {
@@ -4665,7 +5032,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample2-Pos02"
       }
     },
     {
@@ -4680,7 +5048,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample3-Neg01"
       }
     },
     {
@@ -4695,7 +5064,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample3-Neg02"
       }
     },
     {
@@ -4710,7 +5080,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample3-Pos01"
       }
     },
     {
@@ -4725,7 +5096,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample3-Pos02"
       }
     },
     {
@@ -4740,7 +5112,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample4-Neg01"
       }
     },
     {
@@ -4755,7 +5128,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample4-Neg02"
       }
     },
     {
@@ -4770,7 +5144,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample4-Pos01"
       }
     },
     {
@@ -4785,7 +5160,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample4-Pos02"
       }
     },
     {
@@ -4800,7 +5176,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample5-Neg01"
       }
     },
     {
@@ -4815,7 +5192,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample5-Neg02"
       }
     },
     {
@@ -4830,7 +5208,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample5-Pos01"
       }
     },
     {
@@ -4845,7 +5224,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample5-Pos02"
       }
     },
     {
@@ -4860,7 +5240,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample6-Neg01"
       }
     },
     {
@@ -4875,7 +5256,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample6-Neg02"
       }
     },
     {
@@ -4890,7 +5272,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample6-Pos01"
       }
     },
     {
@@ -4905,7 +5288,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample6-Pos02"
       }
     },
     {
@@ -4920,7 +5304,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample7-Neg01"
       }
     },
     {
@@ -4935,7 +5320,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample7-Neg02"
       }
     },
     {
@@ -4950,7 +5336,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample7-Pos01"
       }
     },
     {
@@ -4965,7 +5352,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample7-Pos02"
       }
     },
     {
@@ -4980,7 +5368,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample8-Neg01"
       }
     },
     {
@@ -4995,7 +5384,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample8-Neg02"
       }
     },
     {
@@ -5010,7 +5400,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample8-Pos01"
       }
     },
     {
@@ -5025,7 +5416,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample8-Pos02"
       }
     },
     {
@@ -5040,7 +5432,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw"
-        ]
+        ],
+        "label": "200523-Sample9-Neg01"
       }
     },
     {
@@ -5055,7 +5448,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw"
-        ]
+        ],
+        "label": "200523-Sample9-Neg02"
       }
     },
     {
@@ -5070,7 +5464,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw"
-        ]
+        ],
+        "label": "200523-Sample9-Pos01"
       }
     },
     {
@@ -5085,7 +5480,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw"
-        ]
+        ],
+        "label": "200523-Sample9-Pos02"
       }
     },
     {
@@ -5100,7 +5496,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw"
-        ]
+        ],
+        "label": "200523-SampleC1-Neg01"
       }
     },
     {
@@ -5115,7 +5512,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw"
-        ]
+        ],
+        "label": "200523-SampleC1-Neg02"
       }
     },
     {
@@ -5130,7 +5528,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw"
-        ]
+        ],
+        "label": "200523-SampleC1-Pos01"
       }
     },
     {
@@ -5145,7 +5544,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw"
-        ]
+        ],
+        "label": "200523-SampleC1-Pos02"
       }
     },
     {
@@ -5160,7 +5560,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw"
-        ]
+        ],
+        "label": "200523-SampleC2-Neg01"
       }
     },
     {
@@ -5175,7 +5576,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw"
-        ]
+        ],
+        "label": "200523-SampleC2-Neg02"
       }
     },
     {
@@ -5190,7 +5592,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw"
-        ]
+        ],
+        "label": "200523-SampleC2-Pos01"
       }
     },
     {
@@ -5205,7 +5608,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw"
-        ]
+        ],
+        "label": "200523-SampleC2-Pos02"
       }
     },
     {
@@ -5220,7 +5624,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw"
-        ]
+        ],
+        "label": "200523-SampleC3-Neg01"
       }
     },
     {
@@ -5235,7 +5640,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw"
-        ]
+        ],
+        "label": "200523-SampleC3-Neg02"
       }
     },
     {
@@ -5250,7 +5656,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw"
-        ]
+        ],
+        "label": "200523-SampleC3-Pos01"
       }
     },
     {
@@ -5265,7 +5672,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw"
-        ]
+        ],
+        "label": "200523-SampleC3-Pos02"
       }
     },
     {
@@ -5280,7 +5688,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw"
-        ]
+        ],
+        "label": "200523-SampleC4-Neg01"
       }
     },
     {
@@ -5295,7 +5704,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw"
-        ]
+        ],
+        "label": "200523-SampleC4-Neg02"
       }
     },
     {
@@ -5310,7 +5720,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw"
-        ]
+        ],
+        "label": "200523-SampleC4-Pos01"
       }
     },
     {
@@ -5325,7 +5736,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw"
-        ]
+        ],
+        "label": "200523-SampleC4-Pos02"
       }
     },
     {
@@ -5340,7 +5752,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw"
-        ]
+        ],
+        "label": "200523-SampleC5-Neg01"
       }
     },
     {
@@ -5355,7 +5768,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw"
-        ]
+        ],
+        "label": "200523-SampleC5-Neg02"
       }
     },
     {
@@ -5370,7 +5784,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw"
-        ]
+        ],
+        "label": "200523-SampleC5-Pos01"
       }
     },
     {
@@ -5385,7 +5800,8 @@
         "sample_run_configuration_list": [],
         "raw_data_file_list": [
           "FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw"
-        ]
+        ],
+        "label": "200523-SampleC5-Pos02"
       }
     },
     {
@@ -5399,7 +5815,7 @@
         "parameter_value_list": [
           "Waters ACQUITY UPLC I-Class System"
         ],
-        "name": "mhd--sample-run-configuration--83c1d942-84fd-435b-952e-6f6b7f02b29d"
+        "label": "mhd--sample-run-configuration--83c1d942-84fd-435b-952e-6f6b7f02b29d"
       }
     },
     {
@@ -5416,7 +5832,7 @@
           "electrospray ionization",
           "quadrupole time-of-flight"
         ],
-        "name": "mhd--sample-run-configuration--ed79737e-2adf-4e58-8938-52f7a0a06e18"
+        "label": "mhd--sample-run-configuration--ed79737e-2adf-4e58-8938-52f7a0a06e18"
       }
     },
     {
@@ -5433,7 +5849,7 @@
           "electrospray ionization",
           "quadrupole time-of-flight"
         ],
-        "name": "mhd--sample-run-configuration--fb8da486-24e1-4d1f-9e7d-22386ddebf21"
+        "label": "mhd--sample-run-configuration--fb8da486-24e1-4d1f-9e7d-22386ddebf21"
       }
     },
     {
@@ -5444,7 +5860,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample1",
-        "repository_identifier": "200523-Negative-Sample1"
+        "repository_identifier": "200523-Negative-Sample1",
+        "label": "200523-Negative-Sample1"
       }
     },
     {
@@ -5455,7 +5872,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample10",
-        "repository_identifier": "200523-Negative-Sample10"
+        "repository_identifier": "200523-Negative-Sample10",
+        "label": "200523-Negative-Sample10"
       }
     },
     {
@@ -5466,7 +5884,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample11",
-        "repository_identifier": "200523-Negative-Sample11"
+        "repository_identifier": "200523-Negative-Sample11",
+        "label": "200523-Negative-Sample11"
       }
     },
     {
@@ -5477,7 +5896,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample12",
-        "repository_identifier": "200523-Negative-Sample12"
+        "repository_identifier": "200523-Negative-Sample12",
+        "label": "200523-Negative-Sample12"
       }
     },
     {
@@ -5488,7 +5908,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample13",
-        "repository_identifier": "200523-Negative-Sample13"
+        "repository_identifier": "200523-Negative-Sample13",
+        "label": "200523-Negative-Sample13"
       }
     },
     {
@@ -5499,7 +5920,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample14",
-        "repository_identifier": "200523-Negative-Sample14"
+        "repository_identifier": "200523-Negative-Sample14",
+        "label": "200523-Negative-Sample14"
       }
     },
     {
@@ -5510,7 +5932,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample15",
-        "repository_identifier": "200523-Negative-Sample15"
+        "repository_identifier": "200523-Negative-Sample15",
+        "label": "200523-Negative-Sample15"
       }
     },
     {
@@ -5521,7 +5944,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample16",
-        "repository_identifier": "200523-Negative-Sample16"
+        "repository_identifier": "200523-Negative-Sample16",
+        "label": "200523-Negative-Sample16"
       }
     },
     {
@@ -5532,7 +5956,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample17",
-        "repository_identifier": "200523-Negative-Sample17"
+        "repository_identifier": "200523-Negative-Sample17",
+        "label": "200523-Negative-Sample17"
       }
     },
     {
@@ -5543,7 +5968,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample18",
-        "repository_identifier": "200523-Negative-Sample18"
+        "repository_identifier": "200523-Negative-Sample18",
+        "label": "200523-Negative-Sample18"
       }
     },
     {
@@ -5554,7 +5980,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample19",
-        "repository_identifier": "200523-Negative-Sample19"
+        "repository_identifier": "200523-Negative-Sample19",
+        "label": "200523-Negative-Sample19"
       }
     },
     {
@@ -5565,7 +5992,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample2",
-        "repository_identifier": "200523-Negative-Sample2"
+        "repository_identifier": "200523-Negative-Sample2",
+        "label": "200523-Negative-Sample2"
       }
     },
     {
@@ -5576,7 +6004,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample20",
-        "repository_identifier": "200523-Negative-Sample20"
+        "repository_identifier": "200523-Negative-Sample20",
+        "label": "200523-Negative-Sample20"
       }
     },
     {
@@ -5587,7 +6016,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample21",
-        "repository_identifier": "200523-Negative-Sample21"
+        "repository_identifier": "200523-Negative-Sample21",
+        "label": "200523-Negative-Sample21"
       }
     },
     {
@@ -5598,7 +6028,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample22",
-        "repository_identifier": "200523-Negative-Sample22"
+        "repository_identifier": "200523-Negative-Sample22",
+        "label": "200523-Negative-Sample22"
       }
     },
     {
@@ -5609,7 +6040,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample23",
-        "repository_identifier": "200523-Negative-Sample23"
+        "repository_identifier": "200523-Negative-Sample23",
+        "label": "200523-Negative-Sample23"
       }
     },
     {
@@ -5620,7 +6052,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample24",
-        "repository_identifier": "200523-Negative-Sample24"
+        "repository_identifier": "200523-Negative-Sample24",
+        "label": "200523-Negative-Sample24"
       }
     },
     {
@@ -5631,7 +6064,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample25",
-        "repository_identifier": "200523-Negative-Sample25"
+        "repository_identifier": "200523-Negative-Sample25",
+        "label": "200523-Negative-Sample25"
       }
     },
     {
@@ -5642,7 +6076,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample26",
-        "repository_identifier": "200523-Negative-Sample26"
+        "repository_identifier": "200523-Negative-Sample26",
+        "label": "200523-Negative-Sample26"
       }
     },
     {
@@ -5653,7 +6088,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample27",
-        "repository_identifier": "200523-Negative-Sample27"
+        "repository_identifier": "200523-Negative-Sample27",
+        "label": "200523-Negative-Sample27"
       }
     },
     {
@@ -5664,7 +6100,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample28",
-        "repository_identifier": "200523-Negative-Sample28"
+        "repository_identifier": "200523-Negative-Sample28",
+        "label": "200523-Negative-Sample28"
       }
     },
     {
@@ -5675,7 +6112,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample29",
-        "repository_identifier": "200523-Negative-Sample29"
+        "repository_identifier": "200523-Negative-Sample29",
+        "label": "200523-Negative-Sample29"
       }
     },
     {
@@ -5686,7 +6124,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample3",
-        "repository_identifier": "200523-Negative-Sample3"
+        "repository_identifier": "200523-Negative-Sample3",
+        "label": "200523-Negative-Sample3"
       }
     },
     {
@@ -5697,7 +6136,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample30",
-        "repository_identifier": "200523-Negative-Sample30"
+        "repository_identifier": "200523-Negative-Sample30",
+        "label": "200523-Negative-Sample30"
       }
     },
     {
@@ -5708,7 +6148,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample31",
-        "repository_identifier": "200523-Negative-Sample31"
+        "repository_identifier": "200523-Negative-Sample31",
+        "label": "200523-Negative-Sample31"
       }
     },
     {
@@ -5719,7 +6160,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample32",
-        "repository_identifier": "200523-Negative-Sample32"
+        "repository_identifier": "200523-Negative-Sample32",
+        "label": "200523-Negative-Sample32"
       }
     },
     {
@@ -5730,7 +6172,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample33",
-        "repository_identifier": "200523-Negative-Sample33"
+        "repository_identifier": "200523-Negative-Sample33",
+        "label": "200523-Negative-Sample33"
       }
     },
     {
@@ -5741,7 +6184,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample34",
-        "repository_identifier": "200523-Negative-Sample34"
+        "repository_identifier": "200523-Negative-Sample34",
+        "label": "200523-Negative-Sample34"
       }
     },
     {
@@ -5752,7 +6196,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample35",
-        "repository_identifier": "200523-Negative-Sample35"
+        "repository_identifier": "200523-Negative-Sample35",
+        "label": "200523-Negative-Sample35"
       }
     },
     {
@@ -5763,7 +6208,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample36",
-        "repository_identifier": "200523-Negative-Sample36"
+        "repository_identifier": "200523-Negative-Sample36",
+        "label": "200523-Negative-Sample36"
       }
     },
     {
@@ -5774,7 +6220,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample37",
-        "repository_identifier": "200523-Negative-Sample37"
+        "repository_identifier": "200523-Negative-Sample37",
+        "label": "200523-Negative-Sample37"
       }
     },
     {
@@ -5785,7 +6232,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample38",
-        "repository_identifier": "200523-Negative-Sample38"
+        "repository_identifier": "200523-Negative-Sample38",
+        "label": "200523-Negative-Sample38"
       }
     },
     {
@@ -5796,7 +6244,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample39",
-        "repository_identifier": "200523-Negative-Sample39"
+        "repository_identifier": "200523-Negative-Sample39",
+        "label": "200523-Negative-Sample39"
       }
     },
     {
@@ -5807,7 +6256,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample4",
-        "repository_identifier": "200523-Negative-Sample4"
+        "repository_identifier": "200523-Negative-Sample4",
+        "label": "200523-Negative-Sample4"
       }
     },
     {
@@ -5818,7 +6268,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample40",
-        "repository_identifier": "200523-Negative-Sample40"
+        "repository_identifier": "200523-Negative-Sample40",
+        "label": "200523-Negative-Sample40"
       }
     },
     {
@@ -5829,7 +6280,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample41",
-        "repository_identifier": "200523-Negative-Sample41"
+        "repository_identifier": "200523-Negative-Sample41",
+        "label": "200523-Negative-Sample41"
       }
     },
     {
@@ -5840,7 +6292,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample42",
-        "repository_identifier": "200523-Negative-Sample42"
+        "repository_identifier": "200523-Negative-Sample42",
+        "label": "200523-Negative-Sample42"
       }
     },
     {
@@ -5851,7 +6304,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample5",
-        "repository_identifier": "200523-Negative-Sample5"
+        "repository_identifier": "200523-Negative-Sample5",
+        "label": "200523-Negative-Sample5"
       }
     },
     {
@@ -5862,7 +6316,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample6",
-        "repository_identifier": "200523-Negative-Sample6"
+        "repository_identifier": "200523-Negative-Sample6",
+        "label": "200523-Negative-Sample6"
       }
     },
     {
@@ -5873,7 +6328,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample7",
-        "repository_identifier": "200523-Negative-Sample7"
+        "repository_identifier": "200523-Negative-Sample7",
+        "label": "200523-Negative-Sample7"
       }
     },
     {
@@ -5884,7 +6340,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample8",
-        "repository_identifier": "200523-Negative-Sample8"
+        "repository_identifier": "200523-Negative-Sample8",
+        "label": "200523-Negative-Sample8"
       }
     },
     {
@@ -5895,7 +6352,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Negative-Sample9",
-        "repository_identifier": "200523-Negative-Sample9"
+        "repository_identifier": "200523-Negative-Sample9",
+        "label": "200523-Negative-Sample9"
       }
     },
     {
@@ -5906,7 +6364,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample1",
-        "repository_identifier": "200523-Positive-Sample1"
+        "repository_identifier": "200523-Positive-Sample1",
+        "label": "200523-Positive-Sample1"
       }
     },
     {
@@ -5917,7 +6376,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample10",
-        "repository_identifier": "200523-Positive-Sample10"
+        "repository_identifier": "200523-Positive-Sample10",
+        "label": "200523-Positive-Sample10"
       }
     },
     {
@@ -5928,7 +6388,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample11",
-        "repository_identifier": "200523-Positive-Sample11"
+        "repository_identifier": "200523-Positive-Sample11",
+        "label": "200523-Positive-Sample11"
       }
     },
     {
@@ -5939,7 +6400,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample12",
-        "repository_identifier": "200523-Positive-Sample12"
+        "repository_identifier": "200523-Positive-Sample12",
+        "label": "200523-Positive-Sample12"
       }
     },
     {
@@ -5950,7 +6412,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample13",
-        "repository_identifier": "200523-Positive-Sample13"
+        "repository_identifier": "200523-Positive-Sample13",
+        "label": "200523-Positive-Sample13"
       }
     },
     {
@@ -5961,7 +6424,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample14",
-        "repository_identifier": "200523-Positive-Sample14"
+        "repository_identifier": "200523-Positive-Sample14",
+        "label": "200523-Positive-Sample14"
       }
     },
     {
@@ -5972,7 +6436,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample15",
-        "repository_identifier": "200523-Positive-Sample15"
+        "repository_identifier": "200523-Positive-Sample15",
+        "label": "200523-Positive-Sample15"
       }
     },
     {
@@ -5983,7 +6448,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample16",
-        "repository_identifier": "200523-Positive-Sample16"
+        "repository_identifier": "200523-Positive-Sample16",
+        "label": "200523-Positive-Sample16"
       }
     },
     {
@@ -5994,7 +6460,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample17",
-        "repository_identifier": "200523-Positive-Sample17"
+        "repository_identifier": "200523-Positive-Sample17",
+        "label": "200523-Positive-Sample17"
       }
     },
     {
@@ -6005,7 +6472,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample18",
-        "repository_identifier": "200523-Positive-Sample18"
+        "repository_identifier": "200523-Positive-Sample18",
+        "label": "200523-Positive-Sample18"
       }
     },
     {
@@ -6016,7 +6484,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample19",
-        "repository_identifier": "200523-Positive-Sample19"
+        "repository_identifier": "200523-Positive-Sample19",
+        "label": "200523-Positive-Sample19"
       }
     },
     {
@@ -6027,7 +6496,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample2",
-        "repository_identifier": "200523-Positive-Sample2"
+        "repository_identifier": "200523-Positive-Sample2",
+        "label": "200523-Positive-Sample2"
       }
     },
     {
@@ -6038,7 +6508,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample20",
-        "repository_identifier": "200523-Positive-Sample20"
+        "repository_identifier": "200523-Positive-Sample20",
+        "label": "200523-Positive-Sample20"
       }
     },
     {
@@ -6049,7 +6520,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample21",
-        "repository_identifier": "200523-Positive-Sample21"
+        "repository_identifier": "200523-Positive-Sample21",
+        "label": "200523-Positive-Sample21"
       }
     },
     {
@@ -6060,7 +6532,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample22",
-        "repository_identifier": "200523-Positive-Sample22"
+        "repository_identifier": "200523-Positive-Sample22",
+        "label": "200523-Positive-Sample22"
       }
     },
     {
@@ -6071,7 +6544,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample23",
-        "repository_identifier": "200523-Positive-Sample23"
+        "repository_identifier": "200523-Positive-Sample23",
+        "label": "200523-Positive-Sample23"
       }
     },
     {
@@ -6082,7 +6556,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample24",
-        "repository_identifier": "200523-Positive-Sample24"
+        "repository_identifier": "200523-Positive-Sample24",
+        "label": "200523-Positive-Sample24"
       }
     },
     {
@@ -6093,7 +6568,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample25",
-        "repository_identifier": "200523-Positive-Sample25"
+        "repository_identifier": "200523-Positive-Sample25",
+        "label": "200523-Positive-Sample25"
       }
     },
     {
@@ -6104,7 +6580,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample26",
-        "repository_identifier": "200523-Positive-Sample26"
+        "repository_identifier": "200523-Positive-Sample26",
+        "label": "200523-Positive-Sample26"
       }
     },
     {
@@ -6115,7 +6592,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample27",
-        "repository_identifier": "200523-Positive-Sample27"
+        "repository_identifier": "200523-Positive-Sample27",
+        "label": "200523-Positive-Sample27"
       }
     },
     {
@@ -6126,7 +6604,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample28",
-        "repository_identifier": "200523-Positive-Sample28"
+        "repository_identifier": "200523-Positive-Sample28",
+        "label": "200523-Positive-Sample28"
       }
     },
     {
@@ -6137,7 +6616,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample29",
-        "repository_identifier": "200523-Positive-Sample29"
+        "repository_identifier": "200523-Positive-Sample29",
+        "label": "200523-Positive-Sample29"
       }
     },
     {
@@ -6148,7 +6628,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample3",
-        "repository_identifier": "200523-Positive-Sample3"
+        "repository_identifier": "200523-Positive-Sample3",
+        "label": "200523-Positive-Sample3"
       }
     },
     {
@@ -6159,7 +6640,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample30",
-        "repository_identifier": "200523-Positive-Sample30"
+        "repository_identifier": "200523-Positive-Sample30",
+        "label": "200523-Positive-Sample30"
       }
     },
     {
@@ -6170,7 +6652,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample31",
-        "repository_identifier": "200523-Positive-Sample31"
+        "repository_identifier": "200523-Positive-Sample31",
+        "label": "200523-Positive-Sample31"
       }
     },
     {
@@ -6181,7 +6664,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample32",
-        "repository_identifier": "200523-Positive-Sample32"
+        "repository_identifier": "200523-Positive-Sample32",
+        "label": "200523-Positive-Sample32"
       }
     },
     {
@@ -6192,7 +6676,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample33",
-        "repository_identifier": "200523-Positive-Sample33"
+        "repository_identifier": "200523-Positive-Sample33",
+        "label": "200523-Positive-Sample33"
       }
     },
     {
@@ -6203,7 +6688,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample34",
-        "repository_identifier": "200523-Positive-Sample34"
+        "repository_identifier": "200523-Positive-Sample34",
+        "label": "200523-Positive-Sample34"
       }
     },
     {
@@ -6214,7 +6700,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample35",
-        "repository_identifier": "200523-Positive-Sample35"
+        "repository_identifier": "200523-Positive-Sample35",
+        "label": "200523-Positive-Sample35"
       }
     },
     {
@@ -6225,7 +6712,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample36",
-        "repository_identifier": "200523-Positive-Sample36"
+        "repository_identifier": "200523-Positive-Sample36",
+        "label": "200523-Positive-Sample36"
       }
     },
     {
@@ -6236,7 +6724,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample37",
-        "repository_identifier": "200523-Positive-Sample37"
+        "repository_identifier": "200523-Positive-Sample37",
+        "label": "200523-Positive-Sample37"
       }
     },
     {
@@ -6247,7 +6736,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample38",
-        "repository_identifier": "200523-Positive-Sample38"
+        "repository_identifier": "200523-Positive-Sample38",
+        "label": "200523-Positive-Sample38"
       }
     },
     {
@@ -6258,7 +6748,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample39",
-        "repository_identifier": "200523-Positive-Sample39"
+        "repository_identifier": "200523-Positive-Sample39",
+        "label": "200523-Positive-Sample39"
       }
     },
     {
@@ -6269,7 +6760,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample4",
-        "repository_identifier": "200523-Positive-Sample4"
+        "repository_identifier": "200523-Positive-Sample4",
+        "label": "200523-Positive-Sample4"
       }
     },
     {
@@ -6280,7 +6772,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample40",
-        "repository_identifier": "200523-Positive-Sample40"
+        "repository_identifier": "200523-Positive-Sample40",
+        "label": "200523-Positive-Sample40"
       }
     },
     {
@@ -6291,7 +6784,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample41",
-        "repository_identifier": "200523-Positive-Sample41"
+        "repository_identifier": "200523-Positive-Sample41",
+        "label": "200523-Positive-Sample41"
       }
     },
     {
@@ -6302,7 +6796,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample42",
-        "repository_identifier": "200523-Positive-Sample42"
+        "repository_identifier": "200523-Positive-Sample42",
+        "label": "200523-Positive-Sample42"
       }
     },
     {
@@ -6313,7 +6808,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample5",
-        "repository_identifier": "200523-Positive-Sample5"
+        "repository_identifier": "200523-Positive-Sample5",
+        "label": "200523-Positive-Sample5"
       }
     },
     {
@@ -6324,7 +6820,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample6",
-        "repository_identifier": "200523-Positive-Sample6"
+        "repository_identifier": "200523-Positive-Sample6",
+        "label": "200523-Positive-Sample6"
       }
     },
     {
@@ -6335,7 +6832,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample7",
-        "repository_identifier": "200523-Positive-Sample7"
+        "repository_identifier": "200523-Positive-Sample7",
+        "label": "200523-Positive-Sample7"
       }
     },
     {
@@ -6346,7 +6844,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample8",
-        "repository_identifier": "200523-Positive-Sample8"
+        "repository_identifier": "200523-Positive-Sample8",
+        "label": "200523-Positive-Sample8"
       }
     },
     {
@@ -6357,7 +6856,8 @@
       "properties": {
         "type_": "subject",
         "name": "200523-Positive-Sample9",
-        "repository_identifier": "200523-Positive-Sample9"
+        "repository_identifier": "200523-Positive-Sample9",
+        "label": "200523-Positive-Sample9"
       }
     },
     {
@@ -6369,7 +6869,8 @@
         "type_": "characteristic-type",
         "source": "NCIT",
         "accession": "NCIT:C14250",
-        "name": "organism"
+        "name": "organism",
+        "label": "organism"
       }
     },
     {
@@ -6381,7 +6882,8 @@
         "type_": "characteristic-type",
         "source": "NCIT",
         "accession": "NCIT:C103199",
-        "name": "organism part"
+        "name": "organism part",
+        "label": "organism part"
       }
     },
     {
@@ -6393,7 +6895,8 @@
         "type_": "characteristic-value",
         "source": "NCBITAXON",
         "accession": "NCBITaxon:9606",
-        "name": "Homo sapiens"
+        "name": "Homo sapiens",
+        "label": "Homo sapiens"
       }
     },
     {
@@ -6405,7 +6908,8 @@
         "type_": "characteristic-value",
         "source": "BTO",
         "accession": "BTO:0000763",
-        "name": "lung"
+        "name": "lung",
+        "label": "lung"
       }
     },
     {
@@ -6418,7 +6922,8 @@
         "value": "MetaboLights",
         "source": "NCIT",
         "accession": "NCIT:C189151",
-        "name": "MetaboLights"
+        "name": "Study Data Repository",
+        "label": "MetaboLights"
       }
     },
     {
@@ -6430,7 +6935,8 @@
         "type_": "descriptor",
         "source": "DOID",
         "accession": "DOID:0080600",
-        "name": "COVID-19"
+        "name": "COVID-19",
+        "label": "COVID-19"
       }
     },
     {
@@ -6442,7 +6948,8 @@
         "type_": "descriptor",
         "source": "NCIT",
         "accession": "NCIT:C189012",
-        "name": "Diffuse Alveolar Damage"
+        "name": "Diffuse Alveolar Damage",
+        "label": "Diffuse Alveolar Damage"
       }
     },
     {
@@ -6454,7 +6961,8 @@
         "type_": "descriptor",
         "source": "CHEBI",
         "accession": "CHEBI:82594",
-        "name": "Ferritin"
+        "name": "Ferritin",
+        "label": "Ferritin"
       }
     },
     {
@@ -6466,7 +6974,8 @@
         "type_": "descriptor",
         "source": "EDAM",
         "accession": "EDAM:3687",
-        "name": "ISA-TAB"
+        "name": "ISA-TAB",
+        "label": "ISA-TAB"
       }
     },
     {
@@ -6478,7 +6987,8 @@
         "type_": "descriptor",
         "source": "NCIT",
         "accession": "NCIT:Thesaurus.owl#C153193",
-        "name": "Lipidomics"
+        "name": "Lipidomics",
+        "label": "Lipidomics"
       }
     },
     {
@@ -6490,7 +7000,8 @@
         "type_": "descriptor",
         "source": "EDAM",
         "accession": "EDAM:0153",
-        "name": "Lipidomics"
+        "name": "Lipidomics",
+        "label": "Lipidomics"
       }
     },
     {
@@ -6502,7 +7013,8 @@
         "type_": "descriptor",
         "source": "NCIT",
         "accession": "NCIT:C188283",
-        "name": "Lung Injury"
+        "name": "Lung Injury",
+        "label": "Lung Injury"
       }
     },
     {
@@ -6514,7 +7026,8 @@
         "type_": "descriptor",
         "source": "EDAM",
         "accession": "EDAM:3475",
-        "name": "TSV"
+        "name": "TSV",
+        "label": "TSV"
       }
     },
     {
@@ -6526,7 +7039,8 @@
         "type_": "descriptor",
         "source": "NCIT",
         "accession": "NCIT:C17079",
-        "name": "Transferrin Receptor"
+        "name": "Transferrin Receptor",
+        "label": "Transferrin Receptor"
       }
     },
     {
@@ -6538,7 +7052,8 @@
         "type_": "descriptor",
         "source": "EDAM",
         "accession": "EDAM:3858",
-        "name": "Waters RAW"
+        "name": "Waters RAW",
+        "label": "Waters RAW"
       }
     },
     {
@@ -6550,7 +7065,8 @@
         "type_": "descriptor",
         "source": "GO",
         "accession": "GO:0008219",
-        "name": "cell death"
+        "name": "cell death",
+        "label": "cell death"
       }
     },
     {
@@ -6562,7 +7078,8 @@
         "type_": "descriptor",
         "source": "GO",
         "accession": "GO:0097707",
-        "name": "ferroptosis"
+        "name": "ferroptosis",
+        "label": "ferroptosis"
       }
     },
     {
@@ -6574,7 +7091,8 @@
         "type_": "descriptor",
         "source": "OBI",
         "accession": "OBI:0003097",
-        "name": "liquid chromatography mass spectrometry assay"
+        "name": "liquid chromatography mass spectrometry assay",
+        "label": "liquid chromatography mass spectrometry assay"
       }
     },
     {
@@ -6586,7 +7104,8 @@
         "type_": "descriptor",
         "source": "OBI",
         "accession": "OBI:0000470",
-        "name": "mass spectrometry assay"
+        "name": "mass spectrometry assay",
+        "label": "mass spectrometry assay"
       }
     },
     {
@@ -6598,7 +7117,8 @@
         "type_": "descriptor",
         "source": "OBI",
         "accession": "OBI:0000366",
-        "name": "metabolite profiling assay"
+        "name": "metabolite profiling assay",
+        "label": "metabolite profiling assay"
       }
     },
     {
@@ -6610,7 +7130,8 @@
         "type_": "descriptor",
         "source": "CHMO",
         "accession": "CHMO:0000715",
-        "name": "ultra-performance liquid chromatography-mass spectrometry"
+        "name": "ultra-performance liquid chromatography-mass spectrometry",
+        "label": "ultra-performance liquid chromatography-mass spectrometry"
       }
     },
     {
@@ -6622,7 +7143,8 @@
         "type_": "factor-type",
         "source": "EFO",
         "accession": "EFO:0000408",
-        "name": "disease"
+        "name": "disease",
+        "label": "disease"
       }
     },
     {
@@ -6634,7 +7156,8 @@
         "type_": "factor-value",
         "source": "",
         "accession": "",
-        "name": "Infected with SARS-CoV-2"
+        "name": "Infected with SARS-CoV-2",
+        "label": "Infected with SARS-CoV-2"
       }
     },
     {
@@ -6646,7 +7169,8 @@
         "type_": "factor-value",
         "source": "",
         "accession": "",
-        "name": "QC"
+        "name": "QC",
+        "label": "QC"
       }
     },
     {
@@ -6658,7 +7182,8 @@
         "type_": "factor-value",
         "source": "",
         "accession": "",
-        "name": "QC control"
+        "name": "QC control",
+        "label": "QC control"
       }
     },
     {
@@ -6670,7 +7195,8 @@
         "type_": "factor-value",
         "source": "",
         "accession": "",
-        "name": "Uninfected (control)"
+        "name": "Uninfected (control)",
+        "label": "Uninfected (control)"
       }
     },
     {
@@ -6682,7 +7208,8 @@
         "type_": "parameter-type",
         "source": "",
         "accession": "",
-        "name": "autosampler model"
+        "name": "autosampler model",
+        "label": "autosampler model"
       }
     },
     {
@@ -6694,7 +7221,8 @@
         "type_": "parameter-type",
         "source": "",
         "accession": "",
-        "name": "column model"
+        "name": "column model",
+        "label": "column model"
       }
     },
     {
@@ -6706,7 +7234,8 @@
         "type_": "parameter-type",
         "source": "",
         "accession": "",
-        "name": "column type"
+        "name": "column type",
+        "label": "column type"
       }
     },
     {
@@ -6718,7 +7247,8 @@
         "type_": "parameter-type",
         "source": "",
         "accession": "",
-        "name": "derivatization"
+        "name": "derivatization",
+        "label": "derivatization"
       }
     },
     {
@@ -6730,7 +7260,8 @@
         "type_": "parameter-type",
         "source": "",
         "accession": "",
-        "name": "guard column"
+        "name": "guard column",
+        "label": "guard column"
       }
     },
     {
@@ -6742,7 +7273,8 @@
         "type_": "parameter-type",
         "source": "CHMO",
         "accession": "CHMO:0000960",
-        "name": "ion source"
+        "name": "ion source",
+        "label": "ion source"
       }
     },
     {
@@ -6754,7 +7286,8 @@
         "type_": "parameter-type",
         "source": "OBI",
         "accession": "OBI:0000345",
-        "name": "mass analyzer"
+        "name": "mass analyzer",
+        "label": "mass analyzer"
       }
     },
     {
@@ -6766,7 +7299,8 @@
         "type_": "parameter-type",
         "source": "MSIO",
         "accession": "MSIO:0000171",
-        "name": "mass spectrometry instrument"
+        "name": "mass spectrometry instrument",
+        "label": "mass spectrometry instrument"
       }
     },
     {
@@ -6778,7 +7312,8 @@
         "type_": "parameter-type",
         "source": "",
         "accession": "",
-        "name": "post extraction"
+        "name": "post extraction",
+        "label": "post extraction"
       }
     },
     {
@@ -6790,7 +7325,8 @@
         "type_": "parameter-type",
         "source": "",
         "accession": "",
-        "name": "scan m/z range"
+        "name": "scan m/z range",
+        "label": "scan m/z range"
       }
     },
     {
@@ -6802,7 +7338,8 @@
         "type_": "parameter-type",
         "source": "MS",
         "accession": "MS:1000465",
-        "name": "scan polarity"
+        "name": "scan polarity",
+        "label": "scan polarity"
       }
     },
     {
@@ -6814,7 +7351,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "Waters SYNAPT G2-Si HDMS"
+        "name": "Waters SYNAPT G2-Si HDMS",
+        "label": "Waters SYNAPT G2-Si HDMS"
       }
     },
     {
@@ -6826,7 +7364,8 @@
         "type_": "parameter-value",
         "source": "MS",
         "accession": "MS:1000073",
-        "name": "electrospray ionization"
+        "name": "electrospray ionization",
+        "label": "electrospray ionization"
       }
     },
     {
@@ -6838,7 +7377,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "negative"
+        "name": "negative",
+        "label": "negative"
       }
     },
     {
@@ -6850,7 +7390,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "positive"
+        "name": "positive",
+        "label": "positive"
       }
     },
     {
@@ -6862,7 +7403,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "quadrupole time-of-flight"
+        "name": "quadrupole time-of-flight",
+        "label": "quadrupole time-of-flight"
       }
     },
     {
@@ -6874,7 +7416,8 @@
         "type_": "protocol-type",
         "source": "CHMO",
         "accession": "CHMO:0001000",
-        "name": "chromatography"
+        "name": "chromatography",
+        "label": "chromatography"
       }
     },
     {
@@ -6886,7 +7429,8 @@
         "type_": "protocol-type",
         "source": "OBI",
         "accession": "OBI:0200000",
-        "name": "data transform"
+        "name": "data transform",
+        "label": "data transform"
       }
     },
     {
@@ -6898,7 +7442,8 @@
         "type_": "protocol-type",
         "source": "CHMO",
         "accession": "CHMO:0000470",
-        "name": "mass spectrometry"
+        "name": "mass spectrometry",
+        "label": "mass spectrometry"
       }
     },
     {
@@ -6910,7 +7455,8 @@
         "type_": "protocol-type",
         "source": "MI",
         "accession": "MI:2131",
-        "name": "metabolite identification"
+        "name": "metabolite identification",
+        "label": "metabolite identification"
       }
     },
     {
@@ -6922,7 +7468,8 @@
         "type_": "protocol-type",
         "source": "EFO",
         "accession": "EFO:0005518",
-        "name": "sample collection protocol"
+        "name": "sample collection protocol",
+        "label": "sample collection protocol"
       }
     },
     {
@@ -6934,7 +7481,8 @@
         "type_": "protocol-type",
         "source": "MS",
         "accession": "MS:1000831",
-        "name": "sample preparation"
+        "name": "sample preparation",
+        "label": "sample preparation"
       }
     },
     {
@@ -6946,7 +7494,8 @@
         "type_": "x-mtbls-characteristic-type",
         "source": "",
         "accession": "",
-        "name": "sample type"
+        "name": "sample type",
+        "label": "sample type"
       }
     },
     {
@@ -6958,7 +7507,8 @@
         "type_": "x-mtbls-characteristic-type",
         "source": "",
         "accession": "",
-        "name": "variant"
+        "name": "variant",
+        "label": "variant"
       }
     },
     {
@@ -6970,7 +7520,8 @@
         "type_": "x-mtbls-characteristic-value",
         "source": "CHMO",
         "accession": "CHMO:0002746",
-        "name": "experimental sample"
+        "name": "experimental sample",
+        "label": "experimental sample"
       }
     },
     {
@@ -6982,7 +7533,8 @@
         "type_": "x-mtbls-characteristic-value",
         "source": "",
         "accession": "",
-        "name": "pooled quality control sample"
+        "name": "pooled quality control sample",
+        "label": "pooled quality control sample"
       }
     },
     {
@@ -6994,7 +7546,8 @@
         "type_": "x-mtbls-factor-type",
         "source": "",
         "accession": "",
-        "name": "replicate"
+        "name": "replicate",
+        "label": "replicate"
       }
     },
     {
@@ -7006,7 +7559,8 @@
         "type_": "x-mtbls-factor-value",
         "source": "",
         "accession": "",
-        "name": "1"
+        "name": "1",
+        "label": "1"
       }
     },
     {
@@ -7018,7 +7572,8 @@
         "type_": "x-mtbls-factor-value",
         "source": "",
         "accession": "",
-        "name": "2"
+        "name": "2",
+        "label": "2"
       }
     },
     {
@@ -7030,7 +7585,8 @@
         "type_": "x-mtbls-factor-value",
         "source": "",
         "accession": "",
-        "name": "3"
+        "name": "3",
+        "label": "3"
       }
     },
     {
@@ -7042,7 +7598,8 @@
         "type_": "x-mtbls-factor-value",
         "source": "",
         "accession": "",
-        "name": "4"
+        "name": "4",
+        "label": "4"
       }
     },
     {
@@ -7054,7 +7611,8 @@
         "type_": "x-mtbls-factor-value",
         "source": "",
         "accession": "",
-        "name": "5"
+        "name": "5",
+        "label": "5"
       }
     },
     {
@@ -7066,7 +7624,8 @@
         "type_": "x-mtbls-factor-value",
         "source": "",
         "accession": "",
-        "name": "6"
+        "name": "6",
+        "label": "6"
       }
     },
     {
@@ -7078,7 +7637,8 @@
         "type_": "x-mtbls-parameter-type",
         "source": "",
         "accession": "",
-        "name": "chromatography instrument"
+        "name": "chromatography instrument",
+        "label": "chromatography instrument"
       }
     },
     {
@@ -7090,7 +7650,8 @@
         "type_": "x-mtbls-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Waters ACQUITY UPLC I-Class System"
+        "name": "Waters ACQUITY UPLC I-Class System",
+        "label": "Waters ACQUITY UPLC I-Class System"
       }
     }
   ],

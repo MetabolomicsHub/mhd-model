@@ -46,21 +46,23 @@ try:
         with driver.session() as session:
             session.execute_write(create_nodes, nodes)
             session.execute_write(create_relationships, relationships)
+
+    def update_neo4j(input_root_path: str):
+        files = list(Path(input_root_path).glob("*.neo4j_input.json"))
+        files.sort(key=lambda x: x.name, reverse=True)
+        for file in files:
+            txt = file.read_text()
+            json_data = json.loads(txt)
+
+            # print(f"File Upload started: {str(file.name)}")
+            upload_to_neo4j(
+                driver, json_data.get("nodes"), json_data.get("relationships")
+            )
+            # print(f"File Upload completed: {str(file.name)}")
+
+
 except Exception:
     logger.error("neo4j library is not loaded.")
-
-
-def update_neo4j(input_root_path: str):
-    files = list(Path(input_root_path).glob("*_neo4j_input.json"))
-    files.sort(key=lambda x: x.name, reverse=True)
-    for file in files:
-        txt = file.read_text()
-        json_data = json.loads(txt)
-
-        # print(f"File Upload started: {str(file.name)}")
-        upload_to_neo4j(driver, json_data.get("nodes"), json_data.get("relationships"))
-        # print(f"File Upload completed: {str(file.name)}")
-
 
 if __name__ == "__main__":
     logging.basicConfig(

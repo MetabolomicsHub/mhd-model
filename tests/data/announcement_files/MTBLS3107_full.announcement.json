@@ -1,8 +1,7 @@
 {
-  "mhd_identifier": "MHDT003107",
   "repository_identifier": "MTBLS3107",
   "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
-  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.ms-profile.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
   "cv_definitions": [
     {
       "label": "BTO",
@@ -32,11 +31,7 @@
       "label": "EDAM",
       "name": "The ontology of data analysis and management",
       "uri": "http://edamontology.org",
-      "prefix": "http://edamontology.org/format_",
-      "alternative_prefixes": [
-        "http://edamontology.org/operation_",
-        "http://edamontology.org/topic_, http://edamontology.org/data_"
-      ]
+      "prefix": "http://edamontology.org/format_"
     },
     {
       "label": "EFO",
@@ -51,6 +46,12 @@
       "prefix": "http://purl.obolibrary.org/obo/GO_"
     },
     {
+      "label": "MI",
+      "name": "Molecular Interactions Controlled Vocabulary",
+      "uri": " http://purl.obolibrary.org/obo/mi.owl",
+      "prefix": "http://purl.obolibrary.org/obo/MI_"
+    },
+    {
       "label": "MS",
       "name": "MS",
       "uri": "http://purl.obolibrary.org/obo/ms.owl",
@@ -63,19 +64,10 @@
       "prefix": "http://purl.obolibrary.org/obo/MSIO_"
     },
     {
-      "label": "MTBLS",
-      "name": "MetaboLights Controlled Vocabulary",
-      "uri": "https://raw.githubusercontent.com/EBI-Metabolights/MtblsWS-Py/refs/heads/main/resources/Metabolights.owl",
-      "prefix": "http://www.ebi.ac.uk/metabolights/ontology/MTBLS_"
-    },
-    {
-      "label": "NCBITaxon",
-      "name": "",
-      "uri": "",
-      "prefix": "",
-      "alternative_labels": [
-        "ncbitaxon"
-      ]
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
     },
     {
       "label": "NCIT",
@@ -90,21 +82,11 @@
       "prefix": "http://purl.obolibrary.org/obo/OBI_"
     }
   ],
-  "mhd_metadata_file_url": {
-    "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MHDA003107/MHDA003107.mhd.json",
-    "source": "EDAM",
-    "accession": "EDAM:1052",
-    "name": "URL"
-  },
+  "mhd_metadata_file_url": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107_full/MTBLS3107_full.mhd.json",
   "dataset_url_list": [
-    {
-      "value": "https://www.ebi.ac.uk/metabolights/MTBLS3107",
-      "source": "EDAM",
-      "accession": "EDAM:1052",
-      "name": "URL"
-    }
+    "https://www.ebi.ac.uk/metabolights/MTBLS3107"
   ],
-  "dataset_license": "https://creativecommons.org/publicdomain/zero/1.0",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0",
   "title": "Fatal COVID-19 pulmonary disease involves ferroptosis.",
   "description": "<p>SARS-CoV-2 infection causes severe pulmonary manifestations, with poorly understood mechanisms and limited treatment options. Hyperferritinemia and disrupted lung iron homeostasis in COVID-19 patients imply that ferroptosis, an iron-dependent cell death, may occur. Immunostaining and lipidomic analysis in COVID-19 lung autopsies reveal increases in ferroptosis markers, including transferrin receptor 1 and malondialdehyde accumulation in fatal cases. COVID-19 lungs display dysregulation of lipids involved in metabolism and ferroptosis. We find increased ferritin light chain associated with severe COVID-19 lung pathology. Iron overload promotes ferroptosis in both primary cells and cancerous lung epithelial cells. In addition, ferroptosis markers strongly correlate with lung injury severity in a COVID-19 lung disease model using male Syrian hamsters. These results reveal a role for ferroptosis in COVID-19 pulmonary disease; pharmacological ferroptosis inhibition may serve as an adjuvant therapy to prevent lung damage during SARS-CoV-2 infection.</p>",
   "submission_date": "2021-07-09T00:00:00",
@@ -117,22 +99,21 @@
       ]
     }
   ],
-  "principal_investigators": [],
-  "measurement_methodology": [
-    {
-      "source": "OBI",
-      "accession": "OBI:0000470",
-      "name": "mass spectrometry"
-    }
-  ],
   "technology_type": [
     {
       "source": "OBI",
       "accession": "OBI:0000470",
-      "name": "mass spectrometry"
+      "name": "mass spectrometry assay"
     }
   ],
-  "analysis_type": [
+  "measurement_type": [
+    {
+      "source": "OBI",
+      "accession": "OBI:0000470",
+      "name": "mass spectrometry assay"
+    }
+  ],
+  "assay_type": [
     {
       "source": "OBI",
       "accession": "OBI:0003097",
@@ -276,7 +257,7 @@
       ]
     }
   ],
-  "characteristic_definitions": [
+  "characteristic_values": [
     {
       "key": {
         "source": "NCIT",
@@ -285,7 +266,7 @@
       },
       "values": [
         {
-          "source": "NCBITaxon",
+          "source": "NCBITAXON",
           "accession": "NCBITaxon:9606",
           "name": "Homo sapiens"
         }
@@ -313,19 +294,53 @@
       },
       "values": [
         {
-          "source": "MTBLS",
-          "accession": "MTBLS:001090",
-          "name": "pooled quality control sample"
-        },
-        {
           "source": "CHMO",
           "accession": "CHMO:0002746",
           "name": "experimental sample"
+        },
+        {
+          "source": "",
+          "accession": "",
+          "name": "pooled quality control sample"
         }
       ]
     }
   ],
   "protocols": [
+    {
+      "name": "Sample collection",
+      "protocol_type": {
+        "source": "EFO",
+        "accession": "EFO:0005518",
+        "name": "sample collection protocol"
+      },
+      "description": "<p><strong>Study participant details:</strong></p><p>The study involving human subject was conducted under the Institutional Review Board of Columbia University (AAAT0388, approved 04/28/2020). All human samples were obtained from the Columbia University tissue bank. Severe COVID-19 lung autopsies with ALI and non-ALI pathology were collected from patients deceased from respiratory failure caused by SARS-CoV-2 infection. Severe lung explants were collected from patients with severe COVID-19 disease. Mild COVID-19 lung explants/biopsies were selected from patients recovered from SARS-CoV-2 infection. Control lungs were selected from resections of pneumothorax lungs and neoplastic lungs that had no lung injury and were not infected with SARS-CoV-2. Non-COVID-19 control lung autopsies with ALI were collected from patients deceased from respiratory failure before the pandemic. Both male and female patients were equally involved. The sex and age of all subjects involved are provided in <strong>Data S1</strong> in the paper associated with this study. Consents were obtained for all patient samples obtained from the Columbia University tissue bank. The initial and last laboratory ferritin test records were obtained from severe COVID-19 patients involved in this study. Patient serum was collected during routine blood test and an immunoassay against ferritin was performed on the Roche analyzer in the Automated Lab.</p><p><br></p><p><strong>Tissue pathology examination:</strong></p><p>Lung tissue block smaller than 4 mm x 4 mm x 4 mm were fixed in 4% paraformaldehyde (PFA) for over 24 h. Tissues were washed 3 times with PBS and then paraffinized using Sakura VIP 5 tissue processor. Paraffinized tissues were sectioned at 5 mm and mounted onto slides. FFPE tissue sections were stained with hematoxylin and eosin (H&amp;E) and scanned using Leica AT2 whole slide digital imaging at 40x. The scanned whole slide images were annotated for injury and image border using QuPath (v0.4.3). Percentage injured area was calculated by dividing the sum of injured areas by total area and multiplying by 100%. For kidney and heart tissue evaluation, a practicing renal/cardiovascular pathologist blind to the animals' conditions/treatments performed light microscopic evaluated of H&amp;E FFPE tissue from the sampled kidneys and hearts. </p><p><br></p>"
+    },
+    {
+      "name": "Extraction",
+      "protocol_type": {
+        "source": "MS",
+        "accession": "MS:1000831",
+        "name": "sample preparation"
+      },
+      "description": "<p>COVID-19 lung samples procured during routine gross examination in surgical pathology were deposited into 2 ml cryovials, snap-frozen in liquid nitrogen, filled with OCT, and then stored at -80 °C. OCT-embedded blocks were then sectioned at 10 mm thickness and washed 5 times with PBS as described previously to remove OCT<strong>[1]</strong>. Briefly, 3 ml of ice-cold PBS was added to each vial containing 20 tissue sections, vortex-mixed, and centrifuged at 2000 x g at 4 °C for 10 min. Following centrifugation, the supernatant was aspirated carefully to avoid taking up any tissue. This cycle of washing the tissues with cold PBS combined centrifugation was repeated 4 times. The lung sections were then incubated in methanol/acetonitrile (1:1; v/v) at -80 °C for 24 h to inactivate SARS-CoV-2 virus<strong>[2]</strong>. Viral deactivation solvents were discarded. Lipids were extracted using a modified Folch extraction method enabling a multi-omics analysis<strong>[3</strong>]. Briefly, the tissues were homogenized in 300 ml of methanol containing 0.01% BHT and a mixture of lipid standards using a micro-tip sonicator. Then 600 ml of dichloromethane was added to homogenized samples, and vortex-mixed for 30 s followed by incubating on dry ice on a shaker for 2 h. Next, 180 ml of ice-cold water was added to each sample, vortex-mixed, and incubated for 30 min on ice before centrifugation at 3500 rpm for 20 min at 4 °C. The total lipid extract was transferred into a glass vial followed by drying under a gentle stream of nitrogen gas. The dried samples were reconstituted in a solution of IPA/ACN/water (4:3:1; v/v/v) before lipidomics analysis. The protein pellet was removed to quantify proteins using the BCA assay. </p><p><br></p><p><strong>Ref:</strong></p><p><strong>[1]</strong> Rohrbach TD, Boyd AE, Grizzard PJ, Spiegel S, Allegood J, Lima S. A simple method for sphingolipid analysis of tissues embedded in optimal cutting temperature compound. J Lipid Res. 2020 Jun;61(6):953-967. doi:10.1194/jlr.D120000809. PMID:32341007.</p><p><strong>[2]</strong> Burnum-Johnson KE, Kyle JE, Eisfeld AJ, Casey CP, Stratton KG, Gonzalez JF, Habyarimana F et al. MPLEx: a method for simultaneous pathogen inactivation and extraction of samples for multi-omics profiling. Analyst. 2017 Jan 26;142(3):442-448. doi:10.1039/c6an02486f. PMID:28091625.</p><p><strong>[3]</strong> FOLCH J, LEES M, SLOANE STANLEY GH. A simple method for the isolation and purification of total lipides from animal tissues. J Biol Chem. 1957 May;226(1):497-509. PMID:13428781.</p>",
+      "protocol_parameters": [
+        {
+          "key": {
+            "source": "",
+            "accession": "",
+            "name": "derivatization"
+          }
+        },
+        {
+          "key": {
+            "source": "",
+            "accession": "",
+            "name": "post extraction"
+          }
+        }
+      ]
+    },
     {
       "name": "Chromatography",
       "protocol_type": {
@@ -339,82 +354,43 @@
           "key": {
             "source": "",
             "accession": "",
+            "name": "autosampler model"
+          }
+        },
+        {
+          "key": {
+            "source": "",
+            "accession": "",
             "name": "chromatography instrument"
           },
           "values": [
             {
-              "source": "MTBLS",
-              "accession": "MTBLS:000917",
+              "source": "",
+              "accession": "",
               "name": "Waters ACQUITY UPLC I-Class System"
             }
           ]
         },
         {
           "key": {
-            "source": "MTBLS",
-            "accession": "MTBLS:50001",
+            "source": "",
+            "accession": "",
             "name": "column model"
-          },
-          "values": [
-            {
-              "source": "",
-              "accession": "",
-              "name": "ACQUITY UPLC CSH C18 (1.7 µm, 2.1 mm x 100 mm; Waters)"
-            }
-          ]
+          }
         },
         {
           "key": {
-            "source": "MTBLS",
-            "accession": "MTBLS:50002",
+            "source": "",
+            "accession": "",
             "name": "column type"
-          },
-          "values": [
-            {
-              "source": "",
-              "accession": "",
-              "name": "reverse phase"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Extraction",
-      "protocol_type": {
-        "source": "MS",
-        "accession": "MS:1000831",
-        "name": "sample preparation"
-      },
-      "description": "<p>COVID-19 lung samples procured during routine gross examination in surgical pathology were deposited into 2 ml cryovials, snap-frozen in liquid nitrogen, filled with OCT, and then stored at -80 °C. OCT-embedded blocks were then sectioned at 10 mm thickness and washed 5 times with PBS as described previously to remove OCT<strong>[1]</strong>. Briefly, 3 ml of ice-cold PBS was added to each vial containing 20 tissue sections, vortex-mixed, and centrifuged at 2000 x g at 4 °C for 10 min. Following centrifugation, the supernatant was aspirated carefully to avoid taking up any tissue. This cycle of washing the tissues with cold PBS combined centrifugation was repeated 4 times. The lung sections were then incubated in methanol/acetonitrile (1:1; v/v) at -80 °C for 24 h to inactivate SARS-CoV-2 virus<strong>[2]</strong>. Viral deactivation solvents were discarded. Lipids were extracted using a modified Folch extraction method enabling a multi-omics analysis<strong>[3</strong>]. Briefly, the tissues were homogenized in 300 ml of methanol containing 0.01% BHT and a mixture of lipid standards using a micro-tip sonicator. Then 600 ml of dichloromethane was added to homogenized samples, and vortex-mixed for 30 s followed by incubating on dry ice on a shaker for 2 h. Next, 180 ml of ice-cold water was added to each sample, vortex-mixed, and incubated for 30 min on ice before centrifugation at 3500 rpm for 20 min at 4 °C. The total lipid extract was transferred into a glass vial followed by drying under a gentle stream of nitrogen gas. The dried samples were reconstituted in a solution of IPA/ACN/water (4:3:1; v/v/v) before lipidomics analysis. The protein pellet was removed to quantify proteins using the BCA assay. </p><p><br></p><p><strong>Ref:</strong></p><p><strong>[1]</strong> Rohrbach TD, Boyd AE, Grizzard PJ, Spiegel S, Allegood J, Lima S. A simple method for sphingolipid analysis of tissues embedded in optimal cutting temperature compound. J Lipid Res. 2020 Jun;61(6):953-967. doi:10.1194/jlr.D120000809. PMID:32341007.</p><p><strong>[2]</strong> Burnum-Johnson KE, Kyle JE, Eisfeld AJ, Casey CP, Stratton KG, Gonzalez JF, Habyarimana F et al. MPLEx: a method for simultaneous pathogen inactivation and extraction of samples for multi-omics profiling. Analyst. 2017 Jan 26;142(3):442-448. doi:10.1039/c6an02486f. PMID:28091625.</p><p><strong>[3]</strong> FOLCH J, LEES M, SLOANE STANLEY GH. A simple method for the isolation and purification of total lipides from animal tissues. J Biol Chem. 1957 May;226(1):497-509. PMID:13428781.</p>",
-      "protocol_parameters": [
-        {
-          "key": {
-            "source": "MTBLS",
-            "accession": "MTBLS:50011",
-            "name": "derivatization"
-          },
-          "values": [
-            {
-              "source": "",
-              "accession": "",
-              "name": "none"
-            }
-          ]
+          }
         },
         {
           "key": {
-            "source": "MTBLS",
-            "accession": "MTBLS:50010",
-            "name": "post extraction"
-          },
-          "values": [
-            {
-              "source": "",
-              "accession": "",
-              "name": "Methanol/MTBE/Water, 1.25/4.25/1 (v/v/v)"
-            }
-          ]
+            "source": "",
+            "accession": "",
+            "name": "guard column"
+          }
         }
       ]
     },
@@ -449,8 +425,8 @@
           },
           "values": [
             {
-              "source": "MTBLS",
-              "accession": "MTBLS:000699",
+              "source": "",
+              "accession": "",
               "name": "quadrupole time-of-flight"
             }
           ]
@@ -463,25 +439,18 @@
           },
           "values": [
             {
-              "source": "MTBLS",
-              "accession": "MTBLS:000676",
+              "source": "",
+              "accession": "",
               "name": "Waters SYNAPT G2-Si HDMS"
             }
           ]
         },
         {
           "key": {
-            "source": "MTBLS",
-            "accession": "MTBLS:50020",
+            "source": "",
+            "accession": "",
             "name": "scan m/z range"
-          },
-          "values": [
-            {
-              "source": "",
-              "accession": "",
-              "name": "50-1600"
-            }
-          ]
+          }
         },
         {
           "key": {
@@ -503,6 +472,24 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Data transformation",
+      "protocol_type": {
+        "source": "OBI",
+        "accession": "OBI:0200000",
+        "name": "data transform"
+      },
+      "description": "<p>The <strong>raw</strong> LC-MS data files were converted to the <strong>netCDF</strong> format using the <strong>DataBridge tool</strong> implemented in <strong>MassLynx software (v4.2, Waters)</strong>. Then, they were subjected to peak-picking, retention time alignment and grouping using the <strong>XCMS package</strong> in the <strong>R (v4.0)</strong> environment. Statistical analysis was performed in <strong>R (v4.0)</strong> environment and <strong>MetaboAnalyst R (v3.0)</strong>. The extracted lipid features were normalized by total protein concentrations, median normalization and log-transformed within each sample before statistical analyses. Group differences were calculated using the <strong>Welch t-test</strong>. The <strong>Benjamin-Hochberg (BH) method</strong> was also applied for multiple testing corrections, and the adjusted p values were calculated to control the <strong>false discovery rate</strong> for each test. The adjusted p values lower than 0.05 were considered statistically significant (<strong>FDR-corrected p&lt;0.05</strong>) with a <strong>fold change threshold</strong> of 1.5 was considered as statistically significant.</p>"
+    },
+    {
+      "name": "Metabolite identification",
+      "protocol_type": {
+        "source": "MI",
+        "accession": "MI:2131",
+        "name": "metabolite identification"
+      },
+      "description": "<p>Identification of detected lipid features was initially obtained by searching monoisotopic masses against the available online databases such as <strong>METLIN</strong>, <strong>Lipid MAPS</strong>, and <strong>HMDB</strong> with a mass tolerance of 5 ppm. Moreover, isotopic patterns and retention time of each lipid precursor ion were assessed. Structural elucidation of lipids confirmed by inspecting the diagnostic fragment ions and corresponding acyl chain fragment information obtained by UPLC-HDMSE. The nomenclature and shortened annotation of lipids proposed by the <strong>Lipid Maps Consortium</strong> were employed<strong>[1]</strong>.</p><p><br></p><p><strong>Ref:</strong></p><p><strong>[1]</strong> Liebisch G, Fahy E, Aoki J, Dennis EA, Durand T, Ejsing CS, Fedorova M, Feussner I, Griffiths WJ, Köfeler H, Merrill AH Jr, Murphy RC, O'Donnell VB, Oskolkova O, Subramaniam S, Wakelam MJO, Spener F. Update on LIPID MAPS classification, nomenclature, and shorthand notation for MS-derived lipid structures. J Lipid Res. 2020 Dec;61(12):1539-1555. doi:10.1194/jlr.S120001025. PMID: 33037133.</p>"
     }
   ],
   "reported_metabolites": [
@@ -900,103 +887,38 @@
   "repository_metadata_file_list": [
     {
       "name": "a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        },
-        {
-          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
-          "source": "EDAM",
-          "accession": "EDAM:1052",
-          "name": "URL"
-        }
-      ],
-      "format": {
-        "source": "EDAM",
-        "accession": "EDAM:3687",
-        "name": "ISA-TAB"
-      }
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
+      ]
     },
     {
       "name": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        },
-        {
-          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
-          "source": "EDAM",
-          "accession": "EDAM:1052",
-          "name": "URL"
-        }
-      ],
-      "format": {
-        "source": "EDAM",
-        "accession": "EDAM:3687",
-        "name": "ISA-TAB"
-      }
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
+      ]
     },
     {
       "name": "i_Investigation.txt",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        },
-        {
-          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt",
-          "source": "EDAM",
-          "accession": "EDAM:1052",
-          "name": "URL"
-        }
-      ],
-      "format": {
-        "source": "EDAM",
-        "accession": "EDAM:3687",
-        "name": "ISA-TAB"
-      }
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt"
+      ]
     },
     {
       "name": "s_MTBLS3107.txt",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        },
-        {
-          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt",
-          "source": "EDAM",
-          "accession": "EDAM:1052",
-          "name": "URL"
-        }
-      ],
-      "format": {
-        "source": "EDAM",
-        "accession": "EDAM:3687",
-        "name": "ISA-TAB"
-      }
+      "url_list": [
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt",
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt"
+      ]
     }
   ],
   "raw_data_file_list": [
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1006,13 +928,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1022,13 +939,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg03.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg03.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg03.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1038,13 +950,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg04.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg04.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg04.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1054,13 +961,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg05.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg05.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg05.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1070,13 +972,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-QC-Neg06.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg06.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-QC-Neg06.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1086,13 +983,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1102,13 +994,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample1-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1118,13 +1005,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1134,13 +1016,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample10-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1150,13 +1027,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1166,13 +1038,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample11-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1182,13 +1049,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1198,13 +1060,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample12-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1214,13 +1071,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1230,13 +1082,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample13-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1246,13 +1093,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1262,13 +1104,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample2-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1278,13 +1115,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1294,13 +1126,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample3-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1310,13 +1137,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1326,13 +1148,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample4-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1342,13 +1159,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1358,13 +1170,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample5-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1374,13 +1181,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1390,13 +1192,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample6-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1406,13 +1203,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1422,13 +1214,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample7-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1438,13 +1225,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1454,13 +1236,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample8-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1470,13 +1247,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1486,13 +1258,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-Sample9-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1502,13 +1269,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1518,13 +1280,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC1-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1534,13 +1291,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1550,13 +1302,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC2-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1566,13 +1313,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1582,13 +1324,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC3-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1598,13 +1335,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1614,13 +1346,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC4-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1630,13 +1357,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1646,13 +1368,8 @@
     },
     {
       "name": "FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/NEG/200523-SampleC5-Neg02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1662,13 +1379,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1678,13 +1390,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1694,13 +1401,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos03.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos03.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos03.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1710,13 +1412,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos04.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos04.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos04.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1726,13 +1423,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos05.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos05.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos05.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1742,13 +1434,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-QC-Pos06.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos06.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-QC-Pos06.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1758,13 +1445,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1774,13 +1456,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample1-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1790,13 +1467,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1806,13 +1478,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample10-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1822,13 +1489,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1838,13 +1500,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample11-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1854,13 +1511,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1870,13 +1522,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample12-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1886,13 +1533,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1902,13 +1544,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample13-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1918,13 +1555,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1934,13 +1566,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample2-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1950,13 +1577,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1966,13 +1588,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample3-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1982,13 +1599,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -1998,13 +1610,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample4-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2014,13 +1621,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2030,13 +1632,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample5-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2046,13 +1643,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2062,13 +1654,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample6-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2078,13 +1665,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2094,13 +1676,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample7-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2110,13 +1687,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2126,13 +1698,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample8-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2142,13 +1709,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2158,13 +1720,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-Sample9-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2174,13 +1731,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2190,13 +1742,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC1-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2206,13 +1753,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2222,13 +1764,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC2-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2238,13 +1775,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2254,13 +1786,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC3-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2270,13 +1797,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2286,13 +1808,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC4-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2302,13 +1819,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos01.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2318,13 +1830,8 @@
     },
     {
       "name": "FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/FILES/RAW_FILES/POS/200523-SampleC5-Pos02.raw"
       ],
       "format": {
         "source": "EDAM",
@@ -2333,24 +1840,12 @@
       }
     }
   ],
-  "derived_data_file_list": [],
-  "supplementary_file_list": [],
   "result_file_list": [
     {
       "name": "m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        },
-        {
-          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv",
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling_v2_maf.tsv"
       ],
       "format": {
         "source": "EDAM",
@@ -2360,19 +1855,9 @@
     },
     {
       "name": "m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
-      "file_url_list": [
-        {
-          "value": "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        },
-        {
-          "value": "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
-          "source": "NCIT",
-          "accession": "NCIT:C100047",
-          "name": "File Transfer Protocol"
-        }
+      "url_list": [
+        "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv",
+        "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/m_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling_v2_maf.tsv"
       ],
       "format": {
         "source": "EDAM",

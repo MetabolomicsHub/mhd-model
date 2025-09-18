@@ -77,11 +77,14 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
                     else:
                         properties[key] = str(value)
 
-            if not hasattr(properties, "name"):
-                properties["name"] = node.label
+            properties["label"] = node.label
 
             nodes.append(
-                {"id": node.id_, "labels": [node.type_], "properties": properties}
+                {
+                    "id": node.id_,
+                    "labels": [node.type_],
+                    "properties": properties,
+                }
             )
 
         for rel in relationships_map.values():
@@ -111,7 +114,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
                     "properties": rel.model_dump(exclude_none=True),
                 }
             )
-        output_file = Path(output_root_path) / Path(f"{study_id}_neo4j_input.json")
+        output_file = Path(output_root_path) / Path(f"{study_id}.neo4j_input.json")
         with Path(output_file).open("w") as f:
             json.dump({"nodes": nodes, "relationships": relationships}, f, indent=2)
         # print(f"File Upload started: {str(file.name)}")

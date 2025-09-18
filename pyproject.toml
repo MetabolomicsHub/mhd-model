@@ -27,6 +27,9 @@ neo4j = [
     "neo4j>=5.28.2",
 ]
 
+[project.scripts]
+mhd-cli = "mhd_model.commands.cli:cli"
+
 [dependency-groups]
 dev = [
     "commitizen>=4.8.3",

@@ -19,7 +19,7 @@ class AnnouncementBaseModel(MhdConfigModel):
 
 
 class AnnouncementBaseFile(AnnouncementBaseModel):
-    name: Annotated[str, Field(min_length=2)]
+    name: Annotated[str, Field(min_length=1)]
     url_list: Annotated[list[AnyUrl], Field(min_length=1)]
     compression_format: Annotated[None | fields.CompressionFormat, Field()] = None
     extension: Annotated[None | str, Field(min_length=2)] = None

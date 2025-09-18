@@ -23,7 +23,7 @@
           "mass spectrometry",
           "chromatography"
         ],
-        "name": "The influence of implants on the amino acid metabolism of mesenchymal stem cells (MSCs)"
+        "label": "The influence of implants on the amino acid metabolism of mesenchymal stem cells (MSCs)"
       }
     },
     {
@@ -43,7 +43,8 @@
           "mass spectrometry",
           "chromatography"
         ],
-        "sample_run_list": []
+        "sample_run_list": [],
+        "label": "ST004175_AN006930.txt"
       }
     },
     {
@@ -54,7 +55,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "organism",
-        "characteristic_type": "organism"
+        "characteristic_type": "organism",
+        "label": "organism"
       }
     },
     {
@@ -65,7 +67,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "organism part",
-        "characteristic_type": "organism part"
+        "characteristic_type": "organism part",
+        "label": "organism part"
       }
     },
     {
@@ -76,7 +79,8 @@
       "properties": {
         "type_": "factor-definition",
         "name": "culture substrate",
-        "factor_type": "culture substrate"
+        "factor_type": "culture substrate",
+        "label": "culture substrate"
       }
     },
     {
@@ -86,7 +90,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Glycine"
+        "name": "Glycine",
+        "label": "Glycine"
       }
     },
     {
@@ -96,7 +101,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-(+)-Arginine"
+        "name": "L-(+)-Arginine",
+        "label": "L-(+)-Arginine"
       }
     },
     {
@@ -106,7 +112,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-(+)-Lysine"
+        "name": "L-(+)-Lysine",
+        "label": "L-(+)-Lysine"
       }
     },
     {
@@ -116,7 +123,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-(-)-Threonine"
+        "name": "L-(-)-Threonine",
+        "label": "L-(-)-Threonine"
       }
     },
     {
@@ -126,7 +134,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-(-)-Tyrosine"
+        "name": "L-(-)-Tyrosine",
+        "label": "L-(-)-Tyrosine"
       }
     },
     {
@@ -136,7 +145,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Alanine"
+        "name": "L-Alanine",
+        "label": "L-Alanine"
       }
     },
     {
@@ -146,7 +156,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Asparagine Anhydrous"
+        "name": "L-Asparagine Anhydrous",
+        "label": "L-Asparagine Anhydrous"
       }
     },
     {
@@ -156,7 +167,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-AsparticAcid"
+        "name": "L-AsparticAcid",
+        "label": "L-AsparticAcid"
       }
     },
     {
@@ -166,7 +178,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Cysteine"
+        "name": "L-Cysteine",
+        "label": "L-Cysteine"
       }
     },
     {
@@ -176,7 +189,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-GlutamicAcid"
+        "name": "L-GlutamicAcid",
+        "label": "L-GlutamicAcid"
       }
     },
     {
@@ -186,7 +200,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Glutamine"
+        "name": "L-Glutamine",
+        "label": "L-Glutamine"
       }
     },
     {
@@ -196,7 +211,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Histidine"
+        "name": "L-Histidine",
+        "label": "L-Histidine"
       }
     },
     {
@@ -206,7 +222,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Hydroxyproline"
+        "name": "L-Hydroxyproline",
+        "label": "L-Hydroxyproline"
       }
     },
     {
@@ -216,7 +233,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Isoleucine"
+        "name": "L-Isoleucine",
+        "label": "L-Isoleucine"
       }
     },
     {
@@ -226,7 +244,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Leucine"
+        "name": "L-Leucine",
+        "label": "L-Leucine"
       }
     },
     {
@@ -236,7 +255,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Methionine"
+        "name": "L-Methionine",
+        "label": "L-Methionine"
       }
     },
     {
@@ -246,7 +266,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Phenylalanine"
+        "name": "L-Phenylalanine",
+        "label": "L-Phenylalanine"
       }
     },
     {
@@ -256,7 +277,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Proline"
+        "name": "L-Proline",
+        "label": "L-Proline"
       }
     },
     {
@@ -266,7 +288,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Serine"
+        "name": "L-Serine",
+        "label": "L-Serine"
       }
     },
     {
@@ -276,7 +299,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Tryptophan"
+        "name": "L-Tryptophan",
+        "label": "L-Tryptophan"
       }
     },
     {
@@ -286,7 +310,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "L-Valine"
+        "name": "L-Valine",
+        "label": "L-Valine"
       }
     },
     {
@@ -301,7 +326,8 @@
         ],
         "name": "ST004175_AN006930.txt",
         "format": "TSV",
-        "extension": ".txt"
+        "extension": ".txt",
+        "label": "ST004175_AN006930.txt"
       }
     },
     {
@@ -311,8 +337,9 @@
       ],
       "properties": {
         "type_": "organization",
-        "name": "mhd--organization--0f639f80-30a4-4bbe-adfd-89fd04a4630e",
-        "address": "174 Shazheng St., Shapingba,, Chongqing, 400044, China"
+        "name": "Chongqing University",
+        "address": "174 Shazheng St., Shapingba,, Chongqing, 400044, China",
+        "label": "mhd--organization--0f639f80-30a4-4bbe-adfd-89fd04a4630e"
       }
     },
     {
@@ -323,7 +350,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell envir cond",
-        "parameter_type": "cell envir cond"
+        "parameter_type": "cell envir cond",
+        "label": "cell envir cond"
       }
     },
     {
@@ -334,7 +362,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell growth config",
-        "parameter_type": "cell growth config"
+        "parameter_type": "cell growth config",
+        "label": "cell growth config"
       }
     },
     {
@@ -345,7 +374,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell growth container",
-        "parameter_type": "cell growth container"
+        "parameter_type": "cell growth container",
+        "label": "cell growth container"
       }
     },
     {
@@ -356,7 +386,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell harvesting",
-        "parameter_type": "cell harvesting"
+        "parameter_type": "cell harvesting",
+        "label": "cell harvesting"
       }
     },
     {
@@ -367,7 +398,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell inoc proc",
-        "parameter_type": "cell inoc proc"
+        "parameter_type": "cell inoc proc",
+        "label": "cell inoc proc"
       }
     },
     {
@@ -378,7 +410,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell media",
-        "parameter_type": "cell media"
+        "parameter_type": "cell media",
+        "label": "cell media"
       }
     },
     {
@@ -389,7 +422,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell media lastchanged",
-        "parameter_type": "cell media lastchanged"
+        "parameter_type": "cell media lastchanged",
+        "label": "cell media lastchanged"
       }
     },
     {
@@ -400,7 +434,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell pct confluence",
-        "parameter_type": "cell pct confluence"
+        "parameter_type": "cell pct confluence",
+        "label": "cell pct confluence"
       }
     },
     {
@@ -411,7 +446,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "cell storage",
-        "parameter_type": "cell storage"
+        "parameter_type": "cell storage",
+        "label": "cell storage"
       }
     },
     {
@@ -422,7 +458,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "chromatography type",
-        "parameter_type": "column type"
+        "parameter_type": "column type",
+        "label": "chromatography type"
       }
     },
     {
@@ -433,7 +470,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collection duration",
-        "parameter_type": "collection duration"
+        "parameter_type": "collection duration",
+        "label": "collection duration"
       }
     },
     {
@@ -444,7 +482,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collection frequency",
-        "parameter_type": "collection frequency"
+        "parameter_type": "collection frequency",
+        "label": "collection frequency"
       }
     },
     {
@@ -455,7 +494,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collection location",
-        "parameter_type": "collection location"
+        "parameter_type": "collection location",
+        "label": "collection location"
       }
     },
     {
@@ -466,7 +506,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collection method",
-        "parameter_type": "collection method"
+        "parameter_type": "collection method",
+        "label": "collection method"
       }
     },
     {
@@ -477,7 +518,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collection tube temp",
-        "parameter_type": "collection tube temp"
+        "parameter_type": "collection tube temp",
+        "label": "collection tube temp"
       }
     },
     {
@@ -488,7 +530,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collection vials",
-        "parameter_type": "collection vials"
+        "parameter_type": "collection vials",
+        "label": "collection vials"
       }
     },
     {
@@ -499,7 +542,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collision gas",
-        "parameter_type": "collision gas"
+        "parameter_type": "collision gas",
+        "label": "collision gas"
       }
     },
     {
@@ -510,7 +554,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "column name",
-        "parameter_type": "column name"
+        "parameter_type": "column name",
+        "label": "column name"
       }
     },
     {
@@ -521,7 +566,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "column temperature",
-        "parameter_type": "column temperature"
+        "parameter_type": "column temperature",
+        "label": "column temperature"
       }
     },
     {
@@ -532,7 +578,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "extract storage",
-        "parameter_type": "extract storage"
+        "parameter_type": "extract storage",
+        "label": "extract storage"
       }
     },
     {
@@ -543,7 +590,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "flow gradient",
-        "parameter_type": "flow gradient"
+        "parameter_type": "flow gradient",
+        "label": "flow gradient"
       }
     },
     {
@@ -554,7 +602,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "flow rate",
-        "parameter_type": "flow rate"
+        "parameter_type": "flow rate",
+        "label": "flow rate"
       }
     },
     {
@@ -565,7 +614,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "instrument name",
-        "parameter_type": "chromatography instrument"
+        "parameter_type": "chromatography instrument",
+        "label": "instrument name"
       }
     },
     {
@@ -576,7 +626,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "instrument name",
-        "parameter_type": "mass spectrometry instrument"
+        "parameter_type": "mass spectrometry instrument",
+        "label": "instrument name"
       }
     },
     {
@@ -587,7 +638,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "instrument type",
-        "parameter_type": "mass analyzer"
+        "parameter_type": "mass analyzer",
+        "label": "instrument type"
       }
     },
     {
@@ -598,7 +650,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "internal standard",
-        "parameter_type": "internal standard"
+        "parameter_type": "internal standard",
+        "label": "internal standard"
       }
     },
     {
@@ -609,7 +662,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "ion mode",
-        "parameter_type": "scan polarity"
+        "parameter_type": "scan polarity",
+        "label": "ion mode"
       }
     },
     {
@@ -620,7 +674,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "ms type",
-        "parameter_type": "ion source"
+        "parameter_type": "ion source",
+        "label": "ms type"
       }
     },
     {
@@ -631,7 +686,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "processing storage conditions",
-        "parameter_type": "processing storage conditions"
+        "parameter_type": "processing storage conditions",
+        "label": "processing storage conditions"
       }
     },
     {
@@ -642,7 +698,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "solvent a",
-        "parameter_type": "solvent a"
+        "parameter_type": "solvent a",
+        "label": "solvent a"
       }
     },
     {
@@ -653,7 +710,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "solvent b",
-        "parameter_type": "solvent b"
+        "parameter_type": "solvent b",
+        "label": "solvent b"
       }
     },
     {
@@ -664,7 +722,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "storage conditions",
-        "parameter_type": "Storage Condition"
+        "parameter_type": "Storage Condition",
+        "label": "storage conditions"
       }
     },
     {
@@ -675,7 +734,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "storage vials",
-        "parameter_type": "storage vials"
+        "parameter_type": "storage vials",
+        "label": "storage vials"
       }
     },
     {
@@ -686,7 +746,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "treatment",
-        "parameter_type": "treatment"
+        "parameter_type": "treatment",
+        "label": "treatment"
       }
     },
     {
@@ -697,7 +758,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "treatment compound",
-        "parameter_type": "treatment compound"
+        "parameter_type": "treatment compound",
+        "label": "treatment compound"
       }
     },
     {
@@ -708,7 +770,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "treatment route",
-        "parameter_type": "treatment route"
+        "parameter_type": "treatment route",
+        "label": "treatment route"
       }
     },
     {
@@ -719,7 +782,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "treatment vehicle",
-        "parameter_type": "treatment vehicle"
+        "parameter_type": "treatment vehicle",
+        "label": "treatment vehicle"
       }
     },
     {
@@ -730,7 +794,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "volumeoramount collected",
-        "parameter_type": "volumeoramount collected"
+        "parameter_type": "volumeoramount collected",
+        "label": "volumeoramount collected"
       }
     },
     {
@@ -750,7 +815,7 @@
         "addresses": [
           "174 Shazheng St., Shapingba,, Chongqing, 400044, China"
         ],
-        "name": "201919021061@cqu.edu.cn"
+        "label": "201919021061@cqu.edu.cn"
       }
     },
     {
@@ -762,7 +827,7 @@
         "type_": "project",
         "title": "Directed Rescue Strategy for Enhanced Implant Osteointegration in Aged Rats",
         "description": "Senolytics, which involve the removal of senescent cells from tissues, have emerged as one of the most promising strategies for treating age-related degenerative diseases. In the context of orthopedic treatment, the elimination of senescent cells can also enhance to the osteointegration of implants in elderly patients. However, achieving specific clearance of senescent cells without adversely affecting the function of normal cell remains challenging. To overcome these challenges, we developed a novel implant surface modification technique to achieve specific clearance of locally senescent cells by modulating their metabolism. Our technique also involved modifying implants with BPTES, a glutaminase 1 (GLS1) inhibitor, through \u03c0-\u03c0 stacking with dopamine. This modification effectively induced apoptosis in senescent mesenchymal stem cells (MSCs) through extensive inhibition of GLS1. This effect was attributed to intracellular acidosis resulting from the suppression of glutaminolysis in senescent MSCs. Simultaneously, poly(\u03b3-glutamate) (PGA), modified by a layer-by-layer method, served as a high-density carbon source coating, continuously supporting glutamine metabolism in MSCs without ammonia production. Targeted metabolic analysis revealed that the modified titanium implants significantly altered the metabolic profile of MSCs, enhancing glutamine metabolism, the pentose phosphate pathway (PPP), aerobic glycolysis, and fatty acid oxidation (FAO), which collectively stimulated osteogenic differentiation. In vivo experiments showed that the surface modification significantly reduced the senescence level around implants and promoted osteointegration in aged rats. These findings offer promising insights into the design and application of orthopedic implants for elderly patients.",
-        "name": "Directed Rescue Strategy for Enhanced Implant Osteointegration in Aged Rats"
+        "label": "Directed Rescue Strategy for Enhanced Implant Osteointegration in Aged Rats"
       }
     },
     {
@@ -776,7 +841,8 @@
         "protocol_type": "chromatography",
         "description": "In this experiment, LC-ESI-MS/MS (UHPLC-Qtrap) was used to conduct qualitative and quantitative detection of the target substances in the samples. The specific parameters are as follows: Chromatographic conditions: AdvanceBio MS Spent Media (2.1 * 50mm, 2.7 \u00b5m), column temperature 40\u2103, injection volume 1 \u03bcL. Mobile phase A (0.1% formic acid 10mM ammonium formate 95% water solution), mobile phase B (0.1% formic acid 10mM ammonium formate 95% acetonitrile solution).",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "chromatography"
       }
     },
     {
@@ -790,7 +856,8 @@
         "protocol_type": "mass spectrometry",
         "description": "QTRAP 6500+ (SCIEX) was used to analyze and the system was set in positive mode. The temperature was set to 550\u2009\u00b0C, curtain gas was maintained at 35\u2009psi, collision gas was set to medium, and both ion source gas 1 and 2 were set to 50\u2009psi. Ion-spray voltage was set to 5500\u2009V. In the AB Sciex quantitative software OS, the default parameters are used to automatically identify and integrate each ion fragment, with manual checks as an auxiliary. A linear regression standard curve is plotted with the mass spectrometry peak area of the analyte as the ordinate and the analyte concentration as the abscissa. Sample concentration calculation: The mass spectrometry peak area of the analyte in the sample is substituted into the linear equation to calculate the concentration result.",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "mass spectrometry"
       }
     },
     {
@@ -804,7 +871,8 @@
         "protocol_type": "sample collection protocol",
         "description": "MSCs were seeded onto different samples and cultured at 37\u00b0C under 5% CO\u2082. The culture medium was replaced with fresh medium every two days. After 7 days of culture, all cells were collected.",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "sample collection"
       }
     },
     {
@@ -818,7 +886,8 @@
         "protocol_type": "sample preparation",
         "description": "In this experiment, a certain mass of the sample was precisely measured. Then, the sample was added to the extraction solution (tissues, cells and other samples need to be ground first) in a low-temperature environment for metabolite extraction treatment. Standard solutions of different concentrations were prepared. The standard solutions and the sample to be tested were subjected to LC-MS analysis under the same conditions. The detailed steps are as follows: 0.5*10^7 cells were combined with 4\u2009\u03bcL of internal standard solution (containing 100 \u03bcg/mL L-Trp-D5, L-Gln-D5, and L-Lys-D4), 216\u2009\u03bcL purified water and 25\u2009\u03bcL of 0.15 % DOC.The mixed solution was sonicated (40 kHz) for 10\u2009min at 5\u2009\u00b0C, and then 5 \u03bcL of trichloroacetic acid (10 M) were added. Before centrifugation, the sample was stored at -20\u2009\u00b0C for 10\u2009min. Then the sample was centrifuged at 14000 g for 10\u2009min at 4\u2009\u00b0C, and 50\u2009\u03bcL of supernatant was collected. 350\u2009\u03bcL purified water were added, and then the mixed solution was filtrated by a PTFE filter (0.2 \u03bcm, biotage) for further analysis.",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "sample preparation"
       }
     },
     {
@@ -832,7 +901,8 @@
         "protocol_type": "treatment protocol",
         "description": "Befere the collection, the cells were cultured on the surface of different substrates for 7 days as a treatment step. Ti means titanium foils which were purchased from Alfa Aesar Co. (Tianjin, China). MT was fabricated from Ti via acid etching. Briefly, the titanium was sequentially treated with 3 wt% hydrofluoric acid at room temperature for 2 min and then immersed in 66 wt% sulfuric acid at 80 \u00b0C for 5 min. The obtained MT was rinsed thoroughly by ultrasonic. Subsequently, MT was immersed in 3 % APTES solution (toluene as solvent) for 24 h, and then washed thoroughly for further use. BPTES@MNT was obtained by one-step polymerization of dopamine. Briefly, MT-NH2 was placed in a mixed solution (VTris-HCl buffer (10 mM, pH 8.5): VDMSO = 1:1) containing dopamine (1 mg/mL), CaCl2 (0.05 mg/mL), BPTES (0.05 mg/mL) and 1 % APS. The reaction mixture was under continuous shaking (40 rpm) at room temperature overnight and avoid light. The obtained samples were rinsed thoroughly with DI water. Subsequently, PGA coating was modified on the substrate of BPTES@MNT by layer-by-layer method. In short, the samples were alternately immersed into Chi (0.5 w/v%) and PGA (1 w/v%) solution (two repeats). The samples were sterilized with ultraviolet irradiation or prepared under an aseptic environment for subsequent in vitro and in vivo experiments.",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "treatment"
       }
     },
     {
@@ -846,7 +916,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R1_1.mzML"
         ],
         "name": "Hd12LX_R1_1.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R1_1.mzML"
       }
     },
     {
@@ -860,7 +931,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R1_2.mzML"
         ],
         "name": "Hd12LX_R1_2.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R1_2.mzML"
       }
     },
     {
@@ -874,7 +946,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R1_3.mzML"
         ],
         "name": "Hd12LX_R1_3.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R1_3.mzML"
       }
     },
     {
@@ -888,7 +961,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R1_4.mzML"
         ],
         "name": "Hd12LX_R1_4.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R1_4.mzML"
       }
     },
     {
@@ -902,7 +976,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R1_5.mzML"
         ],
         "name": "Hd12LX_R1_5.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R1_5.mzML"
       }
     },
     {
@@ -916,7 +991,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R2_1.mzML"
         ],
         "name": "Hd12LX_R2_1.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R2_1.mzML"
       }
     },
     {
@@ -930,7 +1006,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R2_2.mzML"
         ],
         "name": "Hd12LX_R2_2.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R2_2.mzML"
       }
     },
     {
@@ -944,7 +1021,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R2_3.mzML"
         ],
         "name": "Hd12LX_R2_3.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R2_3.mzML"
       }
     },
     {
@@ -958,7 +1036,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R2_4.mzML"
         ],
         "name": "Hd12LX_R2_4.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R2_4.mzML"
       }
     },
     {
@@ -972,7 +1051,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R2_5.mzML"
         ],
         "name": "Hd12LX_R2_5.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R2_5.mzML"
       }
     },
     {
@@ -986,7 +1066,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R3_1.mzML"
         ],
         "name": "Hd12LX_R3_1.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R3_1.mzML"
       }
     },
     {
@@ -1000,7 +1081,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R3_2.mzML"
         ],
         "name": "Hd12LX_R3_2.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R3_2.mzML"
       }
     },
     {
@@ -1014,7 +1096,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R3_3.mzML"
         ],
         "name": "Hd12LX_R3_3.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R3_3.mzML"
       }
     },
     {
@@ -1028,7 +1111,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R3_4.mzML"
         ],
         "name": "Hd12LX_R3_4.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R3_4.mzML"
       }
     },
     {
@@ -1042,7 +1126,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R3_5.mzML"
         ],
         "name": "Hd12LX_R3_5.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R3_5.mzML"
       }
     },
     {
@@ -1056,7 +1141,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R4_1.mzML"
         ],
         "name": "Hd12LX_R4_1.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R4_1.mzML"
       }
     },
     {
@@ -1070,7 +1156,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R4_2.mzML"
         ],
         "name": "Hd12LX_R4_2.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R4_2.mzML"
       }
     },
     {
@@ -1084,7 +1171,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R4_3.mzML"
         ],
         "name": "Hd12LX_R4_3.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R4_3.mzML"
       }
     },
     {
@@ -1098,7 +1186,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R4_4.mzML"
         ],
         "name": "Hd12LX_R4_4.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R4_4.mzML"
       }
     },
     {
@@ -1112,7 +1201,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004175:Hd12LX_R4_5.mzML"
         ],
         "name": "Hd12LX_R4_5.mzML",
-        "extension": ".mzML"
+        "extension": ".mzML",
+        "label": "Hd12LX_R4_5.mzML"
       }
     },
     {
@@ -1123,7 +1213,8 @@
       "properties": {
         "type_": "sample",
         "name": "R11",
-        "repository_identifier": "R11"
+        "repository_identifier": "R11",
+        "label": "R11"
       }
     },
     {
@@ -1134,7 +1225,8 @@
       "properties": {
         "type_": "sample",
         "name": "R12",
-        "repository_identifier": "R12"
+        "repository_identifier": "R12",
+        "label": "R12"
       }
     },
     {
@@ -1145,7 +1237,8 @@
       "properties": {
         "type_": "sample",
         "name": "R13",
-        "repository_identifier": "R13"
+        "repository_identifier": "R13",
+        "label": "R13"
       }
     },
     {
@@ -1156,7 +1249,8 @@
       "properties": {
         "type_": "sample",
         "name": "R14",
-        "repository_identifier": "R14"
+        "repository_identifier": "R14",
+        "label": "R14"
       }
     },
     {
@@ -1167,7 +1261,8 @@
       "properties": {
         "type_": "sample",
         "name": "R15",
-        "repository_identifier": "R15"
+        "repository_identifier": "R15",
+        "label": "R15"
       }
     },
     {
@@ -1178,7 +1273,8 @@
       "properties": {
         "type_": "sample",
         "name": "R21",
-        "repository_identifier": "R21"
+        "repository_identifier": "R21",
+        "label": "R21"
       }
     },
     {
@@ -1189,7 +1285,8 @@
       "properties": {
         "type_": "sample",
         "name": "R22",
-        "repository_identifier": "R22"
+        "repository_identifier": "R22",
+        "label": "R22"
       }
     },
     {
@@ -1200,7 +1297,8 @@
       "properties": {
         "type_": "sample",
         "name": "R23",
-        "repository_identifier": "R23"
+        "repository_identifier": "R23",
+        "label": "R23"
       }
     },
     {
@@ -1211,7 +1309,8 @@
       "properties": {
         "type_": "sample",
         "name": "R24",
-        "repository_identifier": "R24"
+        "repository_identifier": "R24",
+        "label": "R24"
       }
     },
     {
@@ -1222,7 +1321,8 @@
       "properties": {
         "type_": "sample",
         "name": "R25",
-        "repository_identifier": "R25"
+        "repository_identifier": "R25",
+        "label": "R25"
       }
     },
     {
@@ -1233,7 +1333,8 @@
       "properties": {
         "type_": "sample",
         "name": "R31",
-        "repository_identifier": "R31"
+        "repository_identifier": "R31",
+        "label": "R31"
       }
     },
     {
@@ -1244,7 +1345,8 @@
       "properties": {
         "type_": "sample",
         "name": "R32",
-        "repository_identifier": "R32"
+        "repository_identifier": "R32",
+        "label": "R32"
       }
     },
     {
@@ -1255,7 +1357,8 @@
       "properties": {
         "type_": "sample",
         "name": "R33",
-        "repository_identifier": "R33"
+        "repository_identifier": "R33",
+        "label": "R33"
       }
     },
     {
@@ -1266,7 +1369,8 @@
       "properties": {
         "type_": "sample",
         "name": "R34",
-        "repository_identifier": "R34"
+        "repository_identifier": "R34",
+        "label": "R34"
       }
     },
     {
@@ -1277,7 +1381,8 @@
       "properties": {
         "type_": "sample",
         "name": "R35",
-        "repository_identifier": "R35"
+        "repository_identifier": "R35",
+        "label": "R35"
       }
     },
     {
@@ -1288,7 +1393,8 @@
       "properties": {
         "type_": "sample",
         "name": "R41",
-        "repository_identifier": "R41"
+        "repository_identifier": "R41",
+        "label": "R41"
       }
     },
     {
@@ -1299,7 +1405,8 @@
       "properties": {
         "type_": "sample",
         "name": "R42",
-        "repository_identifier": "R42"
+        "repository_identifier": "R42",
+        "label": "R42"
       }
     },
     {
@@ -1310,7 +1417,8 @@
       "properties": {
         "type_": "sample",
         "name": "R43",
-        "repository_identifier": "R43"
+        "repository_identifier": "R43",
+        "label": "R43"
       }
     },
     {
@@ -1321,7 +1429,8 @@
       "properties": {
         "type_": "sample",
         "name": "R44",
-        "repository_identifier": "R44"
+        "repository_identifier": "R44",
+        "label": "R44"
       }
     },
     {
@@ -1332,7 +1441,8 @@
       "properties": {
         "type_": "sample",
         "name": "R45",
-        "repository_identifier": "R45"
+        "repository_identifier": "R45",
+        "label": "R45"
       }
     },
     {
@@ -1346,7 +1456,7 @@
         "raw_data_file_list": [
           "Hd12LX_R1_4.mzML"
         ],
-        "name": "mhd--sample-run--0e0acd06-bbd0-4944-9e3c-f65033c2fc59"
+        "label": "mhd--sample-run--0e0acd06-bbd0-4944-9e3c-f65033c2fc59"
       }
     },
     {
@@ -1360,7 +1470,7 @@
         "raw_data_file_list": [
           "Hd12LX_R2_1.mzML"
         ],
-        "name": "mhd--sample-run--143aa08a-aad6-460c-bbd4-7c2a49ca2ca9"
+        "label": "mhd--sample-run--143aa08a-aad6-460c-bbd4-7c2a49ca2ca9"
       }
     },
     {
@@ -1374,7 +1484,7 @@
         "raw_data_file_list": [
           "Hd12LX_R2_5.mzML"
         ],
-        "name": "mhd--sample-run--2b3525c1-18c4-4f66-94d5-cf61facc93f4"
+        "label": "mhd--sample-run--2b3525c1-18c4-4f66-94d5-cf61facc93f4"
       }
     },
     {
@@ -1388,7 +1498,7 @@
         "raw_data_file_list": [
           "Hd12LX_R4_4.mzML"
         ],
-        "name": "mhd--sample-run--2e001de1-d02d-4df0-93af-2b5440a5c057"
+        "label": "mhd--sample-run--2e001de1-d02d-4df0-93af-2b5440a5c057"
       }
     },
     {
@@ -1402,7 +1512,7 @@
         "raw_data_file_list": [
           "Hd12LX_R2_3.mzML"
         ],
-        "name": "mhd--sample-run--52ad306b-c490-4777-8ebc-ca91b55da285"
+        "label": "mhd--sample-run--52ad306b-c490-4777-8ebc-ca91b55da285"
       }
     },
     {
@@ -1416,7 +1526,7 @@
         "raw_data_file_list": [
           "Hd12LX_R1_5.mzML"
         ],
-        "name": "mhd--sample-run--5429c854-0dad-4211-a8df-cac85a495b12"
+        "label": "mhd--sample-run--5429c854-0dad-4211-a8df-cac85a495b12"
       }
     },
     {
@@ -1430,7 +1540,7 @@
         "raw_data_file_list": [
           "Hd12LX_R2_2.mzML"
         ],
-        "name": "mhd--sample-run--631ab780-1f83-4f2b-976d-433a0c6f1355"
+        "label": "mhd--sample-run--631ab780-1f83-4f2b-976d-433a0c6f1355"
       }
     },
     {
@@ -1444,7 +1554,7 @@
         "raw_data_file_list": [
           "Hd12LX_R4_5.mzML"
         ],
-        "name": "mhd--sample-run--658dbb70-86b1-4834-b8e8-fde53fd41194"
+        "label": "mhd--sample-run--658dbb70-86b1-4834-b8e8-fde53fd41194"
       }
     },
     {
@@ -1458,7 +1568,7 @@
         "raw_data_file_list": [
           "Hd12LX_R1_2.mzML"
         ],
-        "name": "mhd--sample-run--7a59ac61-be53-401b-9aef-86cea03f8759"
+        "label": "mhd--sample-run--7a59ac61-be53-401b-9aef-86cea03f8759"
       }
     },
     {
@@ -1472,7 +1582,7 @@
         "raw_data_file_list": [
           "Hd12LX_R1_1.mzML"
         ],
-        "name": "mhd--sample-run--8647a313-fb80-45ca-b3c5-a43d91a46aa2"
+        "label": "mhd--sample-run--8647a313-fb80-45ca-b3c5-a43d91a46aa2"
       }
     },
     {
@@ -1486,7 +1596,7 @@
         "raw_data_file_list": [
           "Hd12LX_R3_5.mzML"
         ],
-        "name": "mhd--sample-run--874ea77c-3eab-4f33-b17f-232cf8624688"
+        "label": "mhd--sample-run--874ea77c-3eab-4f33-b17f-232cf8624688"
       }
     },
     {
@@ -1500,7 +1610,7 @@
         "raw_data_file_list": [
           "Hd12LX_R4_2.mzML"
         ],
-        "name": "mhd--sample-run--93d3c607-36bd-49fe-8729-abd61a5381de"
+        "label": "mhd--sample-run--93d3c607-36bd-49fe-8729-abd61a5381de"
       }
     },
     {
@@ -1514,7 +1624,7 @@
         "raw_data_file_list": [
           "Hd12LX_R4_1.mzML"
         ],
-        "name": "mhd--sample-run--aa589281-6b4c-4554-9081-418ed11ca36a"
+        "label": "mhd--sample-run--aa589281-6b4c-4554-9081-418ed11ca36a"
       }
     },
     {
@@ -1528,7 +1638,7 @@
         "raw_data_file_list": [
           "Hd12LX_R3_4.mzML"
         ],
-        "name": "mhd--sample-run--be87e3d5-3e43-4185-b7ce-19afe3a538d2"
+        "label": "mhd--sample-run--be87e3d5-3e43-4185-b7ce-19afe3a538d2"
       }
     },
     {
@@ -1542,7 +1652,7 @@
         "raw_data_file_list": [
           "Hd12LX_R4_3.mzML"
         ],
-        "name": "mhd--sample-run--d321873d-dd0b-473a-b151-83575def4f9f"
+        "label": "mhd--sample-run--d321873d-dd0b-473a-b151-83575def4f9f"
       }
     },
     {
@@ -1556,7 +1666,7 @@
         "raw_data_file_list": [
           "Hd12LX_R3_1.mzML"
         ],
-        "name": "mhd--sample-run--d4dece4f-2c00-4b3a-b45e-ec1215302e76"
+        "label": "mhd--sample-run--d4dece4f-2c00-4b3a-b45e-ec1215302e76"
       }
     },
     {
@@ -1570,7 +1680,7 @@
         "raw_data_file_list": [
           "Hd12LX_R2_4.mzML"
         ],
-        "name": "mhd--sample-run--e6f274ab-c30c-438e-b669-98f0c214f4fc"
+        "label": "mhd--sample-run--e6f274ab-c30c-438e-b669-98f0c214f4fc"
       }
     },
     {
@@ -1584,7 +1694,7 @@
         "raw_data_file_list": [
           "Hd12LX_R3_3.mzML"
         ],
-        "name": "mhd--sample-run--ed2f2ea6-4598-42f4-b6d3-a7075593b8e8"
+        "label": "mhd--sample-run--ed2f2ea6-4598-42f4-b6d3-a7075593b8e8"
       }
     },
     {
@@ -1598,7 +1708,7 @@
         "raw_data_file_list": [
           "Hd12LX_R1_3.mzML"
         ],
-        "name": "mhd--sample-run--eec70c27-4b88-4542-97d1-d37ac29fdedf"
+        "label": "mhd--sample-run--eec70c27-4b88-4542-97d1-d37ac29fdedf"
       }
     },
     {
@@ -1612,7 +1722,7 @@
         "raw_data_file_list": [
           "Hd12LX_R3_2.mzML"
         ],
-        "name": "mhd--sample-run--ff86011f-4e71-4548-8242-fb23f5587c4d"
+        "label": "mhd--sample-run--ff86011f-4e71-4548-8242-fb23f5587c4d"
       }
     },
     {
@@ -1623,7 +1733,8 @@
       "properties": {
         "type_": "subject",
         "name": "R11",
-        "repository_identifier": "R11"
+        "repository_identifier": "R11",
+        "label": "R11"
       }
     },
     {
@@ -1634,7 +1745,8 @@
       "properties": {
         "type_": "subject",
         "name": "R12",
-        "repository_identifier": "R12"
+        "repository_identifier": "R12",
+        "label": "R12"
       }
     },
     {
@@ -1645,7 +1757,8 @@
       "properties": {
         "type_": "subject",
         "name": "R13",
-        "repository_identifier": "R13"
+        "repository_identifier": "R13",
+        "label": "R13"
       }
     },
     {
@@ -1656,7 +1769,8 @@
       "properties": {
         "type_": "subject",
         "name": "R14",
-        "repository_identifier": "R14"
+        "repository_identifier": "R14",
+        "label": "R14"
       }
     },
     {
@@ -1667,7 +1781,8 @@
       "properties": {
         "type_": "subject",
         "name": "R15",
-        "repository_identifier": "R15"
+        "repository_identifier": "R15",
+        "label": "R15"
       }
     },
     {
@@ -1678,7 +1793,8 @@
       "properties": {
         "type_": "subject",
         "name": "R21",
-        "repository_identifier": "R21"
+        "repository_identifier": "R21",
+        "label": "R21"
       }
     },
     {
@@ -1689,7 +1805,8 @@
       "properties": {
         "type_": "subject",
         "name": "R22",
-        "repository_identifier": "R22"
+        "repository_identifier": "R22",
+        "label": "R22"
       }
     },
     {
@@ -1700,7 +1817,8 @@
       "properties": {
         "type_": "subject",
         "name": "R23",
-        "repository_identifier": "R23"
+        "repository_identifier": "R23",
+        "label": "R23"
       }
     },
     {
@@ -1711,7 +1829,8 @@
       "properties": {
         "type_": "subject",
         "name": "R24",
-        "repository_identifier": "R24"
+        "repository_identifier": "R24",
+        "label": "R24"
       }
     },
     {
@@ -1722,7 +1841,8 @@
       "properties": {
         "type_": "subject",
         "name": "R25",
-        "repository_identifier": "R25"
+        "repository_identifier": "R25",
+        "label": "R25"
       }
     },
     {
@@ -1733,7 +1853,8 @@
       "properties": {
         "type_": "subject",
         "name": "R31",
-        "repository_identifier": "R31"
+        "repository_identifier": "R31",
+        "label": "R31"
       }
     },
     {
@@ -1744,7 +1865,8 @@
       "properties": {
         "type_": "subject",
         "name": "R32",
-        "repository_identifier": "R32"
+        "repository_identifier": "R32",
+        "label": "R32"
       }
     },
     {
@@ -1755,7 +1877,8 @@
       "properties": {
         "type_": "subject",
         "name": "R33",
-        "repository_identifier": "R33"
+        "repository_identifier": "R33",
+        "label": "R33"
       }
     },
     {
@@ -1766,7 +1889,8 @@
       "properties": {
         "type_": "subject",
         "name": "R34",
-        "repository_identifier": "R34"
+        "repository_identifier": "R34",
+        "label": "R34"
       }
     },
     {
@@ -1777,7 +1901,8 @@
       "properties": {
         "type_": "subject",
         "name": "R35",
-        "repository_identifier": "R35"
+        "repository_identifier": "R35",
+        "label": "R35"
       }
     },
     {
@@ -1788,7 +1913,8 @@
       "properties": {
         "type_": "subject",
         "name": "R41",
-        "repository_identifier": "R41"
+        "repository_identifier": "R41",
+        "label": "R41"
       }
     },
     {
@@ -1799,7 +1925,8 @@
       "properties": {
         "type_": "subject",
         "name": "R42",
-        "repository_identifier": "R42"
+        "repository_identifier": "R42",
+        "label": "R42"
       }
     },
     {
@@ -1810,7 +1937,8 @@
       "properties": {
         "type_": "subject",
         "name": "R43",
-        "repository_identifier": "R43"
+        "repository_identifier": "R43",
+        "label": "R43"
       }
     },
     {
@@ -1821,7 +1949,8 @@
       "properties": {
         "type_": "subject",
         "name": "R44",
-        "repository_identifier": "R44"
+        "repository_identifier": "R44",
+        "label": "R44"
       }
     },
     {
@@ -1832,7 +1961,8 @@
       "properties": {
         "type_": "subject",
         "name": "R45",
-        "repository_identifier": "R45"
+        "repository_identifier": "R45",
+        "label": "R45"
       }
     },
     {
@@ -1844,7 +1974,8 @@
         "type_": "characteristic-type",
         "source": "NCIT",
         "accession": "NCIT:C14250",
-        "name": "organism"
+        "name": "organism",
+        "label": "organism"
       }
     },
     {
@@ -1856,7 +1987,8 @@
         "type_": "characteristic-type",
         "source": "NCIT",
         "accession": "NCIT:C103199",
-        "name": "organism part"
+        "name": "organism part",
+        "label": "organism part"
       }
     },
     {
@@ -1868,7 +2000,8 @@
         "type_": "characteristic-value",
         "source": "",
         "accession": "",
-        "name": "MSCs Primary cells"
+        "name": "MSCs Primary cells",
+        "label": "MSCs Primary cells"
       }
     },
     {
@@ -1880,7 +2013,8 @@
         "type_": "characteristic-value",
         "source": "",
         "accession": "",
-        "name": "Rattus norvegicus"
+        "name": "Rattus norvegicus",
+        "label": "Rattus norvegicus"
       }
     },
     {
@@ -1893,7 +2027,8 @@
         "value": "Metabolomics Workbench",
         "source": "NCIT",
         "accession": "NCIT:C189151",
-        "name": "Metabolomics Workbench"
+        "name": "Study Data Repository",
+        "label": "Metabolomics Workbench"
       }
     },
     {
@@ -1905,7 +2040,8 @@
         "type_": "descriptor",
         "source": "EDAM",
         "accession": "EDAM:3475",
-        "name": "TSV"
+        "name": "TSV",
+        "label": "TSV"
       }
     },
     {
@@ -1918,7 +2054,8 @@
         "value": "Alanine",
         "source": "",
         "accession": "",
-        "name": "Alanine"
+        "name": "RefMet",
+        "label": "Alanine"
       }
     },
     {
@@ -1931,7 +2068,8 @@
         "value": "Arginine",
         "source": "",
         "accession": "",
-        "name": "Arginine"
+        "name": "RefMet",
+        "label": "Arginine"
       }
     },
     {
@@ -1944,7 +2082,8 @@
         "value": "Aspartic acid",
         "source": "",
         "accession": "",
-        "name": "Aspartic acid"
+        "name": "RefMet",
+        "label": "Aspartic acid"
       }
     },
     {
@@ -1957,7 +2096,8 @@
         "value": "Cysteine",
         "source": "",
         "accession": "",
-        "name": "Cysteine"
+        "name": "RefMet",
+        "label": "Cysteine"
       }
     },
     {
@@ -1970,7 +2110,8 @@
         "value": "Glutamic acid",
         "source": "",
         "accession": "",
-        "name": "Glutamic acid"
+        "name": "RefMet",
+        "label": "Glutamic acid"
       }
     },
     {
@@ -1983,7 +2124,8 @@
         "value": "Glutamine",
         "source": "",
         "accession": "",
-        "name": "Glutamine"
+        "name": "RefMet",
+        "label": "Glutamine"
       }
     },
     {
@@ -1996,7 +2138,8 @@
         "value": "Glycine",
         "source": "",
         "accession": "",
-        "name": "Glycine"
+        "name": "RefMet",
+        "label": "Glycine"
       }
     },
     {
@@ -2009,7 +2152,8 @@
         "value": "Histidine",
         "source": "",
         "accession": "",
-        "name": "Histidine"
+        "name": "RefMet",
+        "label": "Histidine"
       }
     },
     {
@@ -2022,7 +2166,8 @@
         "value": "Isoleucine",
         "source": "",
         "accession": "",
-        "name": "Isoleucine"
+        "name": "RefMet",
+        "label": "Isoleucine"
       }
     },
     {
@@ -2035,7 +2180,8 @@
         "value": "Leucine",
         "source": "",
         "accession": "",
-        "name": "Leucine"
+        "name": "RefMet",
+        "label": "Leucine"
       }
     },
     {
@@ -2048,7 +2194,8 @@
         "value": "Lysine",
         "source": "",
         "accession": "",
-        "name": "Lysine"
+        "name": "RefMet",
+        "label": "Lysine"
       }
     },
     {
@@ -2061,7 +2208,8 @@
         "value": "Methionine",
         "source": "",
         "accession": "",
-        "name": "Methionine"
+        "name": "RefMet",
+        "label": "Methionine"
       }
     },
     {
@@ -2074,7 +2222,8 @@
         "value": "Phenylalanine",
         "source": "",
         "accession": "",
-        "name": "Phenylalanine"
+        "name": "RefMet",
+        "label": "Phenylalanine"
       }
     },
     {
@@ -2087,7 +2236,8 @@
         "value": "Proline",
         "source": "",
         "accession": "",
-        "name": "Proline"
+        "name": "RefMet",
+        "label": "Proline"
       }
     },
     {
@@ -2100,7 +2250,8 @@
         "value": "Serine",
         "source": "",
         "accession": "",
-        "name": "Serine"
+        "name": "RefMet",
+        "label": "Serine"
       }
     },
     {
@@ -2113,7 +2264,8 @@
         "value": "Threonine",
         "source": "",
         "accession": "",
-        "name": "Threonine"
+        "name": "RefMet",
+        "label": "Threonine"
       }
     },
     {
@@ -2126,7 +2278,8 @@
         "value": "Tryptophan",
         "source": "",
         "accession": "",
-        "name": "Tryptophan"
+        "name": "RefMet",
+        "label": "Tryptophan"
       }
     },
     {
@@ -2139,7 +2292,8 @@
         "value": "Tyrosine",
         "source": "",
         "accession": "",
-        "name": "Tyrosine"
+        "name": "RefMet",
+        "label": "Tyrosine"
       }
     },
     {
@@ -2152,7 +2306,8 @@
         "value": "Valine",
         "source": "",
         "accession": "",
-        "name": "Valine"
+        "name": "RefMet",
+        "label": "Valine"
       }
     },
     {
@@ -2164,7 +2319,8 @@
         "type_": "parameter-type",
         "source": "OBI",
         "accession": "OBI:0000485",
-        "name": "chromatography instrument"
+        "name": "chromatography instrument",
+        "label": "chromatography instrument"
       }
     },
     {
@@ -2176,7 +2332,8 @@
         "type_": "parameter-type",
         "source": "CHMO",
         "accession": "CHMO:0000960",
-        "name": "ion source"
+        "name": "ion source",
+        "label": "ion source"
       }
     },
     {
@@ -2188,7 +2345,8 @@
         "type_": "parameter-type",
         "source": "OBI",
         "accession": "OBI:0000345",
-        "name": "mass analyzer"
+        "name": "mass analyzer",
+        "label": "mass analyzer"
       }
     },
     {
@@ -2200,7 +2358,8 @@
         "type_": "parameter-type",
         "source": "MSIO",
         "accession": "MSIO:0000171",
-        "name": "mass spectrometry instrument"
+        "name": "mass spectrometry instrument",
+        "label": "mass spectrometry instrument"
       }
     },
     {
@@ -2212,7 +2371,8 @@
         "type_": "parameter-type",
         "source": "MS",
         "accession": "MS:1000465",
-        "name": "scan polarity"
+        "name": "scan polarity",
+        "label": "scan polarity"
       }
     },
     {
@@ -2224,7 +2384,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "ABI Sciex 6500+ QTrap"
+        "name": "ABI Sciex 6500+ QTrap",
+        "label": "ABI Sciex 6500+ QTrap"
       }
     },
     {
@@ -2236,7 +2397,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "ACQUITY UPLC"
+        "name": "ACQUITY UPLC",
+        "label": "ACQUITY UPLC"
       }
     },
     {
@@ -2248,7 +2410,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "ESI"
+        "name": "ESI",
+        "label": "ESI"
       }
     },
     {
@@ -2260,7 +2423,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "POSITIVE"
+        "name": "POSITIVE",
+        "label": "POSITIVE"
       }
     },
     {
@@ -2272,7 +2436,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "Triple quadrupole"
+        "name": "Triple quadrupole",
+        "label": "Triple quadrupole"
       }
     },
     {
@@ -2284,7 +2449,8 @@
         "type_": "protocol-type",
         "source": "CHMO",
         "accession": "CHMO:0001000",
-        "name": "chromatography"
+        "name": "chromatography",
+        "label": "chromatography"
       }
     },
     {
@@ -2296,7 +2462,8 @@
         "type_": "protocol-type",
         "source": "CHMO",
         "accession": "CHMO:0000470",
-        "name": "mass spectrometry"
+        "name": "mass spectrometry",
+        "label": "mass spectrometry"
       }
     },
     {
@@ -2308,7 +2475,8 @@
         "type_": "protocol-type",
         "source": "EFO",
         "accession": "EFO:0005518",
-        "name": "sample collection protocol"
+        "name": "sample collection protocol",
+        "label": "sample collection protocol"
       }
     },
     {
@@ -2320,7 +2488,8 @@
         "type_": "protocol-type",
         "source": "MS",
         "accession": "MS:1000831",
-        "name": "sample preparation"
+        "name": "sample preparation",
+        "label": "sample preparation"
       }
     },
     {
@@ -2332,7 +2501,8 @@
         "type_": "protocol-type",
         "source": "EFO",
         "accession": "EFO:0003969",
-        "name": "treatment protocol"
+        "name": "treatment protocol",
+        "label": "treatment protocol"
       }
     },
     {
@@ -2344,7 +2514,8 @@
         "type_": "x-mw-factor-type",
         "source": "",
         "accession": "",
-        "name": "culture substrate"
+        "name": "culture substrate",
+        "label": "culture substrate"
       }
     },
     {
@@ -2356,7 +2527,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "BPTES@MNT"
+        "name": "BPTES@MNT",
+        "label": "BPTES@MNT"
       }
     },
     {
@@ -2368,7 +2540,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "BPTES@MNT/PGA"
+        "name": "BPTES@MNT/PGA",
+        "label": "BPTES@MNT/PGA"
       }
     },
     {
@@ -2380,7 +2553,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "MT"
+        "name": "MT",
+        "label": "MT"
       }
     },
     {
@@ -2392,7 +2566,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "Ti"
+        "name": "Ti",
+        "label": "Ti"
       }
     },
     {
@@ -2404,7 +2579,8 @@
         "type_": "x-mw-parameter-type",
         "source": "NCIT",
         "accession": "NCIT:C96145",
-        "name": "Storage Condition"
+        "name": "Storage Condition",
+        "label": "Storage Condition"
       }
     },
     {
@@ -2416,7 +2592,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell envir cond"
+        "name": "cell envir cond",
+        "label": "cell envir cond"
       }
     },
     {
@@ -2428,7 +2605,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell growth config"
+        "name": "cell growth config",
+        "label": "cell growth config"
       }
     },
     {
@@ -2440,7 +2618,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell growth container"
+        "name": "cell growth container",
+        "label": "cell growth container"
       }
     },
     {
@@ -2452,7 +2631,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell harvesting"
+        "name": "cell harvesting",
+        "label": "cell harvesting"
       }
     },
     {
@@ -2464,7 +2644,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell inoc proc"
+        "name": "cell inoc proc",
+        "label": "cell inoc proc"
       }
     },
     {
@@ -2476,7 +2657,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell media"
+        "name": "cell media",
+        "label": "cell media"
       }
     },
     {
@@ -2488,7 +2670,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell media lastchanged"
+        "name": "cell media lastchanged",
+        "label": "cell media lastchanged"
       }
     },
     {
@@ -2500,7 +2683,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell pct confluence"
+        "name": "cell pct confluence",
+        "label": "cell pct confluence"
       }
     },
     {
@@ -2512,7 +2696,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "cell storage"
+        "name": "cell storage",
+        "label": "cell storage"
       }
     },
     {
@@ -2524,7 +2709,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collection duration"
+        "name": "collection duration",
+        "label": "collection duration"
       }
     },
     {
@@ -2536,7 +2722,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collection frequency"
+        "name": "collection frequency",
+        "label": "collection frequency"
       }
     },
     {
@@ -2548,7 +2735,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collection location"
+        "name": "collection location",
+        "label": "collection location"
       }
     },
     {
@@ -2560,7 +2748,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collection method"
+        "name": "collection method",
+        "label": "collection method"
       }
     },
     {
@@ -2572,7 +2761,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collection tube temp"
+        "name": "collection tube temp",
+        "label": "collection tube temp"
       }
     },
     {
@@ -2584,7 +2774,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collection vials"
+        "name": "collection vials",
+        "label": "collection vials"
       }
     },
     {
@@ -2596,7 +2787,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collision gas"
+        "name": "collision gas",
+        "label": "collision gas"
       }
     },
     {
@@ -2608,7 +2800,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "column name"
+        "name": "column name",
+        "label": "column name"
       }
     },
     {
@@ -2620,7 +2813,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "column temperature"
+        "name": "column temperature",
+        "label": "column temperature"
       }
     },
     {
@@ -2632,7 +2826,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "column type"
+        "name": "column type",
+        "label": "column type"
       }
     },
     {
@@ -2644,7 +2839,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "extract storage"
+        "name": "extract storage",
+        "label": "extract storage"
       }
     },
     {
@@ -2656,7 +2852,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "flow gradient"
+        "name": "flow gradient",
+        "label": "flow gradient"
       }
     },
     {
@@ -2668,7 +2865,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "flow rate"
+        "name": "flow rate",
+        "label": "flow rate"
       }
     },
     {
@@ -2680,7 +2878,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "internal standard"
+        "name": "internal standard",
+        "label": "internal standard"
       }
     },
     {
@@ -2692,7 +2891,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "processing storage conditions"
+        "name": "processing storage conditions",
+        "label": "processing storage conditions"
       }
     },
     {
@@ -2704,7 +2904,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "solvent a"
+        "name": "solvent a",
+        "label": "solvent a"
       }
     },
     {
@@ -2716,7 +2917,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "solvent b"
+        "name": "solvent b",
+        "label": "solvent b"
       }
     },
     {
@@ -2728,7 +2930,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "storage vials"
+        "name": "storage vials",
+        "label": "storage vials"
       }
     },
     {
@@ -2740,7 +2943,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "treatment"
+        "name": "treatment",
+        "label": "treatment"
       }
     },
     {
@@ -2752,7 +2956,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "treatment compound"
+        "name": "treatment compound",
+        "label": "treatment compound"
       }
     },
     {
@@ -2764,7 +2969,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "treatment route"
+        "name": "treatment route",
+        "label": "treatment route"
       }
     },
     {
@@ -2776,7 +2982,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "treatment vehicle"
+        "name": "treatment vehicle",
+        "label": "treatment vehicle"
       }
     },
     {
@@ -2788,7 +2995,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "volumeoramount collected"
+        "name": "volumeoramount collected",
+        "label": "volumeoramount collected"
       }
     },
     {
@@ -2800,7 +3008,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "-80\u2103"
+        "name": "-80\u2103",
+        "label": "-80\u2103"
       }
     },
     {
@@ -2812,7 +3021,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "0.0min 10% A; 3min 40% A; 4min 40% A; 4.1min 10% A; 6min 10% A"
+        "name": "0.0min 10% A; 3min 40% A; 4min 40% A; 4.1min 10% A; 6min 10% A",
+        "label": "0.0min 10% A; 3min 40% A; 4min 40% A; 4.1min 10% A; 6min 10% A"
       }
     },
     {
@@ -2824,7 +3034,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "0.5 * 10^7 cells"
+        "name": "0.5 * 10^7 cells",
+        "label": "0.5 * 10^7 cells"
       }
     },
     {
@@ -2836,7 +3047,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "0.5ml/min"
+        "name": "0.5ml/min",
+        "label": "0.5ml/min"
       }
     },
     {
@@ -2848,7 +3060,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "1 h"
+        "name": "1 h",
+        "label": "1 h"
       }
     },
     {
@@ -2860,7 +3073,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "1.5 mL centrifuge tube"
+        "name": "1.5 mL centrifuge tube",
+        "label": "1.5 mL centrifuge tube"
       }
     },
     {
@@ -2872,7 +3086,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "100 \u03bcg/mL L-Trp-D5, L-Gln-D5 and L-Lys-D4), 216\u2009\u03bcL purified water (fisher) and 25\u2009\u03bcL of 0.15 % DOC"
+        "name": "100 \u03bcg/mL L-Trp-D5, L-Gln-D5 and L-Lys-D4), 216\u2009\u03bcL purified water (fisher) and 25\u2009\u03bcL of 0.15 % DOC",
+        "label": "100 \u03bcg/mL L-Trp-D5, L-Gln-D5 and L-Lys-D4), 216\u2009\u03bcL purified water (fisher) and 25\u2009\u03bcL of 0.15 % DOC"
       }
     },
     {
@@ -2884,7 +3099,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "100% water; 0.1% formic acid; 10 mM ammonium formate"
+        "name": "100% water; 0.1% formic acid; 10 mM ammonium formate",
+        "label": "100% water; 0.1% formic acid; 10 mM ammonium formate"
       }
     },
     {
@@ -2896,7 +3112,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "15 mL centrifuge tube"
+        "name": "15 mL centrifuge tube",
+        "label": "15 mL centrifuge tube"
       }
     },
     {
@@ -2908,7 +3125,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "4"
+        "name": "4",
+        "label": "4"
       }
     },
     {
@@ -2920,7 +3138,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "40"
+        "name": "40",
+        "label": "40"
       }
     },
     {
@@ -2932,7 +3151,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "4\u2103"
+        "name": "4\u2103",
+        "label": "4\u2103"
       }
     },
     {
@@ -2944,7 +3164,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "5 times"
+        "name": "5 times",
+        "label": "5 times"
       }
     },
     {
@@ -2956,7 +3177,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "90 %"
+        "name": "90 %",
+        "label": "90 %"
       }
     },
     {
@@ -2968,7 +3190,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "95% acetonitrile/5% water0.1% formic acid; 10 mM ammonium formate"
+        "name": "95% acetonitrile/5% water0.1% formic acid; 10 mM ammonium formate",
+        "label": "95% acetonitrile/5% water0.1% formic acid; 10 mM ammonium formate"
       }
     },
     {
@@ -2980,7 +3203,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Agilent AdvanceBio MS Spent Media (50 x 2.1mm, 2.7um)"
+        "name": "Agilent AdvanceBio MS Spent Media (50 x 2.1mm, 2.7um)",
+        "label": "Agilent AdvanceBio MS Spent Media (50 x 2.1mm, 2.7um)"
       }
     },
     {
@@ -2992,7 +3216,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Cell Culture Dishes (\u03a6100mm)"
+        "name": "Cell Culture Dishes (\u03a6100mm)",
+        "label": "Cell Culture Dishes (\u03a6100mm)"
       }
     },
     {
@@ -3004,7 +3229,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Cells were harvested via trypsin digestion. The cells were centrifuged at 500 \u00d7 g and collected into a 15 mL centrifuge tube. After discarding the supernatant, the cell pellet was resuspended in 10 mL of pre-cooled PBS and centrifuged for washing (repeated 3 times). The cell pellet was then resuspended in 1 mL PBS, and the cell concentration was accurately quantified. 0.5 \u00d7 10^7 cells were transferred to a 1.5 mL centrifuge tube, centrifuged at 500 \u00d7 g for 5 min, and the supernatant was completely removed. The cell pellet was flash-frozen in liquid nitrogen and stored at \u221280\u00b0C."
+        "name": "Cells were harvested via trypsin digestion. The cells were centrifuged at 500 \u00d7 g and collected into a 15 mL centrifuge tube. After discarding the supernatant, the cell pellet was resuspended in 10 mL of pre-cooled PBS and centrifuged for washing (repeated 3 times). The cell pellet was then resuspended in 1 mL PBS, and the cell concentration was accurately quantified. 0.5 \u00d7 10^7 cells were transferred to a 1.5 mL centrifuge tube, centrifuged at 500 \u00d7 g for 5 min, and the supernatant was completely removed. The cell pellet was flash-frozen in liquid nitrogen and stored at \u221280\u00b0C.",
+        "label": "Cells were harvested via trypsin digestion. The cells were centrifuged at 500 \u00d7 g and collected into a 15 mL centrifuge tube. After discarding the supernatant, the cell pellet was resuspended in 10 mL of pre-cooled PBS and centrifuged for washing (repeated 3 times). The cell pellet was then resuspended in 1 mL PBS, and the cell concentration was accurately quantified. 0.5 \u00d7 10^7 cells were transferred to a 1.5 mL centrifuge tube, centrifuged at 500 \u00d7 g for 5 min, and the supernatant was completely removed. The cell pellet was flash-frozen in liquid nitrogen and stored at \u221280\u00b0C."
       }
     },
     {
@@ -3016,7 +3242,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "DMEM Medium(Low Glucose, with 10 % fetal bovine serum)"
+        "name": "DMEM Medium(Low Glucose, with 10 % fetal bovine serum)",
+        "label": "DMEM Medium(Low Glucose, with 10 % fetal bovine serum)"
       }
     },
     {
@@ -3028,7 +3255,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "HILIC"
+        "name": "HILIC",
+        "label": "HILIC"
       }
     },
     {
@@ -3040,7 +3268,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Medium"
+        "name": "Medium",
+        "label": "Medium"
       }
     },
     {
@@ -3052,7 +3281,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Primary cells"
+        "name": "Primary cells",
+        "label": "Primary cells"
       }
     },
     {
@@ -3064,7 +3294,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Room 416, Cell Laboratory, School of Bioengineering, Chongqing University"
+        "name": "Room 416, Cell Laboratory, School of Bioengineering, Chongqing University",
+        "label": "Room 416, Cell Laboratory, School of Bioengineering, Chongqing University"
       }
     },
     {
@@ -3076,7 +3307,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "The sterile titanium substrate (different groups) was placed in a petri dish to fully cover the base. Third-passage MSCs (0.5*10^6) were seeded on the titanium surface, followed by the addition of fresh culture medium. The cells were cultured at 37\u00b0C under 5% CO\u2082 atmosphere, and the medium was replaced with fresh medium every two days."
+        "name": "The sterile titanium substrate (different groups) was placed in a petri dish to fully cover the base. Third-passage MSCs (0.5*10^6) were seeded on the titanium surface, followed by the addition of fresh culture medium. The cells were cultured at 37\u00b0C under 5% CO\u2082 atmosphere, and the medium was replaced with fresh medium every two days.",
+        "label": "The sterile titanium substrate (different groups) was placed in a petri dish to fully cover the base. Third-passage MSCs (0.5*10^6) were seeded on the titanium surface, followed by the addition of fresh culture medium. The cells were cultured at 37\u00b0C under 5% CO\u2082 atmosphere, and the medium was replaced with fresh medium every two days."
       }
     },
     {
@@ -3088,7 +3320,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Ti (R1)"
+        "name": "Ti (R1)",
+        "label": "Ti (R1)"
       }
     },
     {
@@ -3100,7 +3333,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Ti (R1), MT(R2), BPTES@MNT(R3), and BPTES@MNT/PGA(R4)"
+        "name": "Ti (R1), MT(R2), BPTES@MNT(R3), and BPTES@MNT/PGA(R4)",
+        "label": "Ti (R1), MT(R2), BPTES@MNT(R3), and BPTES@MNT/PGA(R4)"
       }
     },
     {
@@ -3112,7 +3346,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "different culture substrates"
+        "name": "different culture substrates",
+        "label": "different culture substrates"
       }
     },
     {
@@ -3124,7 +3359,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "incubated at 37 \u00b0C under 5 % CO2 atmosphere"
+        "name": "incubated at 37 \u00b0C under 5 % CO2 atmosphere",
+        "label": "incubated at 37 \u00b0C under 5 % CO2 atmosphere"
       }
     },
     {
@@ -3136,7 +3372,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "one day before collection"
+        "name": "one day before collection",
+        "label": "one day before collection"
       }
     },
     {
@@ -3148,7 +3385,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "spindle-shaped or elongated"
+        "name": "spindle-shaped or elongated",
+        "label": "spindle-shaped or elongated"
       }
     },
     {
@@ -3160,7 +3398,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "the cells were seeded in the different substrate (The sterile titanium substrate (different groups) was placed in a petri dish to fully cover the base)"
+        "name": "the cells were seeded in the different substrate (The sterile titanium substrate (different groups) was placed in a petri dish to fully cover the base)",
+        "label": "the cells were seeded in the different substrate (The sterile titanium substrate (different groups) was placed in a petri dish to fully cover the base)"
       }
     },
     {
@@ -3172,7 +3411,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "trypsin digestion"
+        "name": "trypsin digestion",
+        "label": "trypsin digestion"
       }
     }
   ],

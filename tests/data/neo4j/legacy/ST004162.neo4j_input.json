@@ -23,7 +23,7 @@
           "mass spectrometry",
           "chromatography"
         ],
-        "name": "Targeted Lipid Profiling of Mouse Brains with GBA1 E326K Loss-of-Function"
+        "label": "Targeted Lipid Profiling of Mouse Brains with GBA1 E326K Loss-of-Function"
       }
     },
     {
@@ -43,7 +43,8 @@
           "mass spectrometry",
           "chromatography"
         ],
-        "sample_run_list": []
+        "sample_run_list": [],
+        "label": "ST004162_AN006907.txt"
       }
     },
     {
@@ -54,7 +55,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "organism",
-        "characteristic_type": "organism"
+        "characteristic_type": "organism",
+        "label": "organism"
       }
     },
     {
@@ -65,7 +67,8 @@
       "properties": {
         "type_": "characteristic-definition",
         "name": "organism part",
-        "characteristic_type": "organism part"
+        "characteristic_type": "organism part",
+        "label": "organism part"
       }
     },
     {
@@ -76,7 +79,8 @@
       "properties": {
         "type_": "factor-definition",
         "name": "genotype",
-        "factor_type": "genotype"
+        "factor_type": "genotype",
+        "label": "genotype"
       }
     },
     {
@@ -86,7 +90,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Cholesteryl galactoside"
+        "name": "Cholesteryl galactoside",
+        "label": "Cholesteryl galactoside"
       }
     },
     {
@@ -96,7 +101,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Cholesteryl glucoside"
+        "name": "Cholesteryl glucoside",
+        "label": "Cholesteryl glucoside"
       }
     },
     {
@@ -106,7 +112,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/15:0)"
+        "name": "GalCer(d18:1/15:0)",
+        "label": "GalCer(d18:1/15:0)"
       }
     },
     {
@@ -116,7 +123,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/16:0)"
+        "name": "GalCer(d18:1/16:0)",
+        "label": "GalCer(d18:1/16:0)"
       }
     },
     {
@@ -126,7 +134,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/18:0)"
+        "name": "GalCer(d18:1/18:0)",
+        "label": "GalCer(d18:1/18:0)"
       }
     },
     {
@@ -136,7 +145,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/20:0)"
+        "name": "GalCer(d18:1/20:0)",
+        "label": "GalCer(d18:1/20:0)"
       }
     },
     {
@@ -146,7 +156,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/22:0)"
+        "name": "GalCer(d18:1/22:0)",
+        "label": "GalCer(d18:1/22:0)"
       }
     },
     {
@@ -156,7 +167,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/22:1)"
+        "name": "GalCer(d18:1/22:1)",
+        "label": "GalCer(d18:1/22:1)"
       }
     },
     {
@@ -166,7 +178,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/24:0)"
+        "name": "GalCer(d18:1/24:0)",
+        "label": "GalCer(d18:1/24:0)"
       }
     },
     {
@@ -176,7 +189,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:1/24:1)"
+        "name": "GalCer(d18:1/24:1)",
+        "label": "GalCer(d18:1/24:1)"
       }
     },
     {
@@ -186,7 +200,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:2/18:0)"
+        "name": "GalCer(d18:2/18:0)",
+        "label": "GalCer(d18:2/18:0)"
       }
     },
     {
@@ -196,7 +211,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:2/20:0)"
+        "name": "GalCer(d18:2/20:0)",
+        "label": "GalCer(d18:2/20:0)"
       }
     },
     {
@@ -206,7 +222,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GalCer(d18:2/22:0)"
+        "name": "GalCer(d18:2/22:0)",
+        "label": "GalCer(d18:2/22:0)"
       }
     },
     {
@@ -216,7 +233,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Galactosylsphingosine"
+        "name": "Galactosylsphingosine",
+        "label": "Galactosylsphingosine"
       }
     },
     {
@@ -226,7 +244,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1(d5)/18:0)"
+        "name": "GlcCer(d18:1(d5)/18:0)",
+        "label": "GlcCer(d18:1(d5)/18:0)"
       }
     },
     {
@@ -236,7 +255,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1/16:0)"
+        "name": "GlcCer(d18:1/16:0)",
+        "label": "GlcCer(d18:1/16:0)"
       }
     },
     {
@@ -246,7 +266,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1/18:0)"
+        "name": "GlcCer(d18:1/18:0)",
+        "label": "GlcCer(d18:1/18:0)"
       }
     },
     {
@@ -256,7 +277,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1/20:0)"
+        "name": "GlcCer(d18:1/20:0)",
+        "label": "GlcCer(d18:1/20:0)"
       }
     },
     {
@@ -266,7 +288,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1/22:0)"
+        "name": "GlcCer(d18:1/22:0)",
+        "label": "GlcCer(d18:1/22:0)"
       }
     },
     {
@@ -276,7 +299,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1/22:1)"
+        "name": "GlcCer(d18:1/22:1)",
+        "label": "GlcCer(d18:1/22:1)"
       }
     },
     {
@@ -286,7 +310,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1/24:0)"
+        "name": "GlcCer(d18:1/24:0)",
+        "label": "GlcCer(d18:1/24:0)"
       }
     },
     {
@@ -296,7 +321,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:1/24:1)"
+        "name": "GlcCer(d18:1/24:1)",
+        "label": "GlcCer(d18:1/24:1)"
       }
     },
     {
@@ -306,7 +332,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:2/18:0)"
+        "name": "GlcCer(d18:2/18:0)",
+        "label": "GlcCer(d18:2/18:0)"
       }
     },
     {
@@ -316,7 +343,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:2/20:0)"
+        "name": "GlcCer(d18:2/20:0)",
+        "label": "GlcCer(d18:2/20:0)"
       }
     },
     {
@@ -326,7 +354,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "GlcCer(d18:2/22:0)"
+        "name": "GlcCer(d18:2/22:0)",
+        "label": "GlcCer(d18:2/22:0)"
       }
     },
     {
@@ -336,7 +365,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Glucosylsphingosine"
+        "name": "Glucosylsphingosine",
+        "label": "Glucosylsphingosine"
       }
     },
     {
@@ -346,7 +376,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Glucosylsphingosine(d5)"
+        "name": "Glucosylsphingosine(d5)",
+        "label": "Glucosylsphingosine(d5)"
       }
     },
     {
@@ -356,7 +387,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Sitosteryl galactoside"
+        "name": "Sitosteryl galactoside",
+        "label": "Sitosteryl galactoside"
       }
     },
     {
@@ -366,7 +398,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "Sitosteryl glucoside"
+        "name": "Sitosteryl glucoside",
+        "label": "Sitosteryl glucoside"
       }
     },
     {
@@ -376,7 +409,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:1/16:0)"
+        "name": "alpha-GalCer(d18:1/16:0)",
+        "label": "alpha-GalCer(d18:1/16:0)"
       }
     },
     {
@@ -386,7 +420,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:1/18:0)"
+        "name": "alpha-GalCer(d18:1/18:0)",
+        "label": "alpha-GalCer(d18:1/18:0)"
       }
     },
     {
@@ -396,7 +431,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:1/20:0)"
+        "name": "alpha-GalCer(d18:1/20:0)",
+        "label": "alpha-GalCer(d18:1/20:0)"
       }
     },
     {
@@ -406,7 +442,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:1/22:0)"
+        "name": "alpha-GalCer(d18:1/22:0)",
+        "label": "alpha-GalCer(d18:1/22:0)"
       }
     },
     {
@@ -416,7 +453,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:1/22:1)"
+        "name": "alpha-GalCer(d18:1/22:1)",
+        "label": "alpha-GalCer(d18:1/22:1)"
       }
     },
     {
@@ -426,7 +464,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:1/24:0)"
+        "name": "alpha-GalCer(d18:1/24:0)",
+        "label": "alpha-GalCer(d18:1/24:0)"
       }
     },
     {
@@ -436,7 +475,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:1/24:1)"
+        "name": "alpha-GalCer(d18:1/24:1)",
+        "label": "alpha-GalCer(d18:1/24:1)"
       }
     },
     {
@@ -446,7 +486,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:2/20:0)"
+        "name": "alpha-GalCer(d18:2/20:0)",
+        "label": "alpha-GalCer(d18:2/20:0)"
       }
     },
     {
@@ -456,7 +497,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:2/22:0)"
+        "name": "alpha-GalCer(d18:2/22:0)",
+        "label": "alpha-GalCer(d18:2/22:0)"
       }
     },
     {
@@ -466,7 +508,8 @@
       ],
       "properties": {
         "type_": "metabolite",
-        "name": "alpha-GalCer(d18:2/:18:0)"
+        "name": "alpha-GalCer(d18:2/:18:0)",
+        "label": "alpha-GalCer(d18:2/:18:0)"
       }
     },
     {
@@ -481,7 +524,8 @@
         ],
         "name": "ST004162_AN006907.txt",
         "format": "TSV",
-        "extension": ".txt"
+        "extension": ".txt",
+        "label": "ST004162_AN006907.txt"
       }
     },
     {
@@ -491,8 +535,9 @@
       ],
       "properties": {
         "type_": "organization",
-        "name": "mhd--organization--1de8a563-9276-4bc9-80c2-138a6e547e28",
-        "address": "161 Oyster Point Blvd, South San Francisco, California, 94080, USA"
+        "name": "Denali Therapeutics",
+        "address": "161 Oyster Point Blvd, South San Francisco, California, 94080, USA",
+        "label": "mhd--organization--1de8a563-9276-4bc9-80c2-138a6e547e28"
       }
     },
     {
@@ -503,7 +548,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "chromatography type",
-        "parameter_type": "column type"
+        "parameter_type": "column type",
+        "label": "chromatography type"
       }
     },
     {
@@ -514,7 +560,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "collection vials",
-        "parameter_type": "collection vials"
+        "parameter_type": "collection vials",
+        "label": "collection vials"
       }
     },
     {
@@ -525,7 +572,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "column name",
-        "parameter_type": "column name"
+        "parameter_type": "column name",
+        "label": "column name"
       }
     },
     {
@@ -536,7 +584,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "column temperature",
-        "parameter_type": "column temperature"
+        "parameter_type": "column temperature",
+        "label": "column temperature"
       }
     },
     {
@@ -547,7 +596,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "extract storage",
-        "parameter_type": "extract storage"
+        "parameter_type": "extract storage",
+        "label": "extract storage"
       }
     },
     {
@@ -558,7 +608,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "flow gradient",
-        "parameter_type": "flow gradient"
+        "parameter_type": "flow gradient",
+        "label": "flow gradient"
       }
     },
     {
@@ -569,7 +620,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "flow rate",
-        "parameter_type": "flow rate"
+        "parameter_type": "flow rate",
+        "label": "flow rate"
       }
     },
     {
@@ -580,7 +632,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "instrument name",
-        "parameter_type": "mass spectrometry instrument"
+        "parameter_type": "mass spectrometry instrument",
+        "label": "instrument name"
       }
     },
     {
@@ -591,7 +644,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "instrument name",
-        "parameter_type": "chromatography instrument"
+        "parameter_type": "chromatography instrument",
+        "label": "instrument name"
       }
     },
     {
@@ -602,7 +656,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "instrument type",
-        "parameter_type": "mass analyzer"
+        "parameter_type": "mass analyzer",
+        "label": "instrument type"
       }
     },
     {
@@ -613,7 +668,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "ion mode",
-        "parameter_type": "scan polarity"
+        "parameter_type": "scan polarity",
+        "label": "ion mode"
       }
     },
     {
@@ -624,7 +680,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "ms type",
-        "parameter_type": "ion source"
+        "parameter_type": "ion source",
+        "label": "ms type"
       }
     },
     {
@@ -635,7 +692,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "processing storage conditions",
-        "parameter_type": "processing storage conditions"
+        "parameter_type": "processing storage conditions",
+        "label": "processing storage conditions"
       }
     },
     {
@@ -646,7 +704,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "solvent a",
-        "parameter_type": "solvent a"
+        "parameter_type": "solvent a",
+        "label": "solvent a"
       }
     },
     {
@@ -657,7 +716,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "solvent b",
-        "parameter_type": "solvent b"
+        "parameter_type": "solvent b",
+        "label": "solvent b"
       }
     },
     {
@@ -668,7 +728,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "storage conditions",
-        "parameter_type": "Storage Condition"
+        "parameter_type": "Storage Condition",
+        "label": "storage conditions"
       }
     },
     {
@@ -679,7 +740,8 @@
       "properties": {
         "type_": "parameter-definition",
         "name": "storage vials",
-        "parameter_type": "storage vials"
+        "parameter_type": "storage vials",
+        "label": "storage vials"
       }
     },
     {
@@ -699,7 +761,7 @@
         "addresses": [
           "161 Oyster Point Blvd, South San Francisco, California, 94080, USA"
         ],
-        "name": "suh@dnli.com"
+        "label": "suh@dnli.com"
       }
     },
     {
@@ -711,7 +773,7 @@
         "type_": "project",
         "title": "A Common PD-Risk GBA1 Variant Disrupts LIMP2 Interaction, Impairs Glucocerebrosidase Function, and Drives Lysosomal and Mitochondrial Dysfunction",
         "description": "Variants in GBA1 cause Gaucher disease (GD) and are the most common genetic risk factor for Parkinson\u2019s disease (PD). While some GBA1 variants are associated with both GD and PD, several coding mutations, including E326K, specifically confer risk for PD. The impact of these PD-specific variants on GCase activity and lysosomal and mitochondrial function relevant to PD remains poorly understood. We show the E326K variant reduces lysosomal GCase activity by impairing its delivery to lysosomes via altered interactions with its receptor, LIMP2. Structural analyses reveal that loss of a key salt bridge between E326 and R329 underlies disrupted GCase/LIMP2 interaction in cells, as reintroduction of a negative charge at R329 rescues LIMP2 binding. Functionally, the E326K variant produces greater deficits in PD-relevant pathways than GD-linked severe GCase LoF with effects reproduced in CNS cells and human E326K carriers, providing key insights into the nature of GCase dysfunction associated with GBA1-PD.",
-        "name": "A Common PD-Risk GBA1 Variant Disrupts LIMP2 Interaction, Impairs Glucocerebrosidase Function, and Drives Lysosomal and Mitochondrial Dysfunction"
+        "label": "A Common PD-Risk GBA1 Variant Disrupts LIMP2 Interaction, Impairs Glucocerebrosidase Function, and Drives Lysosomal and Mitochondrial Dysfunction"
       }
     },
     {
@@ -724,7 +786,8 @@
         "name": "chromatography",
         "protocol_type": "chromatography",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "chromatography"
       }
     },
     {
@@ -738,7 +801,8 @@
         "protocol_type": "mass spectrometry",
         "description": "curtain gas at 30 psi; collision gas set at medium; ion spray voltage at 4,500 V; temperature at 600\u00b0C; ion source Gas 1 at 55 psi; ion source Gas 2 at 60 psi.",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "mass spectrometry"
       }
     },
     {
@@ -752,7 +816,8 @@
         "protocol_type": "sample collection protocol",
         "description": "All animal procedures were performed in accordance with a protocol approved by the Institutional Animal Care and Use Committee of the National Institute on Aging, NIH. Wildtype, homozygous and heterozygous E326K GBA1 knock-in (KI) male and female mice raised on a C57Bl/6 background were bred in-house on a 12-hr day/night cycle for the following experiments. All mice were supplied with Rodent NIH-07 diet and water ad libitum. The brain was then removed and one hemisphere retained without sub-dissection. Tissue samples were individually weighed, flash frozen on dry ice and stored at -80\u00b0C for subsequent analysis.",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "sample collection"
       }
     },
     {
@@ -766,7 +831,8 @@
         "protocol_type": "sample preparation",
         "description": "20 (\u00b1 3) mg of brain tissues were weighed and flash frozen during tissue collection. Lipids were extracted from the frozen samples using 400 mL of HPLC-grade methanol (Fisher Chemical; # A452-4) containing stable-isotope internal standards and homogenized with a 3 mm tungsten carbide bead for 30 s at 25 Hz on TissueLyzer II (QIAGEN, #85300). The methanol fraction was isolated via centrifugation (20 min at 4\u00b0C, 21,000 x g, transferred to a 96-well sample collection plate (Waters; #186005837) and incubated for 1 h, at\u2000-20\u00b0C for protein precipitation, followed by an additional 20 min centrifugation (4,000 x g at 4\u00b0C). The supernatant was transferred to glass vial plates (Analytical systems, #27350) for LCMS analysis.",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "sample preparation"
       }
     },
     {
@@ -780,7 +846,8 @@
         "protocol_type": "treatment protocol",
         "description": "No treatment",
         "parameter_definition_list": [],
-        "parameter_definition_refs": []
+        "parameter_definition_refs": [],
+        "label": "treatment"
       }
     },
     {
@@ -794,7 +861,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_003"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_003",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_003"
       }
     },
     {
@@ -808,7 +876,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_004"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_004",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_004"
       }
     },
     {
@@ -822,7 +891,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_005"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_005",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_005"
       }
     },
     {
@@ -836,7 +906,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_006"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_006",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_006"
       }
     },
     {
@@ -850,7 +921,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_007"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_007",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_007"
       }
     },
     {
@@ -864,7 +936,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_008"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_008",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_008"
       }
     },
     {
@@ -878,7 +951,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_009"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_009",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_009"
       }
     },
     {
@@ -892,7 +966,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_010"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_010",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_010"
       }
     },
     {
@@ -906,7 +981,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_011"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_011",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_011"
       }
     },
     {
@@ -920,7 +996,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_012"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_012",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_012"
       }
     },
     {
@@ -934,7 +1011,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_013"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_013",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_013"
       }
     },
     {
@@ -948,7 +1026,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_014"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_014",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_014"
       }
     },
     {
@@ -962,7 +1041,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_015"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_015",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_015"
       }
     },
     {
@@ -976,7 +1056,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_016"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_016",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_016"
       }
     },
     {
@@ -990,7 +1071,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_017"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_017",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_017"
       }
     },
     {
@@ -1004,7 +1086,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_018"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_018",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_018"
       }
     },
     {
@@ -1018,7 +1101,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_019"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_019",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_019"
       }
     },
     {
@@ -1032,7 +1116,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_020"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_020",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_020"
       }
     },
     {
@@ -1046,7 +1131,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_021"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_021",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_021"
       }
     },
     {
@@ -1060,7 +1146,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_022"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_022",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_022"
       }
     },
     {
@@ -1074,7 +1161,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_023"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_023",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_023"
       }
     },
     {
@@ -1088,7 +1176,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_024"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_024",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_024"
       }
     },
     {
@@ -1102,7 +1191,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_025"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_025",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_025"
       }
     },
     {
@@ -1116,7 +1206,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_026"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_026",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_026"
       }
     },
     {
@@ -1130,7 +1221,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_027"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_027",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_027"
       }
     },
     {
@@ -1144,7 +1236,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_028"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_028",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_028"
       }
     },
     {
@@ -1158,7 +1251,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_029"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_029",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_029"
       }
     },
     {
@@ -1172,7 +1266,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_030"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_030",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_030"
       }
     },
     {
@@ -1186,7 +1281,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_031"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_031",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_031"
       }
     },
     {
@@ -1200,7 +1296,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_032"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_032",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_032"
       }
     },
     {
@@ -1214,7 +1311,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_033"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_033",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_033"
       }
     },
     {
@@ -1228,7 +1326,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_034"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_034",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_034"
       }
     },
     {
@@ -1242,7 +1341,8 @@
           "https://dashboard.gnps2.org/?usi=mzspec:ST004162:20211006_HN_HEX-000262_HALO_Pos_035"
         ],
         "name": "20211006_HN_HEX-000262_HALO_Pos_035",
-        "extension": ""
+        "extension": "",
+        "label": "20211006_HN_HEX-000262_HALO_Pos_035"
       }
     },
     {
@@ -1253,7 +1353,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015174",
-        "repository_identifier": "HSA000015174"
+        "repository_identifier": "HSA000015174",
+        "label": "HSA000015174"
       }
     },
     {
@@ -1264,7 +1365,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015175",
-        "repository_identifier": "HSA000015175"
+        "repository_identifier": "HSA000015175",
+        "label": "HSA000015175"
       }
     },
     {
@@ -1275,7 +1377,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015176",
-        "repository_identifier": "HSA000015176"
+        "repository_identifier": "HSA000015176",
+        "label": "HSA000015176"
       }
     },
     {
@@ -1286,7 +1389,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015177",
-        "repository_identifier": "HSA000015177"
+        "repository_identifier": "HSA000015177",
+        "label": "HSA000015177"
       }
     },
     {
@@ -1297,7 +1401,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015178",
-        "repository_identifier": "HSA000015178"
+        "repository_identifier": "HSA000015178",
+        "label": "HSA000015178"
       }
     },
     {
@@ -1308,7 +1413,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015179",
-        "repository_identifier": "HSA000015179"
+        "repository_identifier": "HSA000015179",
+        "label": "HSA000015179"
       }
     },
     {
@@ -1319,7 +1425,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015180",
-        "repository_identifier": "HSA000015180"
+        "repository_identifier": "HSA000015180",
+        "label": "HSA000015180"
       }
     },
     {
@@ -1330,7 +1437,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015181",
-        "repository_identifier": "HSA000015181"
+        "repository_identifier": "HSA000015181",
+        "label": "HSA000015181"
       }
     },
     {
@@ -1341,7 +1449,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015182",
-        "repository_identifier": "HSA000015182"
+        "repository_identifier": "HSA000015182",
+        "label": "HSA000015182"
       }
     },
     {
@@ -1352,7 +1461,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015183",
-        "repository_identifier": "HSA000015183"
+        "repository_identifier": "HSA000015183",
+        "label": "HSA000015183"
       }
     },
     {
@@ -1363,7 +1473,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015184",
-        "repository_identifier": "HSA000015184"
+        "repository_identifier": "HSA000015184",
+        "label": "HSA000015184"
       }
     },
     {
@@ -1374,7 +1485,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015185",
-        "repository_identifier": "HSA000015185"
+        "repository_identifier": "HSA000015185",
+        "label": "HSA000015185"
       }
     },
     {
@@ -1385,7 +1497,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015186",
-        "repository_identifier": "HSA000015186"
+        "repository_identifier": "HSA000015186",
+        "label": "HSA000015186"
       }
     },
     {
@@ -1396,7 +1509,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015187",
-        "repository_identifier": "HSA000015187"
+        "repository_identifier": "HSA000015187",
+        "label": "HSA000015187"
       }
     },
     {
@@ -1407,7 +1521,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015188",
-        "repository_identifier": "HSA000015188"
+        "repository_identifier": "HSA000015188",
+        "label": "HSA000015188"
       }
     },
     {
@@ -1418,7 +1533,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015189",
-        "repository_identifier": "HSA000015189"
+        "repository_identifier": "HSA000015189",
+        "label": "HSA000015189"
       }
     },
     {
@@ -1429,7 +1545,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015190",
-        "repository_identifier": "HSA000015190"
+        "repository_identifier": "HSA000015190",
+        "label": "HSA000015190"
       }
     },
     {
@@ -1440,7 +1557,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015191",
-        "repository_identifier": "HSA000015191"
+        "repository_identifier": "HSA000015191",
+        "label": "HSA000015191"
       }
     },
     {
@@ -1451,7 +1569,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015192",
-        "repository_identifier": "HSA000015192"
+        "repository_identifier": "HSA000015192",
+        "label": "HSA000015192"
       }
     },
     {
@@ -1462,7 +1581,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015193",
-        "repository_identifier": "HSA000015193"
+        "repository_identifier": "HSA000015193",
+        "label": "HSA000015193"
       }
     },
     {
@@ -1473,7 +1593,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015194",
-        "repository_identifier": "HSA000015194"
+        "repository_identifier": "HSA000015194",
+        "label": "HSA000015194"
       }
     },
     {
@@ -1484,7 +1605,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015195",
-        "repository_identifier": "HSA000015195"
+        "repository_identifier": "HSA000015195",
+        "label": "HSA000015195"
       }
     },
     {
@@ -1495,7 +1617,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015196",
-        "repository_identifier": "HSA000015196"
+        "repository_identifier": "HSA000015196",
+        "label": "HSA000015196"
       }
     },
     {
@@ -1506,7 +1629,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015197",
-        "repository_identifier": "HSA000015197"
+        "repository_identifier": "HSA000015197",
+        "label": "HSA000015197"
       }
     },
     {
@@ -1517,7 +1641,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015198",
-        "repository_identifier": "HSA000015198"
+        "repository_identifier": "HSA000015198",
+        "label": "HSA000015198"
       }
     },
     {
@@ -1528,7 +1653,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015199",
-        "repository_identifier": "HSA000015199"
+        "repository_identifier": "HSA000015199",
+        "label": "HSA000015199"
       }
     },
     {
@@ -1539,7 +1665,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015200",
-        "repository_identifier": "HSA000015200"
+        "repository_identifier": "HSA000015200",
+        "label": "HSA000015200"
       }
     },
     {
@@ -1550,7 +1677,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015201",
-        "repository_identifier": "HSA000015201"
+        "repository_identifier": "HSA000015201",
+        "label": "HSA000015201"
       }
     },
     {
@@ -1561,7 +1689,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015202",
-        "repository_identifier": "HSA000015202"
+        "repository_identifier": "HSA000015202",
+        "label": "HSA000015202"
       }
     },
     {
@@ -1572,7 +1701,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015203",
-        "repository_identifier": "HSA000015203"
+        "repository_identifier": "HSA000015203",
+        "label": "HSA000015203"
       }
     },
     {
@@ -1583,7 +1713,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015204",
-        "repository_identifier": "HSA000015204"
+        "repository_identifier": "HSA000015204",
+        "label": "HSA000015204"
       }
     },
     {
@@ -1594,7 +1725,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015287",
-        "repository_identifier": "HSA000015287"
+        "repository_identifier": "HSA000015287",
+        "label": "HSA000015287"
       }
     },
     {
@@ -1605,7 +1737,8 @@
       "properties": {
         "type_": "sample",
         "name": "HSA000015288",
-        "repository_identifier": "HSA000015288"
+        "repository_identifier": "HSA000015288",
+        "label": "HSA000015288"
       }
     },
     {
@@ -1619,7 +1752,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_009"
         ],
-        "name": "mhd--sample-run--09b521e2-10ff-4e78-a5a2-0c2d3d7bff59"
+        "label": "mhd--sample-run--09b521e2-10ff-4e78-a5a2-0c2d3d7bff59"
       }
     },
     {
@@ -1633,7 +1766,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_022"
         ],
-        "name": "mhd--sample-run--2078d999-4d91-45e7-b052-4190b4c0c61c"
+        "label": "mhd--sample-run--2078d999-4d91-45e7-b052-4190b4c0c61c"
       }
     },
     {
@@ -1647,7 +1780,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_018"
         ],
-        "name": "mhd--sample-run--3d704f8f-f604-4968-b6d0-ef02f76432d6"
+        "label": "mhd--sample-run--3d704f8f-f604-4968-b6d0-ef02f76432d6"
       }
     },
     {
@@ -1661,7 +1794,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_007"
         ],
-        "name": "mhd--sample-run--40231ad4-3862-4545-bb83-1a9a6f7acb6f"
+        "label": "mhd--sample-run--40231ad4-3862-4545-bb83-1a9a6f7acb6f"
       }
     },
     {
@@ -1675,7 +1808,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_015"
         ],
-        "name": "mhd--sample-run--4728ea21-506c-451c-acf7-bd3b7eada24f"
+        "label": "mhd--sample-run--4728ea21-506c-451c-acf7-bd3b7eada24f"
       }
     },
     {
@@ -1689,7 +1822,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_029"
         ],
-        "name": "mhd--sample-run--49b433ed-4491-45e8-812a-3f4553910f9b"
+        "label": "mhd--sample-run--49b433ed-4491-45e8-812a-3f4553910f9b"
       }
     },
     {
@@ -1703,7 +1836,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_011"
         ],
-        "name": "mhd--sample-run--4e2f0b31-d5ed-4485-8d3d-f9858ba713f6"
+        "label": "mhd--sample-run--4e2f0b31-d5ed-4485-8d3d-f9858ba713f6"
       }
     },
     {
@@ -1717,7 +1850,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_024"
         ],
-        "name": "mhd--sample-run--5224c24b-66d3-4d62-8dc8-76f342cd3d49"
+        "label": "mhd--sample-run--5224c24b-66d3-4d62-8dc8-76f342cd3d49"
       }
     },
     {
@@ -1731,7 +1864,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_019"
         ],
-        "name": "mhd--sample-run--595eefb1-51f6-4de1-9b78-43c4d3f4f4a7"
+        "label": "mhd--sample-run--595eefb1-51f6-4de1-9b78-43c4d3f4f4a7"
       }
     },
     {
@@ -1745,7 +1878,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_027"
         ],
-        "name": "mhd--sample-run--59f1f706-0567-457a-b00e-3ec5b9bd4270"
+        "label": "mhd--sample-run--59f1f706-0567-457a-b00e-3ec5b9bd4270"
       }
     },
     {
@@ -1759,7 +1892,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_014"
         ],
-        "name": "mhd--sample-run--5da3307d-6694-4c68-ac76-c05d9fd12ee1"
+        "label": "mhd--sample-run--5da3307d-6694-4c68-ac76-c05d9fd12ee1"
       }
     },
     {
@@ -1773,7 +1906,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_003"
         ],
-        "name": "mhd--sample-run--5dd06f0b-805b-4920-8005-fa7daf278fcf"
+        "label": "mhd--sample-run--5dd06f0b-805b-4920-8005-fa7daf278fcf"
       }
     },
     {
@@ -1787,7 +1920,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_028"
         ],
-        "name": "mhd--sample-run--6201f7ad-52c5-4719-9156-9e4addb1bd4c"
+        "label": "mhd--sample-run--6201f7ad-52c5-4719-9156-9e4addb1bd4c"
       }
     },
     {
@@ -1801,7 +1934,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_025"
         ],
-        "name": "mhd--sample-run--660b236b-c937-43d6-a2ef-66c641da5fd2"
+        "label": "mhd--sample-run--660b236b-c937-43d6-a2ef-66c641da5fd2"
       }
     },
     {
@@ -1815,7 +1948,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_034"
         ],
-        "name": "mhd--sample-run--6670f2ee-4903-4afc-ad09-793f22836c5f"
+        "label": "mhd--sample-run--6670f2ee-4903-4afc-ad09-793f22836c5f"
       }
     },
     {
@@ -1829,7 +1962,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_026"
         ],
-        "name": "mhd--sample-run--699a022a-a8dd-4369-8321-49cef0a37cb8"
+        "label": "mhd--sample-run--699a022a-a8dd-4369-8321-49cef0a37cb8"
       }
     },
     {
@@ -1843,7 +1976,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_021"
         ],
-        "name": "mhd--sample-run--6b1b5af1-7352-4997-9fa1-041a757c9fa1"
+        "label": "mhd--sample-run--6b1b5af1-7352-4997-9fa1-041a757c9fa1"
       }
     },
     {
@@ -1857,7 +1990,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_035"
         ],
-        "name": "mhd--sample-run--7016ab6b-1764-4387-acbc-e275ab133436"
+        "label": "mhd--sample-run--7016ab6b-1764-4387-acbc-e275ab133436"
       }
     },
     {
@@ -1871,7 +2004,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_008"
         ],
-        "name": "mhd--sample-run--704349f8-26b0-4646-8cef-eca6a609e124"
+        "label": "mhd--sample-run--704349f8-26b0-4646-8cef-eca6a609e124"
       }
     },
     {
@@ -1885,7 +2018,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_005"
         ],
-        "name": "mhd--sample-run--72d18a8d-1d83-4cb7-995f-e378c29a3e0e"
+        "label": "mhd--sample-run--72d18a8d-1d83-4cb7-995f-e378c29a3e0e"
       }
     },
     {
@@ -1899,7 +2032,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_033"
         ],
-        "name": "mhd--sample-run--7fb0aa9d-f056-46f8-ad96-63d63e3cf137"
+        "label": "mhd--sample-run--7fb0aa9d-f056-46f8-ad96-63d63e3cf137"
       }
     },
     {
@@ -1913,7 +2046,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_012"
         ],
-        "name": "mhd--sample-run--80c86d35-2585-45c6-abe5-4a2fe6000958"
+        "label": "mhd--sample-run--80c86d35-2585-45c6-abe5-4a2fe6000958"
       }
     },
     {
@@ -1927,7 +2060,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_006"
         ],
-        "name": "mhd--sample-run--88d0ba74-4e62-4e0d-be32-0fa4c34b0cdd"
+        "label": "mhd--sample-run--88d0ba74-4e62-4e0d-be32-0fa4c34b0cdd"
       }
     },
     {
@@ -1941,7 +2074,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_023"
         ],
-        "name": "mhd--sample-run--8c25c807-9f95-4cf7-a782-53c24832d33c"
+        "label": "mhd--sample-run--8c25c807-9f95-4cf7-a782-53c24832d33c"
       }
     },
     {
@@ -1955,7 +2088,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_004"
         ],
-        "name": "mhd--sample-run--9e4e938a-bda2-4780-8720-d0957dab76bf"
+        "label": "mhd--sample-run--9e4e938a-bda2-4780-8720-d0957dab76bf"
       }
     },
     {
@@ -1969,7 +2102,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_017"
         ],
-        "name": "mhd--sample-run--a4c3acc0-63ba-4145-afa1-e0d52a3b4d6b"
+        "label": "mhd--sample-run--a4c3acc0-63ba-4145-afa1-e0d52a3b4d6b"
       }
     },
     {
@@ -1983,7 +2116,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_031"
         ],
-        "name": "mhd--sample-run--a4cd5178-18f9-44cd-afbf-b2d95a11201d"
+        "label": "mhd--sample-run--a4cd5178-18f9-44cd-afbf-b2d95a11201d"
       }
     },
     {
@@ -1997,7 +2130,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_030"
         ],
-        "name": "mhd--sample-run--ad500fed-731c-40fb-b6c2-0e0c8e523e10"
+        "label": "mhd--sample-run--ad500fed-731c-40fb-b6c2-0e0c8e523e10"
       }
     },
     {
@@ -2011,7 +2144,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_016"
         ],
-        "name": "mhd--sample-run--b41086e1-c6b6-4a4a-ba39-37b168c03d74"
+        "label": "mhd--sample-run--b41086e1-c6b6-4a4a-ba39-37b168c03d74"
       }
     },
     {
@@ -2025,7 +2158,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_010"
         ],
-        "name": "mhd--sample-run--e2515539-53ff-489a-90ad-65968d10b59c"
+        "label": "mhd--sample-run--e2515539-53ff-489a-90ad-65968d10b59c"
       }
     },
     {
@@ -2039,7 +2172,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_013"
         ],
-        "name": "mhd--sample-run--e4fd7923-6af2-4bd3-83a6-0fdfc8641c33"
+        "label": "mhd--sample-run--e4fd7923-6af2-4bd3-83a6-0fdfc8641c33"
       }
     },
     {
@@ -2053,7 +2186,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_032"
         ],
-        "name": "mhd--sample-run--ec309f5c-9355-4a94-983a-3c660c183385"
+        "label": "mhd--sample-run--ec309f5c-9355-4a94-983a-3c660c183385"
       }
     },
     {
@@ -2067,7 +2200,7 @@
         "raw_data_file_list": [
           "20211006_HN_HEX-000262_HALO_Pos_020"
         ],
-        "name": "mhd--sample-run--f2f7da0d-a8ff-4d21-a3fb-89908790e709"
+        "label": "mhd--sample-run--f2f7da0d-a8ff-4d21-a3fb-89908790e709"
       }
     },
     {
@@ -2078,7 +2211,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS01A",
-        "repository_identifier": "TS01A"
+        "repository_identifier": "TS01A",
+        "label": "TS01A"
       }
     },
     {
@@ -2089,7 +2223,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS02A",
-        "repository_identifier": "TS02A"
+        "repository_identifier": "TS02A",
+        "label": "TS02A"
       }
     },
     {
@@ -2100,7 +2235,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS03A",
-        "repository_identifier": "TS03A"
+        "repository_identifier": "TS03A",
+        "label": "TS03A"
       }
     },
     {
@@ -2111,7 +2247,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS04A",
-        "repository_identifier": "TS04A"
+        "repository_identifier": "TS04A",
+        "label": "TS04A"
       }
     },
     {
@@ -2122,7 +2259,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS05A",
-        "repository_identifier": "TS05A"
+        "repository_identifier": "TS05A",
+        "label": "TS05A"
       }
     },
     {
@@ -2133,7 +2271,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS06A",
-        "repository_identifier": "TS06A"
+        "repository_identifier": "TS06A",
+        "label": "TS06A"
       }
     },
     {
@@ -2144,7 +2283,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS07A",
-        "repository_identifier": "TS07A"
+        "repository_identifier": "TS07A",
+        "label": "TS07A"
       }
     },
     {
@@ -2155,7 +2295,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS08A",
-        "repository_identifier": "TS08A"
+        "repository_identifier": "TS08A",
+        "label": "TS08A"
       }
     },
     {
@@ -2166,7 +2307,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS09A",
-        "repository_identifier": "TS09A"
+        "repository_identifier": "TS09A",
+        "label": "TS09A"
       }
     },
     {
@@ -2177,7 +2319,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS10A",
-        "repository_identifier": "TS10A"
+        "repository_identifier": "TS10A",
+        "label": "TS10A"
       }
     },
     {
@@ -2188,7 +2331,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS11A",
-        "repository_identifier": "TS11A"
+        "repository_identifier": "TS11A",
+        "label": "TS11A"
       }
     },
     {
@@ -2199,7 +2343,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS12A",
-        "repository_identifier": "TS12A"
+        "repository_identifier": "TS12A",
+        "label": "TS12A"
       }
     },
     {
@@ -2210,7 +2355,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS13A",
-        "repository_identifier": "TS13A"
+        "repository_identifier": "TS13A",
+        "label": "TS13A"
       }
     },
     {
@@ -2221,7 +2367,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS14A",
-        "repository_identifier": "TS14A"
+        "repository_identifier": "TS14A",
+        "label": "TS14A"
       }
     },
     {
@@ -2232,7 +2379,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS15A",
-        "repository_identifier": "TS15A"
+        "repository_identifier": "TS15A",
+        "label": "TS15A"
       }
     },
     {
@@ -2243,7 +2391,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS16A",
-        "repository_identifier": "TS16A"
+        "repository_identifier": "TS16A",
+        "label": "TS16A"
       }
     },
     {
@@ -2254,7 +2403,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS17A",
-        "repository_identifier": "TS17A"
+        "repository_identifier": "TS17A",
+        "label": "TS17A"
       }
     },
     {
@@ -2265,7 +2415,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS18A",
-        "repository_identifier": "TS18A"
+        "repository_identifier": "TS18A",
+        "label": "TS18A"
       }
     },
     {
@@ -2276,7 +2427,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS19A",
-        "repository_identifier": "TS19A"
+        "repository_identifier": "TS19A",
+        "label": "TS19A"
       }
     },
     {
@@ -2287,7 +2439,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS20A",
-        "repository_identifier": "TS20A"
+        "repository_identifier": "TS20A",
+        "label": "TS20A"
       }
     },
     {
@@ -2298,7 +2451,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS21A",
-        "repository_identifier": "TS21A"
+        "repository_identifier": "TS21A",
+        "label": "TS21A"
       }
     },
     {
@@ -2309,7 +2463,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS22A",
-        "repository_identifier": "TS22A"
+        "repository_identifier": "TS22A",
+        "label": "TS22A"
       }
     },
     {
@@ -2320,7 +2475,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS23A",
-        "repository_identifier": "TS23A"
+        "repository_identifier": "TS23A",
+        "label": "TS23A"
       }
     },
     {
@@ -2331,7 +2487,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS24A",
-        "repository_identifier": "TS24A"
+        "repository_identifier": "TS24A",
+        "label": "TS24A"
       }
     },
     {
@@ -2342,7 +2499,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS25A",
-        "repository_identifier": "TS25A"
+        "repository_identifier": "TS25A",
+        "label": "TS25A"
       }
     },
     {
@@ -2353,7 +2511,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS26A",
-        "repository_identifier": "TS26A"
+        "repository_identifier": "TS26A",
+        "label": "TS26A"
       }
     },
     {
@@ -2364,7 +2523,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS27A",
-        "repository_identifier": "TS27A"
+        "repository_identifier": "TS27A",
+        "label": "TS27A"
       }
     },
     {
@@ -2375,7 +2535,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS28A",
-        "repository_identifier": "TS28A"
+        "repository_identifier": "TS28A",
+        "label": "TS28A"
       }
     },
     {
@@ -2386,7 +2547,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS29A",
-        "repository_identifier": "TS29A"
+        "repository_identifier": "TS29A",
+        "label": "TS29A"
       }
     },
     {
@@ -2397,7 +2559,8 @@
       "properties": {
         "type_": "subject",
         "name": "TS30A",
-        "repository_identifier": "TS30A"
+        "repository_identifier": "TS30A",
+        "label": "TS30A"
       }
     },
     {
@@ -2408,7 +2571,8 @@
       "properties": {
         "type_": "subject",
         "name": "pool_001",
-        "repository_identifier": "pool_001"
+        "repository_identifier": "pool_001",
+        "label": "pool_001"
       }
     },
     {
@@ -2419,7 +2583,8 @@
       "properties": {
         "type_": "subject",
         "name": "pool_002",
-        "repository_identifier": "pool_002"
+        "repository_identifier": "pool_002",
+        "label": "pool_002"
       }
     },
     {
@@ -2430,7 +2595,8 @@
       "properties": {
         "type_": "subject",
         "name": "pool_003",
-        "repository_identifier": "pool_003"
+        "repository_identifier": "pool_003",
+        "label": "pool_003"
       }
     },
     {
@@ -2442,7 +2608,8 @@
         "type_": "characteristic-type",
         "source": "NCIT",
         "accession": "NCIT:C14250",
-        "name": "organism"
+        "name": "organism",
+        "label": "organism"
       }
     },
     {
@@ -2454,7 +2621,8 @@
         "type_": "characteristic-type",
         "source": "NCIT",
         "accession": "NCIT:C103199",
-        "name": "organism part"
+        "name": "organism part",
+        "label": "organism part"
       }
     },
     {
@@ -2466,7 +2634,8 @@
         "type_": "characteristic-value",
         "source": "NCBITAXON",
         "accession": "NCBITAXON:10090",
-        "name": "Mus musculus"
+        "name": "Mus musculus",
+        "label": "Mus musculus"
       }
     },
     {
@@ -2478,7 +2647,8 @@
         "type_": "characteristic-value",
         "source": "",
         "accession": "",
-        "name": "brain"
+        "name": "brain",
+        "label": "brain"
       }
     },
     {
@@ -2491,7 +2661,8 @@
         "value": "Metabolomics Workbench",
         "source": "NCIT",
         "accession": "NCIT:C189151",
-        "name": "Metabolomics Workbench"
+        "name": "Study Data Repository",
+        "label": "Metabolomics Workbench"
       }
     },
     {
@@ -2503,7 +2674,8 @@
         "type_": "descriptor",
         "source": "",
         "accession": "",
-        "name": "Preclinical Mouse and cellular studies"
+        "name": "Preclinical Mouse and cellular studies",
+        "label": "Preclinical Mouse and cellular studies"
       }
     },
     {
@@ -2515,7 +2687,8 @@
         "type_": "descriptor",
         "source": "EDAM",
         "accession": "EDAM:3475",
-        "name": "TSV"
+        "name": "TSV",
+        "label": "TSV"
       }
     },
     {
@@ -2528,7 +2701,8 @@
         "value": "Cholesteryl -glucoside",
         "source": "",
         "accession": "",
-        "name": "Cholesteryl -glucoside"
+        "name": "RefMet",
+        "label": "Cholesteryl -glucoside"
       }
     },
     {
@@ -2541,7 +2715,8 @@
         "value": "GalCer 18:1;O2/15:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/15:0"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/15:0"
       }
     },
     {
@@ -2554,7 +2729,8 @@
         "value": "GalCer 18:1;O2/16:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/16:0"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/16:0"
       }
     },
     {
@@ -2567,7 +2743,8 @@
         "value": "GalCer 18:1;O2/18:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/18:0"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/18:0"
       }
     },
     {
@@ -2580,7 +2757,8 @@
         "value": "GalCer 18:1;O2/20:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/20:0"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/20:0"
       }
     },
     {
@@ -2593,7 +2771,8 @@
         "value": "GalCer 18:1;O2/22:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/22:0"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/22:0"
       }
     },
     {
@@ -2606,7 +2785,8 @@
         "value": "GalCer 18:1;O2/22:1",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/22:1"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/22:1"
       }
     },
     {
@@ -2619,7 +2799,8 @@
         "value": "GalCer 18:1;O2/24:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/24:0"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/24:0"
       }
     },
     {
@@ -2632,7 +2813,8 @@
         "value": "GalCer 18:1;O2/24:1",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:1;O2/24:1"
+        "name": "RefMet",
+        "label": "GalCer 18:1;O2/24:1"
       }
     },
     {
@@ -2645,7 +2827,8 @@
         "value": "GalCer 18:2;O2/18:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:2;O2/18:0"
+        "name": "RefMet",
+        "label": "GalCer 18:2;O2/18:0"
       }
     },
     {
@@ -2658,7 +2841,8 @@
         "value": "GalCer 18:2;O2/20:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:2;O2/20:0"
+        "name": "RefMet",
+        "label": "GalCer 18:2;O2/20:0"
       }
     },
     {
@@ -2671,7 +2855,8 @@
         "value": "GalCer 18:2;O2/22:0",
         "source": "",
         "accession": "",
-        "name": "GalCer 18:2;O2/22:0"
+        "name": "RefMet",
+        "label": "GalCer 18:2;O2/22:0"
       }
     },
     {
@@ -2684,7 +2869,8 @@
         "value": "GlcCer 18:1;O2/16:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:1;O2/16:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:1;O2/16:0"
       }
     },
     {
@@ -2697,7 +2883,8 @@
         "value": "GlcCer 18:1;O2/18:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:1;O2/18:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:1;O2/18:0"
       }
     },
     {
@@ -2710,7 +2897,8 @@
         "value": "GlcCer 18:1;O2/20:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:1;O2/20:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:1;O2/20:0"
       }
     },
     {
@@ -2723,7 +2911,8 @@
         "value": "GlcCer 18:1;O2/22:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:1;O2/22:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:1;O2/22:0"
       }
     },
     {
@@ -2736,7 +2925,8 @@
         "value": "GlcCer 18:1;O2/22:1",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:1;O2/22:1"
+        "name": "RefMet",
+        "label": "GlcCer 18:1;O2/22:1"
       }
     },
     {
@@ -2749,7 +2939,8 @@
         "value": "GlcCer 18:1;O2/24:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:1;O2/24:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:1;O2/24:0"
       }
     },
     {
@@ -2762,7 +2953,8 @@
         "value": "GlcCer 18:1;O2/24:1",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:1;O2/24:1"
+        "name": "RefMet",
+        "label": "GlcCer 18:1;O2/24:1"
       }
     },
     {
@@ -2775,7 +2967,8 @@
         "value": "GlcCer 18:2;O2/18:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:2;O2/18:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:2;O2/18:0"
       }
     },
     {
@@ -2788,7 +2981,8 @@
         "value": "GlcCer 18:2;O2/20:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:2;O2/20:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:2;O2/20:0"
       }
     },
     {
@@ -2801,7 +2995,8 @@
         "value": "GlcCer 18:2;O2/22:0",
         "source": "",
         "accession": "",
-        "name": "GlcCer 18:2;O2/22:0"
+        "name": "RefMet",
+        "label": "GlcCer 18:2;O2/22:0"
       }
     },
     {
@@ -2814,7 +3009,8 @@
         "value": "Psychosine",
         "source": "",
         "accession": "",
-        "name": "Psychosine"
+        "name": "RefMet",
+        "label": "Psychosine"
       }
     },
     {
@@ -2826,7 +3022,8 @@
         "type_": "parameter-type",
         "source": "OBI",
         "accession": "OBI:0000485",
-        "name": "chromatography instrument"
+        "name": "chromatography instrument",
+        "label": "chromatography instrument"
       }
     },
     {
@@ -2838,7 +3035,8 @@
         "type_": "parameter-type",
         "source": "CHMO",
         "accession": "CHMO:0000960",
-        "name": "ion source"
+        "name": "ion source",
+        "label": "ion source"
       }
     },
     {
@@ -2850,7 +3048,8 @@
         "type_": "parameter-type",
         "source": "OBI",
         "accession": "OBI:0000345",
-        "name": "mass analyzer"
+        "name": "mass analyzer",
+        "label": "mass analyzer"
       }
     },
     {
@@ -2862,7 +3061,8 @@
         "type_": "parameter-type",
         "source": "MSIO",
         "accession": "MSIO:0000171",
-        "name": "mass spectrometry instrument"
+        "name": "mass spectrometry instrument",
+        "label": "mass spectrometry instrument"
       }
     },
     {
@@ -2874,7 +3074,8 @@
         "type_": "parameter-type",
         "source": "MS",
         "accession": "MS:1000465",
-        "name": "scan polarity"
+        "name": "scan polarity",
+        "label": "scan polarity"
       }
     },
     {
@@ -2886,7 +3087,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "ABI Sciex 6500+ QTrap"
+        "name": "ABI Sciex 6500+ QTrap",
+        "label": "ABI Sciex 6500+ QTrap"
       }
     },
     {
@@ -2898,7 +3100,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "Agilent 1290 Infinity II"
+        "name": "Agilent 1290 Infinity II",
+        "label": "Agilent 1290 Infinity II"
       }
     },
     {
@@ -2910,7 +3113,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "ESI"
+        "name": "ESI",
+        "label": "ESI"
       }
     },
     {
@@ -2922,7 +3126,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "POSITIVE"
+        "name": "POSITIVE",
+        "label": "POSITIVE"
       }
     },
     {
@@ -2934,7 +3139,8 @@
         "type_": "parameter-value",
         "source": "",
         "accession": "",
-        "name": "Triple quadrupole"
+        "name": "Triple quadrupole",
+        "label": "Triple quadrupole"
       }
     },
     {
@@ -2946,7 +3152,8 @@
         "type_": "protocol-type",
         "source": "CHMO",
         "accession": "CHMO:0001000",
-        "name": "chromatography"
+        "name": "chromatography",
+        "label": "chromatography"
       }
     },
     {
@@ -2958,7 +3165,8 @@
         "type_": "protocol-type",
         "source": "CHMO",
         "accession": "CHMO:0000470",
-        "name": "mass spectrometry"
+        "name": "mass spectrometry",
+        "label": "mass spectrometry"
       }
     },
     {
@@ -2970,7 +3178,8 @@
         "type_": "protocol-type",
         "source": "EFO",
         "accession": "EFO:0005518",
-        "name": "sample collection protocol"
+        "name": "sample collection protocol",
+        "label": "sample collection protocol"
       }
     },
     {
@@ -2982,7 +3191,8 @@
         "type_": "protocol-type",
         "source": "MS",
         "accession": "MS:1000831",
-        "name": "sample preparation"
+        "name": "sample preparation",
+        "label": "sample preparation"
       }
     },
     {
@@ -2994,7 +3204,8 @@
         "type_": "protocol-type",
         "source": "EFO",
         "accession": "EFO:0003969",
-        "name": "treatment protocol"
+        "name": "treatment protocol",
+        "label": "treatment protocol"
       }
     },
     {
@@ -3006,7 +3217,8 @@
         "type_": "x-mw-factor-type",
         "source": "",
         "accession": "",
-        "name": "genotype"
+        "name": "genotype",
+        "label": "genotype"
       }
     },
     {
@@ -3018,7 +3230,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "GBA E326K HET"
+        "name": "GBA E326K HET",
+        "label": "GBA E326K HET"
       }
     },
     {
@@ -3030,7 +3243,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "GBA E326K HOM"
+        "name": "GBA E326K HOM",
+        "label": "GBA E326K HOM"
       }
     },
     {
@@ -3042,7 +3256,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "NA"
+        "name": "NA",
+        "label": "NA"
       }
     },
     {
@@ -3054,7 +3269,8 @@
         "type_": "x-mw-factor-value",
         "source": "",
         "accession": "",
-        "name": "WT"
+        "name": "WT",
+        "label": "WT"
       }
     },
     {
@@ -3066,7 +3282,8 @@
         "type_": "x-mw-parameter-type",
         "source": "NCIT",
         "accession": "NCIT:C96145",
-        "name": "Storage Condition"
+        "name": "Storage Condition",
+        "label": "Storage Condition"
       }
     },
     {
@@ -3078,7 +3295,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "collection vials"
+        "name": "collection vials",
+        "label": "collection vials"
       }
     },
     {
@@ -3090,7 +3308,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "column name"
+        "name": "column name",
+        "label": "column name"
       }
     },
     {
@@ -3102,7 +3321,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "column temperature"
+        "name": "column temperature",
+        "label": "column temperature"
       }
     },
     {
@@ -3114,7 +3334,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "column type"
+        "name": "column type",
+        "label": "column type"
       }
     },
     {
@@ -3126,7 +3347,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "extract storage"
+        "name": "extract storage",
+        "label": "extract storage"
       }
     },
     {
@@ -3138,7 +3360,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "flow gradient"
+        "name": "flow gradient",
+        "label": "flow gradient"
       }
     },
     {
@@ -3150,7 +3373,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "flow rate"
+        "name": "flow rate",
+        "label": "flow rate"
       }
     },
     {
@@ -3162,7 +3386,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "processing storage conditions"
+        "name": "processing storage conditions",
+        "label": "processing storage conditions"
       }
     },
     {
@@ -3174,7 +3399,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "solvent a"
+        "name": "solvent a",
+        "label": "solvent a"
       }
     },
     {
@@ -3186,7 +3412,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "solvent b"
+        "name": "solvent b",
+        "label": "solvent b"
       }
     },
     {
@@ -3198,7 +3425,8 @@
         "type_": "x-mw-parameter-type",
         "source": "",
         "accession": "",
-        "name": "storage vials"
+        "name": "storage vials",
+        "label": "storage vials"
       }
     },
     {
@@ -3210,7 +3438,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "-20\u2103"
+        "name": "-20\u2103",
+        "label": "-20\u2103"
       }
     },
     {
@@ -3222,7 +3451,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "-80\u2103"
+        "name": "-80\u2103",
+        "label": "-80\u2103"
       }
     },
     {
@@ -3234,7 +3464,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "0.0\u20132.0 min, 100% B; 2.1 min, 95% B; 4.5 min, 85% B; held at 85% B until 6.0 min; 6.1 min, 0% B; held at 0% B until 8.5 min"
+        "name": "0.0\u20132.0 min, 100% B; 2.1 min, 95% B; 4.5 min, 85% B; held at 85% B until 6.0 min; 6.1 min, 0% B; held at 0% B until 8.5 min",
+        "label": "0.0\u20132.0 min, 100% B; 2.1 min, 95% B; 4.5 min, 85% B; held at 85% B until 6.0 min; 6.1 min, 0% B; held at 0% B until 8.5 min"
       }
     },
     {
@@ -3246,7 +3477,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "0.45 mL/min"
+        "name": "0.45 mL/min",
+        "label": "0.45 mL/min"
       }
     },
     {
@@ -3258,7 +3490,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "45"
+        "name": "45",
+        "label": "45"
       }
     },
     {
@@ -3270,7 +3503,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "92.5% acetonitrile/5% isopropanol/2.5% water; 5 mM ammonium formate; 0.5% formic acid"
+        "name": "92.5% acetonitrile/5% isopropanol/2.5% water; 5 mM ammonium formate; 0.5% formic acid",
+        "label": "92.5% acetonitrile/5% isopropanol/2.5% water; 5 mM ammonium formate; 0.5% formic acid"
       }
     },
     {
@@ -3282,7 +3516,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "92.5% water/5% isopropanol/2.5% acetonitrile; 5 mM ammonium formate; 0.5% formic acid"
+        "name": "92.5% water/5% isopropanol/2.5% acetonitrile; 5 mM ammonium formate; 0.5% formic acid",
+        "label": "92.5% water/5% isopropanol/2.5% acetonitrile; 5 mM ammonium formate; 0.5% formic acid"
       }
     },
     {
@@ -3294,7 +3529,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Advanced Material Technology HALO HILIC (150 x 3.0mm, 2um)"
+        "name": "Advanced Material Technology HALO HILIC (150 x 3.0mm, 2um)",
+        "label": "Advanced Material Technology HALO HILIC (150 x 3.0mm, 2um)"
       }
     },
     {
@@ -3306,7 +3542,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "HILIC"
+        "name": "HILIC",
+        "label": "HILIC"
       }
     },
     {
@@ -3318,7 +3555,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "Lobind 1.5 mL Eppendorf tubes"
+        "name": "Lobind 1.5 mL Eppendorf tubes",
+        "label": "Lobind 1.5 mL Eppendorf tubes"
       }
     },
     {
@@ -3330,7 +3568,8 @@
         "type_": "x-mw-parameter-value",
         "source": "",
         "accession": "",
-        "name": "On ice"
+        "name": "On ice",
+        "label": "On ice"
       }
     }
   ],
