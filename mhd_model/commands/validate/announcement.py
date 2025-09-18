@@ -107,7 +107,9 @@ def validate_announcement_file_task(
             }
             json.dump(result, f, indent=4)
     if not errors_list:
-        click.echo(f"{mhd_study_id}: File '{announcement_file_path}' is validated successfully.")
+        click.echo(
+            f"{mhd_study_id}: File '{announcement_file_path}' is validated successfully."
+        )
         exit(0)
     click.echo(f"{mhd_study_id}: {announcement_file_path} has validation errors.")
     for idx, error in enumerate(errors_list, start=1):

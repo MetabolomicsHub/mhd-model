@@ -1,3 +1,9 @@
+## v0.1.20 (2025-09-18)
+
+### Fix
+
+- mhd files and announcement files are validated for legacy test datasets
+
 ## v0.1.19 (2025-09-18)
 
 ### Fix
