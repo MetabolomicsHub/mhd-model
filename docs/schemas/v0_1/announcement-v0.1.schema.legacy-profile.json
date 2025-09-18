@@ -1718,24 +1718,7 @@
         "requiredItems": [
           {
             "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": [
-                  {
-                    "accession": "",
-                    "source": ""
-                  }
-                ],
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allow-any-cv-term",
-                "negate": false
-              }
-            ],
+            "controls": [],
             "cvTermKey": {
               "accession": "NCIT:C14250",
               "name": "organism",
@@ -1780,37 +1763,7 @@
               "requiredItems": [
                 {
                   "allowNullValue": false,
-                  "controls": [
-                    {
-                      "allowNullValue": false,
-                      "allowedMissingCvTerms": null,
-                      "allowedOtherSources": null,
-                      "allowedPlaceholderValues": [
-                        {
-                          "accession": "",
-                          "source": ""
-                        }
-                      ],
-                      "inputType": "list-or-item",
-                      "listJoinOperator": "all",
-                      "minimum": null,
-                      "name": "allowed-children-cv-terms",
-                      "negate": false,
-                      "parentCvTerms": [
-                        {
-                          "allowOnlyLeaf": true,
-                          "allowParent": false,
-                          "cvTerm": {
-                            "accession": "MS:1000031",
-                            "name": "instrument model",
-                            "source": "MS"
-                          },
-                          "excludedCvTerms": null,
-                          "indexCvTerms": true
-                        }
-                      ]
-                    }
-                  ],
+                  "controls": [],
                   "cvTermKey": {
                     "accession": "MSIO:0000171",
                     "name": "mass spectrometry instrument",

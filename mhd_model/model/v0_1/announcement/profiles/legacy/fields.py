@@ -38,11 +38,7 @@ CharacteristicValues = Annotated[
                         cv_term_key=CvTerm(
                             source="NCIT", accession="NCIT:C14250", name="organism"
                         ),
-                        controls=[
-                            AllowAnyCvTerm(
-                                allowed_placeholder_values=[CvTermPlaceholder()]
-                            )
-                        ],
+                        controls=[],
                         min_value_count=1,
                     ),
                 ]
@@ -117,21 +113,7 @@ Protocols = Annotated[
                             cv_term_key=REQUIRED_COMMON_PARAMETER_DEFINITIONS[
                                 "MSIO:0000171"
                             ],
-                            controls=[
-                                AllowedChildrenCvTerms(
-                                    parent_cv_terms=[
-                                        ParentCvTerm(
-                                            cv_term=CvTerm(
-                                                source="MS",
-                                                accession="MS:1000031",
-                                                name="instrument model",
-                                            ),
-                                            allow_only_leaf=True,
-                                        ),
-                                    ],
-                                    allowed_placeholder_values=[CvTermPlaceholder()],
-                                )
-                            ],
+                            controls=[],
                         )
                     ]
                 ),
