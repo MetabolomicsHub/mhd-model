@@ -2332,7 +2332,7 @@
           "title": "Label"
         },
         "title": {
-          "minLength": 5,
+          "minLength": 10,
           "title": "Title",
           "type": "string"
         },

@@ -419,7 +419,7 @@ def update_nodes(
             description.append(
                 "<br>Example: <br><code>"
                 + "<br>".join(
-                    [json.dumps(x, indent=2).replace("\n", "<br>") for x in examples]
+                    [json.dumps(str(x), indent=2).replace("\n", "<br>") for x in examples]
                 )
                 + "</code>"
             )

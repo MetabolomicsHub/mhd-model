@@ -96,7 +96,7 @@ Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N 
 |**metadata_file_ref**|optional|<code>*MhdObjectId*<code>|Target node type: <code>**metadata-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**metadata-file**</code></code>|
 |**technology_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code>|
 |**assay_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code>|
-|**measurement_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MSIO, MSIO:0000100, targeted metabolite profiling],<br>* [MSIO, MSIO:0000101, untargeted metabolite profiling],<br>* [OBI, OBI:0000366, metabolite profiling assay]</code>|
+|**measurement_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MSIO, MSIO:0000100, targeted metabolite profiling],<br>* [MSIO, MSIO:0000101, untargeted metabolite profiling]</code>|
 |**omics_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:3172, Metabolomics],<br>* [EDAM, EDAM:0153, Lipidomics],<br>* [EDAM, EDAM:3955, Fluxomics]</code>|
 |**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 |**sample_run_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
@@ -425,7 +425,7 @@ Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum
 |**full_name**|**required**|<code>*str*<code>|Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code>|
 |**emails**|optional|<code>*list[EmailStr]*<code>|Email addresses of person|
-|**phones**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>[<br>  "+449340917271",<br>  "00449340917271"<br>]</code>|
+|**phones**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>"['+449340917271', '00449340917271']"</code>|
 |**addresses**|optional|<code>*list[str]*<code>||
 
 
@@ -439,7 +439,7 @@ Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum
 |person|contributes|has-contributor|study|0|N||
 |person|described-as|describes|descriptor|0|N||
 |person|principal-investigator-of|has-principal-investigator|study|0|N||
-|person|submits|submitted-by|study|0|N||
+|person|submits|submitted-by|study|0|N|**Required min count in the dataset: 1.**|
 
 
 **Reverse Node Relationships**
@@ -898,7 +898,7 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |organization|funds|funded-by|study|0|N||
 |person|contributes|has-contributor|study|0|N||
 |person|principal-investigator-of|has-principal-investigator|study|0|N||
-|person|submits|submitted-by|study|0|N||
+|person|submits|submitted-by|study|0|N|**Required min count in the dataset: 1.**|
 |project|has-study|part-of|study|0|N||
 |protocol|used-in|has-protocol|study|1|N||
 |publication|describes|has-publication|study|0|1||
