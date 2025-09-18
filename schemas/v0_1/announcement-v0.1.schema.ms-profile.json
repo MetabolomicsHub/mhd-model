@@ -372,7 +372,7 @@
           "title": "Doi",
           "type": "string"
         },
-        "pub_med_id": {
+        "pubmed_id": {
           "anyOf": [
             {
               "pattern": "^[0-9]{1,20}$",
@@ -384,7 +384,7 @@
             }
           ],
           "default": null,
-          "title": "Pub Med Id"
+          "title": "Pubmed Id"
         },
         "authors": {
           "anyOf": [
@@ -1193,6 +1193,7 @@
           "type": "null"
         }
       ],
+      "default": null,
       "title": "Mhd Identifier"
     },
     "repository_identifier": {
@@ -1312,6 +1313,7 @@
           "type": "null"
         }
       ],
+      "default": null,
       "title": "License"
     },
     "title": {
@@ -1982,13 +1984,11 @@
     }
   },
   "required": [
-    "mhd_identifier",
     "repository_identifier",
     "$schema",
     "profile_uri",
     "mhd_metadata_file_url",
     "dataset_url_list",
-    "license",
     "title",
     "description",
     "submission_date",
