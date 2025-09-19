@@ -1,7 +1,7 @@
+import json
 import logging
-from typing import Any, OrderedDict
-
-from pydantic import BaseModel
+from pathlib import Path
+from typing import OrderedDict
 
 from mhd_model.model.v0_1.announcement.profiles.base.fields import (
     ExtendedCvTermKeyValue,
@@ -81,25 +81,6 @@ def get_characteristic_values(
         )
 
     return announcement_characteristics
-
-
-def get_keywords(
-    all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
-) -> list[CvTerm]:
-    keywords = []
-    if "has-submitter-keyword" in relationship_name_map:
-        for rel in relationship_name_map.get("has-submitter-keyword").values():
-            source = all_nodes_map.get(rel.source_ref)
-            if source:
-                if isinstance(source, graph_nodes.Study):
-                    keyword_node = all_nodes_map.get(rel.target_ref)
-                    if keyword_node:
-                        keyword = CvTerm.model_validate(
-                            keyword_node.model_dump(by_alias=True)
-                        )
-                        keywords.append(keyword)
-    return keywords
 
 
 def get_study_factors(
@@ -237,26 +218,17 @@ def convert_file(
     return file
 
 
-def collect_cvterm_sources(obj: BaseModel, cv_sources: set[str]):
-    if isinstance(obj, (CvTerm, CvTermValue)):
-        source = getattr(obj, "source", None)
-        if source:
-            cv_sources.add(source)
-    elif isinstance(obj, BaseModel):
-        for value in obj.__dict__.values():
-            collect_cvterm_sources(value, cv_sources)
-    elif isinstance(obj, list):
-        for item in obj:
-            collect_cvterm_sources(item, cv_sources)
-    elif isinstance(obj, dict):
-        for value in obj.values():
-            collect_cvterm_sources(value, cv_sources)
-
-
 def create_sdrf_files(
-    mhd_file: dict[str, Any], mhd_file_url: str, sdrf_file_root_path: None | str
+    mhd_file_path: str,
+    sdrf_file_root_path: str,
+    assay_name: None | str = None,
+    sdrf_output_filename: None | str = None,
 ):
-    mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_file)
+    sdrf_files = []
+    txt = Path(mhd_file_path).read_text()
+    mhd_data_json = json.loads(txt)
+
+    mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_data_json)
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }
@@ -284,21 +256,31 @@ def create_sdrf_files(
             node_relationships[rel.source_ref][rel.relationship_name] = []
         node_relationships[rel.source_ref][rel.relationship_name].append(rel.target_ref)
 
-    if "study" not in type_map:
-        logger.error("Study not found for in the input file")
-        return
+    if "study" not in type_map or not type_map["study"]:
+        logger.error("Study is not found for in the input file")
+        return False, sdrf_files
     study: graph_nodes.Study = list(type_map["study"].values())[0]
-
+    study_id = study.mhd_identifier or study.repository_identifier
     study_assays: list[graph_nodes.Assay] = []
     if "assay" in type_map:
         study_assays = list(type_map["assay"].values())
-
-    if not mhd_file_url:
-        ftp = [str(x) for x in study.dataset_url_list if str(x).startswith("ftp://")]
-        if ftp:
-            mhd_file_url = f"{ftp[0]}/{study.repository_identifier}.mhd.json"
-
-    for assay in study_assays:
+    if not study_assays:
+        logger.error("Study %s has no assay", study_id)
+        return False, sdrf_files
+    selected_assays = [(idx, x) for idx, x in enumerate(study_assays, start=1)]
+    if assay_name:
+        selected_assays = [
+            (idx, x)
+            for idx, x in enumerate(study_assays, start=1)
+            if x.name == assay_name
+        ]
+    if not selected_assays:
+        logger.error("Study %s has no assay with name %s", study_id, assay_name)
+        return False, sdrf_files
+    for idx, assay in selected_assays:
+        if not assay.sample_run_refs:
+            logger.error("Study %s Assay '%s' has no sample run", study_id, assay.name)
+            continue
         sdrf_file = LegacySdrf(
             study_identifier=study.repository_identifier,
             assay_identifier=assay.repository_identifier,
@@ -366,6 +348,7 @@ def create_sdrf_files(
                 factor_values = []
                 if values:
                     for value in values:
+                        # select only first type
                         factor_types = find_all_linked_nodes(
                             all_nodes_map,
                             node_relationships,
@@ -395,6 +378,7 @@ def create_sdrf_files(
             raw_data_files = []
             derived_data_files = []
             result_files = []
+            supplementary_files = []
             if sample_run.raw_data_file_refs:
                 raw_data_file_nodes: graph_nodes.RawDataFile = [
                     nodes_map[x] for x in sample_run.raw_data_file_refs
@@ -404,7 +388,7 @@ def create_sdrf_files(
                     for x in raw_data_file_nodes
                 ]
             if sample_run.derived_data_file_refs:
-                derived_data_file_nodes: graph_nodes.RawDataFile = [
+                derived_data_file_nodes: graph_nodes.DerivedDataFile = [
                     nodes_map[x] for x in sample_run.derived_data_file_refs
                 ]
                 derived_data_files = [
@@ -412,12 +396,20 @@ def create_sdrf_files(
                     for x in derived_data_file_nodes
                 ]
             if sample_run.result_file_refs:
-                result_file_nodes: graph_nodes.RawDataFile = [
+                result_file_nodes: graph_nodes.ResultFile = [
                     nodes_map[x] for x in sample_run.result_file_refs
                 ]
                 result_files = [
                     SdrfFile(name=x.name, url_list=x.url_list if x.url_list else None)
                     for x in result_file_nodes
+                ]
+            if sample_run.supplementary_file_refs:
+                supplementary_file_nodes: graph_nodes.SupplementaryFile = [
+                    nodes_map[x] for x in sample_run.supplementary_file_refs
+                ]
+                supplementary_files = [
+                    SdrfFile(name=x.name, url_list=x.url_list if x.url_list else None)
+                    for x in supplementary_file_nodes
                 ]
             protocol_parameters = []
             if sample_run.sample_run_configuration_refs:
@@ -477,13 +469,14 @@ def create_sdrf_files(
                         )
                     )
             row = LegacySdrfRow(
-                assay_name=sample_run.name,
-                sample_name=sample.name,
+                assay_name=sample_run.name or "",
+                sample_name=sample.name or "",
                 characteristics=characteristic_values,
                 factors=factor_values,
                 raw_data_files=raw_data_files,
                 derived_data_files=derived_data_files,
                 result_files=result_files,
+                supplementary_files=supplementary_files,
                 protocol_parameters=protocol_parameters,
             )
             sdrf_file.sample_runs.append(row)
@@ -504,7 +497,11 @@ def create_sdrf_files(
         characteristic_definitions.sort(key=lambda x: x.name)
         for definition in characteristic_definitions:
             definition_type = nodes_map[definition.characteristic_type_ref]
-            name = definition.name
+            name = (
+                definition_type.name.lower()
+                if definition_type.name
+                else definition.name.lower()
+            )
             if definition_type.accession:
                 header = f"characteristic[{name}|{definition_type.accession}]"
                 headers[header] = definition
@@ -529,7 +526,11 @@ def create_sdrf_files(
                 if parameter_definitions:
                     for param in parameter_definitions:
                         parameter_type = nodes_map[param.parameter_type_ref]
-                        name = param.name
+                        name = (
+                            parameter_type.name.lower()
+                            if parameter_type.name
+                            else param.name.lower()
+                        )
                         if parameter_type and parameter_type.accession:
                             header = (
                                 f"parameter value[{name}|{parameter_type.accession}]"
@@ -539,6 +540,43 @@ def create_sdrf_files(
                             header = f"parameter value[{name}]"
                             headers[header] = definition
                         parameter_value_headers[name] = header
+
+        max_raw_data_column = 0
+        max_derived_data_column = 0
+        max_result_data_column = 0
+        max_supplementary_data_column = 0
+        for row in sdrf_file.sample_runs:
+            if row.raw_data_files:
+                max_raw_data_column = max(max_raw_data_column, len(row.raw_data_files))
+            if row.derived_data_files:
+                max_derived_data_column = max(
+                    max_derived_data_column, len(row.derived_data_files)
+                )
+            if row.result_files:
+                max_result_data_column = max(
+                    max_result_data_column, len(row.result_files)
+                )
+            if row.supplementary_files:
+                max_supplementary_data_column = max(
+                    max_supplementary_data_column, len(row.supplementary_files)
+                )
+        raw_files_data: list[list[tuple[str, str]]] = [[]] * max_raw_data_column
+        derived_files_data: list[list[tuple[str, str]]] = [[]] * max_derived_data_column
+        result_files_data: list[list[tuple[str, str]]] = [[]] * max_result_data_column
+        summplementary_files_data: list[list[tuple[str, str]]] = [
+            []
+        ] * max_supplementary_data_column
+        for name_prefix, files in [
+            ("raw data file", raw_files_data),
+            ("derived data file", derived_files_data),
+            ("result file", result_files_data),
+            ("supplementary file", summplementary_files_data),
+        ]:
+            for idx, item in enumerate(files, start=1):
+                name = f"comment[{name_prefix} name.{idx}]"
+                headers[name] = name
+                url = f"comment[{name_prefix} url.{idx}]"
+                headers[url] = url
         factor_definitions: list[IdentifiableMhdModel] = find_all_linked_nodes(
             all_nodes_map,
             node_relationships,
@@ -549,20 +587,108 @@ def create_sdrf_files(
         factor_definitions.sort(key=lambda x: x.name)
         for definition in factor_definitions:
             definition_type = nodes_map[definition.factor_type_ref]
-            name = definition.name
+            name = (
+                definition_type.name.lower()
+                if definition_type.name
+                else definition.name.lower()
+            )
             if definition_type.accession:
                 header = f"factor value[{name}|{definition_type.accession}]"
-                headers[f"factor value[{name}|{definition_type.accession}]"] = (
-                    definition
-                )
+                headers[header] = definition
             else:
                 header = f"factor value[{name}]"
-                headers[f"factor value[{name}]"] = definition
+                headers[header] = definition
             factor_headers[name] = header
 
+        tsv_data: OrderedDict[str, list[str]] = OrderedDict([(x, []) for x in headers])
+
         for row in sdrf_file.sample_runs:
-            pass
+            tsv_data.get("sample name", []).append(row.sample_name or "")
+            tsv_data.get("assay name", []).append(row.assay_name or "")
+            filled_headers = set(["sample name", "assay name"])
+            all_param_value_definitions = []
+            for item in row.protocol_parameters:
+                all_param_value_definitions.extend(item.parameter_values)
+
+            for items, item_headers in [
+                (row.characteristics, characteristic_headers),
+                (row.factors, factor_headers),
+                (all_param_value_definitions, parameter_value_headers),
+            ]:
+                for item in items:
+                    if item.key and item.key.name:
+                        item_type = item.key.name
+                        header = item_headers.get(item_type)
+                        filled_headers.add(header)
+                        tsv_data.get(header, []).append(item.value.name or "")
+
+            for name_prefix, files, values in [
+                ("raw data file", raw_files_data, row.raw_data_files),
+                ("derived data file", derived_files_data, row.derived_data_files),
+                ("result file", result_files_data, row.result_files),
+                (
+                    "supplementary file",
+                    summplementary_files_data,
+                    row.supplementary_files,
+                ),
+            ]:
+                for idx, item in enumerate(files, start=1):
+                    header = f"comment[{name_prefix} name.{idx}]"
+                    name_value = values[idx - 1].name or ""
+                    tsv_data.get(header, []).append(name_value or "")
+                    url_header = f"comment[{name_prefix} url.{idx}]"
+                    url_list = values[idx - 1].url_list
+                    filled_headers.add(header)
+                    url_value = ""
+                    if url_list:
+                        url_value = str(url_list[0])
+                    tsv_data.get(url_header, []).append(url_value)
+                    filled_headers.add(url_header)
+            not_defined_headers = {x for x in tsv_data if x not in filled_headers}
+            for header in not_defined_headers:
+                tsv_data[header].append("")
+        empty_columns = []
+        exceptions = {
+            "sample name",
+            "assay name",
+            "comment[raw data file name.1]",
+            "comment[raw data file url.1]",
+        }
+        for header, values in tsv_data.items():
+            if header in exceptions:
+                continue
+            unique_values = set(values)
+            unique_values.discard("")
+            unique_values.discard(None)
+            if not unique_values:
+                empty_columns.append(header)
+        for item in empty_columns:
+            del tsv_data[item]
+        if empty_columns:
+            logger.debug("Empty columns are dropped: %s", ", ".join(empty_columns))
         # assay_id = sdrf_file.assay_identifier
+
+        if sdrf_output_filename and assay_name:
+            sdrf_filename = sdrf_output_filename
+        else:
+            if assay.name.startswith(f"{study_id}_"):
+                sdrf_filename = f"{Path(assay.name).stem}.sdrf.tsv"
+            else:
+                sdrf_filename = f"{study_id}_{Path(assay.name).stem}.sdrf.tsv"
+        srdf_file_path = Path(sdrf_file_root_path) / Path(sdrf_filename)
+        srdf_file_path.parent.mkdir(parents=True, exist_ok=True)
+        sdrf_files.append(srdf_file_path)
+        with srdf_file_path.open("w") as f:
+            headers = "\t".join(list(tsv_data.keys())) + "\n"
+            f.write(headers)
+            row_count = len(tsv_data["sample name"])
+            for idx in range(row_count):
+                row = [tsv_data[x][idx] for x in tsv_data]
+                row_data = "\t".join(row) + "\n"
+                f.write(row_data)
+        logger.info("%s SDRF file is created: %s", study_id, str(srdf_file_path))
+
+    return sdrf_files
 
 
 def find_all_linked_nodes(
@@ -583,30 +709,6 @@ def find_all_linked_nodes(
         )
     ]
     return nodes
-
-    # assay_types, technology_types, measurement_types, omics_types = (
-    #     get_main_assay_descriptors(nodes_map, study_assays, [])
-    # )
-    # cv_sources = set()
-    # collect_cvterm_sources(sdrf_file, cv_sources)
-    # cv_sources = list(cv_sources)
-    # cv_sources.sort()
-    # for source in cv_sources:
-    #     if source in CONTROLLED_CV_DEFINITIONS:
-    #         announcement.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
-    #     elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
-    #         announcement.cv_definitions.append(OTHER_CONTROLLED_CV_DEFINITIONS[source])
-    #     else:
-    #         announcement.cv_definitions.append(
-    #             CvDefinition(label=source, alternative_labels=[source.lower()])
-    #         )
-    # logger.info("Writing to %s", announcement_file_path)
-    # Path(announcement_file_path).parent.mkdir(parents=True, exist_ok=True)
-    # with Path(announcement_file_path).open("w") as f:
-    #     f.write(
-    #         announcement.model_dump_json(indent=2, by_alias=True, exclude_none=True)
-    #     )
-    pass
 
 
 def get_file_list(

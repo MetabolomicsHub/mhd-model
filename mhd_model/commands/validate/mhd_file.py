@@ -28,9 +28,9 @@ def validate_mhd_file_task(
 
     mhd_study_id (str): MHD study id
 
-    announcement_file_path (str): MHD announcement file path
+    mhd_model_file_path (str): MHD model file path
 
-    output_path (None | str): If it is defined, validation results are saved in output file path.
+    output_path (None | str): If it is not None, validation results are saved in output file path.
     """
     file = Path(mhd_model_file_path)
     try:

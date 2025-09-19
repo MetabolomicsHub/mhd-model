@@ -15,13 +15,9 @@ def create_neo4j_input_file(input_file_path: str, output_file_path: str):
     mhd_dataset = MhDatasetLegacyProfile.model_validate(json_data)
     nodes_map = {x.id_: x for x in mhd_dataset.graph.nodes}
     relationships_map = {x.id_: x for x in mhd_dataset.graph.relationships}
-    # embedded_refs = []
     nodes: list[dict[str, Any]] = []
     relationships: list[dict[str, Any]] = []
-    # study_id = ""
     for node in nodes_map.values():
-        # if isinstance(node, Study):
-        #     study_id = node.repository_identifier
         properties = {}
         for key, value in node.model_dump(exclude_none=True).items():
             refs = []
@@ -77,24 +73,6 @@ def create_neo4j_input_file(input_file_path: str, output_file_path: str):
         nodes.append({"id": node.id_, "labels": [node.type_], "properties": properties})
 
     for rel in relationships_map.values():
-        # if nodes_map[rel.source_ref].type_ == "study" and nodes_map[
-        #     rel.target_ref
-        # ].type_ in {
-        #     "raw-data-file",
-        #     "derived-data-file",
-        #     "supplementary-file",
-        #     # "metabolite",
-        # }:
-        #     continue
-        # if nodes_map[rel.target_ref].type_ == "study" and nodes_map[
-        #     rel.source_ref
-        # ].type_ in {
-        #     "raw-data-file",
-        #     "derived-data-file",
-        #     "supplementary-file",
-        #     # "metabolite",
-        # }:
-        #     continue
         relationships.append(
             {
                 "start": rel.source_ref,

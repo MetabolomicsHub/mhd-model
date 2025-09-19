@@ -25,14 +25,15 @@ class SdrfSampleProtocolDefinition(MhdConfigModel):
 
 
 class LegacySdrfRow(MhdConfigModel):
-    sample_name: Annotated[str, Field(min_length=1)]
+    sample_name: Annotated[str, Field()]
     characteristics: Annotated[list[SdrfKeyValue], Field()] = []
-    assay_name: Annotated[str, Field(min_length=1)]
+    assay_name: Annotated[str, Field()]
     protocol_parameters: Annotated[list[SdrfSampleProtocolDefinition], Field()] = []
     factors: Annotated[list[SdrfKeyValue], Field()] = []
     raw_data_files: Annotated[list[SdrfFile], Field()] = []
     derived_data_files: Annotated[list[SdrfFile], Field()] = []
     result_files: Annotated[list[SdrfFile], Field()] = []
+    supplementary_files: Annotated[list[SdrfFile], Field()] = []
 
 
 class LegacySdrf(MhdConfigModel):
