@@ -87,9 +87,8 @@ Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N 
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|Its value MUST be <code>**assay**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|**required**|<code>*str*<code>|An assay identifier that uniquely identifies the assay in repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the assay. It SHOULD be unique in a study<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -133,9 +132,8 @@ Characteristic Definition node is **required in the MHD Legacy Profile.** <code>
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**characteristic-definition**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, organism],<br>* [NCIT, NCIT:C103199, organism part],<br>* [EFO, EFO:0000408, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
@@ -172,15 +170,14 @@ Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**derived-data-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
-|**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
@@ -212,9 +209,8 @@ Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**factor-definition**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**factor_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target node type: <code>**factor-type**</code><br>Validation Rule:<br> <code>Target node type: <code>**factor-type**</code></code>|
@@ -251,9 +247,8 @@ Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metabolite**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
@@ -286,15 +281,14 @@ Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metadata-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
-|**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
@@ -334,9 +328,8 @@ Organization node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxi
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**organization**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|optional|<code>*str*<code>||
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
@@ -379,9 +372,8 @@ Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum:
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**parameter-definition**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**parameter_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target node type: <code>**parameter-type**</code><br>Validation Rule:<br> <code>Target node type: <code>**parameter-type**</code></code>|
@@ -418,15 +410,14 @@ Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The value of this property MUST be 'person'<br>Its value MUST be <code>**person**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**full_name**|**required**|<code>*str*<code>|Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code>|
-|**emails**|optional|<code>*list[EmailStr]*<code>|Email addresses of person|
-|**phones**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>"['+449340917271', '00449340917271']"</code>|
-|**addresses**|optional|<code>*list[str]*<code>||
+|**email_list**|optional|<code>*list[EmailStr]*<code>|Email addresses of person|
+|**phone_list**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>"['+449340917271', '00449340917271']"</code>|
+|**address_list**|optional|<code>*list[str]*<code>|Addresses of person|
 
 
 **Node Relationships**
@@ -465,13 +456,12 @@ Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**project**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**description**|optional|<code>*str*<code>||
-|**grant_identifiers**|optional|<code>*list[Annotated]*<code>||
+|**grant_identifier_list**|optional|<code>*list[Annotated]*<code>||
 |**doi**|optional|<code>*str*<code>||
 
 
@@ -511,9 +501,8 @@ Protocol node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum:
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**protocol**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>||
 |**protocol_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**protocol-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**protocol-type**</code><br>Allowed CV Terms:<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [MS, MS:1000831, sample preparation],<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [OBI, OBI:0200000, data transform],<br>* [MI, MI:2131, metabolite identification],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [CHMO, CHMO:0001024, capillary electrophoresis],<br>* [MS, MS:1000058, flow injection analysis]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
@@ -556,14 +545,13 @@ Publication node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**publication**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**title**|**required**|<code>*str*<code>||
 |**doi**|**required**|<code>*str*<code>||
 |**pubmed_id**|optional|<code>*str*<code>||
-|**authors**|optional|<code>*list[Annotated]*<code>||
+|**author_list**|optional|<code>*list[Annotated]*<code>||
 
 
 **Node Relationships**
@@ -596,15 +584,14 @@ Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Max
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**raw-data-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
-|**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
@@ -636,15 +623,14 @@ Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**result-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
-|**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
@@ -676,13 +662,12 @@ Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**repository_identifier**|**required**|<code>*str*<code>||
-|**additional_identifiers**|optional|<code>*list[CvTermValue]*<code>||
+|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>||
 
 
 **Node Relationships**
@@ -719,9 +704,8 @@ Sample Run node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|optional|<code>*str*<code>||
 |**sample_ref**|optional|<code>*MhdObjectId*<code>|Target node type: <code>**sample**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample**</code></code>|
@@ -759,9 +743,8 @@ Sample Run Configuration node is optional in the  MHD Legacy Profile. <code>Mini
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run-configuration**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**protocol_ref**|**required**|<code>*MhdObjectId*<code>|Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 |**parameter_value_refs**|optional|<code>*list[MhdObjectId or CvTermObjectId or CvTermValueObjectId]*<code>|Target node type: <code>**parameter-value**</code>|
@@ -794,13 +777,12 @@ Specimen node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum:
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**specimen**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**additional_identifiers**|optional|<code>*list[CvTermValue]*<code>||
+|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>||
 
 
 **Node Relationships**
@@ -834,21 +816,20 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**study**</code>|
 |**created_by_ref**|**required**|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rules:<br> <code>Target node type: <code>**data-provider**</code><br>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**mhd_identifier**|optional|<code>*str*<code>||
 |**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**additional_identifiers**|optional|<code>*list[KeyValue]*<code>||
+|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>||
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**description**|**required**|<code>*str*<code>|Minimum length: <code>60</code><br>Validation Rule:<br> <code>Min Length: 60, Required</code>|
 |**submission_date**|**required**|<code>*datetime*<code>||
 |**public_release_date**|**required**|<code>*datetime*<code>||
 |**license**|optional|<code>*HttpUrl*<code>|<br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
-|**grant_identifiers**|optional|<code>*list[Annotated]*<code>||
+|**grant_identifier_list**|optional|<code>*list[Annotated]*<code>||
 |**dataset_url_list**|**required**|<code>*list[AnyUrl]*<code>||
-|**related_datasets**|optional|<code>*list[KeyValue]*<code>||
+|**related_dataset_list**|optional|<code>*list[KeyValue]*<code>||
 |**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**protocol**</code>|
 
 
@@ -918,14 +899,13 @@ Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**subject**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**subject_type**|optional|<code>*CvTerm*<code>||
+|**subject_type_ref**|optional|<code>*CvTermObjectId*<code>||
 |**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**additional_identifiers**|optional|<code>*list[CvTermValue]*<code>||
+|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>||
 
 
 **Node Relationships**
@@ -960,15 +940,14 @@ Supplementary File node is optional in the  MHD Legacy Profile. <code>Minimum: 0
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**supplementary-file**</code>|
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tags**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**descriptors**|optional|<code>*list[CvTerm]*<code>|Descriptors of the object|
-|**external_references**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
-|**compression_format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
+|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:1915, Format]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 

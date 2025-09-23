@@ -17,41 +17,44 @@
           "title": "Url List",
           "type": "array"
         },
-        "compression_format": {
+        "compression_formats": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Compression Format"
+          "title": "Compression Formats"
         },
         "extension": {
           "anyOf": [
@@ -127,41 +130,44 @@
           "title": "Url List",
           "type": "array"
         },
-        "compression_format": {
+        "compression_formats": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Compression Format"
+          "title": "Compression Formats"
         },
         "extension": {
           "anyOf": [
@@ -386,7 +392,7 @@
           "default": null,
           "title": "Pubmed Id"
         },
-        "authors": {
+        "author_list": {
           "anyOf": [
             {
               "items": {
@@ -403,7 +409,7 @@
             }
           ],
           "default": null,
-          "title": "Authors"
+          "title": "Author List"
         }
       },
       "required": [
@@ -430,41 +436,44 @@
           "title": "Url List",
           "type": "array"
         },
-        "compression_format": {
+        "compression_formats": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Compression Format"
+          "title": "Compression Formats"
         },
         "extension": {
           "anyOf": [
@@ -611,41 +620,44 @@
           "title": "Url List",
           "type": "array"
         },
-        "compression_format": {
+        "compression_formats": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Compression Format"
+          "title": "Compression Formats"
         },
         "extension": {
           "anyOf": [
@@ -721,41 +733,44 @@
           "title": "Url List",
           "type": "array"
         },
-        "compression_format": {
+        "compression_formats": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Compression Format"
+          "title": "Compression Formats"
         },
         "extension": {
           "anyOf": [

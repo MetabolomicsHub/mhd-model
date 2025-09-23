@@ -1489,9 +1489,9 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                 condition=[
                     FilterCondition(
                         name="File Format",
-                        relationship_name="[embedded].compression_format_ref",
+                        relationship_name="[embedded].compression_format_refs",
                         start_node_type=None,
-                        expression="compression_format_ref",
+                        expression="compression_format_refs",
                     )
                 ],
             ),

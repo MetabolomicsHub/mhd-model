@@ -50,18 +50,12 @@
   "public_release_date": "2015-09-03T00:00:00",
   "submitters": [
     {
-      "full_name": "John Newman",
-      "emails": [
-        "john.newman@ars.usda.gov"
-      ]
+      "full_name": "John Newman"
     }
   ],
   "principal_investigators": [
     {
-      "full_name": "Stephen Wedgwood",
-      "emails": [
-        "stephen.wedwood@ucdmc.ucdavis.edu"
-      ]
+      "full_name": "Stephen Wedgwood"
     }
   ],
   "study_factors": [

@@ -227,15 +227,17 @@ def convert_file(
     if item.format_ref in all_nodes_map:
         format_node: BaseMhdModel = all_nodes_map[item.format_ref]
         format = CvTerm.model_validate(format_node.model_dump(by_alias=True))
-    compression = None
-    if item.compression_format_ref in all_nodes_map:
-        compression_node: BaseMhdModel = all_nodes_map[item.compression_format_ref]
-        compression = CvTerm.model_validate(compression_node.model_dump(by_alias=True))
-
+    compressions = None
+    if item.compression_format_refs in all_nodes_map:
+        for format_ref in item.compression_format_refs:
+            compression_node: BaseMhdModel = all_nodes_map[format_ref]
+            compressions.append(
+                CvTerm.model_validate(compression_node.model_dump(by_alias=True))
+            )
     file = file_class(
         name=item.name,
         url_list=url_list,
-        compression_format=compression,
+        compression_formats=compressions,
         format=format,
     )
 

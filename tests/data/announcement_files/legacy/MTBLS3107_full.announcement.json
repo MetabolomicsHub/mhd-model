@@ -93,10 +93,7 @@
   "public_release_date": "2024-07-11T00:00:00",
   "submitters": [
     {
-      "full_name": "Fereshteh Zandkarimi",
-      "emails": [
-        "fz2262@columbia.edu"
-      ]
+      "full_name": "Fereshteh Zandkarimi"
     }
   ],
   "technology_type": [
@@ -171,20 +168,7 @@
     {
       "title": "Fatal COVID-19 pulmonary disease involves ferroptosis.",
       "doi": "10.1038/s41467-024-48055-0",
-      "pubmed_id": "38769293",
-      "authors": [
-        "Qiu B",
-        "Zandkarimi F",
-        "Saqi A",
-        "Castagna C",
-        "Tan H",
-        "Sekulic M",
-        "Miorin L",
-        "Hibshoosh H",
-        "Toyokuni S",
-        "Uchida K",
-        "Stockwell BR."
-      ]
+      "pubmed_id": "38769293"
     }
   ],
   "study_factors": [

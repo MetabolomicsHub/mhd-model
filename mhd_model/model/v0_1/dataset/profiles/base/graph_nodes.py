@@ -20,7 +20,7 @@ from mhd_model.shared.fields import (
     GrantId,
     PubMedId,
 )
-from mhd_model.shared.model import CvTerm, CvTermValue
+from mhd_model.shared.model import CvTermValue
 
 
 class Person(BaseLabeledMhdModel):
@@ -43,23 +43,25 @@ class Person(BaseLabeledMhdModel):
             examples=["1234-0001-8473-1713", "1234-0001-8473-171X"],
         ),
     ] = None
-    emails: Annotated[
+    email_list: Annotated[
         None | list[EmailStr], Field(description="Email addresses of person")
     ] = None
-    phones: Annotated[
+    phone_list: Annotated[
         None | list[str],
         Field(
             description="Phone number of person (with international country code)",
             examples=[["+449340917271", "00449340917271"]],
         ),
     ] = None
-    addresses: Annotated[None | list[str], Field()] = None
+    address_list: Annotated[
+        None | list[str], Field(description="Addresses of person")
+    ] = None
 
     def get_label(self):
         if self.orcid:
             return self.orcid
-        if self.emails and self.emails[0]:
-            return self.emails[0]
+        if self.email_list and self.email_list[0]:
+            return self.email_list[0]
         return self.full_name or self.id_
 
 
@@ -90,7 +92,7 @@ class Project(BaseLabeledMhdModel):
     ] = "project"
     title: Annotated[None | str, Field(min_length=2)] = None
     description: Annotated[None | str, Field()] = None
-    grant_identifiers: Annotated[None | list[GrantId], Field()] = None
+    grant_identifier_list: Annotated[None | list[GrantId], Field()] = None
     doi: Annotated[None | DOI, Field()] = None
 
     def get_label(self):
@@ -108,7 +110,7 @@ class Study(BaseLabeledMhdModel):
     ] = "study"
     mhd_identifier: Annotated[None | str, Field()] = None
     repository_identifier: Annotated[None | str, Field(min_length=2)] = None
-    additional_identifiers: Annotated[None | list[KeyValue], Field()] = None
+    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
     title: Annotated[None | str, Field()] = None
     description: Annotated[None | str, Field()] = None
     submission_date: None | datetime.datetime = None
@@ -117,9 +119,9 @@ class Study(BaseLabeledMhdModel):
         None | HttpUrl,
         Field(examples=[HttpUrl("https://creativecommons.org/publicdomain/zero/1.0/")]),
     ] = None
-    grant_identifiers: Annotated[None | list[GrantId], Field()] = None
+    grant_identifier_list: Annotated[None | list[GrantId], Field()] = None
     dataset_url_list: Annotated[None | list[AnyUrl], Field()] = None
-    related_datasets: Annotated[None | list[KeyValue], Field()] = None
+    related_dataset_list: Annotated[None | list[KeyValue], Field()] = None
     protocol_refs: Annotated[None | list[MhdObjectId], Field()] = None
 
     def get_label(self):
@@ -208,7 +210,7 @@ class Publication(BaseLabeledMhdModel):
     title: Annotated[str, Field(min_length=10)]
     doi: Annotated[DOI, Field()]
     pubmed_id: Annotated[None | PubMedId, Field()] = None
-    authors: Annotated[None | Authors, Field()] = None
+    author_list: Annotated[None | Authors, Field()] = None
 
     def get_label(self):
         return self.doi or self.title or self.id_
@@ -289,9 +291,9 @@ class Subject(BaseLabeledMhdModel):
         ),
     ] = "subject"
     name: Annotated[None | str, Field()] = None
-    subject_type: Annotated[None | CvTerm, Field()] = None
+    subject_type_ref: Annotated[None | CvTermObjectId, Field()] = None
     repository_identifier: Annotated[None | str, Field()] = None
-    additional_identifiers: Annotated[None | list[CvTermValue], Field()] = None
+    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
 
     def get_label(self):
         return self.name or self.id_
@@ -308,7 +310,7 @@ class Specimen(BaseLabeledMhdModel):
     ] = "specimen"
     name: Annotated[None | str, Field()] = None
     repository_identifier: Annotated[None | str, Field()] = None
-    additional_identifiers: Annotated[None | list[CvTermValue], Field()] = None
+    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
 
     def get_label(self):
         return self.name or self.id_
@@ -325,7 +327,7 @@ class Sample(BaseLabeledMhdModel):
     ] = "sample"
     name: Annotated[None | str, Field()] = None
     repository_identifier: Annotated[None | str, Field()] = None
-    additional_identifiers: Annotated[None | list[CvTermValue], Field()] = None
+    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
 
     def get_label(self):
         return self.name or self.id_
@@ -440,11 +442,12 @@ class BaseFile(BaseLabeledMhdModel):
             "typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)."
         ),
     ] = None
-    compression_format_ref: Annotated[
-        None | CvTermObjectId,
+    compression_format_refs: Annotated[
+        None | list[CvTermObjectId],
         Field(
             description="The structure or encoding used to compress the contents of the file, "
             "typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)."
+            " List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz"
         ),
     ] = None
     extension: Annotated[

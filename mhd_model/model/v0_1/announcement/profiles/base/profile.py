@@ -21,7 +21,7 @@ class AnnouncementBaseModel(MhdConfigModel):
 class AnnouncementBaseFile(AnnouncementBaseModel):
     name: Annotated[str, Field(min_length=1)]
     url_list: Annotated[list[AnyUrl], Field(min_length=1)]
-    compression_format: Annotated[None | fields.CompressionFormat, Field()] = None
+    compression_formats: Annotated[None | list[fields.CompressionFormat], Field()] = None
     extension: Annotated[None | str, Field(min_length=2)] = None
 
 
@@ -62,7 +62,7 @@ class AnnouncementPublication(AnnouncementBaseModel):
     title: Annotated[str, Field(min_length=10)]
     doi: Annotated[fields.DOI, Field()]
     pubmed_id: Annotated[None | fields.PubMedId, Field()] = None
-    authors: Annotated[None | Authors, Field()] = None
+    author_list: Annotated[None | Authors, Field()] = None
 
 
 class AnnouncementReportedMetabolite(AnnouncementBaseModel):

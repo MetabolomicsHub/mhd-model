@@ -98,15 +98,11 @@ class BaseMhdModel(IdentifiableMhdModel):
             description="The id property of the data-provider who created the object.",
         ),
     ] = None
-    tags: Annotated[
+    tag_list: Annotated[
         None | list[KeyValue],
         Field(description="Key-value tags related to the object."),
     ] = None
-    descriptors: Annotated[
-        None | list[CvTerm],
-        Field(description="Descriptors of the object."),
-    ] = None
-    external_references: Annotated[
+    external_reference_list: Annotated[
         None | list[KeyValue],
         Field(description="External references related to the object."),
     ] = None

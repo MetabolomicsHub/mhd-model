@@ -164,8 +164,8 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="used-in",
                 reverse_relationship_name="has-characteristic-definition",
                 target="study",
-                min=2,
-                min_for_each_source=2,
+                min=5,
+                min_for_each_source=1,
             ),
         ],
     ),
@@ -1614,9 +1614,9 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 condition=[
                     FilterCondition(
                         name="File Format",
-                        relationship_name="[embedded].compression_format_ref",
+                        relationship_name="[embedded].compression_format_refs",
                         start_node_type=None,
-                        expression="compression_format_ref",
+                        expression="compression_format_refs",
                     )
                 ],
             ),
