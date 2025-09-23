@@ -1,0 +1,13 @@
+sample name	assay name	comment[raw data file name.1]	comment[raw data file url.1]
+N_1_neg		N_1_neg.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_1_neg.mzML
+N_1_pos		N_1_pos.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_1_pos.mzML
+N_2_neg		N_2_neg.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_2_neg.mzML
+N_2_pos		N_2_pos.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_2_pos.mzML
+N_3_neg		N_3_neg.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_3_neg.mzML
+N_3_pos		N_3_pos.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:N_3_pos.mzML
+Syn_1_neg		Syn_1_neg.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_1_neg.mzML
+Syn_1_pos		Syn_1_pos.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_1_pos.mzML
+Syn_2_neg		Syn_2_neg.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_2_neg.mzML
+Syn_2_pos		Syn_2_pos.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_2_pos.mzML
+Syn_3_neg		Syn_3_neg.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_3_neg.mzML
+Syn_3_pos		Syn_3_pos.mzML	https://dashboard.gnps2.org/?usi=mzspec:ST004122:Syn_3_pos.mzML

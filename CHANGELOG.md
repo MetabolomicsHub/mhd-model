@@ -1,3 +1,21 @@
+## v0.1.23 (2025-09-19)
+
+### Fix
+
+- create sdrf from mhd model
+
+## v0.1.22 (2025-09-18)
+
+### Fix
+
+- add more GNPS dataset
+
+## v0.1.21 (2025-09-18)
+
+### Fix
+
+- announcement file validation updates for legacy
+
 ## v0.1.20 (2025-09-18)
 
 ### Fix
