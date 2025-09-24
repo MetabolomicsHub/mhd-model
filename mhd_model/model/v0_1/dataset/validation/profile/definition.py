@@ -1,3 +1,4 @@
+import warnings
 from typing import Annotated, Any, Literal
 
 from pydantic import AnyUrl, Field, model_validator
@@ -13,6 +14,8 @@ from mhd_model.shared.validation.definitions import (
     AllowedCvList,
     AllowedCvTerms,
 )
+
+warnings.filterwarnings("ignore", category=UserWarning)
 
 
 class FilterCondition(MhdConfigModel):
