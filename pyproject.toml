@@ -27,7 +27,7 @@ include = ["mhd_model"]
 exclude = ["outputs", "tests", "scripts"]
 
 [tool.setuptools.package-data]
-mhd_model = ["**/*.json"]
+mhd_model = ["**/*.json", "**/*.py"]
 
 [tool.setuptools]
 include-package-data = true
