@@ -29,6 +29,9 @@ exclude = ["outputs", "tests", "scripts"]
 [tool.setuptools.package-data]
 mhd_model = ["**/*.json"]
 
+[tool.setuptools]
+include-package-data = true
+
 [project.optional-dependencies]
 neo4j = [
     "neo4j>=5.28.2",
