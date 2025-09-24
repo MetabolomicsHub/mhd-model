@@ -22,11 +22,21 @@ dependencies = [
     "reachable>=0.7.0",
 ]
 
-[tool.uv]
-package = true
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
+where = ["."]
 include = ["mhd_model*"]
+exclude = ["tests*", "docs*"]
+
+[tool.setuptools.package-data]
+"mhd_model" = ["**/*.json"]
+
+[tool.setuptools]
+include-package-data = true
+
 
 [project.optional-dependencies]
 neo4j = [
