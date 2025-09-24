@@ -1,3 +1,9 @@
+## v0.1.31 (2025-09-24)
+
+### Fix
+
+- schema user warning is removed
+
 ## v0.1.30 (2025-09-24)
 
 ### Fix
