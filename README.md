@@ -25,7 +25,7 @@ apt update; apt install git -y
 # brew install git
 
 # clone project from github
-git clone https://github.com/MetabolomicsHub/mw-mhd-integration.git
+git clone https://github.com/MetabolomicsHub/mhd_model.git
 
 cd mhd-model
 
