@@ -44,7 +44,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -58,25 +58,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -90,7 +74,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -293,7 +277,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -307,25 +291,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -339,7 +307,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -418,7 +386,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -432,25 +400,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -464,7 +416,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -945,7 +897,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -959,25 +911,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -991,7 +927,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -1076,19 +1012,22 @@
           "description": "The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.).",
           "title": "Format Ref"
         },
-        "compression_format_ref": {
+        "compression_format_refs": {
           "anyOf": [
             {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
+              "items": {
+                "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.).",
-          "title": "Compression Format Ref"
+          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz",
+          "title": "Compression Format Refs"
         },
         "extension": {
           "anyOf": [
@@ -1227,7 +1166,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -1241,25 +1180,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -1273,7 +1196,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -1365,7 +1288,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -1379,25 +1302,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -1411,7 +1318,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -1496,19 +1403,22 @@
           "description": "The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.).",
           "title": "Format Ref"
         },
-        "compression_format_ref": {
+        "compression_format_refs": {
           "anyOf": [
             {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
+              "items": {
+                "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.).",
-          "title": "Compression Format Ref"
+          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz",
+          "title": "Compression Format Refs"
         },
         "extension": {
           "anyOf": [
@@ -1678,7 +1588,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -1692,25 +1602,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -1724,7 +1618,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -1789,7 +1683,7 @@
           ],
           "title": "ORCID"
         },
-        "emails": {
+        "email_list": {
           "anyOf": [
             {
               "items": {
@@ -1804,9 +1698,9 @@
           ],
           "default": null,
           "description": "Email addresses of person",
-          "title": "Emails"
+          "title": "Email List"
         },
-        "phones": {
+        "phone_list": {
           "anyOf": [
             {
               "items": {
@@ -1826,9 +1720,9 @@
               "00449340917271"
             ]
           ],
-          "title": "Phones"
+          "title": "Phone List"
         },
-        "addresses": {
+        "address_list": {
           "anyOf": [
             {
               "items": {
@@ -1841,7 +1735,8 @@
             }
           ],
           "default": null,
-          "title": "Addresses"
+          "description": "Addresses of person",
+          "title": "Address List"
         }
       },
       "title": "Person",
@@ -1891,7 +1786,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -1905,25 +1800,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -1937,7 +1816,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -1994,7 +1873,7 @@
           "default": null,
           "title": "Description"
         },
-        "grant_identifiers": {
+        "grant_identifier_list": {
           "anyOf": [
             {
               "items": {
@@ -2009,7 +1888,7 @@
             }
           ],
           "default": null,
-          "title": "Grant Identifiers"
+          "title": "Grant Identifier List"
         },
         "doi": {
           "anyOf": [
@@ -2073,7 +1952,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -2087,25 +1966,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -2119,7 +1982,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -2253,7 +2116,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -2267,25 +2130,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -2299,7 +2146,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -2355,7 +2202,7 @@
           "default": null,
           "title": "Pubmed Id"
         },
-        "authors": {
+        "author_list": {
           "anyOf": [
             {
               "items": {
@@ -2372,7 +2219,7 @@
             }
           ],
           "default": null,
-          "title": "Authors"
+          "title": "Author List"
         }
       },
       "required": [
@@ -2463,7 +2310,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -2477,25 +2324,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -2509,7 +2340,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -2594,19 +2425,22 @@
           "description": "The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.).",
           "title": "Format Ref"
         },
-        "compression_format_ref": {
+        "compression_format_refs": {
           "anyOf": [
             {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
+              "items": {
+                "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.).",
-          "title": "Compression Format Ref"
+          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz",
+          "title": "Compression Format Refs"
         },
         "extension": {
           "anyOf": [
@@ -2668,7 +2502,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -2682,25 +2516,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -2714,7 +2532,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -2849,7 +2667,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -2863,25 +2681,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -2895,7 +2697,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -2980,19 +2782,22 @@
           "description": "The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.).",
           "title": "Format Ref"
         },
-        "compression_format_ref": {
+        "compression_format_refs": {
           "anyOf": [
             {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
+              "items": {
+                "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.).",
-          "title": "Compression Format Ref"
+          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz",
+          "title": "Compression Format Refs"
         },
         "extension": {
           "anyOf": [
@@ -3079,7 +2884,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -3093,25 +2898,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -3125,7 +2914,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -3181,7 +2970,7 @@
           "default": null,
           "title": "Repository Identifier"
         },
-        "additional_identifiers": {
+        "additional_identifier_list": {
           "anyOf": [
             {
               "items": {
@@ -3194,7 +2983,7 @@
             }
           ],
           "default": null,
-          "title": "Additional Identifiers"
+          "title": "Additional Identifier List"
         }
       },
       "title": "Sample",
@@ -3244,7 +3033,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -3258,25 +3047,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -3290,7 +3063,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -3475,7 +3248,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -3489,25 +3262,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -3521,7 +3278,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -3642,7 +3399,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -3656,25 +3413,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -3688,7 +3429,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -3744,7 +3485,7 @@
           "default": null,
           "title": "Repository Identifier"
         },
-        "additional_identifiers": {
+        "additional_identifier_list": {
           "anyOf": [
             {
               "items": {
@@ -3757,7 +3498,7 @@
             }
           ],
           "default": null,
-          "title": "Additional Identifiers"
+          "title": "Additional Identifier List"
         }
       },
       "title": "Specimen",
@@ -3807,7 +3548,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -3821,25 +3562,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -3853,7 +3578,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -3910,11 +3635,11 @@
           "default": null,
           "title": "Repository Identifier"
         },
-        "additional_identifiers": {
+        "additional_identifier_list": {
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/KeyValue"
+                "$ref": "#/$defs/CvTermValue"
               },
               "type": "array"
             },
@@ -3923,7 +3648,7 @@
             }
           ],
           "default": null,
-          "title": "Additional Identifiers"
+          "title": "Additional Identifier List"
         },
         "title": {
           "anyOf": [
@@ -3993,7 +3718,7 @@
           ],
           "title": "License"
         },
-        "grant_identifiers": {
+        "grant_identifier_list": {
           "anyOf": [
             {
               "items": {
@@ -4008,7 +3733,7 @@
             }
           ],
           "default": null,
-          "title": "Grant Identifiers"
+          "title": "Grant Identifier List"
         },
         "dataset_url_list": {
           "anyOf": [
@@ -4027,7 +3752,7 @@
           "default": null,
           "title": "Dataset Url List"
         },
-        "related_datasets": {
+        "related_dataset_list": {
           "anyOf": [
             {
               "items": {
@@ -4040,7 +3765,7 @@
             }
           ],
           "default": null,
-          "title": "Related Datasets"
+          "title": "Related Dataset List"
         },
         "protocol_refs": {
           "anyOf": [
@@ -4106,7 +3831,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -4120,25 +3845,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -4152,7 +3861,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -4196,17 +3905,18 @@
           "default": null,
           "title": "Name"
         },
-        "subject_type": {
+        "subject_type_ref": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm"
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Subject Type"
+          "title": "Subject Type Ref"
         },
         "repository_identifier": {
           "anyOf": [
@@ -4220,7 +3930,7 @@
           "default": null,
           "title": "Repository Identifier"
         },
-        "additional_identifiers": {
+        "additional_identifier_list": {
           "anyOf": [
             {
               "items": {
@@ -4233,7 +3943,7 @@
             }
           ],
           "default": null,
-          "title": "Additional Identifiers"
+          "title": "Additional Identifier List"
         }
       },
       "title": "Subject",
@@ -4283,7 +3993,7 @@
           "description": "The id property of the data-provider who created the object.",
           "title": "Created By Ref"
         },
-        "tags": {
+        "tag_list": {
           "anyOf": [
             {
               "items": {
@@ -4297,25 +4007,9 @@
           ],
           "default": null,
           "description": "Key-value tags related to the object.",
-          "title": "Tags"
+          "title": "Tag List"
         },
-        "descriptors": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Descriptors of the object.",
-          "title": "Descriptors"
-        },
-        "external_references": {
+        "external_reference_list": {
           "anyOf": [
             {
               "items": {
@@ -4329,7 +4023,7 @@
           ],
           "default": null,
           "description": "External references related to the object.",
-          "title": "External References"
+          "title": "External Reference List"
         },
         "url_list": {
           "anyOf": [
@@ -4414,19 +4108,22 @@
           "description": "The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.).",
           "title": "Format Ref"
         },
-        "compression_format_ref": {
+        "compression_format_refs": {
           "anyOf": [
             {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
+              "items": {
+                "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              "type": "array"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.).",
-          "title": "Compression Format Ref"
+          "description": "The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz",
+          "title": "Compression Format Refs"
         },
         "extension": {
           "anyOf": [

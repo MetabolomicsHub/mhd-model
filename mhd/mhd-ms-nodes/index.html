@@ -625,7 +625,7 @@
 <td>Characteristic Definition</td>
 <td>used-in</td>
 <td>Study</td>
-<td>2</td>
+<td>1</td>
 <td>N (unbounded)</td>
 </tr>
 <tr>
@@ -1106,19 +1106,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -1304,19 +1298,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -1378,9 +1366,9 @@
 <td>used-in</td>
 <td>has-characteristic-definition</td>
 <td>study</td>
-<td>2</td>
+<td>1</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong></td>
+<td><strong>Required min count in the dataset: 5.</strong></td>
 </tr>
 </tbody>
 </table>
@@ -1460,19 +1448,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -1508,10 +1490,10 @@
 <td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
-<td><strong>compression_format_ref</strong></td>
+<td><strong>compression_format_refs</strong></td>
 <td>optional</td>
-<td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td><code><em>list[CvTermObjectId]</em><code></code></code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -1639,19 +1621,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -1795,19 +1771,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -1944,19 +1914,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -1992,10 +1956,10 @@
 <td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
-<td><strong>compression_format_ref</strong></td>
+<td><strong>compression_format_refs</strong></td>
 <td>optional</td>
-<td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td><code><em>list[CvTermObjectId]</em><code></code></code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -2195,19 +2159,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -2422,19 +2380,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -2578,19 +2530,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -2614,22 +2560,22 @@
 <td>ORCID identifier of person<br/><br/>Example: <br/><code>"1234-0001-8473-1713"<br/>"1234-0001-8473-171X"</code></td>
 </tr>
 <tr>
-<td><strong>emails</strong></td>
-<td><strong>required</strong></td>
+<td><strong>email_list</strong></td>
+<td>optional</td>
 <td><code><em>list[EmailStr]</em><code></code></code></td>
-<td>Email addresses of person<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+<td>Email addresses of person</td>
 </tr>
 <tr>
-<td><strong>phones</strong></td>
+<td><strong>phone_list</strong></td>
 <td>optional</td>
 <td><code><em>list[str]</em><code></code></code></td>
 <td>Phone number of person (with international country code)<br/><br/>Example: <br/><code>"['+449340917271', '00449340917271']"</code></td>
 </tr>
 <tr>
-<td><strong>addresses</strong></td>
+<td><strong>address_list</strong></td>
 <td>optional</td>
 <td><code><em>list[str]</em><code></code></code></td>
-<td></td>
+<td>Addresses of person</td>
 </tr>
 </tbody>
 </table>
@@ -2823,19 +2769,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -2859,7 +2799,7 @@
 <td></td>
 </tr>
 <tr>
-<td><strong>grant_identifiers</strong></td>
+<td><strong>grant_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[Annotated]</em><code></code></code></td>
 <td></td>
@@ -3062,19 +3002,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -3266,19 +3200,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -3308,7 +3236,7 @@
 <td></td>
 </tr>
 <tr>
-<td><strong>authors</strong></td>
+<td><strong>author_list</strong></td>
 <td>optional</td>
 <td><code><em>list[Annotated]</em><code></code></code></td>
 <td></td>
@@ -3451,19 +3379,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -3499,10 +3421,10 @@
 <td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
-<td><strong>compression_format_ref</strong></td>
+<td><strong>compression_format_refs</strong></td>
 <td>optional</td>
-<td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td><code><em>list[CvTermObjectId]</em><code></code></code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -3630,19 +3552,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -3678,10 +3594,10 @@
 <td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
-<td><strong>compression_format_ref</strong></td>
+<td><strong>compression_format_refs</strong></td>
 <td>optional</td>
-<td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td><code><em>list[CvTermObjectId]</em><code></code></code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -3809,19 +3725,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -3845,7 +3755,7 @@
 <td></td>
 </tr>
 <tr>
-<td><strong>additional_identifiers</strong></td>
+<td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
 <td></td>
@@ -4024,19 +3934,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -4174,19 +4078,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -4294,19 +4192,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -4330,7 +4222,7 @@
 <td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
-<td><strong>additional_identifiers</strong></td>
+<td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
 <td></td>
@@ -4482,19 +4374,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>data-provider</strong></code><br/>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -4518,10 +4404,10 @@
 <td>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
 </tr>
 <tr>
-<td><strong>additional_identifiers</strong></td>
+<td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
-<td><code><em>list[KeyValue]</em><code></code></code></td>
-<td>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
+<td><code><em>list[CvTermValue]</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
@@ -4554,7 +4440,7 @@
 <td><br/>Example: <br/><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code></td>
 </tr>
 <tr>
-<td><strong>grant_identifiers</strong></td>
+<td><strong>grant_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[Annotated]</em><code></code></code></td>
 <td></td>
@@ -4566,7 +4452,7 @@
 <td></td>
 </tr>
 <tr>
-<td><strong>related_datasets</strong></td>
+<td><strong>related_dataset_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td></td>
@@ -4813,9 +4699,9 @@
 <td>used-in</td>
 <td>has-characteristic-definition</td>
 <td>study</td>
-<td>2</td>
+<td>1</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong></td>
+<td><strong>Required min count in the dataset: 5.</strong></td>
 </tr>
 <tr>
 <td>data-provider</td>
@@ -5013,19 +4899,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -5043,9 +4923,9 @@
 <td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
-<td><strong>subject_type</strong></td>
+<td><strong>subject_type_ref</strong></td>
 <td>optional</td>
-<td><code><em>CvTerm</em><code></code></code></td>
+<td><code><em>CvTermObjectId</em><code></code></code></td>
 <td></td>
 </tr>
 <tr>
@@ -5055,7 +4935,7 @@
 <td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
-<td><strong>additional_identifiers</strong></td>
+<td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
 <td></td>
@@ -5216,19 +5096,13 @@
 <td>The id property of the data-provider who created the object<br/>Target CV term type: <code><strong>data-provider</strong></code><br/>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
-<td><strong>tags</strong></td>
+<td><strong>tag_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>Key-value tags related to the object</td>
 </tr>
 <tr>
-<td><strong>descriptors</strong></td>
-<td>optional</td>
-<td><code><em>list[CvTerm]</em><code></code></code></td>
-<td>Descriptors of the object</td>
-</tr>
-<tr>
-<td><strong>external_references</strong></td>
+<td><strong>external_reference_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
 <td>External references related to the object</td>
@@ -5264,10 +5138,10 @@
 <td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
-<td><strong>compression_format_ref</strong></td>
+<td><strong>compression_format_refs</strong></td>
 <td>optional</td>
-<td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td><code><em>list[CvTermObjectId]</em><code></code></code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
