@@ -1,3 +1,10 @@
+## v0.1.24 (2025-09-24)
+
+### Fix
+
+- package manager update
+- review mhd model and update property names
+
 ## v0.1.23 (2025-09-19)
 
 ### Fix
