@@ -1,7 +1,7 @@
 import pathlib
 import sys
 
-__version__ = "v0.1.26"
+__version__ = "v0.1.27"
 
 application_root_path = pathlib.Path(__file__).parent.parent
 
