@@ -26,14 +26,7 @@ dependencies = [
 package = true
 
 [tool.setuptools.packages.find]
-include = ["mhd_model*", "schemas"]
-exclude = ["outputs", "tests", "scripts"]
-
-[tool.setuptools.package-data]
-schemas = ["mhd_model/**/*.json"]
-
-[tool.setuptools]
-include-package-data = true
+include = ["mhd_model*"]
 
 [project.optional-dependencies]
 neo4j = [
