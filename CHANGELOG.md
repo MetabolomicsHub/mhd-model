@@ -1,3 +1,9 @@
+## v0.1.32 (2025-11-20)
+
+### Fix
+
+- failure if subject has no characteristic. update: legacy profile title and description lenghts are less than mhd profile. refactor: method and property naming updates
+
 ## v0.1.31 (2025-09-24)
 
 ### Fix
