@@ -6,6 +6,7 @@ import click
 from mhd_model.convertors.announcement.v0_1.legacy.mhd2announce import (
     create_announcement_file,
 )
+from mhd_model.log_utils import set_basic_logging_config
 
 
 @click.command(name="announcement", no_args_is_help=True)
@@ -37,14 +38,13 @@ def create_announcement_file_task(
 
     mhd_study_id (str): MHD study identifier
 
-    mhd_model_file_path (str): MHD data model path
+    mhd_model_file_path (str): MHD data model file path
 
-    target_mhd_model_file_url (str): target URL of MHD data model
-
-    output_dir (str): Output directory of announcement file
-
-    output_filename (str): Name of MHD announcement file. Default is <repository identifier>.announcement.json
+    target_mhd_model_file_url (str): (Planned) Target URL of MHD data model.
+        If announcement file is shared with MetabolomicsHub,
+        MetabolomicsHub will check the URL for accessibility.
     """
+    set_basic_logging_config()
     file = Path(mhd_model_file_path)
     txt = file.read_text()
     mhd_data_json = json.loads(txt)

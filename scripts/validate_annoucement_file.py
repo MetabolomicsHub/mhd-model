@@ -6,12 +6,12 @@ from typing import OrderedDict
 import jsonschema
 from jsonschema import exceptions
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.announcement.validation.base import ProfileValidator
 from mhd_model.model.v0_1.announcement.validation.validator import (
     MhdAnnouncementFileValidator,
 )
 from mhd_model.utils import json_path, load_json
-from scripts.utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
 

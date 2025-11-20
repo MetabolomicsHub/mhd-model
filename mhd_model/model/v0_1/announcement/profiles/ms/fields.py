@@ -85,7 +85,7 @@ ExtendedCharacteristicValues = Annotated[
                         ),
                         controls=[
                             AllowedCvList(
-                                source_names=["UBERON", "BTO", "NCIT", "SNOMED", "MSIO"]
+                                source_names=["UBERON", "BTO", "NCIT", "MSIO"]
                             )
                         ],
                         min_value_count=1,
@@ -98,7 +98,7 @@ ExtendedCharacteristicValues = Annotated[
                         ),
                         controls=[
                             AllowedCvList(
-                                source_names=["DOID", "HP", "MP", "SNOMED"],
+                                source_names=["MONDO", "MP", "SNOMED"],
                                 allowed_other_sources=["wikidata", "ILX"],
                             )
                         ],
@@ -141,7 +141,7 @@ StudyFactors = Annotated[
                         ),
                         controls=[
                             AllowedCvList(
-                                source_names=["DOID", "HP", "MP", "SNOMED"],
+                                source_names=["MONDO", "MP", "SNOMED"],
                                 allowed_other_sources=["wikidata", "ILX"],
                             )
                         ],

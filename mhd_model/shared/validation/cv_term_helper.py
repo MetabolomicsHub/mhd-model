@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import pathlib
+import re
 from typing import Any, Generic, TypeVar
 from urllib.parse import quote
 
@@ -142,14 +143,11 @@ class CvTermHelper:
                     is_obsolete=False,
                 )
             )
-        excluded_cv_accessions = set()
-        if parent.excluded_cv_terms:
-            excluded_cv_accessions = {x.accession for x in parent.excluded_cv_terms}
         self.get_children(
             parent.cv_term,
             children,
             parent.allow_only_leaf,
-            excluded_cv_accessions,
+            parent.excluded_cv_terms,
         )
         children.sort(key=lambda x: x.label)
         children_cv_terms = {
@@ -167,7 +165,7 @@ class CvTermHelper:
         cv_term: CvTerm,
         children: list[ChildrenSearchModel],
         allow_only_leaf: bool = True,
-        excluded_cv_accessions: None | set[str] = None,
+        excluded_cv_accessions: None | list[str] = None,
     ) -> None:
         parent_uri = self.get_uri(cv_term)
 
@@ -179,20 +177,21 @@ class CvTermHelper:
         page = 0
         finished = False
         headers = {"Accept": "application/json"}
-        selected_terms = []
+        selected_terms: list[ChildrenSearchModel] = []
         while not finished:
             params = {"page": page, "size": 100}
             page += 1
             result = httpx.get(url, params=params, headers=headers, timeout=10)
             result_json = result.json()
             search = OlsSearchModel[ChildrenSearchModel].model_validate(result_json)
-            if not excluded_cv_accessions:
-                excluded_cv_accessions = set()
-            selected = [
-                x
-                for x in search.elements
-                if not x.is_obsolete and x.curie not in excluded_cv_accessions
-            ]
+            selected_items = [x for x in search.elements if not x.is_obsolete]
+            selected = []
+            if excluded_cv_accessions:
+                for x in selected_items:
+                    for pattern in excluded_cv_accessions:
+                        if not re.match(pattern, x):
+                            selected.append(x)
+
             if selected:
                 selected_terms.extend(selected)
             if page >= search.total_pages:

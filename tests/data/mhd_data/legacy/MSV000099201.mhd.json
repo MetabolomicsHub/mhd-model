@@ -8222,7 +8222,7 @@
                 "id": "cv--characteristic-value--4516b4a4-c5b4-5281-9fde-86b0ca7d5e52",
                 "type": "characteristic-value",
                 "source": "NCBITAXON",
-                "accession": "NCBITacon:1883",
+                "accession": "NCBITaxon:1883",
                 "name": "NCBITaxon:1883"
             },
             {

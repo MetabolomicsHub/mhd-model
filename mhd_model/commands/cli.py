@@ -5,6 +5,7 @@ import click
 from mhd_model import __version__
 from mhd_model.commands.create.create import create_group
 from mhd_model.commands.validate.validate import validate_group
+from mhd_model.log_utils import set_basic_logging_config
 
 
 @click.group(context_settings={"help_option_names": ["-h", "--help"]})
@@ -18,6 +19,7 @@ cli.add_command(create_group)
 cli.add_command(validate_group)
 
 if __name__ == "__main__":
+    set_basic_logging_config()
     if len(sys.argv) == 1:
         cli(["--help"])
     else:

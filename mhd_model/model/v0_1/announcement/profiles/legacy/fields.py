@@ -74,7 +74,7 @@ StudyFactors = Annotated[
                         ),
                         controls=[
                             AllowedCvList(
-                                source_names=["DOID", "HP", "MP", "SNOMED"],
+                                source_names=["MONDO", "MP", "SNOMED"],
                                 allowed_placeholder_values=[CvTermPlaceholder()],
                                 allowed_other_sources=["wikidata", "ILX"],
                             )

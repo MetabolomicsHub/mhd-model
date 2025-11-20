@@ -5,6 +5,7 @@ from pathlib import Path
 
 import click
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.dataset.validation.validator import validate_mhd_file
 from mhd_model.shared.model import ProfileEnabledDataset
 
@@ -32,6 +33,7 @@ def validate_mhd_file_task(
 
     output_path (None | str): If it is not None, validation results are saved in output file path.
     """
+    set_basic_logging_config()
     file = Path(mhd_model_file_path)
     try:
         txt = file.read_text()

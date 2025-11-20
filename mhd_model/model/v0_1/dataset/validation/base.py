@@ -589,52 +589,52 @@ class MhdModelValidator:
             if hasattr(node_data, item.node_property_name):
                 val = getattr(node_data, item.node_property_name)
                 min_length_violation = False
-                if item.contraints.min_length:
+                if item.constraints.min_length:
                     min_length = 0 if not val else len(val)
-                    if min_length < item.contraints.min_length:
+                    if min_length < item.constraints.min_length:
                         sub_path = [path, node_idx] if path else [node_idx]
                         min_length_violation = True
                         errors.append(
                             jsonschema.ValidationError(
                                 message=f"{node_data.id_}: '{node_data.type_}' node at index "
                                 f"{node_idx} has a property named '{item.node_property_name}' "
-                                f"that violates min length rule. Actual: {min_length}, Expected: {item.contraints.min_length}",
+                                f"that violates min length rule. Actual: {min_length}, Expected: {item.constraints.min_length}",
                                 validator="check-property-constraint",
                                 context=(),
                                 path=sub_path,
                                 instance={},
                             )
                         )
-                if item.contraints.max_length:
+                if item.constraints.max_length:
                     max_length = len(val) if val else None
-                    if max_length and max_length > item.contraints.min_length:
+                    if max_length and max_length > item.constraints.min_length:
                         sub_path = [path, node_idx] if path else [node_idx]
                         errors.append(
                             jsonschema.ValidationError(
                                 message=f"{node_data.id_}: '{node_data.type_}' node at index "
                                 f"{node_idx} has a property named '{item.node_property_name}' "
-                                f"that violates max length rule. Actual: {max_length}, Expected: {item.contraints.min_length}",
+                                f"that violates max length rule. Actual: {max_length}, Expected: {item.constraints.min_length}",
                                 validator="check-property-constraint",
                                 context=(),
                                 path=sub_path,
                                 instance={},
                             )
                         )
-                if item.contraints.pattern and val is not None:
-                    if not re.match(item.contraints.pattern, val):
+                if item.constraints.pattern and val is not None:
+                    if not re.match(item.constraints.pattern, val):
                         sub_path = [path, node_idx] if path else [node_idx]
                         errors.append(
                             jsonschema.ValidationError(
                                 message=f"{node_data.id_}: '{node_data.type_}' node at index "
                                 f"{node_idx} has a property named '{item.node_property_name}' "
-                                f"that violates pattern rule. Actual: {val}, Expected pattern: {item.contraints.pattern}",
+                                f"that violates pattern rule. Actual: {val}, Expected pattern: {item.constraints.pattern}",
                                 validator="check-property-constraint",
                                 context=(),
                                 path=sub_path,
                                 instance={},
                             )
                         )
-                if not min_length_violation and item.contraints.required:
+                if not min_length_violation and item.constraints.required:
                     if not val:
                         sub_path = [path, node_idx] if path else [node_idx]
                         errors.append(

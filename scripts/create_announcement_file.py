@@ -4,7 +4,7 @@ from pathlib import Path
 from mhd_model.convertors.announcement.v0_1.legacy.mhd2announce import (
     create_announcement_file,
 )
-from scripts.utils import set_basic_logging_config
+from mhd_model.log_utils import set_basic_logging_config
 
 if __name__ == "__main__":
     set_basic_logging_config()

@@ -51,8 +51,8 @@ dev = [
     "commitizen>=4.8.3",
     "import-linter>=2.3",
     "mkdocs-material>=9.5.49",
-    "pre-commit>=4.2.0",
-    "ruff>=0.12.0",
+    "pre-commit>=4.3.0",
+    "ruff>=0.13.2",
 ]
 test = [
     "pytest>=8.4.1",
@@ -111,7 +111,7 @@ layers = [
 
 
 [[tool.importlinter.contracts]]
-name = "Annoucement Base Profile Dependencies"
+name = "Announcement Base Profile Dependencies"
 type = "forbidden"
 source_modules = [
    "mhd_model.model.v0_1.announcement.profiles.base",
@@ -125,7 +125,7 @@ ignore_imports = [
 ]
 
 [[tool.importlinter.contracts]]
-name = "Annoucement MS Profile Dependencies"
+name = "Announcement MS Profile Dependencies"
 type = "forbidden"
 source_modules = [
    "mhd_model.model.v0_1.announcement.profiles.ms",

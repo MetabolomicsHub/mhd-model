@@ -1,11 +1,8 @@
 # MetabolomicsHub Common Data Model and Utility Tools (mhd-model)
 
-
-You can find documentation [here](https://metabolomicshub.github.io/mhd-model/)
-
+You can find documentation [on Github](https://metabolomicshub.github.io/mhd-model/)
 
 ## Development Environment
-
 
 Development environment for linux or mac
 
@@ -43,7 +40,6 @@ uv run pre-commit
 ```
 
 ## Commandline Usage
-
 
 ```bash
 # you can use any python version >= 3.12

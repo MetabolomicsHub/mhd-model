@@ -1652,8 +1652,7 @@
                 "name": "allowed-cv-list",
                 "negate": false,
                 "sourceNames": [
-                  "DOID",
-                  "HP",
+                  "MONDO",
                   "MP",
                   "SNOMED"
                 ]
@@ -1708,8 +1707,7 @@
                 "name": "allowed-cv-list",
                 "negate": false,
                 "sourceNames": [
-                  "DOID",
-                  "HP",
+                  "MONDO",
                   "MP",
                   "SNOMED"
                 ]
@@ -1814,7 +1812,6 @@
                   "UBERON",
                   "BTO",
                   "NCIT",
-                  "SNOMED",
                   "MSIO"
                 ]
               }

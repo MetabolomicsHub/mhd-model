@@ -459,7 +459,7 @@ Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
+|**title**|**required**|<code>*str*<code>|Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**description**|optional|<code>*str*<code>||
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>||
 |**doi**|optional|<code>*str*<code>||
@@ -691,7 +691,7 @@ Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N
 |factor-value|value-of|has-factor-value|sample|1|N||
 |specimen|source-of|derived-from|sample|1|N||
 |study|has-sample|used-in|sample|0|N||
-|subject|source-of|derived-from|sample|1|N||
+|subject|source-of|derived-from|sample|0|N||
 
 ### Sample Run
 
@@ -822,8 +822,8 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |**mhd_identifier**|optional|<code>*str*<code>||
 |**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>||
-|**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
-|**description**|**required**|<code>*str*<code>|Minimum length: <code>60</code><br>Validation Rule:<br> <code>Min Length: 60, Required</code>|
+|**title**|**required**|<code>*str*<code>|Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
+|**description**|**required**|<code>*str*<code>|Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**submission_date**|**required**|<code>*datetime*<code>||
 |**public_release_date**|**required**|<code>*datetime*<code>||
 |**license**|optional|<code>*HttpUrl*<code>|<br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
@@ -913,9 +913,9 @@ Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |subject|described-as|describes|descriptor|0|N||
-|subject|has-characteristic-value|value-of|characteristic-value|1|N||
+|subject|has-characteristic-value|value-of|characteristic-value|0|N||
 |subject|has-factor-value|value-of|factor-value|0|N||
-|subject|source-of|derived-from|sample|1|N||
+|subject|source-of|derived-from|sample|0|N||
 |subject|source-of|derived-from|specimen|0|N||
 
 
@@ -1032,7 +1032,7 @@ Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minim
 |characteristic-definition|has-instance|instance-of|characteristic-value|0|N||
 |sample|has-characteristic-value|value-of|characteristic-value|0|N||
 |specimen|has-characteristic-value|value-of|characteristic-value|0|N||
-|subject|has-characteristic-value|value-of|characteristic-value|1|N||
+|subject|has-characteristic-value|value-of|characteristic-value|0|N||
 
 ### Data Provider
 

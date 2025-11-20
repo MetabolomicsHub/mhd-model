@@ -16,6 +16,7 @@ from pydantic import BaseModel
 from pydantic.fields import FieldInfo
 from pydantic_core import PydanticUndefined
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.dataset.profiles.base.base import BaseMhdModel
 from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import (
     CvTermObject,
@@ -45,10 +46,9 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
 )
 from mhd_model.model.v0_1.rules.predefined_cv_terms import PREDEFINED_CV_TERMS
 from scripts.update_profiles import (
-    update_annoucement_file_profiles,
+    update_announcement_file_profiles,
     update_mhd_file_profiles,
 )
-from scripts.utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
 
@@ -67,18 +67,18 @@ def get_relationship_rules(validations: MhDatasetValidation) -> tuple[dict, dict
                     relationships[rel.source] = {}
                 if rel.relationship_name not in relationships[rel.source]:
                     relationships[rel.source][rel.relationship_name] = {}
-                rels = relationships[rel.source][rel.relationship_name]
-                if rel.source_property_name not in rels:
-                    rels[rel.source_property_name] = []
-                rels[rel.source_property_name].append(rel)
+                relations = relationships[rel.source][rel.relationship_name]
+                if rel.source_property_name not in relations:
+                    relations[rel.source_property_name] = []
+                relations[rel.source_property_name].append(rel)
 
                 if rel.target not in reverse_relationships:
                     reverse_relationships[rel.target] = {}
-                rev_rels = reverse_relationships[rel.target]
-                if rel.reverse_relationship_name not in rev_rels:
-                    rev_rels[rel.reverse_relationship_name] = {}
-                    rev_rels[rel.reverse_relationship_name][None] = []
-                rev_rels[rel.reverse_relationship_name][None].append(rel)
+                rev_relations = reverse_relationships[rel.target]
+                if rel.reverse_relationship_name not in rev_relations:
+                    rev_relations[rel.reverse_relationship_name] = {}
+                    rev_relations[rel.reverse_relationship_name][None] = []
+                rev_relations[rel.reverse_relationship_name][None].append(rel)
 
     return relationships, reverse_relationships
 
@@ -95,7 +95,7 @@ def get_validation_rules(validations: MhDatasetValidation) -> dict:
                     validation = item.validation
                     condition = item.condition
                 elif isinstance(item, NodePropertyValidation):
-                    validation = item.contraints
+                    validation = item.constraints
                 else:
                     validation = item
 
@@ -436,7 +436,7 @@ def update_nodes(
 if __name__ == "__main__":
     set_basic_logging_config()
 
-    update_annoucement_file_profiles()
+    update_announcement_file_profiles()
     update_mhd_file_profiles()
 
     for profile, target_file_name, profile_name in [
@@ -498,8 +498,8 @@ if __name__ == "__main__":
                             + "</code>"
                         )
                     node_relationships = relationships[node_type]
-                    for rels in node_relationships.values():
-                        for rel_item in rels.values():
+                    for relations in node_relationships.values():
+                        for rel_item in relations.values():
                             for rel in rel_item:
                                 rel_key = (
                                     rel.source or "",
@@ -671,9 +671,9 @@ if __name__ == "__main__":
                         continue
                     for property_validation in item.validations:
                         if isinstance(property_validation, EmbeddedRefValidation):
-                            contraints = property_validation
+                            constraints = property_validation
                         elif isinstance(property_validation, NodePropertyValidation):
-                            contraints = property_validation.contraints
+                            constraints = property_validation.constraints
                         else:
                             if (
                                 property_validation.min_count > 0
@@ -696,7 +696,7 @@ if __name__ == "__main__":
                                     )
 
                             continue
-                        if hasattr(contraints, "required") and contraints.required:
+                        if hasattr(constraints, "required") and constraints.required:
                             required_properties.append(
                                 (
                                     item.node_type,
@@ -849,17 +849,17 @@ if __name__ == "__main__":
                     for row in node_doc.properties.values():
                         f.write(f"|{'|'.join(row)}|\n")
                     f.write("\n")
-                    source_rels = list(node_doc.relationships.values())
-                    source_rels.sort(key=lambda x: (x[0], x[1], x[2]))
-                    target_rels = list(node_doc.reverse_relationships.values())
-                    target_rels.sort(key=lambda x: (x[0], x[1], x[2]))
-                    for rel, embedded_rels, rel_name in [
+                    source_relations = list(node_doc.relationships.values())
+                    source_relations.sort(key=lambda x: (x[0], x[1], x[2]))
+                    target_relations = list(node_doc.reverse_relationships.values())
+                    target_relations.sort(key=lambda x: (x[0], x[1], x[2]))
+                    for rel, embedded_relations, rel_name in [
                         (
-                            source_rels,
+                            source_relations,
                             node_doc.embedded_relationships,
                             "**Node Relationships**",
                         ),
-                        (target_rels, None, "**Reverse Node Relationships**"),
+                        (target_relations, None, "**Reverse Node Relationships**"),
                     ]:
                         f.write(f"\n{rel_name}\n\n")
                         if not rel:
@@ -874,9 +874,9 @@ if __name__ == "__main__":
                         for row in rel:
                             f.write(f"|{'|'.join(row)}|\n")
                         f.write("\n")
-                        if embedded_rels:
+                        if embedded_relations:
                             f.write(
-                                f"\n**Embedded Relationships**: {embedded_rels}\n\n"
+                                f"\n**Embedded Relationships**: {embedded_relations}\n\n"
                             )
 
             f.write("\n## Model Graph\n\n")

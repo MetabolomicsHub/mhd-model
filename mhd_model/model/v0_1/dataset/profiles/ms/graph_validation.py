@@ -43,12 +43,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="assay",
                 node_property_name="repository_identifier",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
                 node_type="assay",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             EmbeddedRefValidation(
                 node_type="assay",
@@ -138,7 +138,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="characteristic-definition",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
@@ -176,12 +176,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="derived-data-file",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
                 node_type="derived-data-file",
                 node_property_name="format_ref",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -228,7 +228,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="factor-definition",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
@@ -266,17 +266,17 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="metadata-file",
                 node_property_name="url_list",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
                 node_type="metadata-file",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
                 node_type="metadata-file",
                 node_property_name="format_ref",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -346,7 +346,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="metabolite",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
@@ -383,7 +383,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="organization",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=10),
+                constraints=PropertyConstraint(required=True, min_length=10),
             ),
         ],
         relationships=[
@@ -450,7 +450,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="parameter-definition",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
@@ -488,12 +488,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="person",
                 node_property_name="full_name",
-                contraints=PropertyConstraint(required=True, min_length=5),
+                constraints=PropertyConstraint(required=True, min_length=5),
             ),
             NodePropertyValidation(
                 node_type="person",
                 node_property_name="emails",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],
         relationships=[
@@ -562,7 +562,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="project",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True, min_length=25),
+                constraints=PropertyConstraint(required=True, min_length=25),
             ),
         ],
         relationships=[
@@ -631,7 +631,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="protocol",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             EmbeddedRefValidation(
                 node_type="protocol",
@@ -642,7 +642,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="protocol",
                 node_property_name="description",
-                contraints=PropertyConstraint(required=False),
+                constraints=PropertyConstraint(required=False),
             ),
         ],
         relationships=[
@@ -696,7 +696,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="publication",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -742,17 +742,17 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="raw-data-file",
                 node_property_name="url_list",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
                 node_type="raw-data-file",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
                 node_type="raw-data-file",
                 node_property_name="extension",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
@@ -789,17 +789,17 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="result-file",
                 node_property_name="url_list",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
                 node_type="result-file",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
                 node_type="result-file",
                 node_property_name="extension",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
@@ -836,12 +836,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="sample",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
                 node_type="sample",
                 node_property_name="repository_identifier",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -967,44 +967,44 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="mhd_identifier",
-                contraints=PropertyConstraint(
+                constraints=PropertyConstraint(
                     required=True, min_length=8, pattern="^MHD[A-Z][0-9]{6,8}$"
                 ),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="repository_identifier",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="title",
-                contraints=PropertyConstraint(required=True, min_length=25),
+                constraints=PropertyConstraint(required=True, min_length=25),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="description",
-                contraints=PropertyConstraint(required=True, min_length=60),
+                constraints=PropertyConstraint(required=True, min_length=60),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="submission_date",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="public_release_date",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="dataset_url_list",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
                 node_type="study",
                 node_property_name="license",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             EmbeddedRefValidation(
                 node_type="study",
@@ -1192,12 +1192,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="specimen",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
                 node_type="specimen",
                 node_property_name="repository_identifier",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],
         relationships=[
@@ -1242,12 +1242,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="subject",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
                 node_type="subject",
                 node_property_name="repository_identifier",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],
         relationships=[
@@ -1300,12 +1300,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="supplementary-file",
                 node_property_name="url_list",
-                contraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
                 node_type="supplementary-file",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
@@ -1345,7 +1345,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             NodePropertyValidation(
                 node_type="characteristic-type",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
                 node_type="characteristic-type",
@@ -1407,7 +1407,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="characteristic-value",
                 min_count=1,
                 validation=AllowedCvList(
-                    source_names=["UBERON", "BTO", "NCIT", "SNOMED", "MSIO"],
+                    source_names=["UBERON", "BTO", "NCIT", "MSIO"],
                     allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
@@ -1424,7 +1424,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="characteristic-value",
                 min_count=1,
                 validation=AllowedCvList(
-                    source_names=["DOID", "HP", "MP", "SNOMED"],
+                    source_names=["MONDO", "MP", "SNOMED"],
                     allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
@@ -1539,7 +1539,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             NodePropertyValidation(
                 node_type="data-provider",
                 node_property_name="value",
-                contraints=PropertyConstraint(required=True, allowed_types="str"),
+                constraints=PropertyConstraint(required=True, allowed_types="str"),
             ),
             CvTermValidation(
                 node_type="data-provider",
@@ -1865,7 +1865,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             NodePropertyValidation(
                 node_type="factor-type",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
                 node_type="factor-type",
@@ -1908,7 +1908,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             CvTermValidation(
                 node_type="factor-value",
                 validation=AllowedCvList(
-                    source_names=["DOID", "HP", "MP", "SNOMED"],
+                    source_names=["MONDO", "MP", "SNOMED"],
                     allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
@@ -2002,7 +2002,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             NodePropertyValidation(
                 node_type="parameter-type",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
                 node_type="parameter-type",
@@ -2077,18 +2077,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                                 accession="MS:1000031",
                                 name="instrument model",
                             ),
-                            excluded_cv_terms=[
-                                CvTerm(
-                                    source="MS",
-                                    accession="MS:1000491",
-                                    name="Dionex instrument model",
-                                ),
-                                CvTerm(
-                                    source="MS",
-                                    accession="MS:1000488",
-                                    name="Hitachi instrument model",
-                                ),
-                            ],
+                            excluded_cv_terms=[r".*instrument model"],
                             allow_only_leaf=True,
                         ),
                     ]
@@ -2122,7 +2111,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             NodePropertyValidation(
                 node_type="protocol-type",
                 node_property_name="name",
-                contraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
                 node_type="protocol-type",

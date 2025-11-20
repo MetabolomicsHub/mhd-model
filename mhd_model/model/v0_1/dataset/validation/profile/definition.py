@@ -58,7 +58,7 @@ class CvTermValidation(MhdConfigModel):
 class NodePropertyValidation(MhdConfigModel):
     node_type: Annotated[str, Field()]
     node_property_name: Annotated[None | str, Field()] = None
-    contraints: Annotated[PropertyConstraint, Field()]
+    constraints: Annotated[PropertyConstraint, Field()]
 
 
 class NodeValidation(MhdConfigModel):

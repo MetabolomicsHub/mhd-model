@@ -2,6 +2,7 @@ import json
 import logging
 import pathlib
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseProfile,
 )
@@ -14,7 +15,6 @@ from mhd_model.model.v0_1.announcement.profiles.ms.profile import (
 from mhd_model.model.v0_1.dataset.profiles.base.profile import MhDatasetBaseProfile
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
-from scripts.utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,7 @@ BASE_DIR_LIST = [
 ]
 
 
-def update_annoucement_file_profiles() -> None:
+def update_announcement_file_profiles() -> None:
     for base_dir in BASE_DIR_LIST:
         pathlib.Path(base_dir).mkdir(parents=True, exist_ok=True)
         profile_path = f"{base_dir}/announcement-v0.1.schema.json"
@@ -82,5 +82,5 @@ def update_mhd_file_profiles() -> None:
 
 if __name__ == "__main__":
     set_basic_logging_config()
-    update_annoucement_file_profiles()
+    update_announcement_file_profiles()
     update_mhd_file_profiles()

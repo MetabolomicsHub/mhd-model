@@ -1,7 +1,7 @@
 import logging
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.dataset.validation.validator import validate_mhd_file
-from scripts.utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
 

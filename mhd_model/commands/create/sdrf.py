@@ -1,6 +1,7 @@
 import click
 
 from mhd_model.convertors.sdrf.mhd2sdrf import create_sdrf_files
+from mhd_model.log_utils import set_basic_logging_config
 
 
 @click.command(name="sdrf", no_args_is_help=True)
@@ -34,15 +35,9 @@ def create_sdrf_file_task(
 
     mhd_study_id (str): MHD study identifier
 
-    mhd_model_file_path (str): MHD data model path
-
-    assay_name (str): Name of assay.
-    If it is not defined, SDRF files will be created for all assays
-
-    output_dir (str): Output directory of SDRF files.
-
-    output_filename (str): Name of SDRF file. It is applicable if
+    mhd_model_file_path (str): MHD data model file path
     """
+    set_basic_logging_config()
     try:
         sdrf_files = create_sdrf_files(
             mhd_model_file_path,

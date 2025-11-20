@@ -181,7 +181,7 @@ Factor Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, M
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-definition|has-instance|instance-of|factor-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Disease)**<br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
+|factor-definition|has-instance|instance-of|factor-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Disease)**<br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:MONDO, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |factor-definition|has-type|type-of|factor-type|0|N||
 |factor-definition|used-in|has-factor-definition|study|0|N||
 
@@ -344,7 +344,7 @@ Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-definition|has-instance|instance-of|parameter-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Mass spectrometry instrument)**<br>[Source parameter_type_ref.accession = MSIO:0000171]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Excluded CV Terms:<br>* [MS, MS:1000491, Dionex instrument model],<br>* [MS, MS:1000488, Hitachi instrument model]</code><br>-----|
+|parameter-definition|has-instance|instance-of|parameter-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Mass spectrometry instrument)**<br>[Source parameter_type_ref.accession = MSIO:0000171]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Excluded CV Terms: .*instrument model</code><br>-----|
 |parameter-definition|has-type|type-of|parameter-type|1|1||
 |parameter-definition|used-in|has-parameter-definition|protocol|0|N||
 

@@ -4,6 +4,7 @@ from typing import Any
 
 import click
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.definitions import (
     MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME,
     MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
@@ -25,7 +26,9 @@ from mhd_model.shared.model import ProfileEnabledDataset
     "--output-filename",
     default=None,
     show_default=True,
-    help="neo4j input filename (e.g., MHD000001.neo4j_input.json, ST000001.neo4j_input.json)",
+    help="neo4j input filename "
+    "(e.g., MHD000001.neo4j_input.json, ST000001.neo4j_input.json)"
+    "Default is <repository identifier>.neo4j_input.json",
 )
 @click.argument("mhd_study_id")
 @click.argument("mhd_model_file_path")
@@ -42,12 +45,8 @@ def create_neo4j_input_file_task(
     mhd_study_id (str): MHD study identifier
 
     mhd_model_file_path (str): MHD data model path
-
-
-    output_dir (str): Output directory of neo4j input file
-
-    output_filename (str): Name of neo4j input file. Default is <repository identifier>.neo4j_input.json
     """
+    set_basic_logging_config()
     file = Path(mhd_model_file_path)
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)

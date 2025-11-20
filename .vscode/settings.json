@@ -35,4 +35,23 @@
           "packageManager": "ms-python.python:pip"
         }
       ],
+      "cSpell.words": [
+        "CHEMINF",
+        "CHMO",
+        "ENVO",
+        "importlinter",
+        "Metabolomics",
+        "MS",
+        "MSIO",
+        "NCBITAXON",
+        "NCIT",
+        "OMICS",
+        "ORCID",
+        "pubmed",
+        "sdrf",
+        "setuptools",
+        "SNOMED",
+        "UBERON",
+        "venv"
+      ],
 }

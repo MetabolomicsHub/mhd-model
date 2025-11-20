@@ -378,7 +378,7 @@
                 "id": "cv--characteristic-value--ef736770-4b1d-59a3-8353-bf03c64388d0",
                 "type": "characteristic-value",
                 "source": "NCBITAXON",
-                "accession": "NCBITacon:1282",
+                "accession": "NCBITaxon:1282",
                 "name": "NCBITaxon:1282"
             },
             {

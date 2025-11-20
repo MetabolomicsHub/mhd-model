@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from mhd_model.convertors.sdrf.mhd2sdrf import create_sdrf_files
-from scripts.utils import set_basic_logging_config
+from mhd_model.log_utils import set_basic_logging_config
 
 if __name__ == "__main__":
     set_basic_logging_config()

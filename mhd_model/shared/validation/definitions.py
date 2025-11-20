@@ -70,7 +70,7 @@ class ParentCvTerm(ValidatorBaseModel):
     cv_term: CvTerm
     allow_only_leaf: bool = False
     allow_parent: None | bool = False
-    excluded_cv_terms: None | list[CvTerm] = None
+    excluded_cv_terms: None | list[str] = None
     index_cv_terms: None | bool = True
 
     def __str__(self) -> str:

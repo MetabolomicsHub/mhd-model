@@ -237,7 +237,7 @@ Characteristic Definition node is **required in the MHD MS Profile.** <code>Mini
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-definition|has-instance|instance-of|characteristic-value|0|N|**Required min count in the dataset: 2.**<br><br>Target Validation Rules:<br><code>-----<br>**Conditional - (Organism)**<br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Organism part)**<br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, SNOMED, MSIO<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Disease)**<br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Cell type)**<br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
+|characteristic-definition|has-instance|instance-of|characteristic-value|0|N|**Required min count in the dataset: 2.**<br><br>Target Validation Rules:<br><code>-----<br>**Conditional - (Organism)**<br>[Source characteristic_type_ref.accession = NCIT:C14250]<br>Ontology Sources:ENVO, NCBITAXON<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Organism part)**<br>[Source characteristic_type_ref.accession = NCIT:C103199]<br>Ontology Sources:UBERON, BTO, NCIT, MSIO<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Disease)**<br>[Source characteristic_type_ref.accession = EFO:0000408]<br>Ontology Sources:MONDO, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX<br>-----<br>**Conditional - (Cell type)**<br>[Source characteristic_type_ref.accession = EFO:0000324]<br>Ontology Sources:CL, CLO<br>Exceptions:<br>Allowed Missing CV Terms:<br>* [NCIT, NCIT:C48660, Not Applicable]<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |characteristic-definition|has-type|type-of|characteristic-type|1|1||
 |characteristic-definition|used-in|has-characteristic-definition|study|1|N|**Required min count in the dataset: 5.**|
 
@@ -314,7 +314,7 @@ Factor Definition node is optional in the  MHD MS Profile. <code>Minimum: 0, Max
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-definition|has-instance|instance-of|factor-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Disease)**<br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:DOID, HP, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
+|factor-definition|has-instance|instance-of|factor-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Disease)**<br>[Source factor_type_ref.accession = EFO:0000408]<br>Ontology Sources:MONDO, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |factor-definition|has-type|type-of|factor-type|1|1||
 |factor-definition|used-in|has-factor-definition|study|1|N||
 
@@ -477,7 +477,7 @@ Parameter Definition node is **required in the MHD MS Profile.** <code>Minimum: 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-definition|has-instance|instance-of|parameter-value|0|N|**Required min count in the dataset: 1.**<br>Target Validation Rule:<br><code>-----<br>**Conditional - (Mass spectrometry instrument)**<br>[Source parameter_type_ref.accession = MSIO:0000171]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Excluded CV Terms:<br>* [MS, MS:1000491, Dionex instrument model],<br>* [MS, MS:1000488, Hitachi instrument model]</code><br>-----|
+|parameter-definition|has-instance|instance-of|parameter-value|0|N|**Required min count in the dataset: 1.**<br>Target Validation Rule:<br><code>-----<br>**Conditional - (Mass spectrometry instrument)**<br>[Source parameter_type_ref.accession = MSIO:0000171]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: Yes<br>Excluded CV Terms: .*instrument model</code><br>-----|
 |parameter-definition|has-type|type-of|parameter-type|1|1||
 |parameter-definition|used-in|has-parameter-definition|protocol|1|N|**Required min count in the dataset: 1.**|
 

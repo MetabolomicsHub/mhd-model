@@ -244,20 +244,20 @@ def convert_file(
     return file
 
 
-def collect_cvterm_sources(obj: BaseModel, cv_sources: set[str]):
+def collect_cv_term_sources(obj: BaseModel, cv_sources: set[str]):
     if isinstance(obj, (CvTerm, CvTermValue)):
         source = getattr(obj, "source", None)
         if source:
             cv_sources.add(source)
     elif isinstance(obj, BaseModel):
         for value in obj.__dict__.values():
-            collect_cvterm_sources(value, cv_sources)
+            collect_cv_term_sources(value, cv_sources)
     elif isinstance(obj, list):
         for item in obj:
-            collect_cvterm_sources(item, cv_sources)
+            collect_cv_term_sources(item, cv_sources)
     elif isinstance(obj, dict):
         for value in obj.values():
-            collect_cvterm_sources(value, cv_sources)
+            collect_cv_term_sources(value, cv_sources)
 
 
 def create_announcement_file(
@@ -483,7 +483,7 @@ def create_announcement_file(
             announcement.reported_metabolites = reported_metabolites
             announcement.reported_metabolites.sort(key=lambda x: x.name)
     cv_sources = set()
-    collect_cvterm_sources(announcement, cv_sources)
+    collect_cv_term_sources(announcement, cv_sources)
     cv_sources = list(cv_sources)
     cv_sources.sort()
     for source in cv_sources:

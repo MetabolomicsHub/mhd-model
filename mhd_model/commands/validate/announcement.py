@@ -8,6 +8,7 @@ import click
 import jsonschema
 from jsonschema import exceptions
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.announcement.validation.base import ProfileValidator
 from mhd_model.model.v0_1.announcement.validation.validator import (
     MhdAnnouncementFileValidator,
@@ -39,6 +40,7 @@ def validate_announcement_file_task(
 
     output_path (None | str): If it is defined, validation results are saved in output file path.
     """
+    set_basic_logging_config()
     file = Path(announcement_file_path)
     try:
         txt = file.read_text()
