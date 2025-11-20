@@ -45,7 +45,7 @@ uv run pre-commit
 # you can use any python version >= 3.12
 pip install mhd-model
 
-mhd-model
+mhd-cli
 
 
 ```
