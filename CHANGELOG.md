@@ -1,3 +1,9 @@
+## v0.1.33 (2025-11-20)
+
+### Fix
+
+- documentation update to show valid command line usage.
+
 ## v0.1.32 (2025-11-20)
 
 ### Fix
