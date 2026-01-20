@@ -1,3 +1,9 @@
+## v0.1.34 (2026-01-20)
+
+### Fix
+
+- documentation and schema name updates
+
 ## v0.1.33 (2025-11-20)
 
 ### Fix
