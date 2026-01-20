@@ -1,0 +1,1914 @@
+{
+  "$defs": {
+    "AnnouncementBaseFile": {
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "url_list": {
+          "items": {
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Url List",
+          "type": "array"
+        },
+        "compression_formats": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Compression Formats"
+        },
+        "extension": {
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extension"
+        }
+      },
+      "required": [
+        "name",
+        "url_list"
+      ],
+      "title": "AnnouncementBaseFile",
+      "type": "object"
+    },
+    "AnnouncementDerivedDataFile": {
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "url_list": {
+          "items": {
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Url List",
+          "type": "array"
+        },
+        "compression_formats": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Compression Formats"
+        },
+        "extension": {
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extension"
+        },
+        "format": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  }
+                ]
+              }
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Format"
+        }
+      },
+      "required": [
+        "name",
+        "url_list"
+      ],
+      "title": "AnnouncementDerivedDataFile",
+      "type": "object"
+    },
+    "AnnouncementProtocol": {
+      "description": "A protocol is a defined and standardized procedure followed\nto collect, prepare, or analyze biological samples.",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "protocol_type": {
+          "$ref": "#/$defs/CvTerm",
+          "profileValidation": {
+            "allowNullValue": false,
+            "allowedMissingCvTerms": null,
+            "allowedOtherSources": null,
+            "allowedPlaceholderValues": [
+              {
+                "accession": "",
+                "source": ""
+              }
+            ],
+            "cvTerms": [
+              {
+                "accession": "EFO:0005518",
+                "name": "sample collection protocol",
+                "source": "EFO"
+              },
+              {
+                "accession": "MS:1000831",
+                "name": "sample preparation",
+                "source": "MS"
+              },
+              {
+                "accession": "CHMO:0000470",
+                "name": "mass spectrometry",
+                "source": "CHMO"
+              },
+              {
+                "accession": "OBI:0200000",
+                "name": "data transform",
+                "source": "OBI"
+              },
+              {
+                "accession": "MI:2131",
+                "name": "metabolite identification",
+                "source": "MI"
+              },
+              {
+                "accession": "CHMO:0001000",
+                "name": "chromatography",
+                "source": "CHMO"
+              },
+              {
+                "accession": "EFO:0003969",
+                "name": "treatment protocol",
+                "source": "EFO"
+              },
+              {
+                "accession": "CHMO:0001024",
+                "name": "capillary electrophoresis",
+                "source": "CHMO"
+              },
+              {
+                "accession": "MS:1000058",
+                "name": "flow injection analysis",
+                "source": "MS"
+              }
+            ],
+            "inputType": "list-or-item",
+            "listJoinOperator": "all",
+            "minimum": null,
+            "name": "allowed-cv-terms",
+            "negate": false
+          },
+          "title": "Protocol Type"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "protocol_parameters": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ExtendedCvTermKeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Protocol Parameters"
+        },
+        "relates_assay_names": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Relates Assay Names"
+        }
+      },
+      "required": [
+        "name",
+        "protocol_type"
+      ],
+      "title": "AnnouncementProtocol",
+      "type": "object"
+    },
+    "AnnouncementPublication": {
+      "description": "A publication associated with the dataset.",
+      "properties": {
+        "title": {
+          "minLength": 10,
+          "title": "Title",
+          "type": "string"
+        },
+        "doi": {
+          "pattern": "^10[.].+/.+$",
+          "profileValidation": {
+            "allowNullValue": false,
+            "defaultPrefix": "doi",
+            "followRedirects": false,
+            "inputType": "list-or-item",
+            "listJoinOperator": "all",
+            "minimum": null,
+            "name": "accessible-compact-uri",
+            "negate": false
+          },
+          "title": "Doi",
+          "type": "string"
+        },
+        "pubmed_id": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9]{1,20}$",
+              "title": "PubMed Id",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pubmed Id"
+        },
+        "author_list": {
+          "anyOf": [
+            {
+              "items": {
+                "minLength": 2,
+                "title": "Author",
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Authors",
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Author List"
+        }
+      },
+      "required": [
+        "title",
+        "doi"
+      ],
+      "title": "AnnouncementPublication",
+      "type": "object"
+    },
+    "AnnouncementRawDataFile": {
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "url_list": {
+          "items": {
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Url List",
+          "type": "array"
+        },
+        "compression_formats": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Compression Formats"
+        },
+        "extension": {
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extension"
+        },
+        "format": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  },
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "MS:1000560",
+                      "name": "mass spectrometer file format",
+                      "source": "MS"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": true
+                  }
+                ]
+              }
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Format"
+        }
+      },
+      "required": [
+        "name",
+        "url_list"
+      ],
+      "title": "AnnouncementRawDataFile",
+      "type": "object"
+    },
+    "AnnouncementReportedMetabolite": {
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "database_identifiers": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTermValue",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": [
+                    "REFMET"
+                  ],
+                  "allowedPlaceholderValues": [
+                    {
+                      "accession": "",
+                      "source": ""
+                    }
+                  ],
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "CHEMINF:000464",
+                        "name": "chemical database identifier",
+                        "source": "CHEMINF"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Database Identifiers"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "AnnouncementReportedMetabolite",
+      "type": "object"
+    },
+    "AnnouncementResultFile": {
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "url_list": {
+          "items": {
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Url List",
+          "type": "array"
+        },
+        "compression_formats": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Compression Formats"
+        },
+        "extension": {
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extension"
+        },
+        "format": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  }
+                ]
+              }
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Format"
+        }
+      },
+      "required": [
+        "name",
+        "url_list"
+      ],
+      "title": "AnnouncementResultFile",
+      "type": "object"
+    },
+    "AnnouncementSupplementaryFile": {
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "url_list": {
+          "items": {
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Url List",
+          "type": "array"
+        },
+        "compression_formats": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Compression Formats"
+        },
+        "extension": {
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extension"
+        },
+        "format": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CvTerm",
+              "profileValidation": {
+                "allowNullValue": false,
+                "allowedMissingCvTerms": null,
+                "allowedOtherSources": null,
+                "allowedPlaceholderValues": null,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "allowed-children-cv-terms",
+                "negate": false,
+                "parentCvTerms": [
+                  {
+                    "allowOnlyLeaf": false,
+                    "allowParent": false,
+                    "cvTerm": {
+                      "accession": "EDAM:1915",
+                      "name": "Format",
+                      "source": "EDAM"
+                    },
+                    "excludedCvTerms": null,
+                    "indexCvTerms": false
+                  }
+                ]
+              }
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Format"
+        }
+      },
+      "required": [
+        "name",
+        "url_list"
+      ],
+      "title": "AnnouncementSupplementaryFile",
+      "type": "object"
+    },
+    "CvDefinition": {
+      "properties": {
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "title": "Name",
+          "type": "string"
+        },
+        "uri": {
+          "default": "",
+          "title": "Uri",
+          "type": "string"
+        },
+        "prefix": {
+          "default": "",
+          "title": "Prefix",
+          "type": "string"
+        },
+        "alternative_labels": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alternative Labels"
+        },
+        "alternative_prefixes": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alternative Prefixes"
+        }
+      },
+      "title": "CvDefinition",
+      "type": "object"
+    },
+    "CvTerm": {
+      "properties": {
+        "source": {
+          "default": "",
+          "description": "Ontology source name.",
+          "title": "Source",
+          "type": "string"
+        },
+        "accession": {
+          "default": "",
+          "description": "Accession number of CV term in compact URI format.",
+          "title": "Accession",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "Label of CV term.",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "title": "CvTerm",
+      "type": "object"
+    },
+    "CvTermKeyValue": {
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/CvTerm",
+          "title": "Key"
+        },
+        "values": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Values"
+        }
+      },
+      "required": [
+        "key"
+      ],
+      "title": "CvTermKeyValue",
+      "type": "object"
+    },
+    "CvTermValue": {
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UnitCvTerm"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "source": {
+          "default": "",
+          "description": "Ontology source name.",
+          "title": "Source",
+          "type": "string"
+        },
+        "accession": {
+          "default": "",
+          "description": "Accession number of CV term in compact URI format.",
+          "title": "Accession",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "Label of CV term.",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "title": "CvTermValue",
+      "type": "object"
+    },
+    "ExtendedCvTermKeyValue": {
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/CvTerm",
+          "profileValidation": {
+            "allowNullValue": false,
+            "allowedMissingCvTerms": null,
+            "allowedOtherSources": null,
+            "allowedPlaceholderValues": [
+              {
+                "accession": "",
+                "source": ""
+              }
+            ],
+            "inputType": "list-or-item",
+            "listJoinOperator": "all",
+            "minimum": null,
+            "name": "allow-any-cv-term",
+            "negate": false
+          },
+          "title": "Key"
+        },
+        "values": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTerm"
+              },
+              "type": "array"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/QuantitativeValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Values"
+        }
+      },
+      "required": [
+        "key"
+      ],
+      "title": "ExtendedCvTermKeyValue",
+      "type": "object"
+    },
+    "QuantitativeValue": {
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UnitCvTerm"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        }
+      },
+      "title": "QuantitativeValue",
+      "type": "object"
+    },
+    "Revision": {
+      "properties": {
+        "revision": {
+          "title": "Revision",
+          "type": "integer"
+        },
+        "revision_datetime": {
+          "format": "date-time",
+          "title": "Revision Datetime",
+          "type": "string"
+        },
+        "comment": {
+          "title": "Comment",
+          "type": "string"
+        }
+      },
+      "required": [
+        "revision",
+        "revision_datetime",
+        "comment"
+      ],
+      "title": "Revision",
+      "type": "object"
+    },
+    "UnitCvTerm": {
+      "properties": {
+        "source": {
+          "default": "",
+          "description": "Ontology source name.",
+          "title": "Source",
+          "type": "string"
+        },
+        "accession": {
+          "default": "",
+          "description": "Accession number of CV term in compact URI format.",
+          "title": "Accession",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "description": "Label of CV term.",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "title": "UnitCvTerm",
+      "type": "object"
+    },
+    "mhd_model__model__v0_1__announcement__profiles__base__profile__AnnouncementContact": {
+      "description": "A contact associated with the dataset.\nThis can be a submitter or a principal investigator.",
+      "properties": {
+        "full_name": {
+          "anyOf": [
+            {
+              "minLength": 5,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Full Name"
+        },
+        "emails": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "email",
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Emails"
+        },
+        "orcid": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
+              "profileValidation": {
+                "allowNullValue": false,
+                "defaultPrefix": "orcid",
+                "followRedirects": false,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "accessible-compact-uri",
+                "negate": false
+              },
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "ORCID"
+        },
+        "affiliations": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Affiliations"
+        }
+      },
+      "title": "AnnouncementContact",
+      "type": "object"
+    },
+    "mhd_model__model__v0_1__announcement__profiles__legacy__profile__AnnouncementContact": {
+      "properties": {
+        "full_name": {
+          "minLength": 5,
+          "title": "Full Name",
+          "type": "string"
+        },
+        "emails": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "email",
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Emails"
+        },
+        "orcid": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
+              "profileValidation": {
+                "allowNullValue": false,
+                "defaultPrefix": "orcid",
+                "followRedirects": false,
+                "inputType": "list-or-item",
+                "listJoinOperator": "all",
+                "minimum": null,
+                "name": "accessible-compact-uri",
+                "negate": false
+              },
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "ORCID"
+        },
+        "affiliations": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Affiliations"
+        }
+      },
+      "required": [
+        "full_name"
+      ],
+      "title": "AnnouncementContact",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Name"
+    },
+    "mhd_identifier": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Mhd Identifier"
+    },
+    "repository_identifier": {
+      "title": "Repository Identifier",
+      "type": "string"
+    },
+    "revision": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revision"
+    },
+    "revision_datetime": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revision Datetime"
+    },
+    "repository_revision": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Revision"
+    },
+    "repository_revision_datetime": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Revision Datetime"
+    },
+    "change_log": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Revision"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Revision",
+      "title": "Change Log"
+    },
+    "$schema": {
+      "description": "Schema name of the file",
+      "title": "Schema Name",
+      "type": "string"
+    },
+    "profile_uri": {
+      "description": "Validation Profiles",
+      "title": "Profile Uri",
+      "type": "string"
+    },
+    "cv_definitions": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/CvDefinition"
+      },
+      "title": "Cv Definitions",
+      "type": "array"
+    },
+    "mhd_metadata_file_url": {
+      "format": "uri",
+      "minLength": 1,
+      "title": "Mhd Metadata File Url",
+      "type": "string"
+    },
+    "dataset_url_list": {
+      "items": {
+        "format": "uri",
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Dataset Url List",
+      "type": "array"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "License"
+    },
+    "title": {
+      "minLength": 25,
+      "title": "Title",
+      "type": "string"
+    },
+    "description": {
+      "minLength": 60,
+      "title": "Description",
+      "type": "string"
+    },
+    "submission_date": {
+      "format": "date-time",
+      "title": "Submission Date",
+      "type": "string"
+    },
+    "public_release_date": {
+      "format": "date-time",
+      "title": "Public Release Date",
+      "type": "string"
+    },
+    "submitters": {
+      "items": {
+        "$ref": "#/$defs/mhd_model__model__v0_1__announcement__profiles__legacy__profile__AnnouncementContact"
+      },
+      "minItems": 1,
+      "title": "Submitters",
+      "type": "array"
+    },
+    "principal_investigators": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/mhd_model__model__v0_1__announcement__profiles__base__profile__AnnouncementContact"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Principal Investigators"
+    },
+    "omics_type": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm",
+            "profileValidation": {
+              "allowNullValue": false,
+              "allowedMissingCvTerms": null,
+              "allowedOtherSources": null,
+              "allowedPlaceholderValues": [
+                {
+                  "accession": "",
+                  "source": ""
+                }
+              ],
+              "cvTerms": [
+                {
+                  "accession": "EDAM:3172",
+                  "name": "Metabolomics",
+                  "source": "EDAM"
+                },
+                {
+                  "accession": "EDAM:0153",
+                  "name": "Lipidomics",
+                  "source": "EDAM"
+                },
+                {
+                  "accession": "EDAM:3955",
+                  "name": "Fluxomics",
+                  "source": "EDAM"
+                }
+              ],
+              "inputType": "list-or-item",
+              "listJoinOperator": "all",
+              "minimum": null,
+              "name": "allowed-cv-terms",
+              "negate": false
+            }
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Omics Type"
+    },
+    "technology_type": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm",
+            "profileValidation": {
+              "allowNullValue": false,
+              "allowedMissingCvTerms": null,
+              "allowedOtherSources": null,
+              "allowedPlaceholderValues": [
+                {
+                  "accession": "",
+                  "source": ""
+                }
+              ],
+              "cvTerms": [
+                {
+                  "accession": "OBI:0000470",
+                  "name": "mass spectrometry assay",
+                  "source": "OBI"
+                },
+                {
+                  "accession": "OBI:0000623",
+                  "name": "NMR spectroscopy assay",
+                  "source": "OBI"
+                }
+              ],
+              "inputType": "list-or-item",
+              "listJoinOperator": "all",
+              "minimum": null,
+              "name": "allowed-cv-terms",
+              "negate": false
+            }
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Technology Type"
+    },
+    "measurement_type": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm",
+            "profileValidation": {
+              "allowNullValue": false,
+              "allowedMissingCvTerms": null,
+              "allowedOtherSources": null,
+              "allowedPlaceholderValues": [
+                {
+                  "accession": "",
+                  "source": ""
+                }
+              ],
+              "cvTerms": [
+                {
+                  "accession": "MSIO:0000100",
+                  "name": "targeted metabolite profiling",
+                  "source": "MSIO"
+                },
+                {
+                  "accession": "MSIO:0000101",
+                  "name": "untargeted metabolite profiling",
+                  "source": "MSIO"
+                }
+              ],
+              "inputType": "list-or-item",
+              "listJoinOperator": "all",
+              "minimum": null,
+              "name": "allowed-cv-terms",
+              "negate": false
+            }
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Measurement Type"
+    },
+    "assay_type": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm",
+            "profileValidation": {
+              "allowNullValue": false,
+              "allowedMissingCvTerms": null,
+              "allowedOtherSources": null,
+              "allowedPlaceholderValues": [
+                {
+                  "accession": "",
+                  "source": ""
+                }
+              ],
+              "cvTerms": [
+                {
+                  "accession": "OBI:0003097",
+                  "name": "liquid chromatography mass spectrometry assay",
+                  "source": "OBI"
+                },
+                {
+                  "accession": "OBI:0003110",
+                  "name": "gas chromatography mass spectrometry assay",
+                  "source": "OBI"
+                },
+                {
+                  "accession": "OBI:0000470",
+                  "name": "mass spectrometry assay",
+                  "source": "OBI"
+                },
+                {
+                  "accession": "OBI:0000623",
+                  "name": "NMR spectroscopy assay",
+                  "source": "OBI"
+                }
+              ],
+              "inputType": "list-or-item",
+              "listJoinOperator": "all",
+              "minimum": null,
+              "name": "allowed-cv-terms",
+              "negate": false
+            }
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Assay Type"
+    },
+    "submitter_keywords": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm",
+            "profileValidation": {
+              "allowNullValue": false,
+              "allowedMissingCvTerms": null,
+              "allowedOtherSources": null,
+              "allowedPlaceholderValues": [
+                {
+                  "accession": "",
+                  "source": ""
+                }
+              ],
+              "inputType": "list-or-item",
+              "listJoinOperator": "all",
+              "minimum": null,
+              "name": "allow-any-cv-term",
+              "negate": false
+            }
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Submitter Keywords"
+    },
+    "descriptors": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Descriptors"
+    },
+    "publications": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CvTerm",
+          "profileValidation": {
+            "allowNullValue": false,
+            "allowedMissingCvTerms": null,
+            "allowedOtherSources": null,
+            "allowedPlaceholderValues": null,
+            "cvTerms": [
+              {
+                "accession": "MS:1002853",
+                "name": "no associated published manuscript",
+                "source": "MS"
+              },
+              {
+                "accession": "MS:1002858",
+                "name": "Dataset with its publication pending",
+                "source": "MS"
+              }
+            ],
+            "inputType": "list-or-item",
+            "listJoinOperator": "all",
+            "minimum": null,
+            "name": "allowed-cv-terms",
+            "negate": false
+          }
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementPublication"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Publications"
+    },
+    "study_factors": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/ExtendedCvTermKeyValue"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Study Factors"
+    },
+    "characteristic_values": {
+      "default": null,
+      "items": {
+        "$ref": "#/$defs/CvTermKeyValue"
+      },
+      "profileValidation": {
+        "allowNullValue": false,
+        "inputType": "list",
+        "listJoinOperator": "all",
+        "minimum": null,
+        "name": "check-cv-term-key-values",
+        "negate": false,
+        "optionalItems": null,
+        "requiredItems": [
+          {
+            "allowNullValue": false,
+            "controls": [],
+            "cvTermKey": {
+              "accession": "NCIT:C14250",
+              "name": "organism",
+              "source": "NCIT"
+            },
+            "inputType": "list-or-item",
+            "joinOperator": "and",
+            "listJoinOperator": "all",
+            "minValueCount": 1,
+            "minimum": null,
+            "name": "check-cv-term-key-value",
+            "negate": false
+          }
+        ]
+      },
+      "title": "Characteristic Values",
+      "type": "array"
+    },
+    "protocols": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementProtocol"
+          },
+          "profileValidation": {
+            "allowNullValue": false,
+            "conditionalCvTerm": {
+              "accession": "CHMO:0000470",
+              "name": "mass spectrometry",
+              "source": "CHMO"
+            },
+            "conditionalFieldName": "protocol_type",
+            "inputType": "list-or-item",
+            "keyValuesControl": {
+              "allowNullValue": false,
+              "inputType": "list",
+              "listJoinOperator": "all",
+              "minimum": null,
+              "name": "check-cv-term-key-values",
+              "negate": false,
+              "optionalItems": null,
+              "requiredItems": [
+                {
+                  "allowNullValue": false,
+                  "controls": [],
+                  "cvTermKey": {
+                    "accession": "MSIO:0000171",
+                    "name": "mass spectrometry instrument",
+                    "source": "MSIO"
+                  },
+                  "inputType": "list-or-item",
+                  "joinOperator": "and",
+                  "listJoinOperator": "all",
+                  "minValueCount": 0,
+                  "minimum": null,
+                  "name": "check-cv-term-key-value",
+                  "negate": false
+                }
+              ]
+            },
+            "keyValuesFieldName": "protocol_parameters",
+            "listJoinOperator": "all",
+            "minimum": null,
+            "name": "check-conditional-cv-term-key-values",
+            "negate": false
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Protocols"
+    },
+    "reported_metabolites": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementReportedMetabolite"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reported Metabolites"
+    },
+    "repository_metadata_file_list": {
+      "items": {
+        "$ref": "#/$defs/AnnouncementBaseFile"
+      },
+      "title": "Repository Metadata File List",
+      "type": "array"
+    },
+    "raw_data_file_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementRawDataFile"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Raw Data File List"
+    },
+    "derived_data_file_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementDerivedDataFile"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Derived Data File List"
+    },
+    "supplementary_file_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementSupplementaryFile"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Supplementary File List"
+    },
+    "result_file_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AnnouncementResultFile"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result File List"
+    }
+  },
+  "required": [
+    "repository_identifier",
+    "$schema",
+    "profile_uri",
+    "mhd_metadata_file_url",
+    "dataset_url_list",
+    "title",
+    "description",
+    "submission_date",
+    "public_release_date",
+    "submitters",
+    "repository_metadata_file_list"
+  ],
+  "title": "AnnouncementLegacyProfile",
+  "type": "object"
+}

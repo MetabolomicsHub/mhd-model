@@ -35,7 +35,7 @@ def update_announcement_file_profiles() -> None:
             profile_path,
         )
 
-        profile_path = f"{base_dir}/announcement-v0.1.schema.ms-profile.json"
+        profile_path = f"{base_dir}/announcement-v0.1.ms-profile.json"
         with pathlib.Path(profile_path).open("w") as f:
             json.dump(AnnouncementMsProfile.model_json_schema(), f, indent=2)
         logger.info(
@@ -43,7 +43,7 @@ def update_announcement_file_profiles() -> None:
             profile_path,
         )
 
-        profile_path = f"{base_dir}/announcement-v0.1.schema.legacy-profile.json"
+        profile_path = f"{base_dir}/announcement-v0.1.legacy-profile.json"
         with pathlib.Path(profile_path).open("w") as f:
             json.dump(AnnouncementLegacyProfile.model_json_schema(), f, indent=2)
         logger.info(
