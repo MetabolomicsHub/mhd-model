@@ -14,6 +14,7 @@ from mhd_model.shared.model import (
 
 class AnnouncementBaseModel(MhdConfigModel):
     """Base model for announcement-related models."""
+
     pass
 
 
