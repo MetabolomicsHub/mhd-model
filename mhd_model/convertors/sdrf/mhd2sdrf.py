@@ -76,9 +76,7 @@ def get_characteristic_values(
             values.append(val)
         type_node = all_nodes_map.get(characteristic.characteristic_type_ref, None)
         key = CvTerm.model_validate(type_node.model_dump(by_alias=True))
-        announcement_characteristics.append(
-            CvTermKeyValue(key=key, values=values)
-        )
+        announcement_characteristics.append(CvTermKeyValue(key=key, values=values))
 
     return announcement_characteristics
 

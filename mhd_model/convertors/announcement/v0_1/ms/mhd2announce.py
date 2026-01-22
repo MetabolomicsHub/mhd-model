@@ -141,9 +141,7 @@ def update_study_factors(
         key = CvTerm.model_validate(type_node.model_dump(by_alias=True))
         if not announcement.study_factors:
             announcement.study_factors = []
-        announcement.study_factors.append(
-            CvTermKeyValue(key=key, values=values)
-        )
+        announcement.study_factors.append(CvTermKeyValue(key=key, values=values))
 
 
 def update_protocol_parameters(

@@ -1,3 +1,10 @@
+## v0.1.37 (2026-01-22)
+
+### Fix
+
+- build error
+- EDAM ontology accession errors and annoucement file validation failure
+
 ## v0.1.36 (2026-01-22)
 
 ### Fix
