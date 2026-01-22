@@ -66,7 +66,7 @@ The following properties are common for all  *MHD Cv Term Objects*.
 ## MHD Common Data Model Relationships
 
 A relationship is a link between MHD Domain Objects or MHD Cv Term Objects that describes the way in which the objects are related. Relationships can be represented using an MHD Relationship Object or a property (embedded relationship)  in a node. Property names that used as embedded relationship in a node end with <code>_ref</code> or <code>_refs</code> (for multiple), and their values are id's of target nodes.
- 
+
 *MHD Relationship Object* has the following properties.
 
 

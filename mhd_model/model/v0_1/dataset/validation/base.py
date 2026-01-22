@@ -374,7 +374,7 @@ class MhdModelValidator:
             if "id" not in node or node["id"] not in unique_items:
                 continue
             item = unique_items[node["id"]]
-            for prop in item.model_fields:
+            for prop in item.__class__.model_fields:
                 if prop.endswith("_ref"):
                     val = getattr(item, prop)
                     if not val:
