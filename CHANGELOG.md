@@ -1,3 +1,9 @@
+## v0.1.36 (2026-01-22)
+
+### Fix
+
+- CV term and format related validation rules will not be applied for legacy profile
+
 ## v0.1.35 (2026-01-22)
 
 ### Fix
