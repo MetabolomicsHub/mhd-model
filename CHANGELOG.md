@@ -1,3 +1,9 @@
+## v0.1.35 (2026-01-22)
+
+### Fix
+
+- announcement file validation updates
+
 ## v0.1.34 (2026-01-20)
 
 ### Fix
