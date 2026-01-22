@@ -420,7 +420,7 @@
                       "allowOnlyLeaf": false,
                       "allowParent": false,
                       "cvTerm": {
-                        "accession": "EDAM:1915",
+                        "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
                       },
@@ -476,7 +476,7 @@
                     "allowOnlyLeaf": false,
                     "allowParent": false,
                     "cvTerm": {
-                      "accession": "EDAM:1915",
+                      "accession": "EDAM:format_1915",
                       "name": "Format",
                       "source": "EDAM"
                     },
@@ -538,7 +538,7 @@
                       "allowOnlyLeaf": false,
                       "allowParent": false,
                       "cvTerm": {
-                        "accession": "EDAM:1915",
+                        "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
                       },
@@ -594,7 +594,7 @@
                     "allowOnlyLeaf": false,
                     "allowParent": false,
                     "cvTerm": {
-                      "accession": "EDAM:1915",
+                      "accession": "EDAM:format_1915",
                       "name": "Format",
                       "source": "EDAM"
                     },
@@ -656,7 +656,7 @@
                       "allowOnlyLeaf": false,
                       "allowParent": false,
                       "cvTerm": {
-                        "accession": "EDAM:1915",
+                        "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
                       },
@@ -712,7 +712,7 @@
                     "allowOnlyLeaf": false,
                     "allowParent": false,
                     "cvTerm": {
-                      "accession": "EDAM:1915",
+                      "accession": "EDAM:format_1915",
                       "name": "Format",
                       "source": "EDAM"
                     },
@@ -829,7 +829,7 @@
                       "allowOnlyLeaf": false,
                       "allowParent": false,
                       "cvTerm": {
-                        "accession": "EDAM:1915",
+                        "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
                       },
@@ -885,7 +885,7 @@
                     "allowOnlyLeaf": false,
                     "allowParent": false,
                     "cvTerm": {
-                      "accession": "EDAM:1915",
+                      "accession": "EDAM:format_1915",
                       "name": "Format",
                       "source": "EDAM"
                     },
@@ -974,7 +974,7 @@
                     "allowOnlyLeaf": false,
                     "allowParent": false,
                     "cvTerm": {
-                      "accession": "EDAM:1915",
+                      "accession": "EDAM:format_1915",
                       "name": "Format",
                       "source": "EDAM"
                     },
