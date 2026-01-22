@@ -309,7 +309,7 @@ RawDataFileFormat = Annotated[
                     ParentCvTerm(
                         cv_term=CvTerm(
                             source="EDAM",
-                            accession="EDAM:1915",
+                            accession="EDAM:format_1915",
                             name="Format",
                         ),
                         index_cv_terms=False,
@@ -337,7 +337,7 @@ CompressionFormat = Annotated[
                     ParentCvTerm(
                         cv_term=CvTerm(
                             source="EDAM",
-                            accession="EDAM:1915",
+                            accession="EDAM:format_1915",
                             name="Format",
                         ),
                         index_cv_terms=False,
@@ -357,7 +357,7 @@ MetadataFileFormat = Annotated[
                     ParentCvTerm(
                         cv_term=CvTerm(
                             source="EDAM",
-                            accession="EDAM:1915",
+                            accession="EDAM:format_1915",
                             name="Format",
                         ),
                         index_cv_terms=False,
@@ -378,7 +378,7 @@ ResultFileFormat = Annotated[
                     ParentCvTerm(
                         cv_term=CvTerm(
                             source="EDAM",
-                            accession="EDAM:1915",
+                            accession="EDAM:format_1915",
                             name="Format",
                         ),
                         index_cv_terms=False,
@@ -398,7 +398,7 @@ DerivedFileFormat = Annotated[
                     ParentCvTerm(
                         cv_term=CvTerm(
                             source="EDAM",
-                            accession="EDAM:1915",
+                            accession="EDAM:format_1915",
                             name="Format",
                         ),
                         index_cv_terms=False,
@@ -419,7 +419,7 @@ SupplementaryFileFormat = Annotated[
                     ParentCvTerm(
                         cv_term=CvTerm(
                             source="EDAM",
-                            accession="EDAM:1915",
+                            accession="EDAM:format_1915",
                             name="Format",
                         ),
                         index_cv_terms=False,
@@ -440,7 +440,7 @@ CompressionFormat = Annotated[
                     ParentCvTerm(
                         cv_term=CvTerm(
                             source="EDAM",
-                            accession="EDAM:1915",
+                            accession="EDAM:format_1915",
                             name="Format",
                         ),
                         index_cv_terms=False,

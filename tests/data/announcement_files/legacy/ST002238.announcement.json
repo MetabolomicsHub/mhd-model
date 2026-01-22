@@ -1,7 +1,7 @@
 {
   "repository_identifier": "ST002238",
   "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
-  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.legacy-profile.json",
   "cv_definitions": [
     {
       "label": "CHMO",
@@ -211,25 +211,45 @@
       "name": "ST002238_AN003651.txt",
       "url_list": [
         "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST002238&ANALYSIS_ID=AN003651"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3475",
+        "name": "TSV"
+      }
     },
     {
       "name": "ST002238_AN003652.txt",
       "url_list": [
         "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST002238&ANALYSIS_ID=AN003652"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3475",
+        "name": "TSV"
+      }
     },
     {
       "name": "ST002238_AN003653.txt",
       "url_list": [
         "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST002238&ANALYSIS_ID=AN003653"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3475",
+        "name": "TSV"
+      }
     },
     {
       "name": "ST002238_AN003654.txt",
       "url_list": [
         "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST002238&ANALYSIS_ID=AN003654"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3475",
+        "name": "TSV"
+      }
     }
   ],
   "raw_data_file_list": [
@@ -5228,7 +5248,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       }
     },
@@ -5239,7 +5259,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       }
     },
@@ -5250,7 +5270,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       }
     },
@@ -5261,7 +5281,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       }
     }

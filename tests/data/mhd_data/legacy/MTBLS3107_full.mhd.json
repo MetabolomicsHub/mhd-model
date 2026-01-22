@@ -4244,7 +4244,7 @@
         "id": "cv--descriptor--a78aa3c5-f92d-5be5-8404-1f7bcef5275b",
         "type": "descriptor",
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       },
       {
@@ -4258,7 +4258,7 @@
         "id": "cv--descriptor--57f479bf-0f8f-5c6e-8489-85144190ef6d",
         "type": "descriptor",
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       },
       {

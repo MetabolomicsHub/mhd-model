@@ -1424,7 +1424,7 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
                         ParentCvTerm(
                             cv_term=CvTerm(
                                 source="EDAM",
-                                accession="EDAM:1915",
+                                accession="EDAM:format_1915",
                                 name="Format",
                             ),
                             index_cv_terms=False,
@@ -1447,7 +1447,7 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
                         ParentCvTerm(
                             cv_term=CvTerm(
                                 source="EDAM",
-                                accession="EDAM:1915",
+                                accession="EDAM:format_1915",
                                 name="Format",
                             ),
                             index_cv_terms=False,

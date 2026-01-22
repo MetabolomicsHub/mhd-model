@@ -5166,7 +5166,7 @@
       "properties": {
         "type_": "descriptor",
         "source": "EDAM",
-        "accession": "EDAM:3244",
+        "accession": "EDAM:format_3244",
         "name": "mzML",
         "label": "mzML"
       }

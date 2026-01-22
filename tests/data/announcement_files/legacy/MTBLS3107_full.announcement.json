@@ -1,7 +1,7 @@
 {
   "repository_identifier": "MTBLS3107",
   "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
-  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.legacy-profile.json",
   "cv_definitions": [
     {
       "label": "BTO",
@@ -166,7 +166,7 @@
   ],
   "publications": [
     {
-      "title": "Fatal COVID-19 pulmonary disease involves xxx xxx.",
+      "title": "Fatal COVID-19 pulmonary disease involves ferroptosis.",
       "doi": "10.1038/s41467-024-48055-0",
       "pubmed_id": "38769293"
     }
@@ -874,28 +874,48 @@
       "url_list": [
         "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt",
         "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_negative_reverse-phase_metabolite_profiling.txt"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
     },
     {
       "name": "a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
       "url_list": [
         "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt",
         "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/a_MTBLS3107_LC-MS_positive_reverse-phase_metabolite_profiling.txt"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
     },
     {
       "name": "i_Investigation.txt",
       "url_list": [
         "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt",
         "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/i_Investigation.txt"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
     },
     {
       "name": "s_MTBLS3107.txt",
       "url_list": [
         "http://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt",
         "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS3107/s_MTBLS3107.txt"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:3687",
+        "name": "ISA-TAB"
+      }
     }
   ],
   "raw_data_file_list": [
@@ -906,7 +926,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -917,7 +937,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -928,7 +948,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -939,7 +959,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -950,7 +970,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -961,7 +981,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -972,7 +992,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -983,7 +1003,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -994,7 +1014,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1005,7 +1025,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1016,7 +1036,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1027,7 +1047,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1038,7 +1058,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1049,7 +1069,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1060,7 +1080,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1071,7 +1091,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1082,7 +1102,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1093,7 +1113,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1104,7 +1124,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1115,7 +1135,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1126,7 +1146,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1137,7 +1157,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1148,7 +1168,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1159,7 +1179,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1170,7 +1190,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1181,7 +1201,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1192,7 +1212,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1203,7 +1223,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1214,7 +1234,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1225,7 +1245,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1236,7 +1256,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1247,7 +1267,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1258,7 +1278,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1269,7 +1289,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1280,7 +1300,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1291,7 +1311,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1302,7 +1322,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1313,7 +1333,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1324,7 +1344,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1335,7 +1355,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1346,7 +1366,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1357,7 +1377,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1368,7 +1388,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1379,7 +1399,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1390,7 +1410,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1401,7 +1421,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1412,7 +1432,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1423,7 +1443,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1434,7 +1454,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1445,7 +1465,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1456,7 +1476,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1467,7 +1487,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1478,7 +1498,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1489,7 +1509,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1500,7 +1520,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1511,7 +1531,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1522,7 +1542,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1533,7 +1553,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1544,7 +1564,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1555,7 +1575,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1566,7 +1586,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1577,7 +1597,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1588,7 +1608,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1599,7 +1619,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1610,7 +1630,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1621,7 +1641,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1632,7 +1652,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1643,7 +1663,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1654,7 +1674,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1665,7 +1685,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1676,7 +1696,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1687,7 +1707,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1698,7 +1718,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1709,7 +1729,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1720,7 +1740,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1731,7 +1751,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1742,7 +1762,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1753,7 +1773,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1764,7 +1784,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1775,7 +1795,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1786,7 +1806,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1797,7 +1817,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1808,7 +1828,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     },
@@ -1819,7 +1839,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3858",
+        "accession": "EDAM:format_3858",
         "name": "Waters RAW"
       }
     }
@@ -1833,7 +1853,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       }
     },
@@ -1845,7 +1865,7 @@
       ],
       "format": {
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       }
     }

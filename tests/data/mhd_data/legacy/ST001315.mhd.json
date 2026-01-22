@@ -3801,7 +3801,7 @@
         "id": "cv--descriptor--a78aa3c5-f92d-5be5-8404-1f7bcef5275b",
         "type": "descriptor",
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV"
       },
       {

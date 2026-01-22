@@ -1456,7 +1456,7 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                         ParentCvTerm(
                             cv_term=CvTerm(
                                 source="EDAM",
-                                accession="EDAM:1915",
+                                accession="EDAM:format_1915",
                                 name="Format",
                             ),
                             index_cv_terms=False,
@@ -1479,7 +1479,7 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                         ParentCvTerm(
                             cv_term=CvTerm(
                                 source="EDAM",
-                                accession="EDAM:1915",
+                                accession="EDAM:format_1915",
                                 name="Format",
                             ),
                             index_cv_terms=False,

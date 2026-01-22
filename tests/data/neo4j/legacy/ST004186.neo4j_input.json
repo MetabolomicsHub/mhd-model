@@ -13212,7 +13212,7 @@
       "properties": {
         "type_": "descriptor",
         "source": "EDAM",
-        "accession": "EDAM:3475",
+        "accession": "EDAM:format_3475",
         "name": "TSV",
         "label": "TSV"
       }

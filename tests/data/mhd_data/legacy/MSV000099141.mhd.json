@@ -407,7 +407,7 @@
                 "id": "cv--descriptor--060cc9b2-684f-56da-b44f-497f5b526775",
                 "type": "descriptor",
                 "source": "EDAM",
-                "accession": "EDAM:3244",
+                "accession": "EDAM:format_3244",
                 "name": "mzML"
             },
             {

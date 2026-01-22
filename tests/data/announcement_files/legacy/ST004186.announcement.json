@@ -1,7 +1,7 @@
 {
   "repository_identifier": "ST004186",
   "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
-  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.legacy-profile.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.legacy-profile.json",
   "cv_definitions": [
     {
       "label": "CHMO",
@@ -1817,13 +1817,23 @@
       "name": "ST004186_AN006951.txt",
       "url_list": [
         "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004186&ANALYSIS_ID=AN006951"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3475",
+        "name": "TSV"
+      }
     },
     {
       "name": "ST004186_AN006952.txt",
       "url_list": [
         "https://www.metabolomicsworkbench.org/data/study_textformat_view.php?STUDY_ID=ST004186&ANALYSIS_ID=AN006952"
-      ]
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3475",
+        "name": "TSV"
+      }
     }
   ],
   "raw_data_file_list": [
