@@ -8,9 +8,6 @@ from mhd_model.model.definitions import (
     ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
     ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
 )
-from mhd_model.model.v0_1.announcement.profiles.base.fields import (
-    ExtendedCvTermKeyValue,
-)
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
     AnnouncementBaseProfile,
@@ -29,8 +26,6 @@ from mhd_model.model.v0_1.dataset.profiles.base import graph_nodes
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdModel,
     BaseMhdRelationship,
-    CvTerm,
-    CvTermValue,
     IdentifiableMhdModel,
 )
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
@@ -38,7 +33,7 @@ from mhd_model.model.v0_1.rules.cv_definitions import (
     CONTROLLED_CV_DEFINITIONS,
     OTHER_CONTROLLED_CV_DEFINITIONS,
 )
-from mhd_model.shared.model import CvDefinition
+from mhd_model.shared.model import CvDefinition, CvTerm, CvTermKeyValue, CvTermValue
 
 logger = logging.getLogger(__name__)
 
@@ -86,7 +81,7 @@ def update_characteristic_values(
         if not announcement.characteristic_values:
             announcement.characteristic_values = []
         announcement.characteristic_values.append(
-            ExtendedCvTermKeyValue(key=key, values=values)
+            CvTermKeyValue(key=key, values=values)
         )
 
 
@@ -147,7 +142,7 @@ def update_study_factors(
         if not announcement.study_factors:
             announcement.study_factors = []
         announcement.study_factors.append(
-            ExtendedCvTermKeyValue(key=key, values=values)
+            CvTermKeyValue(key=key, values=values)
         )
 
 
@@ -189,7 +184,7 @@ def update_protocol_parameters(
                 if vals:
                     def_type = all_nodes_map.get(definition.parameter_type_ref)
                     key = CvTerm.model_validate(def_type.model_dump(by_alias=True))
-                    param = ExtendedCvTermKeyValue(
+                    param = CvTermKeyValue(
                         key=key,
                         values=vals if vals else None,
                     )

@@ -29,8 +29,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
     IdentifiableMhdModel,
 )
-from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
-
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 from mhd_model.model.v0_1.rules.cv_definitions import (
     CONTROLLED_CV_DEFINITIONS,
@@ -43,7 +41,7 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
 )
-from mhd_model.shared.model import CvDefinition
+from mhd_model.shared.model import CvDefinition, CvTerm, CvTermKeyValue, CvTermValue
 
 logger = logging.getLogger(__name__)
 

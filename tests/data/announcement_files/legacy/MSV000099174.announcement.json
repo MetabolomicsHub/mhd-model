@@ -1,0 +1,162 @@
+{
+  "repository_identifier": "MSV000099174",
+  "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
+  "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.legacy-profile.json",
+  "cv_definitions": [
+    {
+      "label": "EDAM",
+      "name": "The ontology of data analysis and management",
+      "uri": "http://edamontology.org",
+      "prefix": "http://edamontology.org/format_"
+    },
+    {
+      "label": "NCBITAXON",
+      "name": "National Center for Biotechnology Information (NCBI) Organismal Classification",
+      "uri": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+    },
+    {
+      "label": "NCIT",
+      "name": "NCI Thesaurus OBO Edition",
+      "uri": "http://purl.obolibrary.org/obo/ncit.owl",
+      "prefix": "http://purl.obolibrary.org/obo/NCIT_"
+    }
+  ],
+  "mhd_metadata_file_url": "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/MSV000099174.mhd.json",
+  "dataset_url_list": [
+    "https://massive.ucsd.edu/????",
+    "ftp://massive-ftp.ucsd.edu/v10/MSV000099174"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "title": "Crude Extract vs Pectinase-digested Extract for Withania somnifera (leaf)",
+  "description": "Ethanolic extract of Withania somnifera (ashwagandha) leaves, digested in Pectinase (non-specific deglycosylation enzyme mixture), was compared to the undigested leaf extract. Replicates include n=3.",
+  "submission_date": "2025-09-18T16:35:29.333932Z",
+  "public_release_date": "2025-09-18T16:35:29.333935Z",
+  "submitters": [
+    {
+      "full_name": "Sarah Barr"
+    }
+  ],
+  "principal_investigators": [
+    {
+      "full_name": "Sarah Barr"
+    }
+  ],
+  "submitter_keywords": [
+    {
+      "source": "",
+      "accession": "",
+      "name": "Pectinase"
+    }
+  ],
+  "characteristic_values": [
+    {
+      "key": {
+        "source": "NCIT",
+        "accession": "NCIT:C14250",
+        "name": "organism"
+      },
+      "values": [
+        {
+          "source": "NCBITAXON",
+          "accession": "NCBITaxon:126910",
+          "name": "NCBITaxon:126910"
+        }
+      ]
+    }
+  ],
+  "protocols": [],
+  "repository_metadata_file_list": [
+    {
+      "name": "ccms_parameters/params.xml",
+      "url_list": [
+        "https://massive.ucsd.edu/ProteoSAFe/DownloadResultFile?file=f.MSV000099174%2Fccms_parameters%2Fparams.xml",
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/ccms_parameters/params.xml"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:2332",
+        "name": "XML"
+      }
+    }
+  ],
+  "raw_data_file_list": [
+    {
+      "name": "Ashwagandha Digest Transf/LE vs LP files/LE vs LP - mztab feature list for Massive upload.mzTab",
+      "url_list": [
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/peak/Ashwagandha%20Digest%20Transf/LE%20vs%20LP%20files/LE%20vs%20LP%20-%20mztab%20feature%20list%20for%20Massive%20upload.mzTab"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3244",
+        "name": "mzML"
+      }
+    },
+    {
+      "name": "Ashwagandha Digest Transf/mzml /SAB_2-26-15.mzML",
+      "url_list": [
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/peak/Ashwagandha%20Digest%20Transf/mzml%20/SAB_2-26-15.mzML"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3244",
+        "name": "mzML"
+      }
+    },
+    {
+      "name": "Ashwagandha Digest Transf/mzml /SAB_2-26-17.mzML",
+      "url_list": [
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/peak/Ashwagandha%20Digest%20Transf/mzml%20/SAB_2-26-17.mzML"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3244",
+        "name": "mzML"
+      }
+    },
+    {
+      "name": "Ashwagandha Digest Transf/mzml /SAB_2-26-18.mzML",
+      "url_list": [
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/peak/Ashwagandha%20Digest%20Transf/mzml%20/SAB_2-26-18.mzML"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3244",
+        "name": "mzML"
+      }
+    },
+    {
+      "name": "Ashwagandha Digest Transf/mzml /SAB_2-26-2.mzML",
+      "url_list": [
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/peak/Ashwagandha%20Digest%20Transf/mzml%20/SAB_2-26-2.mzML"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3244",
+        "name": "mzML"
+      }
+    },
+    {
+      "name": "Ashwagandha Digest Transf/mzml /SAB_2-26-3.mzML",
+      "url_list": [
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/peak/Ashwagandha%20Digest%20Transf/mzml%20/SAB_2-26-3.mzML"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3244",
+        "name": "mzML"
+      }
+    },
+    {
+      "name": "Ashwagandha Digest Transf/mzml /SAB_2-26-4.mzML",
+      "url_list": [
+        "ftp://massive-ftp.ucsd.edu/v10/MSV000099174/peak/Ashwagandha%20Digest%20Transf/mzml%20/SAB_2-26-4.mzML"
+      ],
+      "format": {
+        "source": "EDAM",
+        "accession": "EDAM:format_3244",
+        "name": "mzML"
+      }
+    }
+  ]
+}
