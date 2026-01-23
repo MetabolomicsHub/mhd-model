@@ -1,3 +1,9 @@
+## v0.1.38 (2026-01-23)
+
+### Fix
+
+- repository name is updated while converting announcement file
+
 ## v0.1.37 (2026-01-22)
 
 ### Fix
