@@ -344,6 +344,7 @@ def create_announcement_file(
             mhd_file_url = f"{ftp[0]}/{study.repository_identifier}.mhd.json"
 
     announcement = AnnouncementLegacyProfile(
+        repository_name=mhd_dataset.repository_name,
         mhd_identifier=study.mhd_identifier,
         repository_identifier=study.repository_identifier,
         schema_name=announcement_schema_name,
