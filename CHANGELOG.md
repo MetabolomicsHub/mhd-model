@@ -1,3 +1,9 @@
+## v0.1.40 (2026-01-24)
+
+### Fix
+
+- abstract convertor input updates
+
 ## v0.1.39 (2026-01-24)
 
 ### Fix
