@@ -1098,7 +1098,7 @@
       "title": "Repository Name"
     },
     "mhd_identifier": {
-      "pattern": "^MHD[A-Z][0-9]{6,8}$",
+      "pattern": "^MHD[A-Z]?[0-9]{6,8}$",
       "title": "MHD Identifier",
       "type": "string"
     },

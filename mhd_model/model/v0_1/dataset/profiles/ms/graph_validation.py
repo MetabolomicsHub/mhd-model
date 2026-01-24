@@ -968,7 +968,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 node_type="study",
                 node_property_name="mhd_identifier",
                 constraints=PropertyConstraint(
-                    required=True, min_length=8, pattern="^MHD[A-Z][0-9]{6,8}$"
+                    required=True, min_length=8, pattern="^MHD[A-Z]?[0-9]{6,8}$"
                 ),
             ),
             NodePropertyValidation(

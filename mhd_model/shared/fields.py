@@ -3,7 +3,7 @@ from typing import Annotated
 from pydantic import Field
 
 MhdIdentifier = Annotated[
-    str, Field(pattern=r"^MHD[A-Z][0-9]{6,8}$", title="MHD Identifier")
+    str, Field(pattern=r"^MHD[A-Z]?[0-9]{6,8}$", title="MHD Identifier")
 ]
 
 PubMedId = Annotated[str, Field(pattern=r"^[0-9]{1,20}$", title="PubMed Id")]
