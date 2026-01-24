@@ -8,7 +8,7 @@ class BaseMhdConvertor(abc.ABC):
     @abc.abstractmethod
     def convert(
         self,
-        reposipory_name: str,
+        repository_name: str,
         repository_identifier: str,
         mhd_identifier: None | str,
         mhd_output_folder_path: Path,
