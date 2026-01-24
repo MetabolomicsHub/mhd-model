@@ -49,3 +49,74 @@ mhd-cli
 
 
 ```
+
+## Example API Usage
+
+```python
+
+from mhd_model.mhd_client import MhdClient, MhdClientError
+
+mhd_webservice_base_url = "https://www.metabolomicshub.org/api/submission"
+api_key = "<your-api-key>"
+
+def get_new_mhd_accession_example():
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+
+    try:
+        accession = mhd_client.get_new_mhd_accession(
+            dataset_repository_identifier="MTBLS1234567", accession_type="mhd"
+        )
+        print("Accession: %s" % accession)
+    except MhdClientError as ex:
+        print("Error: %s" % ex.message)
+
+def get_new_test_mhd_accession_example():
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+
+    try:
+        accession = mhd_client.get_new_mhd_accession(
+            dataset_repository_identifier="MTBLS4444", accession_type="test"
+        )
+        print("Accession: %s" % accession)
+    except MhdClientError as ex:
+        print("Error: %s" % ex.message)
+
+
+def submit_legacy_dataset_example():
+    announcement_file_path = "MTBLS9876543.announcement.json"
+    dataset_repository_id = "MTBLS9876543"
+    announcement_reason="Initial revision"
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+
+    try:
+        revision: SubmittedRevision = mhd_client.submit_announcement_file(
+            dataset_repository_id=dataset_repository_id,
+            mhd_id=None,
+            file_path=announcement_file_path,
+            announcement_reason=announcement_reason,
+        )
+        print("Revision: %s" % revision.revision)
+    except MhdClientError as ex:
+        print("Error: %s" % ex.message)
+
+
+def submit_mhd_dataset_example():
+    announcement_file_path = "MTBLS9876543.announcement.json"
+    mhd_id = "MHD0000001"
+    dataset_repository_id = "MTBLS22222"
+    announcement_reason="Initial revision"
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+
+    try:
+        revision: SubmittedRevision = mhd_client.submit_announcement_file(
+            dataset_repository_id=dataset_repository_id,
+            mhd_id=mhd_id,
+            file_path=announcement_file_path,
+            announcement_reason=announcement_reason,
+        )
+        print("Revision: %s" % revision.revision)
+    except MhdClientError as ex:
+        print("Error: %s" % ex.message)
+
+
+```

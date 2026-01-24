@@ -1417,6 +1417,11 @@
               "accession": "OBI:0000623",
               "name": "NMR spectroscopy assay",
               "source": "OBI"
+            },
+            {
+              "accession": "OBI:0003741",
+              "name": "capillary electrophoresis mass spectrometry assay",
+              "source": "OBI"
             }
           ],
           "inputType": "list-or-item",

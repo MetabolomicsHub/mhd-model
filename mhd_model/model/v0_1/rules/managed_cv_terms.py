@@ -47,6 +47,11 @@ COMMON_ASSAY_TYPES = {
         accession="OBI:0000623",
         name="NMR spectroscopy assay",
     ),
+    "OBI:0003741": CvTerm(
+        source="OBI",
+        accession="OBI:0003741",
+        name="capillary electrophoresis mass spectrometry assay",
+    ),
     # CE-MS
     # DI-MS
     # FIA-MS
@@ -302,6 +307,16 @@ COMMON_PROTOCOLS = {
         accession="MS:1000058",
         name="flow injection analysis",
     ),
+    "MS:1000075": CvTerm(
+        source="MS",
+        accession="MS:1000075",
+        name="matrix-assisted laser desorption ionization",
+    ),
+    "MS:1000060": CvTerm(
+        source="MS",
+        accession="MS:1000060",
+        name="infusion",
+    ),
     ###### DI-MS ######
     # Direct infusion
     ###### SPE-IMS-MS ######
@@ -368,50 +383,9 @@ assay_technique_protocols = {
         "Data transformation",
         "Metabolite identification",
     ],
-    "MRImaging": [
-        "Sample collection",
-        "Magnetic resonance imaging",
-        "In vivo magnetic resonance spectroscopy",
-        "In vivo magnetic resonance assay",
-        "Data transformation",
-        "Metabolite identification",
-    ],
     "MS": [
         "Sample collection",
         "Extraction",
-        "Mass spectrometry",
-        "Data transformation",
-        "Metabolite identification",
-    ],
-    "MSImaging": [
-        "Sample collection",
-        "Preparation",
-        "Mass spectrometry",
-        "Histology",
-        "Data transformation",
-        "Metabolite identification",
-    ],
-    "NMR": [
-        "Sample collection",
-        "Extraction",
-        "NMR sample",
-        "NMR spectroscopy",
-        "NMR assay",
-        "Data transformation",
-        "Metabolite identification",
-    ],
-    "SPE-IMS-MS": [
-        "Sample collection",
-        "Extraction",
-        "Solid-Phase Extraction Ion Mobility Spectrometry",
-        "Mass spectrometry",
-        "Data transformation",
-        "Metabolite identification",
-    ],
-    "TD-GC-MS": [
-        "Sample collection",
-        "Extraction",
-        "Chromatography",
         "Mass spectrometry",
         "Data transformation",
         "Metabolite identification",
