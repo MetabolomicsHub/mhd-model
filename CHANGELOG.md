@@ -1,3 +1,9 @@
+## v0.1.39 (2026-01-24)
+
+### Fix
+
+- mhd accesion assignment and announcement file submission endpoints
+
 ## v0.1.38 (2026-01-23)
 
 ### Fix
