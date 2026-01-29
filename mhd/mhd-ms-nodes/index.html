@@ -1830,10 +1830,37 @@
 </tr>
 <tr>
 <td>metabolite</td>
+<td>measured-in</td>
+<td>measures</td>
+<td>raw-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
 <td>reported-in</td>
 <td>reports</td>
 <td>study</td>
 <td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>reported-in</td>
+<td>reports</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>reported-in</td>
+<td>reports</td>
+<td>result-file</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -1868,6 +1895,33 @@
 <td>identified-as</td>
 <td>metabolite</td>
 <td>1</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metadata-file</td>
+<td>reports</td>
+<td>reported-in</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>raw-data-file</td>
+<td>measures</td>
+<td>measured-in</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>result-file</td>
+<td>reports</td>
+<td>reported-in</td>
+<td>metabolite</td>
+<td>0</td>
 <td>N</td>
 <td></td>
 </tr>
@@ -2046,6 +2100,15 @@
 <td>N</td>
 <td></td>
 </tr>
+<tr>
+<td>metadata-file</td>
+<td>reports</td>
+<td>reported-in</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p><strong>Reverse Node Relationships</strong></p>
@@ -2075,6 +2138,15 @@
 <td>descriptor</td>
 <td>describes</td>
 <td>described-as</td>
+<td>metadata-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>reported-in</td>
+<td>reports</td>
 <td>metadata-file</td>
 <td>0</td>
 <td>N</td>
@@ -2548,6 +2620,12 @@
 <td>URL list related to the object</td>
 </tr>
 <tr>
+<td><strong>repository_identifier</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>full_name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
@@ -2791,6 +2869,12 @@
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td>Minimum length: <code>25</code><br/>Validation Rule:<br/> <code>Min Length: 25, Required</code></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
@@ -3468,6 +3552,15 @@
 </tr>
 <tr>
 <td>raw-data-file</td>
+<td>measures</td>
+<td>measured-in</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>raw-data-file</td>
 <td>referenced-in</td>
 <td>references</td>
 <td>metadata-file</td>
@@ -3495,6 +3588,15 @@
 <td>descriptor</td>
 <td>describes</td>
 <td>described-as</td>
+<td>raw-data-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>measured-in</td>
+<td>measures</td>
 <td>raw-data-file</td>
 <td>0</td>
 <td>N</td>
@@ -3648,6 +3750,15 @@
 <td>N</td>
 <td></td>
 </tr>
+<tr>
+<td>result-file</td>
+<td>reports</td>
+<td>reported-in</td>
+<td>metabolite</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p><strong>Reverse Node Relationships</strong></p>
@@ -3668,6 +3779,15 @@
 <td>descriptor</td>
 <td>describes</td>
 <td>described-as</td>
+<td>result-file</td>
+<td>0</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>metabolite</td>
+<td>reported-in</td>
+<td>reports</td>
 <td>result-file</td>
 <td>0</td>
 <td>N</td>
@@ -6686,6 +6806,9 @@
   Metabolite[Metabolite] ==&gt;|identified-as| Metabolite_Identifier[Metabolite Identifier];
   Metabolite[Metabolite] ==&gt;|described-as| Descriptor[Descriptor];
   Metabolite[Metabolite] ==&gt;|reported-in| Study[Study];
+  Metabolite[Metabolite] ==&gt;|reported-in| Metadata_File[Metadata File];
+  Metabolite[Metabolite] ==&gt;|reported-in| Result_File[Result File];
+  Metabolite[Metabolite] ==&gt;|measured-in| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==&gt;|described-as| Descriptor[Descriptor];
   Metadata_File[Metadata File] ==&gt;|referenced-in| Metadata_File[Metadata File];
   Metadata_File[Metadata File] ==&gt;|describes| Study[Study];
@@ -6693,6 +6816,7 @@
   Metadata_File[Metadata File] ==&gt;|references| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==&gt;|references| Result_File[Result File];
   Metadata_File[Metadata File] ==&gt;|references| Supplementary_File[Supplementary File];
+  Metadata_File[Metadata File] ==&gt;|reports| Metabolite[Metabolite];
   Organization[Organization] ==&gt;|funds| Project[Project];
   Organization[Organization] ==&gt;|funds| Study[Study];
   Organization[Organization] ==&gt;|manages| Project[Project];
@@ -6728,9 +6852,11 @@
   Raw_Data_File[Raw Data File] ==&gt;|described-as| Descriptor[Descriptor];
   Raw_Data_File[Raw Data File] ==&gt;|created-in| Study[Study];
   Raw_Data_File[Raw Data File] ==&gt;|referenced-in| Metadata_File[Metadata File];
+  Raw_Data_File[Raw Data File] ==&gt;|measures| Metabolite[Metabolite];
   Result_File[Result File] ==&gt;|described-as| Descriptor[Descriptor];
   Result_File[Result File] ==&gt;|created-in| Study[Study];
   Result_File[Result File] ==&gt;|referenced-in| Metadata_File[Metadata File];
+  Result_File[Result File] ==&gt;|reports| Metabolite[Metabolite];
   Sample[Sample] ==&gt;|described-as| Descriptor[Descriptor];
   Sample[Sample] ==&gt;|has-factor-value| Factor_Value[Factor Value];
   Sample[Sample] ==&gt;|used-in| Study[Study];
