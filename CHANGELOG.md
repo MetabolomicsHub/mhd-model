@@ -1,3 +1,9 @@
+## v0.1.41 (2026-01-29)
+
+### Fix
+
+- mhd model update add identifier for project and add additional relationships for metabolite
+
 ## v0.1.40 (2026-01-24)
 
 ### Fix
