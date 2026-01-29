@@ -1650,6 +1650,18 @@
           "default": null,
           "title": "Label"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repository Identifier"
+        },
         "full_name": {
           "anyOf": [
             {
@@ -1860,6 +1872,18 @@
           ],
           "default": null,
           "title": "Title"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repository Identifier"
         },
         "description": {
           "anyOf": [

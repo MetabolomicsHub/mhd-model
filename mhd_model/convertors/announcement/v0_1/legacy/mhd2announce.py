@@ -339,9 +339,9 @@ def create_announcement_file(
     characteristic_values = get_characteristic_values(all_nodes_map, relationships_map)
 
     if not mhd_file_url:
-        ftp = [str(x) for x in study.dataset_url_list if str(x).startswith("ftp://")]
-        if ftp:
-            mhd_file_url = f"{ftp[0]}/{study.repository_identifier}.mhd.json"
+        http = [str(x) for x in study.dataset_url_list if str(x).startswith("http://")]
+        if http:
+            mhd_file_url = f"{http[0]}/{study.repository_identifier}.mhd.json"
 
     announcement = AnnouncementLegacyProfile(
         repository_name=mhd_dataset.repository_name,

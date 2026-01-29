@@ -220,7 +220,10 @@ Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum:
 |------|------------|------------|------|---|---|-----------|
 |metabolite|described-as|describes|descriptor|0|N||
 |metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent CV Term: No<br>Allow only leaf CV Terms: No</code><br>-----|
+|metabolite|measured-in|measures|raw-data-file|0|N||
 |metabolite|reported-in|reports|study|1|N||
+|metabolite|reported-in|reports|metadata-file|0|N||
+|metabolite|reported-in|reports|result-file|0|N||
 
 
 **Reverse Node Relationships**
@@ -229,6 +232,9 @@ Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum:
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|metabolite|0|N||
 |metabolite-identifier|reported-identifier-of|identified-as|metabolite|1|N||
+|metadata-file|reports|reported-in|metabolite|0|N||
+|raw-data-file|measures|measured-in|metabolite|0|N||
+|result-file|reports|reported-in|metabolite|0|N||
 |study|reports|reported-in|metabolite|0|N||
 
 ### Metadata File
@@ -264,6 +270,7 @@ Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxim
 |metadata-file|references|referenced-in|raw-data-file|0|N||
 |metadata-file|references|referenced-in|result-file|0|N||
 |metadata-file|references|referenced-in|supplementary-file|0|N||
+|metadata-file|reports|reported-in|metabolite|0|N||
 
 
 **Reverse Node Relationships**
@@ -272,6 +279,7 @@ Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxim
 |------|------------|------------|------|---|---|-----------|
 |derived-data-file|referenced-in|references|metadata-file|0|N||
 |descriptor|describes|described-as|metadata-file|0|N||
+|metabolite|reported-in|reports|metadata-file|0|N||
 |metadata-file|referenced-in|references|metadata-file|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
@@ -374,6 +382,7 @@ Person node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|optional|<code>*str*<code>||
 |**full_name**|**required**|<code>*str*<code>|Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code>|
 |**email_list**|optional|<code>*list[EmailStr]*<code>|Email addresses of person|
@@ -421,6 +430,7 @@ Project node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N 
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
+|**repository_identifier**|optional|<code>*str*<code>||
 |**description**|optional|<code>*str*<code>||
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>||
 |**doi**|optional|<code>*str*<code>||
@@ -562,6 +572,7 @@ Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxim
 |------|------------|------------|------|---|---|-----------|
 |raw-data-file|created-in|has-raw-data-file|study|1|N||
 |raw-data-file|described-as|describes|descriptor|0|N||
+|raw-data-file|measures|measured-in|metabolite|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 
 
@@ -570,6 +581,7 @@ Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxim
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|raw-data-file|0|N||
+|metabolite|measured-in|measures|raw-data-file|0|N||
 |metadata-file|references|referenced-in|raw-data-file|0|N||
 |study|has-raw-data-file|created-in|raw-data-file|0|N||
 
@@ -602,6 +614,7 @@ Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum
 |result-file|created-in|has-result-file|study|1|N||
 |result-file|described-as|describes|descriptor|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
+|result-file|reports|reported-in|metabolite|0|N||
 
 
 **Reverse Node Relationships**
@@ -609,6 +622,7 @@ Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|result-file|0|N||
+|metabolite|reported-in|reports|result-file|0|N||
 |metadata-file|references|referenced-in|result-file|0|N||
 |study|has-result-file|created-in|result-file|0|N||
 
@@ -1289,6 +1303,9 @@ graph LR
   Metabolite[Metabolite] ==>|identified-as| Metabolite_Identifier[Metabolite Identifier];
   Metabolite[Metabolite] ==>|described-as| Descriptor[Descriptor];
   Metabolite[Metabolite] ==>|reported-in| Study[Study];
+  Metabolite[Metabolite] ==>|reported-in| Metadata_File[Metadata File];
+  Metabolite[Metabolite] ==>|reported-in| Result_File[Result File];
+  Metabolite[Metabolite] ==>|measured-in| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==>|described-as| Descriptor[Descriptor];
   Metadata_File[Metadata File] ==>|referenced-in| Metadata_File[Metadata File];
   Metadata_File[Metadata File] ==>|describes| Study[Study];
@@ -1296,6 +1313,7 @@ graph LR
   Metadata_File[Metadata File] ==>|references| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==>|references| Result_File[Result File];
   Metadata_File[Metadata File] ==>|references| Supplementary_File[Supplementary File];
+  Metadata_File[Metadata File] ==>|reports| Metabolite[Metabolite];
   Organization[Organization] ==>|funds| Project[Project];
   Organization[Organization] ==>|funds| Study[Study];
   Organization[Organization] ==>|manages| Project[Project];
@@ -1331,9 +1349,11 @@ graph LR
   Raw_Data_File[Raw Data File] ==>|described-as| Descriptor[Descriptor];
   Raw_Data_File[Raw Data File] ==>|created-in| Study[Study];
   Raw_Data_File[Raw Data File] ==>|referenced-in| Metadata_File[Metadata File];
+  Raw_Data_File[Raw Data File] ==>|measures| Metabolite[Metabolite];
   Result_File[Result File] ==>|described-as| Descriptor[Descriptor];
   Result_File[Result File] ==>|created-in| Study[Study];
   Result_File[Result File] ==>|referenced-in| Metadata_File[Metadata File];
+  Result_File[Result File] ==>|reports| Metabolite[Metabolite];
   Sample[Sample] ==>|described-as| Descriptor[Descriptor];
   Sample[Sample] ==>|has-factor-value| Factor_Value[Factor Value];
   Sample[Sample] ==>|used-in| Study[Study];

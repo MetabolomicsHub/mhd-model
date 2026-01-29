@@ -32,6 +32,7 @@ class Person(BaseLabeledMhdModel):
             description="The value of this property MUST be 'person'",
         ),
     ] = "person"
+    repository_identifier: Annotated[None | str, Field()] = None
     full_name: Annotated[
         None | str, Field(min_length=2, description="Full name of person")
     ] = None
@@ -91,6 +92,7 @@ class Project(BaseLabeledMhdModel):
         ),
     ] = "project"
     title: Annotated[None | str, Field(min_length=2)] = None
+    repository_identifier: Annotated[None | str, Field()] = None
     description: Annotated[None | str, Field()] = None
     grant_identifier_list: Annotated[None | list[GrantId], Field()] = None
     doi: Annotated[None | DOI, Field()] = None
