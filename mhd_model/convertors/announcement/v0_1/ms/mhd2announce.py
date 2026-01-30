@@ -261,8 +261,12 @@ def create_announcement_file(
     announcement_profile_uri=ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
 ):
     mhd_dataset = MhDatasetMsProfile.model_validate(mhd_file)
-    nodes_map = {x.id_: x for x in mhd_dataset.graph.nodes}
-    relationships_map = {x.id_: x for x in mhd_dataset.graph.relationships}
+    nodes_map: dict[str, IdentifiableMhdModel] = {
+        x.id_: x for x in mhd_dataset.graph.nodes
+    }
+    relationships_map: dict[str, BaseMhdRelationship] = {
+        x.id_: x for x in mhd_dataset.graph.relationships
+    }
 
     all_nodes_map: dict[str, BaseMhdModel] = {}
     type_map: dict[str, dict[str, BaseMhdModel]] = {}
@@ -279,7 +283,7 @@ def create_announcement_file(
         relationship_name_map[rel.relationship_name][rel.id_] = rel
 
     if "study" not in type_map:
-        logger.info("Study not found for in input file")
+        logger.error("Study not found for in the input file")
         return
     study: graph_nodes.Study = list(type_map["study"].values())[0]
 
@@ -293,6 +297,7 @@ def create_announcement_file(
             type_map["publication"].values()
         )
         for node in graph_publications:
+            relationships_map.get()
             item = AnnouncementPublication.model_validate(
                 node.model_dump(by_alias=True)
             )

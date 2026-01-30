@@ -349,6 +349,8 @@ def create_announcement_file(
         repository_identifier=study.repository_identifier,
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
+        revision=mhd_dataset.repository_revision,
+        revision_datetime=mhd_dataset.repository_revision_datetime,
         mhd_metadata_file_url=AnyUrl(mhd_file_url),
         dataset_url_list=dataset_url_list,
         license=study.license,
