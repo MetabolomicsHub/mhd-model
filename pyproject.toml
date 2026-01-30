@@ -14,13 +14,14 @@ dependencies = [
     "httpx>=0.28.1",
     "jsonpath-ng>=1.7.0",
     "jsonschema>=4.24.0",
-    "mkdocs-mermaid2-plugin>=1.2.2",
+    "pre-commit>=4.5.1",
     "pydantic>=2.11.7",
     "python-dateutil>=2.9.0.post0",
     "pytz>=2025.2",
     "pyyaml>=6.0.2",
     "reachable>=0.7.0",
 ]
+
 
 [build-system]
 requires = ["setuptools>=61.0"]
@@ -50,14 +51,20 @@ mhd-cli = "mhd_model.commands.cli:cli"
 dev = [
     "commitizen>=4.8.3",
     "import-linter>=2.3",
-    "mkdocs-material>=9.5.49",
-    "pre-commit>=4.3.0",
-    "ruff>=0.13.2",
+    "mkdocs-material>=9.7.1",
+    "pre-commit>=4.5.1",
+    "ruff>=0.14.14",
 ]
 test = [
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
 ]
+docs = [
+    "mkdocs-mermaid2-plugin>=1.2.2",
+]
+
+[tool.uv]
+default-groups = []
 
 [tool.commitizen]
 name = "cz_conventional_commits"

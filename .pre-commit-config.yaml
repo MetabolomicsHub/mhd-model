@@ -4,7 +4,7 @@ repos:
   hooks:
     - id: validate-pyproject
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v5.0.0
+  rev: v6.0.0
   hooks:
   - id: check-added-large-files
     args: [ "--maxkb=2000" ]
@@ -25,12 +25,12 @@ repos:
     args: [ "--create", "--track", "--python-folders", "mhd_model" ]
 - repo: https://github.com/astral-sh/uv-pre-commit
   # uv version.
-  rev: 0.7.14
+  rev: 0.9.28
   hooks:
     - id: uv-lock
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.12.0
+  rev: v0.14.14
   hooks:
   - id: ruff-check
     args:
@@ -39,15 +39,15 @@ repos:
     - I
   - id: ruff-format
 - repo: https://github.com/seddonym/import-linter.git
-  rev: "v2.3"
+  rev: "v2.9"
   hooks:
   - id: import-linter
     name: architecture and package structure check (lint-importer)
-    additional_dependencies: [ dependency_injector ]
+    # additional_dependencies: [ dependency_injector ]
     args: [ "--no-cache" ]
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v4.8.3
+  rev: v4.12.1
   hooks:
     - id: commitizen
       stages: [ commit-msg ]
