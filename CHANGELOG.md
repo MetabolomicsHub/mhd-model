@@ -1,3 +1,9 @@
+## v0.1.42 (2026-01-30)
+
+### Fix
+
+- missing repository revision in mhd announcement file
+
 ## v0.1.41 (2026-01-29)
 
 ### Fix
