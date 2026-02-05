@@ -15,8 +15,8 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_CHARACTERISTIC_DEFINITIONS,
-    COMMON_MEASUREMENT_TYPES,
-    COMMON_OMICS_TYPES,
+    # COMMON_MEASUREMENT_TYPES,
+    # COMMON_OMICS_TYPES,
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
 )
@@ -1555,20 +1555,20 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                     )
                 ],
             ),
-            CvTermValidation(
-                node_type="descriptor",
-                validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_MEASUREMENT_TYPES.values())
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Measurement Type",
-                        relationship_name="[embedded].measurement_type_ref",
-                        start_node_type="assay",
-                        expression="measurement_type_ref",
-                    )
-                ],
-            ),
+            # CvTermValidation(
+            #     node_type="descriptor",
+            #     validation=AllowedCvTerms(
+            #         cv_terms=list(COMMON_MEASUREMENT_TYPES.values())
+            #     ),
+            #     condition=[
+            #         FilterCondition(
+            #             name="Measurement Type",
+            #             relationship_name="[embedded].measurement_type_ref",
+            #             start_node_type="assay",
+            #             expression="measurement_type_ref",
+            #         )
+            #     ],
+            # ),
             CvTermValidation(
                 node_type="descriptor",
                 validation=AllowedCvTerms(
@@ -1583,18 +1583,18 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                     )
                 ],
             ),
-            CvTermValidation(
-                node_type="descriptor",
-                validation=AllowedCvTerms(cv_terms=list(COMMON_OMICS_TYPES.values())),
-                condition=[
-                    FilterCondition(
-                        name="Omics Type",
-                        relationship_name="[embedded].omics_type_ref",
-                        start_node_type="assay",
-                        expression="omics_type_ref",
-                    )
-                ],
-            ),
+            # CvTermValidation(
+            #     node_type="descriptor",
+            #     validation=AllowedCvTerms(cv_terms=list(COMMON_OMICS_TYPES.values())),
+            #     condition=[
+            #         FilterCondition(
+            #             name="Omics Type",
+            #             relationship_name="[embedded].omics_type_ref",
+            #             start_node_type="assay",
+            #             expression="omics_type_ref",
+            #         )
+            #     ],
+            # ),
         ],
         relationships=[
             RelationshipValidation(

@@ -27,7 +27,10 @@ logger = logging.getLogger(__name__)
 
 def validate_mhd_file(file_path: str):
     json_data = load_json(file_path)
+    return validate_mhd_file_json(json_data)
 
+
+def validate_mhd_file_json(json_data: dict[str, Any]):
     mhd_validator = MhdFileValidator()
     errors = mhd_validator.validate(json_data)
 
