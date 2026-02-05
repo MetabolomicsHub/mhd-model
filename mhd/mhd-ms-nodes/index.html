@@ -1288,7 +1288,7 @@
 <td><strong>measurement_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [MSIO, MSIO:0000100, targeted metabolite profiling],<br/>* [MSIO, MSIO:0000101, untargeted metabolite profiling]</code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [MS, MS:1003905, targeted analysis],<br/>* [MS, MS:1003904, untargeted analysis],<br/>* [MS, MS:1003904, untargeted analysis],<br/>* [MS, MS:1003905, targeted analysis],<br/>* [MS, MS:1003906, semi-targeted analysis]</code></td>
 </tr>
 <tr>
 <td><strong>omics_type_ref</strong></td>
@@ -1481,7 +1481,7 @@
 <td>characteristic-value</td>
 <td>0</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong><br/><br/>Target Validation Rules:<br/><code>-----<br/><strong>Conditional - (Organism)</strong><br/>[Source characteristic_type_ref.accession = NCIT:C14250]<br/>Ontology Sources:ENVO, NCBITAXON<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX<br/>-----<br/><strong>Conditional - (Organism part)</strong><br/>[Source characteristic_type_ref.accession = NCIT:C103199]<br/>Ontology Sources:UBERON, BTO, NCIT, MSIO<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX<br/>-----<br/><strong>Conditional - (Disease)</strong><br/>[Source characteristic_type_ref.accession = EFO:0000408]<br/>Ontology Sources:MONDO, MP, SNOMED<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX<br/>-----<br/><strong>Conditional - (Cell type)</strong><br/>[Source characteristic_type_ref.accession = EFO:0000324]<br/>Ontology Sources:CL, CLO<br/>Exceptions:<br/>Allowed Missing CV Terms:<br/>* [NCIT, NCIT:C48660, Not Applicable]<br/>Allowed Other Sources: wikidata, ILX</code><br/>-----</td>
+<td><strong>Required min count in the dataset: 2.</strong><br/><br/>Target Validation Rules:<br/><code>-----<br/><strong>Conditional - (Organism)</strong><br/>[Source characteristic_type_ref.accession = NCIT:C14250]<br/>Ontology Sources:NCBITAXON, ENVO, CHEBI<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX<br/>-----<br/><strong>Conditional - (Organism part)</strong><br/>[Source characteristic_type_ref.accession = NCIT:C103199]<br/>Ontology Sources:UBERON, BTO, NCIT, CHEBI<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX<br/>-----<br/><strong>Conditional - (Disease)</strong><br/>[Source characteristic_type_ref.accession = EFO:0000408]<br/>Ontology Sources:MONDO, MP, SNOMED<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX<br/>-----<br/><strong>Conditional - (Cell type)</strong><br/>[Source characteristic_type_ref.accession = EFO:0000324]<br/>Ontology Sources:CL, CLO<br/>Exceptions:<br/>Allowed Missing CV Terms:<br/>* [NCIT, NCIT:C48660, Not Applicable]<br/>Allowed Other Sources: wikidata, ILX</code><br/>-----</td>
 </tr>
 <tr>
 <td>characteristic-definition</td>

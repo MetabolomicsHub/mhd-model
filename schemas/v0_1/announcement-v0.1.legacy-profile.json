@@ -590,6 +590,10 @@
               "type": "number"
             },
             {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
               "type": "null"
             }
           ],
@@ -642,6 +646,10 @@
             },
             {
               "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
             },
             {
               "type": "null"
@@ -730,7 +738,7 @@
           "default": null,
           "title": "Full Name"
         },
-        "emails": {
+        "email_list": {
           "anyOf": [
             {
               "items": {
@@ -744,7 +752,7 @@
             }
           ],
           "default": null,
-          "title": "Emails"
+          "title": "Email List"
         },
         "orcid": {
           "anyOf": [
@@ -758,7 +766,7 @@
           "default": null,
           "title": "ORCID"
         },
-        "affiliations": {
+        "affiliation_list": {
           "anyOf": [
             {
               "items": {
@@ -772,7 +780,7 @@
             }
           ],
           "default": null,
-          "title": "Affiliations"
+          "title": "Affiliation List"
         }
       },
       "title": "AnnouncementContact",
@@ -785,7 +793,7 @@
           "title": "Full Name",
           "type": "string"
         },
-        "emails": {
+        "email_list": {
           "anyOf": [
             {
               "items": {
@@ -799,7 +807,7 @@
             }
           ],
           "default": null,
-          "title": "Emails"
+          "title": "Email List"
         },
         "orcid": {
           "anyOf": [
@@ -813,7 +821,7 @@
           "default": null,
           "title": "ORCID"
         },
-        "affiliations": {
+        "affiliation_list": {
           "anyOf": [
             {
               "items": {
@@ -827,7 +835,7 @@
             }
           ],
           "default": null,
-          "title": "Affiliations"
+          "title": "Affiliation List"
         }
       },
       "required": [

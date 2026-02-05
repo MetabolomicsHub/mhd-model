@@ -236,6 +236,10 @@
               "type": "number"
             },
             {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
               "type": "null"
             }
           ],
@@ -334,14 +338,14 @@
           "title": "Full Name",
           "type": "string"
         },
-        "emails": {
+        "email_list": {
           "default": null,
           "items": {
             "format": "email",
             "type": "string"
           },
           "minItems": 1,
-          "title": "Emails",
+          "title": "Email List",
           "type": "array"
         },
         "orcid": {
@@ -367,13 +371,13 @@
           "default": null,
           "title": "ORCID"
         },
-        "affiliations": {
+        "affiliation_list": {
           "default": null,
           "items": {
             "type": "string"
           },
           "minItems": 1,
-          "title": "Affiliations",
+          "title": "Affiliation List",
           "type": "array"
         }
       },
@@ -1013,6 +1017,10 @@
               "type": "number"
             },
             {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
               "type": "null"
             }
           ],
@@ -1368,14 +1376,29 @@
           ],
           "cvTerms": [
             {
-              "accession": "MSIO:0000100",
-              "name": "targeted metabolite profiling",
-              "source": "MSIO"
+              "accession": "MS:1003905",
+              "name": "targeted analysis",
+              "source": "MS"
             },
             {
-              "accession": "MSIO:0000101",
-              "name": "untargeted metabolite profiling",
-              "source": "MSIO"
+              "accession": "MS:1003904",
+              "name": "untargeted analysis",
+              "source": "MS"
+            },
+            {
+              "accession": "MS:1003904",
+              "name": "untargeted analysis",
+              "source": "MS"
+            },
+            {
+              "accession": "MS:1003905",
+              "name": "targeted analysis",
+              "source": "MS"
+            },
+            {
+              "accession": "MS:1003906",
+              "name": "semi-targeted analysis",
+              "source": "MS"
             }
           ],
           "inputType": "list-or-item",
@@ -1673,8 +1696,9 @@
                 "name": "allowed-cv-list",
                 "negate": false,
                 "sourceNames": [
+                  "NCBITAXON",
                   "ENVO",
-                  "NCBITAXON"
+                  "CHEBI"
                 ]
               }
             ],
@@ -1708,7 +1732,7 @@
                   "UBERON",
                   "BTO",
                   "NCIT",
-                  "MSIO"
+                  "CHEBI"
                 ]
               }
             ],
