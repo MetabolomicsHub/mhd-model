@@ -1,3 +1,9 @@
+## v0.1.46 (2026-02-05)
+
+### Fix
+
+- measurement type and omics type validation for legacy datasets are removed
+
 ## v0.1.45 (2026-02-05)
 
 ### Fix
