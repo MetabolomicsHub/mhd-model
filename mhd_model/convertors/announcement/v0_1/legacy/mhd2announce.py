@@ -36,7 +36,7 @@ from mhd_model.model.v0_1.rules.cv_definitions import (
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
-    COMMON_MEASUREMENT_TYPES,
+    COMMON_MEASUREMENT_TYPES_MAP,
     COMMON_OMICS_TYPES,
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
@@ -339,7 +339,11 @@ def create_announcement_file(
     characteristic_values = get_characteristic_values(all_nodes_map, relationships_map)
 
     if not mhd_file_url:
-        http = [str(x) for x in study.dataset_url_list if str(x).startswith("http://")]
+        http = [
+            str(x)
+            for x in study.dataset_url_list
+            if str(x).startswith("http://") or str(x).startswith("https://")
+        ]
         if http:
             mhd_file_url = f"{http[0]}/{study.repository_identifier}.mhd.json"
 
@@ -481,7 +485,7 @@ def get_main_assay_descriptors(
                 item.technology_type_ref
             ]
             if measurement_type.accession not in measurement_types:
-                term = COMMON_MEASUREMENT_TYPES.get(measurement_type.accession)
+                term = COMMON_MEASUREMENT_TYPES_MAP.get(measurement_type.accession)
                 if not term:
                     term = CvTerm.model_validate(
                         technology_type.model_dump(by_alias=True)
@@ -490,9 +494,13 @@ def get_main_assay_descriptors(
 
     for keyword in keywords:
         if "untargetted" in keyword.name.lower():
-            measurement_types["MSIO:0000101"] = COMMON_MEASUREMENT_TYPES["MSIO:0000101"]
+            measurement_types["MSIO:0000101"] = COMMON_MEASUREMENT_TYPES_MAP[
+                "MSIO:0000101"
+            ]
         elif "targetted" in keyword.name.lower():
-            measurement_types["MSIO:0000100"] = COMMON_MEASUREMENT_TYPES["MSIO:0000101"]
+            measurement_types["MSIO:0000100"] = COMMON_MEASUREMENT_TYPES_MAP[
+                "MSIO:0000100"
+            ]
         for accession, value in COMMON_OMICS_TYPES.items():
             if accession.lower() == keyword.name.lower():
                 omics_types[accession] = value
@@ -520,9 +528,26 @@ def get_submitter_and_pi(
         for item in submitter_links:
             if item.source_ref in type_map["person"]:
                 submitter = type_map["person"][item.source_ref]
-                submitters.append(
-                    AnnouncementContact.model_validate(submitter, from_attributes=True)
+                contact = AnnouncementContact.model_validate(
+                    submitter, from_attributes=True
                 )
+                affiliation_list = []
+                if "affiliated-with" in relationship_name_map:
+                    for ref in relationship_name_map["affiliated-with"]:
+                        relationship = relationship_name_map["affiliated-with"][ref]
+                        submitter_ref = relationship.source_ref
+                        if submitter_ref == submitter.id_:
+                            organization = type_map["organization"].get(
+                                relationship.target_ref
+                            )
+                            if organization:
+                                affiliation_list.append(organization.name)
+                if affiliation_list:
+                    contact.affiliation_list = affiliation_list
+                if contact.email_list:
+                    contact.email_list = [x.lower() for x in contact.email_list]
+
+                submitters.append(contact)
 
         if "principal-investigator-of" in relationship_name_map:
             pi_links: list[BaseMhdRelationship] = list(
@@ -531,9 +556,25 @@ def get_submitter_and_pi(
             for item in pi_links:
                 if item.source_ref in type_map["person"]:
                     pi = type_map["person"][item.source_ref]
-                    principal_investigators.append(
-                        AnnouncementContact.model_validate(pi, from_attributes=True)
+                    contact = AnnouncementContact.model_validate(
+                        pi, from_attributes=True
                     )
+                affiliation_list = []
+                if "affiliated-with" in relationship_name_map:
+                    for ref in relationship_name_map["affiliated-with"]:
+                        relationship = relationship_name_map["affiliated-with"][ref]
+                        submitter_ref = relationship.source_ref
+                        if submitter_ref == submitter.id_:
+                            organization = type_map["organization"].get(
+                                relationship.target_ref
+                            )
+                            if organization:
+                                affiliation_list.append(organization.name)
+                if affiliation_list:
+                    contact.affiliation_list = affiliation_list
+                    if contact.email_list:
+                        contact.email_list = [x.lower() for x in contact.email_list]
+                    principal_investigators.append(contact)
 
     return submitters, principal_investigators
 

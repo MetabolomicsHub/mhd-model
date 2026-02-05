@@ -11,7 +11,7 @@ def search_ontology_definition(ontology_name: str) -> None | CvDefinition:
     if not ontology_name:
         return None
     try:
-        url = "https://www.ebi.ac.uk/ols4/api/v2/ontologies" + ontology_name.lower()
+        url = "https://www.ebi.ac.uk/ols4/api/v2/ontologies/" + ontology_name.lower()
         response = httpx.get(url, timeout=2)
         response.raise_for_status()
         json_response = response.json()

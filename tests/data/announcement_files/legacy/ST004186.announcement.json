@@ -1,5 +1,7 @@
 {
+  "repository_name": "Metabolomics Workbench",
   "repository_identifier": "ST004186",
+  "revision": 1,
   "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
   "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.legacy-profile.json",
   "cv_definitions": [
@@ -50,12 +52,18 @@
   "public_release_date": "2025-09-18T14:46:40.262571Z",
   "submitters": [
     {
-      "full_name": "yunshu Zhang"
+      "full_name": "yunshu Zhang",
+      "affiliation_list": [
+        "First Affiliated Hospital of Dalian Medical University"
+      ]
     }
   ],
   "principal_investigators": [
     {
-      "full_name": "Yunshu Zhang"
+      "full_name": "Yunshu Zhang",
+      "affiliation_list": [
+        "First Affiliated Hospital of Dalian Medical University"
+      ]
     }
   ],
   "study_factors": [

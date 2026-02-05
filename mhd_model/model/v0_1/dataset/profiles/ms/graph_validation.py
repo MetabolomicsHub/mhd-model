@@ -1438,7 +1438,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="characteristic-value",
                 min_count=1,
                 validation=AllowedCvList(
-                    source_names=["ENVO", "NCBITAXON"],
+                    source_names=["NCBITAXON", "ENVO", "CHEBI"],
                     allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[
@@ -1455,7 +1455,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="characteristic-value",
                 min_count=1,
                 validation=AllowedCvList(
-                    source_names=["UBERON", "BTO", "NCIT", "MSIO"],
+                    source_names=["UBERON", "BTO", "NCIT", "CHEBI"],
                     allowed_other_sources=["wikidata", "ILX"],
                 ),
                 condition=[

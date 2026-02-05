@@ -64,17 +64,49 @@ COMMON_ASSAY_TYPES = {
 }
 
 COMMON_MEASUREMENT_TYPES = {
+    "MS:1003904": CvTerm(
+        source="MS",
+        accession="MS:1003904",
+        name="untargeted analysis",
+    ),
+    "MS:1003905": CvTerm(
+        source="MS",
+        accession="MS:1003905",
+        name="targeted analysis",
+    ),
+    "MS:1003906": CvTerm(
+        source="MS",
+        accession="MS:1003906",
+        name="semi-targeted analysis",
+    ),
+}
+
+COMMON_MEASUREMENT_TYPES_MAP = {
     "MSIO:0000100": CvTerm(
-        source="MSIO",
-        accession="MSIO:0000100",
-        name="targeted metabolite profiling",
+        source="MS",
+        accession="MS:1003905",
+        name="targeted analysis",
     ),
     "MSIO:0000101": CvTerm(
-        source="MSIO",
-        accession="MSIO:0000101",
-        name="untargeted metabolite profiling",
+        source="MS",
+        accession="MS:1003904",
+        name="untargeted analysis",
     ),
-    # TODO others?
+    "MS:1003904": CvTerm(
+        source="MS",
+        accession="MS:1003904",
+        name="untargeted analysis",
+    ),
+    "MS:1003905": CvTerm(
+        source="MS",
+        accession="MS:1003905",
+        name="targeted analysis",
+    ),
+    "MS:1003906": CvTerm(
+        source="MS",
+        accession="MS:1003906",
+        name="semi-targeted analysis",
+    ),
 }
 
 COMMON_OMICS_TYPES = {

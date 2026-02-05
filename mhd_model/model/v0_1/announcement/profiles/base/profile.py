@@ -52,9 +52,9 @@ class AnnouncementContact(AnnouncementBaseModel):
     """
 
     full_name: Annotated[None | str, Field(min_length=5)] = None
-    emails: Annotated[None | list[str], Field(min_length=1)] = None
+    email_list: Annotated[None | list[str], Field(min_length=1)] = None
     orcid: Annotated[None | str, Field(title="ORCID")] = None
-    affiliations: Annotated[None | list[str], Field(min_length=1)] = None
+    affiliation_list: Annotated[None | list[str], Field(min_length=1)] = None
 
 
 class AnnouncementPublication(AnnouncementBaseModel):

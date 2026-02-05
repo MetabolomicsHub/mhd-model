@@ -70,8 +70,8 @@ class MsAnnouncementContact(AnnouncementContact):
     """
 
     full_name: Annotated[str, Field(min_length=5)]
-    emails: Annotated[list[EmailStr], Field(min_length=1)] = None
-    affiliations: Annotated[list[str], Field(min_length=1)] = None
+    email_list: Annotated[list[EmailStr], Field(min_length=1)] = None
+    affiliation_list: Annotated[list[str], Field(min_length=1)] = None
     orcid: Annotated[None | ms_fields.ORCID, Field(title="ORCID")] = None
 
 

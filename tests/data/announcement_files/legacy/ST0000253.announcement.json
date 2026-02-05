@@ -1,5 +1,7 @@
 {
+  "repository_name": "Metabolomics Workbench",
   "repository_identifier": "ST000253",
+  "revision": 1,
   "$schema": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.schema.json",
   "profile_uri": "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/announcement-v0.1.legacy-profile.json",
   "cv_definitions": [
@@ -50,12 +52,18 @@
   "public_release_date": "2015-09-03T00:00:00",
   "submitters": [
     {
-      "full_name": "John Newman"
+      "full_name": "John Newman",
+      "affiliation_list": [
+        "University of California, Davis"
+      ]
     }
   ],
   "principal_investigators": [
     {
-      "full_name": "Stephen Wedgwood"
+      "full_name": "Stephen Wedgwood",
+      "affiliation_list": [
+        "University of California, Davis"
+      ]
     }
   ],
   "study_factors": [

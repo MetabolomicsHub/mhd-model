@@ -119,7 +119,7 @@ ExtendedCharacteristicValues = Annotated[
                         ),
                         controls=[
                             AllowedCvList(
-                                source_names=["ENVO", "NCBITAXON"],
+                                source_names=["NCBITAXON", "ENVO", "CHEBI"],
                                 allowed_other_sources=["wikidata", "ILX"],
                             )
                         ],
@@ -133,7 +133,7 @@ ExtendedCharacteristicValues = Annotated[
                         ),
                         controls=[
                             AllowedCvList(
-                                source_names=["UBERON", "BTO", "NCIT", "MSIO"]
+                                source_names=["UBERON", "BTO", "NCIT", "CHEBI"]
                             )
                         ],
                         min_value_count=1,
