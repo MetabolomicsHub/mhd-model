@@ -37,7 +37,7 @@ class MhdClientError(Exception):
         self.message = message
 
 
-AccessionType = Literal["mhd", "legacy", "test", "dev"]
+AccessionType = Literal["mhd", "legacy", "test-legacy", "test-mhd", "dev"]
 
 
 class MhdClient:
