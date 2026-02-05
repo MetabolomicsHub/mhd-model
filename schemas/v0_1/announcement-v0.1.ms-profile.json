@@ -1376,16 +1376,6 @@
           ],
           "cvTerms": [
             {
-              "accession": "MS:1003905",
-              "name": "targeted analysis",
-              "source": "MS"
-            },
-            {
-              "accession": "MS:1003904",
-              "name": "untargeted analysis",
-              "source": "MS"
-            },
-            {
               "accession": "MS:1003904",
               "name": "untargeted analysis",
               "source": "MS"
