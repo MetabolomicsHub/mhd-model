@@ -17,7 +17,7 @@ This initiative will implement a common data model for datasets in all data repo
 ---
 
 ## MetabolomicsHub Data File Standards
-* [MHD Common Data Model v0.1](mhd/index.md) (Current version: 0.1.43)
+* [MHD Common Data Model v0.1](mhd/index.md) (Current version: 0.1.44)
 * MHD Announcement Model v0.1
 
 ## MetabolomicsHub Rest APIs
