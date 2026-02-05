@@ -1,3 +1,9 @@
+## v0.1.45 (2026-02-05)
+
+### Fix
+
+- contact emails and affiliations fields are renamed
+
 ## v0.1.44 (2026-02-05)
 
 ### Fix
