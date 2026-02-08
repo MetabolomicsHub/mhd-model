@@ -11,7 +11,7 @@ PREDEFINED_CV_TERMS: dict[str, dict[str, CvTerm]] = {
         accession="OBI:0000623",
         name="NMR spectroscopy assay",
     ),
-    "OBI:0003097S": CvTerm(
+    "OBI:0003097": CvTerm(
         source="OBI",
         accession="OBI:0003097",
         name="liquid chromatography mass spectrometry assay",
