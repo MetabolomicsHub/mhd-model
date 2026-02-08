@@ -633,7 +633,6 @@
   Sample_Run[Sample Run] ==&gt;|embedded - raw_data_file_refs| Raw_Data_File[Raw Data File];
   Study[Study] ==&gt;|embedded - created_by_ref| Data_Provider[Data Provider];
   Study[Study] ==&gt;|embedded - protocol_refs| Protocol[Protocol];
-  Assay[Assay] ==&gt;|described-as| Descriptor[Descriptor];
   Assay[Assay] ==&gt;|part-of| Study[Study];
   Assay[Assay] ==&gt;|follows| Protocol[Protocol];
   Characteristic_Definition[Characteristic Definition] ==&gt;|has-type| Characteristic_Type[Characteristic Type];
@@ -716,13 +715,6 @@
 <td>Descriptor</td>
 <td>1</td>
 <td>1</td>
-</tr>
-<tr>
-<td>Assay</td>
-<td>described-as</td>
-<td>Descriptor</td>
-<td>1</td>
-<td>N (unbounded)</td>
 </tr>
 <tr>
 <td>Assay</td>
@@ -1058,7 +1050,7 @@
 </tr>
 <tr>
 <td>person</td>
-<td>emails</td>
+<td>email_list</td>
 </tr>
 <tr>
 <td>person</td>
@@ -1193,7 +1185,7 @@
 <tr>
 <td>parameter-definition</td>
 <td>1</td>
-<td>[defined-in].protocol_type_ref</td>
+<td>[used-in].protocol_type_ref</td>
 <td>[CHMO, CHMO:0000470, mass spectrometry]</td>
 </tr>
 <tr>
@@ -1282,7 +1274,7 @@
 <td><strong>assay_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay],<br/>* [OBI, OBI:0000623, NMR spectroscopy assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay]</code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay],<br/>* [OBI, OBI:0000623, NMR spectroscopy assay]</code></td>
 </tr>
 <tr>
 <td><strong>measurement_type_ref</strong></td>
@@ -1329,9 +1321,9 @@
 <td>described-as</td>
 <td>describes</td>
 <td>descriptor</td>
-<td>1</td>
+<td>0</td>
 <td>N</td>
-<td>A link to a descriptor that describes the assay.<br/><strong>Required min count in the dataset: 1.</strong></td>
+<td>A link to a descriptor that describes the assay.</td>
 </tr>
 <tr>
 <td>assay</td>
@@ -2770,9 +2762,9 @@
 </tr>
 <tr>
 <td><strong>email_list</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>list[EmailStr]</em><code></code></code></td>
-<td>Email addresses of person</td>
+<td>Email addresses of person<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>phone_list</strong></td>
@@ -4658,7 +4650,7 @@
 <td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
-<td></td>
+<td>Validation Rule:<br/> <code>Allow any valid CV Term<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
@@ -6103,9 +6095,9 @@
 <td>described-as</td>
 <td>describes</td>
 <td>descriptor</td>
-<td>1</td>
+<td>0</td>
 <td>N</td>
-<td>A link to a descriptor that describes the assay.<br/><strong>Required min count in the dataset: 1.</strong></td>
+<td>A link to a descriptor that describes the assay.</td>
 </tr>
 <tr>
 <td>derived-data-file</td>

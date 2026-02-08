@@ -751,7 +751,7 @@
 <td><strong>assay_type_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay],<br/>* [OBI, OBI:0000623, NMR spectroscopy assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay]</code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay],<br/>* [OBI, OBI:0000623, NMR spectroscopy assay]</code></td>
 </tr>
 <tr>
 <td><strong>measurement_type_ref</strong></td>
@@ -2239,9 +2239,9 @@
 </tr>
 <tr>
 <td><strong>email_list</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>list[EmailStr]</em><code></code></code></td>
-<td>Email addresses of person</td>
+<td>Email addresses of person<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>phone_list</strong></td>
