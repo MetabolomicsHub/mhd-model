@@ -100,8 +100,8 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
                 target="descriptor",
-                min=1,
-                min_for_each_source=1,
+                min=0,
+                min_for_each_source=0,
             ),
             RelationshipValidation(
                 description="A link to a study that the assay was conducted as part of it "
@@ -524,7 +524,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="person",
-                node_property_name="emails",
+                node_property_name="email_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],
@@ -1007,10 +1007,11 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             ),
             CvTermValidation(
                 node_type="study",
-                node_property_name="additional_identifiers",
+                node_property_name="additional_identifier_list",
                 validation=AllowAnyCvTerm(
                     allowed_other_sources=["wikidata", "ILX"],
                 ),
+                required=False,
             ),
             NodePropertyValidation(
                 node_type="study",
@@ -2070,7 +2071,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                         name="Mass spectrometry protocol",
                         relationship_name="[embedded].parameter_type_ref",
                         start_node_type="parameter-definition",
-                        expression="[defined-in].protocol_type_ref.accession",
+                        expression="[used-in].protocol_type_ref.accession",
                         expression_value="CHMO:0000470",
                     ),
                 ],

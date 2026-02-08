@@ -1,18 +1,5 @@
 from mhd_model.shared.model import CvTerm
 
-MANAGED_CV_TERM_OBJECTS = {
-    "characteristic-type",
-    "characteristic-value",
-    "metabolite-identifier",
-    "data-provider",
-    "descriptor",
-    "factor-type",
-    "factor-value",
-    "parameter-type",
-    "parameter-value",
-    "protocol-type",
-}
-
 COMMON_TECHNOLOGY_TYPES = {
     "OBI:0000470": CvTerm(
         source="OBI",
@@ -37,6 +24,11 @@ COMMON_ASSAY_TYPES = {
         accession="OBI:0003110",
         name="gas chromatography mass spectrometry assay",
     ),
+    "OBI:0003741": CvTerm(
+        source="OBI",
+        accession="OBI:0003741",
+        name="capillary electrophoresis mass spectrometry assay",
+    ),
     "OBI:0000470": CvTerm(
         source="OBI",
         accession="OBI:0000470",
@@ -47,51 +39,9 @@ COMMON_ASSAY_TYPES = {
         accession="OBI:0000623",
         name="NMR spectroscopy assay",
     ),
-    "OBI:0003741": CvTerm(
-        source="OBI",
-        accession="OBI:0003741",
-        name="capillary electrophoresis mass spectrometry assay",
-    ),
-    # CE-MS
-    # DI-MS
-    # FIA-MS
-    # GCxGC-MS
-    # MALDI-MS
-    # MSImaging
-    # GC-FID
-    # LC-DAD
-    # MRImaging
 }
 
 COMMON_MEASUREMENT_TYPES = {
-    "MS:1003904": CvTerm(
-        source="MS",
-        accession="MS:1003904",
-        name="untargeted analysis",
-    ),
-    "MS:1003905": CvTerm(
-        source="MS",
-        accession="MS:1003905",
-        name="targeted analysis",
-    ),
-    "MS:1003906": CvTerm(
-        source="MS",
-        accession="MS:1003906",
-        name="semi-targeted analysis",
-    ),
-}
-
-COMMON_MEASUREMENT_TYPES_MAP = {
-    "MSIO:0000100": CvTerm(
-        source="MS",
-        accession="MS:1003905",
-        name="targeted analysis",
-    ),
-    "MSIO:0000101": CvTerm(
-        source="MS",
-        accession="MS:1003904",
-        name="untargeted analysis",
-    ),
     "MS:1003904": CvTerm(
         source="MS",
         accession="MS:1003904",
@@ -125,23 +75,14 @@ COMMON_OMICS_TYPES = {
         accession="EDAM:3955",
         name="Fluxomics",
     ),
-    # TODO others?
+    # "EDAM:xxxx": CvTerm(
+    #     source="EDAM",
+    #     accession="EDAM:xxxx",
+    #     name="Exposomics",
+    # ),
 }
 
-MISSING_PUBLICATION_REASON = {
-    "MS:1002853": CvTerm(
-        source="MS",
-        accession="MS:1002853",
-        name="no associated published manuscript",
-    ),
-    "MS:1002858": CvTerm(
-        source="MS",
-        accession="MS:1002858",
-        name="Dataset with its publication pending",
-    ),
-}
-
-COMMON_CHARACTERISTIC_DEFINITIONS = {
+COMMON_CHARACTERISTIC_DEFINITIONS: dict[str, CvTerm] = {
     "NCIT:C14250": CvTerm(source="NCIT", accession="NCIT:C14250", name="organism"),
     "NCIT:C103199": CvTerm(
         source="NCIT", accession="NCIT:C103199", name="organism part"
@@ -151,149 +92,17 @@ COMMON_CHARACTERISTIC_DEFINITIONS = {
     # "GAZ:00000448": CvTerm(
     #     source="EFO", accession="GAZ:00000448", name="geographical location"
     # ),
+    # "XXX:XXX": CvTerm(
+    #     source="EFO", accession="XXX:XXX", name="collection date"
+    # ),
 }
 
 
-REQUIRED_CHARACTERISTIC_DEFINITIONS = {
-    "NCIT:C14250": COMMON_CHARACTERISTIC_DEFINITIONS["NCIT:C14250"],
-    "NCIT:C103199": COMMON_CHARACTERISTIC_DEFINITIONS["NCIT:C103199"],
-}
-
-COMMON_STUDY_FACTOR_DEFINITIONS = {
+COMMON_STUDY_FACTOR_DEFINITIONS: dict[str, CvTerm] = {
     "EFO:0000408": CvTerm(source="EFO", accession="EFO:0000408", name="disease"),
 }
 
-
-REQUIRED_COMMON_PARAMETER_DEFINITIONS = {
-    "MSIO:0000171": CvTerm(
-        source="MSIO", accession="MSIO:0000171", name="mass spectrometry instrument"
-    ),
-    "OBI:0000485": CvTerm(
-        source="OBI", accession="OBI:0000485", name="chromatography instrument"
-    ),
-}
-
-COMMON_PARAMETER_DEFINITIONS = REQUIRED_COMMON_PARAMETER_DEFINITIONS.copy()
-COMMON_PARAMETER_DEFINITIONS.update(
-    {
-        "MS:1000465": CvTerm(source="MS", accession="MS:1000465", name="scan polarity"),
-        "OBI:0000521": CvTerm(
-            source="OBI", accession="OBI:0000521", name="flame ionization detector"
-        ),
-        "CHMO:0002503": CvTerm(
-            source="CHMO", accession="CHMO:0002503", name="diode array detector"
-        ),
-        "OBI:0001132": CvTerm(
-            source="OBI",
-            accession="OBI:0001132",
-            name="capillary electrophoresis instrument",
-        ),
-        "OBI:0000345": CvTerm(
-            source="OBI", accession="OBI:0000345", name="mass analyzer"
-        ),
-        "CHMO:0000960": CvTerm(
-            source="CHMO", accession="CHMO:0000960", name="ion source"
-        ),
-        "MTBLS:50001": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50001",
-            name="column model",
-        ),
-        "MTBLS:50002": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50002",
-            name="column type",
-        ),
-        "MTBLS:50003": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50003",
-            name="guard column",
-        ),
-        "MTBLS:50004": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50004",
-            name="autosampler model",
-        ),
-        "MTBLS:50010": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50010",
-            name="post extraction",
-        ),
-        "MTBLS:50011": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50011",
-            name="derivatization",
-        ),
-        "MTBLS:50020": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50020",
-            name="scan m/z range",
-        ),
-        "MTBLS:50021": CvTerm(
-            source="MTBLS",
-            accession="MTBLS:50021",
-            name="fia instrument",
-        ),
-        # column model
-        # column type
-        # scan m/z range
-        # flow injection analysis (FIA) instrument
-    }
-)
-
-REQUIRED_PARAMETER_DEFINITIONS = {
-    "LC-MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    "GC-MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    "CE-MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    "DI-MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    "FIA-MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    "GCxGC-MS": {
-        "CHMO:0000470": {
-            "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        }
-    },
-    ####### OTHERS ######
-    # MR Imaging, LC-DAD, GC-FID, NMR
-}
-
-COMMON_PROTOCOL_PARAMETERS = {
-    "CHMO:0000470": {
-        "MS:1000465": COMMON_PARAMETER_DEFINITIONS["MS:1000465"],
-        "MTBLS:50020": COMMON_PARAMETER_DEFINITIONS["MTBLS:50020"],
-        "MSIO:0000171": COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
-        "CHMO:0000960": COMMON_PARAMETER_DEFINITIONS["CHMO:0000960"],
-        "OBI:0000345": COMMON_PARAMETER_DEFINITIONS["OBI:0000345"],
-    },
-    "CHMO:0001000": {
-        "OBI:0000485": COMMON_PARAMETER_DEFINITIONS["OBI:0000485"],
-        "MTBLS:50001": COMMON_PARAMETER_DEFINITIONS["MTBLS:50001"],
-        "MTBLS:50002": COMMON_PARAMETER_DEFINITIONS["MTBLS:50002"],
-        "MTBLS:50003": COMMON_PARAMETER_DEFINITIONS["MTBLS:50003"],
-        "MTBLS:50004": COMMON_PARAMETER_DEFINITIONS["MTBLS:50004"],
-    },
-}
-
-COMMON_PROTOCOLS = {
+COMMON_PROTOCOLS: dict[str, CvTerm] = {
     "EFO:0005518": CvTerm(
         source="EFO",
         accession="EFO:0005518",
@@ -349,22 +158,138 @@ COMMON_PROTOCOLS = {
         accession="MS:1000060",
         name="infusion",
     ),
-    ###### DI-MS ######
-    # Direct infusion
-    ###### SPE-IMS-MS ######
-    # Solid-Phase Extraction Ion Mobility Spectrometry
-    ###### MSImaging ######
-    # Preparation
-    # Histology
-    ###### MRImaging ######
-    # Magnetic resonance imaging
-    # In vivo magnetic resonance spectroscopy
-    # In vivo magnetic resonance assay
-    ###### NMR ######
-    # NMR sample
-    # NMR spectroscopy
-    # NMR assay
 }
+
+COMMON_PARAMETER_DEFINITIONS: dict[str, CvTerm] = {
+    "MSIO:0000171": CvTerm(
+        source="MSIO", accession="MSIO:0000171", name="mass spectrometry instrument"
+    ),
+    "OBI:0000485": CvTerm(
+        source="OBI", accession="OBI:0000485", name="chromatography instrument"
+    ),
+    "MS:1000465": CvTerm(source="MS", accession="MS:1000465", name="scan polarity"),
+    "OBI:0000521": CvTerm(
+        source="OBI", accession="OBI:0000521", name="flame ionization detector"
+    ),
+    "CHMO:0002503": CvTerm(
+        source="CHMO", accession="CHMO:0002503", name="diode array detector"
+    ),
+    "OBI:0001132": CvTerm(
+        source="OBI",
+        accession="OBI:0001132",
+        name="capillary electrophoresis instrument",
+    ),
+    "OBI:0000345": CvTerm(source="OBI", accession="OBI:0000345", name="mass analyzer"),
+    "CHMO:0000960": CvTerm(source="CHMO", accession="CHMO:0000960", name="ion source"),
+    # "MTBLS:50001": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50001",
+    #     name="column model",
+    # ),
+    # "MTBLS:50002": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50002",
+    #     name="column type",
+    # ),
+    # "MTBLS:50003": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50003",
+    #     name="guard column",
+    # ),
+    # "MTBLS:50004": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50004",
+    #     name="autosampler model",
+    # ),
+    # "MTBLS:50010": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50010",
+    #     name="post extraction",
+    # ),
+    # "MTBLS:50011": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50011",
+    #     name="derivatization",
+    # ),
+    # "MTBLS:50020": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50020",
+    #     name="scan m/z range",
+    # ),
+    # "MTBLS:50021": CvTerm(
+    #     source="MTBLS",
+    #     accession="MTBLS:50021",
+    #     name="fia instrument",
+    # ),
+    # column model
+    # column type
+    # scan m/z range
+    # flow injection analysis (FIA) instrument
+}
+
+MISSING_PUBLICATION_REASON = {
+    "MS:1002853": CvTerm(
+        source="MS",
+        accession="MS:1002853",
+        name="no associated published manuscript",
+    ),
+    "MS:1002858": CvTerm(
+        source="MS",
+        accession="MS:1002858",
+        name="Dataset with its publication pending",
+    ),
+}
+
+REQUIRED_CHARACTERISTIC_DEFINITIONS = {
+    "NCIT:C14250": COMMON_CHARACTERISTIC_DEFINITIONS["NCIT:C14250"],
+    "NCIT:C103199": COMMON_CHARACTERISTIC_DEFINITIONS["NCIT:C103199"],
+}
+
+REQUIRED_COMMON_PARAMETER_DEFINITIONS = {
+    "MSIO:0000171": COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
+    "OBI:0000485": COMMON_PARAMETER_DEFINITIONS["OBI:0000485"],
+}
+
+REQUIRED_PARAMETER_DEFINITIONS = {
+    "CHMO:0000470": {
+        "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
+    },
+    "CHMO:0001000": {
+        "MSIO:0000171": REQUIRED_COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
+    },
+}
+
+COMMON_PROTOCOL_PARAMETERS = {
+    "CHMO:0000470": {
+        "MS:1000465": COMMON_PARAMETER_DEFINITIONS["MS:1000465"],
+        # "MTBLS:50020": COMMON_PARAMETER_DEFINITIONS["MTBLS:50020"],
+        "MSIO:0000171": COMMON_PARAMETER_DEFINITIONS["MSIO:0000171"],
+        "CHMO:0000960": COMMON_PARAMETER_DEFINITIONS["CHMO:0000960"],
+        "OBI:0000345": COMMON_PARAMETER_DEFINITIONS["OBI:0000345"],
+    },
+    "CHMO:0001000": {
+        "OBI:0000485": COMMON_PARAMETER_DEFINITIONS["OBI:0000485"],
+        # "MTBLS:50001": COMMON_PARAMETER_DEFINITIONS["MTBLS:50001"],
+        # "MTBLS:50002": COMMON_PARAMETER_DEFINITIONS["MTBLS:50002"],
+        # "MTBLS:50003": COMMON_PARAMETER_DEFINITIONS["MTBLS:50003"],
+        # "MTBLS:50004": COMMON_PARAMETER_DEFINITIONS["MTBLS:50004"],
+    },
+}
+
+
+MANAGED_CV_TERM_OBJECTS = {
+    "characteristic-type",
+    "characteristic-value",
+    "metabolite-identifier",
+    "data-provider",
+    "descriptor",
+    "factor-type",
+    "factor-value",
+    "parameter-type",
+    "parameter-value",
+    "protocol-type",
+}
+
 
 # TODO Add all of them
 assay_technique_protocols = {

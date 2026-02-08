@@ -526,7 +526,7 @@ MHD_BASE_VALIDATION_V0_1.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="person",
-                node_property_name="emails",
+                node_property_name="email_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],

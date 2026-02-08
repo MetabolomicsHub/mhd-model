@@ -1198,15 +1198,17 @@ class MhdModelValidator:
                                 path = relationship_name.replace(
                                     "[embedded]", ""
                                 ).lstrip(".")
-                                vals = self.parse_condition(
+                                values = self.parse_condition(
                                     item,
                                     nodes,
                                     path,
                                     relationships_index=relationships_index,
                                 )
-                                for val in vals:
-                                    if val.id_ in nodes:
-                                        val_node = nodes.get(val.id_)
+                                
+
+                                for x in values:
+                                    if x.id_ in nodes:
+                                        val_node = nodes.get(x.id_)
                                         current_idx, selected = nodes_by_type.get(
                                             val_node.type_, {}
                                         ).get(val_node.id_, (None, None))
