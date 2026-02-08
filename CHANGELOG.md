@@ -1,3 +1,9 @@
+## v0.1.48 (2026-02-08)
+
+### Fix
+
+- sdrf and announcement file convertor error: measurement type values are not from MS ontology
+
 ## v0.1.47 (2026-02-08)
 
 ### Fix
