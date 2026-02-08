@@ -1204,7 +1204,6 @@ class MhdModelValidator:
                                     path,
                                     relationships_index=relationships_index,
                                 )
-                                
 
                                 for x in values:
                                     if x.id_ in nodes:
