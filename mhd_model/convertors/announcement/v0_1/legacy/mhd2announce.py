@@ -7,6 +7,7 @@ from pydantic import AnyUrl, BaseModel
 from mhd_model.model.definitions import (
     ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
     ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
+    MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
 )
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
@@ -271,6 +272,13 @@ def create_announcement_file(
     announcement_profile_uri=ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
 ):
     mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_file)
+    announcement_schema_name, announcement_profile_uri = (
+        MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
+            mhd_dataset.profile_uri, (None, None)
+        )
+    )
+    if not announcement_schema_name or not announcement_profile_uri:
+        raise ValueError("Announcement Schema or profile is not defined")
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }
@@ -482,7 +490,7 @@ def get_main_assay_descriptors(
                 technology_types[term.accession] = term
         if item.measurement_type_ref in nodes_map:
             measurement_type: graph_nodes.CvTermObject = nodes_map[
-                item.technology_type_ref
+                item.measurement_type_ref
             ]
             if measurement_type.accession not in measurement_types:
                 term = COMMON_MEASUREMENT_TYPES.get(measurement_type.accession)
@@ -492,13 +500,26 @@ def get_main_assay_descriptors(
                     )
                 measurement_types[term.accession] = term
 
+        if item.omics_type_ref in nodes_map:
+            omics_type: graph_nodes.CvTermObject = nodes_map[item.omics_type_ref]
+            if omics_type.accession not in omics_types:
+                term = COMMON_OMICS_TYPES.get(omics_type.accession)
+                if not term:
+                    term = CvTerm.model_validate(omics_type.model_dump(by_alias=True))
+                omics_types[term.accession] = term
+
     for keyword in keywords:
         if "untargetted" in keyword.name.lower():
             measurement_types["MS:1003904"] = COMMON_MEASUREMENT_TYPES["MS:1003904"]
         elif "targetted" in keyword.name.lower():
             measurement_types["MS:1003905"] = COMMON_MEASUREMENT_TYPES["MS:1003905"]
+        elif "semi-targeted" in keyword.name.lower():
+            measurement_types["MS:1003906"] = COMMON_MEASUREMENT_TYPES["MS:1003906"]
         for accession, value in COMMON_OMICS_TYPES.items():
-            if accession.lower() == keyword.name.lower():
+            if (
+                accession.lower() == keyword.name.lower()
+                and accession not in omics_types
+            ):
                 omics_types[accession] = value
 
     return (

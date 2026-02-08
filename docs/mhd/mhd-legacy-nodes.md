@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD Legacy Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a>
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a> 
 
-## Required Nodes & Relationships
+## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
@@ -94,7 +94,7 @@ Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N 
 |**name**|**required**|<code>*str*<code>|Name of the assay. It SHOULD be unique in a study<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**metadata_file_ref**|optional|<code>*MhdObjectId*<code>|Target node type: <code>**metadata-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**metadata-file**</code></code>|
 |**technology_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code>|
-|**assay_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay]</code>|
+|**assay_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code>|
 |**measurement_type_ref**|optional|<code>*CvTermObjectId*<code>|Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
 |**omics_type_ref**|optional|<code>*CvTermObjectId*<code>|Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
 |**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|

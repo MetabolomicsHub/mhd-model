@@ -26,6 +26,7 @@ MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME = "https://metabolomicshub.github.io/mhd-mode
 MHD_MODEL_V0_1_MS_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json"
 MHD_MODEL_V0_1_LEGACY_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json"
 
+
 SUPPORTED_SCHEMA_MAP = SupportedSchemaMap(
     default_schema_uri=ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
     schemas={
@@ -61,3 +62,14 @@ SUPPORTED_SCHEMA_MAP = SupportedSchemaMap(
         ),
     },
 )
+
+MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP = {
+    MHD_MODEL_V0_1_MS_PROFILE_NAME: (
+        ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
+        ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
+    ),
+    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME: (
+        ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
+        ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
+    ),
+}

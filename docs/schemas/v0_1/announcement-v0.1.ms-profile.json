@@ -459,36 +459,7 @@
         "format": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": [
-                  {
-                    "accession": "",
-                    "source": ""
-                  }
-                ],
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:format_1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "$ref": "#/$defs/CvTerm"
             },
             {
               "type": "null"
@@ -577,36 +548,7 @@
         "format": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": [
-                  {
-                    "accession": "",
-                    "source": ""
-                  }
-                ],
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:format_1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "$ref": "#/$defs/CvTerm"
             },
             {
               "type": "null"
@@ -695,36 +637,7 @@
         "format": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": [
-                  {
-                    "accession": "",
-                    "source": ""
-                  }
-                ],
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:format_1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "$ref": "#/$defs/CvTerm"
             },
             {
               "type": "null"
@@ -868,36 +781,7 @@
         "format": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": [
-                  {
-                    "accession": "",
-                    "source": ""
-                  }
-                ],
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:format_1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "$ref": "#/$defs/CvTerm"
             },
             {
               "type": "null"
@@ -935,7 +819,31 @@
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/CvTerm"
+                "$ref": "#/$defs/CvTerm",
+                "profileValidation": {
+                  "allowNullValue": false,
+                  "allowedMissingCvTerms": null,
+                  "allowedOtherSources": null,
+                  "allowedPlaceholderValues": null,
+                  "inputType": "list-or-item",
+                  "listJoinOperator": "all",
+                  "minimum": null,
+                  "name": "allowed-children-cv-terms",
+                  "negate": false,
+                  "parentCvTerms": [
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:format_1915",
+                        "name": "Format",
+                        "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    }
+                  ]
+                }
               },
               "type": "array"
             },
@@ -962,31 +870,7 @@
         "format": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm",
-              "profileValidation": {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-children-cv-terms",
-                "negate": false,
-                "parentCvTerms": [
-                  {
-                    "allowOnlyLeaf": false,
-                    "allowParent": false,
-                    "cvTerm": {
-                      "accession": "EDAM:format_1915",
-                      "name": "Format",
-                      "source": "EDAM"
-                    },
-                    "excludedCvTerms": null,
-                    "indexCvTerms": false
-                  }
-                ]
-              }
+              "$ref": "#/$defs/CvTerm"
             },
             {
               "type": "null"
@@ -1422,6 +1306,11 @@
               "source": "OBI"
             },
             {
+              "accession": "OBI:0003741",
+              "name": "capillary electrophoresis mass spectrometry assay",
+              "source": "OBI"
+            },
+            {
               "accession": "OBI:0000470",
               "name": "mass spectrometry assay",
               "source": "OBI"
@@ -1429,11 +1318,6 @@
             {
               "accession": "OBI:0000623",
               "name": "NMR spectroscopy assay",
-              "source": "OBI"
-            },
-            {
-              "accession": "OBI:0003741",
-              "name": "capillary electrophoresis mass spectrometry assay",
               "source": "OBI"
             }
           ],
@@ -1791,7 +1675,7 @@
                             "source": "MS"
                           },
                           "excludedCvTerms": null,
-                          "indexCvTerms": true
+                          "indexCvTerms": false
                         }
                       ]
                     }

@@ -21,38 +21,38 @@ from mhd_model.shared.model import CvTerm
 
 
 class MsAnnouncementMetadataFile(AnnouncementMetadataFile):
-    format: Annotated[None | ms_fields.MetadataFileFormat, Field()] = None
+    # format: Annotated[None | ms_fields.MetadataFileFormat, Field()] = None
     compression_formats: Annotated[
         None | list[ms_fields.CompressionFormat], Field()
     ] = None
 
 
 class MsAnnouncementRawDataFile(AnnouncementRawDataFile):
-    format: Annotated[None | ms_fields.RawDataFileFormat, Field()] = None
-    format: Annotated[None | ms_fields.MetadataFileFormat, Field()] = None
+    # format: Annotated[None | ms_fields.RawDataFileFormat, Field()] = None
     compression_formats: Annotated[
         None | list[ms_fields.CompressionFormat], Field()
     ] = None
 
 
 class MsAnnouncementResultFile(AnnouncementResultFile):
-    format: Annotated[None | ms_fields.ResultFileFormat, Field()] = None
-    format: Annotated[None | ms_fields.MetadataFileFormat, Field()] = None
+    # format: Annotated[None | ms_fields.ResultFileFormat, Field()] = None
     compression_formats: Annotated[
         None | list[ms_fields.CompressionFormat], Field()
     ] = None
 
 
 class MsAnnouncementDerivedDataFile(AnnouncementDerivedDataFile):
-    format: Annotated[None | ms_fields.DerivedFileFormat, Field()] = None
-    format: Annotated[None | ms_fields.MetadataFileFormat, Field()] = None
+    # format: Annotated[None | ms_fields.DerivedFileFormat, Field()] = None
     compression_formats: Annotated[
         None | list[ms_fields.CompressionFormat], Field()
     ] = None
 
 
 class MsAnnouncementSupplementaryFile(AnnouncementSupplementaryFile):
-    format: Annotated[None | ms_fields.SupplementaryFileFormat, Field()] = None
+    # format: Annotated[None | ms_fields.SupplementaryFileFormat, Field()] = None
+    compression_formats: Annotated[
+        None | list[ms_fields.CompressionFormat], Field()
+    ] = None
 
 
 class MsAnnouncementPublication(AnnouncementPublication):

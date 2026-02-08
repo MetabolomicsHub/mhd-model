@@ -13,9 +13,10 @@ logger = logging.getLogger(__name__)
 if __name__ == "__main__":
     set_basic_logging_config()
     validator = MhdAnnouncementFileValidator()
-    test_data_file_path = (
-        "tests/data/announcement_files/legacy/MSV000099062.announcement.json"
-    )
+    # test_data_file_path = (
+    #     "tests/data/announcement_files/legacy/MSV000099062.announcement.json"
+    # )
+    test_data_file_path = "REQ202602083000317.announcement.json"
     announcement_file_json = load_json(test_data_file_path)
     all_errors = validator.validate(announcement_file_json)
     if all_errors:

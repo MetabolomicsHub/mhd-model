@@ -502,8 +502,9 @@ class AllowedCvListValidator(BaseProfileValidator):
         if isinstance(value, dict):
             data = CvTerm.model_validate(value)
         validator: AllowedCvList = profile_validation
+        source_names = [x.lower() for x in validator.source_names]
 
-        if data.source in validator.source_names:
+        if data.source.lower() in source_names:
             check_valid, message = self.cv_helper.check_cv_term(data)
             if check_valid:
                 return ValidationResult(
