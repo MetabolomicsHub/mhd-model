@@ -1,3 +1,10 @@
+## v0.1.49 (2026-02-08)
+
+### Fix
+
+- lint error
+- ontology check updates
+
 ## v0.1.48 (2026-02-08)
 
 ### Fix
