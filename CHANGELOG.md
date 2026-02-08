@@ -1,3 +1,9 @@
+## v0.1.50 (2026-02-08)
+
+### Fix
+
+- predefined cv term error of LC-MS
+
 ## v0.1.49 (2026-02-08)
 
 ### Fix
