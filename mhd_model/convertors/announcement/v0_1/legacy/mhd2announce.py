@@ -36,7 +36,7 @@ from mhd_model.model.v0_1.rules.cv_definitions import (
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
-    COMMON_MEASUREMENT_TYPES_MAP,
+    COMMON_MEASUREMENT_TYPES,
     COMMON_OMICS_TYPES,
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
@@ -485,7 +485,7 @@ def get_main_assay_descriptors(
                 item.technology_type_ref
             ]
             if measurement_type.accession not in measurement_types:
-                term = COMMON_MEASUREMENT_TYPES_MAP.get(measurement_type.accession)
+                term = COMMON_MEASUREMENT_TYPES.get(measurement_type.accession)
                 if not term:
                     term = CvTerm.model_validate(
                         technology_type.model_dump(by_alias=True)
@@ -494,13 +494,9 @@ def get_main_assay_descriptors(
 
     for keyword in keywords:
         if "untargetted" in keyword.name.lower():
-            measurement_types["MSIO:0000101"] = COMMON_MEASUREMENT_TYPES_MAP[
-                "MSIO:0000101"
-            ]
+            measurement_types["MS:1003904"] = COMMON_MEASUREMENT_TYPES["MS:1003904"]
         elif "targetted" in keyword.name.lower():
-            measurement_types["MSIO:0000100"] = COMMON_MEASUREMENT_TYPES_MAP[
-                "MSIO:0000100"
-            ]
+            measurement_types["MS:1003905"] = COMMON_MEASUREMENT_TYPES["MS:1003905"]
         for accession, value in COMMON_OMICS_TYPES.items():
             if accession.lower() == keyword.name.lower():
                 omics_types[accession] = value
