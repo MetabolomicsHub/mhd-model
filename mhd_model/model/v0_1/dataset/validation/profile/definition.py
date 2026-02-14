@@ -7,6 +7,7 @@ from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     FilterCondition,
     RelationshipValidation,
+    ValidationId,
 )
 from mhd_model.shared.model import MhdConfigModel
 from mhd_model.shared.validation.definitions import (
@@ -22,7 +23,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 NodePropertyType = Literal["int", "str", "float", "CvTerm", "CvTermValue"]
 
 
-class PropertyConstraint(MhdConfigModel):
+class PropertyConstraint(ValidationId):
     min_length: None | int = None
     max_length: None | int = None
     null_allowed: None | bool = None
@@ -37,7 +38,11 @@ class PropertyConstraint(MhdConfigModel):
         return ", ".join(x for x in [min, max, required] if x)
 
 
-class CvTermValidation(MhdConfigModel):
+class CvTermValidation(ValidationId):
+    identifier: Annotated[None | str, Field(description="Validation id")] = None
+    description: Annotated[None | str, Field(description="Validation description")] = (
+        None
+    )
     min_count: Annotated[int, Field()] = 0
     node_type: Annotated[str, Field()]
     node_property_name: Annotated[None | str, Field()] = None
@@ -48,13 +53,13 @@ class CvTermValidation(MhdConfigModel):
     condition: Annotated[None | list[FilterCondition], Field()] = None
 
 
-class NodePropertyValidation(MhdConfigModel):
+class NodePropertyValidation(ValidationId):
     node_type: Annotated[str, Field()]
     node_property_name: Annotated[None | str, Field()] = None
     constraints: Annotated[PropertyConstraint, Field()]
 
 
-class NodeValidation(MhdConfigModel):
+class NodeValidation(ValidationId):
     node_type: Annotated[str, Field()]
     min: Annotated[int, Field()]
     max: Annotated[None | int, Field()] = None

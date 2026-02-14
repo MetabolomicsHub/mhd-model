@@ -80,14 +80,14 @@ class ParentCvTerm(ValidatorBaseModel):
             if self.excluded_cv_terms
             else ""
         )
-        allow_parent = "Allow parent CV Term: " + ("Yes" if self.allow_parent else "No")
-        allow_only_leaf_terms = "Allow only leaf CV Terms: " + (
-            "Yes" if self.allow_only_leaf else "No"
+        allow_parent = "Allow parent (root) CV Term: " + (
+            "Yes" if self.allow_parent else "No"
         )
+        # allow_only_leaf_terms = "Allow only leaf CV Terms: " + (
+        #     "Yes" if self.allow_only_leaf else "No"
+        # )
 
-        result = [
-            x for x in [parent, allow_parent, allow_only_leaf_terms, excludes] if x
-        ]
+        result = [x for x in [parent, allow_parent, excludes] if x]
         return "\n".join(result)
 
 

@@ -310,7 +310,7 @@ class CvTermHelper:
         if parent_cv_term:
             parent_uri = self.get_uri(parent_cv_term.cv_term)
             params["allChildrenOf"] = parent_uri
-            logger.info(
+            logger.debug(
                 "%s: %s in cv %s, parent %s",
                 url,
                 accession,
@@ -318,7 +318,7 @@ class CvTermHelper:
                 parent_uri,
             )
         else:
-            logger.info("%s: %s in cv %s", url, accession, cv_term.source)
+            logger.debug("%s: %s in cv %s", url, accession, cv_term.source)
 
         headers = {"Accept": "application/json"}
         try:

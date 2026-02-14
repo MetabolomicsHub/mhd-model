@@ -5,15 +5,22 @@ from pydantic import Field, model_validator
 from mhd_model.shared.model import CvTerm, MhdConfigModel
 
 
-class FilterCondition(MhdConfigModel):
+class ValidationId(MhdConfigModel):
+    identifier: Annotated[None | str, Field(description="Validation id")] = None
+    description: Annotated[None | str, Field(description="Validation description")] = (
+        None
+    )
+
+
+class FilterCondition(ValidationId):
     name: Annotated[str, Field()]
     relationship_name: Annotated[str, Field()]
-    start_node_type: Annotated[None | str, Field()] = None
+    start_node_type: Annotated[None | str | list[str], Field()] = None
     expression: Annotated[None | str, Field()] = None
     expression_value: Annotated[None | str | CvTerm, Field()] = None
 
 
-class EmbeddedRefValidation(MhdConfigModel):
+class EmbeddedRefValidation(ValidationId):
     node_type: Annotated[None | str, Field()] = None
     node_property_name: Annotated[None | str, Field()] = None
     required: Annotated[None | bool, Field()] = None
@@ -39,7 +46,7 @@ class EmbeddedRefValidation(MhdConfigModel):
         return "\n".join([x for x in [targets, min_length, max_length] if x])
 
 
-class RelationshipValidation(MhdConfigModel):
+class RelationshipValidation(ValidationId):
     description: Annotated[None | str, Field()] = None
     source: Annotated[None | str, Field()]
     source_property_name: Annotated[None | str, Field()] = None

@@ -9,7 +9,7 @@ from mhd_model.shared.validation.definitions import (
 )
 from mhd_model.shared.validation.registry import ProfileValidation
 
-MANAGED_CHARACTERISTIC_VALUE_RULES = {
+MANAGED_CHARACTERISTIC_VALUE_RULES: dict[str, ProfileValidation] = {
     "organism": AllowedCvList(
         source_names=["NCBITAXON", "ENVO", "CHEBI"],
         allowed_other_sources=["wikidata", "ILX"],
@@ -31,7 +31,7 @@ MANAGED_CHARACTERISTIC_VALUE_RULES = {
 }
 
 
-MANAGED_FACTOR_VALUE_RULES = {
+MANAGED_FACTOR_VALUE_RULES: dict[str, ProfileValidation] = {
     "disease": AllowedCvList(
         source_names=["MONDO", "MP", "SNOMED", "PATO"],
         allowed_other_sources=["wikidata", "ILX"],
@@ -39,7 +39,7 @@ MANAGED_FACTOR_VALUE_RULES = {
     )
 }
 
-MANAGED_PARAMETER_VALUE_RULES: dict[str, ProfileValidation] = {
+MANAGED_PARAMETER_VALUE_RULES: dict[str, dict[str, ProfileValidation]] = {
     "mass spectrometry": {
         "mass spectrometry instrument": AllowedChildrenCvTerms(
             parent_cv_terms=[

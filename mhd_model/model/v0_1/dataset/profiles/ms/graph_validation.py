@@ -14,6 +14,8 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
 )
 from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
     MANAGED_CHARACTERISTIC_VALUE_RULES,
+    MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
+    MANAGED_FACTOR_VALUE_RULES,
     MANAGED_FILE_FORMAT_RULES,
     MANAGED_PARAMETER_VALUE_RULES,
 )
@@ -27,17 +29,14 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_PARAMETER_ENFORCEMENT_LEVELS,
     COMMON_PROTOCOL_PARAMETER_MAPPINGS,
     COMMON_PROTOCOLS,
+    COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS,
     COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_TECHNOLOGY_TYPES,
 )
-from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
-    AllowedChildrenCvTerms,
-    AllowedCvList,
     AllowedCvTerms,
     CvTermPlaceholder,
-    ParentCvTerm,
 )
 
 MHD_MS_PROFILE_V0_1 = MhDatasetValidation(schema=MHD_MODEL_V0_1_MS_PROFILE_NAME)
@@ -819,6 +818,14 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 reverse_relationship_name="used-in",
                 target="parameter-definition",
                 min=1,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="protocol",
+                relationship_name="has-parameter-value",
+                reverse_relationship_name="value-of",
+                target="parameter-value",
+                min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
@@ -1987,27 +1994,22 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="factor-value",
-                validation=AllowAnyCvTerm(
-                    allowed_other_sources=["wikidata", "ILX"],
-                    allowed_placeholder_values=[CvTermPlaceholder()],
-                ),
-            ),
-            CvTermValidation(
-                node_type="factor-value",
-                validation=AllowedCvList(
-                    source_names=["MONDO", "MP", "SNOMED"],
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
+                min_count=1
+                if factor_name
+                in COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS["required"]
+                else 0,
+                validation=rule,
                 condition=[
                     FilterCondition(
-                        name="disease",
+                        name=factor_name,
                         relationship_name="instance-of",
-                        start_node_type="factor-definition",
-                        expression="factor_type_ref.name",
-                        expression_value="disease",
+                        start_node_type="factor-value",
+                        expression="[instance-of].factor_type_ref.name",
+                        expression_value=factor_name,
                     )
                 ],
-            ),
+            )
+            for factor_name, rule in MANAGED_FACTOR_VALUE_RULES.items()
         ],
         relationships=[
             RelationshipValidation(
@@ -2049,22 +2051,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=0,
         validations=[
             CvTermValidation(
+                identifier="metabolite-identifier-01",
+                description="metabolite identifier in value. "
+                "Metabolite Database Identifier. e.g. CHEBI, REFET, HMDB, etc.",
                 node_type="metabolite-identifier",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="CHEMINF",
-                                accession="CHEMINF:000464",
-                                name="chemical database identifier",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
                 condition=[
                     FilterCondition(
-                        name="Reported Metabolite Identifier",
+                        name="Compound Database Identifier",
                         relationship_name="identified-as",
                         start_node_type="metabolite",
                     )
@@ -2161,8 +2155,8 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                     FilterCondition(
                         name=parameter_name,
                         relationship_name="instance-of",
-                        start_node_type="parameter-definition",
-                        expression="parameter_type_ref.name",
+                        start_node_type="parameter-value",
+                        expression="[instance-of].parameter_type_ref.name",
                         expression_value=parameter_name,
                     )
                 ],
@@ -2181,6 +2175,14 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 target="parameter-definition",
                 min=1,
                 min_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="parameter-value",
+                relationship_name="value-of",
+                reverse_relationship_name="has-parameter-value",
+                target="protocol",
+                min=0,
+                min_for_each_source=0,
             ),
         ],
     ),
