@@ -1,6 +1,3 @@
-from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
-    MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
-)
 from mhd_model.model.definitions import MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
@@ -16,6 +13,7 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     PropertyConstraint,
 )
 from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
+    MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
     MANAGED_FILE_FORMAT_RULES,
     MANAGED_PARAMETER_VALUE_RULES,
 )
@@ -29,14 +27,11 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
 )
-from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
-    AllowedChildrenCvTerms,
     AllowedCvList,
     AllowedCvTerms,
     CvTermPlaceholder,
-    ParentCvTerm,
 )
 
 MHD_BASE_VALIDATION_V0_1 = MhDatasetValidation(

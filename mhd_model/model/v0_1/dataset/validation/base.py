@@ -1,4 +1,3 @@
-from mhd_model.model.v0_1.dataset.validation.profile.base import FilterCondition
 import logging
 import re
 from typing import Any, Generator, OrderedDict
@@ -18,6 +17,7 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import MhdGraph
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
+    FilterCondition,
     RelationshipValidation,
 )
 from mhd_model.model.v0_1.dataset.validation.profile.definition import (
@@ -958,10 +958,11 @@ class MhdModelValidator:
             if is_list:
                 sub_path.append(sub_idx)
             valid_parents = [x.cv_term for x in parent_cv_terms]
+            valid = False
             for x in parent_cv_terms:
                 valid, error_message = self.cv_helper.check_cv_term(item, x)
                 if valid:
-                    continue
+                    break
             error_message = error_message if error_message else ""
             if not valid:
                 errors.append(
@@ -1187,7 +1188,13 @@ class MhdModelValidator:
             relationship_name = condition.relationship_name
             source_value = condition.expression_value
             relationships = relationships_index.get(relationship_name, {})
-            source_nodes = nodes_by_type.get(source_node_type)
+            if source_node_type:
+                source_nodes = nodes_by_type.get(source_node_type)
+            else:
+                source_nodes = {}
+                for _, v in nodes_by_type.items():
+                    for k, v2 in v.items():
+                        source_nodes[k] = v2
             if source_nodes and source_property and source_value:
                 for _, item in source_nodes.values():
                     val = None
@@ -1246,6 +1253,8 @@ class MhdModelValidator:
 
             elif source_nodes and source_property:
                 for _, item in source_nodes.values():
+                    if not hasattr(item, source_property):
+                        continue
                     val = getattr(item, source_property)
                     selected = None
                     if val:

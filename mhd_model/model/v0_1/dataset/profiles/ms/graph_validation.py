@@ -1,9 +1,3 @@
-from mhd_model.model.v0_1.rules.managed_cv_terms import (
-    COMMON_PARAMETER_ENFORCEMENT_LEVELS,
-)
-from mhd_model.model.v0_1.rules.managed_cv_terms import (
-    COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS,
-)
 from mhd_model.model.definitions import MHD_MODEL_V0_1_MS_PROFILE_NAME
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
@@ -25,10 +19,12 @@ from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
+    COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS,
     COMMON_CHARACTERISTIC_DEFINITIONS,
     COMMON_MEASUREMENT_TYPES,
     COMMON_OMICS_TYPES,
     COMMON_PARAMETER_DEFINITIONS,
+    COMMON_PARAMETER_ENFORCEMENT_LEVELS,
     COMMON_PROTOCOL_PARAMETER_MAPPINGS,
     COMMON_PROTOCOLS,
     COMMON_STUDY_FACTOR_DEFINITIONS,
@@ -1668,6 +1664,13 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="descriptor",
+                validation=AllowAnyCvTerm(
+                    allowed_other_sources=["wikidata", "ILX"],
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                ),
+            ),
+            CvTermValidation(
+                node_type="descriptor",
                 validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
                     FilterCondition(
@@ -1752,6 +1755,20 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                     FilterCondition(
                         name="Keyword",
                         relationship_name="has-submitter-keyword",
+                        start_node_type="study",
+                    )
+                ],
+            ),
+            CvTermValidation(
+                node_type="descriptor",
+                validation=AllowAnyCvTerm(
+                    allowed_other_sources=["wikidata", "ILX"],
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                ),
+                condition=[
+                    FilterCondition(
+                        name="Keyword",
+                        relationship_name="has-repository-keyword",
                         start_node_type="study",
                     )
                 ],

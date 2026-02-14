@@ -204,12 +204,12 @@ COMMON_PARAMETER_ENFORCEMENT_LEVELS: dict[str, dict[str, dict[str, CvTerm]]] = {
                 accession="wikidata:Q138265353",
                 name="acquisition polarity",
             ),
-            "ionization type": CvTerm(
-                source="MS", accession="MS:1000008", name="ionization type"
-            ),
         },
         "recommended": {},
         "optional": {
+            "ionization type": CvTerm(
+                source="MS", accession="MS:1000008", name="ionization type"
+            ),
             "instrument class": CvTerm(
                 source="MS", accession="MS:1003761", name="instrument class"
             ),

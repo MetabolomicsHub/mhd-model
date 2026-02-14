@@ -1,11 +1,13 @@
-from mhd_model.shared.validation.definitions import AllowedCvTerms
-from mhd_model.shared.validation.registry import ProfileValidation
-from mhd_model.shared.validation.definitions import CvTermPlaceholder
-from mhd_model.shared.validation.definitions import ParentCvTerm
-from mhd_model.shared.model import CvTerm
-from mhd_model.shared.validation.definitions import AllowedChildrenCvTerms
 from mhd_model.model.v0_1.rules.managed_cv_terms import COMMON_MISSING_DATA_TERMS
-from mhd_model.shared.validation.definitions import AllowedCvList
+from mhd_model.shared.model import CvTerm
+from mhd_model.shared.validation.definitions import (
+    AllowedChildrenCvTerms,
+    AllowedCvList,
+    AllowedCvTerms,
+    CvTermPlaceholder,
+    ParentCvTerm,
+)
+from mhd_model.shared.validation.registry import ProfileValidation
 
 MANAGED_CHARACTERISTIC_VALUE_RULES = {
     "organism": AllowedCvList(

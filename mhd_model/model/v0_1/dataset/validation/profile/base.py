@@ -1,9 +1,8 @@
-from mhd_model.shared.model import CvTerm
 from typing import Annotated, Any
 
 from pydantic import Field, model_validator
 
-from mhd_model.shared.model import MhdConfigModel
+from mhd_model.shared.model import CvTerm, MhdConfigModel
 
 
 class FilterCondition(MhdConfigModel):

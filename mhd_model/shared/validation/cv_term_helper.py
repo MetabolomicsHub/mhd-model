@@ -279,10 +279,19 @@ class CvTermHelper:
             )
         else:
             logger.debug("Check CV term %s - %s", cv_term.accession, cv_term.name)
+
+        # TODO: REMOVE after OLS service patch
+        accession = cv_term.accession
+        if (
+            accession.startswith("EDAM:")
+            and len(accession.split(":")[1].split("_")) > 1
+        ):
+            accession = "EDAM:" + accession.split(":")[1].split("_")[1]
+
         params = {
-            "q": cv_term.accession,
+            "q": accession,
             "ontology": cv_term.source,
-            "type": "class,property",
+            "type": "class,property,individual",
             "queryFields": "obo_id",
             "fieldList": "iri,obo_id,label,short_form",
             "exact": True,
@@ -304,12 +313,12 @@ class CvTermHelper:
             logger.info(
                 "%s: %s in cv %s, parent %s",
                 url,
-                cv_term.accession,
+                accession,
                 cv_term.source,
                 parent_uri,
             )
         else:
-            logger.info("%s: %s in cv %s", url, cv_term.accession, cv_term.source)
+            logger.info("%s: %s in cv %s", url, accession, cv_term.source)
 
         headers = {"Accept": "application/json"}
         try:
@@ -318,14 +327,14 @@ class CvTermHelper:
             if result.status_code == 404:
                 self.search_cache[key] = (
                     False,
-                    f"{cv_term.source} is not valid or {cv_term.accession} is not in ontology {cv_term.source}",
+                    f"{cv_term.source} is not valid or {accession} is not in ontology {cv_term.source}",
                 )
                 return self.search_cache[key]
             result.raise_for_status()
             result_json = result.json()
             if result_json.get("response"):
                 docs = result_json.get("response").get("docs")
-                if docs and docs[0]["obo_id"] == cv_term.accession:
+                if docs and docs[0]["obo_id"] == accession:
                     if parent_cv_term:
                         logger.debug(
                             "CV term %s - %s is child of %s %s",
@@ -341,7 +350,7 @@ class CvTermHelper:
                     else:
                         logger.debug(
                             "CV term %s - %s is valid CV term",
-                            cv_term.accession,
+                            accession,
                             cv_term.name,
                         )
                     self.search_cache[key] = (True, None)
@@ -349,23 +358,23 @@ class CvTermHelper:
                 if not parent_cv_term:
                     self.search_cache[key] = (
                         False,
-                        f"'{cv_term.source}' is not valid source or [{cv_term.source}, {cv_term.accession}, {cv_term.name}] is not found in {cv_term.source} ontology",
+                        f"'{cv_term.source}' is not valid source or [{cv_term.source}, {accession}, {cv_term.name}] is not found in {cv_term.source} ontology",
                     )
                 else:
                     self.search_cache[key] = (
                         False,
-                        f"{cv_term.name} {cv_term.accession} is not child of {parent.accession} on source {parent.source}. ",
+                        f"{cv_term.name} {accession} is not child of {parent.accession} on source {parent.source}. ",
                     )
                 return self.search_cache[key]
 
             else:
-                self.search_cache[key] = (False, f"{cv_term.accession} does not match")
+                self.search_cache[key] = (False, f"{accession} does not match")
                 return self.search_cache[key]
 
         except httpx.HTTPStatusError as ex:
-            return False, f"{cv_term.accession} search failed: {str(ex)}"
+            return False, f"{accession} search failed: {str(ex)}"
         except Exception as ex:
             return (
                 False,
-                f"{cv_term.accession} is not in {cv_term.source} ontology. {str(ex)}",
+                f"{accession} is not in {cv_term.source} ontology. {str(ex)}",
             )

@@ -29,7 +29,6 @@ from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
     AllowAnyCvTerm,
-    AllowedCvList,
     AllowedCvTerms,
     CvTermPlaceholder,
 )
