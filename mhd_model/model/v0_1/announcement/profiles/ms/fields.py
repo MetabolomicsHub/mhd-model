@@ -8,24 +8,30 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckCvTermKeyValue,
     CheckCvTermKeyValues,
 )
+from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
+    MANAGED_CHARACTERISTIC_VALUE_RULES,
+    MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
+    MANAGED_FACTOR_VALUE_RULES,
+    MANAGED_FILE_FORMAT_RULES,
+    MANAGED_PARAMETER_VALUE_RULES,
+)
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
+    COMMON_CHARACTERISTIC_DEFINITIONS,
     COMMON_MEASUREMENT_TYPES,
     COMMON_OMICS_TYPES,
+    COMMON_PARAMETER_DEFINITIONS,
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
-    REQUIRED_COMMON_PARAMETER_DEFINITIONS,
 )
 from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
     AllowAnyCvTerm,
-    AllowedChildrenCvTerms,
     AllowedCvList,
     AllowedCvTerms,
     CvTermPlaceholder,
-    ParentCvTerm,
 )
 
 CvTermOrStr = Annotated[
@@ -77,20 +83,9 @@ MetaboliteDatabaseId = Annotated[
     CvTermValue,
     Field(
         json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            accession="CHEMINF:000464",
-                            source="CHEMINF",
-                            name="chemical database identifier",
-                        ),
-                        allow_only_leaf=False,
-                        index_cv_terms=False,
-                    )
-                ],
-                allowed_other_sources=["REFMET"],
-            ).model_dump(by_alias=True)
+            "profileValidation": MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE.model_dump(
+                by_alias=True
+            )
         }
     ),
 ]
@@ -100,7 +95,7 @@ MsTechnologyType = Annotated[
     Field(
         json_schema_extra={
             "profileValidation": AllowedCvTerms(
-                cv_terms=[COMMON_TECHNOLOGY_TYPES["OBI:0000470"]]
+                cv_terms=[COMMON_TECHNOLOGY_TYPES["mass spectrometry assay"]]
             ).model_dump(by_alias=True)
         },
     ),
@@ -114,49 +109,25 @@ ExtendedCharacteristicValues = Annotated[
             "profileValidation": CheckCvTermKeyValues(
                 required_items=[
                     CheckCvTermKeyValue(
-                        cv_term_key=CvTerm(
-                            source="NCIT", accession="NCIT:C14250", name="organism"
-                        ),
-                        controls=[
-                            AllowedCvList(
-                                source_names=["NCBITAXON", "ENVO", "CHEBI"],
-                                allowed_other_sources=["wikidata", "ILX"],
-                            )
-                        ],
+                        cv_term_key=COMMON_CHARACTERISTIC_DEFINITIONS["organism"],
+                        controls=[MANAGED_CHARACTERISTIC_VALUE_RULES["organism"]],
                         min_value_count=1,
                     ),
                     CheckCvTermKeyValue(
-                        cv_term_key=CvTerm(
-                            source="NCIT",
-                            accession="NCIT:C103199",
-                            name="organism part",
-                        ),
-                        controls=[
-                            AllowedCvList(
-                                source_names=["UBERON", "BTO", "NCIT", "CHEBI"]
-                            )
-                        ],
+                        cv_term_key=COMMON_CHARACTERISTIC_DEFINITIONS["organism part"],
+                        controls=[MANAGED_CHARACTERISTIC_VALUE_RULES["organism part"]],
                         min_value_count=1,
                     ),
                 ],
                 optional_items=[
                     CheckCvTermKeyValue(
-                        cv_term_key=CvTerm(
-                            source="EFO", accession="EFO:0000408", name="disease"
-                        ),
-                        controls=[
-                            AllowedCvList(
-                                source_names=["MONDO", "MP", "SNOMED"],
-                                allowed_other_sources=["wikidata", "ILX"],
-                            )
-                        ],
+                        cv_term_key=COMMON_CHARACTERISTIC_DEFINITIONS["disease"],
+                        controls=[MANAGED_CHARACTERISTIC_VALUE_RULES["disease"]],
                         min_value_count=1,
                     ),
                     CheckCvTermKeyValue(
-                        cv_term_key=CvTerm(
-                            source="EFO", accession="EFO:0000324", name="cell type"
-                        ),
-                        controls=[AllowedCvList(source_names=["CL", "CLO"])],
+                        cv_term_key=COMMON_CHARACTERISTIC_DEFINITIONS["cell type"],
+                        controls=[MANAGED_CHARACTERISTIC_VALUE_RULES["cell type"]],
                         min_value_count=1,
                     ),
                 ],
@@ -235,15 +206,8 @@ StudyFactors = Annotated[
             "profileValidation": CheckCvTermKeyValues(
                 optional_items=[
                     CheckCvTermKeyValue(
-                        cv_term_key=CvTerm(
-                            source="EFO", accession="EFO:0000408", name="disease"
-                        ),
-                        controls=[
-                            AllowedCvList(
-                                source_names=["MONDO", "MP", "SNOMED"],
-                                allowed_other_sources=["wikidata", "ILX"],
-                            )
-                        ],
+                        cv_term_key=COMMON_CHARACTERISTIC_DEFINITIONS["disease"],
+                        controls=[MANAGED_FACTOR_VALUE_RULES["disease"]],
                         min_value_count=1,
                     )
                 ]
@@ -263,33 +227,26 @@ ProtocolType = Annotated[
         }
     ),
 ]
+
+
 Protocols = Annotated[
     list[AnnouncementProtocol],
     Field(
         json_schema_extra={
             "profileValidation": CheckChildCvTermKeyValues(
                 conditional_field_name="protocol_type",
-                conditional_cv_term=COMMON_PROTOCOLS["CHMO:0000470"],
+                conditional_cv_term=COMMON_PROTOCOLS["mass spectrometry"],
                 key_values_field_name="protocol_parameters",
                 key_values_control=CheckCvTermKeyValues(
                     required_items=[
                         CheckCvTermKeyValue(
-                            cv_term_key=REQUIRED_COMMON_PARAMETER_DEFINITIONS[
-                                "MSIO:0000171"
+                            cv_term_key=COMMON_PARAMETER_DEFINITIONS[
+                                "mass spectrometry instrument"
                             ],
                             controls=[
-                                AllowedChildrenCvTerms(
-                                    parent_cv_terms=[
-                                        ParentCvTerm(
-                                            cv_term=CvTerm(
-                                                source="MS",
-                                                accession="MS:1000031",
-                                                name="instrument model",
-                                            ),
-                                            allow_only_leaf=True,
-                                        ),
-                                    ],
-                                )
+                                MANAGED_PARAMETER_VALUE_RULES["mass spectrometry"][
+                                    "mass spectrometry instrument"
+                                ]
                             ],
                         )
                     ]
@@ -304,25 +261,9 @@ RawDataFileFormat = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EDAM",
-                            accession="EDAM:format_1915",
-                            name="Format",
-                        ),
-                        index_cv_terms=False,
-                    ),
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="MS",
-                            accession="MS:1000560",
-                            name="mass spectrometer file format",
-                        ),
-                    ),
-                ],
-            ).model_dump(by_alias=True)
+            "profileValidation": MANAGED_FILE_FORMAT_RULES[
+                "raw data file format"
+            ].model_dump(by_alias=True)
         }
     ),
 ]
@@ -332,18 +273,9 @@ CompressionFormat = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EDAM",
-                            accession="EDAM:format_1915",
-                            name="Format",
-                        ),
-                        index_cv_terms=False,
-                    )
-                ]
-            ).model_dump(by_alias=True)
+            "profileValidation": MANAGED_FILE_FORMAT_RULES[
+                "general file format"
+            ].model_dump(by_alias=True)
         }
     ),
 ]
@@ -352,19 +284,9 @@ MetadataFileFormat = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EDAM",
-                            accession="EDAM:format_1915",
-                            name="Format",
-                        ),
-                        index_cv_terms=False,
-                    )
-                ],
-                allowed_placeholder_values=[CvTermPlaceholder()],
-            ).model_dump(by_alias=True)
+            "profileValidation": MANAGED_FILE_FORMAT_RULES[
+                "metadata file format"
+            ].model_dump(by_alias=True)
         }
     ),
 ]
@@ -373,18 +295,9 @@ ResultFileFormat = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EDAM",
-                            accession="EDAM:format_1915",
-                            name="Format",
-                        ),
-                        index_cv_terms=False,
-                    )
-                ]
-            ).model_dump(by_alias=True)
+            "profileValidation": MANAGED_FILE_FORMAT_RULES[
+                "result file format"
+            ].model_dump(by_alias=True)
         }
     ),
 ]
@@ -393,19 +306,9 @@ DerivedFileFormat = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EDAM",
-                            accession="EDAM:format_1915",
-                            name="Format",
-                        ),
-                        index_cv_terms=False,
-                        allow_only_leaf=False,
-                    ),
-                ]
-            ).model_dump(by_alias=True)
+            "profileValidation": MANAGED_FILE_FORMAT_RULES[
+                "derived data file format"
+            ].model_dump(by_alias=True)
         }
     ),
 ]
@@ -414,39 +317,9 @@ SupplementaryFileFormat = Annotated[
     CvTerm,
     Field(
         json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EDAM",
-                            accession="EDAM:format_1915",
-                            name="Format",
-                        ),
-                        index_cv_terms=False,
-                    )
-                ]
-            ).model_dump(by_alias=True)
-        }
-    ),
-]
-
-
-CompressionFormat = Annotated[
-    CvTerm,
-    Field(
-        json_schema_extra={
-            "profileValidation": AllowedChildrenCvTerms(
-                parent_cv_terms=[
-                    ParentCvTerm(
-                        cv_term=CvTerm(
-                            source="EDAM",
-                            accession="EDAM:format_1915",
-                            name="Format",
-                        ),
-                        index_cv_terms=False,
-                    )
-                ]
-            ).model_dump(by_alias=True)
+            "profileValidation": MANAGED_FILE_FORMAT_RULES[
+                "general file format"
+            ].model_dump(by_alias=True)
         }
     ),
 ]

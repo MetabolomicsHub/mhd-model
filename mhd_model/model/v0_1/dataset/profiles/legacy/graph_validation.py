@@ -12,6 +12,7 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
+from mhd_model.model.v0_1.rules.managed_cv_term_rules import MANAGED_FILE_FORMAT_RULES
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_CHARACTERISTIC_DEFINITIONS,
@@ -1409,10 +1410,27 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                 condition=[
                     FilterCondition(
                         name="Organism",
-                        relationship_name="has-instance",
+                        relationship_name="instance-of",
                         start_node_type="characteristic-definition",
-                        expression="characteristic_type_ref.accession",
-                        expression_value="NCIT:C14250",
+                        expression="characteristic_type_ref.name",
+                        expression_value="organism",
+                    )
+                ],
+            ),
+            CvTermValidation(
+                node_type="characteristic-value",
+                min_count=1,
+                validation=AllowAnyCvTerm(
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+                condition=[
+                    FilterCondition(
+                        name="Organism part",
+                        relationship_name="instance-of",
+                        start_node_type="characteristic-definition",
+                        expression="characteristic_type_ref.name",
+                        expression_value="organism part",
                     )
                 ],
             ),
@@ -1499,18 +1517,7 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EDAM",
-                                accession="EDAM:format_1915",
-                                name="Format",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
                     FilterCondition(
                         name="File Format",
@@ -1522,18 +1529,7 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EDAM",
-                                accession="EDAM:format_1915",
-                                name="Format",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
                     FilterCondition(
                         name="File Format",

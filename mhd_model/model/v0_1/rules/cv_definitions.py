@@ -1,12 +1,6 @@
 from mhd_model.shared.model import CvDefinition
 
 CONTROLLED_CV_DEFINITIONS = {
-    "MTBLS": CvDefinition(
-        label="MTBLS",
-        name="MetaboLights Controlled Vocabulary",
-        uri="https://raw.githubusercontent.com/EBI-Metabolights/MtblsWS-Py/refs/heads/main/resources/Metabolights.owl",
-        prefix="http://www.ebi.ac.uk/metabolights/ontology/MTBLS_",
-    ),
     "BTO": CvDefinition(
         label="BTO",
         name="The BRENDA Tissue Ontology (BTO)",
@@ -41,11 +35,7 @@ CONTROLLED_CV_DEFINITIONS = {
         label="EDAM",
         name="The ontology of data analysis and management",
         uri="http://edamontology.org",
-        prefix="http://edamontology.org/format_",
-        alternative_prefixes=[
-            "http://edamontology.org/operation_",
-            "http://edamontology.org/topic_, http://edamontology.org/data_",
-        ],
+        prefix="http://edamontology.org/",
     ),
     "EFO": CvDefinition(
         label="EFO",
@@ -113,6 +103,12 @@ CONTROLLED_CV_DEFINITIONS = {
 
 
 OTHER_CONTROLLED_CV_DEFINITIONS = {
+    "MTBLS": CvDefinition(
+        label="MTBLS",
+        name="MetaboLights Controlled Vocabulary",
+        uri="https://raw.githubusercontent.com/EBI-Metabolights/MtblsWS-Py/refs/heads/main/resources/Metabolights.owl",
+        prefix="http://www.ebi.ac.uk/metabolights/ontology/MTBLS_",
+    ),
     "DOI": CvDefinition(
         label="DOI",
         name="Digital Object Identifier",

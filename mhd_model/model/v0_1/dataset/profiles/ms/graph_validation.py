@@ -1,3 +1,9 @@
+from mhd_model.model.v0_1.rules.managed_cv_terms import (
+    COMMON_PARAMETER_ENFORCEMENT_LEVELS,
+)
+from mhd_model.model.v0_1.rules.managed_cv_terms import (
+    COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS,
+)
 from mhd_model.model.definitions import MHD_MODEL_V0_1_MS_PROFILE_NAME
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
@@ -12,13 +18,18 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
+from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
+    MANAGED_CHARACTERISTIC_VALUE_RULES,
+    MANAGED_FILE_FORMAT_RULES,
+    MANAGED_PARAMETER_VALUE_RULES,
+)
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_CHARACTERISTIC_DEFINITIONS,
     COMMON_MEASUREMENT_TYPES,
     COMMON_OMICS_TYPES,
     COMMON_PARAMETER_DEFINITIONS,
-    COMMON_PROTOCOL_PARAMETERS,
+    COMMON_PROTOCOL_PARAMETER_MAPPINGS,
     COMMON_PROTOCOLS,
     COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_TECHNOLOGY_TYPES,
@@ -127,7 +138,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
     ),
     NodeValidation(
         node_type="characteristic-definition",
-        min=2,
+        min=len(COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS["required"]),
         validations=[
             EmbeddedRefValidation(
                 node_type="characteristic-definition",
@@ -147,8 +158,72 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
                 target="characteristic-value",
-                min=2,
+                min=0,
                 min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="characteristic-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="characteristic-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="organism",
+                        relationship_name="[embedded].characteristic_type_ref",
+                        expression="characteristic_type_ref.name",
+                        expression_value="organism",
+                    )
+                ],
+            ),
+            RelationshipValidation(
+                source="characteristic-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="characteristic-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="organism part",
+                        relationship_name="[embedded].characteristic_type_ref",
+                        expression="characteristic_type_ref.name",
+                        expression_value="organism part",
+                    )
+                ],
+            ),
+            RelationshipValidation(
+                source="characteristic-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="characteristic-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="cell type",
+                        relationship_name="[embedded].characteristic_type_ref",
+                        expression="characteristic_type_ref.name",
+                        expression_value="cell type",
+                    )
+                ],
+            ),
+            RelationshipValidation(
+                source="characteristic-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="characteristic-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="disease",
+                        relationship_name="[embedded].characteristic_type_ref",
+                        expression="characteristic_type_ref.name",
+                        expression_value="disease",
+                    )
+                ],
             ),
             RelationshipValidation(
                 source="characteristic-definition",
@@ -511,6 +586,54 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min=1,
                 min_for_each_source=1,
             ),
+            RelationshipValidation(
+                source="parameter-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="parameter-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="mass spectrometry instrument",
+                        relationship_name="[embedded].parameter_type_ref",
+                        expression="parameter_type_ref.name",
+                        expression_value="mass spectrometry instrument",
+                    )
+                ],
+            ),
+            RelationshipValidation(
+                source="parameter-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="parameter-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="ionization polarity",
+                        relationship_name="[embedded].parameter_type_ref",
+                        expression="parameter_type_ref.name",
+                        expression_value="ionization polarity",
+                    )
+                ],
+            ),
+            RelationshipValidation(
+                source="parameter-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="parameter-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="ionization polarity",
+                        relationship_name="[embedded].parameter_type_ref",
+                        expression="parameter_type_ref.name",
+                        expression_value="ionization polarity",
+                    )
+                ],
+            ),
         ],
     ),
     NodeValidation(
@@ -718,6 +841,22 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min=0,
                 min_for_each_source=1,
                 max_for_each_source=1,
+            ),
+            RelationshipValidation(
+                source="protocol",
+                relationship_name="has-parameter-definition",
+                reverse_relationship_name="used-in",
+                target="parameter-definition",
+                min=1,
+                min_for_each_source=0,
+                condition=[
+                    FilterCondition(
+                        name="mass spectrometry",
+                        relationship_name="[embedded].protocol_type_ref",
+                        expression="protocol_type_ref.name",
+                        expression_value="mass spectrometry",
+                    )
+                ],
             ),
         ],
     ),
@@ -1430,118 +1569,22 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="characteristic-value",
-                validation=AllowAnyCvTerm(
-                    allowed_placeholder_values=[CvTermPlaceholder()],
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
-            ),
-            CvTermValidation(
-                node_type="characteristic-value",
-                min_count=1,
-                validation=AllowedCvList(
-                    source_names=["NCBITAXON", "ENVO", "CHEBI"],
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
+                min_count=1
+                if parameter_name
+                in COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS["required"]
+                else 0,
+                validation=rule,
                 condition=[
                     FilterCondition(
-                        name="Organism",
-                        relationship_name="has-instance",
-                        start_node_type="characteristic-definition",
-                        expression="characteristic_type_ref.accession",
-                        expression_value="NCIT:C14250",
+                        name=parameter_name,
+                        relationship_name="instance-of",
+                        start_node_type="characteristic-value",
+                        expression="[instance-of].characteristic_type_ref.name",
+                        expression_value=parameter_name,
                     )
                 ],
-            ),
-            CvTermValidation(
-                node_type="characteristic-value",
-                min_count=1,
-                validation=AllowedCvList(
-                    source_names=["UBERON", "BTO", "NCIT", "CHEBI"],
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Organism part",
-                        relationship_name="has-instance",
-                        start_node_type="characteristic-definition",
-                        expression="characteristic_type_ref.accession",
-                        expression_value="NCIT:C103199",
-                    )
-                ],
-            ),
-            CvTermValidation(
-                node_type="characteristic-value",
-                min_count=1,
-                validation=AllowedCvList(
-                    source_names=["MONDO", "MP", "SNOMED"],
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Disease",
-                        relationship_name="has-instance",
-                        start_node_type="characteristic-definition",
-                        expression="characteristic_type_ref.accession",
-                        expression_value="EFO:0000408",
-                    )
-                ],
-            ),
-            CvTermValidation(
-                node_type="characteristic-value",
-                min_count=1,
-                validation=AllowedCvList(
-                    source_names=["CL", "CLO"],
-                    allowed_other_sources=["wikidata", "ILX"],
-                    allowed_missing_cv_terms=[
-                        CvTerm(
-                            source="NCIT",
-                            accession="NCIT:C48660",
-                            name="Not Applicable",
-                        )
-                    ],
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Cell type",
-                        relationship_name="has-instance",
-                        start_node_type="characteristic-definition",
-                        expression="characteristic_type_ref.accession",
-                        expression_value="EFO:0000324",
-                    )
-                ],
-            ),
-            # CvTermValidation(
-            #     node_type="characteristic-value",
-            #     validation=AllowedChildrenCvTerms(
-            #         parent_cv_terms=[
-            #             ParentCvTerm(
-            #                 cv_term=CvTerm(
-            #                     source="NCIT",
-            #                     accession="NCIT:C25464",
-            #                     name="Country",
-            #                 ),
-            #                 index_cv_terms=True,
-            #                 allow_only_leaf=True,
-            #             )
-            #         ],
-            #         allowed_missing_cv_terms=[
-            #             CvTerm(
-            #                 source="NCIT",
-            #                 accession="NCIT:C48660",
-            #                 name="Not Applicable",
-            #             )
-            #         ],
-            #     ),
-            #     condition=[
-            #         FilterCondition(
-            #             name="Geographic location - Country",
-            #             relationship_name="has-instance",
-            #             start_node_type="characteristic-definition",
-            #             expression="characteristic_type_ref.accession",
-            #             expression_value="GAZ:00000448",
-            #         )
-            #     ],
-            # ),
+            )
+            for parameter_name, rule in MANAGED_CHARACTERISTIC_VALUE_RULES.items()
         ],
         relationships=[
             RelationshipValidation(
@@ -1625,18 +1668,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EDAM",
-                                accession="EDAM:format_1915",
-                                name="Format",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
                     FilterCondition(
                         name="File Format",
@@ -1648,18 +1680,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EDAM",
-                                accession="EDAM:format_1915",
-                                name="Format",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
                     FilterCondition(
                         name="File Format",
@@ -1962,11 +1983,11 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ),
                 condition=[
                     FilterCondition(
-                        name="Disease",
-                        relationship_name="has-instance",
+                        name="disease",
+                        relationship_name="instance-of",
                         start_node_type="factor-definition",
-                        expression="factor_type_ref.accession",
-                        expression_value="EFO:0000408",
+                        expression="factor_type_ref.name",
+                        expression_value="disease",
                     )
                 ],
             ),
@@ -2064,30 +2085,34 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 node_type="parameter-type",
                 min_count=1,
                 validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_PROTOCOL_PARAMETERS["CHMO:0000470"].values())
+                    cv_terms=COMMON_PROTOCOL_PARAMETER_MAPPINGS[
+                        "mass spectrometry"
+                    ].values()
                 ),
                 condition=[
                     FilterCondition(
                         name="Mass spectrometry protocol",
                         relationship_name="[embedded].parameter_type_ref",
                         start_node_type="parameter-definition",
-                        expression="[used-in].protocol_type_ref.accession",
-                        expression_value="CHMO:0000470",
+                        expression="[used-in].protocol_type_ref.name",
+                        expression_value="mass spectrometry",
                     ),
                 ],
             ),
             CvTermValidation(
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_PROTOCOL_PARAMETERS["CHMO:0001000"].values())
+                    cv_terms=COMMON_PROTOCOL_PARAMETER_MAPPINGS[
+                        "chromatography"
+                    ].values()
                 ),
                 condition=[
                     FilterCondition(
                         name="Chromatography protocol",
                         relationship_name="[embedded].parameter_definition_refs.parameter_type_ref",
                         start_node_type="protocol",
-                        expression="protocol_type_ref.accession",
-                        expression_value="CHMO:0001000",
+                        expression="protocol_type_ref.name",
+                        expression_value="chromatography",
                     )
                 ],
             ),
@@ -2110,37 +2135,26 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="parameter-value",
-                validation=AllowAnyCvTerm(
-                    allowed_placeholder_values=[CvTermPlaceholder()],
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
-            ),
-            CvTermValidation(
-                node_type="parameter-value",
-                min_count=1,
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="MS",
-                                accession="MS:1000031",
-                                name="instrument model",
-                            ),
-                            excluded_cv_terms=[r".*instrument model"],
-                            allow_only_leaf=True,
-                        ),
-                    ]
-                ),
+                min_count=1
+                if parameter_name
+                in COMMON_PARAMETER_ENFORCEMENT_LEVELS[protocol_name]["required"]
+                else 0,
+                validation=rule,
                 condition=[
                     FilterCondition(
-                        name="Mass spectrometry instrument",
-                        relationship_name="has-instance",
+                        name=parameter_name,
+                        relationship_name="instance-of",
                         start_node_type="parameter-definition",
-                        expression="parameter_type_ref.accession",
-                        expression_value="MSIO:0000171",
+                        expression="parameter_type_ref.name",
+                        expression_value=parameter_name,
                     )
                 ],
-            ),
+            )
+            for protocol_name, parameter_name, rule in [
+                (k, k2, v2)
+                for k, d in MANAGED_PARAMETER_VALUE_RULES.items()
+                for k2, v2 in d.items()
+            ]
         ],
         relationships=[
             RelationshipValidation(

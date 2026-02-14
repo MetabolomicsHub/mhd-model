@@ -1,3 +1,4 @@
+from mhd_model.model.v0_1.dataset.validation.profile.base import FilterCondition
 import logging
 import re
 from typing import Any, Generator, OrderedDict
@@ -420,6 +421,15 @@ class MhdModelValidator:
                 path=nodes_path,
                 instance={},
             )
+        # reverse_relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = {}
+        # for k, v in relationships_index.items():
+        #     reverse_relationships_index[k] = {}
+        #     for k2, v2 in v.items():
+        #         for k3, v3 in v2.items():
+        #             if  k2  not in reverse_relationships_index:
+        #                 reverse_relationships_index[k][k3] = {}
+        #             reverse_relationships_index[k][k3][k2] = v3
+
         for validation_nodes in (node_validation.mhd_nodes, node_validation.cv_nodes):
             for validation_item in validation_nodes:
                 item: NodeValidation = validation_item
@@ -449,7 +459,8 @@ class MhdModelValidator:
                         )
                     elif isinstance(item, CvTermValidation):
                         selected_items = self.filter_validation(
-                            item,
+                            item.node_type,
+                            item.condition,
                             nodes,
                             nodes_by_type,
                             relationships_index=relationships_index,
@@ -484,6 +495,7 @@ class MhdModelValidator:
                                 nodes,
                                 item,
                                 nodes_by_type,
+                                relationships_index,
                                 relationships_index,
                                 selected_items,
                                 path=nodes_path,
@@ -686,6 +698,9 @@ class MhdModelValidator:
         relationships_index: dict[
             str, dict[str, dict[str, tuple[int, Relationship]]]
         ] = None,
+        reverse_relationships_index: dict[
+            str, dict[str, dict[str, tuple[int, Relationship]]]
+        ] = None,
         selected_items: None | list[Any] = None,
         path: str = None,
     ) -> list[jsonschema.ValidationError]:
@@ -711,27 +726,27 @@ class MhdModelValidator:
         if check.validation.allowed_other_sources:
             other_sources = {x for x in check.validation.allowed_other_sources}
         for idx, value in selected_items:
-            run_validation = self.check_condition(
-                value,
-                check,
-                nodes_by_type,
-                relationships_index,
-            )
+            # run_validation = self.check_condition(
+            #     value,
+            #     check,
+            #     nodes_by_type,
+            #     reverse_relationships_index,
+            # )
 
-            if run_validation:
-                result = self.check_cv_term_in_list(
-                    nodes,
-                    idx,
-                    value,
-                    property_name,
-                    placeholder_values,
-                    missing_values,
-                    other_sources,
-                    check,
-                    path=path,
-                )
-                if result:
-                    errors.extend(result)
+            # if run_validation:
+            result = self.check_cv_term_in_list(
+                nodes,
+                idx,
+                value,
+                property_name,
+                placeholder_values,
+                missing_values,
+                other_sources,
+                check,
+                path=path,
+            )
+            if result:
+                errors.extend(result)
         return errors
 
     def check_condition(
@@ -761,8 +776,8 @@ class MhdModelValidator:
                 target_tuple = target_nodes.get(target_ref)
                 if target_tuple:
                     target = target_tuple[1]
-                    if hasattr(target, "accession"):
-                        accession = getattr(target, "accession")
+                    if hasattr(target, "name"):
+                        accession = getattr(target, "name")
                         if accession == condition_item.expression_value:
                             run_validation = True
                             break
@@ -795,9 +810,11 @@ class MhdModelValidator:
 
             item_key = (item.source, item.accession)
             accession_prefix = (
-                item.accession.split(":")[0]
-                if ":" in item.accession
-                else item.accession
+                item.source
+                if item.source
+                else item.accession.split(":")[0]
+                if item.accession and ":" in item.accession
+                else item.accession or ""
             )
             item_full_key = (item.source, item.accession, item.name)
             if (
@@ -823,7 +840,7 @@ class MhdModelValidator:
                 sub_path.append(sub_idx)
             valid = False
             error_message = ""
-            if item.source in source_names:
+            if item.source.upper() in source_names:
                 valid, error_message = self.cv_helper.check_cv_term(item)
             if not error_message:
                 error_message = ""
@@ -1115,6 +1132,7 @@ class MhdModelValidator:
         relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
     ) -> list[Any]:
         vals = [item]
+
         for term in source_property.split("."):
             new_vals = []
             if term.endswith("_ref"):
@@ -1150,19 +1168,20 @@ class MhdModelValidator:
 
     def filter_validation(
         self,
-        check: CvTermValidation,
+        node_type: str,
+        conditions: FilterCondition,
         nodes: dict,
         nodes_by_type: dict,
         relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
     ) -> list:
         selected_items = {}
-        if check.node_type not in nodes_by_type:
+        if node_type not in nodes_by_type:
             return []
-        current_nodes = nodes_by_type[check.node_type]
+        current_nodes = nodes_by_type[node_type]
 
-        if not check.condition:
+        if not conditions:
             return list(current_nodes.values())
-        for condition in check.condition:
+        for condition in conditions:
             source_node_type = condition.start_node_type
             source_property = condition.expression
             relationship_name = condition.relationship_name
@@ -1187,13 +1206,21 @@ class MhdModelValidator:
                     for val in vals:
                         if val == source_value:
                             if relationships:
-                                for item in relationships[item.id_]:
-                                    if item in current_nodes:
-                                        current_idx, selected = current_nodes.get(item)
-                                        selected_items[current_idx] = (
-                                            current_idx,
-                                            selected,
-                                        )
+                                current_idx, selected = nodes_by_type.get(
+                                    node_type, {}
+                                ).get(item.id_)
+                                selected_items[current_idx] = (
+                                    current_idx,
+                                    selected,
+                                )
+                                # for item in relationships[item.id_]:
+                                #     relationships_index.get(item)
+                                #     if item in current_nodes:
+                                #         current_idx, selected = current_nodes.get(item)
+                                #         selected_items[current_idx] = (
+                                #             current_idx,
+                                #             selected,
+                                #         )
                             else:
                                 path = relationship_name.replace(
                                     "[embedded]", ""
@@ -1441,10 +1468,34 @@ class MhdModelValidator:
         relationships = relationships_by_name.get(item.relationship_name, {})
         items = []
         errors = []
+        source_nodes = nodes_by_type.get(item.source, {})
+
         for idx, x in relationships.values():
             target_node = nodes.get(x.target_ref)
+            if not target_node:
+                errors.append(
+                    jsonschema.ValidationError(
+                        message=f"{x.id_}: The target node reference '{x.target_ref}' in the relationship is not defined.",
+                        validator="invalid-node-ref-in-relationship",
+                        context=(),
+                        path=["relationships", idx],
+                        instance={},
+                    )
+                )
 
             source_node = nodes.get(x.source_ref)
+            if not source_node:
+                errors.append(
+                    jsonschema.ValidationError(
+                        message=f"{x.id_}: The source node reference '{x.source_ref}' in the relationship is not defined.",
+                        validator="invalid-node-ref-in-relationship",
+                        context=(),
+                        path=["relationships", idx],
+                        instance={},
+                    )
+                )
+            if not source_node or not target_node:
+                continue
             if item.source == source_node.type_ and item.target == target_node.type_:
                 items.append(x)
             elif target_node.type_.startswith("x-") or source_node.type_.startswith(
@@ -1483,15 +1534,33 @@ class MhdModelValidator:
                 )
             )
         if item.min_for_each_source or item.max_for_each_source:
-            source_nodes = relationships_index.get(item.relationship_name, {})
-            for node_idx, node in nodes_by_type.get(item.source, {}).values():
-                target_count = len(source_nodes.get(node.id_, {}))
+            source_nodes = nodes_by_type.get(item.source, {})
+            condition = item.condition[0] if item.condition else None
+            for node_idx, node in source_nodes.values():
+                matched = True
+                if item.condition:
+                    vals = self.parse_condition(
+                        node,
+                        nodes,
+                        condition.expression,
+                        relationships_index=relationships_index,
+                    )
+                    if condition.expression_value not in vals:
+                        matched = False
+
+                if not matched:
+                    continue
+                target_count = len(
+                    relationships_index.get(item.relationship_name, {}).get(
+                        node.id_, []
+                    )
+                )
 
                 if item.min_for_each_source and target_count < item.min_for_each_source:
                     errors.append(
                         jsonschema.ValidationError(
                             message=f"{node.id_}: The source node at index {node_idx} has less relationship "
-                            f"('{item.source} - {item.relationship_name} - {item.target}'). "
+                            f"('{item.source} - {item.relationship_name} - {item.target}{' [' + condition.name + ']' if condition else ''}') "
                             f"Actual: {target_count}, Minimim : {item.min_for_each_source}.",
                             validator="number-of-relationships",
                             context=(),

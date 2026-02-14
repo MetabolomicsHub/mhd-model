@@ -6999,7 +6999,7 @@
       "properties": {
         "type_": "descriptor",
         "source": "EDAM",
-        "accession": "EDAM:0153",
+        "accession": "EDAM:topic_0153",
         "name": "Lipidomics",
         "label": "Lipidomics"
       }

@@ -1,8 +1,17 @@
+from mhd_model.shared.model import CvTerm
 from typing import Annotated, Any
 
 from pydantic import Field, model_validator
 
 from mhd_model.shared.model import MhdConfigModel
+
+
+class FilterCondition(MhdConfigModel):
+    name: Annotated[str, Field()]
+    relationship_name: Annotated[str, Field()]
+    start_node_type: Annotated[None | str, Field()] = None
+    expression: Annotated[None | str, Field()] = None
+    expression_value: Annotated[None | str | CvTerm, Field()] = None
 
 
 class EmbeddedRefValidation(MhdConfigModel):
@@ -42,6 +51,7 @@ class RelationshipValidation(MhdConfigModel):
     max: Annotated[None | int, Field()] = None
     min_for_each_source: Annotated[None | int, Field()] = None
     max_for_each_source: Annotated[None | int, Field()] = None
+    condition: Annotated[None | list[FilterCondition], Field()] = None
 
     @model_validator(mode="wrap")
     @classmethod
@@ -53,14 +63,3 @@ class RelationshipValidation(MhdConfigModel):
             item.target = item.target.lower().replace(" ", "-")
         item.relationship_name = item.relationship_name.lower().replace(" ", "-")
         return item
-
-
-class RequiredRelationshipValidation(RelationshipValidation):
-    description: Annotated[None | str, Field()] = None
-    source: Annotated[None | str, Field()]
-    relationship_name: Annotated[str, Field()]
-    reverse_relationship_name: Annotated[None | str, Field()]
-    target: Annotated[None | str, Field()]
-    min_for_each_source: Annotated[int, Field()] = 1
-    expression: Annotated[str, Field()]
-    expected_value: Annotated[str, Field()]

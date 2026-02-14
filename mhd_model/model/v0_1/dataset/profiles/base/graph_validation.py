@@ -1,3 +1,6 @@
+from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
+    MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
+)
 from mhd_model.model.definitions import MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
@@ -12,13 +15,17 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
+from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
+    MANAGED_FILE_FORMAT_RULES,
+    MANAGED_PARAMETER_VALUE_RULES,
+)
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_CHARACTERISTIC_DEFINITIONS,
     COMMON_MEASUREMENT_TYPES,
     COMMON_OMICS_TYPES,
     COMMON_PARAMETER_DEFINITIONS,
-    COMMON_PROTOCOL_PARAMETERS,
+    COMMON_PROTOCOL_PARAMETER_MAPPINGS,
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
 )
@@ -149,8 +156,24 @@ MHD_BASE_VALIDATION_V0_1.mhd_nodes = [
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
                 target="characteristic-value",
-                min=2,
+                min=0,
                 min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="characteristic-definition",
+                relationship_name="has-instance",
+                reverse_relationship_name="instance-of",
+                target="characteristic-value",
+                min=0,
+                min_for_each_source=1,
+                condition=[
+                    FilterCondition(
+                        name="organism",
+                        relationship_name="[embedded].characteristic_type_ref",
+                        expression="characteristic_type_ref.name",
+                        expression_value="organism",
+                    )
+                ],
             ),
             RelationshipValidation(
                 source="characteristic-definition",
@@ -1467,18 +1490,7 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EDAM",
-                                accession="EDAM:format_1915",
-                                name="Format",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
                     FilterCondition(
                         name="File Format",
@@ -1490,18 +1502,7 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="descriptor",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="EDAM",
-                                accession="EDAM:format_1915",
-                                name="Format",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
                     FilterCondition(
                         name="File Format",
@@ -1793,8 +1794,8 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
                         name="Disease",
                         relationship_name="has-instance",
                         start_node_type="factor-definition",
-                        expression="factor_type_ref.accession",
-                        expression_value="EFO:0000408",
+                        expression="factor_type_ref.name",
+                        expression_value="disease",
                     )
                 ],
             ),
@@ -1840,18 +1841,7 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
         validations=[
             CvTermValidation(
                 node_type="metabolite-identifier",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="CHEMINF",
-                                accession="CHEMINF:000464",
-                                name="chemical database identifier",
-                            ),
-                            index_cv_terms=False,
-                        )
-                    ]
-                ),
+                validation=MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
                 condition=[
                     FilterCondition(
                         name="Reported Metabolite Identifier",
@@ -1891,30 +1881,34 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
             CvTermValidation(
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_PROTOCOL_PARAMETERS["CHMO:0000470"].values())
+                    cv_terms=list(
+                        COMMON_PROTOCOL_PARAMETER_MAPPINGS["mass spectrometry"].values()
+                    )
                 ),
                 condition=[
                     FilterCondition(
                         name="Mass spectrometry protocol",
                         relationship_name="[embedded].parameter_type_ref",
                         start_node_type="parameter-definition",
-                        expression="[used-in].protocol_type_ref.accession",
-                        expression_value="CHMO:0000470",
+                        expression="[used-in].protocol_type_ref.name",
+                        expression_value="mass spectrometry",
                     ),
                 ],
             ),
             CvTermValidation(
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
-                    cv_terms=list(COMMON_PROTOCOL_PARAMETERS["CHMO:0001000"].values())
+                    cv_terms=list(
+                        COMMON_PROTOCOL_PARAMETER_MAPPINGS["chromatography"].values()
+                    )
                 ),
                 condition=[
                     FilterCondition(
                         name="Chromatography protocol",
                         relationship_name="[embedded].parameter_definition_refs.parameter_type_ref",
                         start_node_type="protocol",
-                        expression="protocol_type_ref.accession",
-                        expression_value="CHMO:0001000",
+                        expression="protocol_type_ref.name",
+                        expression_value="chromatography",
                     )
                 ],
             ),
@@ -1944,26 +1938,16 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
             ),
             CvTermValidation(
                 node_type="parameter-value",
-                validation=AllowedChildrenCvTerms(
-                    parent_cv_terms=[
-                        ParentCvTerm(
-                            cv_term=CvTerm(
-                                source="MS",
-                                accession="MS:1000031",
-                                name="instrument model",
-                            ),
-                            excluded_cv_terms=[r".*instrument model"],
-                            allow_only_leaf=True,
-                        ),
-                    ]
-                ),
+                validation=MANAGED_PARAMETER_VALUE_RULES["mass spectrometry"][
+                    "mass spectrometry instrument"
+                ],
                 condition=[
                     FilterCondition(
                         name="Mass spectrometry instrument",
                         relationship_name="has-instance",
                         start_node_type="parameter-definition",
-                        expression="parameter_type_ref.accession",
-                        expression_value="MSIO:0000171",
+                        expression="parameter_type_ref.name",
+                        expression_value="mass spectrometry instrument",
                     )
                 ],
             ),

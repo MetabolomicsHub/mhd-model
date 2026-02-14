@@ -413,9 +413,14 @@
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
                   "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
+                  "allowedPlaceholderValues": [
+                    {
+                      "accession": "",
+                      "source": ""
+                    }
+                  ],
                   "inputType": "list-or-item",
-                  "listJoinOperator": "all",
+                  "listJoinOperator": "any",
                   "minimum": null,
                   "name": "allowed-children-cv-terms",
                   "negate": false,
@@ -427,6 +432,17 @@
                         "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    },
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "MS:1001459",
+                        "name": "file format",
+                        "source": "MS"
                       },
                       "excludedCvTerms": null,
                       "indexCvTerms": false
@@ -502,9 +518,14 @@
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
                   "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
+                  "allowedPlaceholderValues": [
+                    {
+                      "accession": "",
+                      "source": ""
+                    }
+                  ],
                   "inputType": "list-or-item",
-                  "listJoinOperator": "all",
+                  "listJoinOperator": "any",
                   "minimum": null,
                   "name": "allowed-children-cv-terms",
                   "negate": false,
@@ -516,6 +537,17 @@
                         "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    },
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "MS:1001459",
+                        "name": "file format",
+                        "source": "MS"
                       },
                       "excludedCvTerms": null,
                       "indexCvTerms": false
@@ -591,9 +623,14 @@
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
                   "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
+                  "allowedPlaceholderValues": [
+                    {
+                      "accession": "",
+                      "source": ""
+                    }
+                  ],
                   "inputType": "list-or-item",
-                  "listJoinOperator": "all",
+                  "listJoinOperator": "any",
                   "minimum": null,
                   "name": "allowed-children-cv-terms",
                   "negate": false,
@@ -605,6 +642,17 @@
                         "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    },
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "MS:1001459",
+                        "name": "file format",
+                        "source": "MS"
                       },
                       "excludedCvTerms": null,
                       "indexCvTerms": false
@@ -735,9 +783,14 @@
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
                   "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
+                  "allowedPlaceholderValues": [
+                    {
+                      "accession": "",
+                      "source": ""
+                    }
+                  ],
                   "inputType": "list-or-item",
-                  "listJoinOperator": "all",
+                  "listJoinOperator": "any",
                   "minimum": null,
                   "name": "allowed-children-cv-terms",
                   "negate": false,
@@ -749,6 +802,17 @@
                         "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    },
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "MS:1001459",
+                        "name": "file format",
+                        "source": "MS"
                       },
                       "excludedCvTerms": null,
                       "indexCvTerms": false
@@ -824,9 +888,14 @@
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
                   "allowedOtherSources": null,
-                  "allowedPlaceholderValues": null,
+                  "allowedPlaceholderValues": [
+                    {
+                      "accession": "",
+                      "source": ""
+                    }
+                  ],
                   "inputType": "list-or-item",
-                  "listJoinOperator": "all",
+                  "listJoinOperator": "any",
                   "minimum": null,
                   "name": "allowed-children-cv-terms",
                   "negate": false,
@@ -838,6 +907,17 @@
                         "accession": "EDAM:format_1915",
                         "name": "Format",
                         "source": "EDAM"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    },
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "MS:1001459",
+                        "name": "file format",
+                        "source": "MS"
                       },
                       "excludedCvTerms": null,
                       "indexCvTerms": false
@@ -1186,19 +1266,24 @@
           ],
           "cvTerms": [
             {
-              "accession": "EDAM:3172",
+              "accession": "EDAM:topic_3172",
               "name": "Metabolomics",
               "source": "EDAM"
             },
             {
-              "accession": "EDAM:0153",
+              "accession": "EDAM:topic_0153",
               "name": "Lipidomics",
               "source": "EDAM"
             },
             {
-              "accession": "EDAM:3955",
+              "accession": "EDAM:topic_3955",
               "name": "Fluxomics",
               "source": "EDAM"
+            },
+            {
+              "accession": "wikidata:Q115452339",
+              "name": "exposomics",
+              "source": "wikidata"
             }
           ],
           "inputType": "list-or-item",
@@ -1314,11 +1399,6 @@
               "accession": "OBI:0000470",
               "name": "mass spectrometry assay",
               "source": "OBI"
-            },
-            {
-              "accession": "OBI:0000623",
-              "name": "NMR spectroscopy assay",
-              "source": "OBI"
             }
           ],
           "inputType": "list-or-item",
@@ -1390,7 +1470,7 @@
             "cvTerms": [
               {
                 "accession": "MS:1002853",
-                "name": "no associated published manuscript",
+                "name": "Dataset with no associated published manuscript",
                 "source": "MS"
               },
               {
@@ -1433,7 +1513,23 @@
             "controls": [
               {
                 "allowNullValue": false,
-                "allowedMissingCvTerms": null,
+                "allowedMissingCvTerms": [
+                  {
+                    "accession": "NCIT:C48660",
+                    "name": "Not Applicable",
+                    "source": "NCIT"
+                  },
+                  {
+                    "accession": "NCIT:C126101",
+                    "name": "Not Available",
+                    "source": "NCIT"
+                  },
+                  {
+                    "accession": "NCIT:C150904",
+                    "name": "Masked Data",
+                    "source": "NCIT"
+                  }
+                ],
                 "allowedOtherSources": [
                   "wikidata",
                   "ILX"
@@ -1447,7 +1543,8 @@
                 "sourceNames": [
                   "MONDO",
                   "MP",
-                  "SNOMED"
+                  "SNOMED",
+                  "PATO"
                 ]
               }
             ],
@@ -1488,7 +1585,23 @@
             "controls": [
               {
                 "allowNullValue": false,
-                "allowedMissingCvTerms": null,
+                "allowedMissingCvTerms": [
+                  {
+                    "accession": "NCIT:C48660",
+                    "name": "Not Applicable",
+                    "source": "NCIT"
+                  },
+                  {
+                    "accession": "NCIT:C126101",
+                    "name": "Not Available",
+                    "source": "NCIT"
+                  },
+                  {
+                    "accession": "NCIT:C150904",
+                    "name": "Masked Data",
+                    "source": "NCIT"
+                  }
+                ],
                 "allowedOtherSources": [
                   "wikidata",
                   "ILX"
@@ -1502,7 +1615,8 @@
                 "sourceNames": [
                   "MONDO",
                   "MP",
-                  "SNOMED"
+                  "SNOMED",
+                  "PATO"
                 ]
               }
             ],
@@ -1524,8 +1638,27 @@
             "controls": [
               {
                 "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
+                "allowedMissingCvTerms": [
+                  {
+                    "accession": "NCIT:C48660",
+                    "name": "Not Applicable",
+                    "source": "NCIT"
+                  },
+                  {
+                    "accession": "NCIT:C126101",
+                    "name": "Not Available",
+                    "source": "NCIT"
+                  },
+                  {
+                    "accession": "NCIT:C150904",
+                    "name": "Masked Data",
+                    "source": "NCIT"
+                  }
+                ],
+                "allowedOtherSources": [
+                  "wikidata",
+                  "ILX"
+                ],
                 "allowedPlaceholderValues": null,
                 "inputType": "list-or-item",
                 "listJoinOperator": "all",
@@ -1595,7 +1728,10 @@
               {
                 "allowNullValue": false,
                 "allowedMissingCvTerms": null,
-                "allowedOtherSources": null,
+                "allowedOtherSources": [
+                  "wikidata",
+                  "ILX"
+                ],
                 "allowedPlaceholderValues": null,
                 "inputType": "list-or-item",
                 "listJoinOperator": "all",
@@ -1658,7 +1794,10 @@
                     {
                       "allowNullValue": false,
                       "allowedMissingCvTerms": null,
-                      "allowedOtherSources": null,
+                      "allowedOtherSources": [
+                        "wikidata",
+                        "ILX"
+                      ],
                       "allowedPlaceholderValues": null,
                       "inputType": "list-or-item",
                       "listJoinOperator": "all",
@@ -1667,14 +1806,16 @@
                       "negate": false,
                       "parentCvTerms": [
                         {
-                          "allowOnlyLeaf": true,
+                          "allowOnlyLeaf": false,
                           "allowParent": false,
                           "cvTerm": {
                             "accession": "MS:1000031",
                             "name": "instrument model",
                             "source": "MS"
                           },
-                          "excludedCvTerms": null,
+                          "excludedCvTerms": [
+                            "^.*instrument model"
+                          ],
                           "indexCvTerms": false
                         }
                       ]

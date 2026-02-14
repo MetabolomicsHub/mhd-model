@@ -1,3 +1,4 @@
+from mhd_model.model.v0_1.dataset.validation.profile.base import FilterCondition
 import warnings
 from typing import Annotated, Any, Literal
 
@@ -16,14 +17,6 @@ from mhd_model.shared.validation.definitions import (
 )
 
 warnings.filterwarnings("ignore", category=UserWarning)
-
-
-class FilterCondition(MhdConfigModel):
-    name: Annotated[str, Field()]
-    relationship_name: Annotated[str, Field()]
-    start_node_type: Annotated[None | str, Field()]
-    expression: Annotated[None | str, Field()] = None
-    expression_value: Annotated[None | str | CvTerm, Field()] = None
 
 
 NodePropertyType = Literal["int", "str", "float", "CvTerm", "CvTermValue"]
