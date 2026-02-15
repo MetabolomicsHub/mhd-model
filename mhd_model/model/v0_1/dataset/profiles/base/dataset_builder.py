@@ -82,7 +82,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             if not source_uppercase:
                 return self
             if source_uppercase not in self._cv_definitions_map:
-                logger.info("%s CV source is added.", item.source)
+                logger.info("%s CV source is added.", source_uppercase)
                 self._cv_definitions_map[source_uppercase] = None
         return self
 
