@@ -15,15 +15,21 @@ class ExcludeLoggerFilter(logging.Filter):
         return True
 
 
-def set_basic_logging_config() -> None:
+def set_basic_logging_config(level: int = logging.INFO) -> None:
     handler = logging.StreamHandler()
     handler.addFilter(
-        ExcludeLoggerFilter({"fake_useragent": logging.ERROR, "httpx": logging.WARNING})
+        ExcludeLoggerFilter(
+            {
+                "fake_useragent": logging.ERROR,
+                "httpx": logging.WARNING,
+                "httpcore": logging.WARNING,
+            }
+        )
     )
     logging.basicConfig(
-        level=logging.INFO,
-        format="[%(asctime)s] %(levelname)s %(message)s",
-        # format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+        level=level,
+        # format="[%(asctime)s] %(levelname)s %(message)s",
+        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
         datefmt="%d/%b/%Y %H:%M:%S",
         handlers=[handler],
     )

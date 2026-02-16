@@ -13,7 +13,7 @@ if __name__ == "__main__":
     )
     mw_public_ftp_base_url: str = "ftp://www.metabolomicsworkbench.org/Studies"
     # files = list(Path("tests/data/mhd_data/legacy").glob("*.mhd.json"))
-    files = list(Path().glob("REQ202602083000317.mhd.json"))
+    files = list(Path().glob("MTBLS30008987.mhd.json"))
     for file in files:
         txt = file.read_text()
         mhd_data_json = json.loads(txt)

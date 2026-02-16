@@ -1,6 +1,7 @@
 from mhd_model.model.v0_1.rules.managed_cv_terms import COMMON_MISSING_DATA_TERMS
 from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import (
+    AllowAnyCvTerm,
     AllowedChildrenCvTerms,
     AllowedCvList,
     AllowedCvTerms,
@@ -54,7 +55,7 @@ MANAGED_PARAMETER_VALUE_RULES: dict[str, dict[str, ProfileValidation]] = {
             ],
             allowed_other_sources=["wikidata", "ILX"],
         ),
-        "ionization polarity": AllowedCvTerms(
+        "acquisition polarity": AllowedCvTerms(
             cv_terms=[
                 CvTerm(
                     source="MS",
@@ -129,6 +130,10 @@ MANAGED_PARAMETER_VALUE_RULES: dict[str, dict[str, ProfileValidation]] = {
             ],
             allowed_other_sources=["wikidata", "ILX"],
         ),
+        "chromatography column": AllowAnyCvTerm(
+            allowed_placeholder_values=[CvTermPlaceholder()],
+            allowed_other_sources=["wikidata", "ILX"],
+        ),
         "chromatography separation": AllowedChildrenCvTerms(
             parent_cv_terms=[
                 ParentCvTerm(
@@ -153,7 +158,14 @@ MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE: AllowedChildrenCvTerms = (
                     source="CHEMINF",
                     name="chemical database identifier",
                 ),
-            )
+            ),
+            ParentCvTerm(
+                cv_term=CvTerm(
+                    accession="EDAM:data_2894",
+                    source="EDAM",
+                    name="Compound accession",
+                ),
+            ),
         ],
         allowed_other_sources=["REFMET"],
     )

@@ -1,8 +1,9 @@
 import json
 import logging
-import sys
 from pathlib import Path
 from typing import Any
+
+from mhd_model.log_utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
 
@@ -65,12 +66,7 @@ except Exception:
     logger.error("neo4j library is not loaded.")
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO,
-        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
-        datefmt="%d/%b/%Y %H:%M:%S",
-        stream=sys.stdout,
-    )
+    set_basic_logging_config()
     input_root_path = "tests/data/neo4j/legacy"
 
     update_neo4j(input_root_path)

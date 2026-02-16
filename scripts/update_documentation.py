@@ -656,6 +656,7 @@ if __name__ == "__main__":
                                         None
                                         if val_item.node_property_name.endswith("_refs")
                                         else 1,
+                                        "",
                                     )
                                     for x in val_item.target_ref_types
                                 ]
@@ -716,6 +717,10 @@ if __name__ == "__main__":
                             relation_name = relation.relationship_name
                             min_val = relation.min_for_each_source
                             max_val = relation.max_for_each_source
+                            condition_str = ""
+                            if relation.condition:
+                                condition = relation.condition[0]
+                                condition_str = f"({condition.expression} = {condition.expression_value})"
                             required_links.append(
                                 (
                                     source_node,
@@ -723,6 +728,7 @@ if __name__ == "__main__":
                                     target_node,
                                     min_val,
                                     max_val,
+                                    condition_str,
                                 )
                             )
             f.write(
@@ -747,6 +753,7 @@ if __name__ == "__main__":
                     target_node,
                     min_val,
                     max_val,
+                    condition_str,
                 ) in required_links:
                     # if "embedded" in relation_name:
                     #     continue
@@ -775,6 +782,7 @@ if __name__ == "__main__":
                     target_node,
                     min_val,
                     max_val,
+                    condition_str,
                 ) in required_links:
                     source_name = (
                         node_documentation[source_node].name
@@ -786,8 +794,11 @@ if __name__ == "__main__":
                         if target_node in node_documentation
                         else target_node
                     )
+                    source = source_name
+                    if condition_str:
+                        source = f"{source_name} <br/> {condition_str}"
                     f.write(
-                        f"|{source_name}|{relation_name}|{target_name}|{min_val if min_val is not None else 0}|{max_val if max_val is not None else 'N (unbounded)'}|\n"
+                        f"|{source}|{relation_name}|{target_name}|{min_val if min_val is not None else 0}|{max_val if max_val is not None else 'N (unbounded)'}|\n"
                     )
                 f.write("\n")
 

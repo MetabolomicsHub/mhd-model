@@ -334,7 +334,11 @@ class CvTermHelper:
             result_json = result.json()
             if result_json.get("response"):
                 docs = result_json.get("response").get("docs")
-                if docs and docs[0]["obo_id"] == accession:
+                if (
+                    docs
+                    and docs[0]["obo_id"] == accession
+                    and docs[0].get("label", "").lower() == cv_term.name.lower()
+                ):
                     if parent_cv_term:
                         logger.debug(
                             "CV term %s - %s is child of %s %s",

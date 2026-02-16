@@ -1,9 +1,9 @@
 import json
 import logging
-import sys
 from pathlib import Path
 from typing import Any
 
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import Study
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 
@@ -125,12 +125,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO,
-        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
-        datefmt="%d/%b/%Y %H:%M:%S",
-        stream=sys.stdout,
-    )
+    set_basic_logging_config()
     input_root_path = "tests/data/mhd_data/legacy"
     output_root_path = "tests/data/neo4j/legacy"
 

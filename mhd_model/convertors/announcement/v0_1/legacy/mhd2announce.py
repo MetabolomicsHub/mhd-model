@@ -110,6 +110,25 @@ def get_keywords(
     return keywords
 
 
+def get_descriptors(
+    all_nodes_map: dict[str, IdentifiableMhdModel],
+    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+) -> list[CvTerm]:
+    descriptors = []
+    if "has-repository-keyword" in relationship_name_map:
+        for rel in relationship_name_map.get("has-repository-keyword").values():
+            source = all_nodes_map.get(rel.source_ref)
+            if source:
+                if isinstance(source, graph_nodes.Study):
+                    descriptor_node = all_nodes_map.get(rel.target_ref)
+                    if descriptor_node:
+                        descriptor = CvTerm.model_validate(
+                            descriptor_node.model_dump(by_alias=True)
+                        )
+                        descriptors.append(descriptor)
+    return descriptors
+
+
 def get_study_factors(
     all_nodes_map: dict[str, IdentifiableMhdModel],
     relationships_map: dict[str, BaseMhdRelationship],
@@ -315,6 +334,7 @@ def create_announcement_file(
         type_map, relationship_name_map
     )
     keywords = get_keywords(all_nodes_map, relationship_name_map)
+    descriptors = get_descriptors(all_nodes_map, relationship_name_map)
     assay_types, technology_types, measurement_types, omics_types = (
         get_main_assay_descriptors(nodes_map, study_assays, keywords)
     )
@@ -383,6 +403,7 @@ def create_announcement_file(
         supplementary_file_list=supplementary_file_list or None,
         publications=publications or None,
         submitter_keywords=keywords or None,
+        descriptors=descriptors or None,
         reported_metabolites=reported_metabolites or None,
         protocols=protocols,
         study_factors=study_factors or None,
@@ -392,14 +413,21 @@ def create_announcement_file(
     collect_cv_term_sources(announcement, cv_sources)
     cv_sources = list(cv_sources)
     cv_sources.sort()
+    mhd_cv_definitions = {x.label: x for x in mhd_dataset.cv_definitions}
     for source in cv_sources:
-        if source in CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
-        elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(OTHER_CONTROLLED_CV_DEFINITIONS[source])
+        if source.upper() in mhd_cv_definitions:
+            announcement.cv_definitions.append(mhd_cv_definitions[source.upper()])
+        elif source.upper() in CONTROLLED_CV_DEFINITIONS:
+            announcement.cv_definitions.append(
+                CONTROLLED_CV_DEFINITIONS[source.upper()]
+            )
+        elif source.upper() in OTHER_CONTROLLED_CV_DEFINITIONS:
+            announcement.cv_definitions.append(
+                OTHER_CONTROLLED_CV_DEFINITIONS[source.upper()]
+            )
         else:
             announcement.cv_definitions.append(
-                CvDefinition(label=source, alternative_labels=[source.lower()])
+                CvDefinition(label=source.upper(), alternative_labels=[source.lower()])
             )
     logger.info("Writing to %s", announcement_file_path)
     Path(announcement_file_path).parent.mkdir(parents=True, exist_ok=True)
@@ -468,11 +496,19 @@ def get_main_assay_descriptors(
     technology_types: dict[str, CvTerm] = {}
     measurement_types: dict[str, CvTerm] = {}
     omics_types: dict[str, CvTerm] = {}
+    common_measurement_type_map = {
+        x.accession: x for x in COMMON_MEASUREMENT_TYPES.values()
+    }
+    common_technology_type_map = {
+        x.accession: x for x in COMMON_TECHNOLOGY_TYPES.values()
+    }
+    common_omics_type_map = {x.accession: x for x in COMMON_OMICS_TYPES.values()}
+    common_assay_type_map = {x.accession: x for x in COMMON_ASSAY_TYPES.values()}
     for item in study_assays:
         if item.assay_type_ref in nodes_map:
             assay_type: graph_nodes.CvTermObject = nodes_map[item.assay_type_ref]
             if assay_type.accession not in assay_types:
-                term = COMMON_ASSAY_TYPES.get(assay_type.accession, None)
+                term = common_assay_type_map.get(assay_type.accession, None)
                 if not term:
                     term = CvTerm.model_validate(assay_type.model_dump(by_alias=True))
                 assay_types[term.accession] = term
@@ -482,7 +518,7 @@ def get_main_assay_descriptors(
                 item.technology_type_ref
             ]
             if technology_type.accession not in technology_types:
-                term = COMMON_TECHNOLOGY_TYPES.get(technology_type.accession)
+                term = common_technology_type_map.get(technology_type.accession)
                 if not term:
                     term = CvTerm.model_validate(
                         technology_type.model_dump(by_alias=True)
@@ -493,17 +529,17 @@ def get_main_assay_descriptors(
                 item.measurement_type_ref
             ]
             if measurement_type.accession not in measurement_types:
-                term = COMMON_MEASUREMENT_TYPES.get(measurement_type.accession)
+                term = common_measurement_type_map.get(measurement_type.accession)
                 if not term:
                     term = CvTerm.model_validate(
-                        technology_type.model_dump(by_alias=True)
+                        measurement_type.model_dump(by_alias=True)
                     )
                 measurement_types[term.accession] = term
 
         if item.omics_type_ref in nodes_map:
             omics_type: graph_nodes.CvTermObject = nodes_map[item.omics_type_ref]
             if omics_type.accession not in omics_types:
-                term = COMMON_OMICS_TYPES.get(omics_type.accession)
+                term = common_omics_type_map.get(omics_type.accession)
                 if not term:
                     term = CvTerm.model_validate(omics_type.model_dump(by_alias=True))
                 omics_types[term.accession] = term

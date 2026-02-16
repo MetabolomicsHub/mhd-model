@@ -60,6 +60,15 @@ class QuantitativeValue(MhdConfigModel):
 
 
 class CvTermValue(CvTerm, QuantitativeValue):
+    value: Annotated[
+        None | str | int | float | decimal.Decimal,
+        Field(description="Value of CV term."),
+    ] = None
+    unit: Annotated[
+        None | UnitCvTerm,
+        Field(description="Unit CV term if value has a unit."),
+    ] = None
+
     def get_unique_id(self) -> str:
         unit_key = self.unit.get_unique_id() if self.unit else ""
         value_key = (

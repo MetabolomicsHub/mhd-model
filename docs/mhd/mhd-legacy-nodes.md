@@ -1023,8 +1023,8 @@ Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minim
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**characteristic-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
@@ -1059,8 +1059,8 @@ Data Provider node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**data-provider**</code>|
-|**value**|**required**|<code>*str*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|**required**|<code>*str*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
@@ -1182,8 +1182,8 @@ Factor Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxi
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**factor-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
@@ -1273,8 +1273,8 @@ Parameter Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, M
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**parameter-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|

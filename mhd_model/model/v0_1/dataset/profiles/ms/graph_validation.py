@@ -1,3 +1,5 @@
+import logging
+
 from mhd_model.model.definitions import MHD_MODEL_V0_1_MS_PROFILE_NAME
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
@@ -39,6 +41,8 @@ from mhd_model.shared.validation.definitions import (
     CvTermPlaceholder,
 )
 
+logger = logging.getLogger(__name__)
+
 MHD_MS_PROFILE_V0_1 = MhDatasetValidation(schema=MHD_MODEL_V0_1_MS_PROFILE_NAME)
 
 MHD_MS_PROFILE_V0_1.mhd_nodes = [
@@ -47,52 +51,61 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="assay-001-01",
                 node_type="assay",
                 node_property_name="repository_identifier",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
+                identifier="assay-001-02",
                 node_type="assay",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             EmbeddedRefValidation(
+                identifier="assay-002-01",
                 node_type="assay",
                 node_property_name="metadata_file_ref",
                 required=True,
                 target_ref_types=["metadata-file"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-002-02",
                 node_type="assay",
                 node_property_name="technology_type_ref",
                 required=True,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-002-03",
                 node_type="assay",
                 node_property_name="assay_type_ref",
                 required=True,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-002-04",
                 node_type="assay",
                 node_property_name="measurement_type_ref",
                 required=True,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-002-05",
                 node_type="assay",
                 node_property_name="omics_type_ref",
                 required=True,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-002-06",
                 node_type="assay",
                 node_property_name="protocol_refs",
                 required=False,
                 target_ref_types=["protocol"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-002-07",
                 node_type="assay",
                 node_property_name="sample_run_refs",
                 required=True,
@@ -101,6 +114,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="assay-003-01",
                 description="A link to a descriptor that describes the assay.",
                 source="assay",
                 relationship_name="described-as",
@@ -110,6 +124,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="assay-003-02",
                 description="A link to a study that the assay was conducted as part of it "
                 "to generate data addressing study objectives",
                 source="assay",
@@ -121,6 +136,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="assay-003-03",
                 description="A link to a protocol conducted in assay.",
                 source="assay",
                 relationship_name="follows",
@@ -135,20 +151,23 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         node_type="characteristic-definition",
         min=len(COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS["required"]),
         validations=[
+            NodePropertyValidation(
+                identifier="characteristic-definition-001-01",
+                node_type="characteristic-definition",
+                node_property_name="name",
+                constraints=PropertyConstraint(required=True, min_length=2),
+            ),
             EmbeddedRefValidation(
+                identifier="characteristic-definition-002-01",
                 node_type="characteristic-definition",
                 node_property_name="characteristic_type_ref",
                 required=True,
                 target_ref_types=["characteristic-type"],
             ),
-            NodePropertyValidation(
-                node_type="characteristic-definition",
-                node_property_name="name",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="characteristic-definition-003-01",
                 source="characteristic-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -157,6 +176,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-003-02",
                 source="characteristic-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -173,6 +193,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 ],
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-003-03",
                 source="characteristic-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -189,6 +210,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 ],
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-003-04",
                 source="characteristic-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -205,6 +227,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 ],
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-003-05",
                 source="characteristic-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -221,6 +244,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 ],
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-003-06",
                 source="characteristic-definition",
                 relationship_name="has-type",
                 reverse_relationship_name="type-of",
@@ -230,11 +254,12 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-003-07",
                 source="characteristic-definition",
                 relationship_name="used-in",
                 reverse_relationship_name="has-characteristic-definition",
                 target="study",
-                min=5,
+                min=1,
                 min_for_each_source=1,
             ),
         ],
@@ -244,18 +269,41 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="derived-data-file-001-01",
+                node_type="derived-data-file",
+                node_property_name="url_list",
+                constraints=PropertyConstraint(required=True, min_length=1),
+            ),
+            NodePropertyValidation(
+                identifier="derived-data-file-001-02",
                 node_type="derived-data-file",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
+                identifier="derived-data-file-001-03",
+                node_type="derived-data-file",
+                node_property_name="extension",
+                constraints=PropertyConstraint(required=False, min_length=2),
+            ),
+            EmbeddedRefValidation(
+                identifier="derived-data-file-002-01",
                 node_type="derived-data-file",
                 node_property_name="format_ref",
-                constraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
+            EmbeddedRefValidation(
+                identifier="derived-data-file-002-02",
+                node_type="derived-data-file",
+                node_property_name="compression_format_refs",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
             ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="derived-data-file-003-01",
                 source="derived-data-file",
                 relationship_name="referenced-in",
                 reverse_relationship_name="references",
@@ -265,6 +313,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="derived-data-file-003-02",
                 source="derived-data-file",
                 relationship_name="created-in",
                 reverse_relationship_name="has-derived-data-file",
@@ -274,6 +323,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="derived-data-file-003-03",
                 description="A link to a descriptor that describes the derived data file.",
                 source="derived-data-file",
                 relationship_name="described-as",
@@ -289,20 +339,23 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         node_type="factor-definition",
         min=0,
         validations=[
+            NodePropertyValidation(
+                identifier="factor-definition-001-01",
+                node_type="factor-definition",
+                node_property_name="name",
+                constraints=PropertyConstraint(required=True, min_length=2),
+            ),
             EmbeddedRefValidation(
+                identifier="factor-definition-002-01",
                 node_type="factor-definition",
                 node_property_name="factor_type_ref",
                 required=True,
                 target_ref_types=["factor-type"],
             ),
-            NodePropertyValidation(
-                node_type="factor-definition",
-                node_property_name="name",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="factor-definition-003-01",
                 source="factor-definition",
                 relationship_name="has-type",
                 reverse_relationship_name="type-of",
@@ -312,6 +365,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="factor-definition-003-02",
                 source="factor-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -320,6 +374,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="factor-definition-003-03",
                 source="factor-definition",
                 relationship_name="used-in",
                 reverse_relationship_name="has-factor-definition",
@@ -334,23 +389,41 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="metadata-file-001-01",
                 node_type="metadata-file",
                 node_property_name="url_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="metadata-file-001-02",
                 node_type="metadata-file",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
+                identifier="metadata-file-001-03",
+                node_type="metadata-file",
+                node_property_name="extension",
+                constraints=PropertyConstraint(required=True, min_length=2),
+            ),
+            EmbeddedRefValidation(
+                identifier="metadata-file-002-01",
                 node_type="metadata-file",
                 node_property_name="format_ref",
-                constraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
+            EmbeddedRefValidation(
+                identifier="metadata-file-002-02",
+                node_type="metadata-file",
+                node_property_name="compression_format_refs",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
             ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="metadata-file-003-01",
                 source="metadata-file",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -359,6 +432,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metadata-file-003-02",
                 source="metadata-file",
                 relationship_name="referenced-in",
                 reverse_relationship_name="references",
@@ -367,6 +441,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metadata-file-003-03",
                 source="metadata-file",
                 relationship_name="describes",
                 reverse_relationship_name="has-metadata-file",
@@ -376,6 +451,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="metadata-file-003-04",
                 source="metadata-file",
                 relationship_name="references",
                 reverse_relationship_name="referenced-in",
@@ -384,6 +460,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metadata-file-003-05",
                 source="metadata-file",
                 relationship_name="references",
                 reverse_relationship_name="referenced-in",
@@ -392,6 +469,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metadata-file-003-06",
                 source="metadata-file",
                 relationship_name="references",
                 reverse_relationship_name="referenced-in",
@@ -400,6 +478,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metadata-file-003-07",
                 source="metadata-file",
                 relationship_name="references",
                 reverse_relationship_name="referenced-in",
@@ -408,6 +487,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metadata-file-003-08",
                 source="metadata-file",
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
@@ -422,6 +502,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="metabolite-001-01",
                 node_type="metabolite",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
@@ -429,6 +510,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="metabolite-003-01",
                 source="metabolite",
                 relationship_name="identified-as",
                 reverse_relationship_name="reported-identifier-of",
@@ -437,6 +519,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metabolite-003-02",
                 source="metabolite",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -445,6 +528,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metabolite-003-03",
                 source="metabolite",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
@@ -453,6 +537,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="metabolite-003-04",
                 source="metabolite",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
@@ -461,6 +546,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metabolite-003-05",
                 source="metabolite",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
@@ -469,6 +555,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="metabolite-003-06",
                 source="metabolite",
                 relationship_name="measured-in",
                 reverse_relationship_name="measures",
@@ -483,6 +570,13 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="organization-001-01",
+                node_type="organization",
+                node_property_name="repository_identifier",
+                constraints=PropertyConstraint(required=False),
+            ),
+            NodePropertyValidation(
+                identifier="organization-001-02",
                 node_type="organization",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=10),
@@ -490,6 +584,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="organization-003-01",
                 source="organization",
                 relationship_name="funds",
                 reverse_relationship_name="funded-by",
@@ -498,6 +593,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="organization-003-02",
                 source="organization",
                 relationship_name="funds",
                 reverse_relationship_name="funded-by",
@@ -506,6 +602,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="organization-003-03",
                 source="organization",
                 relationship_name="manages",
                 reverse_relationship_name="managed-by",
@@ -514,6 +611,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="organization-003-04",
                 source="organization",
                 relationship_name="coordinates",
                 reverse_relationship_name="coordinated-by",
@@ -522,6 +620,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="organization-003-05",
                 source="organization",
                 relationship_name="affiliates",
                 reverse_relationship_name="affiliated-with",
@@ -530,6 +629,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="organization-003-06",
                 source="organization",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -543,20 +643,23 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         node_type="parameter-definition",
         min=1,
         validations=[
+            NodePropertyValidation(
+                identifier="parameter-definition-001-01",
+                node_type="parameter-definition",
+                node_property_name="name",
+                constraints=PropertyConstraint(required=True, min_length=2),
+            ),
             EmbeddedRefValidation(
+                identifier="parameter-definition-002-01",
                 node_type="parameter-definition",
                 node_property_name="parameter_type_ref",
                 required=True,
                 target_ref_types=["parameter-type"],
             ),
-            NodePropertyValidation(
-                node_type="parameter-definition",
-                node_property_name="name",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="parameter-definition-003-01",
                 source="parameter-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -565,6 +668,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="parameter-definition-003-02",
                 source="parameter-definition",
                 relationship_name="has-type",
                 reverse_relationship_name="type-of",
@@ -574,6 +678,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="parameter-definition-003-03",
                 source="parameter-definition",
                 relationship_name="used-in",
                 reverse_relationship_name="has-parameter-definition",
@@ -582,6 +687,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="parameter-definition-003-04",
                 source="parameter-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -598,6 +704,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 ],
             ),
             RelationshipValidation(
+                identifier="parameter-definition-003-05",
                 source="parameter-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -606,14 +713,15 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
                 condition=[
                     FilterCondition(
-                        name="ionization polarity",
+                        name="acquisition polarity",
                         relationship_name="[embedded].parameter_type_ref",
                         expression="parameter_type_ref.name",
-                        expression_value="ionization polarity",
+                        expression_value="acquisition polarity",
                     )
                 ],
             ),
             RelationshipValidation(
+                identifier="parameter-definition-003-06",
                 source="parameter-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -622,10 +730,10 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
                 condition=[
                     FilterCondition(
-                        name="ionization polarity",
+                        name="acquisition polarity",
                         relationship_name="[embedded].parameter_type_ref",
                         expression="parameter_type_ref.name",
-                        expression_value="ionization polarity",
+                        expression_value="acquisition polarity",
                     )
                 ],
             ),
@@ -636,11 +744,13 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="person-001-01",
                 node_type="person",
                 node_property_name="full_name",
                 constraints=PropertyConstraint(required=True, min_length=5),
             ),
             NodePropertyValidation(
+                identifier="person-001-02",
                 node_type="person",
                 node_property_name="email_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
@@ -648,6 +758,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="person-003-01",
                 source="person",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -656,6 +767,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="person-003-02",
                 source="person",
                 relationship_name="affiliated-with",
                 reverse_relationship_name="affiliates",
@@ -664,6 +776,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="person-003-03",
                 source="person",
                 relationship_name="contributes",
                 reverse_relationship_name="has-contributor",
@@ -672,6 +785,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="person-003-04",
                 source="person",
                 relationship_name="contributes",
                 reverse_relationship_name="has-contributor",
@@ -680,6 +794,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="person-003-05",
                 source="person",
                 relationship_name="principal-investigator-of",
                 reverse_relationship_name="has-principal-investigator",
@@ -688,6 +803,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="person-003-06",
                 source="person",
                 relationship_name="submits",
                 reverse_relationship_name="submitted-by",
@@ -696,6 +812,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="person-003-07",
                 source="person",
                 relationship_name="author-of",
                 reverse_relationship_name="has-author",
@@ -710,6 +827,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="project-001-01",
                 node_type="project",
                 node_property_name="title",
                 constraints=PropertyConstraint(required=True, min_length=25),
@@ -717,6 +835,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="project-003-01",
                 source="project",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -725,6 +844,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="project-003-02",
                 source="project",
                 relationship_name="funded-by",
                 reverse_relationship_name="funds",
@@ -733,6 +853,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="project-003-03",
                 source="project",
                 relationship_name="managed-by",
                 reverse_relationship_name="manages",
@@ -741,6 +862,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="project-003-04",
                 source="project",
                 relationship_name="coordinated-by",
                 reverse_relationship_name="coordinates",
@@ -749,6 +871,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="project-003-05",
                 source="project",
                 relationship_name="has-contributor",
                 reverse_relationship_name="contributes",
@@ -757,6 +880,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="project-003-06",
                 source="project",
                 relationship_name="has-publication",
                 reverse_relationship_name="describes",
@@ -765,6 +889,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="project-003-07",
                 source="project",
                 relationship_name="has-study",
                 reverse_relationship_name="part-of",
@@ -779,24 +904,28 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="protocol-001-01",
                 node_type="protocol",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True),
             ),
+            NodePropertyValidation(
+                identifier="protocol-001-02",
+                node_type="protocol",
+                node_property_name="description",
+                constraints=PropertyConstraint(required=False),
+            ),
             EmbeddedRefValidation(
+                identifier="protocol-002-01",
                 node_type="protocol",
                 node_property_name="protocol_type_ref",
                 required=True,
                 target_ref_types=["protocol-type"],
             ),
-            NodePropertyValidation(
-                node_type="protocol",
-                node_property_name="description",
-                constraints=PropertyConstraint(required=False),
-            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="protocol-003-01",
                 source="protocol",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -805,6 +934,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="protocol-003-02",
                 source="protocol",
                 relationship_name="used-in",
                 reverse_relationship_name="follows",
@@ -813,6 +943,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="protocol-003-03",
                 source="protocol",
                 relationship_name="has-parameter-definition",
                 reverse_relationship_name="used-in",
@@ -821,6 +952,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="protocol-003-04",
                 source="protocol",
                 relationship_name="has-parameter-value",
                 reverse_relationship_name="value-of",
@@ -829,6 +961,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="protocol-003-05",
                 source="protocol",
                 relationship_name="used-in",
                 reverse_relationship_name="has-protocol",
@@ -837,6 +970,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="protocol-003-06",
                 source="protocol",
                 relationship_name="has-type",
                 reverse_relationship_name="type-of",
@@ -846,6 +980,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="protocol-003-07",
                 source="protocol",
                 relationship_name="has-parameter-definition",
                 reverse_relationship_name="used-in",
@@ -868,13 +1003,21 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="publication-001-01",
                 node_type="publication",
                 node_property_name="title",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="publication-001-02",
+                node_type="publication",
+                node_property_name="doi",
                 constraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="publication-003-01",
                 source="publication",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -883,6 +1026,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="publication-003-02",
                 source="publication",
                 relationship_name="describes",
                 reverse_relationship_name="has-publication",
@@ -891,6 +1035,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="publication-003-03",
                 source="publication",
                 relationship_name="describes",
                 reverse_relationship_name="has-publication",
@@ -900,6 +1045,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="publication-003-04",
                 source="publication",
                 relationship_name="has-author",
                 reverse_relationship_name="author-of",
@@ -914,23 +1060,41 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="raw-data-file-001-01",
                 node_type="raw-data-file",
                 node_property_name="url_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="raw-data-file-001-02",
                 node_type="raw-data-file",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
+                identifier="raw-data-file-001-03",
                 node_type="raw-data-file",
                 node_property_name="extension",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
+            EmbeddedRefValidation(
+                identifier="raw-data-file-002-01",
+                node_type="raw-data-file",
+                node_property_name="format_ref",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
+            EmbeddedRefValidation(
+                identifier="raw-data-file-002-02",
+                node_type="raw-data-file",
+                node_property_name="compression_format_refs",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="raw-data-file-003-01",
                 source="raw-data-file",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -939,6 +1103,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="raw-data-file-003-02",
                 source="raw-data-file",
                 relationship_name="created-in",
                 reverse_relationship_name="has-raw-data-file",
@@ -947,6 +1112,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="raw-data-file-003-03",
                 source="raw-data-file",
                 relationship_name="referenced-in",
                 reverse_relationship_name="references",
@@ -955,6 +1121,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="raw-data-file-003-04",
                 source="raw-data-file",
                 relationship_name="measures",
                 reverse_relationship_name="measured-in",
@@ -969,23 +1136,41 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="result-file-001-01",
                 node_type="result-file",
                 node_property_name="url_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="result-file-001-02",
                 node_type="result-file",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
+                identifier="result-file-001-03",
                 node_type="result-file",
                 node_property_name="extension",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
+            EmbeddedRefValidation(
+                identifier="result-file-002-01",
+                node_type="result-file",
+                node_property_name="format_ref",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
+            EmbeddedRefValidation(
+                identifier="result-file-002-02",
+                node_type="result-file",
+                node_property_name="compression_format_refs",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="result-file-003-01",
                 source="result-file",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -994,6 +1179,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="result-file-003-02",
                 source="result-file",
                 relationship_name="created-in",
                 reverse_relationship_name="has-result-file",
@@ -1002,6 +1188,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="result-file-003-03",
                 source="result-file",
                 relationship_name="referenced-in",
                 reverse_relationship_name="references",
@@ -1010,6 +1197,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="result-file-003-04",
                 source="result-file",
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
@@ -1024,18 +1212,21 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="sample-001-01",
                 node_type="sample",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="sample-001-02",
                 node_type="sample",
                 node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=False),
             ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="sample-003-01",
                 source="sample",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -1044,6 +1235,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="sample-003-02",
                 source="sample",
                 relationship_name="has-factor-value",
                 reverse_relationship_name="value-of",
@@ -1052,6 +1244,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="sample-003-03",
                 source="sample",
                 relationship_name="used-in",
                 reverse_relationship_name="has-sample",
@@ -1061,6 +1254,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="sample-003-04",
                 source="sample",
                 relationship_name="derived-from",
                 reverse_relationship_name="source-of",
@@ -1069,6 +1263,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="sample-003-05",
                 source="sample",
                 relationship_name="derived-from",
                 reverse_relationship_name="source-of",
@@ -1077,6 +1272,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="sample-003-06",
                 source="sample",
                 relationship_name="has-characteristic-value",
                 reverse_relationship_name="value-of",
@@ -1090,21 +1286,58 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         node_type="sample-run",
         min=1,
         validations=[
+            NodePropertyValidation(
+                identifier="sample-run-001-01",
+                node_type="sample-run",
+                node_property_name="name",
+                constraints=PropertyConstraint(required=False),
+            ),
             EmbeddedRefValidation(
+                identifier="sample-run-002-01",
                 node_type="sample-run",
                 node_property_name="sample_ref",
                 required=True,
                 target_ref_types=["sample"],
             ),
             EmbeddedRefValidation(
+                identifier="sample-run-002-02",
+                node_type="sample-run",
+                node_property_name="sample_run_configuration_refs",
+                required=False,
+                target_ref_types=["sample-run-configuration"],
+            ),
+            EmbeddedRefValidation(
+                identifier="sample-run-002-03",
                 node_type="sample-run",
                 node_property_name="raw_data_file_refs",
                 required=True,
                 target_ref_types=["raw-data-file"],
             ),
+            EmbeddedRefValidation(
+                identifier="sample-run-002-04",
+                node_type="sample-run",
+                node_property_name="derived_data_file_refs",
+                required=False,
+                target_ref_types=["derived-data-file"],
+            ),
+            EmbeddedRefValidation(
+                identifier="sample-run-002-05",
+                node_type="sample-run",
+                node_property_name="result_file_refs",
+                required=False,
+                target_ref_types=["result-file"],
+            ),
+            EmbeddedRefValidation(
+                identifier="sample-run-002-06",
+                node_type="sample-run",
+                node_property_name="supplementary_file_refs",
+                required=False,
+                target_ref_types=["supplementary-file"],
+            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="sample-run-003-01",
                 source="sample-run",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -1119,14 +1352,23 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             EmbeddedRefValidation(
+                identifier="sample-run-configuration-002-01",
                 node_type="sample-run-configuration",
                 node_property_name="protocol_ref",
                 required=True,
                 target_ref_types=["protocol"],
             ),
+            EmbeddedRefValidation(
+                identifier="sample-run-configuration-002-02",
+                node_type="sample-run-configuration",
+                node_property_name="parameter_value_refs",
+                required=False,
+                target_ref_types=["parameter-value"],
+            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="sample-run-configuration-003-01",
                 source="sample-run-configuration",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -1141,21 +1383,16 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         max=1,
         validations=[
-            EmbeddedRefValidation(
-                node_type="study",
-                node_property_name="created_by_ref",
-                required=True,
-                target_ref_types=["data-provider"],
-            ),
-            CvTermValidation(
-                node_type="study",
-                node_property_name="additional_identifier_list",
-                validation=AllowAnyCvTerm(
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
-                required=False,
-            ),
+            # CvTermValidation(
+            #     node_type="study",
+            #     node_property_name="additional_identifier_list",
+            #     validation=AllowAnyCvTerm(
+            #         allowed_other_sources=["wikidata", "ILX"],
+            #     ),
+            #     required=False,
+            # ),
             NodePropertyValidation(
+                identifier="study-001-01",
                 node_type="study",
                 node_property_name="mhd_identifier",
                 constraints=PropertyConstraint(
@@ -1163,41 +1400,56 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 ),
             ),
             NodePropertyValidation(
+                identifier="study-001-02",
                 node_type="study",
                 node_property_name="repository_identifier",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             NodePropertyValidation(
+                identifier="study-001-03",
                 node_type="study",
                 node_property_name="title",
                 constraints=PropertyConstraint(required=True, min_length=25),
             ),
             NodePropertyValidation(
+                identifier="study-001-04",
                 node_type="study",
                 node_property_name="description",
                 constraints=PropertyConstraint(required=True, min_length=60),
             ),
             NodePropertyValidation(
+                identifier="study-001-05",
                 node_type="study",
                 node_property_name="submission_date",
                 constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
+                identifier="study-001-06",
                 node_type="study",
                 node_property_name="public_release_date",
                 constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
+                identifier="study-001-07",
                 node_type="study",
                 node_property_name="dataset_url_list",
                 constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
+                identifier="study-001-08",
                 node_type="study",
                 node_property_name="license",
                 constraints=PropertyConstraint(required=True),
             ),
             EmbeddedRefValidation(
+                identifier="study-002-01",
+                node_type="study",
+                node_property_name="created_by_ref",
+                required=True,
+                target_ref_types=["data-provider"],
+            ),
+            EmbeddedRefValidation(
+                identifier="study-002-02",
                 node_type="study",
                 node_property_name="protocol_refs",
                 required=True,
@@ -1206,6 +1458,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="study-003-01",
                 source="study",
                 relationship_name="provided-by",
                 reverse_relationship_name="provides",
@@ -1215,6 +1468,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="study-003-02",
                 source="study",
                 relationship_name="has-assay",
                 reverse_relationship_name="part-of",
@@ -1223,6 +1477,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="study-003-03",
                 source="study",
                 relationship_name="funded-by",
                 reverse_relationship_name="funds",
@@ -1231,6 +1486,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-04",
                 source="study",
                 relationship_name="has-characteristic-definition",
                 reverse_relationship_name="used-in",
@@ -1239,6 +1495,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=2,
             ),
             RelationshipValidation(
+                identifier="study-003-05",
                 source="study",
                 relationship_name="has-derived-data-file",
                 reverse_relationship_name="created-in",
@@ -1247,6 +1504,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-06",
                 source="study",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -1255,6 +1513,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-07",
                 source="study",
                 relationship_name="has-factor-definition",
                 reverse_relationship_name="used-in",
@@ -1263,6 +1522,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-08",
                 source="study",
                 relationship_name="has-repository-keyword",
                 reverse_relationship_name="keyword-of",
@@ -1271,6 +1531,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-09",
                 source="study",
                 relationship_name="has-submitter-keyword",
                 reverse_relationship_name="keyword-of",
@@ -1279,6 +1540,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-10",
                 source="study",
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
@@ -1287,6 +1549,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-11",
                 source="study",
                 relationship_name="has-metadata-file",
                 reverse_relationship_name="describes",
@@ -1295,6 +1558,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="study-003-12",
                 source="study",
                 relationship_name="has-contributor",
                 reverse_relationship_name="contributes",
@@ -1303,6 +1567,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-13",
                 source="study",
                 relationship_name="has-principal-investigator",
                 reverse_relationship_name="principal-investigator-of",
@@ -1311,6 +1576,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="study-003-14",
                 source="study",
                 relationship_name="submitted-by",
                 reverse_relationship_name="submits",
@@ -1319,6 +1585,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="study-003-15",
                 source="study",
                 relationship_name="part-of",
                 reverse_relationship_name="has-study",
@@ -1327,6 +1594,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-16",
                 source="study",
                 relationship_name="has-protocol",
                 reverse_relationship_name="used-in",
@@ -1335,6 +1603,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="study-003-17",
                 source="study",
                 relationship_name="has-publication",
                 reverse_relationship_name="describes",
@@ -1343,6 +1612,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-18",
                 source="study",
                 relationship_name="has-raw-data-file",
                 reverse_relationship_name="created-in",
@@ -1351,6 +1621,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-19",
                 source="study",
                 relationship_name="has-result-file",
                 reverse_relationship_name="created-in",
@@ -1359,6 +1630,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-20",
                 source="study",
                 relationship_name="has-sample",
                 reverse_relationship_name="used-in",
@@ -1367,6 +1639,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-21",
                 source="study",
                 relationship_name="has-supplementary-file",
                 reverse_relationship_name="created-in",
@@ -1381,18 +1654,21 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="specimen-001-01",
                 node_type="specimen",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="specimen-001-02",
                 node_type="specimen",
                 node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=False, min_length=1),
             ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="specimen-003-01",
                 source="specimen",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -1401,6 +1677,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="specimen-003-02",
                 source="specimen",
                 relationship_name="has-characteristic-value",
                 reverse_relationship_name="value-of",
@@ -1409,6 +1686,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="specimen-003-03",
                 source="specimen",
                 relationship_name="source-of",
                 reverse_relationship_name="derived-from",
@@ -1417,6 +1695,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="specimen-003-04",
                 source="specimen",
                 relationship_name="derived-from",
                 reverse_relationship_name="source-of",
@@ -1431,18 +1710,28 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="subject-001-01",
                 node_type="subject",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="subject-001-02",
                 node_type="subject",
                 node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True, min_length=1),
+                constraints=PropertyConstraint(required=False, min_length=1),
+            ),
+            EmbeddedRefValidation(
+                identifier="subject-002-01",
+                node_type="subject",
+                node_property_name="subject_type_ref",
+                required=False,
+                target_ref_types=["descriptor"],
             ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="subject-003-01",
                 source="subject",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -1451,6 +1740,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="subject-003-02",
                 source="subject",
                 relationship_name="has-characteristic-value",
                 reverse_relationship_name="value-of",
@@ -1459,6 +1749,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="subject-003-03",
                 source="subject",
                 relationship_name="source-of",
                 reverse_relationship_name="derived-from",
@@ -1467,6 +1758,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="subject-003-04",
                 source="subject",
                 relationship_name="has-factor-value",
                 reverse_relationship_name="value-of",
@@ -1475,6 +1767,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="subject-003-05",
                 source="subject",
                 relationship_name="source-of",
                 reverse_relationship_name="derived-from",
@@ -1489,18 +1782,41 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="supplementary-file-001-01",
                 node_type="supplementary-file",
                 node_property_name="url_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="supplementary-file-001-02",
                 node_type="supplementary-file",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
+            NodePropertyValidation(
+                identifier="supplementary-file-001-03",
+                node_type="supplementary-file",
+                node_property_name="extension",
+                constraints=PropertyConstraint(required=False, min_length=2),
+            ),
+            EmbeddedRefValidation(
+                identifier="supplementary-file-002-01",
+                node_type="supplementary-file",
+                node_property_name="format_ref",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
+            EmbeddedRefValidation(
+                identifier="supplementary-file-002-02",
+                node_type="supplementary-file",
+                node_property_name="compression_format_refs",
+                constraints=PropertyConstraint(required=False),
+                target_ref_types=["descriptor"],
+            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="supplementary-file-003-01",
                 source="supplementary-file",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -1509,6 +1825,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="supplementary-file-003-02",
                 source="supplementary-file",
                 relationship_name="created-in",
                 reverse_relationship_name="has-supplementary-file",
@@ -1517,6 +1834,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="supplementary-file-003-03",
                 source="supplementary-file",
                 relationship_name="referenced-in",
                 reverse_relationship_name="references",
@@ -1534,11 +1852,21 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=2,
         validations=[
             NodePropertyValidation(
+                identifier="characteristic-type-001-01",
                 node_type="characteristic-type",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
+                identifier="characteristic-type-004-01",
+                node_type="characteristic-type",
+                validation=AllowAnyCvTerm(
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+            ),
+            CvTermValidation(
+                identifier="characteristic-type-004-02",
                 node_type="characteristic-type",
                 min_count=1,
                 validation=AllowedCvTerms(
@@ -1556,6 +1884,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="characteristic-type-003-01",
                 source="characteristic-type",
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
@@ -1571,26 +1900,40 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=1,
         validations=[
             CvTermValidation(
+                identifier="characteristic-value-004-01",
                 node_type="characteristic-value",
-                min_count=1
-                if parameter_name
-                in COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS["required"]
-                else 0,
-                validation=rule,
-                condition=[
-                    FilterCondition(
-                        name=parameter_name,
-                        relationship_name="instance-of",
-                        start_node_type="characteristic-value",
-                        expression="[instance-of].characteristic_type_ref.name",
-                        expression_value=parameter_name,
-                    )
-                ],
-            )
-            for parameter_name, rule in MANAGED_CHARACTERISTIC_VALUE_RULES.items()
+                validation=AllowAnyCvTerm(
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+            ),
+            *[
+                CvTermValidation(
+                    identifier=f"characteristic-value-001-{(idx + 10):02}",
+                    node_type="characteristic-value",
+                    min_count=1
+                    if parameter_name
+                    in COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS["required"]
+                    else 0,
+                    validation=rule,
+                    condition=[
+                        FilterCondition(
+                            name=parameter_name,
+                            relationship_name="instance-of",
+                            start_node_type="characteristic-value",
+                            expression="[instance-of].characteristic_type_ref.name",
+                            expression_value=parameter_name,
+                        )
+                    ],
+                )
+                for idx, (parameter_name, rule) in enumerate(
+                    MANAGED_CHARACTERISTIC_VALUE_RULES.items()
+                )
+            ],
         ],
         relationships=[
             RelationshipValidation(
+                identifier="characteristic-value-003-01",
                 source="characteristic-value",
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
@@ -1599,6 +1942,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="characteristic-value-003-02",
                 source="characteristic-value",
                 relationship_name="value-of",
                 reverse_relationship_name="has-characteristic-value",
@@ -1607,6 +1951,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="characteristic-value-003-03",
                 source="characteristic-value",
                 relationship_name="value-of",
                 reverse_relationship_name="has-characteristic-value",
@@ -1615,6 +1960,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="characteristic-value-003-04",
                 source="characteristic-value",
                 relationship_name="value-of",
                 reverse_relationship_name="has-characteristic-value",
@@ -1629,18 +1975,20 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         has_value=True,
         value_required=True,
         min=1,
-        max=1,
         validations=[
             NodePropertyValidation(
+                identifier="data-provider-001-01",
                 node_type="data-provider",
                 node_property_name="value",
                 constraints=PropertyConstraint(required=True, allowed_types="str"),
             ),
             CvTermValidation(
+                identifier="data-provider-004-01",
                 node_type="data-provider",
                 validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
             ),
             CvTermValidation(
+                identifier="data-provider-004-02",
                 node_type="data-provider",
                 validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
                 condition=[
@@ -1655,6 +2003,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="data-provider-003-01",
                 source="data-provider",
                 relationship_name="provides",
                 reverse_relationship_name="provided-by",
@@ -1670,6 +2019,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=1,
         validations=[
             CvTermValidation(
+                identifier="descriptor-004-01",
                 node_type="descriptor",
                 validation=AllowAnyCvTerm(
                     allowed_other_sources=["wikidata", "ILX"],
@@ -1677,6 +2027,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ),
             ),
             CvTermValidation(
+                identifier="descriptor-004-02",
                 node_type="descriptor",
                 validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
@@ -1689,6 +2040,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="descriptor-004-03",
                 node_type="descriptor",
                 validation=MANAGED_FILE_FORMAT_RULES["general file format"],
                 condition=[
@@ -1701,6 +2053,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="descriptor-004-04",
                 node_type="descriptor",
                 validation=AllowedCvTerms(cv_terms=list(COMMON_ASSAY_TYPES.values())),
                 condition=[
@@ -1713,6 +2066,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="descriptor-004-05",
                 node_type="descriptor",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_MEASUREMENT_TYPES.values())
@@ -1727,6 +2081,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="descriptor-004-06",
                 node_type="descriptor",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_TECHNOLOGY_TYPES.values())
@@ -1741,6 +2096,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="descriptor-004-07",
                 node_type="descriptor",
                 validation=AllowedCvTerms(cv_terms=list(COMMON_OMICS_TYPES.values())),
                 condition=[
@@ -1753,6 +2109,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="descriptor-004-08",
                 node_type="descriptor",
                 validation=AllowAnyCvTerm(
                     allowed_other_sources=["wikidata", "ILX"],
@@ -1767,6 +2124,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="descriptor-004-09",
                 node_type="descriptor",
                 validation=AllowAnyCvTerm(
                     allowed_other_sources=["wikidata", "ILX"],
@@ -1783,6 +2141,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="descriptor-003-01",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1791,6 +2150,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-02",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1799,6 +2159,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-03",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1807,6 +2168,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-04",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1815,6 +2177,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-05",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1823,6 +2186,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-06",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1831,6 +2195,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-07",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1839,6 +2204,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-08",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1847,6 +2213,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-09",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1855,6 +2222,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-10",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1863,6 +2231,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-11",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1871,6 +2240,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-12",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1879,6 +2249,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-13",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1887,6 +2258,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-14",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1895,6 +2267,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-15",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1903,6 +2276,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-16",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1911,6 +2285,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-17",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1919,6 +2294,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-18",
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
@@ -1927,6 +2303,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-18",
                 source="descriptor",
                 relationship_name="keyword-of",
                 reverse_relationship_name="has-submitter-keyword",
@@ -1935,6 +2312,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-20",
                 source="descriptor",
                 relationship_name="keyword-of",
                 reverse_relationship_name="has-repository-keyword",
@@ -1943,6 +2321,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="descriptor-003-21",
                 source="descriptor",
                 relationship_name="keyword-of",
                 reverse_relationship_name="has-repository-keyword",
@@ -1957,11 +2336,21 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="factor-type-001-01",
                 node_type="factor-type",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
+                identifier="factor-type-004-01",
+                node_type="factor-type",
+                validation=AllowAnyCvTerm(
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+            ),
+            CvTermValidation(
+                identifier="factor-type-004-02",
                 node_type="factor-type",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_STUDY_FACTOR_DEFINITIONS.values())
@@ -1978,6 +2367,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="factor-type-003-01",
                 source="factor-type",
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
@@ -1993,26 +2383,40 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=0,
         validations=[
             CvTermValidation(
+                identifier="factor-value-004-01",
                 node_type="factor-value",
-                min_count=1
-                if factor_name
-                in COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS["required"]
-                else 0,
-                validation=rule,
-                condition=[
-                    FilterCondition(
-                        name=factor_name,
-                        relationship_name="instance-of",
-                        start_node_type="factor-value",
-                        expression="[instance-of].factor_type_ref.name",
-                        expression_value=factor_name,
-                    )
-                ],
-            )
-            for factor_name, rule in MANAGED_FACTOR_VALUE_RULES.items()
+                validation=AllowAnyCvTerm(
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+            ),
+            *[
+                CvTermValidation(
+                    identifier=f"factor-value-004-{(idx + 10):02}",
+                    node_type="factor-value",
+                    min_count=1
+                    if factor_name
+                    in COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS["required"]
+                    else 0,
+                    validation=rule,
+                    condition=[
+                        FilterCondition(
+                            name=factor_name,
+                            relationship_name="instance-of",
+                            start_node_type="factor-value",
+                            expression="[instance-of].factor_type_ref.name",
+                            expression_value=factor_name,
+                        )
+                    ],
+                )
+                for idx, (factor_name, rule) in enumerate(
+                    MANAGED_FACTOR_VALUE_RULES.items()
+                )
+            ],
         ],
         relationships=[
             RelationshipValidation(
+                identifier="factor-type-003-01",
                 source="factor-value",
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
@@ -2021,6 +2425,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="factor-type-003-02",
                 source="factor-value",
                 relationship_name="value-of",
                 reverse_relationship_name="has-factor-value",
@@ -2029,6 +2434,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="factor-type-003-03",
                 source="factor-value",
                 relationship_name="value-of",
                 reverse_relationship_name="has-factor-value",
@@ -2037,6 +2443,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="factor-type-003-04",
                 source="factor-value",
                 relationship_name="value-of",
                 reverse_relationship_name="has-factor-value",
@@ -2049,9 +2456,25 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
     CvNodeValidation(
         node_type="metabolite-identifier",
         min=0,
+        has_value=True,
+        value_required=True,
         validations=[
+            NodePropertyValidation(
+                identifier="metabolite-identifier-001-01",
+                description="Value MUST be identifier of metabolite.",
+                node_type="metabolite-identifier",
+                node_property_name="value",
+                constraints=PropertyConstraint(required=True),
+            ),
             CvTermValidation(
-                identifier="metabolite-identifier-01",
+                identifier="metabolite-identifier-001-02",
+                node_type="metabolite-identifier",
+                validation=AllowAnyCvTerm(
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+            ),
+            CvTermValidation(
+                identifier="metabolite-identifier-004-01",
                 description="metabolite identifier in value. "
                 "Metabolite Database Identifier. e.g. CHEBI, REFET, HMDB, etc.",
                 node_type="metabolite-identifier",
@@ -2067,6 +2490,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="metabolite-identifier-003-01",
                 source="metabolite-identifier",
                 relationship_name="reported-identifier-of",
                 reverse_relationship_name="identified-as",
@@ -2081,11 +2505,13 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="parameter-type-001-01",
                 node_type="parameter-type",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
+                identifier="parameter-type-004-01",
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
                     cv_terms=list(COMMON_PARAMETER_DEFINITIONS.values()),
@@ -2093,6 +2519,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ),
             ),
             CvTermValidation(
+                identifier="parameter-type-004-02",
                 node_type="parameter-type",
                 min_count=1,
                 validation=AllowedCvTerms(
@@ -2111,6 +2538,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 ],
             ),
             CvTermValidation(
+                identifier="parameter-type-004-03",
                 node_type="parameter-type",
                 validation=AllowedCvTerms(
                     cv_terms=COMMON_PROTOCOL_PARAMETER_MAPPINGS[
@@ -2130,6 +2558,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="parameter-type-003-01",
                 source="parameter-type",
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
@@ -2145,30 +2574,44 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=1,
         validations=[
             CvTermValidation(
+                identifier="parameter-value-004-01",
                 node_type="parameter-value",
-                min_count=1
-                if parameter_name
-                in COMMON_PARAMETER_ENFORCEMENT_LEVELS[protocol_name]["required"]
-                else 0,
-                validation=rule,
-                condition=[
-                    FilterCondition(
-                        name=parameter_name,
-                        relationship_name="instance-of",
-                        start_node_type="parameter-value",
-                        expression="[instance-of].parameter_type_ref.name",
-                        expression_value=parameter_name,
-                    )
-                ],
-            )
-            for protocol_name, parameter_name, rule in [
-                (k, k2, v2)
-                for k, d in MANAGED_PARAMETER_VALUE_RULES.items()
-                for k2, v2 in d.items()
-            ]
+                validation=AllowAnyCvTerm(
+                    allowed_placeholder_values=[CvTermPlaceholder()],
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+            ),
+            *[
+                CvTermValidation(
+                    identifier=f"parameter-value-004-{(idx + 10):02}",
+                    node_type="parameter-value",
+                    min_count=1
+                    if parameter_name
+                    in COMMON_PARAMETER_ENFORCEMENT_LEVELS[protocol_name]["required"]
+                    else 0,
+                    validation=rule,
+                    condition=[
+                        FilterCondition(
+                            name=parameter_name,
+                            relationship_name="instance-of",
+                            start_node_type="parameter-value",
+                            expression="[instance-of].parameter_type_ref.name",
+                            expression_value=parameter_name,
+                        )
+                    ],
+                )
+                for idx, (protocol_name, parameter_name, rule) in enumerate(
+                    [
+                        (k, k2, v2)
+                        for k, d in MANAGED_PARAMETER_VALUE_RULES.items()
+                        for k2, v2 in d.items()
+                    ]
+                )
+            ],
         ],
         relationships=[
             RelationshipValidation(
+                identifier="parameter-value-003-01",
                 source="parameter-value",
                 relationship_name="instance-of",
                 reverse_relationship_name="has-instance",
@@ -2177,6 +2620,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="parameter-value-003-02",
                 source="parameter-value",
                 relationship_name="value-of",
                 reverse_relationship_name="has-parameter-value",
@@ -2191,11 +2635,20 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         min=1,
         validations=[
             NodePropertyValidation(
+                identifier="protocol-type-001-01",
                 node_type="protocol-type",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
+                identifier="protocol-type-004-01",
+                node_type="protocol-type",
+                validation=AllowAnyCvTerm(
+                    allowed_other_sources=["wikidata", "ILX"],
+                ),
+            ),
+            CvTermValidation(
+                identifier="protocol-type-004-02",
                 node_type="protocol-type",
                 min_count=1,
                 validation=AllowedCvTerms(
@@ -2214,6 +2667,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="protocol-type-003-01",
                 source="protocol-type",
                 relationship_name="type-of",
                 reverse_relationship_name="has-type",
@@ -2228,3 +2682,36 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
 MHD_MS_PROFILE_V0_1.mhd_nodes.sort(key=lambda x: x.node_type)
 
 MHD_MS_PROFILE_V0_1.cv_nodes.sort(key=lambda x: x.node_type)
+
+
+def validate_model():
+    unique_ids = {}
+    invalid_names = {}
+    for node in MHD_MS_PROFILE_V0_1.mhd_nodes:
+        for validation in node.validations:
+            if not node.node_type.startswith(validation.identifier):
+                if node.node_type not in invalid_names:
+                    invalid_names[node.node_type] = []
+                invalid_names[node.node_type].append(validation.identifier)
+            if validation.identifier not in unique_ids:
+                unique_ids[validation.identifier] = []
+            unique_ids[validation.identifier].append(node.node_type)
+        for validation in node.relationships:
+            if validation.identifier not in unique_ids:
+                unique_ids[validation.identifier] = []
+            unique_ids[validation.identifier].append(node.node_type)
+
+    non_unique_terms = {}
+    for item, values in unique_ids.items():
+        if len(values) != 1:
+            non_unique_terms[item] = values
+    if not invalid_names:
+        raise ValueError(
+            "Invalid names. Node type and identifier prefix do not match",
+            str(invalid_names),
+        )
+    if non_unique_terms:
+        raise ValueError("Non unique identifiers in validation", str(non_unique_terms))
+
+
+validate_model()

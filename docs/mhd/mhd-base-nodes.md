@@ -219,7 +219,7 @@ Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum:
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |metabolite|described-as|describes|descriptor|0|N||
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
+|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No,<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
 |metabolite|measured-in|measures|raw-data-file|0|N||
 |metabolite|reported-in|reports|study|1|N||
 |metabolite|reported-in|reports|metadata-file|0|N||
@@ -983,8 +983,8 @@ Characteristic Value node is optional in the  MHD Base Profile. <code>Minimum: 0
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**characteristic-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
@@ -1019,8 +1019,8 @@ Data Provider node is **required in the MHD Base Profile.** <code>Minimum: 1, Ma
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**data-provider**</code>|
-|**value**|**required**|<code>*str*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|**required**|<code>*str*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
@@ -1142,8 +1142,8 @@ Factor Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximu
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**factor-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
@@ -1233,8 +1233,8 @@ Parameter Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Max
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**parameter-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>||
-|**unit**|optional|<code>*UnitCvTerm*<code>||
+|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|

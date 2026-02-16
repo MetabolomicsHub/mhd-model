@@ -14,7 +14,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import (
     CvTermValueObject,
 )
 from mhd_model.model.v0_1.dataset.profiles.base.profile import MhdGraph
-from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     FilterCondition,
@@ -421,14 +420,6 @@ class MhdModelValidator:
                 path=nodes_path,
                 instance={},
             )
-        # reverse_relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = {}
-        # for k, v in relationships_index.items():
-        #     reverse_relationships_index[k] = {}
-        #     for k2, v2 in v.items():
-        #         for k3, v3 in v2.items():
-        #             if  k2  not in reverse_relationships_index:
-        #                 reverse_relationships_index[k][k3] = {}
-        #             reverse_relationships_index[k][k3][k2] = v3
 
         for validation_nodes in (node_validation.mhd_nodes, node_validation.cv_nodes):
             for validation_item in validation_nodes:
@@ -437,25 +428,40 @@ class MhdModelValidator:
 
                 for error in errors:
                     yield error
-                if item.relationships:
-                    for relationship_list in item.relationships:
-                        errors = self.check_relationships(
-                            relationship_list,
-                            nodes,
-                            nodes_by_type,
-                            relationships_by_name,
-                            relationships_index,
-                        )
-
-                        for error in errors:
-                            yield error
+                if not item.relationships:
+                    continue
+                for relationship_list in item.relationships:
+                    logger.debug(
+                        "Relationship validation '%s': Started",
+                        relationship_list.identifier,
+                    )
+                    errors = self.check_relationships(
+                        relationship_list,
+                        nodes,
+                        nodes_by_type,
+                        relationships_by_name,
+                        relationships_index,
+                    )
+                    logger.info(
+                        "Relationship validation '%s': Completed",
+                        relationship_list.identifier,
+                    )
+                    for error in errors:
+                        yield error
         for validation_nodes in (node_validation.mhd_nodes, node_validation.cv_nodes):
             for node in validation_nodes:
                 for item in node.validations:
                     errors = []
+                    validation_match = True
                     if isinstance(item, NodePropertyValidation):
+                        logger.debug(
+                            "Node propertry validation '%s': Started", item.identifier
+                        )
                         errors = self.check_property_constraint(
                             item, nodes_by_type, nodes_path
+                        )
+                        logger.info(
+                            "Node propertry validation '%s': Completed", item.identifier
                         )
                     elif isinstance(item, CvTermValidation):
                         selected_items = self.filter_validation(
@@ -466,7 +472,24 @@ class MhdModelValidator:
                             relationships_index=relationships_index,
                         )
                         if not selected_items:
+                            if item.condition:
+                                logger.info(
+                                    "Cv Term validation '%s' - %s: %s: Skipping. No maching nodes.",
+                                    item.identifier,
+                                    item.condition[0].expression or "",
+                                    item.condition[0].expression_value or "",
+                                )
+                            else:
+                                logger.info(
+                                    "Cv Term validation '%s': Skipping. No maching nodes.",
+                                    item.identifier,
+                                )
                             continue
+                        logger.debug(
+                            "%s validation '%s': Started",
+                            item.validation.__class__.__name__,
+                            item.identifier,
+                        )
                         if isinstance(item.validation, AllowedCvTerms):
                             errors = self.run_allowed_cv_terms_validation(
                                 nodes,
@@ -495,13 +518,49 @@ class MhdModelValidator:
                                 nodes,
                                 item,
                                 nodes_by_type,
-                                relationships_index,
-                                relationships_index,
                                 selected_items,
                                 path=nodes_path,
                             )
+                        else:
+                            logger.error(
+                                "Invalid %s validation '%s'",
+                                item.validation.__class__.__name__,
+                                item.identifier,
+                            )
+                            validation_match = False
+                        if validation_match:
+                            if not item.condition:
+                                logger.info(
+                                    "%s validation '%s': Completed",
+                                    item.validation.__class__.__name__,
+                                    item.identifier,
+                                )
+                            else:
+                                logger.info(
+                                    "%s validation '%s' - %s: %s: Completed",
+                                    item.validation.__class__.__name__,
+                                    item.identifier,
+                                    item.condition[0].expression or "",
+                                    item.condition[0].expression_value or "",
+                                )
+
                     elif isinstance(item, EmbeddedRefValidation):
+                        logger.debug(
+                            "Embedded Reference validation '%s': Started",
+                            item.identifier,
+                        )
                         errors = self.validate_embedded_refs(item, nodes, nodes_by_type)
+                        logger.info(
+                            "Embedded Reference validation '%s': Completed",
+                            item.identifier,
+                        )
+                    else:
+                        logger.debug(
+                            "Invalid %s validation '%s'",
+                            item.validation.__class__.__name__,
+                            item.identifier,
+                        )
+                        validation_match = False
 
                     if errors:
                         for error in errors:
@@ -543,7 +602,7 @@ class MhdModelValidator:
                 if not val and item.required:
                     errors.append(
                         jsonschema.ValidationError(
-                            message=f"{node.id_}: '{node.type_}' node at index "
+                            message=f"{item.identifier} - {node.id_}: '{node.type_}' node at index "
                             f"{idx} has a required property "
                             f" '{item.node_property_name}' but its value is not defined.",
                             validator="embedded-key-check",
@@ -579,7 +638,7 @@ class MhdModelValidator:
                     if not matched:
                         errors.append(
                             jsonschema.ValidationError(
-                                message=f"{node.id_}: '{node.type_}' node at index "
+                                message=f"{item.identifier} - {node.id_}: '{node.type_}' node at index "
                                 f"{idx} has a required property but "
                                 "referenced node type is not in allowed for this property."
                                 f"Allowed type(s): {', '.join(refs)}"
@@ -608,7 +667,7 @@ class MhdModelValidator:
                         min_length_violation = True
                         errors.append(
                             jsonschema.ValidationError(
-                                message=f"{node_data.id_}: '{node_data.type_}' node at index "
+                                message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
                                 f"{node_idx} has a property named '{item.node_property_name}' "
                                 f"that violates min length rule. Actual: {min_length}, Expected: {item.constraints.min_length}",
                                 validator="check-property-constraint",
@@ -623,7 +682,7 @@ class MhdModelValidator:
                         sub_path = [path, node_idx] if path else [node_idx]
                         errors.append(
                             jsonschema.ValidationError(
-                                message=f"{node_data.id_}: '{node_data.type_}' node at index "
+                                message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
                                 f"{node_idx} has a property named '{item.node_property_name}' "
                                 f"that violates max length rule. Actual: {max_length}, Expected: {item.constraints.min_length}",
                                 validator="check-property-constraint",
@@ -637,7 +696,7 @@ class MhdModelValidator:
                         sub_path = [path, node_idx] if path else [node_idx]
                         errors.append(
                             jsonschema.ValidationError(
-                                message=f"{node_data.id_}: '{node_data.type_}' node at index "
+                                message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
                                 f"{node_idx} has a property named '{item.node_property_name}' "
                                 f"that violates pattern rule. Actual: {val}, Expected pattern: {item.constraints.pattern}",
                                 validator="check-property-constraint",
@@ -651,7 +710,7 @@ class MhdModelValidator:
                         sub_path = [path, node_idx] if path else [node_idx]
                         errors.append(
                             jsonschema.ValidationError(
-                                message=f"{node_data.id_}: '{node_data.type_}' node at index "
+                                message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
                                 f"{node_idx} has a property named '{item.node_property_name}' "
                                 f"that violates required rule.",
                                 validator="check-property-constraint",
@@ -695,12 +754,6 @@ class MhdModelValidator:
         nodes: dict,
         check: CvTermValidation,
         nodes_by_type: dict,
-        relationships_index: dict[
-            str, dict[str, dict[str, tuple[int, Relationship]]]
-        ] = None,
-        reverse_relationships_index: dict[
-            str, dict[str, dict[str, tuple[int, Relationship]]]
-        ] = None,
         selected_items: None | list[Any] = None,
         path: str = None,
     ) -> list[jsonschema.ValidationError]:
@@ -726,15 +779,8 @@ class MhdModelValidator:
         if check.validation.allowed_other_sources:
             other_sources = {x for x in check.validation.allowed_other_sources}
         for idx, value in selected_items:
-            # run_validation = self.check_condition(
-            #     value,
-            #     check,
-            #     nodes_by_type,
-            #     reverse_relationships_index,
-            # )
-
-            # if run_validation:
             result = self.check_cv_term_in_list(
+                check.identifier,
                 nodes,
                 idx,
                 value,
@@ -787,6 +833,7 @@ class MhdModelValidator:
 
     def check_cv_term_in_list(
         self,
+        rule_id: str,
         nodes: dict,
         idx: int,
         node: IdentifiableMhdModel,
@@ -831,11 +878,13 @@ class MhdModelValidator:
                 sub_path = [path, idx, property_name] if property_name else [path, idx]
             else:
                 sub_path = [idx, property_name] if property_name else [idx]
-            message = f"{node.id_}: {node.type_} node at index {idx} with value "
+            message = (
+                f"{rule_id} - {node.id_}: {node.type_} node at index {idx} with value "
+            )
             if property_name:
-                message = f"{node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its value "
+                message = f"{rule_id} - {node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its value "
                 if is_list:
-                    message = f"{node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
+                    message = f"{rule_id} - {node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
             if is_list:
                 sub_path.append(sub_idx)
             valid = False
@@ -893,6 +942,7 @@ class MhdModelValidator:
             other_sources = {x for x in check.validation.allowed_other_sources}
         for item in selected_items:
             result = self.check_children_cv_term(
+                check.identifier,
                 nodes,
                 item[0],
                 item[1],
@@ -909,6 +959,7 @@ class MhdModelValidator:
 
     def check_children_cv_term(
         self,
+        rule_id: str,
         nodes: dict,
         idx: int,
         node: IdentifiableMhdModel,
@@ -950,11 +1001,13 @@ class MhdModelValidator:
                 sub_path = [path, idx, property_name] if property_name else [path, idx]
             else:
                 sub_path = [idx, property_name] if property_name else [idx]
-            message = f"{node.id_}: {node.type_} node at index {idx} with value "
+            message = (
+                f"{rule_id} -  {node.id_}: {node.type_} node at index {idx} with value "
+            )
             if property_name:
-                message = f"{node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its value "
+                message = f"{rule_id} - {node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its value "
                 if is_list:
-                    message = f"{node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
+                    message = f"{rule_id} - {node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
             if is_list:
                 sub_path.append(sub_idx)
             valid_parents = [x.cv_term for x in parent_cv_terms]
@@ -1031,6 +1084,7 @@ class MhdModelValidator:
             other_sources = {x for x in check.validation.allowed_other_sources}
         for item in selected_items:
             result = self.check_cv_term(
+                check.identifier,
                 nodes,
                 item[0],
                 item[1],
@@ -1046,6 +1100,7 @@ class MhdModelValidator:
 
     def check_cv_term(
         self,
+        rule_id: str,
         nodes: dict,
         idx: int,
         node: IdentifiableMhdModel,
@@ -1081,11 +1136,13 @@ class MhdModelValidator:
                 sub_path = [path, idx, property_name] if property_name else [path, idx]
             else:
                 sub_path = [idx, property_name] if property_name else [idx]
-            message = f"{node.id_}: {node.type_} node at index {idx} with value "
+            message = (
+                f"{rule_id} - {node.id_}: {node.type_} node at index {idx} with value "
+            )
             if property_name:
-                message = f"{node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its value "
+                message = f"{rule_id} - {node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its value "
                 if is_list:
-                    message = f"{node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
+                    message = f"{rule_id} - {node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
             if is_list:
                 sub_path.append(sub_idx)
             valid, error_message = self.cv_helper.check_cv_term(item)
@@ -1220,14 +1277,6 @@ class MhdModelValidator:
                                     current_idx,
                                     selected,
                                 )
-                                # for item in relationships[item.id_]:
-                                #     relationships_index.get(item)
-                                #     if item in current_nodes:
-                                #         current_idx, selected = current_nodes.get(item)
-                                #         selected_items[current_idx] = (
-                                #             current_idx,
-                                #             selected,
-                                #         )
                             else:
                                 path = relationship_name.replace(
                                     "[embedded]", ""
@@ -1283,7 +1332,7 @@ class MhdModelValidator:
         property_name = check.node_property_name
         for idx, item in selected_items:
             result = self.check_required_item(
-                nodes, idx, item, cv_map, property_name, path=path
+                check.identifier, nodes, idx, item, cv_map, property_name, path=path
             )
             if result:
                 errors.extend(result)
@@ -1389,6 +1438,7 @@ class MhdModelValidator:
 
     def check_required_item(
         self,
+        rule_id: str,
         nodes: dict,
         idx: int,
         node: IdentifiableMhdModel,
@@ -1409,11 +1459,13 @@ class MhdModelValidator:
                 sub_path = [path, idx, property_name] if property_name else [path, idx]
             else:
                 sub_path = [idx, property_name] if property_name else [idx]
-            message = f"{node.id_}: {node.type_} node at index {idx} with value "
+            message = (
+                f"{rule_id} - {node.id_}: {node.type_} node at index {idx} with value "
+            )
             if property_name:
-                message = f"{node.id_}: {node.type_} node at index {idx} has a property '{property_name}'. Its value "
+                message = f"{rule_id} - {node.id_}: {node.type_} node at index {idx} has a property '{property_name}'. Its value "
                 if is_list:
-                    message = f"{node.id_}: {node.type_} node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
+                    message = f"{rule_id} - {node.id_}: {node.type_} node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
             if is_list:
                 sub_path.append(sub_idx)
 
@@ -1453,7 +1505,7 @@ class MhdModelValidator:
             if reference.name != item.name or reference.source != item.source:
                 errors.append(
                     jsonschema.ValidationError(
-                        message=f"{item.type_} {item.id_}: node at {idx} with value [{item.source}, {item.accession}, {item.name}] "
+                        message=f"{rule_id} - {item.type_} {item.id_}: node at {idx} with value [{item.source}, {item.accession}, {item.name}] "
                         "does not match the reference term. Reference term: "
                         f"[{reference.source}, {reference.accession}, {reference.name}].",
                         validator="check-cv-term-in-control-list",
@@ -1472,7 +1524,6 @@ class MhdModelValidator:
         nodes_by_type: dict[str, dict[str, tuple[int, Any]]] = None,
         relationships_by_name: dict[str, dict[str, tuple[int, Any]]] = None,
         relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
-        path: str = None,
     ) -> None | protocols.Validator:
         relationships = relationships_by_name.get(item.relationship_name, {})
         items = []
@@ -1484,7 +1535,7 @@ class MhdModelValidator:
             if not target_node:
                 errors.append(
                     jsonschema.ValidationError(
-                        message=f"{x.id_}: The target node reference '{x.target_ref}' in the relationship is not defined.",
+                        message=f"{item.identifier} - {x.id_}: The target node reference '{x.target_ref}' in the relationship is not defined.",
                         validator="invalid-node-ref-in-relationship",
                         context=(),
                         path=["relationships", idx],
@@ -1496,7 +1547,7 @@ class MhdModelValidator:
             if not source_node:
                 errors.append(
                     jsonschema.ValidationError(
-                        message=f"{x.id_}: The source node reference '{x.source_ref}' in the relationship is not defined.",
+                        message=f"{item.identifier} - {x.id_}: The source node reference '{x.source_ref}' in the relationship is not defined.",
                         validator="invalid-node-ref-in-relationship",
                         context=(),
                         path=["relationships", idx],
@@ -1523,7 +1574,7 @@ class MhdModelValidator:
         if len(items) < item.min:
             errors.append(
                 jsonschema.ValidationError(
-                    message=f"Number of '{item.source} - {item.relationship_name} - {item.target}' "
+                    message=f"{item.identifier} - Number of '{item.source} - {item.relationship_name} - {item.target}' "
                     f"relationships is less than expected: {item.min}.",
                     validator="number-of-relationships",
                     context=(),
@@ -1534,7 +1585,7 @@ class MhdModelValidator:
         if item.max is not None and len(items) > item.max:
             errors.append(
                 jsonschema.ValidationError(
-                    message=f"Number of '{item.source} - {item.relationship_name} - {item.target}' "
+                    message=f"{item.identifier} - Number of '{item.source} - {item.relationship_name} - {item.target}' "
                     "relationship exceeds the allowed limit: {max}.",
                     validator="number-of-relationships",
                     context=(),
@@ -1568,7 +1619,7 @@ class MhdModelValidator:
                 if item.min_for_each_source and target_count < item.min_for_each_source:
                     errors.append(
                         jsonschema.ValidationError(
-                            message=f"{node.id_}: The source node at index {node_idx} has less relationship "
+                            message=f"{item.identifier} - {node.id_}: The source node at index {node_idx} has less relationship "
                             f"('{item.source} - {item.relationship_name} - {item.target}{' [' + condition.name + ']' if condition else ''}') "
                             f"Actual: {target_count}, Minimim : {item.min_for_each_source}.",
                             validator="number-of-relationships",
@@ -1582,7 +1633,7 @@ class MhdModelValidator:
                     node_idx, node = nodes_by_type.get(node.type_).get(node.id_)
                     errors.append(
                         jsonschema.ValidationError(
-                            message=f"{node.id_}: The source node at index {node_idx} has more relationships "
+                            message=f"{item.identifier} - {node.id_}: The source node at index {node_idx} has more relationships "
                             f"('{item.source} - {item.relationship_name} - {item.target}'). "
                             f"Actual: {target_count}, Limit : {item.max_for_each_source}.",
                             validator="number-of-relationships",
@@ -1625,18 +1676,20 @@ class MhdModelValidator:
                 )
             )
 
-        if isinstance(node_validation, CvNodeValidation):
-            if node_validation.value_required:
-                for idx, node in nodes_by_type.get(node_name, {}).values():
-                    if not hasattr(node, "value") or not getattr(node, "value"):
-                        errors.append(
-                            jsonschema.ValidationError(
-                                message=f"{node.id_}: {node_name} node at index {idx} must have non empty 'value'.",
-                                validator="node-value",
-                                context=(),
-                                path=("nodes", idx),
-                                instance={},
-                            )
+        if (
+            isinstance(node_validation, CvNodeValidation)
+            and node_validation.value_required
+        ):
+            for idx, node in nodes_by_type.get(node_name, {}).values():
+                if not hasattr(node, "value") or not getattr(node, "value"):
+                    errors.append(
+                        jsonschema.ValidationError(
+                            message=f"{node.id_}: {node_name} node at index {idx} must have non empty 'value'.",
+                            validator="node-value",
+                            context=(),
+                            path=("nodes", idx),
+                            instance={},
                         )
+                    )
 
         return errors

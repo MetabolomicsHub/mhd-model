@@ -244,6 +244,7 @@
             }
           ],
           "default": null,
+          "description": "Value of CV term.",
           "title": "Value"
         },
         "unit": {
@@ -256,6 +257,7 @@
             }
           ],
           "default": null,
+          "description": "Unit CV term if value has a unit.",
           "title": "Unit"
         },
         "source": {
@@ -734,6 +736,17 @@
                         "accession": "CHEMINF:000464",
                         "name": "chemical database identifier",
                         "source": "CHEMINF"
+                      },
+                      "excludedCvTerms": null,
+                      "indexCvTerms": false
+                    },
+                    {
+                      "allowOnlyLeaf": false,
+                      "allowParent": false,
+                      "cvTerm": {
+                        "accession": "EDAM:data_2894",
+                        "name": "Compound accession",
+                        "source": "EDAM"
                       },
                       "excludedCvTerms": null,
                       "indexCvTerms": false

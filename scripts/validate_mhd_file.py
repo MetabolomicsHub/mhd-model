@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 if __name__ == "__main__":
-    set_basic_logging_config()
+    set_basic_logging_config(logging.INFO)
 
     # study_id = "MSV000099062"
     # file_path = f"tests/data/mhd_data/legacy/{study_id}.mhd.json"
