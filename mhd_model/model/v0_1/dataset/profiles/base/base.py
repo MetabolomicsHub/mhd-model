@@ -128,6 +128,12 @@ class BaseMhdModel(IdentifiableMhdModel):
         item: BaseMhdModel = handler(v)
 
         if item.type_ and not item.id_:
+            # str_repr = item.get_unique_id()
+            # if str_repr:
+            #     identifier_name = f"{item.type_}--{str_repr}"
+            #     identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+            #     item.id_ = f"mhd--{item.type_}--{identifier}"
+            # else:
             item.id_ = f"mhd--{item.type_}--{uuid.uuid4()}"
         return item
 
@@ -145,7 +151,12 @@ class BaseLabeledMhdModel(BaseMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BaseLabeledMhdModel":
         item: BaseLabeledMhdModel = handler(v)
-
+        # str_repr = item.get_unique_id()
+        # if str_repr:
+        #     identifier_name = f"{item.type_}--{str_repr}"
+        #     identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        #     item.id_ = f"mhd--{item.type_}--{identifier}"
+        # else:
         if item.type_ and not item.id_:
             item.id_ = f"mhd--{item.type_}--{uuid.uuid4()}"
         if not item.label:
@@ -154,36 +165,6 @@ class BaseLabeledMhdModel(BaseMhdModel):
 
     def get_label(self) -> str:
         return self.id_ or ""
-
-
-class Definition(BaseLabeledMhdModel):
-    name: Annotated[None | str, Field()] = None
-    definition_type: Annotated[None | CvTerm, Field()] = None
-
-    @model_validator(mode="wrap")
-    @classmethod
-    def validate_model(cls, v: Any, handler) -> "Definition":
-        item: Definition = handler(v)
-        if item.type_ and not item.id_:
-            str_repr = item.get_unique_id()
-            identifier_name = f"{item.type_}--{str_repr}"
-            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-            item.id_ = f"{item.type_}--{identifier}"
-        if not item.label:
-            item.label = item.get_label()
-        return item
-
-    def get_unique_id(self):
-        return f"{self.name or ''},{self.definition_type.get_unique_id() if self.definition_type else ''}"
-
-    def __hash__(self) -> int:
-        return hash(self.get_unique_id())
-
-    def get_label(self):
-        return self.name or ""
-
-
-class DefinitionValue(KeyValue): ...
 
 
 class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
