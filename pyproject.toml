@@ -33,7 +33,7 @@ include = ["mhd_model*"]
 exclude = ["tests*", "docs*"]
 
 [tool.setuptools.package-data]
-"mhd_model" = ["**/*.json"]
+"mhd_model" = ["**/*.json", "**/*.csv", "**/*.tsv", "**/*.txt"]
 
 [tool.setuptools]
 include-package-data = true
