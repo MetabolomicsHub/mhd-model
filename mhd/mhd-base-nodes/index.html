@@ -611,7 +611,7 @@
 </nav>
 <article class="md-content__inner md-typeset">
 <h1 id="metabolomicshub-common-data-model-nodes-mhd-base-profile">MetabolomicsHub Common Data Model Nodes - MHD Base Profile<a class="headerlink" href="#metabolomicshub-common-data-model-nodes-mhd-base-profile" title="Permanent link">¶</a></h1>
-<p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json</a></p>
+<p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json</a> </p>
 <h2 id="required-nodes-relationships">Required Nodes &amp; Relationships<a class="headerlink" href="#required-nodes-relationships" title="Permanent link">¶</a></h2>
 <p><strong>Required MHD Nodes</strong></p>
 <p><code>Study</code></p>
@@ -745,13 +745,13 @@
 <td><strong>technology_type_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0000470, mass spectrometry assay],<br/>* [OBI, OBI:0000623, NMR spectroscopy assay]</code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0000470, mass spectrometry assay]</code></td>
 </tr>
 <tr>
 <td><strong>assay_type_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay],<br/>* [OBI, OBI:0000623, NMR spectroscopy assay]</code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay]</code></td>
 </tr>
 <tr>
 <td><strong>measurement_type_ref</strong></td>
@@ -763,7 +763,7 @@
 <td><strong>omics_type_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [EDAM, EDAM:3172, Metabolomics],<br/>* [EDAM, EDAM:0153, Lipidomics],<br/>* [EDAM, EDAM:3955, Fluxomics]</code></td>
+<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [EDAM, EDAM:topic_3172, Metabolomics],<br/>* [EDAM, EDAM:topic_0153, Lipidomics],<br/>* [EDAM, EDAM:topic_3955, Fluxomics],<br/>* [wikidata, wikidata:Q115452339, exposomics]</code></td>
 </tr>
 <tr>
 <td><strong>protocol_refs</strong></td>
@@ -948,9 +948,9 @@
 <td>has-instance</td>
 <td>instance-of</td>
 <td>characteristic-value</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>characteristic-definition</td>
@@ -1087,13 +1087,13 @@
 <td><strong>format_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>compression_format_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermObjectId]</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -1273,7 +1273,7 @@
 <td>factor-value</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br/><code>-----<br/><strong>Conditional - (Disease)</strong><br/>[Source factor_type_ref.accession = EFO:0000408]<br/>Ontology Sources:MONDO, MP, SNOMED<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code><br/>-----</td>
+<td>Target Validation Rule:<br/><code>-----<br/><strong>Conditional - (Disease)</strong><br/>[Source factor_type_ref.name = disease]<br/>Ontology Sources:MONDO, MP, SNOMED<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code><br/>-----</td>
 </tr>
 <tr>
 <td>factor-definition</td>
@@ -1426,7 +1426,7 @@
 <td>metabolite-identifier</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br/><code>-----<br/>Allowed Parent CV Terms:<br/>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code><br/>-----</td>
+<td>Target Validation Rule:<br/><code>-----<br/>Allowed Parent CV Terms:<br/>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br/>Allow parent (root) CV Term: No,<br/>* [EDAM, EDAM:data_2894, Compound accession]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Other Sources: REFMET</code><br/>-----</td>
 </tr>
 <tr>
 <td>metabolite</td>
@@ -1607,13 +1607,13 @@
 <td><strong>format_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>compression_format_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermObjectId]</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -2104,7 +2104,7 @@
 <td>parameter-value</td>
 <td>0</td>
 <td>N</td>
-<td>Target Validation Rule:<br/><code>-----<br/><strong>Conditional - (Mass spectrometry instrument)</strong><br/>[Source parameter_type_ref.accession = MSIO:0000171]<br/>Allowed Parent CV Terms:<br/>* [MS, MS:1000031, instrument model]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: Yes<br/>Excluded CV Terms: .*instrument model</code><br/>-----</td>
+<td>Target Validation Rule:<br/><code>-----<br/><strong>Conditional - (Mass spectrometry instrument)</strong><br/>[Source parameter_type_ref.name = mass spectrometry instrument]<br/>Allowed Parent CV Terms:<br/>* [MS, MS:1000031, instrument model]<br/>Allow parent (root) CV Term: No<br/>Excluded CV Terms: ^.*instrument model<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code><br/>-----</td>
 </tr>
 <tr>
 <td>parameter-definition</td>
@@ -2713,7 +2713,7 @@
 <td><strong>protocol_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>protocol-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>protocol-type</strong></code><br/>Allowed CV Terms:<br/>* [EFO, EFO:0005518, sample collection protocol],<br/>* [MS, MS:1000831, sample preparation],<br/>* [CHMO, CHMO:0000470, mass spectrometry],<br/>* [OBI, OBI:0200000, data transform],<br/>* [MI, MI:2131, metabolite identification],<br/>* [CHMO, CHMO:0001000, chromatography],<br/>* [EFO, EFO:0003969, treatment protocol],<br/>* [CHMO, CHMO:0001024, capillary electrophoresis],<br/>* [MS, MS:1000058, flow injection analysis],<br/>* [MS, MS:1000075, matrix-assisted laser desorption ionization],<br/>* [MS, MS:1000060, infusion]<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
+<td>Target CV term type: <code><strong>protocol-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>protocol-type</strong></code><br/>Allowed CV Terms:<br/>* [CHMO, CHMO:0000470, mass spectrometry],<br/>* [CHMO, CHMO:0001000, chromatography],<br/>* [EFO, EFO:0005518, sample collection protocol],<br/>* [EFO, EFO:0003969, treatment protocol],<br/>* [MS, MS:1000831, sample preparation]<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
@@ -3102,13 +3102,13 @@
 <td><strong>format_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>compression_format_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermObjectId]</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -3293,13 +3293,13 @@
 <td><strong>format_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>compression_format_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermObjectId]</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -4855,13 +4855,13 @@
 <td><strong>format_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>compression_format_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermObjectId]</em><code></code></code></td>
-<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent CV Term: No<br/>Allow only leaf CV Terms: No</code></td>
+<td>The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rule:<br/> <code>Allowed Parent CV Terms:<br/>* [EDAM, EDAM:format_1915, Format]<br/>Allow parent (root) CV Term: No,<br/>* [MS, MS:1001459, file format]<br/>Allow parent (root) CV Term: No<br/>Exceptions:<br/>Allowed Placeholder Values: source='' accession=''</code></td>
 </tr>
 <tr>
 <td><strong>extension</strong></td>
@@ -5082,13 +5082,13 @@
 <td><strong>value</strong></td>
 <td>optional</td>
 <td><code><em>str or int or float or Decimal</em><code></code></code></td>
-<td></td>
+<td>Value of CV term</td>
 </tr>
 <tr>
 <td><strong>unit</strong></td>
 <td>optional</td>
 <td><code><em>UnitCvTerm</em><code></code></code></td>
-<td></td>
+<td>Unit CV term if value has a unit</td>
 </tr>
 <tr>
 <td><strong>source</strong></td>
@@ -5181,9 +5181,9 @@
 <td>has-instance</td>
 <td>instance-of</td>
 <td>characteristic-value</td>
-<td>0</td>
+<td>1</td>
 <td>N</td>
-<td><strong>Required min count in the dataset: 2.</strong></td>
+<td></td>
 </tr>
 <tr>
 <td>sample</td>
@@ -5243,13 +5243,13 @@
 <td><strong>value</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Value of CV term</td>
 </tr>
 <tr>
 <td><strong>unit</strong></td>
 <td>optional</td>
 <td><code><em>UnitCvTerm</em><code></code></code></td>
-<td></td>
+<td>Unit CV term if value has a unit</td>
 </tr>
 <tr>
 <td><strong>source</strong></td>
@@ -5873,13 +5873,13 @@
 <td><strong>value</strong></td>
 <td>optional</td>
 <td><code><em>str or int or float or Decimal</em><code></code></code></td>
-<td></td>
+<td>Value of CV term</td>
 </tr>
 <tr>
 <td><strong>unit</strong></td>
 <td>optional</td>
 <td><code><em>UnitCvTerm</em><code></code></code></td>
-<td></td>
+<td>Unit CV term if value has a unit</td>
 </tr>
 <tr>
 <td><strong>source</strong></td>
@@ -6215,13 +6215,13 @@
 <td><strong>value</strong></td>
 <td>optional</td>
 <td><code><em>str or int or float or Decimal</em><code></code></code></td>
-<td></td>
+<td>Value of CV term</td>
 </tr>
 <tr>
 <td><strong>unit</strong></td>
 <td>optional</td>
 <td><code><em>UnitCvTerm</em><code></code></code></td>
-<td></td>
+<td>Unit CV term if value has a unit</td>
 </tr>
 <tr>
 <td><strong>source</strong></td>
@@ -6394,6 +6394,7 @@
   Assay[Assay] ==&gt;|described-as| Descriptor[Descriptor];
   Assay[Assay] ==&gt;|part-of| Study[Study];
   Assay[Assay] ==&gt;|follows| Protocol[Protocol];
+  Characteristic_Definition[Characteristic Definition] ==&gt;|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==&gt;|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==&gt;|has-type| Characteristic_Type[Characteristic Type];
   Characteristic_Definition[Characteristic Definition] ==&gt;|used-in| Study[Study];

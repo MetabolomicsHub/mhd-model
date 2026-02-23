@@ -598,6 +598,7 @@
             }
           ],
           "default": null,
+          "description": "Value of CV term.",
           "title": "Value"
         },
         "unit": {
@@ -610,6 +611,7 @@
             }
           ],
           "default": null,
+          "description": "Unit CV term if value has a unit.",
           "title": "Unit"
         },
         "source": {
