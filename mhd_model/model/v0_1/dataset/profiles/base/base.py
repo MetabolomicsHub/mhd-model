@@ -126,14 +126,14 @@ class BaseMhdModel(IdentifiableMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BaseMhdModel":
         item: BaseMhdModel = handler(v)
-
-        if item.type_ and not item.id_:
-            # str_repr = item.get_unique_id()
-            # if str_repr:
-            #     identifier_name = f"{item.type_}--{str_repr}"
-            #     identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-            #     item.id_ = f"mhd--{item.type_}--{identifier}"
-            # else:
+        str_repr = item.get_unique_id()
+        if not item.type_:
+            raise ValueError("type_ is required")
+        if not item.id_ or item.id_ != str_repr:
+            identifier_name = f"{item.type_}--{str_repr}"
+            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+            item.id_ = f"mhd--{item.type_}--{identifier}"
+        elif not item.id_:
             item.id_ = f"mhd--{item.type_}--{uuid.uuid4()}"
         return item
 
@@ -151,13 +151,14 @@ class BaseLabeledMhdModel(BaseMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BaseLabeledMhdModel":
         item: BaseLabeledMhdModel = handler(v)
-        # str_repr = item.get_unique_id()
-        # if str_repr:
-        #     identifier_name = f"{item.type_}--{str_repr}"
-        #     identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-        #     item.id_ = f"mhd--{item.type_}--{identifier}"
-        # else:
-        if item.type_ and not item.id_:
+        str_repr = item.get_unique_id()
+        if not item.type_:
+            raise ValueError("type_ is required")
+        if not item.id_ or item.id_ != str_repr:
+            identifier_name = f"{item.type_}--{str_repr}"
+            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+            item.id_ = f"mhd--{item.type_}--{identifier}"
+        elif not item.id_:
             item.id_ = f"mhd--{item.type_}--{uuid.uuid4()}"
         if not item.label:
             item.label = item.get_label()

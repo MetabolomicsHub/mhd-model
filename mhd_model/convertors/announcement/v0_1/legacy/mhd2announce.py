@@ -545,12 +545,12 @@ def get_main_assay_descriptors(
                 omics_types[term.accession] = term
 
     for keyword in keywords:
-        if "untargetted" in keyword.name.lower():
-            measurement_types["MS:1003904"] = COMMON_MEASUREMENT_TYPES["MS:1003904"]
-        elif "targetted" in keyword.name.lower():
-            measurement_types["MS:1003905"] = COMMON_MEASUREMENT_TYPES["MS:1003905"]
+        if "untargeted" in keyword.name.lower():
+            measurement_types["MS:1003904"] = COMMON_MEASUREMENT_TYPES["untargeted"]
+        elif "targeted" in keyword.name.lower():
+            measurement_types["MS:1003905"] = COMMON_MEASUREMENT_TYPES["targeted"]
         elif "semi-targeted" in keyword.name.lower():
-            measurement_types["MS:1003906"] = COMMON_MEASUREMENT_TYPES["MS:1003906"]
+            measurement_types["MS:1003906"] = COMMON_MEASUREMENT_TYPES["semi-targeted"]
         for accession, value in COMMON_OMICS_TYPES.items():
             if (
                 accession.lower() == keyword.name.lower()
