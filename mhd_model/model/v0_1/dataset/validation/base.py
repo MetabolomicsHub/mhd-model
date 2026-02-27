@@ -431,10 +431,11 @@ class MhdModelValidator:
                 if not item.relationships:
                     continue
                 for relationship_list in item.relationships:
-                    logger.debug(
-                        "Relationship validation '%s': Started",
-                        relationship_list.identifier,
-                    )
+                    if relationship_list.identifier:
+                        logger.debug(
+                            "Relationship validation '%s': Started",
+                            relationship_list.identifier,
+                        )
                     errors = self.check_relationships(
                         relationship_list,
                         nodes,
@@ -442,10 +443,11 @@ class MhdModelValidator:
                         relationships_by_name,
                         relationships_index,
                     )
-                    logger.info(
-                        "Relationship validation '%s': Completed",
-                        relationship_list.identifier,
-                    )
+                    if relationship_list.identifier:
+                        logger.debug(
+                            "Relationship validation '%s': Completed",
+                            relationship_list.identifier,
+                        )
                     for error in errors:
                         yield error
         for validation_nodes in (node_validation.mhd_nodes, node_validation.cv_nodes):
@@ -454,15 +456,19 @@ class MhdModelValidator:
                     errors = []
                     validation_match = True
                     if isinstance(item, NodePropertyValidation):
-                        logger.debug(
-                            "Node propertry validation '%s': Started", item.identifier
-                        )
+                        if item.identifier:
+                            logger.debug(
+                                "Node propertry validation '%s': Started",
+                                item.identifier,
+                            )
                         errors = self.check_property_constraint(
                             item, nodes_by_type, nodes_path
                         )
-                        logger.info(
-                            "Node propertry validation '%s': Completed", item.identifier
-                        )
+                        if item.identifier:
+                            logger.debug(
+                                "Node propertry validation '%s': Completed",
+                                item.identifier,
+                            )
                     elif isinstance(item, CvTermValidation):
                         selected_items = self.filter_validation(
                             item.node_type,
@@ -545,21 +551,24 @@ class MhdModelValidator:
                                 )
 
                     elif isinstance(item, EmbeddedRefValidation):
-                        logger.debug(
-                            "Embedded Reference validation '%s': Started",
-                            item.identifier,
-                        )
+                        if item.identifier:
+                            logger.debug(
+                                "Embedded Reference validation '%s': Started",
+                                item.identifier,
+                            )
                         errors = self.validate_embedded_refs(item, nodes, nodes_by_type)
-                        logger.info(
-                            "Embedded Reference validation '%s': Completed",
-                            item.identifier,
-                        )
+                        if item.identifier:
+                            logger.debug(
+                                "Embedded Reference validation '%s': Completed",
+                                item.identifier,
+                            )
                     else:
-                        logger.debug(
-                            "Invalid %s validation '%s'",
-                            item.validation.__class__.__name__,
-                            item.identifier,
-                        )
+                        if item.identifier:
+                            logger.debug(
+                                "Invalid %s validation '%s'",
+                                item.validation.__class__.__name__,
+                                item.identifier,
+                            )
                         validation_match = False
 
                     if errors:
