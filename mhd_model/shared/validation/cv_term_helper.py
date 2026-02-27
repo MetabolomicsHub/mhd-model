@@ -247,6 +247,62 @@ class CvTermHelper:
 
         return uri
 
+    def find_cv_term(self, source: str, accession_or_label: str) -> None | CvTerm:
+        key = (source, accession_or_label)
+        if key in self.search_cache:
+            return self.search_cache[key]
+        if not source or not accession_or_label:
+            raise ValueError("Source and accession_or_label must be provided")
+        accession_or_label = accession_or_label.strip().lower()
+        source = source.lower()
+        params = {
+            "q": accession_or_label,
+            "ontology": source,
+            "type": "class,property,individual",
+            "queryFields": "obo_id",
+            "fieldList": "iri,obo_id,label,short_form",
+            "exact": True,
+            "format": "json",
+            "start": 0,
+            "rows": 1,
+            "local": False,
+            "obsoletes": False,
+            "lang": "en",
+            # "isLeaf": (
+            #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
+            # ),
+        }
+        children_subpath = "/search"
+        ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
+        url = ols4_base_url + children_subpath
+
+        headers = {"Accept": "application/json"}
+        try:
+            logger.debug("Searching %s", url)
+            result = httpx.get(url, params=params, headers=headers, timeout=10)
+            if result.status_code == 404:
+                self.search_cache[key] = (
+                    False,
+                    f"{source} is not valid or {accession_or_label} is not in ontology {source}",
+                )
+                return self.search_cache[key]
+            result.raise_for_status()
+            result_json = result.json()
+            if result_json.get("response"):
+                docs = result_json.get("response").get("docs")
+                if docs and accession_or_label in [
+                    docs[0].get("obo_id", "").lower(),
+                    docs[0].get("label", "").lower(),
+                ]:
+                    return CvTerm(
+                        accession=docs[0].get("obo_id", ""),
+                        name=docs[0].get("label", ""),
+                        source=docs[0].get("obo_id", "").split(":")[0],
+                    )
+        except Exception as ex:
+            logger.exception(str(ex))
+            return None
+
     def check_cv_term(
         self, cv_term: CvTerm, parent_cv_term: None | ParentCvTerm = None
     ) -> tuple[bool, str]:
