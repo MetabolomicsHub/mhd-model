@@ -355,7 +355,7 @@ class CvTermHelper:
         }
         if search_ontology:
             params["ontology"] = search_ontology
-            
+
         ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
         url = ols4_base_url + children_subpath
         if parent_cv_term:

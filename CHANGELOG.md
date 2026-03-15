@@ -1,3 +1,16 @@
+## v0.1.51 (2026-03-15)
+
+### Fix
+
+- edam accession fix
+- parent search error
+- rollback uuid5 for mhd objects
+- meaasurement type conversion error
+
+### Refactor
+
+- validation rules and validator updates
+
 ## v0.1.50 (2026-02-08)
 
 ### Fix
