@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import json
 import logging
 import pathlib
@@ -343,10 +341,10 @@ class CvTermHelper:
             and len(accession.split(":")[1].split("_")) > 1
         ):
             accession = "EDAM:" + accession.split(":")[1].split("_")[1]
-
+        search_ontology = (cv_term.source or "").lower()
         params = {
             "q": accession,
-            "ontology": cv_term.source,
+            "ontology": search_ontology,
             "type": "class,property,individual",
             "queryFields": "obo_id",
             "fieldList": "iri,obo_id,label,short_form",
