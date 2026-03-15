@@ -336,15 +336,9 @@ class CvTermHelper:
 
         # TODO: REMOVE after OLS service patch
         accession = cv_term.accession
-        if (
-            accession.startswith("EDAM:")
-            and len(accession.split(":")[1].split("_")) > 1
-        ):
-            accession = "EDAM:" + accession.split(":")[1].split("_")[1]
         search_ontology = (cv_term.source or "").lower()
         params = {
             "q": accession,
-            "ontology": search_ontology,
             "type": "class,property,individual",
             "queryFields": "obo_id",
             "fieldList": "iri,obo_id,label,short_form",
@@ -359,6 +353,9 @@ class CvTermHelper:
             #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
             # ),
         }
+        if search_ontology:
+            params["ontology"] = search_ontology
+            
         ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
         url = ols4_base_url + children_subpath
         if parent_cv_term:
