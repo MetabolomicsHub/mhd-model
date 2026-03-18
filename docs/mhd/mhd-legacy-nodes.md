@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD Legacy Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a>
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a> 
 
-## Required Nodes & Relationships
+## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
@@ -73,7 +73,6 @@ The following nodes are required with the specified value.
 |Source Node|Minimum Node Count|Property / Relationship|Value|
 |-----------|-----------|------------|------------|
 |characteristic-definition|1|characteristic_type_ref.name|organism|
-|characteristic-definition|1|characteristic_type_ref.name|organism part|
 
 ## MHD Domain Objects
 
@@ -179,7 +178,7 @@ Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>0</code>|
 
 
 **Node Relationships**
@@ -603,7 +602,7 @@ Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Max
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>0</code>|
 
 
 **Node Relationships**
@@ -644,7 +643,7 @@ Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>0</code>|
 
 
 **Node Relationships**

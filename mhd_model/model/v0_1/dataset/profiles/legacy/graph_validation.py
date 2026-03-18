@@ -183,7 +183,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="derived-data-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=0),
             ),
         ],
         relationships=[
@@ -776,7 +776,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="raw-data-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=0),
             ),
         ],
         relationships=[
@@ -831,7 +831,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="result-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=0),
             ),
         ],
         relationships=[
@@ -1416,24 +1416,7 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                         expression_value="organism",
                     )
                 ],
-            ),
-            CvTermValidation(
-                node_type="characteristic-value",
-                min_count=1,
-                validation=AllowAnyCvTerm(
-                    allowed_placeholder_values=[CvTermPlaceholder()],
-                    allowed_other_sources=["wikidata", "ILX"],
-                ),
-                condition=[
-                    FilterCondition(
-                        name="Organism part",
-                        relationship_name="instance-of",
-                        start_node_type="characteristic-definition",
-                        expression="characteristic_type_ref.name",
-                        expression_value="organism part",
-                    )
-                ],
-            ),
+            )
         ],
         relationships=[
             RelationshipValidation(
