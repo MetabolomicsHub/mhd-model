@@ -1,3 +1,9 @@
+## v0.1.52 (2026-03-18)
+
+### Fix
+
+- legacy profile validation rule updates: organism part is not required. file extension is not required
+
 ## v0.1.51 (2026-03-15)
 
 ### Fix

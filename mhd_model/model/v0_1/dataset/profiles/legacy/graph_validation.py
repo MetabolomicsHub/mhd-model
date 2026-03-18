@@ -1416,7 +1416,7 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                         expression_value="organism",
                     )
                 ],
-            )
+            ),
         ],
         relationships=[
             RelationshipValidation(
