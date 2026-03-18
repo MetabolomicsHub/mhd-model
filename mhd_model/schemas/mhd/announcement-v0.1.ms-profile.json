@@ -464,7 +464,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {
@@ -674,7 +673,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {
@@ -845,7 +843,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {
@@ -950,7 +947,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {

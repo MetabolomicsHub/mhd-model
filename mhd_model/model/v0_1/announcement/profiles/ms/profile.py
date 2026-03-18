@@ -22,6 +22,7 @@ from mhd_model.shared.model import CvTerm
 
 class MsAnnouncementMetadataFile(AnnouncementMetadataFile):
     # format: Annotated[None | ms_fields.MetadataFileFormat, Field()] = None
+    extension: Annotated[None | str, Field(min_length=2)] = None
     compression_formats: Annotated[
         None | list[ms_fields.CompressionFormat], Field()
     ] = None

@@ -284,7 +284,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 identifier="derived-data-file-001-03",
                 node_type="derived-data-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=False, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
             EmbeddedRefValidation(
                 identifier="derived-data-file-002-01",
@@ -1797,7 +1797,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 identifier="supplementary-file-001-03",
                 node_type="supplementary-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=False, min_length=2),
+                constraints=PropertyConstraint(required=False),
             ),
             EmbeddedRefValidation(
                 identifier="supplementary-file-002-01",

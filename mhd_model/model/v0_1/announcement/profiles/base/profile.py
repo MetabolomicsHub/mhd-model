@@ -22,7 +22,7 @@ class AnnouncementBaseFile(AnnouncementBaseModel):
     name: Annotated[str, Field(min_length=1)]
     url_list: Annotated[list[AnyUrl], Field(min_length=1)]
     compression_formats: Annotated[None | list[CvTerm], Field()] = None
-    extension: Annotated[None | str, Field(min_length=2)] = None
+    extension: Annotated[None | str, Field()] = None
     format: Annotated[None | CvTerm, Field()] = None
 
 

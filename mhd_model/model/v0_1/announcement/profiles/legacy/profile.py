@@ -22,3 +22,4 @@ class AnnouncementLegacyProfile(AnnouncementBaseProfile):
     submission_date: Annotated[datetime.datetime, Field()]
     public_release_date: Annotated[datetime.datetime, Field()]
     submitters: Annotated[list[AnnouncementContact], Field(min_length=1)]
+    

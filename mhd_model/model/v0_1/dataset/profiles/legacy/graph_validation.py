@@ -183,7 +183,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="derived-data-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=0),
+                constraints=PropertyConstraint(required=False, min_length=0),
             ),
         ],
         relationships=[
@@ -776,7 +776,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="raw-data-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=0),
+                constraints=PropertyConstraint(required=False, min_length=0),
             ),
         ],
         relationships=[
@@ -831,7 +831,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 node_type="result-file",
                 node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=0),
+                constraints=PropertyConstraint(required=False, min_length=0),
             ),
         ],
         relationships=[
