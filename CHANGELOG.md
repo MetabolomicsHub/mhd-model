@@ -1,3 +1,9 @@
+## v0.1.53 (2026-03-18)
+
+### Fix
+
+- file extension is required for legacy profile
+
 ## v0.1.52 (2026-03-18)
 
 ### Fix
