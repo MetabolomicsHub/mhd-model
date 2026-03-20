@@ -4,9 +4,7 @@ from typing import Any, OrderedDict
 
 from pydantic import AnyUrl, BaseModel
 
-from mhd_model.model.definitions import (
-    MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
-)
+from mhd_model.model.definitions import MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
     AnnouncementDerivedDataFile,
@@ -28,6 +26,7 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
     IdentifiableMhdModel,
 )
+from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 from mhd_model.model.v0_1.rules.cv_definitions import (
     CONTROLLED_CV_DEFINITIONS,
     OTHER_CONTROLLED_CV_DEFINITIONS,
@@ -44,7 +43,6 @@ from mhd_model.shared.model import (
     CvTerm,
     CvTermKeyValue,
     CvTermValue,
-    ProfileEnabledDataset,
 )
 
 logger = logging.getLogger(__name__)
@@ -289,7 +287,7 @@ def collect_cv_term_sources(obj: BaseModel, cv_sources: set[str]):
 def create_legacy_announcement_file(
     mhd_file: dict[str, Any], mhd_file_url: str, announcement_file_path: str
 ):
-    mhd_dataset = ProfileEnabledDataset.model_validate(mhd_file)
+    mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_file)
     announcement_schema_name, announcement_profile_uri = (
         MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
             mhd_dataset.profile_uri, (None, None)
