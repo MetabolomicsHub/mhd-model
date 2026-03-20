@@ -52,7 +52,7 @@ def validate_mhd_file_json(json_data: dict[str, Any]):
 
 
 def validate_mhd_model(
-    mtbls_study_id: str,
+    repository_study_id: str,
     mhd_file_path: Path,
     validate_announcement_file: bool = True,
     announcement_file_path: None | Path = None,
@@ -65,23 +65,23 @@ def validate_mhd_model(
         return False, all_validation_errors
     mhd_model_filename = mhd_file_path.name
     if not mhd_file_path.exists():
-        logger.error("MHD model file not found for %s", mtbls_study_id)
+        logger.error("MHD model file not found for %s", repository_study_id)
         all_validation_errors[mhd_model_filename] = [
             f"MHD model file '{mhd_model_filename}' not found"
         ]
 
     validation_errors = validate_mhd_file(str(mhd_file_path))
     if validation_errors:
-        logger.error("MHD model validation errors found for %s", mtbls_study_id)
+        logger.error("MHD model validation errors found for %s", repository_study_id)
         for error in validation_errors:
             logger.error(error)
         all_validation_errors[mhd_model_filename] = validation_errors
     else:
-        logger.info("MHD model validation successful for %s", mtbls_study_id)
+        logger.info("MHD model validation successful for %s", repository_study_id)
         if validate_announcement_file:
             if not announcement_file_path:
                 announcement_file_path = mhd_file_path.parent / Path(
-                    f"{mtbls_study_id}.announcement.json"
+                    f"{repository_study_id}.announcement.json"
                 )
             announcement_file_name = announcement_file_path.name
             announcement_file_path.parent.mkdir(exist_ok=True, parents=True)
@@ -92,7 +92,9 @@ def validate_mhd_model(
                 mhd_data_json, mhd_file_url, announcement_file_path
             )
             if not announcement_file_path.exists():
-                logger.error("MHD announcement file not found for %s", mtbls_study_id)
+                logger.error(
+                    "MHD announcement file not found for %s", repository_study_id
+                )
                 all_validation_errors[announcement_file_name] = [
                     f"MHD announcement file '{announcement_file_name}' not found"
                 ]
@@ -103,7 +105,7 @@ def validate_mhd_model(
                 if all_errors:
                     logger.error(
                         "MHD announcement file validation errors found for %s",
-                        mtbls_study_id,
+                        repository_study_id,
                     )
                     for error in all_errors:
                         logger.error(error)
@@ -112,7 +114,7 @@ def validate_mhd_model(
                     success = True
                     logger.info(
                         "MHD announcement file validation successful for %s",
-                        mtbls_study_id,
+                        repository_study_id,
                     )
     return success, all_validation_errors
 
