@@ -1,3 +1,9 @@
+## v0.1.56 (2026-03-20)
+
+### Fix
+
+- announcement file creation does not consider profile
+
 ## v0.1.55 (2026-03-20)
 
 ### Fix
