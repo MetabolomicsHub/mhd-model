@@ -1,3 +1,9 @@
+## v0.1.55 (2026-03-20)
+
+### Fix
+
+- validate_mhd_model input parameter name error
+
 ## v0.1.54 (2026-03-20)
 
 ### Fix
