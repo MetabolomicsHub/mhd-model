@@ -5,8 +5,7 @@ from typing import Any, OrderedDict
 from pydantic import BaseModel
 
 from mhd_model.model.definitions import (
-    ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
-    ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
+    MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
 )
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
@@ -28,12 +27,17 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
     IdentifiableMhdModel,
 )
-from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
 from mhd_model.model.v0_1.rules.cv_definitions import (
     CONTROLLED_CV_DEFINITIONS,
     OTHER_CONTROLLED_CV_DEFINITIONS,
 )
-from mhd_model.shared.model import CvDefinition, CvTerm, CvTermKeyValue, CvTermValue
+from mhd_model.shared.model import (
+    CvDefinition,
+    CvTerm,
+    CvTermKeyValue,
+    CvTermValue,
+    ProfileEnabledDataset,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -253,14 +257,17 @@ def collect_cv_term_sources(obj: BaseModel, cv_sources: set[str]):
             collect_cv_term_sources(value, cv_sources)
 
 
-def create_announcement_file(
+def create_ms_announcement_file(
     mhd_file: dict[str, Any],
     mhd_file_url: str,
     announcement_file_path: str,
-    announcement_schema_name: str = ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
-    announcement_profile_uri=ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
 ):
-    mhd_dataset = MhDatasetMsProfile.model_validate(mhd_file)
+    mhd_dataset = ProfileEnabledDataset.model_validate(mhd_file)
+    announcement_schema_name, announcement_profile_uri = (
+        MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
+            mhd_dataset.profile_uri, (None, None)
+        )
+    )
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }
