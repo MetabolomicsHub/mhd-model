@@ -1,3 +1,9 @@
+## v0.1.57 (2026-03-23)
+
+### Fix
+
+- cli tool conversion error
+
 ## v0.1.56 (2026-03-20)
 
 ### Fix
