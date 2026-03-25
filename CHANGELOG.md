@@ -1,3 +1,9 @@
+## v0.1.64 (2026-03-25)
+
+### Fix
+
+- organism and organism part common cv term labels are updated
+
 ## v0.1.63 (2026-03-25)
 
 ### Fix
