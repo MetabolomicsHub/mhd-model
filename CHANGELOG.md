@@ -1,3 +1,9 @@
+## v0.1.58 (2026-03-25)
+
+### Fix
+
+- ols4 service and EFO ontology updates causes errors
+
 ## v0.1.57 (2026-03-23)
 
 ### Fix
