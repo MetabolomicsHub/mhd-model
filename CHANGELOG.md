@@ -1,3 +1,9 @@
+## v0.1.65 (2026-03-25)
+
+### Fix
+
+- cv term id will be created with lowercased values.
+
 ## v0.1.64 (2026-03-25)
 
 ### Fix
