@@ -25,16 +25,17 @@ from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 
 logger = logging.getLogger(__name__)
 
+_cv_helper: CvTermHelper | None = None
+
+
+def _get_cv_helper() -> CvTermHelper:
+    global _cv_helper
+    if _cv_helper is None:
+        _cv_helper = CvTermHelper()
+    return _cv_helper
+
 
 class MhDatasetBuilder(GraphEnabledBaseDataset):
-    _cv_helper: CvTermHelper | None = None
-
-    @classmethod
-    def _get_cv_helper(cls) -> CvTermHelper:
-        if cls._cv_helper is None:
-            cls._cv_helper = CvTermHelper()
-        return cls._cv_helper
-
     _cv_definitions_map: Annotated[
         dict[str, None | CvDefinition], Field(exclude=True)
     ] = {}

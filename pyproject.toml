@@ -8,6 +8,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "bioregistry>=0.12.19",
+    "cachetools>=7.0.5",
     "charset-normalizer>=3.4.2",
     "dependency-injector>=4.48.1",
     "email-validator>=2.2.0",

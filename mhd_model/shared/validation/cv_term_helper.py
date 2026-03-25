@@ -7,6 +7,7 @@ from urllib.parse import quote
 
 import bioregistry
 import httpx
+from cachetools import TTLCache, cached
 from pydantic import BaseModel, ConfigDict, field_validator
 from pydantic.alias_generators import to_camel, to_pascal
 
@@ -57,6 +58,23 @@ class ChildrenSearchModel(OlsBaseModel):
         if isinstance(value, list):
             return value[0] if value else ""
         return str(value)
+
+
+@cached(
+    key=lambda url, params, headers, timeout: (
+        url,
+        json.dumps(params, sort_keys=True),
+        json.dumps(headers, sort_keys=True),
+    ),
+    cache=TTLCache(maxsize=2048, ttl=600),
+)
+def search_ols(
+    url: str, params: dict, headers: dict, timeout: int = 10
+) -> tuple[int, dict[str, Any] | None]:
+    result = httpx.get(url, params=params, headers=headers, timeout=timeout)
+    if result.status_code in {200, 201}:
+        return result.status_code, result.json()
+    return result.status_code, None
 
 
 class CvTermHelper:
@@ -179,8 +197,14 @@ class CvTermHelper:
         while not finished:
             params = {"page": page, "size": 100}
             page += 1
-            result = httpx.get(url, params=params, headers=headers, timeout=10)
-            result_json = result.json()
+            status_code, result_json = search_ols(url, params, headers)
+            if not result_json:
+                logger.warning(
+                    "Could not find children CV Terms for %s - %s",
+                    cv_term.accession,
+                    cv_term.name,
+                )
+                break
             search = OlsSearchModel[ChildrenSearchModel].model_validate(result_json)
             selected_items = [x for x in search.elements if not x.is_obsolete]
             selected = []
@@ -277,15 +301,13 @@ class CvTermHelper:
         headers = {"Accept": "application/json"}
         try:
             logger.debug("Searching %s", url)
-            result = httpx.get(url, params=params, headers=headers, timeout=10)
-            if result.status_code == 404:
+            status_code, result_json = search_ols(url, params, headers, timeout=10)
+            if status_code == 404:
                 self.search_cache[key] = (
                     False,
                     f"{source} is not valid or {accession_or_label} is not in ontology {source}",
                 )
                 return self.search_cache[key]
-            result.raise_for_status()
-            result_json = result.json()
             if result_json.get("response"):
                 docs = result_json.get("response").get("docs")
                 if docs and accession_or_label in [
@@ -374,15 +396,13 @@ class CvTermHelper:
         headers = {"Accept": "application/json"}
         try:
             logger.debug("Searching %s", url)
-            result = httpx.get(url, params=params, headers=headers, timeout=10)
-            if result.status_code == 404:
+            status_code, result_json = search_ols(url, params, headers)
+            if status_code == 404:
                 self.search_cache[key] = (
                     False,
                     f"{cv_term.source} is not valid or {accession} is not in ontology {cv_term.source}",
                 )
                 return self.search_cache[key]
-            result.raise_for_status()
-            result_json = result.json()
             if result_json.get("response"):
                 docs = result_json.get("response").get("docs")
                 if (
