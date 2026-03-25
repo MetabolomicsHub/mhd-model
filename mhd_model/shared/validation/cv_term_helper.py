@@ -61,11 +61,10 @@ class ChildrenSearchModel(OlsBaseModel):
 
 
 @cached(
-    key=lambda url, params, headers, timeout: (
+    key=lambda url, params, headers, *args, **kwargs: (
         url,
         json.dumps(params, sort_keys=True),
         json.dumps(headers, sort_keys=True),
-        timeout,
     ),
     cache=TTLCache(maxsize=2048, ttl=600),
 )
@@ -198,7 +197,7 @@ class CvTermHelper:
         while not finished:
             params = {"page": page, "size": 100}
             page += 1
-            status_code, result_json = search_ols(url, params, headers)
+            status_code, result_json = search_ols(url, params, headers, timeout=10)
             if not result_json:
                 logger.warning(
                     "Could not find children CV Terms for %s - %s",
@@ -397,7 +396,7 @@ class CvTermHelper:
         headers = {"Accept": "application/json"}
         try:
             logger.debug("Searching %s", url)
-            status_code, result_json = search_ols(url, params, headers)
+            status_code, result_json = search_ols(url, params, headers, timeout=10)
             if status_code == 404:
                 self.search_cache[key] = (
                     False,
