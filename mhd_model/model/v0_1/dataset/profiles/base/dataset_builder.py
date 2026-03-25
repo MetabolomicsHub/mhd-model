@@ -27,9 +27,13 @@ logger = logging.getLogger(__name__)
 
 
 class MhDatasetBuilder(GraphEnabledBaseDataset):
-    def __init__(self) -> None:
-        super().__init__()
-        self.cv_helper = CvTermHelper()
+    _cv_helper: CvTermHelper | None = None
+
+    @classmethod
+    def _get_cv_helper(cls) -> CvTermHelper:
+        if cls._cv_helper is None:
+            cls._cv_helper = CvTermHelper()
+        return cls._cv_helper
 
     _cv_definitions_map: Annotated[
         dict[str, None | CvDefinition], Field(exclude=True)
@@ -84,7 +88,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             and item.name
         ):
             if item.accession and item.source:
-                term = self.cv_helper.find_cv_term(item.source, item.accession)
+                term = self._get_cv_helper().find_cv_term(item.source, item.accession)
                 if term:
                     item.name = term.name
                     item.accession = term.accession
