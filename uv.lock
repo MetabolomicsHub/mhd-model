@@ -974,7 +974,7 @@ wheels = [
 
 [[package]]
 name = "mhd-model"
-version = "0.1.57"
+version = "0.1.58"
 source = { editable = "." }
 dependencies = [
     { name = "bioregistry" },
