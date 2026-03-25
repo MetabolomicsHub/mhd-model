@@ -88,21 +88,28 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             and isinstance(item, (CvTerm, CvTermValue))
             and item.name
         ):
-            if item.accession and item.source:
-                term = _get_cv_helper().find_cv_term(item.source, item.accession)
+            if item.source:
+                term = _get_cv_helper().find_cv_term(item.source, item.name)
                 if term:
                     item.name = term.name
                     item.accession = term.accession
                     item.source = term.source
-                else:
-                    logger.warning(
-                        "Could not find CV term for %s, %s, %s. Keeping the provided label as name.",
-                        item.name,
-                        item.source,
-                        item.accession,
-                    )
-                    item.source = ""
-                    item.accession = ""
+                elif item.accession:
+                    term = _get_cv_helper().find_cv_term(item.source, item.accession)
+                    if term:
+                        item.name = term.name
+                        item.accession = term.accession
+                        item.source = term.source
+                    else:
+                        logger.warning(
+                            "Could not find CV term for %s, %s, %s. Keeping the provided label as name.",
+                            item.name,
+                            item.source,
+                            item.accession,
+                        )
+                        item.source = ""
+                        item.accession = ""
+
             else:
                 item.source = ""
                 item.accession = ""
