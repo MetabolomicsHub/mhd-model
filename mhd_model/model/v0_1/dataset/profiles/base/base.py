@@ -199,7 +199,7 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
     def validate_model(cls, v: Any, handler) -> "BasicCvTermModel":
         item: BasicCvTermModel = handler(v)
         if item.type_ and not item.id_:
-            str_repr = item.get_unique_id()
+            str_repr = str(item.get_unique_id()).lower()
             identifier_name = f"{item.type_}--{str_repr}"
             identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
             item.id_ = f"cv--{item.type_}--{identifier}"
@@ -231,7 +231,7 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
     def validate_model(cls, v: Any, handler) -> "BasicCvTermValueModel":
         item: BasicCvTermValueModel = handler(v)
         if item.type_ and not item.id_:
-            str_repr = item.get_unique_id()
+            str_repr = str(item.get_unique_id()).lower()
             identifier_name = f"{item.type_}--{str_repr}"
             identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
             item.id_ = f"cv-value--{item.type_}--{identifier}"
@@ -259,7 +259,7 @@ class BaseMhdRelationship(BaseMhdModel):
     def validate_model(cls, v: Any, handler) -> "BaseMhdRelationship":
         item: BaseMhdRelationship = handler(v)
         if item.type_ and not item.id_:
-            str_repr = item.get_unique_id()
+            str_repr = str(item.get_unique_id()).lower()
             identifier_name = f"{item.type_}--{str_repr}"
             identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
             item.id_ = f"rel--{item.type_}--{identifier}"
