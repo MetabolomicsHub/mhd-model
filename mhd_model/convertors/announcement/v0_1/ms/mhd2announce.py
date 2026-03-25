@@ -1,9 +1,8 @@
-from pydantic import AnyUrl
 import logging
 from pathlib import Path
 from typing import Any, OrderedDict
 
-from pydantic import BaseModel
+from pydantic import AnyUrl, BaseModel
 
 from mhd_model.model.definitions import (
     MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
