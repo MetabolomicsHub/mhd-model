@@ -65,6 +65,7 @@ class ChildrenSearchModel(OlsBaseModel):
         url,
         json.dumps(params, sort_keys=True),
         json.dumps(headers, sort_keys=True),
+        timeout,
     ),
     cache=TTLCache(maxsize=2048, ttl=600),
 )
