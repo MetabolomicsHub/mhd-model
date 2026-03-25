@@ -1,3 +1,10 @@
+## v0.1.68 (2026-03-25)
+
+### Fix
+
+- lint errors
+- ms mhd announcement file convertor
+
 ## v0.1.67 (2026-03-25)
 
 ### Fix
