@@ -21,11 +21,16 @@ from mhd_model.model.v0_1.rules.cv_definitions import (
     OTHER_CONTROLLED_CV_DEFINITIONS,
 )
 from mhd_model.shared.model import CvDefinition, CvTerm, CvTermValue
+from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 
 logger = logging.getLogger(__name__)
 
 
 class MhDatasetBuilder(GraphEnabledBaseDataset):
+    def __init__(self) -> None:
+        super().__init__()
+        self.cv_helper = CvTermHelper()
+
     _cv_definitions_map: Annotated[
         dict[str, None | CvDefinition], Field(exclude=True)
     ] = {}
@@ -36,8 +41,10 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
 
     objects: dict[str, IdentifiableMhdModel] = {}
 
-    def add(self, item: IdentifiableMhdModel) -> Self:
-        return self.add_node(item)
+    def add(
+        self, item: IdentifiableMhdModel, use_label_for_invalid_cv_term: bool = False
+    ) -> Self:
+        return self.add_node(item, use_label_for_invalid_cv_term)
 
     def link(
         self,
@@ -67,7 +74,33 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             self.objects[link.id_] = link
         return self
 
-    def add_node(self, item: IdentifiableMhdModel) -> Self:
+    def add_node(
+        self, item: IdentifiableMhdModel, use_label_for_invalid_cv_term: bool = False
+    ) -> Self:
+        if (
+            use_label_for_invalid_cv_term
+            and item
+            and isinstance(item, (CvTerm, CvTermValue))
+            and item.name
+        ):
+            if item.accession and item.source:
+                term = self.cv_helper.find_cv_term(item.source, item.accession)
+                if term:
+                    item.name = term.name
+                    item.accession = term.accession
+                    item.source = term.source
+                else:
+                    logger.warning(
+                        "Could not find CV term for %s, %s, %s. Keeping the provided label as name.",
+                        item.name,
+                        item.source,
+                        item.accession,
+                    )
+                    item.source = ""
+                    item.accession = ""
+            else:
+                item.source = ""
+                item.accession = ""
         if item and isinstance(item, IdentifiableMhdModel) and item.id_:
             self.objects[item.id_] = item
 
@@ -82,7 +115,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             if not source_uppercase:
                 return self
             if source_uppercase not in self._cv_definitions_map:
-                logger.info("%s CV source is added.", source_uppercase)
+                logger.debug("%s CV source is added.", source_uppercase)
                 self._cv_definitions_map[source_uppercase] = None
         return self
 

@@ -387,7 +387,7 @@ class CvTermHelper:
                 docs = result_json.get("response").get("docs")
                 if (
                     docs
-                    and docs[0]["obo_id"] == accession
+                    and docs[0].get("obo_id", "").lower() == accession.lower()
                     and docs[0].get("label", "").lower() == cv_term.name.lower()
                 ):
                     if parent_cv_term:
