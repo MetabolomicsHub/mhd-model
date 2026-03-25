@@ -1355,7 +1355,10 @@ class MhdModelValidator:
     ) -> None | jsonschema.ValidationError:
         if item.accession in control_list:
             reference = control_list[item.accession]
-            if reference.name != item.name or reference.source != item.source:
+            if (
+                reference.name.lower() != item.name.lower()
+                or reference.source.lower() != item.source.lower()
+            ):
                 return jsonschema.ValidationError(
                     message=f"{item.type_} {item.id_}: node at {idx} with value [{item.source}, {item.accession}, {item.name}] "
                     "does not match the reference term. Reference term: "
@@ -1511,7 +1514,10 @@ class MhdModelValidator:
                 continue
 
             reference = control_list[item.accession]
-            if reference.name != item.name or reference.source != item.source:
+            if (
+                reference.name.lower() != item.name.lower()
+                or reference.source.lower() != item.source.lower()
+            ):
                 errors.append(
                     jsonschema.ValidationError(
                         message=f"{rule_id} - {item.type_} {item.id_}: node at {idx} with value [{item.source}, {item.accession}, {item.name}] "

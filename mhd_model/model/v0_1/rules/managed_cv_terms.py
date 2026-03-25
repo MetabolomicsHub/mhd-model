@@ -149,9 +149,9 @@ COMMON_PROTOCOLS: dict[str, CvTerm] = {
 
 COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS: dict[str, dict[str, CvTerm]] = {
     "required": {
-        "organism": CvTerm(source="NCIT", accession="NCIT:C14250", name="organism"),
+        "organism": CvTerm(source="NCIT", accession="NCIT:C14250", name="Organism"),
         "organism part": CvTerm(
-            source="NCIT", accession="NCIT:C103199", name="organism part"
+            source="NCIT", accession="NCIT:C103199", name="Organism Part"
         ),
         "disease": CvTerm(source="MONDO", accession="MONDO:0000001", name="disease"),
         "cell type": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
