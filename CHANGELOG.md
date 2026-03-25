@@ -1,3 +1,9 @@
+## v0.1.59 (2026-03-25)
+
+### Fix
+
+- cv_helper contructor overrides parent one
+
 ## v0.1.58 (2026-03-25)
 
 ### Fix
