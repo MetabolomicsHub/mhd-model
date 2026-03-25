@@ -1,3 +1,4 @@
+from pydantic import AnyUrl
 import logging
 from pathlib import Path
 from typing import Any, OrderedDict
@@ -380,12 +381,7 @@ def create_ms_announcement_file(
         repository_identifier=study.repository_identifier,
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
-        mhd_metadata_file_url=CvTermValue(
-            accession="EDAM:1052",
-            name="URL",
-            source="EDAM",
-            value=mhd_file_url,
-        ),
+        mhd_metadata_file_url=AnyUrl(mhd_file_url),
         dataset_url_list=dataset_url_list,
         license=study.license,
         title=study.title,
@@ -397,11 +393,11 @@ def create_ms_announcement_file(
         measurement_type=list(measurement_types.values()),
         technology_type=list(technology_types.values()),
         assay_type=list(assay_types.values()),
-        repository_metadata_file_list=[],
-        result_file_list=[],
-        raw_data_file_list=[],
-        derived_data_file_list=[],
-        supplementary_file_list=[],
+        repository_metadata_file_list=None,
+        result_file_list=None,
+        raw_data_file_list=None,
+        derived_data_file_list=None,
+        supplementary_file_list=None,
         publications=publications if publications else publication_status,
         # study_factors=[],
         # characteristic_values=[],
