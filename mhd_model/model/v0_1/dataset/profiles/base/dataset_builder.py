@@ -89,7 +89,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             and item.name
         ):
             if item.accession and item.source:
-                term = self._get_cv_helper().find_cv_term(item.source, item.accession)
+                term = _get_cv_helper().find_cv_term(item.source, item.accession)
                 if term:
                     item.name = term.name
                     item.accession = term.accession
