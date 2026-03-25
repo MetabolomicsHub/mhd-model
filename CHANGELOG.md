@@ -1,3 +1,9 @@
+## v0.1.63 (2026-03-25)
+
+### Fix
+
+- there is no cv term search cache.
+
 ## v0.1.62 (2026-03-25)
 
 ### Fix
