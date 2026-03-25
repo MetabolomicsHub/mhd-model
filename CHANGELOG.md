@@ -1,3 +1,9 @@
+## v0.1.67 (2026-03-25)
+
+### Fix
+
+- does not search term in obo_id and label
+
 ## v0.1.66 (2026-03-25)
 
 ### Fix
