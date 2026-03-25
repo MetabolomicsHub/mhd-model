@@ -70,11 +70,16 @@ class ChildrenSearchModel(OlsBaseModel):
 )
 def search_ols(
     url: str, params: dict, headers: dict, timeout: int = 10
-) -> tuple[int, dict[str, Any] | None]:
+) -> tuple[int, dict[str, Any]]:
     result = httpx.get(url, params=params, headers=headers, timeout=timeout)
     if result.status_code in {200, 201}:
         return result.status_code, result.json()
-    return result.status_code, None
+    logger.warning(
+        "Could not find CV term: %s %s",
+        result.status_code,
+        json.dumps(params, sort_keys=True),
+    )
+    return result.status_code, {}
 
 
 class CvTermHelper:
@@ -281,7 +286,7 @@ class CvTermHelper:
             "q": accession_or_label,
             "ontology": source,
             "type": "class,property,individual",
-            "queryFields": "obo_id",
+            "queryFields": "obo_id,label",
             "fieldList": "iri,obo_id,label,short_form",
             "exact": True,
             "format": "json",
