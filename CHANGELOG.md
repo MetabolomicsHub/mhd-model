@@ -1,3 +1,9 @@
+## v0.1.66 (2026-03-25)
+
+### Fix
+
+- cv term find with accession is not defined
+
 ## v0.1.65 (2026-03-25)
 
 ### Fix
