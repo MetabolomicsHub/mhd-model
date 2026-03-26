@@ -508,7 +508,7 @@ def get_main_assay_descriptors(
                 term = common_assay_type_map.get(assay_type.name.lower(), None)
                 if not term:
                     term = CvTerm.model_validate(assay_type.model_dump(by_alias=True))
-                assay_types[term.name.lower()] = term   
+                assay_types[term.name.lower()] = term
 
         if item.technology_type_ref in nodes_map:
             technology_type: graph_nodes.CvTermObject = nodes_map[
