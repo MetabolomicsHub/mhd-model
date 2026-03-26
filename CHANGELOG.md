@@ -1,3 +1,9 @@
+## v0.1.69 (2026-03-26)
+
+### Fix
+
+- ols discreopencies for some terms and improvements for annoucenment file creation
+
 ## v0.1.68 (2026-03-25)
 
 ### Fix
