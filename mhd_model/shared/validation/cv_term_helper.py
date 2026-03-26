@@ -281,13 +281,13 @@ class CvTermHelper:
         if not source or not accession_or_label:
             raise ValueError("Source and accession_or_label must be provided")
         accession_or_label = accession_or_label.strip().lower()
-        source = source.lower()
+        input_source = source.lower()
         params = {
             "q": accession_or_label,
-            "ontology": source,
+            "ontology": input_source,
             "type": "class,property,individual",
-            "queryFields": "obo_id,label",
-            "fieldList": "iri,obo_id,label,short_form",
+            "queryFields": "obo_id,iri,label",
+            "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
             "start": 0,
@@ -313,17 +313,30 @@ class CvTermHelper:
                     f"{source} is not valid or {accession_or_label} is not in ontology {source}",
                 )
                 return self.search_cache[key]
-            if result_json.get("response"):
-                docs = result_json.get("response").get("docs")
-                if docs and accession_or_label in [
-                    docs[0].get("obo_id", "").lower(),
-                    docs[0].get("label", "").lower(),
-                ]:
-                    return CvTerm(
-                        accession=docs[0].get("obo_id", ""),
-                        name=docs[0].get("label", ""),
-                        source=docs[0].get("obo_id", "").split(":")[0],
+            docs = result_json.get("response", {}).get("docs")
+            if docs:
+                obo_id = docs[0].get("obo_id", "")
+                iri = docs[0].get("iri", "")
+                label = docs[0].get("label", "")
+                ontology_prefix = docs[0].get("ontology_prefix", "").lower()
+                uppercase_source = source.upper()
+                if obo_id == label:
+                    result_source = uppercase_source
+                else:
+                    result_source = (
+                        ontology_prefix.upper() or obo_id.split(":")[0].upper()
                     )
+                    if obo_id.upper() == result_source.upper():
+                        result_source = uppercase_source
+                if ":" in obo_id:
+                    result_accession = obo_id
+                else:
+                    result_accession = iri
+                return CvTerm(
+                    accession=result_accession,
+                    name=label,
+                    source=result_source,
+                )
         except Exception as ex:
             logger.exception(str(ex))
             return None
@@ -367,8 +380,8 @@ class CvTermHelper:
         params = {
             "q": accession,
             "type": "class,property,individual",
-            "queryFields": "obo_id",
-            "fieldList": "iri,obo_id,label,short_form",
+            "queryFields": "obo_id,iri",
+            "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
             "start": 0,
@@ -408,11 +421,12 @@ class CvTermHelper:
                     f"{cv_term.source} is not valid or {accession} is not in ontology {cv_term.source}",
                 )
                 return self.search_cache[key]
-            if result_json.get("response"):
-                docs = result_json.get("response").get("docs")
+            docs = result_json.get("response", {}).get("docs")
+            if docs:
+                obo_id = docs[0].get("obo_id", "")
+                iri_id = docs[0].get("iri", "")
                 if (
-                    docs
-                    and docs[0].get("obo_id", "").lower() == accession.lower()
+                    accession.lower() in {obo_id.lower(), iri_id.lower()}
                     and docs[0].get("label", "").lower() == cv_term.name.lower()
                 ):
                     if parent_cv_term:
