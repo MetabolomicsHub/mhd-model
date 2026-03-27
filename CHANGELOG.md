@@ -1,3 +1,9 @@
+## v0.1.70 (2026-03-26)
+
+### Fix
+
+- requests security issue
+
 ## v0.1.69 (2026-03-26)
 
 ### Fix
