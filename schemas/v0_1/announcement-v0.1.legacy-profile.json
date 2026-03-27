@@ -991,14 +991,21 @@
       "title": "License"
     },
     "title": {
-      "minLength": 25,
+      "minLength": 1,
       "title": "Title",
       "type": "string"
     },
     "description": {
-      "minLength": 60,
-      "title": "Description",
-      "type": "string"
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Description"
     },
     "submission_date": {
       "format": "date-time",
