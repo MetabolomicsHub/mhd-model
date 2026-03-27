@@ -18,7 +18,8 @@ class AnnouncementLegacyProfile(AnnouncementBaseProfile):
     repository_metadata_file_list: Annotated[
         list[base_profile.AnnouncementMetadataFile], Field()
     ]
-    description: Annotated[str, Field(min_length=60)]
+    title: Annotated[str, Field(min_length=1)]
+    description: Annotated[None | str, Field(min_length=1)]
     submission_date: Annotated[datetime.datetime, Field()]
     public_release_date: Annotated[datetime.datetime, Field()]
     submitters: Annotated[list[AnnouncementContact], Field(min_length=1)]
