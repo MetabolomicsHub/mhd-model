@@ -1,14 +1,20 @@
+import json
 import logging
+from pathlib import Path
 from typing import Any
 
 import jsonschema
 import jsonschema.protocols
 from jsonschema import protocols, validators
 
+from mhd_model.convertors.announcement.convertor import create_announcement_file
 from mhd_model.model.definitions import (
     MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
     MHD_MODEL_V0_1_MS_PROFILE_NAME,
     SUPPORTED_SCHEMA_MAP,
+)
+from mhd_model.model.v0_1.announcement.validation.validator import (
+    MhdAnnouncementFileValidator,
 )
 from mhd_model.model.v0_1.dataset.profiles.legacy.graph_validation import (
     MHD_LEGACY_PROFILE_V0_1,
@@ -43,6 +49,74 @@ def validate_mhd_file_json(json_data: dict[str, Any]):
         validation_errors.append((json_path(x.absolute_path), x))
     validation_errors.sort(key=lambda x: x[0])
     return validation_errors
+
+
+def validate_mhd_model(
+    repository_study_id: str,
+    mhd_file_path: Path,
+    validate_announcement_file: bool = True,
+    announcement_file_path: None | Path = None,
+    mhd_file_url: None | str = None,
+):
+    success = False
+    all_validation_errors = {}
+    if not mhd_file_path:
+        all_validation_errors["input"] = "MHD Model file path is not defined."
+        return False, all_validation_errors
+    mhd_model_filename = mhd_file_path.name
+    if not mhd_file_path.exists():
+        logger.error("MHD model file not found for %s", repository_study_id)
+        all_validation_errors[mhd_model_filename] = [
+            f"MHD model file '{mhd_model_filename}' not found"
+        ]
+
+    validation_errors = validate_mhd_file(str(mhd_file_path))
+    if validation_errors:
+        logger.error("MHD model validation errors found for %s", repository_study_id)
+        for error in validation_errors:
+            logger.error(error)
+        all_validation_errors[mhd_model_filename] = validation_errors
+    else:
+        logger.info("MHD model validation successful for %s", repository_study_id)
+        if validate_announcement_file:
+            if not announcement_file_path:
+                announcement_file_path = mhd_file_path.parent / Path(
+                    f"{repository_study_id}.announcement.json"
+                )
+            announcement_file_name = announcement_file_path.name
+            announcement_file_path.parent.mkdir(exist_ok=True, parents=True)
+
+            mhd_data_json = json.loads(mhd_file_path.read_text())
+
+            create_announcement_file(
+                mhd_data_json, mhd_file_url, announcement_file_path
+            )
+            if not announcement_file_path.exists():
+                logger.error(
+                    "MHD announcement file not found for %s", repository_study_id
+                )
+                all_validation_errors[announcement_file_name] = [
+                    f"MHD announcement file '{announcement_file_name}' not found"
+                ]
+            else:
+                announcement_file_json = json.loads(announcement_file_path.read_text())
+                validator = MhdAnnouncementFileValidator()
+                all_errors = validator.validate(announcement_file_json)
+                if all_errors:
+                    logger.error(
+                        "MHD announcement file validation errors found for %s",
+                        repository_study_id,
+                    )
+                    for error in all_errors:
+                        logger.error(error)
+                    all_validation_errors[announcement_file_name] = all_errors
+                else:
+                    success = True
+                    logger.info(
+                        "MHD announcement file validation successful for %s",
+                        repository_study_id,
+                    )
+    return success, all_validation_errors
 
 
 MHD_PROFILE_VALIDATIONS_V0_1 = {

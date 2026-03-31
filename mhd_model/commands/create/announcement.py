@@ -3,9 +3,7 @@ from pathlib import Path
 
 import click
 
-from mhd_model.convertors.announcement.v0_1.legacy.mhd2announce import (
-    create_announcement_file,
-)
+from mhd_model.convertors.announcement.convertor import create_announcement_file
 from mhd_model.log_utils import set_basic_logging_config
 
 

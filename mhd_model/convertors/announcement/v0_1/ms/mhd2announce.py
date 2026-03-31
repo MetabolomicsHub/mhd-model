@@ -2,11 +2,10 @@ import logging
 from pathlib import Path
 from typing import Any, OrderedDict
 
-from pydantic import BaseModel
+from pydantic import AnyUrl, BaseModel
 
 from mhd_model.model.definitions import (
-    ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
-    ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
+    MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
 )
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
@@ -33,7 +32,12 @@ from mhd_model.model.v0_1.rules.cv_definitions import (
     CONTROLLED_CV_DEFINITIONS,
     OTHER_CONTROLLED_CV_DEFINITIONS,
 )
-from mhd_model.shared.model import CvDefinition, CvTerm, CvTermKeyValue, CvTermValue
+from mhd_model.shared.model import (
+    CvDefinition,
+    CvTerm,
+    CvTermKeyValue,
+    CvTermValue,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -103,6 +107,25 @@ def update_keywords(
                         if announcement.submitter_keywords is None:
                             announcement.submitter_keywords = []
                         announcement.submitter_keywords.append(keyword)
+
+
+def get_descriptors(
+    all_nodes_map: dict[str, IdentifiableMhdModel],
+    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+) -> list[CvTerm]:
+    descriptors = []
+    if "has-repository-keyword" in relationship_name_map:
+        for rel in relationship_name_map.get("has-repository-keyword").values():
+            source = all_nodes_map.get(rel.source_ref)
+            if source:
+                if isinstance(source, graph_nodes.Study):
+                    descriptor_node = all_nodes_map.get(rel.target_ref)
+                    if descriptor_node:
+                        descriptor = CvTerm.model_validate(
+                            descriptor_node.model_dump(by_alias=True)
+                        )
+                        descriptors.append(descriptor)
+    return descriptors
 
 
 def update_study_factors(
@@ -253,14 +276,17 @@ def collect_cv_term_sources(obj: BaseModel, cv_sources: set[str]):
             collect_cv_term_sources(value, cv_sources)
 
 
-def create_announcement_file(
+def create_ms_announcement_file(
     mhd_file: dict[str, Any],
     mhd_file_url: str,
     announcement_file_path: str,
-    announcement_schema_name: str = ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
-    announcement_profile_uri=ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
 ):
     mhd_dataset = MhDatasetMsProfile.model_validate(mhd_file)
+    announcement_schema_name, announcement_profile_uri = (
+        MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
+            mhd_dataset.profile_uri, (None, None)
+        )
+    )
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }
@@ -373,34 +399,32 @@ def create_announcement_file(
         repository_identifier=study.repository_identifier,
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
-        mhd_metadata_file_url=CvTermValue(
-            accession="EDAM:1052",
-            name="URL",
-            source="EDAM",
-            value=mhd_file_url,
-        ),
-        dataset_url_list=dataset_url_list,
+        mhd_metadata_file_url=AnyUrl(mhd_file_url),
+        dataset_url_list=dataset_url_list or None,
         license=study.license,
         title=study.title,
         description=study.description,
         submission_date=study.submission_date,
         public_release_date=study.public_release_date,
-        submitters=submitters,
-        principal_investigators=principal_investigators,
-        measurement_type=list(measurement_types.values()),
-        technology_type=list(technology_types.values()),
-        assay_type=list(assay_types.values()),
-        repository_metadata_file_list=[],
-        result_file_list=[],
-        raw_data_file_list=[],
-        derived_data_file_list=[],
-        supplementary_file_list=[],
+        submitters=submitters or None,
+        principal_investigators=principal_investigators or None,
+        measurement_type=list(measurement_types.values()) or None,
+        technology_type=list(technology_types.values()) or None,
+        assay_type=list(assay_types.values()) or None,
+        repository_metadata_file_list=None,
+        result_file_list=None,
+        raw_data_file_list=None,
+        derived_data_file_list=None,
+        supplementary_file_list=None,
         publications=publications if publications else publication_status,
         # study_factors=[],
         # characteristic_values=[],
     )
 
     update_keywords(all_nodes_map, relationship_name_map, announcement)
+    announcement.descriptors = (
+        get_descriptors(all_nodes_map, relationship_name_map) or None
+    )
     update_protocol_parameters(
         all_nodes_map, relationship_name_map, type_map, study, announcement
     )

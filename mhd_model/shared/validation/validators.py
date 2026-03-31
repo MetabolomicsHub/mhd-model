@@ -239,9 +239,9 @@ class AllowedCvTermValidator(BaseProfileValidator):
 
         for term in validator.cv_terms:
             if (
-                val.name == term.name
-                and val.accession == term.accession
-                and val.source == term.source
+                val.name.lower() == term.name.lower()
+                and val.accession.lower() == term.accession.lower()
+                and val.source.lower() == term.source.lower()
             ):
                 message = None
                 return ValidationResult(

@@ -1,6 +1,6 @@
 [project]
 name = "mhd-model"
-version = "0.1.50"
+version = "0.1.71"
 description = "MetabolomicsHub Common Data Model"
 authors = [{"name"="MetabolomicsHub Team", "email"="help@metabolomicshub.org"}]
 license = "Apache-2.0"
@@ -8,6 +8,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "bioregistry>=0.12.19",
+    "cachetools>=7.0.5",
     "charset-normalizer>=3.4.2",
     "dependency-injector>=4.48.1",
     "email-validator>=2.2.0",
@@ -69,7 +70,7 @@ default-groups = []
 [tool.commitizen]
 name = "cz_conventional_commits"
 version_provider = "uv"
-version = "0.1.50"
+version = "0.1.71"
 tag_format = "v$major.$minor.$patch"
 version_files = [
     "pyproject.toml:version",

@@ -7,6 +7,7 @@ from urllib.parse import quote
 
 import bioregistry
 import httpx
+from cachetools import TTLCache, cached
 from pydantic import BaseModel, ConfigDict, field_validator
 from pydantic.alias_generators import to_camel, to_pascal
 
@@ -57,6 +58,28 @@ class ChildrenSearchModel(OlsBaseModel):
         if isinstance(value, list):
             return value[0] if value else ""
         return str(value)
+
+
+@cached(
+    key=lambda url, params, headers, *args, **kwargs: (
+        url,
+        json.dumps(params, sort_keys=True),
+        json.dumps(headers, sort_keys=True),
+    ),
+    cache=TTLCache(maxsize=2048, ttl=600),
+)
+def search_ols(
+    url: str, params: dict, headers: dict, timeout: int = 10
+) -> tuple[int, dict[str, Any]]:
+    result = httpx.get(url, params=params, headers=headers, timeout=timeout)
+    if result.status_code in {200, 201}:
+        return result.status_code, result.json()
+    logger.warning(
+        "Could not find CV term: %s %s",
+        result.status_code,
+        json.dumps(params, sort_keys=True),
+    )
+    return result.status_code, {}
 
 
 class CvTermHelper:
@@ -179,8 +202,14 @@ class CvTermHelper:
         while not finished:
             params = {"page": page, "size": 100}
             page += 1
-            result = httpx.get(url, params=params, headers=headers, timeout=10)
-            result_json = result.json()
+            status_code, result_json = search_ols(url, params, headers, timeout=10)
+            if not result_json:
+                logger.warning(
+                    "Could not find children CV Terms for %s - %s",
+                    cv_term.accession,
+                    cv_term.name,
+                )
+                break
             search = OlsSearchModel[ChildrenSearchModel].model_validate(result_json)
             selected_items = [x for x in search.elements if not x.is_obsolete]
             selected = []
@@ -252,13 +281,13 @@ class CvTermHelper:
         if not source or not accession_or_label:
             raise ValueError("Source and accession_or_label must be provided")
         accession_or_label = accession_or_label.strip().lower()
-        source = source.lower()
+        input_source = source.lower()
         params = {
             "q": accession_or_label,
-            "ontology": source,
+            "ontology": input_source,
             "type": "class,property,individual",
-            "queryFields": "obo_id",
-            "fieldList": "iri,obo_id,label,short_form",
+            "queryFields": "obo_id,iri,label",
+            "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
             "start": 0,
@@ -277,26 +306,37 @@ class CvTermHelper:
         headers = {"Accept": "application/json"}
         try:
             logger.debug("Searching %s", url)
-            result = httpx.get(url, params=params, headers=headers, timeout=10)
-            if result.status_code == 404:
+            status_code, result_json = search_ols(url, params, headers, timeout=10)
+            if status_code == 404:
                 self.search_cache[key] = (
                     False,
                     f"{source} is not valid or {accession_or_label} is not in ontology {source}",
                 )
                 return self.search_cache[key]
-            result.raise_for_status()
-            result_json = result.json()
-            if result_json.get("response"):
-                docs = result_json.get("response").get("docs")
-                if docs and accession_or_label in [
-                    docs[0].get("obo_id", "").lower(),
-                    docs[0].get("label", "").lower(),
-                ]:
-                    return CvTerm(
-                        accession=docs[0].get("obo_id", ""),
-                        name=docs[0].get("label", ""),
-                        source=docs[0].get("obo_id", "").split(":")[0],
+            docs = result_json.get("response", {}).get("docs")
+            if docs:
+                obo_id = docs[0].get("obo_id", "")
+                iri = docs[0].get("iri", "")
+                label = docs[0].get("label", "")
+                ontology_prefix = docs[0].get("ontology_prefix", "").lower()
+                uppercase_source = source.upper()
+                if obo_id == label:
+                    result_source = uppercase_source
+                else:
+                    result_source = (
+                        ontology_prefix.upper() or obo_id.split(":")[0].upper()
                     )
+                    if obo_id.upper() == result_source.upper():
+                        result_source = uppercase_source
+                if ":" in obo_id:
+                    result_accession = obo_id
+                else:
+                    result_accession = iri
+                return CvTerm(
+                    accession=result_accession,
+                    name=label,
+                    source=result_source,
+                )
         except Exception as ex:
             logger.exception(str(ex))
             return None
@@ -340,8 +380,8 @@ class CvTermHelper:
         params = {
             "q": accession,
             "type": "class,property,individual",
-            "queryFields": "obo_id",
-            "fieldList": "iri,obo_id,label,short_form",
+            "queryFields": "obo_id,iri",
+            "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
             "start": 0,
@@ -355,7 +395,7 @@ class CvTermHelper:
         }
         if search_ontology:
             params["ontology"] = search_ontology
-            
+
         ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
         url = ols4_base_url + children_subpath
         if parent_cv_term:
@@ -374,20 +414,19 @@ class CvTermHelper:
         headers = {"Accept": "application/json"}
         try:
             logger.debug("Searching %s", url)
-            result = httpx.get(url, params=params, headers=headers, timeout=10)
-            if result.status_code == 404:
+            status_code, result_json = search_ols(url, params, headers, timeout=10)
+            if status_code == 404:
                 self.search_cache[key] = (
                     False,
                     f"{cv_term.source} is not valid or {accession} is not in ontology {cv_term.source}",
                 )
                 return self.search_cache[key]
-            result.raise_for_status()
-            result_json = result.json()
-            if result_json.get("response"):
-                docs = result_json.get("response").get("docs")
+            docs = result_json.get("response", {}).get("docs")
+            if docs:
+                obo_id = docs[0].get("obo_id", "")
+                iri_id = docs[0].get("iri", "")
                 if (
-                    docs
-                    and docs[0]["obo_id"] == accession
+                    accession.lower() in {obo_id.lower(), iri_id.lower()}
                     and docs[0].get("label", "").lower() == cv_term.name.lower()
                 ):
                     if parent_cv_term:

@@ -617,7 +617,7 @@ def create_sdrf_files(
             ]:
                 for item in items:
                     if item.key and item.key.name:
-                        item_type = item.key.name
+                        item_type = item.key.name.lower()
                         header = item_headers.get(item_type)
                         filled_headers.add(header)
                         tsv_data.get(header, []).append(item.value.name or "")
@@ -633,6 +633,8 @@ def create_sdrf_files(
                 ),
             ]:
                 for idx, item in enumerate(files, start=1):
+                    if not item:
+                        continue
                     header = f"comment[{name_prefix} name.{idx}]"
                     name_value = values[idx - 1].name or ""
                     tsv_data.get(header, []).append(name_value or "")

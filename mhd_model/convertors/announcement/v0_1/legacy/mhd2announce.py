@@ -4,11 +4,7 @@ from typing import Any, OrderedDict
 
 from pydantic import AnyUrl, BaseModel
 
-from mhd_model.model.definitions import (
-    ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
-    ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
-    MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
-)
+from mhd_model.model.definitions import MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
     AnnouncementDerivedDataFile,
@@ -42,7 +38,12 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
 )
-from mhd_model.shared.model import CvDefinition, CvTerm, CvTermKeyValue, CvTermValue
+from mhd_model.shared.model import (
+    CvDefinition,
+    CvTerm,
+    CvTermKeyValue,
+    CvTermValue,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -283,12 +284,8 @@ def collect_cv_term_sources(obj: BaseModel, cv_sources: set[str]):
             collect_cv_term_sources(value, cv_sources)
 
 
-def create_announcement_file(
-    mhd_file: dict[str, Any],
-    mhd_file_url: str,
-    announcement_file_path: str,
-    announcement_schema_name: str = ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
-    announcement_profile_uri=ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
+def create_legacy_announcement_file(
+    mhd_file: dict[str, Any], mhd_file_url: str, announcement_file_path: str
 ):
     mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_file)
     announcement_schema_name, announcement_profile_uri = (
@@ -497,52 +494,52 @@ def get_main_assay_descriptors(
     measurement_types: dict[str, CvTerm] = {}
     omics_types: dict[str, CvTerm] = {}
     common_measurement_type_map = {
-        x.accession: x for x in COMMON_MEASUREMENT_TYPES.values()
+        x.name.lower(): x for x in COMMON_MEASUREMENT_TYPES.values()
     }
     common_technology_type_map = {
-        x.accession: x for x in COMMON_TECHNOLOGY_TYPES.values()
+        x.name.lower(): x for x in COMMON_TECHNOLOGY_TYPES.values()
     }
-    common_omics_type_map = {x.accession: x for x in COMMON_OMICS_TYPES.values()}
-    common_assay_type_map = {x.accession: x for x in COMMON_ASSAY_TYPES.values()}
+    common_omics_type_map = {x.name.lower(): x for x in COMMON_OMICS_TYPES.values()}
+    common_assay_type_map = {x.name.lower(): x for x in COMMON_ASSAY_TYPES.values()}
     for item in study_assays:
         if item.assay_type_ref in nodes_map:
             assay_type: graph_nodes.CvTermObject = nodes_map[item.assay_type_ref]
-            if assay_type.accession not in assay_types:
-                term = common_assay_type_map.get(assay_type.accession, None)
+            if assay_type.name.lower() not in assay_types:
+                term = common_assay_type_map.get(assay_type.name.lower(), None)
                 if not term:
                     term = CvTerm.model_validate(assay_type.model_dump(by_alias=True))
-                assay_types[term.accession] = term
+                assay_types[term.name.lower()] = term
 
         if item.technology_type_ref in nodes_map:
             technology_type: graph_nodes.CvTermObject = nodes_map[
                 item.technology_type_ref
             ]
-            if technology_type.accession not in technology_types:
-                term = common_technology_type_map.get(technology_type.accession)
+            if technology_type.name.lower() not in technology_types:
+                term = common_technology_type_map.get(technology_type.name.lower())
                 if not term:
                     term = CvTerm.model_validate(
                         technology_type.model_dump(by_alias=True)
                     )
-                technology_types[term.accession] = term
+                technology_types[term.name.lower()] = term
         if item.measurement_type_ref in nodes_map:
             measurement_type: graph_nodes.CvTermObject = nodes_map[
                 item.measurement_type_ref
             ]
-            if measurement_type.accession not in measurement_types:
-                term = common_measurement_type_map.get(measurement_type.accession)
+            if measurement_type.name.lower() not in measurement_types:
+                term = common_measurement_type_map.get(measurement_type.name.lower())
                 if not term:
                     term = CvTerm.model_validate(
                         measurement_type.model_dump(by_alias=True)
                     )
-                measurement_types[term.accession] = term
+                measurement_types[term.name.lower()] = term
 
         if item.omics_type_ref in nodes_map:
             omics_type: graph_nodes.CvTermObject = nodes_map[item.omics_type_ref]
-            if omics_type.accession not in omics_types:
-                term = common_omics_type_map.get(omics_type.accession)
+            if omics_type.name.lower() not in omics_types:
+                term = common_omics_type_map.get(omics_type.name.lower())
                 if not term:
                     term = CvTerm.model_validate(omics_type.model_dump(by_alias=True))
-                omics_types[term.accession] = term
+                omics_types[term.name.lower()] = term
 
     for keyword in keywords:
         if "untargeted" in keyword.name.lower():
@@ -551,12 +548,9 @@ def get_main_assay_descriptors(
             measurement_types["MS:1003905"] = COMMON_MEASUREMENT_TYPES["targeted"]
         elif "semi-targeted" in keyword.name.lower():
             measurement_types["MS:1003906"] = COMMON_MEASUREMENT_TYPES["semi-targeted"]
-        for accession, value in COMMON_OMICS_TYPES.items():
-            if (
-                accession.lower() == keyword.name.lower()
-                and accession not in omics_types
-            ):
-                omics_types[accession] = value
+        for name, value in COMMON_OMICS_TYPES.items():
+            if name.lower() == keyword.name.lower() and name.lower() not in omics_types:
+                omics_types[name.lower()] = value
 
     return (
         list(assay_types.values()),

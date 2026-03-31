@@ -149,11 +149,11 @@ COMMON_PROTOCOLS: dict[str, CvTerm] = {
 
 COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS: dict[str, dict[str, CvTerm]] = {
     "required": {
-        "organism": CvTerm(source="NCIT", accession="NCIT:C14250", name="organism"),
+        "organism": CvTerm(source="NCIT", accession="NCIT:C14250", name="Organism"),
         "organism part": CvTerm(
-            source="NCIT", accession="NCIT:C103199", name="organism part"
+            source="NCIT", accession="NCIT:C103199", name="Organism Part"
         ),
-        "disease": CvTerm(source="EFO", accession="EFO:0000408", name="disease"),
+        "disease": CvTerm(source="MONDO", accession="MONDO:0000001", name="disease"),
         "cell type": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
     },
     "recommended": {
@@ -179,7 +179,7 @@ COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS: dict[str, CvTerm] = {
     "required": {},
     "recommended": {},
     "optional": {
-        "disease": CvTerm(source="EFO", accession="EFO:0000408", name="disease"),
+        "disease": CvTerm(source="MONDO", accession="MONDO:0000001", name="disease"),
     },
 }
 
@@ -198,10 +198,9 @@ COMMON_PARAMETER_ENFORCEMENT_LEVELS: dict[str, dict[str, dict[str, CvTerm]]] = {
                 accession="MSIO:0000171",
                 name="mass spectrometry instrument",
             ),
-            # TODO: update after MS ontology is updated
             "acquisition polarity": CvTerm(
-                source="wikidata",
-                accession="wikidata:Q138265353",
+                source="MS",
+                accession="MS:1003776",
                 name="acquisition polarity",
             ),
         },

@@ -1,3 +1,137 @@
+## v0.1.71 (2026-03-27)
+
+### Fix
+
+- description and title required character length is too large for legacy studies. Decreased to 1
+
+## v0.1.70 (2026-03-26)
+
+### Fix
+
+- requests security issue
+
+## v0.1.69 (2026-03-26)
+
+### Fix
+
+- ols discreopencies for some terms and improvements for annoucenment file creation
+
+## v0.1.68 (2026-03-25)
+
+### Fix
+
+- lint errors
+- ms mhd announcement file convertor
+
+## v0.1.67 (2026-03-25)
+
+### Fix
+
+- does not search term in obo_id and label
+
+## v0.1.66 (2026-03-25)
+
+### Fix
+
+- cv term find with accession is not defined
+
+## v0.1.65 (2026-03-25)
+
+### Fix
+
+- cv term id will be created with lowercased values.
+
+## v0.1.64 (2026-03-25)
+
+### Fix
+
+- organism and organism part common cv term labels are updated
+
+## v0.1.63 (2026-03-25)
+
+### Fix
+
+- there is no cv term search cache.
+
+## v0.1.62 (2026-03-25)
+
+### Fix
+
+- there is no cv term search cache.
+
+## v0.1.61 (2026-03-25)
+
+### Fix
+
+- there is no cv term search cache.
+
+## v0.1.60 (2026-03-25)
+
+### Fix
+
+- there is no cv term search cache.
+
+## v0.1.59 (2026-03-25)
+
+### Fix
+
+- cv_helper contructor overrides parent one
+
+## v0.1.58 (2026-03-25)
+
+### Fix
+
+- ols4 service and EFO ontology updates causes errors
+
+## v0.1.57 (2026-03-23)
+
+### Fix
+
+- cli tool conversion error
+
+## v0.1.56 (2026-03-20)
+
+### Fix
+
+- announcement file creation does not consider profile
+
+## v0.1.55 (2026-03-20)
+
+### Fix
+
+- validate_mhd_model input parameter name error
+
+## v0.1.54 (2026-03-20)
+
+### Fix
+
+- announcement file creation does not consider profile
+
+## v0.1.53 (2026-03-18)
+
+### Fix
+
+- file extension is required for legacy profile
+
+## v0.1.52 (2026-03-18)
+
+### Fix
+
+- legacy profile validation rule updates: organism part is not required. file extension is not required
+
+## v0.1.51 (2026-03-15)
+
+### Fix
+
+- edam accession fix
+- parent search error
+- rollback uuid5 for mhd objects
+- meaasurement type conversion error
+
+### Refactor
+
+- validation rules and validator updates
+
 ## v0.1.50 (2026-02-08)
 
 ### Fix

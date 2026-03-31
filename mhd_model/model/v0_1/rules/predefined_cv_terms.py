@@ -63,12 +63,12 @@ PREDEFINED_CV_TERMS: dict[str, dict[str, CvTerm]] = {
         accession="MS:1002858",
         name="Dataset with its publication pending",
     ),
-    "NCIT:C14250": CvTerm(source="NCIT", accession="NCIT:C14250", name="organism"),
+    "NCIT:C14250": CvTerm(source="NCIT", accession="NCIT:C14250", name="Organism"),
     "NCIT:C103199": CvTerm(
-        source="NCIT", accession="NCIT:C103199", name="organism part"
+        source="NCIT", accession="NCIT:C103199", name="Organism Part"
     ),
-    "EFO:0000324": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
-    "EFO:0000408": CvTerm(source="EFO", accession="EFO:0000408", name="disease"),
+    "EFO:0000324": CvTerm(source="EFO", accession="EFO:0000324", name="Cell type"),
+    "EFO:0000408": CvTerm(source="EFO", accession="EFO:0000408", name="Disease"),
     "CHMO:0000470": CvTerm(
         source="CHMO",
         accession="CHMO:0000470",

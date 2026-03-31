@@ -464,7 +464,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {
@@ -674,7 +673,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {
@@ -845,7 +843,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {
@@ -950,7 +947,6 @@
         "extension": {
           "anyOf": [
             {
-              "minLength": 2,
               "type": "string"
             },
             {
@@ -1562,9 +1558,9 @@
               }
             ],
             "cvTermKey": {
-              "accession": "EFO:0000408",
+              "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "EFO"
+              "source": "MONDO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",
@@ -1634,9 +1630,9 @@
               }
             ],
             "cvTermKey": {
-              "accession": "EFO:0000408",
+              "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "EFO"
+              "source": "MONDO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",
@@ -1724,7 +1720,7 @@
             ],
             "cvTermKey": {
               "accession": "NCIT:C14250",
-              "name": "organism",
+              "name": "Organism",
               "source": "NCIT"
             },
             "inputType": "list-or-item",
@@ -1761,7 +1757,7 @@
             ],
             "cvTermKey": {
               "accession": "NCIT:C103199",
-              "name": "organism part",
+              "name": "Organism Part",
               "source": "NCIT"
             },
             "inputType": "list-or-item",
