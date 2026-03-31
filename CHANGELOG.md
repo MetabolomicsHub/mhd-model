@@ -1,3 +1,9 @@
+## v0.1.72 (2026-03-31)
+
+### Fix
+
+- ontology source uri is not valid for not controlled list
+
 ## v0.1.71 (2026-03-27)
 
 ### Fix
