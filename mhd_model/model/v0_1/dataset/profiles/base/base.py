@@ -204,18 +204,18 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
                 raise ValueError(f"invalid string structure {v}")
         raise ValueError("invalid type")
 
-    # @model_validator(mode="wrap")
-    # @classmethod
-    # def validate_model(cls, v: Any, handler) -> "BasicCvTermModel":
-    #     item: BasicCvTermModel = handler(v)
-    #     if item.type_ and not item.id_:
-    #         str_repr = item.get_unique_id()
-    #         identifier_name = f"{item.type_}--{str_repr}"
-    #         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-    #         item.id_ = f"cv--{item.type_}--{identifier}"
-    #     if not item.label:
-    #         item.label = item.get_label()
-    #     return item
+    @model_validator(mode="wrap")
+    @classmethod
+    def validate_model(cls, v: Any, handler) -> "BasicCvTermModel":
+        item: BasicCvTermModel = handler(v)
+        if item.type_ and not item.id_:
+            str_repr = item.get_unique_id()
+            identifier_name = f"{item.type_}--{str_repr}"
+            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+            item.id_ = f"cv--{item.type_}--{identifier}"
+        if not item.label:
+            item.label = item.get_label()
+        return item
 
     def get_label(self):
         return self.name or self.id_ or ""
