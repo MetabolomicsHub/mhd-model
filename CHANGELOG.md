@@ -1,3 +1,9 @@
+## v0.1.71 (2026-03-27)
+
+### Fix
+
+- description and title required character length is too large for legacy studies. Decreased to 1
+
 ## v0.1.70 (2026-03-26)
 
 ### Fix
