@@ -19,7 +19,7 @@ def search_ontology_definition(ontology_name: str) -> None | CvDefinition:
 
         return CvDefinition(
             name=json_response.get("description", ""),
-            uri=json_response.get("iri", ""),
+            uri=json_response.get("ontologyPurl", None) or json_response.get("iri", ""),
             prefix=base_uri[0] if base_uri else "",
             label=json_response.get("preferredPrefix", "").upper(),
         )

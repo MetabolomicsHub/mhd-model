@@ -109,6 +109,25 @@ def update_keywords(
                         announcement.submitter_keywords.append(keyword)
 
 
+def get_descriptors(
+    all_nodes_map: dict[str, IdentifiableMhdModel],
+    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+) -> list[CvTerm]:
+    descriptors = []
+    if "has-repository-keyword" in relationship_name_map:
+        for rel in relationship_name_map.get("has-repository-keyword").values():
+            source = all_nodes_map.get(rel.source_ref)
+            if source:
+                if isinstance(source, graph_nodes.Study):
+                    descriptor_node = all_nodes_map.get(rel.target_ref)
+                    if descriptor_node:
+                        descriptor = CvTerm.model_validate(
+                            descriptor_node.model_dump(by_alias=True)
+                        )
+                        descriptors.append(descriptor)
+    return descriptors
+
+
 def update_study_factors(
     all_nodes_map: dict[str, IdentifiableMhdModel],
     relationships_map: dict[str, BaseMhdRelationship],
@@ -403,6 +422,9 @@ def create_ms_announcement_file(
     )
 
     update_keywords(all_nodes_map, relationship_name_map, announcement)
+    announcement.descriptors = (
+        get_descriptors(all_nodes_map, relationship_name_map) or None
+    )
     update_protocol_parameters(
         all_nodes_map, relationship_name_map, type_map, study, announcement
     )
