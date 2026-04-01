@@ -26,7 +26,7 @@ from mhd_model.shared.model import CvTermValue
 class Person(BaseLabeledMhdModel):
     model_config = ConfigDict(
         json_schema_extra={
-            "unique_value_contribution": ["repository_identifier", "orcid"]
+            "unique_value_contribution": ["repository_identifier", "full_name", "orcid"]
         }
     )
     type_: Annotated[
@@ -181,7 +181,13 @@ class Protocol(BaseLabeledMhdModel):
 
 class ParameterDefinition(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={"unique_value_contribution": ["name", "parameter_type_ref"]}
+        json_schema_extra={
+            "unique_value_contribution": [
+                "repository_identifier",
+                "name",
+                "parameter_type_ref",
+            ]
+        }
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -201,7 +207,13 @@ class ParameterDefinition(BaseLabeledMhdModel):
 
 class FactorDefinition(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={"unique_value_contribution": ["name", "parameter_type_ref"]}
+        json_schema_extra={
+            "unique_value_contribution": [
+                "repository_identifier",
+                "name",
+                "parameter_type_ref",
+            ]
+        }
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -222,7 +234,11 @@ class FactorDefinition(BaseLabeledMhdModel):
 class CharacteristicDefinition(BaseLabeledMhdModel):
     model_config = ConfigDict(
         json_schema_extra={
-            "unique_value_contribution": ["name", "characteristic_type_ref"]
+            "unique_value_contribution": [
+                "repository_identifier",
+                "name",
+                "characteristic_type_ref",
+            ]
         }
     )
     type_: Annotated[

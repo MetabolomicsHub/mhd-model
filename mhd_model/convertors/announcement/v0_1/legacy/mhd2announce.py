@@ -439,7 +439,7 @@ def get_metabolites(
 ) -> None | list[AnnouncementReportedMetabolite]:
     identification_map = {}
     identification_links = relationship_name_map.get("identified-as")
-    items = type_map.get("metabolite-identification")
+    items = type_map.get("metabolite-identifier")
     if identification_links and items:
         for ref in identification_links:
             item = identification_links[ref]
