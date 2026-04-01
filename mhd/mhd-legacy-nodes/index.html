@@ -9,7 +9,7 @@
 <link href="../mhd-ms-nodes/" rel="prev"/>
 <link href="../mhd-base-nodes/" rel="next"/>
 <link href="../../assets/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
 <title>Profile 2 - Legacy Dataset - MetabolomicsHub</title>
 <link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -612,7 +612,7 @@
 </nav>
 <article class="md-content__inner md-typeset">
 <h1 id="metabolomicshub-common-data-model-nodes-mhd-legacy-profile">MetabolomicsHub Common Data Model Nodes - MHD Legacy Profile<a class="headerlink" href="#metabolomicshub-common-data-model-nodes-mhd-legacy-profile" title="Permanent link">¶</a></h1>
-<p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a></p>
+<p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a> </p>
 <h2 id="required-nodes-relationships">Required Nodes &amp; Relationships<a class="headerlink" href="#required-nodes-relationships" title="Permanent link">¶</a></h2>
 <p><strong>Required MHD Nodes</strong></p>
 <p><code>Characteristic Definition, Metadata File, Person, Study</code></p>
@@ -1061,6 +1061,12 @@
 <td>URL list related to the object</td>
 </tr>
 <tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
@@ -1209,6 +1215,12 @@
 <td><strong>required</strong></td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
 <td>URL list related to the object<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1382,6 +1394,12 @@
 <td>optional</td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
 <td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1731,6 +1749,12 @@
 <td>URL list related to the object<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
@@ -1995,7 +2019,7 @@
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td></td>
 </tr>
@@ -2004,6 +2028,12 @@
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>ror_id</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>department</strong></td>
@@ -2215,6 +2245,12 @@
 <td>URL list related to the object</td>
 </tr>
 <tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
@@ -2366,7 +2402,7 @@
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td></td>
 </tr>
@@ -2617,7 +2653,7 @@
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
-<td>optional</td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
 <td></td>
 </tr>
@@ -2847,6 +2883,12 @@
 <td>optional</td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
 <td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -3226,6 +3268,12 @@
 <td>URL list related to the object<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
@@ -3415,6 +3463,12 @@
 <td><strong>required</strong></td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
 <td>URL list related to the object<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -3817,6 +3871,12 @@
 <td>URL list related to the object</td>
 </tr>
 <tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>name</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
@@ -3959,6 +4019,12 @@
 <td>optional</td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
 <td>URL list related to the object</td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>protocol_ref</strong></td>
@@ -4977,6 +5043,12 @@
 <td><strong>required</strong></td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
 <td>URL list related to the object<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+</tr>
+<tr>
+<td><strong>repository_identifier</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>str</em><code></code></code></td>
+<td></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
