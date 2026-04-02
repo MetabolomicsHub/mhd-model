@@ -262,7 +262,8 @@ def convert_file(
         name=item.name,
         url_list=url_list,
         compression_formats=compressions or None,
-        format=format,
+        format=format or None,
+        extension=item.extension or None,
     )
 
     return file
@@ -439,7 +440,7 @@ def get_metabolites(
 ) -> None | list[AnnouncementReportedMetabolite]:
     identification_map = {}
     identification_links = relationship_name_map.get("identified-as")
-    items = type_map.get("metabolite-identification")
+    items = type_map.get("metabolite-identifier")
     if identification_links and items:
         for ref in identification_links:
             item = identification_links[ref]
