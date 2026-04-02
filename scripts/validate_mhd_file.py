@@ -12,8 +12,8 @@ if __name__ == "__main__":
 
     # study_id = "MSV000099062"
     # file_path = f"tests/data/mhd_data/legacy/{study_id}.mhd.json"
-    study_id = "MTBLS3107"
-    file_path = Path("tests/data/mhd_data/legacy/MTBLS3107_full.mhd.json")
+    study_id = "ST00001"
+    file_path = Path("ST00001.mhd.json")
     success, validation_errors = validate_mhd_model(
         study_id, file_path, validate_announcement_file=True
     )

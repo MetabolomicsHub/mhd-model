@@ -129,10 +129,11 @@ class BaseMhdModel(IdentifiableMhdModel):
         if not item.type_:
             raise ValueError("type_ is required")
         str_repr = item.get_unique_id()
-        if not item.id_ or item.id_ != str_repr:
-            identifier_name = f"{item.type_}--{str_repr}"
-            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-            item.id_ = f"mhd--{item.type_}--{identifier}"
+        identifier_name = f"{item.type_}--{str_repr}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        object_id = f"mhd--{item.type_}--{identifier}"
+        if not item.id_ or item.id_ != object_id:
+            item.id_ = object_id
         if not item.label:
             item.label = item.get_label()
         return item
@@ -169,10 +170,11 @@ class BaseLabeledMhdModel(BaseMhdModel):
         if not item.type_:
             raise ValueError("type_ is required")
         str_repr = item.get_unique_id()
-        if not item.id_ or item.id_ != str_repr:
-            identifier_name = f"{item.type_}--{str_repr}"
-            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-            item.id_ = f"mhd--{item.type_}--{identifier}"
+        identifier_name = f"{item.type_}--{str_repr}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        object_id = f"mhd--{item.type_}--{identifier}"
+        if not item.id_ or item.id_ != object_id:
+            item.id_ = object_id
         if not item.label:
             item.label = item.get_label()
         return item
