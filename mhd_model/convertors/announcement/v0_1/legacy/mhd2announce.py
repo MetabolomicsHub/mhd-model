@@ -262,7 +262,8 @@ def convert_file(
         name=item.name,
         url_list=url_list,
         compression_formats=compressions or None,
-        format=format,
+        format=format or None,
+        extension=item.extension or None,
     )
 
     return file

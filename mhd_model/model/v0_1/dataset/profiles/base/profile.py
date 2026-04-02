@@ -27,6 +27,7 @@ class MhdGraph(MhdConfigModel):
         list[
             graph_nodes.CvTermValueObject
             | graph_nodes.CvTermObject
+            | graph_nodes.Organization
             | graph_nodes.Person
             | graph_nodes.Project
             | graph_nodes.Study
