@@ -1,3 +1,10 @@
+## v0.1.73 (2026-04-02)
+
+### Fix
+
+- extension and organization is not valid
+- uuid is created based on node properties
+
 ## v0.1.72 (2026-03-31)
 
 ### Fix
