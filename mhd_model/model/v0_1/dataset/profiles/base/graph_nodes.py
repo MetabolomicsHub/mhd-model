@@ -73,9 +73,7 @@ class Person(BaseLabeledMhdModel):
 
 class Organization(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": ["repository_identifier", "name", "ror_id"]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -95,9 +93,7 @@ class Organization(BaseLabeledMhdModel):
 
 class Project(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": ["repository_identifier", "doi"]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -153,13 +149,7 @@ class Study(BaseLabeledMhdModel):
 
 class Protocol(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "name",
-                "protocol_type_ref",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -181,13 +171,7 @@ class Protocol(BaseLabeledMhdModel):
 
 class ParameterDefinition(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "name",
-                "parameter_type_ref",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -207,13 +191,7 @@ class ParameterDefinition(BaseLabeledMhdModel):
 
 class FactorDefinition(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "name",
-                "parameter_type_ref",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -233,13 +211,7 @@ class FactorDefinition(BaseLabeledMhdModel):
 
 class CharacteristicDefinition(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "name",
-                "characteristic_type_ref",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -262,9 +234,7 @@ class Publication(BaseLabeledMhdModel):
     A document that is the output of a publishing process. [IAO, IAO:0000311, publication]
     """
 
-    model_config = ConfigDict(
-        json_schema_extra={"unique_value_contribution": ["doi", "pubmed_id"]}
-    )
+    model_config = ConfigDict(json_schema_extra={"unique_value_contribution": ["doi"]})
     type_: Annotated[
         None | MhdObjectType,
         Field(
@@ -284,9 +254,7 @@ class Publication(BaseLabeledMhdModel):
 
 class BasicAssay(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": ["repository_identifier", "name"]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[None | MhdObjectType, Field(..., frozen=True, alias="type")] = (
         "assay"
@@ -354,13 +322,7 @@ class Assay(BasicAssay):
 
 class Subject(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "name",
-                "subject_type_ref",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -381,9 +343,7 @@ class Subject(BaseLabeledMhdModel):
 
 class Specimen(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": ["repository_identifier", "name"]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -403,9 +363,7 @@ class Specimen(BaseLabeledMhdModel):
 
 class Sample(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": ["repository_identifier", "name"]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -425,13 +383,7 @@ class Sample(BaseLabeledMhdModel):
 
 class SampleRun(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "name",
-                "sample_ref",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -474,12 +426,7 @@ class SampleRun(BaseLabeledMhdModel):
 
 class SampleRunConfiguration(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "protocol_ref",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     type_: Annotated[
         None | MhdObjectType,
@@ -524,13 +471,7 @@ class Metabolite(BaseLabeledMhdModel):
 
 class BaseFile(BaseLabeledMhdModel):
     model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "repository_identifier",
-                "name",
-                "hash_sha256",
-            ]
-        }
+        json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     repository_identifier: Annotated[str, Field()]
     name: Annotated[

@@ -128,12 +128,9 @@ class BaseMhdModel(IdentifiableMhdModel):
         item: BaseMhdModel = handler(v)
         if not item.type_:
             raise ValueError("type_ is required")
-        str_repr = item.get_unique_id()
-        identifier_name = f"{item.type_}--{str_repr}"
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-        object_id = f"mhd--{item.type_}--{identifier}"
-        if not item.id_ or item.id_ != object_id:
-            item.id_ = object_id
+        item.id_ = item.id_ or f"mhd--{item.type_}--{identifier}"
         if not item.label:
             item.label = item.get_label()
         return item
@@ -169,12 +166,9 @@ class BaseLabeledMhdModel(BaseMhdModel):
         item: BaseLabeledMhdModel = handler(v)
         if not item.type_:
             raise ValueError("type_ is required")
-        str_repr = item.get_unique_id()
-        identifier_name = f"{item.type_}--{str_repr}"
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-        object_id = f"mhd--{item.type_}--{identifier}"
-        if not item.id_ or item.id_ != object_id:
-            item.id_ = object_id
+        item.id_ = item.id_ or f"mhd--{item.type_}--{identifier}"
         if not item.label:
             item.label = item.get_label()
         return item
@@ -210,11 +204,11 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BasicCvTermModel":
         item: BasicCvTermModel = handler(v)
-        if item.type_ and not item.id_:
-            str_repr = item.get_unique_id()
-            identifier_name = f"{item.type_}--{str_repr}"
-            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-            item.id_ = f"cv--{item.type_}--{identifier}"
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"cv--{item.type_}--{identifier}"
         if not item.label:
             item.label = item.get_label()
         return item
@@ -242,11 +236,11 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BasicCvTermValueModel":
         item: BasicCvTermValueModel = handler(v)
-        if item.type_ and not item.id_:
-            str_repr = str(item.get_unique_id()).lower()
-            identifier_name = f"{item.type_}--{str_repr}"
-            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-            item.id_ = f"cv-value--{item.type_}--{identifier}"
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"cv-value--{item.type_}--{identifier}"
         if not item.label:
             item.label = item.get_label()
         return item
@@ -270,12 +264,11 @@ class BaseMhdRelationship(BaseMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BaseMhdRelationship":
         item: BaseMhdRelationship = handler(v)
-        if item.type_ and not item.id_:
-            str_repr = str(item.get_unique_id()).lower()
-            identifier_name = f"{item.type_}--{str_repr}"
-            identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
-            item.id_ = f"rel--{item.type_}--{identifier}"
-
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"rel--{item.type_}--{identifier}"
         return item
 
     def get_unique_id(self):
