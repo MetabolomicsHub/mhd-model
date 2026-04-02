@@ -229,8 +229,7 @@
       "title": "Assay",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name"
+        "repository_identifier"
       ]
     },
     "BaseLabeledMhdModel": {
@@ -554,8 +553,7 @@
       "title": "BasicAssay",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name"
+        "repository_identifier"
       ]
     },
     "CvDefinition": {
@@ -1075,9 +1073,7 @@
       "title": "DerivedDataFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "hash_sha256"
+        "repository_identifier"
       ]
     },
     "KeyValue": {
@@ -1481,9 +1477,7 @@
       "title": "MetadataFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "hash_sha256"
+        "repository_identifier"
       ]
     },
     "MhdGraph": {
@@ -1518,6 +1512,9 @@
               },
               {
                 "$ref": "#/$defs/CvTermObject"
+              },
+              {
+                "$ref": "#/$defs/Organization"
               },
               {
                 "$ref": "#/$defs/Person"
@@ -1592,6 +1589,180 @@
       },
       "title": "MhdGraph",
       "type": "object"
+    },
+    "Organization": {
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property uniquely identifies the object.",
+          "title": "Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "organization",
+          "description": "The type property identifies type of the object",
+          "title": "Type"
+        },
+        "created_by_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property of the data-provider who created the object.",
+          "title": "Created By Ref"
+        },
+        "tag_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Key-value tags related to the object.",
+          "title": "Tag List"
+        },
+        "external_reference_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External references related to the object.",
+          "title": "External Reference List"
+        },
+        "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL list related to the object.",
+          "title": "Url List"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "repository_identifier": {
+          "title": "Repository Identifier",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 2,
+          "title": "Name",
+          "type": "string"
+        },
+        "ror_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ror Id"
+        },
+        "department": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Department"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "address": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Address"
+        }
+      },
+      "required": [
+        "repository_identifier",
+        "name"
+      ],
+      "title": "Organization",
+      "type": "object",
+      "unique_value_contribution": [
+        "repository_identifier"
+      ]
     },
     "Person": {
       "properties": {
@@ -1976,8 +2147,7 @@
       "title": "Project",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "doi"
+        "repository_identifier"
       ]
     },
     "Protocol": {
@@ -2150,9 +2320,7 @@
       "title": "Protocol",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "protocol_type_ref"
+        "repository_identifier"
       ]
     },
     "Publication": {
@@ -2313,8 +2481,7 @@
       "title": "Publication",
       "type": "object",
       "unique_value_contribution": [
-        "doi",
-        "pubmed_id"
+        "doi"
       ]
     },
     "QuantitativeValue": {
@@ -2558,9 +2725,7 @@
       "title": "RawDataFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "hash_sha256"
+        "repository_identifier"
       ]
     },
     "Relationship": {
@@ -2927,9 +3092,7 @@
       "title": "ResultFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "hash_sha256"
+        "repository_identifier"
       ]
     },
     "Revision": {
@@ -3100,8 +3263,7 @@
       "title": "Sample",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name"
+        "repository_identifier"
       ]
     },
     "SampleRun": {
@@ -3326,9 +3488,7 @@
       "title": "SampleRun",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "sample_ref"
+        "repository_identifier"
       ]
     },
     "SampleRunConfiguration": {
@@ -3489,8 +3649,7 @@
       "title": "SampleRunConfiguration",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "protocol_ref"
+        "repository_identifier"
       ]
     },
     "Specimen": {
@@ -3637,8 +3796,7 @@
       "title": "Specimen",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name"
+        "repository_identifier"
       ]
     },
     "Study": {
@@ -4080,9 +4238,7 @@
       "title": "Subject",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "subject_type_ref"
+        "repository_identifier"
       ]
     },
     "SupplementaryFile": {
@@ -4285,9 +4441,7 @@
       "title": "SupplementaryFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name",
-        "hash_sha256"
+        "repository_identifier"
       ]
     },
     "UnitCvTerm": {
