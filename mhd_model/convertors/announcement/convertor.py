@@ -15,7 +15,10 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import MhDatasetBaseProf
 def create_announcement_file(
     mhd_file: dict[str, Any], mhd_file_url: str, announcement_file_path: str
 ):
-    mhd_dataset = MhDatasetBaseProfile.model_validate(mhd_file)
+    try:
+        mhd_dataset = MhDatasetBaseProfile.model_validate(mhd_file)
+    except Exception as e:
+        raise e
     announcement_schema_name, announcement_profile_uri = (
         MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
             mhd_dataset.profile_uri, (None, None)

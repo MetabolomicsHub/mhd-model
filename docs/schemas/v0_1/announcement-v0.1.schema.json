@@ -611,13 +611,13 @@
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/CvTerm"
+                "$ref": "#/$defs/QuantitativeValue"
               },
               "type": "array"
             },
             {
               "items": {
-                "$ref": "#/$defs/QuantitativeValue"
+                "$ref": "#/$defs/CvTerm"
               },
               "type": "array"
             },

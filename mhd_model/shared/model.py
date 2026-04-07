@@ -96,7 +96,7 @@ class CvTermValue(CvTerm, QuantitativeValue):
 
 class CvTermKeyValue(MhdConfigModel):
     key: Annotated[CvTerm, Field()]
-    values: Annotated[None | list[CvTerm] | list[QuantitativeValue], Field()] = None
+    values: Annotated[None | list[QuantitativeValue] | list[CvTerm], Field()] = None
 
 
 class CvDefinition(MhdConfigModel):

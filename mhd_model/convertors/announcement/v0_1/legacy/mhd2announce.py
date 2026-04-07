@@ -26,6 +26,7 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
     IdentifiableMhdModel,
 )
+from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import CvTermValueObject
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
 from mhd_model.model.v0_1.rules.cv_definitions import (
     CONTROLLED_CV_DEFINITIONS,
@@ -79,12 +80,13 @@ def get_characteristic_values(
         value_ids = referenced_characteristics[char_id]
         values = []
         for x in value_ids:
-            val = all_nodes_map[x]
-            if val.id_.startswith("cv-value--"):
-                val = CvTermValue.model_validate(val.model_dump(by_alias=True))
-            else:
-                val = CvTerm.model_validate(val.model_dump(by_alias=True))
-            values.append(val)
+            val_obj = all_nodes_map[x]
+            if isinstance(val_obj, CvTermValueObject) and val_obj.value:
+                val = CvTermValue.model_validate(val_obj.model_dump(by_alias=True))
+                values.append(val)
+            elif val_obj.name:
+                val = CvTerm.model_validate(val_obj.model_dump(by_alias=True))
+                values.append(val)
         type_node = all_nodes_map.get(characteristic.characteristic_type_ref, None)
         key = CvTerm.model_validate(type_node.model_dump(by_alias=True))
         announcement_characteristics.append(CvTermKeyValue(key=key, values=values))
@@ -155,12 +157,13 @@ def get_study_factors(
         value_ids = referenced_factors[factor_id]
         values = []
         for x in value_ids:
-            val = all_nodes_map[x]
-            if isinstance(val, CvTermValue):
-                val = CvTermValue.model_validate(val.model_dump(by_alias=True))
-            else:
-                val = CvTerm.model_validate(val.model_dump(by_alias=True))
-            values.append(val)
+            val_obj = all_nodes_map[x]
+            if isinstance(val_obj, CvTermValueObject) and val_obj.value:
+                val = CvTermValue.model_validate(val_obj.model_dump(by_alias=True))
+                values.append(val)
+            elif val_obj.name:
+                val = CvTerm.model_validate(val_obj.model_dump(by_alias=True))
+                values.append(val)
         type_node = all_nodes_map.get(factor.factor_type_ref, None)
         key = CvTerm.model_validate(type_node.model_dump(by_alias=True))
         announcement_factors.append(CvTermKeyValue(key=key, values=values))
@@ -196,19 +199,17 @@ def get_protocols(
                 vals = []
                 for rel in relationship_name_map["has-instance"].values():
                     if rel.source_ref == definition.id_:
-                        val = None
                         val_obj = all_nodes_map.get(rel.target_ref)
-                        if isinstance(val_obj, CvTerm):
-                            val = CvTerm.model_validate(
-                                val_obj.model_dump(by_alias=True)
-                            )
-                        elif isinstance(val_obj, CvTermValue):
+                        if isinstance(val_obj, CvTermValueObject) and val_obj.value:
                             val = CvTermValue.model_validate(
                                 val_obj.model_dump(by_alias=True)
                             )
-                        if not val:
-                            continue
-                        vals.append(val)
+                            vals.append(val)
+                        elif val_obj.name:
+                            val = CvTerm.model_validate(
+                                val_obj.model_dump(by_alias=True)
+                            )
+                            vals.append(val)
                 # if vals:
                 def_type = all_nodes_map.get(definition.parameter_type_ref)
                 key = CvTerm.model_validate(def_type.model_dump(by_alias=True))
