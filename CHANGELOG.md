@@ -1,3 +1,9 @@
+## v0.1.74 (2026-04-07)
+
+### Fix
+
+- factor, parameter and characterisctic value serialization error in announcement file creation
+
 ## v0.1.73 (2026-04-02)
 
 ### Fix
