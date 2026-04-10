@@ -1,3 +1,9 @@
+## v0.1.75 (2026-04-10)
+
+### Fix
+
+- publication reason is not converted in announcement file
+
 ## v0.1.74 (2026-04-07)
 
 ### Fix
