@@ -628,6 +628,11 @@ def get_submitter_and_pi(
     return submitters, principal_investigators
 
 
+MISSING_PUBLICATION_ACCESSIONS = {
+    v.accession: v for k, v in MISSING_PUBLICATION_REASON.items()
+}
+
+
 def get_publications(
     nodes_map: dict[str, IdentifiableMhdModel],
     type_map: dict[str, dict[str, BaseMhdModel]],
@@ -655,7 +660,7 @@ def get_publications(
                 if (
                     source_node.type_ == "study"
                     and target_node.type_ == "descriptor"
-                    and target_node.accession in MISSING_PUBLICATION_REASON
+                    and target_node.accession in MISSING_PUBLICATION_ACCESSIONS
                 ):
                     publication_status = CvTerm.model_validate(
                         target_node.model_dump(by_alias=True)
