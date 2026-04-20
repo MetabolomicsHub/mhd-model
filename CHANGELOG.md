@@ -1,3 +1,9 @@
+## v0.1.77 (2026-04-20)
+
+### Fix
+
+- find cv term error if term does not exist
+
 ## v0.1.76 (2026-04-10)
 
 ### Fix
