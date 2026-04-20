@@ -308,10 +308,7 @@ class CvTermHelper:
             logger.debug("Searching %s", url)
             status_code, result_json = search_ols(url, params, headers, timeout=10)
             if status_code == 404:
-                self.search_cache[key] = (
-                    False,
-                    f"{source} is not valid or {accession_or_label} is not in ontology {source}",
-                )
+                self.search_cache[key] = None
                 return self.search_cache[key]
             docs = result_json.get("response", {}).get("docs")
             if docs:
