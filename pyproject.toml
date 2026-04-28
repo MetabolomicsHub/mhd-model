@@ -60,7 +60,7 @@ dev = [
     "ruff>=0.14.14",
 ]
 test = [
-    "pytest>=8.4.1",
+    "pytest>=9.0.3",
     "pytest-cov>=6.2.1",
 ]
 docs = [
