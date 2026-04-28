@@ -286,7 +286,7 @@ class CvTermHelper:
             "q": accession_or_label,
             "ontology": input_source,
             "type": "class,property,individual",
-            "queryFields": "obo_id,iri,label",
+            "queryFields": "obo_id,iri,label,short_form",
             "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
@@ -377,7 +377,7 @@ class CvTermHelper:
         params = {
             "q": accession,
             "type": "class,property,individual",
-            "queryFields": "obo_id,iri",
+            "queryFields": "obo_id,short_form,iri",
             "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
