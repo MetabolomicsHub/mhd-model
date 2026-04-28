@@ -1,3 +1,9 @@
+## v0.1.78 (2026-04-28)
+
+### Fix
+
+- disease ontology term error
+
 ## v0.1.77 (2026-04-20)
 
 ### Fix
