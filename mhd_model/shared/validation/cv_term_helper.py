@@ -345,7 +345,11 @@ class CvTermHelper:
             message = f"Invalid cv term [{cv_term.source}, {cv_term.accession}, {cv_term.name}]"
             logger.error(message)
             return False, message
-
+        if not parent_cv_term:
+            term = self.find_cv_term(cv_term.source, cv_term.accession)
+            if not term:
+                return False, f"CV term {cv_term.accession} not found"
+            return True, ""
         parent = parent_cv_term.cv_term if parent_cv_term else None
 
         if parent:
