@@ -1,3 +1,9 @@
+## v0.1.80 (2026-05-18)
+
+### Fix
+
+- check cv-term is not consistent fir find_cv_term and check_cv_term
+
 ## v0.1.79 (2026-04-28)
 
 ### Fix
