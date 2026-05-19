@@ -243,7 +243,7 @@ class CvTermHelper:
 
     def get_uri_with_custom_convertor(self, cv_term: CvTerm) -> None | str:
         source = cv_term.source
-        cv_definition = CONTROLLED_CV_DEFINITIONS.get(source)
+        cv_definition = CONTROLLED_CV_DEFINITIONS.get(source.upper())
         parent_uri = None
         accession = cv_term.source
 
@@ -263,14 +263,17 @@ class CvTermHelper:
         # search.page
 
     def get_uri(self, cv_term: CvTerm) -> str | None:
+        if cv_term.accession and (
+            cv_term.accession.startswith("http://")
+            or cv_term.accession.startswith("https://")
+        ):
+            return cv_term.accession
         uri = None
         if cv_term and ":" in cv_term.accession:
             uri = self.get_uri_with_custom_convertor(cv_term)
             if not uri:
                 prefix, identifier = cv_term.accession.split(":")
                 uri = bioregistry.get_default_iri(prefix, identifier)
-                if uri and "https://www.ebi.ac.uk/ols/ontologies/edam/terms?" in uri:
-                    uri = None
 
         return uri
 
@@ -361,7 +364,7 @@ class CvTermHelper:
             message = f"Invalid cv term [{cv_term.source}, {cv_term.accession}, {cv_term.name}]"
             logger.error(message)
             return False, message
-        if not parent_cv_term:
+        if not parent_cv_term or not parent_cv_term.cv_term:
             term = self.find_cv_term(
                 cv_term.source,
                 cv_term.accession,
@@ -378,7 +381,7 @@ class CvTermHelper:
                 logger.error(message)
                 return False, message
 
-        key = ",".join([str(cv_term), str(parent)])
+        key = ",".join([str(cv_term), str(parent), str(allow_synonym_search)])
 
         if key in self.search_cache:
             return self.search_cache[key]
@@ -399,14 +402,14 @@ class CvTermHelper:
         accession = cv_term.accession
         search_ontology = (cv_term.source or "").lower()
         params = {
-            "q": accession,
+            "q": accession.lower(),
             "type": "class,property,individual",
             "exact": True,
-            "format": "json",
             "start": 0,
-            "rows": 1,
-            "local": False,
             "obsoletes": False,
+            "rows": 1,
+            # "local": False,
+            "format": "json",
             "lang": "en",
             # "isLeaf": (
             #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
@@ -448,11 +451,13 @@ class CvTermHelper:
             if docs:
                 obo_id = docs[0].get("obo_id", "")
                 iri_id = docs[0].get("iri", "")
+                synonyms = docs[0].get("synonym", []) or []
+                synonyms_lower_set = {s.lower() for s in synonyms}
                 if accession.lower() in {obo_id.lower(), iri_id.lower()} and (
                     docs[0].get("label", "").lower() == cv_term.name.lower()
                     or (
                         allow_synonym_search
-                        and cv_term.name.lower() in (docs[0].get("synonym", []) or [])
+                        and cv_term.name.lower() in synonyms_lower_set
                     )
                 ):
                     if parent_cv_term:
