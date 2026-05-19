@@ -1,3 +1,9 @@
+## v0.1.82 (2026-05-19)
+
+### Fix
+
+- cv term parent child search
+
 ## v0.1.81 (2026-05-19)
 
 ### Fix
