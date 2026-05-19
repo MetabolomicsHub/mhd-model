@@ -22,8 +22,8 @@ dependencies = [
     "pyyaml>=6.0.2",
     "reachable>=0.7.0",
     # security fix
-    "Pygments>=2.20.0",
-    "requests>=2.33.0",
+    "urllib3>=2.7.0",
+
 ]
 
 

@@ -274,7 +274,9 @@ class CvTermHelper:
 
         return uri
 
-    def find_cv_term(self, source: str, accession_or_label: str) -> None | CvTerm:
+    def find_cv_term(
+        self, source: str, accession_or_label: str, allow_synonym_search: bool = False
+    ) -> None | CvTerm:
         key = (source, accession_or_label)
         if key in self.search_cache:
             return self.search_cache[key]
@@ -286,8 +288,6 @@ class CvTermHelper:
             "q": accession_or_label,
             "ontology": input_source,
             "type": "class,property,individual",
-            "queryFields": "obo_id,iri,label,short_form",
-            "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
             "start": 0,
@@ -299,6 +299,13 @@ class CvTermHelper:
             #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
             # ),
         }
+        if allow_synonym_search:
+            params["queryFields"] = "obo_id,iri,label,short_form,synonym"
+            params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix,synonym"
+        else:
+            params["queryFields"] = "obo_id,iri,label,short_form"
+            params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix"
+
         children_subpath = "/search"
         ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
         url = ols4_base_url + children_subpath
@@ -315,7 +322,13 @@ class CvTermHelper:
                 obo_id = docs[0].get("obo_id", "")
                 iri = docs[0].get("iri", "")
                 label = docs[0].get("label", "")
+                # synonyms = docs[0].get("synonym", [])
                 ontology_prefix = docs[0].get("ontology_prefix", "").lower()
+                if ontology_prefix != source.lower():
+                    logger.warning(
+                        "CV Term %s not found in %s", accession_or_label, source
+                    )
+                    return None
                 uppercase_source = source.upper()
                 if obo_id == label:
                     result_source = uppercase_source
@@ -339,14 +352,21 @@ class CvTermHelper:
             return None
 
     def check_cv_term(
-        self, cv_term: CvTerm, parent_cv_term: None | ParentCvTerm = None
+        self,
+        cv_term: CvTerm,
+        parent_cv_term: None | ParentCvTerm = None,
+        allow_synonym_search: bool = False,
     ) -> tuple[bool, str]:
         if not cv_term.accession or not cv_term.name or not cv_term.source:
             message = f"Invalid cv term [{cv_term.source}, {cv_term.accession}, {cv_term.name}]"
             logger.error(message)
             return False, message
         if not parent_cv_term:
-            term = self.find_cv_term(cv_term.source, cv_term.accession)
+            term = self.find_cv_term(
+                cv_term.source,
+                cv_term.accession,
+                allow_synonym_search=allow_synonym_search,
+            )
             if not term:
                 return False, f"CV term {cv_term.accession} not found"
             return True, ""
@@ -381,8 +401,6 @@ class CvTermHelper:
         params = {
             "q": accession,
             "type": "class,property,individual",
-            "queryFields": "obo_id,short_form,iri",
-            "fieldList": "iri,obo_id,label,short_form,ontology_prefix",
             "exact": True,
             "format": "json",
             "start": 0,
@@ -394,23 +412,27 @@ class CvTermHelper:
             #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
             # ),
         }
+
+        if allow_synonym_search:
+            params["queryFields"] = "obo_id,short_form,iri,synonym"
+            params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix,synonym"
+        else:
+            params["queryFields"] = "obo_id,short_form,iri"
+            params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix"
         if search_ontology:
             params["ontology"] = search_ontology
 
         ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
         url = ols4_base_url + children_subpath
-        if parent_cv_term:
-            parent_uri = self.get_uri(parent_cv_term.cv_term)
-            params["allChildrenOf"] = parent_uri
-            logger.debug(
-                "%s: %s in cv %s, parent %s",
-                url,
-                accession,
-                cv_term.source,
-                parent_uri,
-            )
-        else:
-            logger.debug("%s: %s in cv %s", url, accession, cv_term.source)
+        parent_uri = self.get_uri(parent_cv_term.cv_term)
+        params["allChildrenOf"] = parent_uri
+        logger.debug(
+            "%s: %s in cv %s, parent %s",
+            url,
+            accession,
+            cv_term.source,
+            parent_uri,
+        )
 
         headers = {"Accept": "application/json"}
         try:
@@ -426,9 +448,12 @@ class CvTermHelper:
             if docs:
                 obo_id = docs[0].get("obo_id", "")
                 iri_id = docs[0].get("iri", "")
-                if (
-                    accession.lower() in {obo_id.lower(), iri_id.lower()}
-                    and docs[0].get("label", "").lower() == cv_term.name.lower()
+                if accession.lower() in {obo_id.lower(), iri_id.lower()} and (
+                    docs[0].get("label", "").lower() == cv_term.name.lower()
+                    or (
+                        allow_synonym_search
+                        and cv_term.name.lower() in (docs[0].get("synonym", []) or [])
+                    )
                 ):
                     if parent_cv_term:
                         logger.debug(
