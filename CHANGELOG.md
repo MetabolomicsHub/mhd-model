@@ -1,3 +1,9 @@
+## v0.1.81 (2026-05-19)
+
+### Fix
+
+- cv term search with synonym option
+
 ## v0.1.80 (2026-05-18)
 
 ### Fix
