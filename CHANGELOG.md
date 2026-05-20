@@ -1,3 +1,9 @@
+## v0.1.83 (2026-05-20)
+
+### Fix
+
+- mhd cv term find error with accession
+
 ## v0.1.82 (2026-05-19)
 
 ### Fix
