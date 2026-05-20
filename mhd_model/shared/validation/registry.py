@@ -9,7 +9,7 @@ class ValidatorBaseModel(BaseModel):
 
     model_config = ConfigDict(
         populate_by_name=True,
-        JSON_schema_serialization_defaults_required=True,
+        json_schema_serialization_defaults_required=True,
         field_title_generator=lambda field_name, field_info: to_pascal(
             field_name.replace("_", " ").strip()
         ),
