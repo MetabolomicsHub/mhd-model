@@ -274,10 +274,10 @@ class CvTermHelper:
             if not uri:
                 prefix, identifier = cv_term.accession.split(":")
                 uri = bioregistry.get_default_iri(prefix, identifier)
-                if "iri=" in uri:
+                if uri and isinstance(uri, str) and "iri=" in uri:
                     return uri.split("iri=")[-1]
 
-        return uri
+        return uri or None
 
     def find_cv_term(
         self, source: str, accession_or_label: str, allow_synonym_search: bool = False
