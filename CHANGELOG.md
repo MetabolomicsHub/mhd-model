@@ -1,3 +1,9 @@
+## v0.1.84 (2026-05-21)
+
+### Fix
+
+- bioregistry iri conversion error
+
 ## v0.1.83 (2026-05-20)
 
 ### Fix
