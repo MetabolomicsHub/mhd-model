@@ -274,6 +274,8 @@ class CvTermHelper:
             if not uri:
                 prefix, identifier = cv_term.accession.split(":")
                 uri = bioregistry.get_default_iri(prefix, identifier)
+                if "iri=" in uri:
+                    return uri.split("iri=")[-1]
 
         return uri
 
