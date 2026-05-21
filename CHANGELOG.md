@@ -1,3 +1,9 @@
+## v0.1.85 (2026-05-21)
+
+### Fix
+
+- uri conversion fails if it is none
+
 ## v0.1.84 (2026-05-21)
 
 ### Fix
