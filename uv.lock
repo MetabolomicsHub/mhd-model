@@ -1014,7 +1014,7 @@ wheels = [
 
 [[package]]
 name = "mhd-model"
-version = "0.1.86"
+version = "0.1.87"
 source = { editable = "." }
 dependencies = [
     { name = "bioregistry" },
@@ -1058,7 +1058,7 @@ requires-dist = [
     { name = "charset-normalizer", specifier = ">=3.4.2" },
     { name = "email-validator", specifier = ">=2.3.0" },
     { name = "httpx2", specifier = ">=2.2.0" },
-    { name = "idna", specifier = ">=3.15" },
+    { name = "idna", specifier = ">=3.17" },
     { name = "jsonpath-ng", specifier = ">=1.8.0" },
     { name = "jsonschema", specifier = ">=4.26.0" },
     { name = "neo4j", marker = "extra == 'neo4j'", specifier = ">=5.28.2" },
