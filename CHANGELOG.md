@@ -1,3 +1,10 @@
+## v0.1.86 (2026-06-01)
+
+### Fix
+
+- cv term resolver is removed
+- validation improvements
+
 ## v0.1.85 (2026-05-21)
 
 ### Fix
