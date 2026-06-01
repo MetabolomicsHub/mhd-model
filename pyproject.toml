@@ -21,6 +21,7 @@ dependencies = [
     "reachable>=0.9.1",
     # security fix
     "urllib3>=2.7.0",
+    "idna>=3.17"
 ]
 
 [dependency-groups]
@@ -33,6 +34,7 @@ dev = [
     "pytest>=9.0.3",
     "pytest-cov>=6.2.1",
     "mkdocs-mermaid2-plugin>=1.2.3",
+    "pymdown-extensions>=10.21.3"
 ]
 
 [tool.uv]
