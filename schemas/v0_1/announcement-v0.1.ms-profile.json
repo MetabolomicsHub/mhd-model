@@ -1560,7 +1560,7 @@
             "cvTermKey": {
               "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "MONDO"
+              "source": "EFO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",
@@ -1632,7 +1632,7 @@
             "cvTermKey": {
               "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "MONDO"
+              "source": "EFO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",
