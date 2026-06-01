@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD MS Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json</a>
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.ms-profile.json</a> 
 
-## Required Nodes & Relationships
+## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
@@ -171,13 +171,13 @@ The following nodes are required with the specified value.
 
 |Source Node|Minimum Node Count|Property / Relationship|Value|
 |-----------|-----------|------------|------------|
-|characteristic-value|1|[instance-of].characteristic_type_ref.name|cell type|
-|characteristic-value|1|[instance-of].characteristic_type_ref.name|disease|
-|characteristic-value|1|[instance-of].characteristic_type_ref.name|organism|
-|characteristic-value|1|[instance-of].characteristic_type_ref.name|organism part|
-|parameter-definition|1|[used-in].protocol_type_ref.name|mass spectrometry|
-|parameter-value|1|[instance-of].parameter_type_ref.name|acquisition polarity|
-|parameter-value|1|[instance-of].parameter_type_ref.name|mass spectrometry instrument|
+|characteristic-value|1|[instance-of].characteristic_type_ref.name|[EFO, EFO:0000324, cell type]|
+|characteristic-value|1|[instance-of].characteristic_type_ref.name|[EFO, MONDO:0000001, disease]|
+|characteristic-value|1|[instance-of].characteristic_type_ref.name|[NCIT, NCIT:C14250, Organism]|
+|characteristic-value|1|[instance-of].characteristic_type_ref.name|[NCIT, NCIT:C103199, Organism Part]|
+|parameter-definition|1|[used-in].protocol_type_ref.name|[CHMO, CHMO:0000470, mass spectrometry]|
+|parameter-value|1|[instance-of].parameter_type_ref.name|[MS, MS:1003776, acquisition polarity]|
+|parameter-value|1|[instance-of].parameter_type_ref.name|[MSIO, MSIO:0000171, mass spectrometry instrument]|
 
 ## MHD Domain Objects
 
@@ -242,7 +242,7 @@ Characteristic Definition node is **required in the MHD MS Profile.** <code>Mini
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|**required**|<code>*str*<code>||
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [MONDO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
+|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [EFO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
 
 
 **Node Relationships**
@@ -324,7 +324,7 @@ Factor Definition node is optional in the  MHD MS Profile. <code>Minimum: 0, Max
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|**required**|<code>*str*<code>||
 |**name**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**factor_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**factor-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**factor-type**</code><br>Allowed CV Terms:<br>* [MONDO, MONDO:0000001, disease]</code>|
+|**factor_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**factor-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**factor-type**</code><br>Allowed CV Terms:<br>* [EFO, MONDO:0000001, disease]</code>|
 
 
 **Node Relationships**

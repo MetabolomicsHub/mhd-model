@@ -8,7 +8,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 import bioregistry
-import httpx
+import httpx2
 import jsonschema
 import reachable
 from pydantic import BaseModel, ValidationError
@@ -52,7 +52,7 @@ class BaseProfileValidator(abc.ABC):
 
     def is_accessible_url(self, url: str) -> bool:
         try:
-            result = httpx.head(url, timeout=5)
+            result = httpx2.head(url, timeout=5)
             if result.status_code == 404:
                 return False
             result.raise_for_status()
@@ -601,7 +601,7 @@ class AccessibleURIValidator(BaseProfileValidator):
             if uri.scheme in ("http", "https"):
                 sub_path.append("value")
                 logger.debug("Check URL: %s", updated_url)
-                result = httpx.head(updated_url, timeout=5)
+                result = httpx2.head(updated_url, timeout=5)
                 if result.status_code == 404:
                     logger.debug("URL does not exist: %s", url)
                     return self.return_result(
@@ -769,7 +769,7 @@ class AccessibleCompactURIValidator(BaseProfileValidator):
         }
         try:
             url: str = default_uri
-            result = httpx.get(
+            result = httpx2.get(
                 url,
                 headers=headers,
                 follow_redirects=validator.follow_redirects,

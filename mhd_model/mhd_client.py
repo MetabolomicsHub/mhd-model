@@ -4,7 +4,7 @@ import time
 from pathlib import Path
 from typing import Literal, Optional
 
-import httpx
+import httpx2
 from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel, to_pascal
 
@@ -75,7 +75,7 @@ class MhdClient:
             "x-api-token": self.api_key,
         }
         try:
-            response = httpx.post(url, headers=headers, params=params)
+            response = httpx2.post(url, headers=headers, params=params)
             response.raise_for_status()
             response_json = response.json()
             accession = response_json.get("assignment", {}).get("accession")
@@ -130,7 +130,7 @@ class MhdClient:
             with file.open("rb") as f:
                 files = {"file": (file.name, f, "application/json")}
 
-                response = httpx.post(url, headers=post_headers, files=files)
+                response = httpx2.post(url, headers=post_headers, files=files)
                 response.raise_for_status()
                 response_json = response.json()
 
@@ -140,7 +140,7 @@ class MhdClient:
                 status_url = f"{self.mhd_webservice_base_url}/v0_1/datasets/{mhd_id}/tasks/{task_id}"
                 for iteration in range(max_retries):
                     try:
-                        status_response = httpx.get(status_url, headers=headers)
+                        status_response = httpx2.get(status_url, headers=headers)
 
                         if status_response.status_code == 200:
                             status_data = status_response.json()

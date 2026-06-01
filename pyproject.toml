@@ -7,24 +7,36 @@ license = "Apache-2.0"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "bioregistry>=0.12.19",
+    "bioregistry>=0.13.28",
     "cachetools>=7.0.5",
     "charset-normalizer>=3.4.2",
-    "dependency-injector>=4.48.1",
-    "email-validator>=2.2.0",
-    "httpx>=0.28.1",
-    "jsonpath-ng>=1.7.0",
-    "jsonschema>=4.24.0",
-    "pre-commit>=4.5.1",
+    "email-validator>=2.3.0",
+    "httpx2>=2.2.0",
+    "jsonpath-ng>=1.8.0",
+    "jsonschema>=4.26.0",
     "pydantic>=2.11.7",
     "python-dateutil>=2.9.0.post0",
     "pytz>=2025.2",
     "pyyaml>=6.0.2",
-    "reachable>=0.7.0",
+    "reachable>=0.9.1",
     # security fix
     "urllib3>=2.7.0",
-
 ]
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.13.9",
+    "import-linter>=2.11",
+    "mkdocs-material>=9.7.6",
+    "pre-commit>=4.5.1",
+    "ruff>=0.15.7",
+    "pytest>=9.0.3",
+    "pytest-cov>=6.2.1",
+    "mkdocs-mermaid2-plugin>=1.2.3",
+]
+
+[tool.uv]
+default-groups = []
 
 
 [build-system]
@@ -51,24 +63,6 @@ neo4j = [
 [project.scripts]
 mhd-cli = "mhd_model.commands.cli:cli"
 
-[dependency-groups]
-dev = [
-    "commitizen>=4.8.3",
-    "import-linter>=2.3",
-    "mkdocs-material>=9.7.1",
-    "pre-commit>=4.5.1",
-    "ruff>=0.14.14",
-]
-test = [
-    "pytest>=9.0.3",
-    "pytest-cov>=6.2.1",
-]
-docs = [
-    "mkdocs-mermaid2-plugin>=1.2.2",
-]
-
-[tool.uv]
-default-groups = []
 
 [tool.commitizen]
 name = "cz_conventional_commits"

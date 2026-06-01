@@ -1,6 +1,6 @@
 import logging
 
-import httpx
+import httpx2
 
 from mhd_model.shared.model import CvDefinition
 
@@ -12,7 +12,7 @@ def search_ontology_definition(ontology_name: str) -> None | CvDefinition:
         return None
     try:
         url = "https://www.ebi.ac.uk/ols4/api/v2/ontologies/" + ontology_name.lower()
-        response = httpx.get(url, timeout=2)
+        response = httpx2.get(url, timeout=2)
         response.raise_for_status()
         json_response = response.json()
         base_uri = json_response.get("baseUri", [])

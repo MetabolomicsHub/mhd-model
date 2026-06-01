@@ -2,11 +2,12 @@ import json
 import logging
 import pathlib
 import re
+from collections import abc
 from typing import Any, Generic, TypeVar
 from urllib.parse import quote
 
 import bioregistry
-import httpx
+import httpx2
 from cachetools import TTLCache, cached
 from pydantic import BaseModel, ConfigDict, field_validator
 from pydantic.alias_generators import to_camel, to_pascal
@@ -71,7 +72,7 @@ class ChildrenSearchModel(OlsBaseModel):
 def search_ols(
     url: str, params: dict, headers: dict, timeout: int = 10
 ) -> tuple[int, dict[str, Any]]:
-    result = httpx.get(url, params=params, headers=headers, timeout=timeout)
+    result = httpx2.get(url, params=params, headers=headers, timeout=timeout)
     if result.status_code in {200, 201}:
         return result.status_code, result.json()
     logger.warning(
@@ -82,8 +83,14 @@ def search_ols(
     return result.status_code, {}
 
 
+class CvTermResolver(abc.ABC):
+    @abc.abstractmethod
+    async def resolve(cv_term: CvTerm): ...
+
+
 class CvTermHelper:
-    def __init__(self) -> None:
+    def __init__(self, cv_term_resolver: None | CvTermResolver = None) -> None:
+        cv_term_resolver: None | CvTermResolver = cv_term_resolver
         self.cache: dict[str, None | dict[str, CvTerm]] = {}
         self.search_cache: dict[str, tuple[bool, str | None]] = {}
 
@@ -498,7 +505,7 @@ class CvTermHelper:
                 self.search_cache[key] = (False, f"{accession} does not match")
                 return self.search_cache[key]
 
-        except httpx.HTTPStatusError as ex:
+        except httpx2.HTTPStatusError as ex:
             return False, f"{accession} search failed: {str(ex)}"
         except Exception as ex:
             return (

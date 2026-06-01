@@ -94,7 +94,7 @@ COMMON_ASSAY_TYPES: dict[str, CvTerm] = {
     # ),
 }
 
-COMMON_OMICS_TYPES = {
+COMMON_OMICS_TYPES: dict[str, CvTerm] = {
     "metabolomics": CvTerm(
         source="EDAM",
         accession="EDAM:topic_3172",
@@ -263,3 +263,27 @@ MANAGED_CV_TERM_OBJECTS: set[str] = {
     "parameter-value",
     "protocol-type",
 }
+
+PREDEFINED_CV_TERM_GROUPS: list[dict[str, CvTerm]] = [
+    COMMON_MISSING_DATA_TERMS,
+    MISSING_PUBLICATION_REASON,
+    COMMON_TECHNOLOGY_TYPES,
+    COMMON_MEASUREMENT_TYPES,
+    COMMON_ASSAY_TYPES,
+    COMMON_OMICS_TYPES,
+    COMMON_PROTOCOLS,
+    COMMON_CHARACTERISTIC_DEFINITIONS,
+    COMMON_STUDY_FACTOR_DEFINITIONS,
+    COMMON_PARAMETER_DEFINITIONS,
+]
+
+PREDEFINED_CV_TERMS: dict[str, CvTerm] = {}
+for terms in PREDEFINED_CV_TERM_GROUPS:
+    for term in terms.values():
+        PREDEFINED_CV_TERMS[term.accession.lower()] = term
+
+
+PREDEFINED_CV_TERM_LABELS: dict[str, CvTerm] = {}
+for terms in PREDEFINED_CV_TERM_GROUPS:
+    for term in terms.values():
+        PREDEFINED_CV_TERM_LABELS[term.name.lower()] = term

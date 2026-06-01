@@ -44,7 +44,7 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
-from mhd_model.model.v0_1.rules.predefined_cv_terms import PREDEFINED_CV_TERMS
+from mhd_model.model.v0_1.rules.managed_cv_terms import PREDEFINED_CV_TERM_LABELS
 from scripts.update_profiles import (
     update_announcement_file_profiles,
     update_mhd_file_profiles,
@@ -820,13 +820,13 @@ if __name__ == "__main__":
                 f.write("|-----------|-----------|------------|------------|\n")
                 additional_requirements.sort(key=lambda x: (x[0], x[1], x[2] or ""))
                 for source, cond, val, min_count in additional_requirements:
-                    if val in PREDEFINED_CV_TERMS:
+                    if val and val.lower() in PREDEFINED_CV_TERM_LABELS:
                         cond_name = cond.replace(".accession", "")
                         f.write(
-                            f"|{source}|{min_count}|{cond_name}|{PREDEFINED_CV_TERMS[val]}|\n"
+                            f"|{source}|{min_count}|{cond_name}|{PREDEFINED_CV_TERM_LABELS[val.lower()]}|\n"
                         )
                     else:
-                        f.write(f"|{source}|{min_count}|{cond}|{val}|\n")
+                        f.write(f"|{source}|{min_count}|{cond}|{val or '*'}|\n")
                 f.write("\n")
 
             for nodes, header in [
