@@ -2,7 +2,6 @@ import json
 import logging
 import pathlib
 import re
-from collections import abc
 from typing import Any, Generic, TypeVar
 from urllib.parse import quote
 
@@ -83,14 +82,8 @@ def search_ols(
     return result.status_code, {}
 
 
-class CvTermResolver(abc.ABC):
-    @abc.abstractmethod
-    async def resolve(cv_term: CvTerm): ...
-
-
 class CvTermHelper:
-    def __init__(self, cv_term_resolver: None | CvTermResolver = None) -> None:
-        cv_term_resolver: None | CvTermResolver = cv_term_resolver
+    def __init__(self) -> None:
         self.cache: dict[str, None | dict[str, CvTerm]] = {}
         self.search_cache: dict[str, tuple[bool, str | None]] = {}
 

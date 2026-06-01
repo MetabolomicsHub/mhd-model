@@ -1073,7 +1073,7 @@ dev = [
     { name = "commitizen", specifier = ">=4.13.9" },
     { name = "import-linter", specifier = ">=2.11" },
     { name = "mkdocs-material", specifier = ">=9.7.6" },
-    { name = "mkdocs-mermaid2-plugin", specifier = ">=1.2.2" },
+    { name = "mkdocs-mermaid2-plugin", specifier = ">=1.2.3" },
     { name = "pre-commit", specifier = ">=4.5.1" },
     { name = "pytest", specifier = ">=9.0.3" },
     { name = "pytest-cov", specifier = ">=6.2.1" },
