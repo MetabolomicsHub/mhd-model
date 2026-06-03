@@ -1,11 +1,24 @@
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Any
 
 from mhd_model.log_utils import set_basic_logging_config
 
 logger = logging.getLogger(__name__)
+
+NEO4J_IDENTIFIER_PATTERN = re.compile(r"^[A-Za-z_][A-Za-z0-9_-]*$")
+
+
+def escape_neo4j_identifier(identifier: str) -> str:
+    """Return a safe backtick-quoted Neo4j label or relationship type."""
+    if not isinstance(identifier, str) or not NEO4J_IDENTIFIER_PATTERN.fullmatch(
+        identifier
+    ):
+        raise ValueError(f"Invalid Neo4j identifier: {identifier!r}")
+    return f"`{identifier}`"
+
 
 try:
     from neo4j import Driver, GraphDatabase
@@ -18,7 +31,9 @@ try:
 
     def create_nodes(tx, nodes):
         for node in nodes:
-            labels = ":".join(f"`{label}`" for label in node["labels"])
+            labels = ":".join(
+                escape_neo4j_identifier(label) for label in node["labels"]
+            )
             tx.run(
                 f"MERGE (n:{labels} {{id: $id}}) SET n += $properties",
                 id=node["id"],
@@ -27,11 +42,12 @@ try:
 
     def create_relationships(tx, relationships):
         for rel in relationships:
+            relationship_type = escape_neo4j_identifier(rel["type"])
             tx.run(
                 f"""
                 MATCH (a {{id: $start_id}})
                 MATCH (b {{id: $end_id}})
-                MERGE (a)-[r:{rel["type"]}]->(b)
+                MERGE (a)-[r:{relationship_type}]->(b)
                 SET r += $properties
                 """,
                 start_id=rel["start"],
