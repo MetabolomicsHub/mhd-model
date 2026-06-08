@@ -86,6 +86,7 @@ class CvTermHelper:
     def __init__(self) -> None:
         self.cache: dict[str, None | dict[str, CvTerm]] = {}
         self.search_cache: dict[str, tuple[bool, str | None]] = {}
+        self.cv_term_cache: dict[str, None | CvTerm] = {}
 
     def save_children(self, parent: ParentCvTerm, children: dict[str, CvTerm]) -> None:
         file_path = self.get_children_cache_file_path(parent)
@@ -279,19 +280,95 @@ class CvTermHelper:
 
         return uri or None
 
+    def find_cv_term_with_accession(
+        self, source: str, accession: str
+    ) -> tuple[CvTerm, list[str]]:
+        curi = accession
+        if accession and (
+            accession.startswith("http://") or accession.startswith("https://")
+        ):
+            curi = bioregistry.curie_from_iri(accession)
+
+        params = {
+            "q": curi.lower(),
+            "ontology": source.lower(),
+            "type": "class,property,individual",
+            "exact": True,
+            "format": "json",
+            "start": 0,
+            "rows": 1,
+            "local": False,
+            "obsoletes": False,
+            "lang": "en",
+        }
+
+        params["queryFields"] = "obo_id,iri,short_form"
+        params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix,synonym"
+        children_subpath = "/search"
+        ols4_base_url = "https://www.ebi.ac.uk/ols4/api"
+        url = ols4_base_url + children_subpath
+
+        headers = {"Accept": "application/json"}
+        try:
+            logger.debug("Searching %s", url)
+            status_code, result_json = search_ols(url, params, headers, timeout=10)
+            if status_code == 404:
+                return None, []
+            docs = result_json.get("response", {}).get("docs")
+            if not docs:
+                return None, []
+            label = docs[0].get("label", "")
+            synonym = docs[0].get("synonym", []) or []
+            return CvTerm(
+                accession=accession,
+                name=label,
+                source=source,
+            ), synonym
+        except Exception as ex:
+            logger.exception(ex)
+            return None, []
+
     def find_cv_term(
-        self, source: str, accession_or_label: str, allow_synonym_search: bool = False
+        self,
+        source: str,
+        accession_or_label: str,
+        matched_accession: None | str = None,
+        allow_synonym_search: bool = False,
     ) -> None | CvTerm:
-        key = (source, accession_or_label)
-        if key in self.search_cache:
-            return self.search_cache[key]
+        key = (source, accession_or_label, matched_accession, allow_synonym_search)
+        if key in self.cv_term_cache and self.cv_term_cache[key]:
+            return self.cv_term_cache[key]
         if not source or not accession_or_label:
             raise ValueError("Source and accession_or_label must be provided")
-        accession_or_label = accession_or_label.strip().lower()
-        input_source = source.lower()
+        search_by_accession = None
+        is_accession_input = len(accession_or_label.split(":")) == 2
+        if matched_accession:
+            search_by_accession = matched_accession
+        if not search_by_accession and is_accession_input:
+            search_by_accession = accession_or_label
+
+        if search_by_accession:
+            term_result, synonym = self.find_cv_term_with_accession(
+                source=source, accession=search_by_accession
+            )
+            if term_result:
+                if is_accession_input:
+                    if key not in self.cache or not self.cv_term_cache[key]:
+                        self.cv_term_cache[key] = term_result
+                    return term_result
+                else:
+                    if (
+                        term_result.name.lower() == accession_or_label.lower()
+                        or accession_or_label.lower() in {x.lower() for x in synonym}
+                    ):
+                        if key not in self.cv_term_cache or not self.cv_term_cache[key]:
+                            self.cv_term_cache[key] = term_result
+                        return term_result
+
+        label = accession_or_label.strip().lower()
         params = {
-            "q": accession_or_label,
-            "ontology": input_source,
+            "q": label,
+            "ontology": source.lower(),
             "type": "class,property,individual",
             "exact": True,
             "format": "json",
@@ -347,11 +424,14 @@ class CvTermHelper:
                     result_accession = obo_id
                 else:
                     result_accession = iri
-                return CvTerm(
+                term = CvTerm(
                     accession=result_accession,
                     name=label,
                     source=result_source,
                 )
+                if key not in self.cv_term_cache or not self.cv_term_cache[key]:
+                    self.cv_term_cache[key] = term
+                return term
         except Exception as ex:
             logger.exception(str(ex))
             return None
