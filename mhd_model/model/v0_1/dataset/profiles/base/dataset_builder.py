@@ -89,13 +89,25 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
             and item.name
         ):
             if item.source:
-                term = _get_cv_helper().find_cv_term(item.source, item.name)
-                if term:
-                    item.name = term.name
-                    item.accession = term.accession
-                    item.source = term.source
-                elif item.accession:
-                    term = _get_cv_helper().find_cv_term(item.source, item.accession)
+                if not item.accession:
+                    term = _get_cv_helper().find_cv_term(
+                        item.source, item.name, allow_synonym_search=False
+                    )
+                    if term and term.name == item.name:
+                        item.name = term.name
+                        item.accession = term.accession
+                        item.source = term.source
+                    else:
+                        item.name = term.name
+                        item.accession = ""
+                        item.source = ""
+                else:
+                    term = _get_cv_helper().find_cv_term(
+                        item.source,
+                        item.name,
+                        matched_accession=item.accession,
+                        allow_synonym_search=True,
+                    )
                     if term:
                         item.name = term.name
                         item.accession = term.accession
