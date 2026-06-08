@@ -1,3 +1,9 @@
+## v0.1.89 (2026-06-08)
+
+### Fix
+
+- dependencies and ontology search
+
 ## v0.1.88 (2026-06-03)
 
 ### Fix
