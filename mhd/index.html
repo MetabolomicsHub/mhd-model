@@ -14,7 +14,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="mhd-ms-nodes/">
+        <link rel="next" href="v1_0/mhd-ms-nodes/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>MHD Common Data Model v0.1 - MetabolomicsHub</title>
+        <title>MHD Common Data Model v1.0 - MetabolomicsHub</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mhd-common-data-model-v01" class="md-skip">
+        <a href="#mhd-common-data-model-v10" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MHD Common Data Model v0.1
+              MHD Common Data Model v1.0
             
           </span>
         </div>
@@ -298,6 +298,8 @@
       
         
       
+        
+      
     
     
     
@@ -389,7 +391,7 @@
   <span class="md-ellipsis">
     
   
-    Profiles
+    v1.0 Profiles
   
 
     
@@ -405,7 +407,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Profiles
+    v1.0 Profiles
   
 
           </label>
@@ -418,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mhd-ms-nodes/" class="md-nav__link">
+      <a href="v1_0/mhd-ms-nodes/" class="md-nav__link">
         
   
   
@@ -446,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mhd-legacy-nodes/" class="md-nav__link">
+      <a href="v1_0/mhd-legacy-nodes/" class="md-nav__link">
         
   
   
@@ -474,7 +476,157 @@
   
   
     <li class="md-nav__item">
-      <a href="mhd-base-nodes/" class="md-nav__link">
+      <a href="v1_0/mhd-base-nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Empty Dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.1 Profiles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    v0.1 Profiles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="v0_1/mhd-ms-nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile 1 - MetabolomicsHub Dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="v0_1/mhd-legacy-nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile 2 - Legacy Dataset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="v0_1/mhd-base-nodes/" class="md-nav__link">
         
   
   
@@ -575,7 +727,7 @@
 
 
 
-<h1 id="mhd-common-data-model-v01">MHD Common Data Model v0.1<a class="headerlink" href="#mhd-common-data-model-v01" title="Permanent link">&para;</a></h1>
+<h1 id="mhd-common-data-model-v10">MHD Common Data Model v1.0<a class="headerlink" href="#mhd-common-data-model-v10" title="Permanent link">&para;</a></h1>
 <p><em>MHD Common Data Model</em> is a connected graph of nodes and edges. MHD Domain Objects and MHD Cv Term Objects define the graph nodes and MHD Relationship Object (including both external and embedded relationships) define the edges. This graph-based structure allows for flexible, modular, structured, and consistent representation of metabolomics datasets.</p>
 <h2 id="mhd-common-data-model-nodes">MHD Common Data Model Nodes<a class="headerlink" href="#mhd-common-data-model-nodes" title="Permanent link">&para;</a></h2>
 <hr />
@@ -583,27 +735,27 @@
 <p>Each of <em>MHD Domain Objects</em> corresponds to a concept commonly used in metabolomics dataset metadata files.</p>
 <p>List of MHD Domain Objects:</p>
 <ul>
-<li><a href="mhd-ms-nodes/#study">Study</a></li>
-<li><a href="mhd-ms-nodes/#publication">Publication</a></li>
-<li><a href="mhd-ms-nodes/#person">Person</a></li>
-<li><a href="mhd-ms-nodes/#organization">Organization</a></li>
-<li><a href="mhd-ms-nodes/#project">Project</a></li>
-<li><a href="mhd-ms-nodes/#factor-definition">Factor Definition</a></li>
-<li><a href="mhd-ms-nodes/#protocol">Protocol</a></li>
-<li><a href="mhd-ms-nodes/#parameter-definition">Parameter Definition</a></li>
-<li><a href="mhd-ms-nodes/#metadata-file">Metadata File</a></li>
-<li><a href="mhd-ms-nodes/#raw-data-file">Raw Data File</a></li>
-<li><a href="mhd-ms-nodes/#derived-data-file">Derived Data File</a></li>
-<li><a href="mhd-ms-nodes/#result-file">Result File</a></li>
-<li><a href="mhd-ms-nodes/#supplementary-file">Supplementary File</a></li>
-<li><a href="mhd-ms-nodes/#metabolite">Metabolite</a></li>
-<li><a href="mhd-ms-nodes/#assay">Assay</a></li>
-<li><a href="mhd-ms-nodes/#subject">Subject</a></li>
-<li><a href="mhd-ms-nodes/#specimen">Specimen</a></li>
-<li><a href="mhd-ms-nodes/#sample">Sample</a></li>
-<li><a href="mhd-ms-nodes/#characteristic-definition">Characteristic Definition</a></li>
-<li><a href="mhd-ms-nodes/#sample-run">Sample Run</a></li>
-<li><a href="mhd-ms-nodes/#sample-run-configuration">Sample Run Configuration</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#study">Study</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#publication">Publication</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#person">Person</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#organization">Organization</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#project">Project</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#factor-definition">Factor Definition</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#protocol">Protocol</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#parameter-definition">Parameter Definition</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#metadata-file">Metadata File</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#raw-data-file">Raw Data File</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#derived-data-file">Derived Data File</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#result-file">Result File</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#supplementary-file">Supplementary File</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#metabolite">Metabolite</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#assay">Assay</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#subject">Subject</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#specimen">Specimen</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#sample">Sample</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#characteristic-definition">Characteristic Definition</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#sample-run">Sample Run</a></li>
+<li><a href="v1_0/mhd-ms-nodes/#sample-run-configuration">Sample Run Configuration</a></li>
 </ul>
 <p>The following properties are common for all  <em>MHD Domain Objects</em>.</p>
 <table>
@@ -1014,7 +1166,7 @@
         
         
           
-          <a href="mhd-ms-nodes/" class="md-footer__link md-footer__link--next" aria-label="Next: Profile 1 - MetabolomicsHub Dataset">
+          <a href="v1_0/mhd-ms-nodes/" class="md-footer__link md-footer__link--next" aria-label="Next: Profile 1 - MetabolomicsHub Dataset">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next

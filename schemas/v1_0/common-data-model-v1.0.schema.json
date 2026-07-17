@@ -1573,7 +1573,8 @@
               {
                 "$ref": "#/$defs/BaseLabeledMhdModel"
               }
-            ]
+            ],
+            "description": "Possible Node Type"
           },
           "title": "Nodes",
           "type": "array"

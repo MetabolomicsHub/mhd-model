@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://metabolomicshub.org/site/</loc>
-         <lastmod>2026-07-10</lastmod>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
          <loc>https://metabolomicshub.org/site/mhd/</loc>
-         <lastmod>2026-07-10</lastmod>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
-         <loc>https://metabolomicshub.org/site/mhd/mhd-base-nodes/</loc>
-         <lastmod>2026-07-10</lastmod>
+         <loc>https://metabolomicshub.org/site/mhd/v0_1/mhd-base-nodes/</loc>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
-         <loc>https://metabolomicshub.org/site/mhd/mhd-legacy-nodes/</loc>
-         <lastmod>2026-07-10</lastmod>
+         <loc>https://metabolomicshub.org/site/mhd/v0_1/mhd-legacy-nodes/</loc>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
-         <loc>https://metabolomicshub.org/site/mhd/mhd-ms-nodes/</loc>
-         <lastmod>2026-07-10</lastmod>
+         <loc>https://metabolomicshub.org/site/mhd/v0_1/mhd-ms-nodes/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://metabolomicshub.org/site/mhd/v1_0/mhd-base-nodes/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://metabolomicshub.org/site/mhd/v1_0/mhd-legacy-nodes/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://metabolomicshub.org/site/mhd/v1_0/mhd-ms-nodes/</loc>
+         <lastmod>2026-07-17</lastmod>
     </url>
 </urlset>
