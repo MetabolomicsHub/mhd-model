@@ -45,7 +45,6 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     PropertyConstraint,
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import PREDEFINED_CV_TERM_LABELS
-from scripts.update_profiles import update_schema_files
 
 logger = logging.getLogger(__name__)
 
@@ -431,7 +430,6 @@ def update_nodes(
 
 
 def update_v0_1_documentation():
-
     for profile, target_file_name, profile_name in [
         (MHD_MS_PROFILE_V0_1, "mhd-ms-nodes.md", "MHD MS Profile"),
         (MHD_LEGACY_PROFILE_V0_1, "mhd-legacy-nodes.md", "MHD Legacy Profile"),
@@ -439,8 +437,8 @@ def update_v0_1_documentation():
     ]:
         validation_rules_map = get_validation_rules(profile)
         relationships_map, reverse_relationships_map = get_relationship_rules(profile)
-        common_fields = {x for x in BaseMhdModel.model_fields}
-        NO_CONDITION_KEY = (None, None, None, None, None, None)
+        # common_fields = {x for x in BaseMhdModel.model_fields}
+        # NO_CONDITION_KEY = (None, None, None, None, None, None)
         node_documentation: OrderedDict[str, NodeDocumentation] = OrderedDict()
         embedded_relationships, reverse_embedded_relationships = (
             get_embedded_relationships(profile)
@@ -595,13 +593,13 @@ def update_v0_1_documentation():
                     if x.min > 0
                 ]
             )
-            optional_nodes = ", ".join(
-                [
-                    node_documentation[x.node_type].name
-                    for x in profile.mhd_nodes
-                    if x.min == 0
-                ]
-            )
+            # optional_nodes = ", ".join(
+            #     [
+            #         node_documentation[x.node_type].name
+            #         for x in profile.mhd_nodes
+            #         if x.min == 0
+            #     ]
+            # )
 
             required_cv_terms = ", ".join(
                 [
@@ -610,13 +608,13 @@ def update_v0_1_documentation():
                     if x.min > 0
                 ]
             )
-            optional_cv_terms = ", ".join(
-                [
-                    node_documentation[x.node_type].name
-                    for x in profile.cv_nodes
-                    if x.min == 0
-                ]
-            )
+            # optional_cv_terms = ", ".join(
+            #     [
+            #         node_documentation[x.node_type].name
+            #         for x in profile.cv_nodes
+            #         if x.min == 0
+            #     ]
+            # )
             required_links = []
             required_embedded_required_nodes = set()
             for validation_nodes in [profile.mhd_nodes, profile.cv_nodes]:
@@ -907,6 +905,7 @@ def update_v0_1_documentation():
                             f"  {source_name.replace(' ', '_')}[{source_name}] ==>|{relation_name}| {target_name.replace(' ', '_')}[{target_name}];\n"
                         )
             f.write("```\n")
+
 
 if __name__ == "__main__":
     set_basic_logging_config()

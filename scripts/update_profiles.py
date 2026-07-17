@@ -12,7 +12,11 @@ from mhd_model.model.v0_1.announcement.profiles.legacy import (
 from mhd_model.model.v0_1.announcement.profiles.ms import (
     profile as v0_1_announcement_ms_profile,
 )
-
+from mhd_model.model.v0_1.dataset.profiles.base import profile as v0_1_mhd_base_profile
+from mhd_model.model.v0_1.dataset.profiles.legacy import (
+    profile as v0_1_mhd_legacy_profile,
+)
+from mhd_model.model.v0_1.dataset.profiles.ms import profile as v0_1_mhd_ms_profile
 from mhd_model.model.v1_0.announcement.profiles.base import (
     profile as v1_0_announcement_base_profile,
 )
@@ -22,13 +26,6 @@ from mhd_model.model.v1_0.announcement.profiles.legacy import (
 from mhd_model.model.v1_0.announcement.profiles.ms import (
     profile as v1_0_announcement_ms_profile,
 )
-
-from mhd_model.model.v0_1.dataset.profiles.base import profile as v0_1_mhd_base_profile
-from mhd_model.model.v0_1.dataset.profiles.legacy import (
-    profile as v0_1_mhd_legacy_profile,
-)
-from mhd_model.model.v0_1.dataset.profiles.ms import profile as v0_1_mhd_ms_profile
-
 from mhd_model.model.v1_0.dataset.profiles.base import profile as v1_0_mhd_base_profile
 from mhd_model.model.v1_0.dataset.profiles.legacy import (
     profile as v1_0_mhd_legacy_profile,

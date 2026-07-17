@@ -1190,7 +1190,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 target="metabolite",
                 min=0,
                 min_for_each_source=0,
-            ),       
+            ),
             RelationshipValidation(
                 identifier="result-file-003-05",
                 description="A link to a result file.",

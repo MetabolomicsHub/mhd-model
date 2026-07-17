@@ -34,7 +34,8 @@ dev = [
     "pytest>=9.0.3",
     "pytest-cov>=6.2.1",
     "mkdocs-mermaid2-plugin>=1.2.3",
-    "pymdown-extensions>=10.21.3"
+    "pymdown-extensions>=10.21.3",
+    "soupsieve>=2.8.4"
 ]
 
 [tool.uv]

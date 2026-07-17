@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD Base Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json</a> 
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json</a>
 
-## Required Nodes & Relationships 
+## Required Nodes & Relationships
 
  **Required MHD Nodes**
 
