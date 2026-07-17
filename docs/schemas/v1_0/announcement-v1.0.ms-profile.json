@@ -731,17 +731,6 @@
                       "allowOnlyLeaf": false,
                       "allowParent": false,
                       "cvTerm": {
-                        "accession": "CHEMINF:000464",
-                        "name": "chemical database identifier",
-                        "source": "CHEMINF"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    },
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
                         "accession": "EDAM:data_2894",
                         "name": "Compound accession",
                         "source": "EDAM"
@@ -1290,9 +1279,9 @@
               "source": "EDAM"
             },
             {
-              "accession": "wikidata:Q115452339",
-              "name": "exposomics",
-              "source": "wikidata"
+              "accession": "EDAM:topic_4065",
+              "name": "Exposomics",
+              "source": "EDAM"
             }
           ],
           "inputType": "list-or-item",

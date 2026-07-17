@@ -135,7 +135,6 @@ graph LR
 |characteristic-definition|name|
 |characteristic-type|name|
 |data-provider|value|
-|metadata-file|extension|
 |metadata-file|name|
 |metadata-file|url_list|
 |organization|name|
@@ -147,7 +146,6 @@ graph LR
 |protocol|name|
 |protocol|protocol_type_ref|
 |protocol-type|name|
-|raw-data-file|extension|
 |raw-data-file|name|
 |raw-data-file|url_list|
 |sample|name|
@@ -201,7 +199,7 @@ Assay node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |**technology_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
 |**assay_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
 |**measurement_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MS, MS:1003904, untargeted analysis],<br>* [MS, MS:1003905, targeted analysis],<br>* [MS, MS:1003906, semi-targeted analysis]</code>|
-|**omics_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [wikidata, wikidata:Q115452339, exposomics]</code>|
+|**omics_type_ref**|**required**|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [EDAM, EDAM:topic_4065, Exposomics]</code>|
 |**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 |**sample_run_refs**|**required**|<code>*list[MhdObjectId]*<code>|Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
 
@@ -212,6 +210,7 @@ Assay node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |------|------------|------------|------|---|---|-----------|
 |assay|described-as|describes|descriptor|0|N|A link to a descriptor that describes the assay.|
 |assay|follows|used-in|protocol|1|N|A link to a protocol conducted in assay.|
+|assay|has|created-in|result-file|0|N|A link to a result file.|
 |assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br>**Required min count in the dataset: 1.**|
 
 
@@ -224,6 +223,7 @@ Assay node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|assay|0|N||
 |protocol|used-in|follows|assay|0|N||
+|result-file|created-in|has|assay|0|N|A link to a result file.|
 |study|has-assay|part-of|assay|1|N|**Required min count in the dataset: 1.**|
 
 ### Characteristic Definition
@@ -285,7 +285,7 @@ Derived Data File node is optional in the  MHD MS Profile. <code>Minimum: 0, Max
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
@@ -369,7 +369,7 @@ Metabolite node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |metabolite|described-as|describes|descriptor|0|N||
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No,<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
+|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
 |metabolite|measured-in|measures|raw-data-file|0|N||
 |metabolite|reported-in|reports|study|1|N||
 |metabolite|reported-in|reports|metadata-file|0|N||
@@ -407,7 +407,7 @@ Metadata File node is **required in the MHD MS Profile.** <code>Minimum: 1, Maxi
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
@@ -455,7 +455,7 @@ Organization node is **required in the MHD MS Profile.** <code>Minimum: 1, Maxim
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|optional|<code>*str*<code>|Validation Rule:<br> <code></code>|
-|**name**|**required**|<code>*str*<code>|Minimum length: <code>10</code><br>Validation Rule:<br> <code>Min Length: 10, Required</code>|
+|**name**|**required**|<code>*str*<code>|Minimum length: <code>9</code><br>Validation Rule:<br> <code>Min Length: 9, Required</code>|
 |**ror_id**|optional|<code>*str*<code>||
 |**department**|optional|<code>*str*<code>||
 |**unit**|optional|<code>*str*<code>||
@@ -723,7 +723,7 @@ Raw Data File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
@@ -768,13 +768,14 @@ Result File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: 
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|**required**|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|result-file|created-in|has|assay|0|N|A link to a result file.|
 |result-file|created-in|has-result-file|study|1|N||
 |result-file|described-as|describes|descriptor|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
@@ -788,6 +789,7 @@ Result File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|assay|has|created-in|result-file|0|N|A link to a result file.|
 |descriptor|describes|described-as|result-file|0|N||
 |metabolite|reported-in|reports|result-file|0|N||
 |metadata-file|references|referenced-in|result-file|0|N||
@@ -864,6 +866,7 @@ Sample Run node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |sample-run|described-as|describes|descriptor|0|N||
+|sample-run|used-in|has-sample-run|study|0|N||
 
 
 **Embedded Relationships**: <code>derived-data-file, raw-data-file, result-file, sample, sample-run-configuration, supplementary-file</code>
@@ -874,6 +877,7 @@ Sample Run node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|sample-run|0|N||
+|study|has-sample-run|used-in|sample-run|0|N||
 
 ### Sample Run Configuration
 
@@ -967,7 +971,7 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: 1 <
 |**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>||
 |**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
-|**description**|**required**|<code>*str*<code>|Minimum length: <code>60</code><br>Validation Rule:<br> <code>Min Length: 60, Required</code>|
+|**description**|**required**|<code>*str*<code>|Minimum length: <code>150</code><br>Validation Rule:<br> <code>Min Length: 150, Required</code>|
 |**submission_date**|**required**|<code>*datetime*<code>||
 |**public_release_date**|**required**|<code>*datetime*<code>||
 |**license**|**required**|<code>*HttpUrl*<code>|<br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
@@ -996,6 +1000,7 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: 1 <
 |study|has-repository-keyword|keyword-of|descriptor|0|N|Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |study|has-result-file|created-in|result-file|0|N||
 |study|has-sample|used-in|sample|0|N||
+|study|has-sample-run|used-in|sample-run|0|N||
 |study|has-submitter-keyword|keyword-of|descriptor|0|N|Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |study|has-supplementary-file|created-in|supplementary-file|0|N||
 |study|part-of|has-study|project|0|N||
@@ -1030,6 +1035,7 @@ Study node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: 1 <
 |raw-data-file|created-in|has-raw-data-file|study|1|N||
 |result-file|created-in|has-result-file|study|1|N||
 |sample|used-in|has-sample|study|1|1||
+|sample-run|used-in|has-sample-run|study|0|N||
 |supplementary-file|created-in|has-supplementary-file|study|1|N||
 
 ### Subject
@@ -1096,7 +1102,7 @@ Supplementary File node is optional in the  MHD MS Profile. <code>Minimum: 0, Ma
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Validation Rule:<br> <code></code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
@@ -1471,6 +1477,7 @@ graph LR
   Assay[Assay] ==>|described-as| Descriptor[Descriptor];
   Assay[Assay] ==>|part-of| Study[Study];
   Assay[Assay] ==>|follows| Protocol[Protocol];
+  Assay[Assay] ==>|has| Result_File[Result File];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
@@ -1543,6 +1550,7 @@ graph LR
   Result_File[Result File] ==>|created-in| Study[Study];
   Result_File[Result File] ==>|referenced-in| Metadata_File[Metadata File];
   Result_File[Result File] ==>|reports| Metabolite[Metabolite];
+  Result_File[Result File] ==>|created-in| Assay[Assay];
   Sample[Sample] ==>|described-as| Descriptor[Descriptor];
   Sample[Sample] ==>|has-factor-value| Factor_Value[Factor Value];
   Sample[Sample] ==>|used-in| Study[Study];
@@ -1550,6 +1558,7 @@ graph LR
   Sample[Sample] ==>|derived-from| Specimen[Specimen];
   Sample[Sample] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
   Sample_Run[Sample Run] ==>|described-as| Descriptor[Descriptor];
+  Sample_Run[Sample Run] ==>|used-in| Study[Study];
   Sample_Run_Configuration[Sample Run Configuration] ==>|described-as| Descriptor[Descriptor];
   Specimen[Specimen] ==>|described-as| Descriptor[Descriptor];
   Specimen[Specimen] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
@@ -1575,6 +1584,7 @@ graph LR
   Study[Study] ==>|has-raw-data-file| Raw_Data_File[Raw Data File];
   Study[Study] ==>|has-result-file| Result_File[Result File];
   Study[Study] ==>|has-sample| Sample[Sample];
+  Study[Study] ==>|has-sample-run| Sample_Run[Sample Run];
   Study[Study] ==>|has-supplementary-file| Supplementary_File[Supplementary File];
   Subject[Subject] ==>|described-as| Descriptor[Descriptor];
   Subject[Subject] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];

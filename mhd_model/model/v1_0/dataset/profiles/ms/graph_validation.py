@@ -145,6 +145,16 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min=0,
                 min_for_each_source=1,
             ),
+            RelationshipValidation(
+                identifier="assay-003-04",
+                description="A link to a result file.",
+                source="assay",
+                relationship_name="has",
+                reverse_relationship_name="created-in",
+                target="result-file",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     NodeValidation(
@@ -280,12 +290,6 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                identifier="derived-data-file-001-03",
-                node_type="derived-data-file",
-                node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
             EmbeddedRefValidation(
                 identifier="derived-data-file-002-01",
                 node_type="derived-data-file",
@@ -398,12 +402,6 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 identifier="metadata-file-001-02",
                 node_type="metadata-file",
                 node_property_name="name",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
-            NodePropertyValidation(
-                identifier="metadata-file-001-03",
-                node_type="metadata-file",
-                node_property_name="extension",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             EmbeddedRefValidation(
@@ -579,7 +577,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 identifier="organization-001-02",
                 node_type="organization",
                 node_property_name="name",
-                constraints=PropertyConstraint(required=True, min_length=10),
+                constraints=PropertyConstraint(required=True, min_length=9),
             ),
         ],
         relationships=[
@@ -1071,12 +1069,6 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                identifier="raw-data-file-001-03",
-                node_type="raw-data-file",
-                node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
             EmbeddedRefValidation(
                 identifier="raw-data-file-002-01",
                 node_type="raw-data-file",
@@ -1147,12 +1139,6 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                identifier="result-file-001-03",
-                node_type="result-file",
-                node_property_name="extension",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
             EmbeddedRefValidation(
                 identifier="result-file-002-01",
                 node_type="result-file",
@@ -1202,6 +1188,16 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
                 target="metabolite",
+                min=0,
+                min_for_each_source=0,
+            ),       
+            RelationshipValidation(
+                identifier="result-file-003-05",
+                description="A link to a result file.",
+                source="result-file",
+                reverse_relationship_name="has",
+                relationship_name="created-in",
+                target="assay",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1345,6 +1341,15 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min=0,
                 min_for_each_source=0,
             ),
+            RelationshipValidation(
+                identifier="sample-run-003-02",
+                source="sample-run",
+                reverse_relationship_name="has-sample-run",
+                relationship_name="used-in",
+                target="study",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     NodeValidation(
@@ -1415,7 +1420,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 identifier="study-001-04",
                 node_type="study",
                 node_property_name="description",
-                constraints=PropertyConstraint(required=True, min_length=60),
+                constraints=PropertyConstraint(required=True, min_length=150),
             ),
             NodePropertyValidation(
                 identifier="study-001-05",
@@ -1639,6 +1644,15 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="study-003-22",
+                source="study",
+                relationship_name="has-sample-run",
+                reverse_relationship_name="used-in",
+                target="sample-run",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
                 identifier="study-003-21",
                 source="study",
                 relationship_name="has-supplementary-file",
@@ -1792,12 +1806,6 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 node_type="supplementary-file",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
-            ),
-            NodePropertyValidation(
-                identifier="supplementary-file-001-03",
-                node_type="supplementary-file",
-                node_property_name="extension",
-                constraints=PropertyConstraint(required=False),
             ),
             EmbeddedRefValidation(
                 identifier="supplementary-file-002-01",

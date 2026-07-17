@@ -2,7 +2,7 @@
 hide:
   - navigation
 ---
-# MetabolomicsHub
+# [MetabolomicsHub](https://www.metabolomicshub.org)
 
 ---
 
@@ -10,7 +10,7 @@ With the growth of public metabolomics datasets worldwide, there is an urgent ne
 
 Building on the successful models of ProteomeXchange and the International Nucleotide Sequence Database Collaboration (INSDC), the consortium brings together major repositories — MetaboLights, Metabolomics Workbench, and GNPS/MassIVE as the starting point—and partners with researchers, funders, journals, and technology vendors.
 
-This initiative will implement a common data model for datasets in all data repositories included in the Consortium, develop open-source tools and software, and promote community adoption of open standard data formats such as mzTab-M and Universal Spectrum Identifiers (USIs) maintained by HUPO-PSI. Moreover, a centralized web portal will be developed to provide unified access to standardized public datasets, enabling discoverability of open datasets, which will enable large-scale meta-analyses and improvements in experimental reproducibility. This collaborative infrastructure lays also the groundwork for data-driven discovery and data integration with other omics.
+[MetabolomicsHub](https://www.metabolomicshub.org) initiative will implement a common data model for datasets in all data repositories included in the Consortium, develop open-source tools and software, and promote community adoption of open standard data formats such as mzTab-M and Universal Spectrum Identifiers (USIs) maintained by HUPO-PSI. Moreover, a centralized web portal will be developed to provide unified access to standardized public datasets, enabling discoverability of open datasets, which will enable large-scale meta-analyses and improvements in experimental reproducibility. This collaborative infrastructure lays also the groundwork for data-driven discovery and data integration with other omics.
 
 ---
 

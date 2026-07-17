@@ -120,6 +120,16 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 min=0,
                 min_for_each_source=0,
             ),
+            RelationshipValidation(
+                identifier="assay-003-04",
+                description="A link to a result file.",
+                source="assay",
+                relationship_name="has",
+                reverse_relationship_name="created-in",
+                target="result-file",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     NodeValidation(
@@ -179,11 +189,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 node_type="derived-data-file",
                 node_property_name="url_list",
                 constraints=PropertyConstraint(required=True, min_length=1),
-            ),
-            NodePropertyValidation(
-                node_type="derived-data-file",
-                node_property_name="extension",
-                constraints=PropertyConstraint(required=False, min_length=0),
             ),
         ],
         relationships=[
@@ -773,11 +778,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                node_type="raw-data-file",
-                node_property_name="extension",
-                constraints=PropertyConstraint(required=False, min_length=0),
-            ),
         ],
         relationships=[
             RelationshipValidation(
@@ -828,11 +828,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                node_type="result-file",
-                node_property_name="extension",
-                constraints=PropertyConstraint(required=False, min_length=0),
-            ),
         ],
         relationships=[
             RelationshipValidation(
@@ -864,6 +859,16 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
                 target="metabolite",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                identifier="result-file-003-05",
+                description="A link to a result file.",
+                source="result-file",
+                reverse_relationship_name="has",
+                relationship_name="created-in",
+                target="assay",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -959,6 +964,15 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
                 target="descriptor",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                identifier="sample-run-003-02",
+                source="sample-run",
+                reverse_relationship_name="has-sample-run",
+                relationship_name="used-in",
+                target="study",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1195,6 +1209,14 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 relationship_name="has-supplementary-file",
                 reverse_relationship_name="created-in",
                 target="supplementary-file",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                source="study",
+                relationship_name="has-sample-run",
+                reverse_relationship_name="used-in",
+                target="sample-run",
                 min=0,
                 min_for_each_source=0,
             ),
