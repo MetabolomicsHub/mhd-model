@@ -1,3 +1,10 @@
+## v0.1.90 (2026-07-17)
+
+### Fix
+
+- lint errors
+- mhd 1.0 draft updates
+
 ## v0.1.89 (2026-06-08)
 
 ### Fix
