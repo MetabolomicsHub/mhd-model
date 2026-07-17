@@ -1,0 +1,289 @@
+from typing import OrderedDict
+
+from mhd_model.shared.model import CvTerm
+
+COMMON_MISSING_DATA_TERMS: dict[str, CvTerm] = {
+    "not applicable": CvTerm(
+        source="NCIT",
+        accession="NCIT:C48660",
+        name="Not Applicable",
+    ),
+    "not available": CvTerm(
+        source="NCIT",
+        accession="NCIT:C126101",
+        name="Not Available",
+    ),
+    "masked data": CvTerm(
+        source="NCIT",
+        accession="NCIT:C150904",
+        name="Masked Data",
+    ),
+}
+
+MISSING_PUBLICATION_REASON: dict[str, CvTerm] = {
+    "no publication": CvTerm(
+        source="MS",
+        accession="MS:1002853",
+        name="Dataset with no associated published manuscript",
+    ),
+    "pending publication": CvTerm(
+        source="MS",
+        accession="MS:1002858",
+        name="Dataset with its publication pending",
+    ),
+}
+
+COMMON_TECHNOLOGY_TYPES: dict[str, CvTerm] = {
+    "mass spectrometry assay": CvTerm(
+        source="OBI",
+        accession="OBI:0000470",
+        name="mass spectrometry assay",
+    ),
+    # TODO: Will be enabled in future
+    # "OBI:0000623": CvTerm(
+    #     source="OBI",
+    #     accession="OBI:0000623",
+    #     name="NMR spectroscopy assay",
+    # ),
+}
+
+COMMON_MEASUREMENT_TYPES: dict[str, CvTerm] = {
+    "untargeted": CvTerm(
+        source="MS",
+        accession="MS:1003904",
+        name="untargeted analysis",
+    ),
+    "targeted": CvTerm(
+        source="MS",
+        accession="MS:1003905",
+        name="targeted analysis",
+    ),
+    "semi-targeted": CvTerm(
+        source="MS",
+        accession="MS:1003906",
+        name="semi-targeted analysis",
+    ),
+}
+
+COMMON_ASSAY_TYPES: dict[str, CvTerm] = {
+    "lc-ms": CvTerm(
+        source="OBI",
+        accession="OBI:0003097",
+        name="liquid chromatography mass spectrometry assay",
+    ),
+    "gc-ms": CvTerm(
+        source="OBI",
+        accession="OBI:0003110",
+        name="gas chromatography mass spectrometry assay",
+    ),
+    "ce-ms": CvTerm(
+        source="OBI",
+        accession="OBI:0003741",
+        name="capillary electrophoresis mass spectrometry assay",
+    ),
+    "ms": CvTerm(
+        source="OBI",
+        accession="OBI:0000470",
+        name="mass spectrometry assay",
+    ),
+    # TODO: Will be enabled in future
+    # "OBI:0000623": CvTerm(
+    #     source="OBI",
+    #     accession="OBI:0000623",
+    #     name="NMR spectroscopy assay",
+    # ),
+}
+
+COMMON_OMICS_TYPES: dict[str, CvTerm] = {
+    "metabolomics": CvTerm(
+        source="EDAM",
+        accession="EDAM:topic_3172",
+        name="Metabolomics",
+    ),
+    "lipidomics": CvTerm(
+        source="EDAM",
+        accession="EDAM:topic_0153",
+        name="Lipidomics",
+    ),
+    "fluxomics": CvTerm(
+        source="EDAM",
+        accession="EDAM:topic_3955",
+        name="Fluxomics",
+    ),
+    # TODO: Update once EDAM ontolgy is updated on OLS
+    "exposomics": CvTerm(
+        source="wikidata",
+        accession="wikidata:Q115452339",
+        name="exposomics",
+    ),
+}
+
+
+COMMON_PROTOCOLS: dict[str, CvTerm] = {
+    "mass spectrometry": CvTerm(
+        source="CHMO",
+        accession="CHMO:0000470",
+        name="mass spectrometry",
+    ),
+    "chromatography": CvTerm(
+        source="CHMO",
+        accession="CHMO:0001000",
+        name="chromatography",
+    ),
+    "sample collection": CvTerm(
+        source="EFO",
+        accession="EFO:0005518",
+        name="sample collection protocol",
+    ),
+    "treatment": CvTerm(
+        source="EFO",
+        accession="EFO:0003969",
+        name="treatment protocol",
+    ),
+    "sample preparation": CvTerm(
+        source="MS",
+        accession="MS:1000831",
+        name="sample preparation",
+    ),
+}
+
+COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS: dict[str, dict[str, CvTerm]] = {
+    "required": {
+        "organism": CvTerm(source="NCIT", accession="NCIT:C14250", name="Organism"),
+        "organism part": CvTerm(
+            source="NCIT", accession="NCIT:C103199", name="Organism Part"
+        ),
+        "disease": CvTerm(source="EFO", accession="MONDO:0000001", name="disease"),
+        "cell type": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
+    },
+    "recommended": {
+        # TODO: will be defined in future
+        # "geographical location": CvTerm(
+        #     source="EFO", accession="GAZ:00000448", name="geographical location"
+        # ),
+        # "collection date": CvTerm(
+        #     source="NCIT", accession="NCIT:C81286", name="collection date"
+        # ),
+    },
+    "optional": {},
+}
+
+COMMON_CHARACTERISTIC_DEFINITIONS: dict[str, CvTerm] = {}
+
+for _, terms in COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS.items():
+    for label, term in terms.items():
+        COMMON_CHARACTERISTIC_DEFINITIONS[label] = term
+
+
+COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS: dict[str, CvTerm] = {
+    "required": {},
+    "recommended": {},
+    "optional": {
+        "disease": CvTerm(source="EFO", accession="MONDO:0000001", name="disease"),
+    },
+}
+
+
+COMMON_STUDY_FACTOR_DEFINITIONS: dict[str, CvTerm] = {}
+
+for _, terms in COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS.items():
+    for label, term in terms.items():
+        COMMON_STUDY_FACTOR_DEFINITIONS[label] = term
+
+COMMON_PARAMETER_ENFORCEMENT_LEVELS: dict[str, dict[str, dict[str, CvTerm]]] = {
+    "mass spectrometry": {
+        "required": {
+            "mass spectrometry instrument": CvTerm(
+                source="MSIO",
+                accession="MSIO:0000171",
+                name="mass spectrometry instrument",
+            ),
+            "acquisition polarity": CvTerm(
+                source="MS",
+                accession="MS:1003776",
+                name="acquisition polarity",
+            ),
+        },
+        "recommended": {},
+        "optional": {
+            "ionization type": CvTerm(
+                source="MS", accession="MS:1000008", name="ionization type"
+            ),
+            "instrument class": CvTerm(
+                source="MS", accession="MS:1003761", name="instrument class"
+            ),
+            "inlet type": CvTerm(
+                source="MS", accession="MS:1000007", name="inlet type"
+            ),
+        },
+    },
+    "chromatography": {
+        "required": {},
+        "recommended": {
+            "chromatography instrument": CvTerm(
+                source="OBI", accession="OBI:0000485", name="chromatography instrument"
+            ),
+            "chromatography column": CvTerm(
+                source="OBI", accession="OBI:0000038", name="chromatography column"
+            ),
+        },
+        "optional": {
+            "chromatography separation": CvTerm(
+                source="MS", accession="MS:1002270", name="chromatography separation"
+            ),
+            "solvent": CvTerm(source="CHEBI", accession="CHEBI:46787", name="solvent"),
+            "chromatographic additive": CvTerm(
+                source="CHEBI",
+                accession="CHEBI:747205",
+                name="chromatographic additive",
+            ),
+        },
+    },
+}
+COMMON_PROTOCOL_PARAMETER_MAPPINGS: OrderedDict[str, CvTerm] = OrderedDict()
+COMMON_PARAMETER_DEFINITIONS: OrderedDict[str, CvTerm] = OrderedDict()
+for protocol, enforcements in COMMON_PARAMETER_ENFORCEMENT_LEVELS.items():
+    if protocol not in COMMON_PROTOCOL_PARAMETER_MAPPINGS:
+        COMMON_PROTOCOL_PARAMETER_MAPPINGS[protocol] = OrderedDict()
+    for enforcement_level, terms in enforcements.items():
+        for label, term in terms.items():
+            COMMON_PARAMETER_DEFINITIONS[label] = term
+            COMMON_PROTOCOL_PARAMETER_MAPPINGS[protocol][label] = term
+
+
+MANAGED_CV_TERM_OBJECTS: set[str] = {
+    "characteristic-type",
+    "characteristic-value",
+    "metabolite-identifier",
+    "data-provider",
+    "descriptor",
+    "factor-type",
+    "factor-value",
+    "parameter-type",
+    "parameter-value",
+    "protocol-type",
+}
+
+PREDEFINED_CV_TERM_GROUPS: list[dict[str, CvTerm]] = [
+    COMMON_MISSING_DATA_TERMS,
+    MISSING_PUBLICATION_REASON,
+    COMMON_TECHNOLOGY_TYPES,
+    COMMON_MEASUREMENT_TYPES,
+    COMMON_ASSAY_TYPES,
+    COMMON_OMICS_TYPES,
+    COMMON_PROTOCOLS,
+    COMMON_CHARACTERISTIC_DEFINITIONS,
+    COMMON_STUDY_FACTOR_DEFINITIONS,
+    COMMON_PARAMETER_DEFINITIONS,
+]
+
+PREDEFINED_CV_TERMS: dict[str, CvTerm] = {}
+for terms in PREDEFINED_CV_TERM_GROUPS:
+    for term in terms.values():
+        PREDEFINED_CV_TERMS[term.accession.lower()] = term
+
+
+PREDEFINED_CV_TERM_LABELS: dict[str, CvTerm] = {}
+for terms in PREDEFINED_CV_TERM_GROUPS:
+    for term in terms.values():
+        PREDEFINED_CV_TERM_LABELS[term.name.lower()] = term

@@ -4605,7 +4605,7 @@
       "title": "Id"
     },
     "type": {
-      "default": "ms-dataset",
+      "default": "base-dataset",
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
       "title": "Type",
       "type": "string"
@@ -4649,6 +4649,6 @@
     "$schema",
     "profile_uri"
   ],
-  "title": "MhDatasetMsProfile",
+  "title": "MhDatasetBaseProfile",
   "type": "object"
 }

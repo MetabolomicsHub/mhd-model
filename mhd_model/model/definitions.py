@@ -27,6 +27,15 @@ MHD_MODEL_V0_1_MS_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/sc
 MHD_MODEL_V0_1_LEGACY_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json"
 
 
+ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/announcement-v1.0.schema.json"
+ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/announcement-v1.0.schema.ms-profile.json"
+ANNOUNCEMENT_FILE_V1_0_LEGACY_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/announcement-v1.0.legacy-profile.json"
+
+MHD_MODEL_V1_0_DEFAULT_SCHEMA_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json"
+MHD_MODEL_V1_0_MS_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json"
+MHD_MODEL_V1_0_LEGACY_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.legacy-profile.json"
+
+
 SUPPORTED_SCHEMA_MAP = SupportedSchemaMap(
     default_schema_uri=ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
     schemas={
@@ -60,6 +69,36 @@ SUPPORTED_SCHEMA_MAP = SupportedSchemaMap(
                 ),
             },
         ),
+        ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME: SupportedSchema(
+            uri=ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME,
+            file_path="mhd_model/schemas/mhd/announcement-v1.0.schema.json",
+            default_profile_uri=ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME,
+            supported_profiles={
+                ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME: SupportedJsonSchema(
+                    uri=ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME,
+                    file_path="mhd_model/schemas/mhd/announcement-v1.0.ms-profile.json",
+                ),
+                ANNOUNCEMENT_FILE_V1_0_LEGACY_PROFILE_NAME: SupportedJsonSchema(
+                    uri=ANNOUNCEMENT_FILE_V1_0_LEGACY_PROFILE_NAME,
+                    file_path="mhd_model/schemas/mhd/announcement-v1.0.legacy-profile.json",
+                ),
+            },
+        ),
+        MHD_MODEL_V1_0_DEFAULT_SCHEMA_NAME: SupportedSchema(
+            uri=MHD_MODEL_V1_0_DEFAULT_SCHEMA_NAME,
+            file_path="mhd_model/schemas/mhd/common-data-model-v1.0.schema.json",
+            default_profile_uri=MHD_MODEL_V1_0_MS_PROFILE_NAME,
+            supported_profiles={
+                MHD_MODEL_V1_0_MS_PROFILE_NAME: SupportedJsonSchema(
+                    uri=MHD_MODEL_V1_0_MS_PROFILE_NAME,
+                    file_path="mhd_model/schemas/mhd/common-data-model-v1.0.ms-profile.json",
+                ),
+                MHD_MODEL_V1_0_LEGACY_PROFILE_NAME: SupportedJsonSchema(
+                    uri=MHD_MODEL_V1_0_LEGACY_PROFILE_NAME,
+                    file_path="mhd_model/schemas/mhd/common-data-model-v1.0.legacy-profile.json",
+                ),
+            },
+        ),
     },
 )
 
@@ -72,4 +111,18 @@ MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP = {
         ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
         ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
     ),
+    MHD_MODEL_V1_0_MS_PROFILE_NAME: (
+        ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME,
+        ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME,
+    ),
+    MHD_MODEL_V1_0_LEGACY_PROFILE_NAME: (
+        ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME,
+        ANNOUNCEMENT_FILE_V1_0_LEGACY_PROFILE_NAME,
+    ),
+}
+MHD_MODEL_PROFILE_SCHEMA_MAP = {
+    MHD_MODEL_V0_1_MS_PROFILE_NAME: ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
+    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME: ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
+    MHD_MODEL_V1_0_MS_PROFILE_NAME: ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME,
+    MHD_MODEL_V1_0_LEGACY_PROFILE_NAME: ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME,
 }

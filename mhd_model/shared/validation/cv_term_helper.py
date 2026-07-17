@@ -11,7 +11,7 @@ from cachetools import TTLCache, cached
 from pydantic import BaseModel, ConfigDict, field_validator
 from pydantic.alias_generators import to_camel, to_pascal
 
-from mhd_model.model.v0_1.rules.cv_definitions import OTHER_CONTROLLED_CV_DEFINITIONS
+from mhd_model.shared.cv_definitions import OTHER_COMMON_CV_DEFINITIONS
 from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import ParentCvTerm
 
@@ -244,7 +244,7 @@ class CvTermHelper:
 
     def get_uri_with_custom_convertor(self, cv_term: CvTerm) -> None | str:
         source = cv_term.source
-        cv_definition = OTHER_CONTROLLED_CV_DEFINITIONS.get(source.upper())
+        cv_definition = OTHER_COMMON_CV_DEFINITIONS.get(source.upper())
         parent_uri = None
         accession = cv_term.source
 

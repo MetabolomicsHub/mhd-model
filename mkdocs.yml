@@ -36,29 +36,33 @@ extra:
     link: https://bsky.app/profile/metabolights.bsky.social
 
 plugins:
-  - search
-  - mermaid2:
-      version: 10.4.0
-      arguments:
-        theme: default
-        flowchart:
-          diagramPadding: 8
-          htmlLabels: true
-          curve: basis
-          defaultRenderer: elk
-          useMaxWidth: true
-          # 👇 sets the default layout direction
-          defaultDirection: TB
+- search
+- mermaid2:
+    version: 10.4.0
+    arguments:
+      theme: default
+      flowchart:
+        diagramPadding: 8
+        htmlLabels: true
+        curve: basis
+        defaultRenderer: elk
+        useMaxWidth: true
+        # 👇 sets the default layout direction
+        defaultDirection: TB
 extra_css:
-  - stylesheets/extra.css
+- stylesheets/extra.css
 nav:
 - index.md
 - MHD Common Data Model:
   - mhd/index.md
-  - Profiles:
-    - Profile 1 - MetabolomicsHub Dataset : mhd/mhd-ms-nodes.md
-    - Profile 2 - Legacy Dataset: mhd/mhd-legacy-nodes.md
-    - Empty Dataset: mhd/mhd-base-nodes.md
+  - v1.0 Profiles:
+    - Profile 1 - MetabolomicsHub Dataset: mhd/v1_0/mhd-ms-nodes.md
+    - Profile 2 - Legacy Dataset: mhd/v1_0/mhd-legacy-nodes.md
+    - Empty Dataset: mhd/v1_0/mhd-base-nodes.md
+  - v0.1 Profiles:
+    - Profile 1 - MetabolomicsHub Dataset: mhd/v0_1/mhd-ms-nodes.md
+    - Profile 2 - Legacy Dataset: mhd/v0_1/mhd-legacy-nodes.md
+    - Empty Dataset: mhd/v0_1/mhd-base-nodes.md
 markdown_extensions:
 # Python Markdown
 - abbr:
@@ -88,7 +92,7 @@ markdown_extensions:
     custom_fences:
     - name: mermaid
       class: mermaid
-      format: !!python/name:mermaid2.fence_mermaid_custom
+      format: !!python/name:mermaid2.fence_mermaid_custom ""
 - pymdownx.betterem:
 - pymdownx.caret:
 - pymdownx.inlinehilite:

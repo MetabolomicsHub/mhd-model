@@ -1,4 +1,4 @@
-# MHD Common Data Model v0.1
+# MHD Common Data Model v1.0
 
 *MHD Common Data Model* is a connected graph of nodes and edges. MHD Domain Objects and MHD Cv Term Objects define the graph nodes and MHD Relationship Object (including both external and embedded relationships) define the edges. This graph-based structure allows for flexible, modular, structured, and consistent representation of metabolomics datasets.
 
@@ -12,27 +12,27 @@ Each of *MHD Domain Objects* corresponds to a concept commonly used in metabolom
 
 List of MHD Domain Objects:
 
-- [Study](mhd-ms-nodes.md#study)
-- [Publication](mhd-ms-nodes.md#publication)
-- [Person](mhd-ms-nodes.md#person)
-- [Organization](mhd-ms-nodes.md#organization)
-- [Project](mhd-ms-nodes.md#project)
-- [Factor Definition](mhd-ms-nodes.md#factor-definition)
-- [Protocol](mhd-ms-nodes.md#protocol)
-- [Parameter Definition](mhd-ms-nodes.md#parameter-definition)
-- [Metadata File](mhd-ms-nodes.md#metadata-file)
-- [Raw Data File](mhd-ms-nodes.md#raw-data-file)
-- [Derived Data File](mhd-ms-nodes.md#derived-data-file)
-- [Result File](mhd-ms-nodes.md#result-file)
-- [Supplementary File](mhd-ms-nodes.md#supplementary-file)
-- [Metabolite](mhd-ms-nodes.md#metabolite)
-- [Assay](mhd-ms-nodes.md#assay)
-- [Subject](mhd-ms-nodes.md#subject)
-- [Specimen](mhd-ms-nodes.md#specimen)
-- [Sample](mhd-ms-nodes.md#sample)
-- [Characteristic Definition](mhd-ms-nodes.md#characteristic-definition)
-- [Sample Run](mhd-ms-nodes.md#sample-run)
-- [Sample Run Configuration](mhd-ms-nodes.md#sample-run-configuration)
+- [Study](v1_0/mhd-ms-nodes.md#study)
+- [Publication](v1_0/mhd-ms-nodes.md#publication)
+- [Person](v1_0/mhd-ms-nodes.md#person)
+- [Organization](v1_0/mhd-ms-nodes.md#organization)
+- [Project](v1_0/mhd-ms-nodes.md#project)
+- [Factor Definition](v1_0/mhd-ms-nodes.md#factor-definition)
+- [Protocol](v1_0/mhd-ms-nodes.md#protocol)
+- [Parameter Definition](v1_0/mhd-ms-nodes.md#parameter-definition)
+- [Metadata File](v1_0/mhd-ms-nodes.md#metadata-file)
+- [Raw Data File](v1_0/mhd-ms-nodes.md#raw-data-file)
+- [Derived Data File](v1_0/mhd-ms-nodes.md#derived-data-file)
+- [Result File](v1_0/mhd-ms-nodes.md#result-file)
+- [Supplementary File](v1_0/mhd-ms-nodes.md#supplementary-file)
+- [Metabolite](v1_0/mhd-ms-nodes.md#metabolite)
+- [Assay](v1_0/mhd-ms-nodes.md#assay)
+- [Subject](v1_0/mhd-ms-nodes.md#subject)
+- [Specimen](v1_0/mhd-ms-nodes.md#specimen)
+- [Sample](v1_0/mhd-ms-nodes.md#sample)
+- [Characteristic Definition](v1_0/mhd-ms-nodes.md#characteristic-definition)
+- [Sample Run](v1_0/mhd-ms-nodes.md#sample-run)
+- [Sample Run Configuration](v1_0/mhd-ms-nodes.md#sample-run-configuration)
 
 The following properties are common for all  *MHD Domain Objects*.
 

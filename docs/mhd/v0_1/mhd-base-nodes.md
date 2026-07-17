@@ -1,32 +1,22 @@
-# MetabolomicsHub Common Data Model Nodes - MHD Legacy Profile
+# MetabolomicsHub Common Data Model Nodes - MHD Base Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a>
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.schema.json</a> 
 
-## Required Nodes & Relationships
+## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
-<code>Characteristic Definition, Metadata File, Person, Study</code>
+<code>Study</code>
 
  **Required MHD CV Terms**
 
-<code>Characteristic Type, Characteristic Value, Data Provider</code>
+<code>Data Provider</code>
 
 The following graph shows only required nodes and required relationships. Relationships that start with 'embedded - ' show required node property.
 
 ``` mermaid
 graph LR
-  Characteristic_Definition[Characteristic Definition] ==>|embedded - characteristic_type_ref| Characteristic_Type[Characteristic Type];
-  Study[Study] ==>|embedded - created_by_ref| Data_Provider[Data Provider];
-  Characteristic_Definition[Characteristic Definition] ==>|has-type| Characteristic_Type[Characteristic Type];
-  Characteristic_Definition[Characteristic Definition] ==>|used-in| Study[Study];
-  Metadata_File[Metadata File] ==>|describes| Study[Study];
   Study[Study] ==>|provided-by| Data_Provider[Data Provider];
-  Study[Study] ==>|has-characteristic-definition| Characteristic_Definition[Characteristic Definition];
-  Study[Study] ==>|has-metadata-file| Metadata_File[Metadata File];
-  Study[Study] ==>|submitted-by| Person[Person];
-  Characteristic_Type[Characteristic Type] ==>|type-of| Characteristic_Definition[Characteristic Definition];
-  Characteristic_Value[Characteristic Value] ==>|instance-of| Characteristic_Definition[Characteristic Definition];
   Data_Provider[Data Provider] ==>|provides| Study[Study];
 ```
 
@@ -34,51 +24,22 @@ graph LR
 
 |Source Node|Relationship|Target Node|Min|Max|
 |-----------|------------|-----------|---|---|
-|Characteristic Definition|[embedded] - characteristic_type_ref|Characteristic Type|1|1|
-|Characteristic Definition|has-type|Characteristic Type|1|1|
-|Characteristic Definition|used-in|Study|1|N (unbounded)|
-|Characteristic Type|type-of|Characteristic Definition|1|N (unbounded)|
-|Characteristic Value|instance-of|Characteristic Definition|1|N (unbounded)|
 |Data Provider|provides|Study|1|1|
-|Metadata File|describes|Study|1|1|
-|Study|[embedded] - created_by_ref|Data Provider|1|1|
-|Study|has-characteristic-definition|Characteristic Definition|1|N (unbounded)|
-|Study|has-metadata-file|Metadata File|1|N (unbounded)|
 |Study|provided-by|Data Provider|1|1|
-|Study|submitted-by|Person|1|N (unbounded)|
 
 **Required Node Properties**
 
 |Source Node|Property Name|
 |-----------|------------|
-|characteristic-definition|characteristic_type_ref|
-|characteristic-definition|name|
-|characteristic-type|name|
 |data-provider|value|
-|metadata-file|name|
-|metadata-file|url_list|
-|person|full_name|
-|study|created_by_ref|
-|study|dataset_url_list|
-|study|description|
-|study|public_release_date|
+|study|mhd_identifier|
 |study|repository_identifier|
-|study|submission_date|
-|study|title|
-
-**Additional Requirements**
-
-The following nodes are required with the specified value.
-
-|Source Node|Minimum Node Count|Property / Relationship|Value|
-|-----------|-----------|------------|------------|
-|characteristic-definition|1|characteristic_type_ref.name|[NCIT, NCIT:C14250, Organism]|
 
 ## MHD Domain Objects
 
 ### Assay
 
-Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -95,8 +56,8 @@ Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N 
 |**metadata_file_ref**|optional|<code>*MhdObjectId*<code>|Target node type: <code>**metadata-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**metadata-file**</code></code>|
 |**technology_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
 |**assay_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
-|**measurement_type_ref**|optional|<code>*CvTermObjectId*<code>|Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
-|**omics_type_ref**|optional|<code>*CvTermObjectId*<code>|Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
+|**measurement_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MS, MS:1003904, untargeted analysis],<br>* [MS, MS:1003905, targeted analysis],<br>* [MS, MS:1003906, semi-targeted analysis]</code>|
+|**omics_type_ref**|optional|<code>*CvTermObjectId*<code>|Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [wikidata, wikidata:Q115452339, exposomics]</code>|
 |**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 |**sample_run_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
 
@@ -107,7 +68,7 @@ Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N 
 |------|------------|------------|------|---|---|-----------|
 |assay|described-as|describes|descriptor|0|N|A link to a descriptor that describes the assay.|
 |assay|follows|used-in|protocol|0|N|A link to a protocol conducted in assay.|
-|assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives|
+|assay|part-of|has-assay|study|0|N|A link to a study that the assay was conducted as part of it to generate data addressing study objectives|
 
 
 **Embedded Relationships**: <code>descriptor, metadata-file, protocol, sample-run</code>
@@ -123,7 +84,7 @@ Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N 
 
 ### Characteristic Definition
 
-Characteristic Definition node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Characteristic Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -144,9 +105,9 @@ Characteristic Definition node is **required in the MHD Legacy Profile.** <code>
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-definition|has-instance|instance-of|characteristic-value|0|N||
+|characteristic-definition|has-instance|instance-of|characteristic-value|1|N||
 |characteristic-definition|has-type|type-of|characteristic-type|1|1||
-|characteristic-definition|used-in|has-characteristic-definition|study|1|N||
+|characteristic-definition|used-in|has-characteristic-definition|study|0|N||
 
 
 **Embedded Relationships**: <code>characteristic-type</code>
@@ -156,13 +117,13 @@ Characteristic Definition node is **required in the MHD Legacy Profile.** <code>
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-type|type-of|has-type|characteristic-definition|1|N||
-|characteristic-value|instance-of|has-instance|characteristic-definition|1|N||
-|study|has-characteristic-definition|used-in|characteristic-definition|1|N|**Required min count in the dataset: 1.**|
+|characteristic-type|type-of|has-type|characteristic-definition|0|N||
+|characteristic-value|instance-of|has-instance|characteristic-definition|0|N||
+|study|has-characteristic-definition|used-in|characteristic-definition|0|N||
 
 ### Derived Data File
 
-Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Derived Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -173,14 +134,14 @@ Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 |**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|**required**|<code>*str*<code>||
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**format_ref**|**required**|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>0</code><br>Validation Rule:<br> <code></code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
@@ -202,7 +163,7 @@ Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 
 ### Factor Definition
 
-Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Factor Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -223,9 +184,9 @@ Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-definition|has-instance|instance-of|factor-value|0|N||
-|factor-definition|has-type|type-of|factor-type|1|1||
-|factor-definition|used-in|has-factor-definition|study|1|N||
+|factor-definition|has-instance|instance-of|factor-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Disease)**<br>[Source factor_type_ref.name = disease]<br>Ontology Sources:MONDO, MP, SNOMED<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
+|factor-definition|has-type|type-of|factor-type|0|N||
+|factor-definition|used-in|has-factor-definition|study|0|N||
 
 
 **Embedded Relationships**: <code>factor-type</code>
@@ -235,13 +196,13 @@ Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-type|type-of|has-type|factor-definition|1|N||
+|factor-type|type-of|has-type|factor-definition|0|N||
 |factor-value|instance-of|has-instance|factor-definition|1|N||
 |study|has-factor-definition|used-in|factor-definition|0|N||
 
 ### Metabolite
 
-Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -261,7 +222,7 @@ Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |metabolite|described-as|describes|descriptor|0|N||
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No</code><br>-----|
+|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No,<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
 |metabolite|measured-in|measures|raw-data-file|0|N||
 |metabolite|reported-in|reports|study|1|N||
 |metabolite|reported-in|reports|metadata-file|0|N||
@@ -281,7 +242,7 @@ Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 
 ### Metadata File
 
-Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -297,7 +258,7 @@ Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**format_ref**|**required**|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
@@ -307,7 +268,7 @@ Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |metadata-file|described-as|describes|descriptor|0|N||
-|metadata-file|describes|has-metadata-file|study|1|1|**Required min count in the dataset: 1.**|
+|metadata-file|describes|has-metadata-file|study|1|1||
 |metadata-file|referenced-in|references|metadata-file|0|N||
 |metadata-file|references|referenced-in|derived-data-file|0|N||
 |metadata-file|references|referenced-in|raw-data-file|0|N||
@@ -326,12 +287,12 @@ Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 |metadata-file|referenced-in|references|metadata-file|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
-|study|has-metadata-file|describes|metadata-file|1|N||
+|study|has-metadata-file|describes|metadata-file|0|N||
 |supplementary-file|referenced-in|references|metadata-file|0|N||
 
 ### Organization
 
-Organization node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Organization node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -344,7 +305,7 @@ Organization node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxi
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|**required**|<code>*str*<code>||
-|**name**|**required**|<code>*str*<code>|Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**name**|**required**|<code>*str*<code>|Minimum length: <code>10</code><br>Validation Rule:<br> <code>Min Length: 10, Required</code>|
 |**ror_id**|optional|<code>*str*<code>||
 |**department**|optional|<code>*str*<code>||
 |**unit**|optional|<code>*str*<code>||
@@ -376,7 +337,7 @@ Organization node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxi
 
 ### Parameter Definition
 
-Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -397,9 +358,9 @@ Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum:
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-definition|has-instance|instance-of|parameter-value|0|N||
+|parameter-definition|has-instance|instance-of|parameter-value|0|N|Target Validation Rule:<br><code>-----<br>**Conditional - (Mass spectrometry instrument)**<br>[Source parameter_type_ref.name = mass spectrometry instrument]<br>Allowed Parent CV Terms:<br>* [MS, MS:1000031, instrument model]<br>Allow parent (root) CV Term: No<br>Excluded CV Terms: ^.*instrument model<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |parameter-definition|has-type|type-of|parameter-type|1|1||
-|parameter-definition|used-in|has-parameter-definition|protocol|1|N||
+|parameter-definition|used-in|has-parameter-definition|protocol|0|N||
 
 
 **Embedded Relationships**: <code>parameter-type</code>
@@ -409,13 +370,13 @@ Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum:
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-type|type-of|has-type|parameter-definition|1|N||
+|parameter-type|type-of|has-type|parameter-definition|0|N||
 |parameter-value|instance-of|has-instance|parameter-definition|1|N||
 |protocol|has-parameter-definition|used-in|parameter-definition|0|N||
 
 ### Person
 
-Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Person node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -430,7 +391,7 @@ Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum
 |**repository_identifier**|**required**|<code>*str*<code>||
 |**full_name**|**required**|<code>*str*<code>|Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code>|
-|**email_list**|optional|<code>*list[EmailStr]*<code>|Email addresses of person|
+|**email_list**|**required**|<code>*list[EmailStr]*<code>|Email addresses of person<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**phone_list**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>"['+449340917271', '00449340917271']"</code>|
 |**address_list**|optional|<code>*list[str]*<code>|Addresses of person|
 
@@ -445,7 +406,7 @@ Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum
 |person|contributes|has-contributor|study|0|N||
 |person|described-as|describes|descriptor|0|N||
 |person|principal-investigator-of|has-principal-investigator|study|0|N||
-|person|submits|submitted-by|study|0|N|**Required min count in the dataset: 1.**|
+|person|submits|submitted-by|study|0|N||
 
 
 **Reverse Node Relationships**
@@ -458,11 +419,11 @@ Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum
 |publication|has-author|author-of|person|0|N||
 |study|has-contributor|contributes|person|0|N||
 |study|has-principal-investigator|principal-investigator-of|person|0|N||
-|study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
+|study|submitted-by|submits|person|0|N||
 
 ### Project
 
-Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Project node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -474,7 +435,7 @@ Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**title**|**required**|<code>*str*<code>|Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
+|**title**|**required**|<code>*str*<code>|Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**repository_identifier**|**required**|<code>*str*<code>||
 |**description**|optional|<code>*str*<code>||
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>||
@@ -508,7 +469,7 @@ Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 
 ### Protocol
 
-Protocol node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -547,13 +508,13 @@ Protocol node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum:
 |------|------------|------------|------|---|---|-----------|
 |assay|follows|used-in|protocol|0|N|A link to a protocol conducted in assay.|
 |descriptor|describes|described-as|protocol|0|N||
-|parameter-definition|used-in|has-parameter-definition|protocol|1|N||
+|parameter-definition|used-in|has-parameter-definition|protocol|0|N||
 |protocol-type|type-of|has-type|protocol|1|N||
 |study|has-protocol|used-in|protocol|0|N||
 
 ### Publication
 
-Publication node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Publication node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -592,7 +553,7 @@ Publication node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 
 ### Raw Data File
 
-Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -610,7 +571,7 @@ Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Max
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>0</code><br>Validation Rule:<br> <code></code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
@@ -634,7 +595,7 @@ Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Max
 
 ### Result File
 
-Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -652,7 +613,7 @@ Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
 |**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rule:<br> <code>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)<br>Minimum length: <code>0</code><br>Validation Rule:<br> <code></code>|
+|**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
 **Node Relationships**
@@ -676,7 +637,7 @@ Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 
 ### Sample
 
-Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Sample node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -718,7 +679,7 @@ Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N
 
 ### Sample Run
 
-Sample Run node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Sample Run node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -732,9 +693,9 @@ Sample Run node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|**required**|<code>*str*<code>||
 |**name**|optional|<code>*str*<code>||
-|**sample_ref**|optional|<code>*MhdObjectId*<code>|Target node type: <code>**sample**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample**</code></code>|
+|**sample_ref**|**required**|<code>*MhdObjectId*<code>|Target node type: <code>**sample**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample**</code></code>|
 |**sample_run_configuration_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**sample-run-configuration**</code>|
-|**raw_data_file_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**raw-data-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**raw-data-file**</code></code>|
+|**raw_data_file_refs**|**required**|<code>*list[MhdObjectId]*<code>|Target node type: <code>**raw-data-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**raw-data-file**</code></code>|
 |**derived_data_file_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**derived-data-file**</code>|
 |**result_file_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**result-file**</code>|
 |**supplementary_file_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**supplementary-file**</code>|
@@ -758,7 +719,7 @@ Sample Run node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 
 ### Sample Run Configuration
 
-Sample Run Configuration node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Sample Run Configuration node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -793,7 +754,7 @@ Sample Run Configuration node is optional in the  MHD Legacy Profile. <code>Mini
 
 ### Specimen
 
-Specimen node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Specimen node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -832,7 +793,7 @@ Specimen node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum:
 
 ### Study
 
-Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: 1 </code>
+Study node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -840,22 +801,22 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |-------------|---------|----|-----------|
 |**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**study**</code>|
-|**created_by_ref**|**required**|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rules:<br> <code>Target node type: <code>**data-provider**</code><br>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rules:<br> <code>Target node type: <code>**data-provider**</code><br>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**mhd_identifier**|optional|<code>*str*<code>||
+|**mhd_identifier**|**required**|<code>*str*<code>|Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
 |**repository_identifier**|**required**|<code>*str*<code>|Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>||
-|**title**|**required**|<code>*str*<code>|Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
-|**description**|**required**|<code>*str*<code>|Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
-|**submission_date**|**required**|<code>*datetime*<code>||
-|**public_release_date**|**required**|<code>*datetime*<code>||
+|**title**|optional|<code>*str*<code>||
+|**description**|optional|<code>*str*<code>||
+|**submission_date**|optional|<code>*datetime*<code>||
+|**public_release_date**|optional|<code>*datetime*<code>||
 |**license**|optional|<code>*HttpUrl*<code>|<br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>||
-|**dataset_url_list**|**required**|<code>*list[AnyUrl]*<code>||
+|**dataset_url_list**|optional|<code>*list[AnyUrl]*<code>||
 |**related_dataset_list**|optional|<code>*list[KeyValue]*<code>||
-|**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**protocol**</code>|
+|**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 
 
 **Node Relationships**
@@ -865,11 +826,11 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |study|described-as|describes|descriptor|0|N||
 |study|funded-by|funds|organization|0|N||
 |study|has-assay|part-of|assay|0|N||
-|study|has-characteristic-definition|used-in|characteristic-definition|1|N|**Required min count in the dataset: 1.**|
+|study|has-characteristic-definition|used-in|characteristic-definition|0|N||
 |study|has-contributor|contributes|person|0|N||
 |study|has-derived-data-file|created-in|derived-data-file|0|N||
 |study|has-factor-definition|used-in|factor-definition|0|N||
-|study|has-metadata-file|describes|metadata-file|1|N||
+|study|has-metadata-file|describes|metadata-file|0|N||
 |study|has-principal-investigator|principal-investigator-of|person|0|N||
 |study|has-protocol|used-in|protocol|0|N||
 |study|has-publication|describes|publication|0|N||
@@ -877,34 +838,34 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |study|has-repository-keyword|keyword-of|descriptor|0|N||
 |study|has-result-file|created-in|result-file|0|N||
 |study|has-sample|used-in|sample|0|N||
-|study|has-submitter-keyword|keyword-of|descriptor|0|N||
+|study|has-submitter-keyword|keyword-of|descriptor|0|N|Target Validation Rule:<br><code>-----<br>Allow any valid CV Term<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''<br>Allowed Other Sources: wikidata, ILX</code><br>-----|
 |study|has-supplementary-file|created-in|supplementary-file|0|N||
 |study|part-of|has-study|project|0|N||
 |study|provided-by|provides|data-provider|1|1||
 |study|reports|reported-in|metabolite|0|N||
-|study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
+|study|submitted-by|submits|person|0|N||
 
 
-**Embedded Relationships**: <code>data-provider</code>
+**Embedded Relationships**: <code>data-provider, protocol</code>
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives|
-|characteristic-definition|used-in|has-characteristic-definition|study|1|N||
+|assay|part-of|has-assay|study|0|N|A link to a study that the assay was conducted as part of it to generate data addressing study objectives|
+|characteristic-definition|used-in|has-characteristic-definition|study|0|N||
 |data-provider|provides|provided-by|study|1|1||
 |derived-data-file|created-in|has-derived-data-file|study|1|1||
 |descriptor|describes|described-as|study|0|N||
 |descriptor|keyword-of|has-repository-keyword|study|0|N||
-|factor-definition|used-in|has-factor-definition|study|1|N||
+|factor-definition|used-in|has-factor-definition|study|0|N||
 |metabolite|reported-in|reports|study|1|N||
-|metadata-file|describes|has-metadata-file|study|1|1|**Required min count in the dataset: 1.**|
+|metadata-file|describes|has-metadata-file|study|1|1||
 |organization|funds|funded-by|study|0|N||
 |person|contributes|has-contributor|study|0|N||
 |person|principal-investigator-of|has-principal-investigator|study|0|N||
-|person|submits|submitted-by|study|0|N|**Required min count in the dataset: 1.**|
+|person|submits|submitted-by|study|0|N||
 |project|has-study|part-of|study|0|N||
 |protocol|used-in|has-protocol|study|1|N||
 |publication|describes|has-publication|study|0|1||
@@ -915,7 +876,7 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 
 ### Subject
 
-Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Subject node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -948,7 +909,7 @@ Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-value|value-of|has-characteristic-value|subject|0|N||
+|characteristic-value|value-of|has-characteristic-value|subject|1|N||
 |descriptor|describes|described-as|subject|0|N||
 |factor-value|value-of|has-factor-value|subject|0|N||
 |sample|derived-from|source-of|subject|1|N||
@@ -956,7 +917,7 @@ Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 
 ### Supplementary File
 
-Supplementary File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Supplementary File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -998,7 +959,7 @@ Supplementary File node is optional in the  MHD Legacy Profile. <code>Minimum: 0
 
 ### Characteristic Type
 
-Characteristic Type node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Characteristic Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1015,7 +976,7 @@ Characteristic Type node is **required in the MHD Legacy Profile.** <code>Minimu
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-type|type-of|has-type|characteristic-definition|1|N||
+|characteristic-type|type-of|has-type|characteristic-definition|0|N||
 
 
 **Reverse Node Relationships**
@@ -1026,7 +987,7 @@ Characteristic Type node is **required in the MHD Legacy Profile.** <code>Minimu
 
 ### Characteristic Value
 
-Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Characteristic Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1045,8 +1006,8 @@ Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minim
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-value|instance-of|has-instance|characteristic-definition|1|N||
-|characteristic-value|value-of|has-characteristic-value|subject|0|N||
+|characteristic-value|instance-of|has-instance|characteristic-definition|0|N||
+|characteristic-value|value-of|has-characteristic-value|subject|1|N||
 |characteristic-value|value-of|has-characteristic-value|specimen|0|N||
 |characteristic-value|value-of|has-characteristic-value|sample|0|N||
 
@@ -1055,14 +1016,14 @@ Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minim
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|characteristic-definition|has-instance|instance-of|characteristic-value|0|N||
+|characteristic-definition|has-instance|instance-of|characteristic-value|1|N||
 |sample|has-characteristic-value|value-of|characteristic-value|0|N||
 |specimen|has-characteristic-value|value-of|characteristic-value|0|N||
 |subject|has-characteristic-value|value-of|characteristic-value|0|N||
 
 ### Data Provider
 
-Data Provider node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: 1 </code>
+Data Provider node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1092,7 +1053,7 @@ Data Provider node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 
 ### Descriptor
 
-Descriptor node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Descriptor node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1157,7 +1118,7 @@ Descriptor node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 
 ### Factor Type
 
-Factor Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Factor Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1174,18 +1135,18 @@ Factor Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-type|type-of|has-type|factor-definition|1|N||
+|factor-type|type-of|has-type|factor-definition|0|N||
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|factor-definition|has-type|type-of|factor-type|1|1||
+|factor-definition|has-type|type-of|factor-type|0|N||
 
 ### Factor Value
 
-Factor Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Factor Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1220,7 +1181,7 @@ Factor Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxi
 
 ### Metabolite Identifier
 
-Metabolite Identifier node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Metabolite Identifier node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1248,7 +1209,7 @@ Metabolite Identifier node is optional in the  MHD Legacy Profile. <code>Minimum
 
 ### Parameter Type
 
-Parameter Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Parameter Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1265,7 +1226,7 @@ Parameter Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Ma
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|parameter-type|type-of|has-type|parameter-definition|1|N||
+|parameter-type|type-of|has-type|parameter-definition|0|N||
 
 
 **Reverse Node Relationships**
@@ -1276,7 +1237,7 @@ Parameter Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Ma
 
 ### Parameter Value
 
-Parameter Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Parameter Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1306,7 +1267,7 @@ Parameter Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, M
 
 ### Protocol Type
 
-Protocol Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Protocol Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1342,6 +1303,7 @@ graph LR
   Assay[Assay] ==>|described-as| Descriptor[Descriptor];
   Assay[Assay] ==>|part-of| Study[Study];
   Assay[Assay] ==>|follows| Protocol[Protocol];
+  Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==>|has-type| Characteristic_Type[Characteristic Type];
   Characteristic_Definition[Characteristic Definition] ==>|used-in| Study[Study];

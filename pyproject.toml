@@ -142,3 +142,13 @@ forbidden_modules = [
 ]
 ignore_imports = [
 ]
+
+[[tool.importlinter.contracts]]
+name = "Version independence"
+type = "independence"
+modules = [
+   "mhd_model.model.v0_1",
+   "mhd_model.model.v1_0",
+]
+ignore_imports = [
+]

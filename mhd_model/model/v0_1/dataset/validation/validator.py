@@ -7,8 +7,16 @@ import jsonschema
 import jsonschema.protocols
 from jsonschema import protocols, validators
 
-from mhd_model.convertors.announcement.convertor import create_announcement_file
+from mhd_model.convertors.announcement.v0_1.legacy.mhd2announce import (
+    create_legacy_announcement_file,
+)
+from mhd_model.convertors.announcement.v0_1.ms.mhd2announce import (
+    create_ms_announcement_file,
+)
 from mhd_model.model.definitions import (
+    ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
+    ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
+    MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
     MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
     MHD_MODEL_V0_1_MS_PROFILE_NAME,
     SUPPORTED_SCHEMA_MAP,
@@ -16,6 +24,7 @@ from mhd_model.model.definitions import (
 from mhd_model.model.v0_1.announcement.validation.validator import (
     MhdAnnouncementFileValidator,
 )
+from mhd_model.model.v0_1.dataset.profiles.base.profile import MhDatasetBaseProfile
 from mhd_model.model.v0_1.dataset.profiles.legacy.graph_validation import (
     MHD_LEGACY_PROFILE_V0_1,
 )
@@ -49,6 +58,31 @@ def validate_mhd_file_json(json_data: dict[str, Any]):
         validation_errors.append((json_path(x.absolute_path), x))
     validation_errors.sort(key=lambda x: x[0])
     return validation_errors
+
+
+def create_announcement_file(
+    mhd_file: dict[str, Any], mhd_file_url: str, announcement_file_path: str
+):
+    try:
+        mhd_dataset = MhDatasetBaseProfile.model_validate(mhd_file)
+    except Exception as e:
+        raise e
+    announcement_schema_name, announcement_profile_uri = (
+        MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
+            mhd_dataset.profile_uri, (None, None)
+        )
+    )
+    if not announcement_schema_name or not announcement_profile_uri:
+        raise ValueError("Invalid profile URI")
+    if announcement_profile_uri == ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME:
+        return create_ms_announcement_file(
+            mhd_file, mhd_file_url, announcement_file_path
+        )
+    elif announcement_profile_uri == ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME:
+        return create_legacy_announcement_file(
+            mhd_file, mhd_file_url, announcement_file_path
+        )
+    raise ValueError("Invalid profile URI")
 
 
 def validate_mhd_model(
