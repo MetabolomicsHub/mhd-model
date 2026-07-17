@@ -972,6 +972,18 @@
       "title": "Dataset Url List",
       "type": "array"
     },
+    "doi": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Doi"
+    },
     "license": {
       "anyOf": [
         {

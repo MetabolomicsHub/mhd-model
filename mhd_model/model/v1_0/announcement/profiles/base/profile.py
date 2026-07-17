@@ -90,7 +90,7 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
     repository_identifier: Annotated[str, Field()]
     mhd_metadata_file_url: Annotated[AnyUrl, Field()]
     dataset_url_list: Annotated[list[AnyUrl], Field(min_length=1)]
-
+    doi: Annotated[None | str, Field()] = None
     license: Annotated[None | HttpUrl | str, Field()] = None
     title: Annotated[str, Field(min_length=25)]
     description: Annotated[None | str, Field(min_length=60)]
