@@ -16,4 +16,4 @@ Building on the successful models of ProteomeXchange and the International Nucle
 
 ## MetabolomicsHub Data File Standards
 
-* [MHD Common Data Model v1.0](mhd/index.md) (Current version: 0.1.90)
+* [MHD Common Data Model v1.0](mhd/index.md) (Current version: 0.1.91)
