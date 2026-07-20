@@ -135,6 +135,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the metadata file describing the assay.",
           "title": "Metadata File Ref"
         },
         "technology_type_ref": {
@@ -148,6 +149,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the technology type CV term object.",
           "title": "Technology Type Ref"
         },
         "assay_type_ref": {
@@ -161,6 +163,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the assay type CV term object.",
           "title": "Assay Type Ref"
         },
         "measurement_type_ref": {
@@ -174,6 +177,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the measurement type CV term object.",
           "title": "Measurement Type Ref"
         },
         "omics_type_ref": {
@@ -187,6 +191,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the omics type CV term object.",
           "title": "Omics Type Ref"
         },
         "protocol_refs": {
@@ -220,6 +225,7 @@
             }
           ],
           "default": null,
+          "description": "List of sample run object IDs associated with the assay.",
           "title": "Sample Run Refs"
         }
       },
@@ -342,6 +348,7 @@
       "type": "object"
     },
     "BasicAssay": {
+      "description": "Basic analytical assay node representing an experimental measurement procedure.",
       "properties": {
         "id": {
           "anyOf": [
@@ -475,6 +482,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the metadata file describing the assay.",
           "title": "Metadata File Ref"
         },
         "technology_type_ref": {
@@ -488,6 +496,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the technology type CV term object.",
           "title": "Technology Type Ref"
         },
         "assay_type_ref": {
@@ -501,6 +510,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the assay type CV term object.",
           "title": "Assay Type Ref"
         },
         "measurement_type_ref": {
@@ -514,6 +524,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the measurement type CV term object.",
           "title": "Measurement Type Ref"
         },
         "omics_type_ref": {
@@ -527,6 +538,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the omics type CV term object.",
           "title": "Omics Type Ref"
         },
         "protocol_refs": {
@@ -637,6 +649,7 @@
       "type": "object"
     },
     "CvTermObject": {
+      "description": "Controlled Vocabulary (CV) term object node in the dataset graph.",
       "properties": {
         "id": {
           "anyOf": [
@@ -766,6 +779,7 @@
       "type": "object"
     },
     "CvTermValueObject": {
+      "description": "Controlled Vocabulary (CV) term value object node with quantitative or string value.",
       "properties": {
         "id": {
           "anyOf": [
@@ -980,6 +994,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -1268,6 +1283,7 @@
             }
           ],
           "default": null,
+          "description": "Name or chemical label of the metabolite.",
           "title": "Name"
         }
       },
@@ -1278,6 +1294,7 @@
       ]
     },
     "MetadataFile": {
+      "description": "Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples.",
       "properties": {
         "id": {
           "anyOf": [
@@ -1384,6 +1401,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -1591,6 +1609,7 @@
       "type": "object"
     },
     "Organization": {
+      "description": "An institution, company, university, or department associated with a study or contact.",
       "properties": {
         "id": {
           "anyOf": [
@@ -1697,10 +1716,12 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the organization in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
         "name": {
+          "description": "Name of the organization.",
           "minLength": 2,
           "title": "Name",
           "type": "string"
@@ -1715,6 +1736,7 @@
             }
           ],
           "default": null,
+          "description": "Research Organization Registry (ROR) identifier.",
           "title": "Ror Id"
         },
         "department": {
@@ -1727,6 +1749,7 @@
             }
           ],
           "default": null,
+          "description": "Department within the organization.",
           "title": "Department"
         },
         "unit": {
@@ -1739,6 +1762,7 @@
             }
           ],
           "default": null,
+          "description": "Sub-unit or division within the organization or department.",
           "title": "Unit"
         },
         "address": {
@@ -1751,6 +1775,7 @@
             }
           ],
           "default": null,
+          "description": "Postal address of the organization.",
           "title": "Address"
         }
       },
@@ -1765,6 +1790,7 @@
       ]
     },
     "Person": {
+      "description": "An individual human being (e.g. author, submitter, principal investigator).",
       "properties": {
         "id": {
           "anyOf": [
@@ -1871,6 +1897,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the person in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -1975,6 +2002,7 @@
       ]
     },
     "Project": {
+      "description": "An overarching research project encompassing one or more studies.",
       "properties": {
         "id": {
           "anyOf": [
@@ -2091,9 +2119,11 @@
             }
           ],
           "default": null,
+          "description": "Title of the project.",
           "title": "Title"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the project in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -2107,6 +2137,7 @@
             }
           ],
           "default": null,
+          "description": "Summary description of the project goals and scope.",
           "title": "Description"
         },
         "grant_identifier_list": {
@@ -2124,6 +2155,7 @@
             }
           ],
           "default": null,
+          "description": "List of grant identifiers funding the project.",
           "title": "Grant Identifier List"
         },
         "doi": {
@@ -2138,6 +2170,7 @@
             }
           ],
           "default": null,
+          "description": "Digital Object Identifier (DOI) assigned to the project.",
           "title": "Doi"
         }
       },
@@ -2151,6 +2184,7 @@
       ]
     },
     "Protocol": {
+      "description": "A defined and standardized procedure followed to collect, prepare, or analyze samples.",
       "properties": {
         "id": {
           "anyOf": [
@@ -2257,6 +2291,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the protocol in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -2270,6 +2305,7 @@
             }
           ],
           "default": null,
+          "description": "Name or title of the protocol.",
           "title": "Name"
         },
         "protocol_type_ref": {
@@ -2283,6 +2319,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the protocol type CV term object.",
           "title": "Protocol Type Ref"
         },
         "description": {
@@ -2295,6 +2332,7 @@
             }
           ],
           "default": null,
+          "description": "Detailed description of the protocol procedure.",
           "title": "Description"
         },
         "parameter_definition_refs": {
@@ -2311,6 +2349,7 @@
             }
           ],
           "default": null,
+          "description": "List of parameter definition object IDs associated with the protocol.",
           "title": "Parameter Definition Refs"
         }
       },
@@ -2431,11 +2470,13 @@
           "title": "Label"
         },
         "title": {
+          "description": "Title of the publication.",
           "minLength": 10,
           "title": "Title",
           "type": "string"
         },
         "doi": {
+          "description": "Digital Object Identifier (DOI) for the publication.",
           "pattern": "^10[.].+/.+$",
           "title": "DOI",
           "type": "string"
@@ -2452,6 +2493,7 @@
             }
           ],
           "default": null,
+          "description": "PubMed unique identifier (PMID) of the publication.",
           "title": "Pubmed Id"
         },
         "author_list": {
@@ -2471,6 +2513,7 @@
             }
           ],
           "default": null,
+          "description": "List of publication authors.",
           "title": "Author List"
         }
       },
@@ -2632,6 +2675,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -2893,6 +2937,7 @@
       "type": "object"
     },
     "ResultFile": {
+      "description": "Processed result file (e.g. quantification or identification matrix).",
       "properties": {
         "id": {
           "anyOf": [
@@ -2999,6 +3044,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -3120,6 +3166,7 @@
       "type": "object"
     },
     "Sample": {
+      "description": "A biological sample prepared for analytical measurement.",
       "properties": {
         "id": {
           "anyOf": [
@@ -3235,9 +3282,11 @@
             }
           ],
           "default": null,
+          "description": "Name or identifier of the sample.",
           "title": "Name"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the sample in the repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -3254,6 +3303,7 @@
             }
           ],
           "default": null,
+          "description": "List of additional secondary identifiers for the sample.",
           "title": "Additional Identifier List"
         }
       },
@@ -3267,6 +3317,7 @@
       ]
     },
     "SampleRun": {
+      "description": "An analytical run representing the measurement of a sample on an instrument.",
       "properties": {
         "id": {
           "anyOf": [
@@ -3373,6 +3424,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the sample run in the repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -3386,6 +3438,7 @@
             }
           ],
           "default": null,
+          "description": "Name or label of the sample run.",
           "title": "Name"
         },
         "sample_ref": {
@@ -3399,6 +3452,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the sample object measured in this run.",
           "title": "Sample Ref"
         },
         "sample_run_configuration_refs": {
@@ -3415,6 +3469,7 @@
             }
           ],
           "default": null,
+          "description": "List of configuration object IDs for the sample run.",
           "title": "Sample Run Configuration Refs"
         },
         "raw_data_file_refs": {
@@ -3431,6 +3486,7 @@
             }
           ],
           "default": null,
+          "description": "List of raw data file object IDs produced by the sample run.",
           "title": "Raw Data File Refs"
         },
         "derived_data_file_refs": {
@@ -3447,6 +3503,7 @@
             }
           ],
           "default": null,
+          "description": "List of derived data file object IDs generated from the sample run.",
           "title": "Derived Data File Refs"
         },
         "result_file_refs": {
@@ -3463,6 +3520,7 @@
             }
           ],
           "default": null,
+          "description": "List of result file object IDs produced from the sample run.",
           "title": "Result File Refs"
         },
         "supplementary_file_refs": {
@@ -3479,6 +3537,7 @@
             }
           ],
           "default": null,
+          "description": "List of supplementary file object IDs associated with the sample run.",
           "title": "Supplementary File Refs"
         }
       },
@@ -3492,6 +3551,7 @@
       ]
     },
     "SampleRunConfiguration": {
+      "description": "Configuration settings and instrument parameters used for a sample run.",
       "properties": {
         "id": {
           "anyOf": [
@@ -3598,6 +3658,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the sample run configuration in the repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -3612,6 +3673,7 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the protocol object defining the run configuration.",
           "title": "Protocol Ref"
         },
         "parameter_value_refs": {
@@ -3640,6 +3702,7 @@
             }
           ],
           "default": null,
+          "description": "List of parameter value object IDs specifying run parameters.",
           "title": "Parameter Value Refs"
         }
       },
@@ -3653,6 +3716,7 @@
       ]
     },
     "Specimen": {
+      "description": "A biological specimen collected from a subject.",
       "properties": {
         "id": {
           "anyOf": [
@@ -3768,9 +3832,11 @@
             }
           ],
           "default": null,
+          "description": "Name or identifier of the specimen.",
           "title": "Name"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the specimen in the repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -3787,6 +3853,7 @@
             }
           ],
           "default": null,
+          "description": "List of additional secondary identifiers for the specimen.",
           "title": "Additional Identifier List"
         }
       },
@@ -3800,6 +3867,7 @@
       ]
     },
     "Study": {
+      "description": "A biological research study or experiment comprising samples, protocols, and data.",
       "properties": {
         "id": {
           "anyOf": [
@@ -3915,9 +3983,11 @@
             }
           ],
           "default": null,
+          "description": "Unique MetabolomicsHub Data (MHD) identifier for the study.",
           "title": "Mhd Identifier"
         },
         "repository_identifier": {
+          "description": "Accession number or identifier in the source repository.",
           "minLength": 2,
           "title": "Repository Identifier",
           "type": "string"
@@ -3935,6 +4005,7 @@
             }
           ],
           "default": null,
+          "description": "List of additional database or secondary identifiers for the study.",
           "title": "Additional Identifier List"
         },
         "title": {
@@ -3947,6 +4018,7 @@
             }
           ],
           "default": null,
+          "description": "Title of the study.",
           "title": "Title"
         },
         "description": {
@@ -3959,6 +4031,7 @@
             }
           ],
           "default": null,
+          "description": "Detailed abstract or summary description of the study.",
           "title": "Description"
         },
         "submission_date": {
@@ -3972,6 +4045,7 @@
             }
           ],
           "default": null,
+          "description": "Date and time when the study was submitted.",
           "title": "Submission Date"
         },
         "public_release_date": {
@@ -3985,6 +4059,7 @@
             }
           ],
           "default": null,
+          "description": "Date and time when the study was publicly released.",
           "title": "Public Release Date"
         },
         "license": {
@@ -4000,6 +4075,7 @@
             }
           ],
           "default": null,
+          "description": "Data license or URL defining usage rights for the study.",
           "examples": [
             "https://creativecommons.org/publicdomain/zero/1.0/"
           ],
@@ -4020,6 +4096,7 @@
             }
           ],
           "default": null,
+          "description": "List of grant identifiers funding the study.",
           "title": "Grant Identifier List"
         },
         "dataset_url_list": {
@@ -4037,6 +4114,7 @@
             }
           ],
           "default": null,
+          "description": "List of dataset access or repository URLs.",
           "title": "Dataset Url List"
         },
         "related_dataset_list": {
@@ -4052,6 +4130,7 @@
             }
           ],
           "default": null,
+          "description": "List of related dataset key-value pairs.",
           "title": "Related Dataset List"
         },
         "protocol_refs": {
@@ -4068,6 +4147,7 @@
             }
           ],
           "default": null,
+          "description": "List of protocol object IDs used in the study.",
           "title": "Protocol Refs"
         }
       },
@@ -4082,6 +4162,7 @@
       ]
     },
     "Subject": {
+      "description": "An individual organism or subject from which biological samples are derived.",
       "properties": {
         "id": {
           "anyOf": [
@@ -4197,6 +4278,7 @@
             }
           ],
           "default": null,
+          "description": "Name or identifier of the subject.",
           "title": "Name"
         },
         "subject_type_ref": {
@@ -4210,9 +4292,11 @@
             }
           ],
           "default": null,
+          "description": "Reference ID to the subject type CV term object.",
           "title": "Subject Type Ref"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the subject in the repository.",
           "title": "Repository Identifier",
           "type": "string"
         },
@@ -4229,6 +4313,7 @@
             }
           ],
           "default": null,
+          "description": "List of additional secondary identifiers for the subject.",
           "title": "Additional Identifier List"
         }
       },
@@ -4242,6 +4327,7 @@
       ]
     },
     "SupplementaryFile": {
+      "description": "Supplementary document or asset file associated with the dataset.",
       "properties": {
         "id": {
           "anyOf": [
@@ -4348,6 +4434,7 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier",
           "type": "string"
         },

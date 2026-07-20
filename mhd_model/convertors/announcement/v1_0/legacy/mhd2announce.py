@@ -389,6 +389,7 @@ def create_legacy_announcement_file(
         description=study.description,
         submission_date=study.submission_date,
         public_release_date=study.public_release_date,
+        doi=study.doi,
         submitters=submitters or None,
         principal_investigators=principal_investigators or None,
         measurement_type=measurement_types or None,

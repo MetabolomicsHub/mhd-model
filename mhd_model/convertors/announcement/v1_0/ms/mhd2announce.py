@@ -407,6 +407,7 @@ def create_ms_announcement_file(
         description=study.description,
         submission_date=study.submission_date,
         public_release_date=study.public_release_date,
+        doi=study.doi,
         submitters=submitters or None,
         principal_investigators=principal_investigators or None,
         measurement_type=list(measurement_types.values()) or None,

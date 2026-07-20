@@ -24,6 +24,8 @@ from mhd_model.shared.model import CvTermValue
 
 
 class Person(BaseLabeledMhdModel):
+    """An individual human being (e.g. author, submitter, principal investigator)."""
+
     model_config = ConfigDict(
         json_schema_extra={
             "unique_value_contribution": ["repository_identifier", "full_name", "orcid"]
@@ -37,7 +39,12 @@ class Person(BaseLabeledMhdModel):
             description="The value of this property MUST be 'person'",
         ),
     ] = "person"
-    repository_identifier: Annotated[str, Field()]
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the person in the source repository."
+        ),
+    ]
     full_name: Annotated[
         None | str, Field(min_length=2, description="Full name of person")
     ] = None
@@ -72,6 +79,8 @@ class Person(BaseLabeledMhdModel):
 
 
 class Organization(BaseLabeledMhdModel):
+    """An institution, company, university, or department associated with a study or contact."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -83,15 +92,39 @@ class Organization(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "organization"
-    repository_identifier: Annotated[str, Field()]
-    name: Annotated[str, Field(min_length=2)]
-    ror_id: Annotated[None | str, Field()] = None
-    department: Annotated[None | str, Field()] = None
-    unit: Annotated[None | str, Field()] = None
-    address: Annotated[None | str, Field()] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the organization in the source repository."
+        ),
+    ]
+    name: Annotated[
+        str,
+        Field(min_length=2, description="Name of the organization."),
+    ]
+    ror_id: Annotated[
+        None | str,
+        Field(description="Research Organization Registry (ROR) identifier."),
+    ] = None
+    department: Annotated[
+        None | str,
+        Field(description="Department within the organization."),
+    ] = None
+    unit: Annotated[
+        None | str,
+        Field(
+            description="Sub-unit or division within the organization or department."
+        ),
+    ] = None
+    address: Annotated[
+        None | str,
+        Field(description="Postal address of the organization."),
+    ] = None
 
 
 class Project(BaseLabeledMhdModel):
+    """An overarching research project encompassing one or more studies."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -103,17 +136,36 @@ class Project(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "project"
-    title: Annotated[None | str, Field(min_length=2)] = None
-    repository_identifier: Annotated[str, Field()]
-    description: Annotated[None | str, Field()] = None
-    grant_identifier_list: Annotated[None | list[GrantId], Field()] = None
-    doi: Annotated[None | DOI, Field()] = None
+    title: Annotated[
+        None | str,
+        Field(min_length=2, description="Title of the project."),
+    ] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the project in the source repository."
+        ),
+    ]
+    description: Annotated[
+        None | str,
+        Field(description="Summary description of the project goals and scope."),
+    ] = None
+    grant_identifier_list: Annotated[
+        None | list[GrantId],
+        Field(description="List of grant identifiers funding the project."),
+    ] = None
+    doi: Annotated[
+        None | DOI,
+        Field(description="Digital Object Identifier (DOI) assigned to the project."),
+    ] = None
 
     def get_label(self):
         return self.title or self.id_
 
 
 class Study(BaseLabeledMhdModel):
+    """A biological research study or experiment comprising samples, protocols, and data."""
+
     model_config = ConfigDict(
         json_schema_extra={
             "unique_value_contribution": ["mhd_identifier", "repository_identifier"]
@@ -127,27 +179,76 @@ class Study(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "study"
-    mhd_identifier: Annotated[None | str, Field()] = None
-    repository_identifier: Annotated[str, Field(min_length=2)]
-    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
-    title: Annotated[None | str, Field()] = None
-    description: Annotated[None | str, Field()] = None
-    submission_date: None | datetime.datetime = None
-    public_release_date: None | datetime.datetime = None
+    mhd_identifier: Annotated[
+        None | str,
+        Field(
+            description="Unique MetabolomicsHub Data (MHD) identifier for the study."
+        ),
+    ] = None
+    doi: Annotated[
+        None | DOI,
+        Field(description="Digital Object Identifier (DOI) for the study."),
+    ] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            min_length=2,
+            description="Accession number or identifier in the source repository.",
+        ),
+    ]
+    additional_identifier_list: Annotated[
+        None | list[CvTermValue],
+        Field(
+            description="List of additional database or secondary identifiers for the study."
+        ),
+    ] = None
+    title: Annotated[
+        None | str,
+        Field(description="Title of the study."),
+    ] = None
+    description: Annotated[
+        None | str,
+        Field(description="Detailed abstract or summary description of the study."),
+    ] = None
+    submission_date: Annotated[
+        None | datetime.datetime,
+        Field(description="Date and time when the study was submitted."),
+    ] = None
+    public_release_date: Annotated[
+        None | datetime.datetime,
+        Field(description="Date and time when the study was publicly released."),
+    ] = None
     license: Annotated[
         None | HttpUrl,
-        Field(examples=[HttpUrl("https://creativecommons.org/publicdomain/zero/1.0/")]),
+        Field(
+            description="Data license or URL defining usage rights for the study.",
+            examples=[HttpUrl("https://creativecommons.org/publicdomain/zero/1.0/")],
+        ),
     ] = None
-    grant_identifier_list: Annotated[None | list[GrantId], Field()] = None
-    dataset_url_list: Annotated[None | list[AnyUrl], Field()] = None
-    related_dataset_list: Annotated[None | list[KeyValue], Field()] = None
-    protocol_refs: Annotated[None | list[MhdObjectId], Field()] = None
+    grant_identifier_list: Annotated[
+        None | list[GrantId],
+        Field(description="List of grant identifiers funding the study."),
+    ] = None
+    dataset_url_list: Annotated[
+        None | list[AnyUrl],
+        Field(description="List of dataset access or repository URLs."),
+    ] = None
+    related_dataset_list: Annotated[
+        None | list[KeyValue],
+        Field(description="List of related dataset key-value pairs."),
+    ] = None
+    protocol_refs: Annotated[
+        None | list[MhdObjectId],
+        Field(description="List of protocol object IDs used in the study."),
+    ] = None
 
     def get_label(self):
         return self.mhd_identifier or self.title or self.id_
 
 
 class Protocol(BaseLabeledMhdModel):
+    """A defined and standardized procedure followed to collect, prepare, or analyze samples."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -159,17 +260,38 @@ class Protocol(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "protocol"
-    repository_identifier: Annotated[str, Field()]
-    name: Annotated[None | str, Field()] = None
-    protocol_type_ref: Annotated[None | CvTermObjectId, Field()] = None
-    description: Annotated[None | str, Field()] = None
-    parameter_definition_refs: Annotated[None | list[MhdObjectId], Field()] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the protocol in the source repository."
+        ),
+    ]
+    name: Annotated[
+        None | str,
+        Field(description="Name or title of the protocol."),
+    ] = None
+    protocol_type_ref: Annotated[
+        None | CvTermObjectId,
+        Field(description="Reference ID to the protocol type CV term object."),
+    ] = None
+    description: Annotated[
+        None | str,
+        Field(description="Detailed description of the protocol procedure."),
+    ] = None
+    parameter_definition_refs: Annotated[
+        None | list[MhdObjectId],
+        Field(
+            description="List of parameter definition object IDs associated with the protocol."
+        ),
+    ] = None
 
     def get_label(self) -> str:
         return self.name or self.id_
 
 
 class ParameterDefinition(BaseLabeledMhdModel):
+    """Definition of an experimental parameter used within a protocol."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -181,15 +303,28 @@ class ParameterDefinition(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "parameter-definition"
-    repository_identifier: Annotated[str, Field()]
-    name: Annotated[None | str, Field()] = None
-    parameter_type_ref: Annotated[None | CvTermObjectId, Field()] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the parameter definition in the repository."
+        ),
+    ]
+    name: Annotated[
+        None | str,
+        Field(description="Name of the parameter."),
+    ] = None
+    parameter_type_ref: Annotated[
+        None | CvTermObjectId,
+        Field(description="Reference ID to the parameter type CV term object."),
+    ] = None
 
     def get_label(self):
         return self.name or self.id_
 
 
 class FactorDefinition(BaseLabeledMhdModel):
+    """Definition of an experimental factor varied across samples in a study."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -201,15 +336,28 @@ class FactorDefinition(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "factor-definition"
-    repository_identifier: Annotated[str, Field()]
-    name: Annotated[None | str, Field()] = None
-    factor_type_ref: Annotated[None | CvTermObjectId, Field()] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the factor definition in the repository."
+        ),
+    ]
+    name: Annotated[
+        None | str,
+        Field(description="Name of the factor (e.g. dose, time point)."),
+    ] = None
+    factor_type_ref: Annotated[
+        None | CvTermObjectId,
+        Field(description="Reference ID to the factor type CV term object."),
+    ] = None
 
     def get_label(self):
         return self.name or self.id_
 
 
 class CharacteristicDefinition(BaseLabeledMhdModel):
+    """Definition of a sample characteristic or attribute (e.g. organism, tissue)."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -221,18 +369,27 @@ class CharacteristicDefinition(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "characteristic-definition"
-    repository_identifier: Annotated[str, Field()]
-    name: Annotated[None | str, Field()] = None
-    characteristic_type_ref: Annotated[None | CvTermObjectId, Field()] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the characteristic definition in the repository."
+        ),
+    ]
+    name: Annotated[
+        None | str,
+        Field(description="Name of the characteristic attribute."),
+    ] = None
+    characteristic_type_ref: Annotated[
+        None | CvTermObjectId,
+        Field(description="Reference ID to the characteristic type CV term object."),
+    ] = None
 
     def get_label(self):
         return self.name or self.id_
 
 
 class Publication(BaseLabeledMhdModel):
-    """
-    A document that is the output of a publishing process. [IAO, IAO:0000311, publication]
-    """
+    """A document that is the output of a publishing process. [IAO, IAO:0000311, publication]"""
 
     model_config = ConfigDict(json_schema_extra={"unique_value_contribution": ["doi"]})
     type_: Annotated[
@@ -243,16 +400,30 @@ class Publication(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "publication"
-    title: Annotated[str, Field(min_length=10)]
-    doi: Annotated[DOI, Field()]
-    pubmed_id: Annotated[None | PubMedId, Field()] = None
-    author_list: Annotated[None | Authors, Field()] = None
+    title: Annotated[
+        str,
+        Field(min_length=10, description="Title of the publication."),
+    ]
+    doi: Annotated[
+        DOI,
+        Field(description="Digital Object Identifier (DOI) for the publication."),
+    ]
+    pubmed_id: Annotated[
+        None | PubMedId,
+        Field(description="PubMed unique identifier (PMID) of the publication."),
+    ] = None
+    author_list: Annotated[
+        None | Authors,
+        Field(description="List of publication authors."),
+    ] = None
 
     def get_label(self):
         return self.doi or self.title or self.id_
 
 
 class BasicAssay(BaseLabeledMhdModel):
+    """Basic analytical assay node representing an experimental measurement procedure."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -271,24 +442,24 @@ class BasicAssay(BaseLabeledMhdModel):
     ] = None
     metadata_file_ref: Annotated[
         None | MhdObjectId,
-        Field(),
+        Field(description="Reference ID to the metadata file describing the assay."),
     ] = None
 
     technology_type_ref: Annotated[
         None | CvTermObjectId,
-        Field(),
+        Field(description="Reference ID to the technology type CV term object."),
     ] = None
     assay_type_ref: Annotated[
         None | CvTermObjectId,
-        Field(),
+        Field(description="Reference ID to the assay type CV term object."),
     ] = None
     measurement_type_ref: Annotated[
         None | CvTermObjectId,
-        Field(),
+        Field(description="Reference ID to the measurement type CV term object."),
     ] = None
     omics_type_ref: Annotated[
         None | CvTermObjectId,
-        Field(),
+        Field(description="Reference ID to the omics type CV term object."),
     ] = None
     protocol_refs: Annotated[
         None | list[MhdObjectId],
@@ -313,7 +484,7 @@ class Assay(BasicAssay):
     )
     sample_run_refs: Annotated[
         None | list[MhdObjectId],
-        Field(),
+        Field(description="List of sample run object IDs associated with the assay."),
     ] = None
 
     def get_label(self):
@@ -321,6 +492,8 @@ class Assay(BasicAssay):
 
 
 class Subject(BaseLabeledMhdModel):
+    """An individual organism or subject from which biological samples are derived."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -332,16 +505,32 @@ class Subject(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "subject"
-    name: Annotated[None | str, Field()] = None
-    subject_type_ref: Annotated[None | CvTermObjectId, Field()] = None
-    repository_identifier: Annotated[str, Field()]
-    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
+    name: Annotated[
+        None | str,
+        Field(description="Name or identifier of the subject."),
+    ] = None
+    subject_type_ref: Annotated[
+        None | CvTermObjectId,
+        Field(description="Reference ID to the subject type CV term object."),
+    ] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the subject in the repository."
+        ),
+    ]
+    additional_identifier_list: Annotated[
+        None | list[CvTermValue],
+        Field(description="List of additional secondary identifiers for the subject."),
+    ] = None
 
     def get_label(self):
         return self.name or self.id_
 
 
 class Specimen(BaseLabeledMhdModel):
+    """A biological specimen collected from a subject."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -353,15 +542,28 @@ class Specimen(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "specimen"
-    name: Annotated[None | str, Field()] = None
-    repository_identifier: Annotated[str, Field()]
-    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
+    name: Annotated[
+        None | str,
+        Field(description="Name or identifier of the specimen."),
+    ] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the specimen in the repository."
+        ),
+    ]
+    additional_identifier_list: Annotated[
+        None | list[CvTermValue],
+        Field(description="List of additional secondary identifiers for the specimen."),
+    ] = None
 
     def get_label(self):
         return self.name or self.id_
 
 
 class Sample(BaseLabeledMhdModel):
+    """A biological sample prepared for analytical measurement."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -373,15 +575,28 @@ class Sample(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "sample"
-    name: Annotated[None | str, Field()] = None
-    repository_identifier: Annotated[str, Field()]
-    additional_identifier_list: Annotated[None | list[CvTermValue], Field()] = None
+    name: Annotated[
+        None | str,
+        Field(description="Name or identifier of the sample."),
+    ] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the sample in the repository."
+        ),
+    ]
+    additional_identifier_list: Annotated[
+        None | list[CvTermValue],
+        Field(description="List of additional secondary identifiers for the sample."),
+    ] = None
 
     def get_label(self):
         return self.name or self.id_
 
 
 class SampleRun(BaseLabeledMhdModel):
+    """An analytical run representing the measurement of a sample on an instrument."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -393,31 +608,47 @@ class SampleRun(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "sample-run"
-    repository_identifier: Annotated[str, Field()]
-    name: Annotated[None | str, Field()] = None
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the sample run in the repository."
+        ),
+    ]
+    name: Annotated[
+        None | str,
+        Field(description="Name or label of the sample run."),
+    ] = None
     sample_ref: Annotated[
         None | MhdObjectId,
-        Field(),
+        Field(description="Reference ID to the sample object measured in this run."),
     ] = None
     sample_run_configuration_refs: Annotated[
         None | list[MhdObjectId],
-        Field(),
+        Field(description="List of configuration object IDs for the sample run."),
     ] = None
     raw_data_file_refs: Annotated[
         None | list[MhdObjectId],
-        Field(),
+        Field(
+            description="List of raw data file object IDs produced by the sample run."
+        ),
     ] = None
     derived_data_file_refs: Annotated[
         None | list[MhdObjectId],
-        Field(),
+        Field(
+            description="List of derived data file object IDs generated from the sample run."
+        ),
     ] = None
     result_file_refs: Annotated[
         None | list[MhdObjectId],
-        Field(),
+        Field(
+            description="List of result file object IDs produced from the sample run."
+        ),
     ] = None
     supplementary_file_refs: Annotated[
         None | list[MhdObjectId],
-        Field(),
+        Field(
+            description="List of supplementary file object IDs associated with the sample run."
+        ),
     ] = None
 
     def get_label(self):
@@ -425,6 +656,8 @@ class SampleRun(BaseLabeledMhdModel):
 
 
 class SampleRunConfiguration(BaseLabeledMhdModel):
+    """Configuration settings and instrument parameters used for a sample run."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
@@ -436,20 +669,28 @@ class SampleRunConfiguration(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "sample-run-configuration"
-    repository_identifier: Annotated[str, Field()]
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the sample run configuration in the repository."
+        ),
+    ]
     protocol_ref: Annotated[
         None | MhdObjectId,
-        Field(),
+        Field(
+            description="Reference ID to the protocol object defining the run configuration."
+        ),
     ] = None
     parameter_value_refs: Annotated[
         None | list[MhdObjectId | CvTermObjectId | CvTermValueObjectId],
-        Field(),
+        Field(
+            description="List of parameter value object IDs specifying run parameters."
+        ),
     ] = None
 
 
 class Metabolite(BaseLabeledMhdModel):
-    """
-    Any intermediate or product resulting from metabolism.
+    """Any intermediate or product resulting from metabolism.
     The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite]
     """
 
@@ -463,17 +704,27 @@ class Metabolite(BaseLabeledMhdModel):
             alias="type",
         ),
     ] = "metabolite"
-    name: Annotated[None | str, Field()] = None
+    name: Annotated[
+        None | str,
+        Field(description="Name or chemical label of the metabolite."),
+    ] = None
 
     def get_label(self):
         return self.name or self.id_
 
 
 class BaseFile(BaseLabeledMhdModel):
+    """Base model for file objects in the dataset graph."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
-    repository_identifier: Annotated[str, Field()]
+    repository_identifier: Annotated[
+        str,
+        Field(
+            description="Unique identifier assigned to the file in the source repository."
+        ),
+    ]
     name: Annotated[
         None | str,
         Field(
@@ -525,13 +776,9 @@ class BaseFile(BaseLabeledMhdModel):
 
 
 class ReferencedDataFile(BaseFile):
+    """Base model for data files referenced within the dataset."""
+
     pass
-    # metadata_file_refs: Annotated[
-    #     None | list[MhdObjectId],
-    #     Field(
-    #         description="The id properties of metadata file that references or describes the file."
-    #     ),
-    # ] = None
 
 
 class RawDataFile(ReferencedDataFile):
@@ -568,6 +815,8 @@ class DerivedDataFile(ReferencedDataFile):
 
 
 class MetadataFile(BaseFile):
+    """Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples."""
+
     type_: Annotated[
         None | MhdObjectType,
         Field(
@@ -579,6 +828,8 @@ class MetadataFile(BaseFile):
 
 
 class ResultFile(BaseFile):
+    """Processed result file (e.g. quantification or identification matrix)."""
+
     type_: Annotated[
         None | MhdObjectType,
         Field(
@@ -587,10 +838,11 @@ class ResultFile(BaseFile):
             alias="type",
         ),
     ] = "result-file"
-    # metadata_file_refs: Annotated[None | list[MhdObjectId], Field()] = None
 
 
 class SupplementaryFile(BaseFile):
+    """Supplementary document or asset file associated with the dataset."""
+
     type_: Annotated[
         None | MhdObjectType,
         Field(
@@ -602,6 +854,8 @@ class SupplementaryFile(BaseFile):
 
 
 class CvTermObject(BasicCvTermModel):
+    """Controlled Vocabulary (CV) term object node in the dataset graph."""
+
     model_config = ConfigDict(
         json_schema_extra={"unique_value_contribution": ["source", "accession", "name"]}
     )
@@ -615,6 +869,8 @@ class CvTermObject(BasicCvTermModel):
 
 
 class CvTermValueObject(BasicCvTermValueModel):
+    """Controlled Vocabulary (CV) term value object node with quantitative or string value."""
+
     model_config = ConfigDict(
         json_schema_extra={
             "unique_value_contribution": [
