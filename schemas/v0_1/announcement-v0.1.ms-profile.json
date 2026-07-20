@@ -4,11 +4,13 @@
       "description": "A protocol is a defined and standardized procedure followed\nto collect, prepare, or analyze biological samples.",
       "properties": {
         "name": {
+          "description": "Name or title of the protocol.",
           "title": "Name",
           "type": "string"
         },
         "protocol_type": {
           "$ref": "#/$defs/CvTerm",
+          "description": "Type of protocol specified as a Controlled Vocabulary (CV) term.",
           "title": "Protocol Type"
         },
         "description": {
@@ -21,6 +23,7 @@
             }
           ],
           "default": null,
+          "description": "Detailed description of the experimental protocol.",
           "title": "Description"
         },
         "protocol_parameters": {
@@ -36,6 +39,7 @@
             }
           ],
           "default": null,
+          "description": "List of protocol parameters specified as key-value CV pairs.",
           "title": "Protocol Parameters"
         },
         "relates_assay_names": {
@@ -51,6 +55,7 @@
             }
           ],
           "default": null,
+          "description": "List of assay names that utilize this protocol.",
           "title": "Relates Assay Names"
         }
       },
@@ -65,11 +70,13 @@
       "description": "A publication associated with the dataset.",
       "properties": {
         "title": {
+          "description": "Title of the publication.",
           "minLength": 10,
           "title": "Title",
           "type": "string"
         },
         "doi": {
+          "description": "Digital Object Identifier (DOI) for the publication.",
           "title": "Doi",
           "type": "string"
         },
@@ -83,6 +90,7 @@
             }
           ],
           "default": null,
+          "description": "PubMed unique identifier (PMID) of the publication.",
           "title": "Pubmed Id"
         },
         "author_list": {
@@ -98,6 +106,7 @@
             }
           ],
           "default": null,
+          "description": "List of author names for the publication.",
           "title": "Author List"
         }
       },
@@ -283,9 +292,11 @@
       "type": "object"
     },
     "ExtendedCvTermKeyValue": {
+      "description": "Extended CV term key-value pair supporting custom CV term keys.",
       "properties": {
         "key": {
           "$ref": "#/$defs/CvTerm",
+          "description": "The Controlled Vocabulary (CV) term key or parameter name.",
           "profileValidation": {
             "allowNullValue": false,
             "allowedMissingCvTerms": null,
@@ -333,15 +344,17 @@
       "type": "object"
     },
     "MsAnnouncementContact": {
-      "description": "A contact associated with the dataset.\nThis can be a submitter or a principal investigator.",
+      "description": "A contact person associated with the mass spectrometry dataset.\nThis can be a submitter or a principal investigator.",
       "properties": {
         "full_name": {
+          "description": "Full name of the contact person.",
           "minLength": 5,
           "title": "Full Name",
           "type": "string"
         },
         "email_list": {
           "default": null,
+          "description": "List of validated email addresses for the contact.",
           "items": {
             "format": "email",
             "type": "string"
@@ -353,6 +366,7 @@
         "orcid": {
           "anyOf": [
             {
+              "description": "ORCID digital identifier string matching the format 0000-0000-0000-000X.",
               "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
               "profileValidation": {
                 "allowNullValue": false,
@@ -371,10 +385,12 @@
             }
           ],
           "default": null,
+          "description": "ORCID digital identifier of the contact person.",
           "title": "ORCID"
         },
         "affiliation_list": {
           "default": null,
+          "description": "List of institutional affiliations for the contact.",
           "items": {
             "type": "string"
           },
@@ -390,13 +406,16 @@
       "type": "object"
     },
     "MsAnnouncementDerivedDataFile": {
+      "description": "Derived or processed data file in a mass spectrometry dataset.",
       "properties": {
         "name": {
+          "description": "Name of the file including extension.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
         },
         "url_list": {
+          "description": "List of direct download or access URLs for the file.",
           "items": {
             "format": "uri",
             "minLength": 1,
@@ -411,6 +430,7 @@
             {
               "items": {
                 "$ref": "#/$defs/CvTerm",
+                "description": "Controlled Vocabulary (CV) term for file compression format.",
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
@@ -459,6 +479,7 @@
             }
           ],
           "default": null,
+          "description": "List of MS-specific compression formats applied to the derived data file.",
           "title": "Compression Formats"
         },
         "extension": {
@@ -471,6 +492,7 @@
             }
           ],
           "default": null,
+          "description": "File extension string (e.g., .mzML, .raw, .txt).",
           "title": "Extension"
         },
         "format": {
@@ -483,6 +505,7 @@
             }
           ],
           "default": null,
+          "description": "Format of the derived data file as a CV term.",
           "title": "Format"
         }
       },
@@ -494,13 +517,16 @@
       "type": "object"
     },
     "MsAnnouncementMetadataFile": {
+      "description": "Metadata file associated with a mass spectrometry dataset announcement.",
       "properties": {
         "name": {
+          "description": "Name of the file including extension.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
         },
         "url_list": {
+          "description": "List of direct download or access URLs for the file.",
           "items": {
             "format": "uri",
             "minLength": 1,
@@ -515,6 +541,7 @@
             {
               "items": {
                 "$ref": "#/$defs/CvTerm",
+                "description": "Controlled Vocabulary (CV) term for file compression format.",
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
@@ -563,6 +590,7 @@
             }
           ],
           "default": null,
+          "description": "List of MS-specific compression formats applied to the metadata file.",
           "title": "Compression Formats"
         },
         "extension": {
@@ -576,6 +604,7 @@
             }
           ],
           "default": null,
+          "description": "File extension string (e.g. .sdrf, .tsv, .txt).",
           "title": "Extension"
         },
         "format": {
@@ -588,6 +617,7 @@
             }
           ],
           "default": null,
+          "description": "Format of the metadata file as a CV term.",
           "title": "Format"
         }
       },
@@ -599,13 +629,16 @@
       "type": "object"
     },
     "MsAnnouncementRawDataFile": {
+      "description": "Raw experimental data file associated with a mass spectrometry dataset.",
       "properties": {
         "name": {
+          "description": "Name of the file including extension.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
         },
         "url_list": {
+          "description": "List of direct download or access URLs for the file.",
           "items": {
             "format": "uri",
             "minLength": 1,
@@ -620,6 +653,7 @@
             {
               "items": {
                 "$ref": "#/$defs/CvTerm",
+                "description": "Controlled Vocabulary (CV) term for file compression format.",
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
@@ -668,6 +702,7 @@
             }
           ],
           "default": null,
+          "description": "List of MS-specific compression formats applied to the raw data file.",
           "title": "Compression Formats"
         },
         "extension": {
@@ -680,6 +715,7 @@
             }
           ],
           "default": null,
+          "description": "File extension string (e.g., .mzML, .raw, .txt).",
           "title": "Extension"
         },
         "format": {
@@ -692,6 +728,7 @@
             }
           ],
           "default": null,
+          "description": "Format of the raw data file as a CV term.",
           "title": "Format"
         }
       },
@@ -703,8 +740,10 @@
       "type": "object"
     },
     "MsAnnouncementReportedMetabolite": {
+      "description": "A metabolite reported as identified or quantified in the mass spectrometry study.",
       "properties": {
         "name": {
+          "description": "Name or chemical label of the reported metabolite.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
@@ -714,6 +753,7 @@
             {
               "items": {
                 "$ref": "#/$defs/CvTermValue",
+                "description": "Database identifier (e.g., ChEBI, HMDB, PubChem) for a reported metabolite.",
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
@@ -759,6 +799,7 @@
             }
           ],
           "default": null,
+          "description": "List of database identifiers (e.g., ChEBI, HMDB, PubChem) for the metabolite.",
           "title": "Database Identifiers"
         }
       },
@@ -769,13 +810,16 @@
       "type": "object"
     },
     "MsAnnouncementResultFile": {
+      "description": "Processed result file associated with a mass spectrometry dataset.",
       "properties": {
         "name": {
+          "description": "Name of the file including extension.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
         },
         "url_list": {
+          "description": "List of direct download or access URLs for the file.",
           "items": {
             "format": "uri",
             "minLength": 1,
@@ -790,6 +834,7 @@
             {
               "items": {
                 "$ref": "#/$defs/CvTerm",
+                "description": "Controlled Vocabulary (CV) term for file compression format.",
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
@@ -838,6 +883,7 @@
             }
           ],
           "default": null,
+          "description": "List of MS-specific compression formats applied to the result file.",
           "title": "Compression Formats"
         },
         "extension": {
@@ -850,6 +896,7 @@
             }
           ],
           "default": null,
+          "description": "File extension string (e.g., .mzML, .raw, .txt).",
           "title": "Extension"
         },
         "format": {
@@ -862,6 +909,7 @@
             }
           ],
           "default": null,
+          "description": "Format of the result data file as a CV term.",
           "title": "Format"
         }
       },
@@ -873,13 +921,16 @@
       "type": "object"
     },
     "MsAnnouncementSupplementaryFile": {
+      "description": "Supplementary file associated with a mass spectrometry dataset.",
       "properties": {
         "name": {
+          "description": "Name of the file including extension.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
         },
         "url_list": {
+          "description": "List of direct download or access URLs for the file.",
           "items": {
             "format": "uri",
             "minLength": 1,
@@ -894,6 +945,7 @@
             {
               "items": {
                 "$ref": "#/$defs/CvTerm",
+                "description": "Controlled Vocabulary (CV) term for file compression format.",
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
@@ -942,6 +994,7 @@
             }
           ],
           "default": null,
+          "description": "List of MS-specific compression formats applied to the supplementary file.",
           "title": "Compression Formats"
         },
         "extension": {
@@ -954,6 +1007,7 @@
             }
           ],
           "default": null,
+          "description": "File extension string (e.g., .mzML, .raw, .txt).",
           "title": "Extension"
         },
         "format": {
@@ -966,6 +1020,7 @@
             }
           ],
           "default": null,
+          "description": "Format of the supplementary file as a CV term.",
           "title": "Format"
         }
       },
@@ -1065,6 +1120,7 @@
       "type": "object"
     }
   },
+  "description": "Mass spectrometry profile for dataset announcements.\n\nMain differences from Base Profile:\n- Mass Spectrometry Specialization: Restricts technology_type, measurement_type, omics_type,\n  and assay_type to controlled mass spectrometry terms (defaults technology_type to OBI:0000470).\n- Required Fields: Enforces strict non-null values for mhd_identifier, submitters, principal_investigators,\n  measurement_type, omics_type, assay_type, publications (or missing publication reason),\n  study_factors, characteristic_values, and raw_data_file_list.\n- Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),\n  publications (formatted DOI and PubMed IDs), metabolites, and protocols.",
   "properties": {
     "repository_name": {
       "anyOf": [
@@ -1079,11 +1135,13 @@
       "title": "Repository Name"
     },
     "mhd_identifier": {
+      "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
       "pattern": "^MHD[A-Z]?[0-9]{6,8}$",
       "title": "MHD Identifier",
       "type": "string"
     },
     "repository_identifier": {
+      "description": "Original dataset accession number or identifier in the source repository.",
       "title": "Repository Identifier",
       "type": "string"
     },
@@ -1173,12 +1231,14 @@
       "type": "array"
     },
     "mhd_metadata_file_url": {
+      "description": "URL to the primary MHD metadata file for this dataset.",
       "format": "uri",
       "minLength": 1,
       "title": "Mhd Metadata File Url",
       "type": "string"
     },
     "dataset_url_list": {
+      "description": "List of web page or repository URLs for accessing the dataset.",
       "items": {
         "format": "uri",
         "minLength": 1,
@@ -1201,9 +1261,11 @@
         }
       ],
       "default": null,
+      "description": "Data usage license or URL defining licensing terms for the dataset.",
       "title": "License"
     },
     "title": {
+      "description": "Title describing the mass spectrometry study or dataset.",
       "minLength": 25,
       "title": "Title",
       "type": "string"
@@ -1218,6 +1280,7 @@
           "type": "null"
         }
       ],
+      "description": "Comprehensive description or summary abstract of the mass spectrometry study.",
       "title": "Description"
     },
     "submission_date": {
@@ -1230,6 +1293,7 @@
           "type": "null"
         }
       ],
+      "description": "Date and time when the dataset was initially submitted to the repository.",
       "title": "Submission Date"
     },
     "public_release_date": {
@@ -1242,9 +1306,11 @@
           "type": "null"
         }
       ],
+      "description": "Date and time when the dataset was made publicly accessible.",
       "title": "Public Release Date"
     },
     "submitters": {
+      "description": "List of submitters who registered or submitted the dataset.",
       "items": {
         "$ref": "#/$defs/MsAnnouncementContact"
       },
@@ -1253,6 +1319,7 @@
       "type": "array"
     },
     "principal_investigators": {
+      "description": "List of principal investigators leading the research study.",
       "items": {
         "$ref": "#/$defs/MsAnnouncementContact"
       },
@@ -1261,8 +1328,10 @@
       "type": "array"
     },
     "omics_type": {
+      "description": "Omics domains involved in the mass spectrometry study.",
       "items": {
         "$ref": "#/$defs/CvTerm",
+        "description": "Controlled Vocabulary (CV) term for omics domain (e.g., Metabolomics, Lipidomics).",
         "profileValidation": {
           "allowNullValue": false,
           "allowedMissingCvTerms": null,
@@ -1314,8 +1383,10 @@
           "name": "mass spectrometry assay"
         }
       ],
+      "description": "Analytical technology platform (defaults to mass spectrometry assay OBI:0000470).",
       "items": {
         "$ref": "#/$defs/CvTerm",
+        "description": "Controlled Vocabulary (CV) term for mass spectrometry technology type.",
         "profileValidation": {
           "allowNullValue": false,
           "allowedMissingCvTerms": null,
@@ -1340,8 +1411,10 @@
       "type": "array"
     },
     "measurement_type": {
+      "description": "Types of MS measurements performed (e.g., Targeted or Untargeted metabolite profiling).",
       "items": {
         "$ref": "#/$defs/CvTerm",
+        "description": "Controlled Vocabulary (CV) term for measurement type (e.g., Targeted or Untargeted metabolite profiling).",
         "profileValidation": {
           "allowNullValue": false,
           "allowedMissingCvTerms": null,
@@ -1381,8 +1454,10 @@
       "type": "array"
     },
     "assay_type": {
+      "description": "Mass spectrometry assay techniques employed (e.g., LC-MS, GC-MS).",
       "items": {
         "$ref": "#/$defs/CvTerm",
+        "description": "Controlled Vocabulary (CV) term for mass spectrometry assay type (e.g., LC-MS, GC-MS).",
         "profileValidation": {
           "allowNullValue": false,
           "allowedMissingCvTerms": null,
@@ -1426,6 +1501,7 @@
         {
           "items": {
             "$ref": "#/$defs/CvTerm",
+            "description": "Controlled Vocabulary (CV) term or plain text string keyword.",
             "profileValidation": {
               "allowNullValue": false,
               "allowedMissingCvTerms": null,
@@ -1450,6 +1526,7 @@
         }
       ],
       "default": null,
+      "description": "Keywords provided by the dataset submitter as CV terms or strings.",
       "title": "Submitter Keywords"
     },
     "descriptors": {
@@ -1465,12 +1542,14 @@
         }
       ],
       "default": null,
+      "description": "Subject descriptors or tags characterizing the dataset as CV terms.",
       "title": "Descriptors"
     },
     "publications": {
       "anyOf": [
         {
           "$ref": "#/$defs/CvTerm",
+          "description": "Controlled Vocabulary (CV) term specifying reason why publication details are missing.",
           "profileValidation": {
             "allowNullValue": false,
             "allowedMissingCvTerms": null,
@@ -1502,9 +1581,11 @@
           "type": "array"
         }
       ],
+      "description": "Publications or specified reason for missing publication in the dataset.",
       "title": "Publications"
     },
     "study_factors": {
+      "description": "Experimental study factors varied across mass spectrometry samples.",
       "items": {
         "$ref": "#/$defs/ExtendedCvTermKeyValue"
       },
@@ -1577,6 +1658,7 @@
       "type": "array"
     },
     "characteristic_values": {
+      "description": "Sample characteristics and metadata attributes for mass spectrometry samples.",
       "items": {
         "$ref": "#/$defs/CvTermKeyValue"
       },
@@ -1776,6 +1858,7 @@
     "protocols": {
       "anyOf": [
         {
+          "description": "List of experimental protocols used in sample collection, preparation, or analysis.",
           "items": {
             "$ref": "#/$defs/AnnouncementProtocol"
           },
@@ -1858,6 +1941,7 @@
         }
       ],
       "default": null,
+      "description": "List of experimental protocols used in sample preparation and analysis.",
       "title": "Protocols"
     },
     "reported_metabolites": {
@@ -1873,6 +1957,7 @@
         }
       ],
       "default": null,
+      "description": "List of metabolites reported as identified or quantified in the dataset.",
       "title": "Reported Metabolites"
     },
     "repository_metadata_file_list": {
@@ -1889,9 +1974,11 @@
         }
       ],
       "default": null,
+      "description": "List of repository metadata files included in the dataset announcement.",
       "title": "Repository Metadata File List"
     },
     "raw_data_file_list": {
+      "description": "List of mass spectrometry raw data files included in the dataset announcement.",
       "items": {
         "$ref": "#/$defs/MsAnnouncementRawDataFile"
       },
@@ -1912,6 +1999,7 @@
         }
       ],
       "default": null,
+      "description": "List of derived data files included in the dataset announcement.",
       "title": "Derived Data File List"
     },
     "supplementary_file_list": {
@@ -1928,6 +2016,7 @@
         }
       ],
       "default": null,
+      "description": "List of supplementary files included in the dataset announcement.",
       "title": "Supplementary File List"
     },
     "result_file_list": {
@@ -1943,6 +2032,7 @@
         }
       ],
       "default": null,
+      "description": "List of result data files included in the dataset announcement.",
       "title": "Result File List"
     }
   },

@@ -674,7 +674,7 @@
 </nav>
 <article class="md-content__inner md-typeset">
 <h1 id="metabolomicshub-common-data-model-nodes-mhd-ms-profile">MetabolomicsHub Common Data Model Nodes - MHD MS Profile<a class="headerlink" href="#metabolomicshub-common-data-model-nodes-mhd-ms-profile" title="Permanent link">¶</a></h1>
-<p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json</a> </p>
+<p>Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json</a></p>
 <h2 id="required-nodes-relationships">Required Nodes &amp; Relationships<a class="headerlink" href="#required-nodes-relationships" title="Permanent link">¶</a></h2>
 <p><strong>Required MHD Nodes</strong></p>
 <p><code>Assay, Characteristic Definition, Metadata File, Organization, Parameter Definition, Person, Protocol, Sample, Sample Run, Study, Subject</code></p>
@@ -1370,31 +1370,31 @@
 <td><strong>metadata_file_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>MhdObjectId</em><code></code></code></td>
-<td>Target node type: <code><strong>metadata-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>metadata-file</strong></code></code></td>
+<td>Reference ID to the metadata file describing the assay<br/>Target node type: <code><strong>metadata-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>metadata-file</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>technology_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0000470, mass spectrometry assay]</code></td>
+<td>Reference ID to the technology type CV term object<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0000470, mass spectrometry assay]</code></td>
 </tr>
 <tr>
 <td><strong>assay_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay]</code></td>
+<td>Reference ID to the assay type CV term object<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br/>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br/>* [OBI, OBI:0000470, mass spectrometry assay]</code></td>
 </tr>
 <tr>
 <td><strong>measurement_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [MS, MS:1003904, untargeted analysis],<br/>* [MS, MS:1003905, targeted analysis],<br/>* [MS, MS:1003906, semi-targeted analysis]</code></td>
+<td>Reference ID to the measurement type CV term object<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [MS, MS:1003904, untargeted analysis],<br/>* [MS, MS:1003905, targeted analysis],<br/>* [MS, MS:1003906, semi-targeted analysis]</code></td>
 </tr>
 <tr>
 <td><strong>omics_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [EDAM, EDAM:topic_3172, Metabolomics],<br/>* [EDAM, EDAM:topic_0153, Lipidomics],<br/>* [EDAM, EDAM:topic_3955, Fluxomics],<br/>* [EDAM, EDAM:topic_4065, Exposomics]</code></td>
+<td>Reference ID to the omics type CV term object<br/>Target CV term type: <code><strong>descriptor</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>descriptor</strong></code><br/>Allowed CV Terms:<br/>* [EDAM, EDAM:topic_3172, Metabolomics],<br/>* [EDAM, EDAM:topic_0153, Lipidomics],<br/>* [EDAM, EDAM:topic_3955, Fluxomics],<br/>* [EDAM, EDAM:topic_4065, Exposomics]</code></td>
 </tr>
 <tr>
 <td><strong>protocol_refs</strong></td>
@@ -1406,7 +1406,7 @@
 <td><strong>sample_run_refs</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>sample-run</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>sample-run</strong></code></code></td>
+<td>List of sample run object IDs associated with the assay<br/>Target node type: <code><strong>sample-run</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>sample-run</strong></code></code></td>
 </tr>
 </tbody>
 </table>
@@ -1568,19 +1568,19 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the characteristic definition in the repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
+<td>Name of the characteristic attribute<br/>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
 </tr>
 <tr>
 <td><strong>characteristic_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>characteristic-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>characteristic-type</strong></code><br/>Allowed CV Terms:<br/>* [NCIT, NCIT:C14250, Organism],<br/>* [NCIT, NCIT:C103199, Organism Part],<br/>* [EFO, MONDO:0000001, disease],<br/>* [EFO, EFO:0000324, cell type]</code></td>
+<td>Reference ID to the characteristic type CV term object<br/>Target CV term type: <code><strong>characteristic-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>characteristic-type</strong></code><br/>Allowed CV Terms:<br/>* [NCIT, NCIT:C14250, Organism],<br/>* [NCIT, NCIT:C103199, Organism Part],<br/>* [EFO, MONDO:0000001, disease],<br/>* [EFO, EFO:0000324, cell type]</code></td>
 </tr>
 </tbody>
 </table>
@@ -1724,7 +1724,7 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the file in the source repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -1904,19 +1904,19 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the factor definition in the repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
+<td>Name of the factor (e.g. dose, time point)<br/>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
 </tr>
 <tr>
 <td><strong>factor_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>factor-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>factor-type</strong></code><br/>Allowed CV Terms:<br/>* [EFO, MONDO:0000001, disease]</code></td>
+<td>Reference ID to the factor type CV term object<br/>Target CV term type: <code><strong>factor-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>factor-type</strong></code><br/>Allowed CV Terms:<br/>* [EFO, MONDO:0000001, disease]</code></td>
 </tr>
 </tbody>
 </table>
@@ -2060,7 +2060,7 @@
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
+<td>Name or chemical label of the metabolite<br/>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
 </tr>
 </tbody>
 </table>
@@ -2257,7 +2257,7 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the file in the source repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -2527,37 +2527,37 @@
 <td><strong>repository_identifier</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Validation Rule:<br/> <code></code></td>
+<td>Unique identifier assigned to the organization in the source repository<br/>Validation Rule:<br/> <code></code></td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>9</code><br/>Validation Rule:<br/> <code>Min Length: 9, Required</code></td>
+<td>Name of the organization<br/>Minimum length: <code>9</code><br/>Validation Rule:<br/> <code>Min Length: 9, Required</code></td>
 </tr>
 <tr>
 <td><strong>ror_id</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Research Organization Registry (ROR) identifier</td>
 </tr>
 <tr>
 <td><strong>department</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Department within the organization</td>
 </tr>
 <tr>
 <td><strong>unit</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Sub-unit or division within the organization or department</td>
 </tr>
 <tr>
 <td><strong>address</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Postal address of the organization</td>
 </tr>
 </tbody>
 </table>
@@ -2754,19 +2754,19 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the parameter definition in the repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
+<td>Name of the parameter<br/>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
 </tr>
 <tr>
 <td><strong>parameter_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target node type: <code><strong>parameter-type</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>parameter-type</strong></code></code></td>
+<td>Reference ID to the parameter type CV term object<br/>Target node type: <code><strong>parameter-type</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>parameter-type</strong></code></code></td>
 </tr>
 </tbody>
 </table>
@@ -2910,7 +2910,7 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the person in the source repository</td>
 </tr>
 <tr>
 <td><strong>full_name</strong></td>
@@ -3155,31 +3155,31 @@
 <td><strong>title</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>25</code><br/>Validation Rule:<br/> <code>Min Length: 25, Required</code></td>
+<td>Title of the project<br/>Minimum length: <code>25</code><br/>Validation Rule:<br/> <code>Min Length: 25, Required</code></td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the project in the source repository</td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Summary description of the project goals and scope</td>
 </tr>
 <tr>
 <td><strong>grant_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[Annotated]</em><code></code></code></td>
-<td></td>
+<td>List of grant identifiers funding the project</td>
 </tr>
 <tr>
 <td><strong>doi</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Digital Object Identifier (DOI) assigned to the project</td>
 </tr>
 </tbody>
 </table>
@@ -3394,31 +3394,31 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the protocol in the source repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Name or title of the protocol</td>
 </tr>
 <tr>
 <td><strong>protocol_type_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Target CV term type: <code><strong>protocol-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>protocol-type</strong></code><br/>Allowed CV Terms:<br/>* [CHMO, CHMO:0000470, mass spectrometry],<br/>* [CHMO, CHMO:0001000, chromatography],<br/>* [EFO, EFO:0005518, sample collection protocol],<br/>* [EFO, EFO:0003969, treatment protocol],<br/>* [MS, MS:1000831, sample preparation]<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
+<td>Reference ID to the protocol type CV term object<br/>Target CV term type: <code><strong>protocol-type</strong></code><br/>Validation Rules:<br/> <code>Target node type: <code><strong>protocol-type</strong></code><br/>Allowed CV Terms:<br/>* [CHMO, CHMO:0000470, mass spectrometry],<br/>* [CHMO, CHMO:0001000, chromatography],<br/>* [EFO, EFO:0005518, sample collection protocol],<br/>* [EFO, EFO:0003969, treatment protocol],<br/>* [MS, MS:1000831, sample preparation]<br/>Exceptions:<br/>Allowed Other Sources: wikidata, ILX</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Validation Rule:<br/> <code></code></td>
+<td>Detailed description of the protocol procedure<br/>Validation Rule:<br/> <code></code></td>
 </tr>
 <tr>
 <td><strong>parameter_definition_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>parameter-definition</strong></code></td>
+<td>List of parameter definition object IDs associated with the protocol<br/>Target node type: <code><strong>parameter-definition</strong></code></td>
 </tr>
 </tbody>
 </table>
@@ -3616,25 +3616,25 @@
 <td><strong>title</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Title of the publication</td>
 </tr>
 <tr>
 <td><strong>doi</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Digital Object Identifier (DOI) for the publication</td>
 </tr>
 <tr>
 <td><strong>pubmed_id</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>PubMed unique identifier (PMID) of the publication</td>
 </tr>
 <tr>
 <td><strong>author_list</strong></td>
 <td>optional</td>
 <td><code><em>list[Annotated]</em><code></code></code></td>
-<td></td>
+<td>List of publication authors</td>
 </tr>
 </tbody>
 </table>
@@ -3795,7 +3795,7 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the file in the source repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -3993,7 +3993,7 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the file in the source repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -4209,19 +4209,19 @@
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+<td>Name or identifier of the sample<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Validation Rule:<br/> <code></code></td>
+<td>Unique identifier assigned to the sample in the repository<br/>Validation Rule:<br/> <code></code></td>
 </tr>
 <tr>
 <td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
-<td></td>
+<td>List of additional secondary identifiers for the sample</td>
 </tr>
 </tbody>
 </table>
@@ -4418,49 +4418,49 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the sample run in the repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Validation Rule:<br/> <code></code></td>
+<td>Name or label of the sample run<br/>Validation Rule:<br/> <code></code></td>
 </tr>
 <tr>
 <td><strong>sample_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>MhdObjectId</em><code></code></code></td>
-<td>Target node type: <code><strong>sample</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>sample</strong></code></code></td>
+<td>Reference ID to the sample object measured in this run<br/>Target node type: <code><strong>sample</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>sample</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>sample_run_configuration_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>sample-run-configuration</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>sample-run-configuration</strong></code></code></td>
+<td>List of configuration object IDs for the sample run<br/>Target node type: <code><strong>sample-run-configuration</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>sample-run-configuration</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>raw_data_file_refs</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>raw-data-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>raw-data-file</strong></code></code></td>
+<td>List of raw data file object IDs produced by the sample run<br/>Target node type: <code><strong>raw-data-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>raw-data-file</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>derived_data_file_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>derived-data-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>derived-data-file</strong></code></code></td>
+<td>List of derived data file object IDs generated from the sample run<br/>Target node type: <code><strong>derived-data-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>derived-data-file</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>result_file_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>result-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>result-file</strong></code></code></td>
+<td>List of result file object IDs produced from the sample run<br/>Target node type: <code><strong>result-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>result-file</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>supplementary_file_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>supplementary-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>supplementary-file</strong></code></code></td>
+<td>List of supplementary file object IDs associated with the sample run<br/>Target node type: <code><strong>supplementary-file</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>supplementary-file</strong></code></code></td>
 </tr>
 </tbody>
 </table>
@@ -4586,19 +4586,19 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the sample run configuration in the repository</td>
 </tr>
 <tr>
 <td><strong>protocol_ref</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>MhdObjectId</em><code></code></code></td>
-<td>Target node type: <code><strong>protocol</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>protocol</strong></code></code></td>
+<td>Reference ID to the protocol object defining the run configuration<br/>Target node type: <code><strong>protocol</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>protocol</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>parameter_value_refs</strong></td>
 <td>optional</td>
 <td><code><em>list[MhdObjectId or CvTermObjectId or CvTermValueObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>parameter-value</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>parameter-value</strong></code></code></td>
+<td>List of parameter value object IDs specifying run parameters<br/>Target node type: <code><strong>parameter-value</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>parameter-value</strong></code></code></td>
 </tr>
 </tbody>
 </table>
@@ -4706,19 +4706,19 @@
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+<td>Name or identifier of the specimen<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1</code></td>
+<td>Unique identifier assigned to the specimen in the repository<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1</code></td>
 </tr>
 <tr>
 <td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
-<td></td>
+<td>List of additional secondary identifiers for the specimen</td>
 </tr>
 </tbody>
 </table>
@@ -4888,73 +4888,79 @@
 <td><strong>mhd_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>8</code><br/>Validation Rule:<br/> <code>Min Length: 8, Required</code></td>
+<td>Unique MetabolomicsHub Data (MHD) identifier for the study<br/>Minimum length: <code>8</code><br/>Validation Rule:<br/> <code>Min Length: 8, Required</code></td>
+</tr>
+<tr>
+<td><strong>doi</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></code></code></td>
+<td>Digital Object Identifier (DOI) for the study</td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
+<td>Accession number or identifier in the source repository<br/>Minimum length: <code>2</code><br/>Validation Rule:<br/> <code>Min Length: 2, Required</code></td>
 </tr>
 <tr>
 <td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
-<td></td>
+<td>List of additional database or secondary identifiers for the study</td>
 </tr>
 <tr>
 <td><strong>title</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>25</code><br/>Validation Rule:<br/> <code>Min Length: 25, Required</code></td>
+<td>Title of the study<br/>Minimum length: <code>25</code><br/>Validation Rule:<br/> <code>Min Length: 25, Required</code></td>
 </tr>
 <tr>
 <td><strong>description</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>150</code><br/>Validation Rule:<br/> <code>Min Length: 150, Required</code></td>
+<td>Detailed abstract or summary description of the study<br/>Minimum length: <code>150</code><br/>Validation Rule:<br/> <code>Min Length: 150, Required</code></td>
 </tr>
 <tr>
 <td><strong>submission_date</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>datetime</em><code></code></code></td>
-<td></td>
+<td>Date and time when the study was submitted</td>
 </tr>
 <tr>
 <td><strong>public_release_date</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>datetime</em><code></code></code></td>
-<td></td>
+<td>Date and time when the study was publicly released</td>
 </tr>
 <tr>
 <td><strong>license</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>HttpUrl</em><code></code></code></td>
-<td><br/>Example: <br/><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code></td>
+<td>Data license or URL defining usage rights for the study<br/><br/>Example: <br/><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code></td>
 </tr>
 <tr>
 <td><strong>grant_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[Annotated]</em><code></code></code></td>
-<td></td>
+<td>List of grant identifiers funding the study</td>
 </tr>
 <tr>
 <td><strong>dataset_url_list</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[AnyUrl]</em><code></code></code></td>
-<td></td>
+<td>List of dataset access or repository URLs</td>
 </tr>
 <tr>
 <td><strong>related_dataset_list</strong></td>
 <td>optional</td>
 <td><code><em>list[KeyValue]</em><code></code></code></td>
-<td></td>
+<td>List of related dataset key-value pairs</td>
 </tr>
 <tr>
 <td><strong>protocol_refs</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>list[MhdObjectId]</em><code></code></code></td>
-<td>Target node type: <code><strong>protocol</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>protocol</strong></code></code></td>
+<td>List of protocol object IDs used in the study<br/>Target node type: <code><strong>protocol</strong></code><br/>Validation Rule:<br/> <code>Target node type: <code><strong>protocol</strong></code></code></td>
 </tr>
 </tbody>
 </table>
@@ -5431,25 +5437,25 @@
 <td><strong>name</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
+<td>Name or identifier of the subject<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1, Required</code></td>
 </tr>
 <tr>
 <td><strong>subject_type_ref</strong></td>
 <td>optional</td>
 <td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>Validation Rule:<br/> <code>Target node type: <code><strong>descriptor</strong></code></code></td>
+<td>Reference ID to the subject type CV term object<br/>Validation Rule:<br/> <code>Target node type: <code><strong>descriptor</strong></code></code></td>
 </tr>
 <tr>
 <td><strong>repository_identifier</strong></td>
 <td>optional</td>
 <td><code><em>str</em><code></code></code></td>
-<td>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1</code></td>
+<td>Unique identifier assigned to the subject in the repository<br/>Minimum length: <code>1</code><br/>Validation Rule:<br/> <code>Min Length: 1</code></td>
 </tr>
 <tr>
 <td><strong>additional_identifier_list</strong></td>
 <td>optional</td>
 <td><code><em>list[CvTermValue]</em><code></code></code></td>
-<td></td>
+<td>List of additional secondary identifiers for the subject</td>
 </tr>
 </tbody>
 </table>
@@ -5629,7 +5635,7 @@
 <td><strong>repository_identifier</strong></td>
 <td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td></td>
+<td>Unique identifier assigned to the file in the source repository</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
