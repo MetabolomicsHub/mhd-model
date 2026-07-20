@@ -1,3 +1,9 @@
+## v0.1.92 (2026-07-20)
+
+### Fix
+
+- doi and documentation update
+
 ## v0.1.91 (2026-07-17)
 
 ### Fix
