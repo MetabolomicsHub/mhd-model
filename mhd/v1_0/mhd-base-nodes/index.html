@@ -558,6 +558,15 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#referenced-object">
+<span class="md-ellipsis">
+      
+        Referenced Object
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -738,7 +747,7 @@
 </table>
 <h2 id="mhd-domain-objects">MHD Domain Objects<a class="headerlink" href="#mhd-domain-objects" title="Permanent link">¶</a></h2>
 <h3 id="assay">Assay<a class="headerlink" href="#assay" title="Permanent link">¶</a></h3>
-<p>Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>[OBI, OBI:0000070, assay] A planned process that has the objective to produce information<br/>about a material entity by examining it. Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -930,7 +939,7 @@
 </tbody>
 </table>
 <h3 id="characteristic-definition">Characteristic Definition<a class="headerlink" href="#characteristic-definition" title="Permanent link">¶</a></h3>
-<p>Characteristic Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Definition of a sample characteristic or attribute (e.g. organism, tissue). Characteristic Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -1086,7 +1095,7 @@
 </tbody>
 </table>
 <h3 id="derived-data-file">Derived Data File<a class="headerlink" href="#derived-data-file" title="Permanent link">¶</a></h3>
-<p>Derived Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>[MS, MS:1003084, processed data file]<br/>File that contains data that has been substantially processed or<br/>transformed from what was originally acquired by an instrument. Derived Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -1265,7 +1274,7 @@
 </tbody>
 </table>
 <h3 id="factor-definition">Factor Definition<a class="headerlink" href="#factor-definition" title="Permanent link">¶</a></h3>
-<p>Factor Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Definition of an experimental factor varied across samples in a study. Factor Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -1421,7 +1430,7 @@
 </tbody>
 </table>
 <h3 id="metabolite">Metabolite<a class="headerlink" href="#metabolite" title="Permanent link">¶</a></h3>
-<p>Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Any intermediate or product resulting from metabolism.<br/>The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite] Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -1618,7 +1627,7 @@
 </tbody>
 </table>
 <h3 id="metadata-file">Metadata File<a class="headerlink" href="#metadata-file" title="Permanent link">¶</a></h3>
-<p>Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -1887,7 +1896,7 @@
 </tbody>
 </table>
 <h3 id="organization">Organization<a class="headerlink" href="#organization" title="Permanent link">¶</a></h3>
-<p>Organization node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>An institution, company, university, or department associated with a study or contact. Organization node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -2114,7 +2123,7 @@
 </tbody>
 </table>
 <h3 id="parameter-definition">Parameter Definition<a class="headerlink" href="#parameter-definition" title="Permanent link">¶</a></h3>
-<p>Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Definition of an experimental parameter used within a protocol. Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -2270,7 +2279,7 @@
 </tbody>
 </table>
 <h3 id="person">Person<a class="headerlink" href="#person" title="Permanent link">¶</a></h3>
-<p>Person node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>An individual human being (e.g. author, submitter, principal investigator). Person node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -2515,7 +2524,7 @@
 </tbody>
 </table>
 <h3 id="project">Project<a class="headerlink" href="#project" title="Permanent link">¶</a></h3>
-<p>Project node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>An overarching research project encompassing one or more studies. Project node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -2754,7 +2763,7 @@
 </tbody>
 </table>
 <h3 id="protocol">Protocol<a class="headerlink" href="#protocol" title="Permanent link">¶</a></h3>
-<p>Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>A defined and standardized procedure followed to collect, prepare, or analyze samples. Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -2958,7 +2967,7 @@
 </tbody>
 </table>
 <h3 id="publication">Publication<a class="headerlink" href="#publication" title="Permanent link">¶</a></h3>
-<p>Publication node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>A document that is the output of a publishing process. [IAO, IAO:0000311, publication] Publication node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -3137,7 +3146,7 @@
 </tbody>
 </table>
 <h3 id="raw-data-file">Raw Data File<a class="headerlink" href="#raw-data-file" title="Permanent link">¶</a></h3>
-<p>Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>[MS, MS:1003083, raw data file]<br/>Data file that contains original data as generated by an instrument,<br/>although not necessarily in the original data format<br/>(i.e. an original raw file converted to a different format is still a raw data file) Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -3334,7 +3343,7 @@
 </tbody>
 </table>
 <h3 id="result-file">Result File<a class="headerlink" href="#result-file" title="Permanent link">¶</a></h3>
-<p>Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Processed result file (e.g. quantification or identification matrix). Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -3531,7 +3540,7 @@
 </tbody>
 </table>
 <h3 id="sample">Sample<a class="headerlink" href="#sample" title="Permanent link">¶</a></h3>
-<p>Sample node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>A biological sample prepared for analytical measurement. Sample node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -3740,7 +3749,7 @@
 </tbody>
 </table>
 <h3 id="sample-run">Sample Run<a class="headerlink" href="#sample-run" title="Permanent link">¶</a></h3>
-<p>Sample Run node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>An analytical run representing the measurement of a sample on an instrument. Sample Run node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -3890,7 +3899,7 @@
 </tbody>
 </table>
 <h3 id="sample-run-configuration">Sample Run Configuration<a class="headerlink" href="#sample-run-configuration" title="Permanent link">¶</a></h3>
-<p>Sample Run Configuration node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Configuration settings and instrument parameters used for a sample run. Sample Run Configuration node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -4010,7 +4019,7 @@
 </tbody>
 </table>
 <h3 id="specimen">Specimen<a class="headerlink" href="#specimen" title="Permanent link">¶</a></h3>
-<p>Specimen node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>A biological specimen collected from a subject. Specimen node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -4192,7 +4201,7 @@
 </tbody>
 </table>
 <h3 id="study">Study<a class="headerlink" href="#study" title="Permanent link">¶</a></h3>
-<p>Study node is <strong>required in the MHD Base Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p>A biological research study or experiment comprising samples, protocols, and data. Study node is <strong>required in the MHD Base Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -4723,7 +4732,7 @@
 </tbody>
 </table>
 <h3 id="subject">Subject<a class="headerlink" href="#subject" title="Permanent link">¶</a></h3>
-<p>Subject node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>An individual organism or subject from which biological samples are derived. Subject node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -4920,7 +4929,7 @@
 </tbody>
 </table>
 <h3 id="supplementary-file">Supplementary File<a class="headerlink" href="#supplementary-file" title="Permanent link">¶</a></h3>
-<p>Supplementary File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Supplementary document or asset file associated with the dataset. Supplementary File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -5100,7 +5109,7 @@
 </table>
 <h2 id="mhd-cv-term-objects">MHD CV Term Objects<a class="headerlink" href="#mhd-cv-term-objects" title="Permanent link">¶</a></h2>
 <h3 id="characteristic-type">Characteristic Type<a class="headerlink" href="#characteristic-type" title="Permanent link">¶</a></h3>
-<p>Characteristic Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term object node in the dataset graph. Characteristic Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -5195,7 +5204,7 @@
 </tbody>
 </table>
 <h3 id="characteristic-value">Characteristic Value<a class="headerlink" href="#characteristic-value" title="Permanent link">¶</a></h3>
-<p>Characteristic Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term value object node with quantitative or string value. Characteristic Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -5356,7 +5365,7 @@
 </tbody>
 </table>
 <h3 id="data-provider">Data Provider<a class="headerlink" href="#data-provider" title="Permanent link">¶</a></h3>
-<p>Data Provider node is <strong>required in the MHD Base Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term value object node with quantitative or string value. Data Provider node is <strong>required in the MHD Base Profile.</strong> <code>Minimum: 1, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -5463,7 +5472,7 @@
 </tbody>
 </table>
 <h3 id="descriptor">Descriptor<a class="headerlink" href="#descriptor" title="Permanent link">¶</a></h3>
-<p>Descriptor node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term object node in the dataset graph. Descriptor node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -5891,7 +5900,7 @@
 </tbody>
 </table>
 <h3 id="factor-type">Factor Type<a class="headerlink" href="#factor-type" title="Permanent link">¶</a></h3>
-<p>Factor Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term object node in the dataset graph. Factor Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -5986,7 +5995,7 @@
 </tbody>
 </table>
 <h3 id="factor-value">Factor Value<a class="headerlink" href="#factor-value" title="Permanent link">¶</a></h3>
-<p>Factor Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term value object node with quantitative or string value. Factor Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6138,7 +6147,7 @@
 </tbody>
 </table>
 <h3 id="metabolite-identifier">Metabolite Identifier<a class="headerlink" href="#metabolite-identifier" title="Permanent link">¶</a></h3>
-<p>Metabolite Identifier node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term object node in the dataset graph. Metabolite Identifier node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6233,7 +6242,7 @@
 </tbody>
 </table>
 <h3 id="parameter-type">Parameter Type<a class="headerlink" href="#parameter-type" title="Permanent link">¶</a></h3>
-<p>Parameter Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term object node in the dataset graph. Parameter Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6328,7 +6337,7 @@
 </tbody>
 </table>
 <h3 id="parameter-value">Parameter Value<a class="headerlink" href="#parameter-value" title="Permanent link">¶</a></h3>
-<p>Parameter Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term value object node with quantitative or string value. Parameter Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6435,7 +6444,7 @@
 </tbody>
 </table>
 <h3 id="protocol-type">Protocol Type<a class="headerlink" href="#protocol-type" title="Permanent link">¶</a></h3>
-<p>Protocol Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Controlled Vocabulary (CV) term object node in the dataset graph. Protocol Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6529,6 +6538,55 @@
 </tr>
 </tbody>
 </table>
+<h3 id="referenced-object">Referenced Object<a class="headerlink" href="#referenced-object" title="Permanent link">¶</a></h3>
+<p>Controlled Vocabulary (CV) term object node in the dataset graph. Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Necessity</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong></td>
+<td>optional</td>
+<td><code><em>CvTermObjectId</em><code></code></code></td>
+<td>The id property uniquely identifies the object</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>optional</td>
+<td><code><em>MhdObjectType</em><code></code></code></td>
+<td>The type property identifies type of the CV Term object<br/>Its value MUST be <code><strong>referenced-object</strong></code></td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></code></code></td>
+<td>Ontology source name</td>
+</tr>
+<tr>
+<td><strong>accession</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></code></code></td>
+<td>Accession number of CV term in compact URI format</td>
+</tr>
+<tr>
+<td><strong>name</strong></td>
+<td>optional</td>
+<td><code><em>str</em><code></code></code></td>
+<td>Label of CV term</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Node Relationships</strong></p>
+<p>No relationships defined.</p>
+<p><strong>Reverse Node Relationships</strong></p>
+<p>No relationships defined.</p>
 <h2 id="model-graph">Model Graph<a class="headerlink" href="#model-graph" title="Permanent link">¶</a></h2>
 <p>The following graph shows all (required and optional) nodes and relationships.</p>
 <pre class="mermaid"><code>graph LR
