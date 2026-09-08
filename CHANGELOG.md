@@ -1,3 +1,11 @@
+## v0.1.93 (2026-09-08)
+
+### Fix
+
+- lint errors
+- documentation updates
+- model updates
+
 ## v0.1.92 (2026-07-20)
 
 ### Fix
