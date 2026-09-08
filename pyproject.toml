@@ -21,20 +21,21 @@ dependencies = [
     "reachable>=0.9.1",
     # security fix
     "urllib3>=2.7.0",
-    "idna>=3.17"
+    "idna>=3.17",
+    "h2>=4.4.1"
 ]
 
 [dependency-groups]
 dev = [
     "commitizen>=4.13.9",
     "import-linter>=2.11",
-    "mkdocs-material>=9.7.6",
+    "mkdocs-material>=9.7.7",
     "pre-commit>=4.5.1",
     "ruff>=0.16.6",
     "pytest>=9.0.3",
     "pytest-cov>=6.2.1",
     "mkdocs-mermaid2-plugin>=1.2.3",
-    "pymdown-extensions>=10.21.3",
+    "pymdown-extensions>=11.0.1",
     "soupsieve>=2.8.4"
 ]
 
@@ -43,7 +44,7 @@ default-groups = []
 
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=83.0.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
