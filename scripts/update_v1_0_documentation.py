@@ -725,7 +725,6 @@ def update_v1_0_documentation():
             f.write(
                 f'Profile Schema: <a href="{profile.schema}" target="_blank">{profile.schema}</a> \n\n'
             )
-            profile
             f.write(
                 f"## Required Nodes & Relationships \n\n "
                 f"**Required MHD Nodes**\n\n<code>{required_nodes}</code>\n\n "
@@ -830,6 +829,8 @@ def update_v1_0_documentation():
                     node_type = node.node_type
                     node_doc = node_documentation[node_type]
                     f.write(f"### {node_doc.name}\n\n")
+                    if node_doc.description:
+                        f.write(f"{node_doc.description} </br></br>")
 
                     if node.min > 0:
                         f.write(

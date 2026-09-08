@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD Legacy Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.legacy-profile.json</a>
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.legacy-profile.json</a> 
 
-## Required Nodes & Relationships
+## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
@@ -78,7 +78,7 @@ The following nodes are required with the specified value.
 
 ### Assay
 
-Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+[OBI, OBI:0000070, assay] A planned process that has the objective to produce information<br>about a material entity by examining it. </br></br>Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -125,7 +125,7 @@ Assay node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N 
 
 ### Characteristic Definition
 
-Characteristic Definition node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Definition of a sample characteristic or attribute (e.g. organism, tissue). </br></br>Characteristic Definition node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -164,7 +164,7 @@ Characteristic Definition node is **required in the MHD Legacy Profile.** <code>
 
 ### Derived Data File
 
-Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+[MS, MS:1003084, processed data file]<br>File that contains data that has been substantially processed or<br>transformed from what was originally acquired by an instrument. </br></br>Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -204,7 +204,7 @@ Derived Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 
 ### Factor Definition
 
-Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Definition of an experimental factor varied across samples in a study. </br></br>Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -243,7 +243,7 @@ Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 
 ### Metabolite
 
-Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Any intermediate or product resulting from metabolism.<br>The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite] </br></br>Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -283,7 +283,7 @@ Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 
 ### Metadata File
 
-Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. </br></br>Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -333,7 +333,7 @@ Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 
 ### Organization
 
-Organization node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An institution, company, university, or department associated with a study or contact. </br></br>Organization node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -378,7 +378,7 @@ Organization node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxi
 
 ### Parameter Definition
 
-Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Definition of an experimental parameter used within a protocol. </br></br>Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -417,7 +417,7 @@ Parameter Definition node is optional in the  MHD Legacy Profile. <code>Minimum:
 
 ### Person
 
-Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+An individual human being (e.g. author, submitter, principal investigator). </br></br>Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -464,7 +464,7 @@ Person node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum
 
 ### Project
 
-Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An overarching research project encompassing one or more studies. </br></br>Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -510,7 +510,7 @@ Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 
 ### Protocol
 
-Protocol node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A defined and standardized procedure followed to collect, prepare, or analyze samples. </br></br>Protocol node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -555,7 +555,7 @@ Protocol node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum:
 
 ### Publication
 
-Publication node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A document that is the output of a publishing process. [IAO, IAO:0000311, publication] </br></br>Publication node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -594,7 +594,7 @@ Publication node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 
 ### Raw Data File
 
-Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+[MS, MS:1003083, raw data file]<br>Data file that contains original data as generated by an instrument,<br>although not necessarily in the original data format<br>(i.e. an original raw file converted to a different format is still a raw data file) </br></br>Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -636,7 +636,7 @@ Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Max
 
 ### Result File
 
-Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Processed result file (e.g. quantification or identification matrix). </br></br>Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -680,7 +680,7 @@ Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 
 ### Sample
 
-Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A biological sample prepared for analytical measurement. </br></br>Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -722,7 +722,7 @@ Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N
 
 ### Sample Run
 
-Sample Run node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An analytical run representing the measurement of a sample on an instrument. </br></br>Sample Run node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -764,7 +764,7 @@ Sample Run node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 
 ### Sample Run Configuration
 
-Sample Run Configuration node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Configuration settings and instrument parameters used for a sample run. </br></br>Sample Run Configuration node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -799,7 +799,7 @@ Sample Run Configuration node is optional in the  MHD Legacy Profile. <code>Mini
 
 ### Specimen
 
-Specimen node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A biological specimen collected from a subject. </br></br>Specimen node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -838,7 +838,7 @@ Specimen node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum:
 
 ### Study
 
-Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: 1 </code>
+A biological research study or experiment comprising samples, protocols, and data. </br></br>Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: 1 </code>
 
 **Properties**
 
@@ -924,7 +924,7 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 
 ### Subject
 
-Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An individual organism or subject from which biological samples are derived. </br></br>Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -965,7 +965,7 @@ Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 
 ### Supplementary File
 
-Supplementary File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Supplementary document or asset file associated with the dataset. </br></br>Supplementary File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1007,7 +1007,7 @@ Supplementary File node is optional in the  MHD Legacy Profile. <code>Minimum: 0
 
 ### Characteristic Type
 
-Characteristic Type node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Characteristic Type node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1035,7 +1035,7 @@ Characteristic Type node is **required in the MHD Legacy Profile.** <code>Minimu
 
 ### Characteristic Value
 
-Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1071,7 +1071,7 @@ Characteristic Value node is **required in the MHD Legacy Profile.** <code>Minim
 
 ### Data Provider
 
-Data Provider node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: 1 </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Data Provider node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: 1 </code>
 
 **Properties**
 
@@ -1101,7 +1101,7 @@ Data Provider node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 
 ### Descriptor
 
-Descriptor node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Descriptor node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1166,7 +1166,7 @@ Descriptor node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 
 ### Factor Type
 
-Factor Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Factor Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1194,7 +1194,7 @@ Factor Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 
 ### Factor Value
 
-Factor Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Factor Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1229,7 +1229,7 @@ Factor Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxi
 
 ### Metabolite Identifier
 
-Metabolite Identifier node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Metabolite Identifier node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1257,7 +1257,7 @@ Metabolite Identifier node is optional in the  MHD Legacy Profile. <code>Minimum
 
 ### Parameter Type
 
-Parameter Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Parameter Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1285,7 +1285,7 @@ Parameter Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Ma
 
 ### Parameter Value
 
-Parameter Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Parameter Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1315,7 +1315,7 @@ Parameter Value node is optional in the  MHD Legacy Profile. <code>Minimum: 0, M
 
 ### Protocol Type
 
-Protocol Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Protocol Type node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 

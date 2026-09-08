@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD Base Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json</a>
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.schema.json</a> 
 
-## Required Nodes & Relationships
+## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
@@ -39,7 +39,7 @@ graph LR
 
 ### Assay
 
-Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+[OBI, OBI:0000070, assay] A planned process that has the objective to produce information<br>about a material entity by examining it. </br></br>Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -84,7 +84,7 @@ Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (u
 
 ### Characteristic Definition
 
-Characteristic Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Definition of a sample characteristic or attribute (e.g. organism, tissue). </br></br>Characteristic Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -123,7 +123,7 @@ Characteristic Definition node is optional in the  MHD Base Profile. <code>Minim
 
 ### Derived Data File
 
-Derived Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+[MS, MS:1003084, processed data file]<br>File that contains data that has been substantially processed or<br>transformed from what was originally acquired by an instrument. </br></br>Derived Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -163,7 +163,7 @@ Derived Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, M
 
 ### Factor Definition
 
-Factor Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Definition of an experimental factor varied across samples in a study. </br></br>Factor Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -202,7 +202,7 @@ Factor Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, M
 
 ### Metabolite
 
-Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Any intermediate or product resulting from metabolism.<br>The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite] </br></br>Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -242,7 +242,7 @@ Metabolite node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum:
 
 ### Metadata File
 
-Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. </br></br>Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -292,7 +292,7 @@ Metadata File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxim
 
 ### Organization
 
-Organization node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An institution, company, university, or department associated with a study or contact. </br></br>Organization node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -337,7 +337,7 @@ Organization node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximu
 
 ### Parameter Definition
 
-Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Definition of an experimental parameter used within a protocol. </br></br>Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -376,7 +376,7 @@ Parameter Definition node is optional in the  MHD Base Profile. <code>Minimum: 0
 
 ### Person
 
-Person node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An individual human being (e.g. author, submitter, principal investigator). </br></br>Person node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -423,7 +423,7 @@ Person node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (
 
 ### Project
 
-Project node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An overarching research project encompassing one or more studies. </br></br>Project node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -469,7 +469,7 @@ Project node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N 
 
 ### Protocol
 
-Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A defined and standardized procedure followed to collect, prepare, or analyze samples. </br></br>Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -514,7 +514,7 @@ Protocol node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N
 
 ### Publication
 
-Publication node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A document that is the output of a publishing process. [IAO, IAO:0000311, publication] </br></br>Publication node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -553,7 +553,7 @@ Publication node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum
 
 ### Raw Data File
 
-Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+[MS, MS:1003083, raw data file]<br>Data file that contains original data as generated by an instrument,<br>although not necessarily in the original data format<br>(i.e. an original raw file converted to a different format is still a raw data file) </br></br>Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -595,7 +595,7 @@ Raw Data File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxim
 
 ### Result File
 
-Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Processed result file (e.g. quantification or identification matrix). </br></br>Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -637,7 +637,7 @@ Result File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum
 
 ### Sample
 
-Sample node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A biological sample prepared for analytical measurement. </br></br>Sample node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -679,7 +679,7 @@ Sample node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (
 
 ### Sample Run
 
-Sample Run node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An analytical run representing the measurement of a sample on an instrument. </br></br>Sample Run node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -719,7 +719,7 @@ Sample Run node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum:
 
 ### Sample Run Configuration
 
-Sample Run Configuration node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Configuration settings and instrument parameters used for a sample run. </br></br>Sample Run Configuration node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -754,7 +754,7 @@ Sample Run Configuration node is optional in the  MHD Base Profile. <code>Minimu
 
 ### Specimen
 
-Specimen node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+A biological specimen collected from a subject. </br></br>Specimen node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -793,7 +793,7 @@ Specimen node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N
 
 ### Study
 
-Study node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+A biological research study or experiment comprising samples, protocols, and data. </br></br>Study node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -877,7 +877,7 @@ Study node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N
 
 ### Subject
 
-Subject node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+An individual organism or subject from which biological samples are derived. </br></br>Subject node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -918,7 +918,7 @@ Subject node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N 
 
 ### Supplementary File
 
-Supplementary File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Supplementary document or asset file associated with the dataset. </br></br>Supplementary File node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -960,7 +960,7 @@ Supplementary File node is optional in the  MHD Base Profile. <code>Minimum: 0, 
 
 ### Characteristic Type
 
-Characteristic Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Characteristic Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -988,7 +988,7 @@ Characteristic Type node is optional in the  MHD Base Profile. <code>Minimum: 0,
 
 ### Characteristic Value
 
-Characteristic Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Characteristic Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1024,7 +1024,7 @@ Characteristic Value node is optional in the  MHD Base Profile. <code>Minimum: 0
 
 ### Data Provider
 
-Data Provider node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Data Provider node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1054,7 +1054,7 @@ Data Provider node is **required in the MHD Base Profile.** <code>Minimum: 1, Ma
 
 ### Descriptor
 
-Descriptor node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Descriptor node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1119,7 +1119,7 @@ Descriptor node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum:
 
 ### Factor Type
 
-Factor Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Factor Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1147,7 +1147,7 @@ Factor Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum
 
 ### Factor Value
 
-Factor Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Factor Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1182,7 +1182,7 @@ Factor Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximu
 
 ### Metabolite Identifier
 
-Metabolite Identifier node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Metabolite Identifier node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1210,7 +1210,7 @@ Metabolite Identifier node is optional in the  MHD Base Profile. <code>Minimum: 
 
 ### Parameter Type
 
-Parameter Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Parameter Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1238,7 +1238,7 @@ Parameter Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxi
 
 ### Parameter Value
 
-Parameter Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term value object node with quantitative or string value. </br></br>Parameter Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1268,7 +1268,7 @@ Parameter Value node is optional in the  MHD Base Profile. <code>Minimum: 0, Max
 
 ### Protocol Type
 
-Protocol Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Protocol Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1293,6 +1293,30 @@ Protocol Type node is optional in the  MHD Base Profile. <code>Minimum: 0, Maxim
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |protocol|has-type|type-of|protocol-type|1|1||
+
+### Referenced Object
+
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+
+**Properties**
+
+|Property Name|Necessity|Type|Description|
+|-------------|---------|----|-----------|
+|**id**|optional|<code>*CvTermObjectId*<code>|The id property uniquely identifies the object|
+|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**referenced-object**</code>|
+|**source**|optional|<code>*str*<code>|Ontology source name|
+|**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
+|**name**|optional|<code>*str*<code>|Label of CV term|
+
+
+**Node Relationships**
+
+No relationships defined.
+
+
+**Reverse Node Relationships**
+
+No relationships defined.
 
 
 ## Model Graph

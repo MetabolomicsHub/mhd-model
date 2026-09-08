@@ -1994,6 +1994,12 @@ MHD_BASE_VALIDATION_V1_0.cv_nodes = [
             ),
         ],
     ),
+    CvNodeValidation(
+        node_type="referenced-object",
+        min=0,
+        validations=[],
+        relationships=[],
+    ),
 ]
 
 MHD_BASE_VALIDATION_V1_0.mhd_nodes.sort(key=lambda x: x.node_type)

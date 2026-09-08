@@ -9,6 +9,7 @@ from mhd_model.model.v1_0.dataset.profiles.base.base import (
     BasicCvTermValueModel,
     CvTermObjectId,
     CvTermValueObjectId,
+    IdentifiableMhdModel,
     KeyValue,
     MhdObjectId,
     MhdObjectType,
@@ -889,3 +890,42 @@ class CvTermValueObject(BasicCvTermValueModel):
             description="The type property identifies type of the CV Term Value object",
         ),
     ] = "cv-term-value"
+
+
+class MhdObjectReference(IdentifiableMhdModel):
+    """Any MHD object reference defined in other MHD dataset.
+    Node object with the specified id_ must be already defined in referenced dataset mhd_identifier.
+    """
+
+    model_config = ConfigDict()
+    id_: Annotated[
+        None | MhdObjectId,
+        Field(
+            alias="id",
+            description="Id of referenced object. "
+            "This id must be defined in the referenced dataset with the specified type_.",
+        ),
+    ] = None
+    type_: Annotated[
+        None | MhdObjectType,
+        Field(
+            alias="type",
+            description="The type property identifies the type of MHD Object. It must be `referenced-object`",
+        ),
+    ] = "referenced-object"
+    referenced_type: Annotated[
+        None | MhdObjectType,
+        Field(description="Type of referenced object."),
+    ]
+    mhd_identifier: Annotated[
+        None | str,
+        Field(
+            description="Unique MetabolomicsHub Data (MHD) identifier for the referenced dataset."
+            "For legacy dataset references, repository identifier can be used as mhd_identifier."
+        ),
+    ] = None
+
+    mhd_revision: Annotated[
+        None | int,
+        Field(description="MHD revision number of the referenced dataset."),
+    ] = None
