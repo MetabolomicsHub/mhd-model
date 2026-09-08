@@ -53,11 +53,11 @@ mhd-cli
 ## Example API Usage
 
 ```python
-
 from mhd_model.mhd_client import MhdClient, MhdClientError
 
 mhd_webservice_base_url = "https://www.metabolomicshub.org/api/submission"
 api_key = "<your-api-key>"
+
 
 def get_new_mhd_accession_example():
     mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
@@ -69,6 +69,7 @@ def get_new_mhd_accession_example():
         print("Accession: %s" % accession)
     except MhdClientError as ex:
         print("Error: %s" % ex.message)
+
 
 def get_new_test_mhd_accession_example():
     mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
@@ -85,7 +86,7 @@ def get_new_test_mhd_accession_example():
 def submit_legacy_dataset_example():
     announcement_file_path = "MTBLS9876543.announcement.json"
     dataset_repository_id = "MTBLS9876543"
-    announcement_reason="Initial revision"
+    announcement_reason = "Initial revision"
     mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
 
     try:
@@ -104,7 +105,7 @@ def submit_mhd_dataset_example():
     announcement_file_path = "MTBLS9876543.announcement.json"
     mhd_id = "MHD0000001"
     dataset_repository_id = "MTBLS22222"
-    announcement_reason="Initial revision"
+    announcement_reason = "Initial revision"
     mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
 
     try:
@@ -117,6 +118,4 @@ def submit_mhd_dataset_example():
         print("Revision: %s" % revision.revision)
     except MhdClientError as ex:
         print("Error: %s" % ex.message)
-
-
 ```

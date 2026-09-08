@@ -12,7 +12,6 @@ from mhd_model.log_utils import set_basic_logging_config
 @click.version_option(__version__)
 def cli():
     """MetabomicsHub CLI with subcommands."""
-    pass
 
 
 cli.add_command(create_group)

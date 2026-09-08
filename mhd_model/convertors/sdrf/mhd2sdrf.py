@@ -1,7 +1,7 @@
 import json
 import logging
+from collections import OrderedDict
 from pathlib import Path
-from typing import OrderedDict
 
 from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
@@ -255,7 +255,7 @@ def create_sdrf_files(
     if "study" not in type_map or not type_map["study"]:
         logger.error("Study is not found for in the input file")
         return False, sdrf_files
-    study: graph_nodes.Study = list(type_map["study"].values())[0]
+    study: graph_nodes.Study = next(iter(type_map["study"].values()))
     study_id = study.mhd_identifier or study.repository_identifier
     study_assays: list[graph_nodes.Assay] = []
     if "assay" in type_map:
@@ -601,7 +601,7 @@ def create_sdrf_files(
         for row in sdrf_file.sample_runs:
             tsv_data.get("sample name", []).append(row.sample_name or "")
             tsv_data.get("assay name", []).append(row.assay_name or "")
-            filled_headers = set(["sample name", "assay name"])
+            filled_headers = {"sample name", "assay name"}
             all_param_value_definitions = []
             for item in row.protocol_parameters:
                 all_param_value_definitions.extend(item.parameter_values)

@@ -30,7 +30,7 @@ dev = [
     "import-linter>=2.11",
     "mkdocs-material>=9.7.6",
     "pre-commit>=4.5.1",
-    "ruff>=0.15.7",
+    "ruff>=0.16.6",
     "pytest>=9.0.3",
     "pytest-cov>=6.2.1",
     "mkdocs-mermaid2-plugin>=1.2.3",
@@ -88,7 +88,7 @@ testpaths = [
 
 [tool.ruff.lint]
 extend-select = ["E4", "E7", "E9", "F", "I", "G", "SLF", "PTH", "Q", "T"]
-ignore = [ "ANN401"]
+ignore = [ "ANN401", "PLR1722", "SIM", "PERF402", "BLE001", "TRY401", "RUF012", "TRY201", "TRY203", "TRY004"]
 
 fixable = ["ALL"]
 

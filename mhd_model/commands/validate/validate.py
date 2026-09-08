@@ -9,7 +9,6 @@ from mhd_model.commands.validate.mhd_file import validate_mhd_file_task
 @click.group(name="validate", context_settings={"help_option_names": ["-h", "--help"]})
 def validate_group():
     """utilities to validate MetabolomicsHub files."""
-    pass
 
 
 validate_group.add_command(validate_announcement_file_task)

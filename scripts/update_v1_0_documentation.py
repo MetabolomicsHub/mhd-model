@@ -1,11 +1,11 @@
 import json
 import logging
 import types
+from collections import OrderedDict
 from pathlib import Path
 from typing import (
     Annotated,
     Any,
-    OrderedDict,
     Union,
     get_args,
     get_origin,
@@ -152,7 +152,7 @@ def get_type_name(annotation: Any) -> str:
     origin = get_origin(annotation)
     if origin is Annotated:
         # processed = get_type_name(get_args(annotation)[0])
-        annotation_name = getattr(annotation, "__name__")
+        annotation_name = annotation.__name__
         if annotation_name and annotation_name != Annotated.__name__:
             return annotation_name
 
@@ -168,7 +168,7 @@ def get_type_name(annotation: Any) -> str:
     # Handle generic types like List[T], Dict[K, V]
     origin = get_origin(annotation)
     if origin:
-        arg_types = getattr(annotation, "__name__")
+        arg_types = annotation.__name__
         if arg_types and arg_types in {set.__name__, dict.__name__, list.__name__}:
             name = get_args(annotation)[0].__name__
             if name in ["Union", "UnionType"]:
@@ -372,7 +372,7 @@ def update_nodes(
                     if k[6] is None:
                         for val in v:
                             field_rules.append(val)
-        if field.endswith("_ref") or field.endswith("_refs"):
+        if field.endswith(("_ref", "_refs")):
             target_node_type = None
             if node_rules:
                 targets = [str(x[2]) for x in node_rules.keys() if x and x[2]]
@@ -440,9 +440,7 @@ def update_v1_0_documentation():
         # common_fields = {x for x in BaseMhdModel.model_fields}
         # NO_CONDITION_KEY = (None, None, None, None, None, None)
         node_documentation: OrderedDict[str, NodeDocumentation] = OrderedDict()
-        embedded_relationships, reverse_embedded_relationships = (
-            get_embedded_relationships(profile)
-        )
+        embedded_relationships, _ = get_embedded_relationships(profile)
 
         for nodes in [profile.mhd_nodes, profile.cv_nodes]:
             for node in nodes:
@@ -485,7 +483,7 @@ def update_v1_0_documentation():
 
                         node_doc.embedded_relationships = (
                             "<code>"
-                            + ", ".join(sorted([x for x in references.keys()]))
+                            + ", ".join(sorted([x for x in references]))
                             + "</code>"
                         )
                     node_relationships = relationships[node_type]
@@ -509,7 +507,7 @@ def update_v1_0_documentation():
                                         ):
                                             if k[6] is not None:
                                                 for val in v:
-                                                    rule = f"**Conditional - ({k[4]})**<br>[Source {k[5]} = {k[6]}]<br>{str(val)}"
+                                                    rule = f"**Conditional - ({k[4]})**<br>[Source {k[5]} = {k[6]}]<br>{val!s}"
                                                     rules.append(rule)
                                             else:
                                                 for val in v:
@@ -629,7 +627,7 @@ def update_v1_0_documentation():
                         ):
                             if not val_item.target_ref_types:
                                 logger.warning(
-                                    "No target types defined for embedded ref in",
+                                    "No target types defined for embedded ref in %s",
                                     item.node_type,
                                 )
                             required_embedded_required_nodes.update(

@@ -1,6 +1,7 @@
 import logging
+from collections import OrderedDict
 from pathlib import Path
-from typing import Any, OrderedDict
+from typing import Any
 
 from pydantic import AnyUrl, BaseModel
 
@@ -312,7 +313,7 @@ def create_ms_announcement_file(
     if "study" not in type_map:
         logger.error("Study not found for in the input file")
         return
-    study: graph_nodes.Study = list(type_map["study"].values())[0]
+    study: graph_nodes.Study = next(iter(type_map["study"].values()))
 
     study_assays: list[graph_nodes.Assay] = []
     if "assay" in type_map:
@@ -392,7 +393,7 @@ def create_ms_announcement_file(
                 term = CvTerm.model_validate(technology_type)
                 measurement_types[term.accession] = term
 
-    dataset_url_list = study.url_list
+    dataset_url_list = study.dataset_url_list
 
     announcement = AnnouncementBaseProfile(
         repository_name=mhd_dataset.repository_name,
@@ -439,6 +440,8 @@ def create_ms_announcement_file(
                 all_nodes_map, type_map, "metadata-file", ref, AnnouncementMetadataFile
             )
             if metadata:
+                if not announcement.repository_metadata_file_list:
+                    announcement.repository_metadata_file_list = []
                 announcement.repository_metadata_file_list.append(metadata)
 
     if "result-file" in type_map:
@@ -447,6 +450,8 @@ def create_ms_announcement_file(
                 all_nodes_map, type_map, "result-file", ref, AnnouncementResultFile
             )
             if file:
+                if not announcement.result_file_list:
+                    announcement.result_file_list = []
                 announcement.result_file_list.append(file)
 
     if "raw-data-file" in type_map:
@@ -455,6 +460,8 @@ def create_ms_announcement_file(
                 all_nodes_map, type_map, "raw-data-file", ref, AnnouncementRawDataFile
             )
             if file:
+                if not announcement.raw_data_file_list:
+                    announcement.raw_data_file_list = []
                 announcement.raw_data_file_list.append(file)
     if "derived-data-file" in type_map:
         for ref in type_map["derived-data-file"]:
@@ -466,6 +473,8 @@ def create_ms_announcement_file(
                 AnnouncementDerivedDataFile,
             )
             if file:
+                if not announcement.derived_data_file_list:
+                    announcement.derived_data_file_list = []
                 announcement.derived_data_file_list.append(file)
     if "supplementary-file" in type_map:
         for ref in type_map["supplementary-file"]:
@@ -477,6 +486,8 @@ def create_ms_announcement_file(
                 AnnouncementSupplementaryFile,
             )
             if file:
+                if not announcement.supplementary_file_list:
+                    announcement.supplementary_file_list = []
                 announcement.supplementary_file_list.append(file)
     identification_map = {}
     identification_links = relationship_name_map.get("identified-as")

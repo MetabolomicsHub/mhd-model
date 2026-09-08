@@ -1,5 +1,6 @@
+from typing import Annotated
+
 from pydantic import Field
-from typing_extensions import Annotated
 
 from mhd_model.model.v1_0.dataset.profiles.base.base import (
     BaseMhdRelationship,

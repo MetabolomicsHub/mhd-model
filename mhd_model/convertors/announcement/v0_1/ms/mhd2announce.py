@@ -1,6 +1,7 @@
 import logging
+from collections import OrderedDict
 from pathlib import Path
-from typing import Any, OrderedDict
+from typing import Any
 
 from pydantic import AnyUrl, BaseModel
 
@@ -312,7 +313,7 @@ def create_ms_announcement_file(
     if "study" not in type_map:
         logger.error("Study not found for in the input file")
         return
-    study: graph_nodes.Study = list(type_map["study"].values())[0]
+    study: graph_nodes.Study = next(iter(type_map["study"].values()))
 
     study_assays: list[graph_nodes.Assay] = []
     if "assay" in type_map:
@@ -392,7 +393,7 @@ def create_ms_announcement_file(
                 term = CvTerm.model_validate(technology_type)
                 measurement_types[term.accession] = term
 
-    dataset_url_list = study.url_list
+    dataset_url_list = study.dataset_url_list
 
     announcement = AnnouncementBaseProfile(
         repository_name=mhd_dataset.repository_name,

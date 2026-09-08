@@ -52,7 +52,7 @@ class MhdAnnouncementFileValidator:
             register_validator_class(k, v)
 
     def unregister_validators(self):
-        for k, v in self.validators.items():
+        for k in self.validators.keys():
             unregister_validator_class(k)
 
     def validate_json_file(

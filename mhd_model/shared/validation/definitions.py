@@ -15,7 +15,7 @@ class CvTermPlaceholder(ValidatorBaseModel):
     accession: str = ""
 
     def __hash__(self) -> int:
-        return f"[{self.source}, {self.accession}]"
+        return hash(f"[{self.source}, {self.accession}]")
 
 
 class ProfileCvTermValidation(ProfileValidation):

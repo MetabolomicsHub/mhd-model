@@ -1,5 +1,6 @@
+from typing import Annotated
+
 from pydantic import AnyUrl, Field
-from typing_extensions import Annotated
 
 from mhd_model.shared.model import (
     CvTerm,

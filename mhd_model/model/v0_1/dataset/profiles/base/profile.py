@@ -1,8 +1,7 @@
-from typing import Any
+from typing import Annotated, Any
 
 from pydantic import Field, field_validator
 from pydantic.alias_generators import to_pascal
-from typing_extensions import Annotated
 
 from mhd_model.model.v0_1.dataset.profiles.base import base, graph_nodes, relationships
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
@@ -105,7 +104,7 @@ class MhdGraph(MhdConfigModel):
     @staticmethod
     def get_node_class(item: dict[str, Any]):
         if not item or not item.get("type") or not item.get("id"):
-            return None
+            return
 
     @staticmethod
     def get_mhd_class_by_type(node_type: str) -> None | IdentifiableMhdModel:

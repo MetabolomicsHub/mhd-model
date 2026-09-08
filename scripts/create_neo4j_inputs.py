@@ -34,7 +34,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
                 if key.endswith("_ref"):
                     ref = getattr(node, key, None)
                     if hasattr(nodes_map[ref], "name"):
-                        val = getattr(nodes_map[ref], "name")
+                        val = nodes_map[ref].name
                         properties[key.replace("_ref", "")] = val
                     refs.append(ref)
                 elif key.endswith("_refs"):
@@ -42,7 +42,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
                     vals = []
                     for ref in refs:
                         if hasattr(nodes_map[ref], "name"):
-                            val = getattr(nodes_map[ref], "name")
+                            val = nodes_map[ref].name
                             if val and val not in vals:
                                 vals.append(val)
                     properties[key.replace("_refs", "") + "_list"] = vals

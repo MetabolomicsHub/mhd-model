@@ -717,7 +717,7 @@ class AccessibleCompactURIValidator(BaseProfileValidator):
                 sub_path=sub_path,
                 name="",
                 valid=False,
-                message=f"invalid validator {str(profile_validation)}",
+                message=f"invalid validator {profile_validation!s}",
                 data=value,
             )
 
@@ -804,7 +804,7 @@ class AccessibleCompactURIValidator(BaseProfileValidator):
             )
 
         except Exception as ex:
-            logger.debug("Unaccessible URI: %s, %s", default_uri)
+            logger.debug("Unaccessible URI: %s", default_uri)
             logger.exception(ex)
             return ValidationResult(
                 sub_path=sub_path,

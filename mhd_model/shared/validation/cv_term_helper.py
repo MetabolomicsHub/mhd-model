@@ -203,7 +203,7 @@ class CvTermHelper:
         while not finished:
             params = {"page": page, "size": 100}
             page += 1
-            status_code, result_json = search_ols(url, params, headers, timeout=10)
+            _, result_json = search_ols(url, params, headers, timeout=10)
             if not result_json:
                 logger.warning(
                     "Could not find children CV Terms for %s - %s",
@@ -284,9 +284,7 @@ class CvTermHelper:
         self, source: str, accession: str
     ) -> tuple[CvTerm, list[str]]:
         curi = accession
-        if accession and (
-            accession.startswith("http://") or accession.startswith("https://")
-        ):
+        if accession and (accession.startswith(("http://", "https://"))):
             curi = bioregistry.curie_from_iri(accession)
 
         params = {
@@ -336,7 +334,7 @@ class CvTermHelper:
         allow_synonym_search: bool = False,
     ) -> None | CvTerm:
         key = (source, accession_or_label, matched_accession, allow_synonym_search)
-        if key in self.cv_term_cache and self.cv_term_cache[key]:
+        if self.cv_term_cache.get(key):
             return self.cv_term_cache[key]
         if not source or not accession_or_label:
             raise ValueError("Source and accession_or_label must be provided")
@@ -579,9 +577,9 @@ class CvTermHelper:
                 return self.search_cache[key]
 
         except httpx2.HTTPStatusError as ex:
-            return False, f"{accession} search failed: {str(ex)}"
+            return False, f"{accession} search failed: {ex!s}"
         except Exception as ex:
             return (
                 False,
-                f"{accession} is not in {cv_term.source} ontology. {str(ex)}",
+                f"{accession} is not in {cv_term.source} ontology. {ex!s}",
             )

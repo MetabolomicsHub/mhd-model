@@ -1,9 +1,8 @@
 import datetime
 import uuid
-from typing import Any
+from typing import Annotated, Any
 
 from pydantic import AnyUrl, Field, field_validator, model_validator
-from typing_extensions import Annotated
 
 from mhd_model.shared.model import (
     CvTerm,
@@ -24,17 +23,17 @@ OBJECT_TYPE_PATTERN = r"^[a-z0-9]+(?:-[a-z0-9]+)*$"
 
 
 MhdObjectType = Annotated[str, Field(..., pattern=OBJECT_TYPE_PATTERN)]
-setattr(MhdObjectType, "__name__", "MhdObjectType")
+MhdObjectType.__name__ = "MhdObjectType"
 
 # MhdObjectType = Annotated[MhdObjectType, Field()]
 MhdObjectId = Annotated[str, Field(pattern=OBJECT_UUID_PATTERN)]
-setattr(MhdObjectId, "__name__", "MhdObjectId")
+MhdObjectId.__name__ = "MhdObjectId"
 CvTermObjectId = Annotated[str, Field(pattern=CV_TERM_UUID_PATTERN)]
-setattr(CvTermObjectId, "__name__", "CvTermObjectId")
+CvTermObjectId.__name__ = "CvTermObjectId"
 CvTermValueObjectId = Annotated[str, Field(pattern=CV_TERM_VALUE_UUID_PATTERN)]
-setattr(CvTermValueObjectId, "__name__", "CvTermValueObjectId")
+CvTermValueObjectId.__name__ = "CvTermValueObjectId"
 MhdRelationshipObjectId = Annotated[str, Field(pattern=RELATIONSHIP_UUID_PATTERN)]
-setattr(MhdRelationshipObjectId, "__name__", "MhdRelationshipObjectId")
+MhdRelationshipObjectId.__name__ = "MhdRelationshipObjectId"
 
 
 class KeyValue(MhdConfigModel):

@@ -58,4 +58,4 @@ def create_announcement_file_task(
         )
         click.echo(f"{mhd_study_id} announcement file conversion completed.")
     except Exception as ex:
-        click.echo(f"{mhd_study_id} announcement file conversion failed. {str(ex)}")
+        click.echo(f"{mhd_study_id} announcement file conversion failed. {ex!s}")

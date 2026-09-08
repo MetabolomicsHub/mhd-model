@@ -1,4 +1,4 @@
-from typing import OrderedDict
+from collections import OrderedDict
 
 from mhd_model.shared.model import CvTerm
 
@@ -169,7 +169,7 @@ COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS: dict[str, dict[str, CvTerm]
 
 COMMON_CHARACTERISTIC_DEFINITIONS: dict[str, CvTerm] = {}
 
-for _, terms in COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS.items():
+for terms in COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS.values():
     for label, term in terms.items():
         COMMON_CHARACTERISTIC_DEFINITIONS[label] = term
 
@@ -185,7 +185,7 @@ COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS: dict[str, CvTerm] = {
 
 COMMON_STUDY_FACTOR_DEFINITIONS: dict[str, CvTerm] = {}
 
-for _, terms in COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS.items():
+for terms in COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS.values():
     for label, term in terms.items():
         COMMON_STUDY_FACTOR_DEFINITIONS[label] = term
 
@@ -244,7 +244,7 @@ COMMON_PARAMETER_DEFINITIONS: OrderedDict[str, CvTerm] = OrderedDict()
 for protocol, enforcements in COMMON_PARAMETER_ENFORCEMENT_LEVELS.items():
     if protocol not in COMMON_PROTOCOL_PARAMETER_MAPPINGS:
         COMMON_PROTOCOL_PARAMETER_MAPPINGS[protocol] = OrderedDict()
-    for enforcement_level, terms in enforcements.items():
+    for terms in enforcements.values():
         for label, term in terms.items():
             COMMON_PARAMETER_DEFINITIONS[label] = term
             COMMON_PROTOCOL_PARAMETER_MAPPINGS[protocol][label] = term

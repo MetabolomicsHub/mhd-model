@@ -1,6 +1,8 @@
 import logging
 import re
-from typing import Any, Generator, OrderedDict
+from collections import OrderedDict
+from collections.abc import Generator
+from typing import Any
 
 import jsonschema
 from jsonschema import ValidationError, protocols
@@ -192,7 +194,7 @@ class MhdModelValidator:
                     validator="invalid-relationship",
                     context=(),
                     path=(nodes_path, idx),
-                    instance=instance[idx],
+                    instance=item,
                 )
                 continue
             rel: BaseMhdRelationship = None
@@ -216,7 +218,7 @@ class MhdModelValidator:
                     validator="unique-relationship-id",
                     context=(),
                     path=(nodes_path, idx),
-                    instance=instance[idx],
+                    instance=item,
                 )
                 continue
             unique_relationships[rel.id_] = rel
@@ -253,7 +255,7 @@ class MhdModelValidator:
                     validator="invalid-node",
                     context=(),
                     path=(nodes_path, idx),
-                    instance=nodes[idx],
+                    instance=item,
                 )
                 continue
             node: None | IdentifiableMhdModel = None
@@ -287,7 +289,7 @@ class MhdModelValidator:
                     validator="not-common-node",
                     context=(),
                     path=(nodes_path, idx),
-                    instance=nodes[idx],
+                    instance=item,
                 )
                 continue
 
@@ -302,7 +304,7 @@ class MhdModelValidator:
                         validator="valid-term-node",
                         context=(),
                         path=(nodes_path, idx),
-                        instance=nodes[idx],
+                        instance=item,
                     )
                 elif "--" + node.type_ + "--" not in node.id_:
                     yield jsonschema.ValidationError(
@@ -311,7 +313,7 @@ class MhdModelValidator:
                         validator="valid-term-node",
                         context=(),
                         path=(nodes_path, idx),
-                        instance=nodes[idx],
+                        instance=item,
                     )
             elif not node.id_.startswith("mhd--" + node.type_ + "--"):
                 yield jsonschema.ValidationError(
@@ -320,7 +322,7 @@ class MhdModelValidator:
                     validator="valid-term-node",
                     context=(),
                     path=(nodes_path, idx),
-                    instance=nodes[idx],
+                    instance=item,
                 )
             if node.id_ in unique_nodes:
                 obj = unique_nodes.get(node.id_)
@@ -333,7 +335,7 @@ class MhdModelValidator:
                     validator="unique-node-id",
                     context=(),
                     path=(nodes_path, idx),
-                    instance=nodes[idx],
+                    instance=item,
                 )
                 logger.warning(
                     "%s: Id is not unique for indices %s and %s."
@@ -661,7 +663,7 @@ class MhdModelValidator:
         return errors
 
     def check_property_constraint(
-        self, item: NodePropertyValidation, nodes_by_type: dict, path: str = None
+        self, item: NodePropertyValidation, nodes_by_type: dict, path: None | str = None
     ) -> list[jsonschema.ValidationError]:
         nodes = nodes_by_type.get(item.node_type, {})
         errors = []
@@ -731,7 +733,7 @@ class MhdModelValidator:
         return errors
 
     def check_custom_nodes(
-        self, nodes_by_type: dict, type_name: None | str = None, path: str = None
+        self, nodes_by_type: dict, type_name: None | str = None, path: None | str = None
     ) -> list[jsonschema.ValidationError]:
         errors = []
         for node_type, values in nodes_by_type.items():
@@ -764,7 +766,7 @@ class MhdModelValidator:
         check: CvTermValidation,
         nodes_by_type: dict,
         selected_items: None | list[Any] = None,
-        path: str = None,
+        path: None | str = None,
     ) -> list[jsonschema.ValidationError]:
         if check.node_type not in nodes_by_type:
             return []
@@ -832,7 +834,7 @@ class MhdModelValidator:
                 if target_tuple:
                     target = target_tuple[1]
                     if hasattr(target, "name"):
-                        accession = getattr(target, "name")
+                        accession = target.name
                         if accession == condition_item.expression_value:
                             run_validation = True
                             break
@@ -851,7 +853,7 @@ class MhdModelValidator:
         missing_values: None | set[tuple[str, str, str]] = None,
         other_sources: None | set[tuple[str, str]] = None,
         check: None | CvTermValidation = None,
-        path: str = None,
+        path: None | str = None,
     ) -> list[jsonschema.ValidationError]:
         items, is_list, error = self.get_items(nodes, idx, node, property_name)
         if error:
@@ -910,7 +912,7 @@ class MhdModelValidator:
                         message=message
                         + f"[{item.source}, {item.accession}, {item.name}] "
                         f"is not allowed cv term. "
-                        f"Allowed cv term sources: {str(source_names)}.{error_message}",
+                        f"Allowed cv term sources: {source_names!s}.{error_message}",
                         validator="check-cv-source",
                         context=(),
                         path=sub_path,
@@ -926,7 +928,7 @@ class MhdModelValidator:
         check: CvTermValidation,
         nodes_by_type: dict,
         selected_items: list[Any],
-        path: str = None,
+        path: None | str = None,
     ) -> None | list[jsonschema.ValidationError]:
         if check.node_type not in nodes_by_type:
             return None
@@ -977,7 +979,7 @@ class MhdModelValidator:
         missing_values: None | set[tuple[str, str, str]] = None,
         other_sources: None | set[tuple[str, str]] = None,
         parent_cv_terms: None | list[ParentCvTerm] = None,
-        path: str = None,
+        path: None | str = None,
     ) -> list[jsonschema.ValidationError]:
         items, is_list, error = self.get_items(nodes, idx, node, property_name)
         if error:
@@ -1032,7 +1034,7 @@ class MhdModelValidator:
                         message=message
                         + f"[{item.source}, {item.accession}, {item.name}] "
                         f"is not child of any parent cv term. "
-                        f"Valid parents: {str(valid_parents)}. Error: {error_message}",
+                        f"Valid parents: {valid_parents!s}. Error: {error_message}",
                         validator="check-child-cv-term",
                         context=(),
                         path=sub_path,
@@ -1068,7 +1070,7 @@ class MhdModelValidator:
         check: CvTermValidation,
         nodes_by_type: dict,
         selected_items: list[Any],
-        path: str = None,
+        path: None | str = None,
     ) -> None | list[jsonschema.ValidationError]:
         if check.node_type not in nodes_by_type:
             return None
@@ -1117,7 +1119,7 @@ class MhdModelValidator:
         placeholder_values: None | set[tuple[str, str]] = None,
         missing_values: None | set[tuple[str, str, str]] = None,
         other_sources: None | set[tuple[str, str]] = None,
-        path: str = None,
+        path: None | str = None,
     ) -> list[jsonschema.ValidationError]:
         items, is_list, error = self.get_items(nodes, idx, node, property_name)
         if error:
@@ -1196,7 +1198,8 @@ class MhdModelValidator:
         item: Any,
         nodes: dict,
         source_property: str,
-        relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
+        relationships_index: None
+        | dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
     ) -> list[Any]:
         vals = [item]
 
@@ -1239,7 +1242,8 @@ class MhdModelValidator:
         conditions: FilterCondition,
         nodes: dict,
         nodes_by_type: dict,
-        relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
+        relationships_index: None
+        | dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
     ) -> list:
         selected_items = {}
         if node_type not in nodes_by_type:
@@ -1258,7 +1262,7 @@ class MhdModelValidator:
                 source_nodes = nodes_by_type.get(source_node_type)
             else:
                 source_nodes = {}
-                for _, v in nodes_by_type.items():
+                for v in nodes_by_type.values():
                     for k, v2 in v.items():
                         source_nodes[k] = v2
             if source_nodes and source_property and source_value:
@@ -1329,7 +1333,7 @@ class MhdModelValidator:
         nodes: dict,
         check: CvTermValidation,
         selected_items: list[tuple[int, Any]],
-        path: str = None,
+        path: None | str = None,
     ) -> list[ValidationError]:
         # errors = self.run_default_cv_term_validation(item.validation)
         # if errors:
@@ -1456,7 +1460,7 @@ class MhdModelValidator:
         node: IdentifiableMhdModel,
         control_list: dict[str, CvTerm],
         property_name: None | str = None,
-        path: str = None,
+        path: None | str = None,
     ) -> None | list[jsonschema.ValidationError]:
         items, is_list, error = self.get_items(nodes, idx, node, property_name)
         if error:
@@ -1535,10 +1539,11 @@ class MhdModelValidator:
     def check_relationships(
         self,
         item: RelationshipValidation,
-        nodes: dict[str, IdentifiableMhdModel] = None,
-        nodes_by_type: dict[str, dict[str, tuple[int, Any]]] = None,
-        relationships_by_name: dict[str, dict[str, tuple[int, Any]]] = None,
-        relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
+        nodes: None | dict[str, IdentifiableMhdModel] = None,
+        nodes_by_type: None | dict[str, dict[str, tuple[int, Any]]] = None,
+        relationships_by_name: None | dict[str, dict[str, tuple[int, Any]]] = None,
+        relationships_index: None
+        | dict[str, dict[str, dict[str, tuple[int, str]]]] = None,
     ) -> None | protocols.Validator:
         relationships = relationships_by_name.get(item.relationship_name, {})
         items = []
@@ -1663,7 +1668,7 @@ class MhdModelValidator:
     def check_nodes(
         self,
         node_validation: NodeValidation | CvNodeValidation,
-        nodes_by_type: dict[str, dict[str, tuple[int, Any]]] = None,
+        nodes_by_type: None | dict[str, dict[str, tuple[int, Any]]] = None,
     ) -> None | protocols.Validator:
         min = node_validation.min
         max = node_validation.max
@@ -1696,7 +1701,7 @@ class MhdModelValidator:
             and node_validation.value_required
         ):
             for idx, node in nodes_by_type.get(node_name, {}).values():
-                if not hasattr(node, "value") or not getattr(node, "value"):
+                if not hasattr(node, "value") or not node.value:
                     errors.append(
                         jsonschema.ValidationError(
                             message=f"{node.id_}: {node_name} node at index {idx} must have non empty 'value'.",

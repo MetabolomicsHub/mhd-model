@@ -1,8 +1,8 @@
 import logging
-from typing import Any, Self, Sequence
+from collections.abc import Sequence
+from typing import Annotated, Any, Self
 
 from pydantic import Field
-from typing_extensions import Annotated
 
 from mhd_model.model.v1_0.dataset.profiles.base.base import (
     BaseLabeledMhdModel,

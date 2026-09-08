@@ -1,9 +1,9 @@
 import datetime
 import decimal
+from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_pascal
-from typing_extensions import Annotated
 
 
 class MhdConfigModel(BaseModel):

@@ -1,1 +1,1 @@
-__all__ = ["validators", "cv_term_helper", "definitions", "registry"]
+__all__ = ["cv_term_helper", "definitions", "registry", "validators"]

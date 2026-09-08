@@ -1,7 +1,7 @@
 import datetime
+from typing import Annotated
 
 from pydantic import AnyUrl, ConfigDict, EmailStr, Field, HttpUrl
-from typing_extensions import Annotated
 
 from mhd_model.model.v1_0.dataset.profiles.base.base import (
     BaseLabeledMhdModel,
@@ -778,8 +778,6 @@ class BaseFile(BaseLabeledMhdModel):
 
 class ReferencedDataFile(BaseFile):
     """Base model for data files referenced within the dataset."""
-
-    pass
 
 
 class RawDataFile(ReferencedDataFile):

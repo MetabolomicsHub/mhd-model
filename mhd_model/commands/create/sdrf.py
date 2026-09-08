@@ -51,5 +51,5 @@ def create_sdrf_file_task(
             click.echo(f"There is no SDRF file for {mhd_study_id}.")
             exit(1)
     except Exception as ex:
-        click.echo(f"{mhd_study_id} SDRF file creation failed. {str(ex)}")
+        click.echo(f"{mhd_study_id} SDRF file creation failed. {ex!s}")
         exit(1)

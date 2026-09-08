@@ -1,7 +1,7 @@
 import datetime
+from typing import Annotated
 
 from pydantic import AnyUrl, Field, HttpUrl
-from typing_extensions import Annotated
 
 from mhd_model.shared.model import (
     CvEnabledDataset,
@@ -14,8 +14,6 @@ from mhd_model.shared.model import (
 
 class AnnouncementBaseModel(MhdConfigModel):
     """Base model for announcement-related models."""
-
-    pass
 
 
 class AnnouncementBaseFile(AnnouncementBaseModel):

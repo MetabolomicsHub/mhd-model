@@ -62,7 +62,7 @@ class CheckCvTermKeyValueValidator(ProfileValidationGroupValidator):
                 sub_path=sub_path,
                 name="",
                 valid=False,
-                message=f"Invalid validator {str(profile_validation)}",
+                message=f"Invalid validator {profile_validation!s}",
                 data=value,
             )
 
@@ -118,7 +118,7 @@ class CheckCvChildTermKeyValuesValidator(BaseProfileValidator):
                 sub_path=sub_path,
                 name="",
                 valid=False,
-                message=f"invalid validator {str(profile_validation)}",
+                message=f"invalid validator {profile_validation!s}",
                 data=value,
             )
 
@@ -199,7 +199,7 @@ class CheckCvTermKeyValuesValidator(BaseProfileValidator):
                 sub_path=sub_path,
                 name="",
                 valid=False,
-                message=f"invalid validator {str(profile_validation)}",
+                message=f"invalid validator {profile_validation!s}",
                 data=value,
             )
 

@@ -1,1 +1,1 @@
-__all__ = ["profile", "graph_validation"]
+__all__ = ["graph_validation", "profile"]

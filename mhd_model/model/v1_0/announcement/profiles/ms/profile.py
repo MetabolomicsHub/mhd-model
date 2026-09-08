@@ -1,7 +1,7 @@
 import datetime
+from typing import Annotated
 
 from pydantic import AnyUrl, EmailStr, Field, HttpUrl
-from typing_extensions import Annotated
 
 from mhd_model.model.v1_0.announcement.profiles.base.profile import (
     AnnouncementBaseProfile,

@@ -2,7 +2,7 @@ import datetime
 import logging
 import time
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal
 
 import httpx2
 from pydantic import BaseModel, ConfigDict
@@ -23,13 +23,13 @@ class MhdBaseModel(BaseModel):
 
 
 class SubmittedRevision(MhdBaseModel):
-    accession: Optional[str]
-    revision: Optional[int]
-    revision_datetime: Optional[datetime.datetime]
-    description: Optional[str]
-    repository_revision: Optional[int]
-    repository_revision_datetime: Optional[datetime.datetime]
-    status: Optional[str]
+    accession: str | None
+    revision: int | None
+    revision_datetime: datetime.datetime | None
+    description: str | None
+    repository_revision: int | None
+    repository_revision_datetime: datetime.datetime | None
+    status: str | None
 
 
 class MhdClientError(Exception):
@@ -86,7 +86,7 @@ class MhdClient:
             return accession
         except Exception as ex:
             logger.exception(ex)
-            raise MhdClientError(f"Failed to get new MHD accession: {str(ex)}") from ex
+            raise MhdClientError(f"Failed to get new MHD accession: {ex!s}") from ex
 
     def submit_announcement_file(
         self,
@@ -99,7 +99,7 @@ class MhdClient:
     ) -> SubmittedRevision:
         file = Path(file_path)
         if not file.exists():
-            message = "File %s does not exist" % file_path
+            message = f"File {file_path} does not exist"
             logger.error(message)
             raise MhdClientError(message)
 
@@ -175,6 +175,6 @@ class MhdClient:
                 raise MhdClientError(message)
 
         except Exception as ex:
-            message = f"MetabolomicsHub submission error: {str(ex)}"
+            message = f"MetabolomicsHub submission error: {ex!s}"
             logger.error(message)
             raise MhdClientError(message)
