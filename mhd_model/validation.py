@@ -6,8 +6,14 @@ from mhd_model.model.definitions import (
     MHD_MODEL_V1_0_LEGACY_PROFILE_NAME,
     MHD_MODEL_V1_0_MS_PROFILE_NAME,
 )
+from mhd_model.model.v0_1.announcement.validation.validator import (
+    MhdAnnouncementFileValidator as MhdAnnouncementFileValidator_v0_1,
+)
 from mhd_model.model.v0_1.dataset.validation.validator import (
     validate_mhd_model as validate_mhd_model_v0_1,
+)
+from mhd_model.model.v1_0.announcement.validation.validator import (
+    MhdAnnouncementFileValidator as MhdAnnouncementFileValidator_v1_0,
 )
 from mhd_model.model.v1_0.dataset.validation.validator import (
     validate_mhd_model as validate_mhd_model_v1_0,
@@ -20,6 +26,13 @@ MHD_VALIDATORS = {
     MHD_MODEL_V0_1_MS_PROFILE_NAME: validate_mhd_model_v0_1,
     MHD_MODEL_V1_0_LEGACY_PROFILE_NAME: validate_mhd_model_v1_0,
     MHD_MODEL_V1_0_MS_PROFILE_NAME: validate_mhd_model_v1_0,
+}
+
+ANNOUNCEMENT_FILE_VALIDATORS = {
+    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME: MhdAnnouncementFileValidator_v0_1,
+    MHD_MODEL_V0_1_MS_PROFILE_NAME: MhdAnnouncementFileValidator_v0_1,
+    MHD_MODEL_V1_0_LEGACY_PROFILE_NAME: MhdAnnouncementFileValidator_v1_0,
+    MHD_MODEL_V1_0_MS_PROFILE_NAME: MhdAnnouncementFileValidator_v1_0,
 }
 
 
@@ -41,3 +54,10 @@ def validate_mhd_model(
         announcement_file_path=announcement_file_path,
         mhd_file_url=mhd_file_url,
     )
+
+
+def validate_announcement_file(announcement_file_path: Path):
+    json_data = load_json(announcement_file_path)
+    dataset: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_data)
+    validator = ANNOUNCEMENT_FILE_VALIDATORS[dataset.profile_uri]()
+    return validator.validate_json_file(json_data)
