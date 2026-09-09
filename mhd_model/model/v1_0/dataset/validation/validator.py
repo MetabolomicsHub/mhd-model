@@ -112,7 +112,9 @@ def validate_mhd_model(
         all_validation_errors[mhd_model_filename] = validation_errors
     else:
         logger.info("MHD model validation successful for %s", repository_study_id)
-        if validate_announcement_file:
+        if not validate_announcement_file:
+            success = True
+        else:
             if not announcement_file_path:
                 announcement_file_path = mhd_file_path.parent / Path(
                     f"{repository_study_id}.announcement.json"
