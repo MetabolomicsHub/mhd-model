@@ -1,3 +1,9 @@
+## v0.1.95 (2026-09-09)
+
+### Fix
+
+- mhd validation consolidation
+
 ## v0.1.94 (2026-09-08)
 
 ### Fix
