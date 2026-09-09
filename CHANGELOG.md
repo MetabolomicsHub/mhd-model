@@ -1,3 +1,10 @@
+## v0.1.100 (2026-09-09)
+
+### Fix
+
+- announcement file validation
+- announcement file validation
+
 ## v0.1.99 (2026-09-09)
 
 ### Fix
