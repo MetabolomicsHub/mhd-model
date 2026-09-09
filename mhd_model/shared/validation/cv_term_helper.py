@@ -283,9 +283,13 @@ class CvTermHelper:
     def find_cv_term_with_accession(
         self, source: str, accession: str
     ) -> tuple[CvTerm, list[str]]:
+
         curi = accession
         if accession and (accession.startswith(("http://", "https://"))):
-            curi = bioregistry.curie_from_iri(accession)
+            if source.upper() == "EDAM" and accession:
+                curi = f"EDAM:{accession.rstrip('/').split('/')[-1]}"
+            else:
+                curi = bioregistry.curie_from_iri(accession)
 
         params = {
             "q": curi.lower(),

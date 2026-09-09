@@ -371,6 +371,7 @@ def create_ms_announcement_file(
     assay_types: OrderedDict[str, CvTerm] = OrderedDict()
     technology_types: OrderedDict[str, CvTerm] = OrderedDict()
     measurement_types: OrderedDict[str, CvTerm] = OrderedDict()
+    omics_types: OrderedDict[str, CvTerm] = OrderedDict()
     for item in study_assays:
         if item.assay_type_ref in nodes_map:
             assay_type: graph_nodes.CvTermObject = nodes_map[item.assay_type_ref]
@@ -387,11 +388,17 @@ def create_ms_announcement_file(
                 technology_types[term.accession] = term
         if item.measurement_type_ref in nodes_map:
             measurement_type: graph_nodes.CvTermObject = nodes_map[
-                item.technology_type_ref
+                item.measurement_type_ref
             ]
             if measurement_type.accession not in measurement_types:
-                term = CvTerm.model_validate(technology_type)
+                term = CvTerm.model_validate(measurement_type)
                 measurement_types[term.accession] = term
+
+        if item.omics_type_ref in nodes_map:
+            omics_type: graph_nodes.CvTermObject = nodes_map[item.omics_type_ref]
+            if omics_type.accession not in omics_types:
+                term = CvTerm.model_validate(omics_type)
+                omics_types[term.accession] = term
 
     dataset_url_list = study.dataset_url_list
 
