@@ -4,6 +4,7 @@ import click
 
 from mhd_model import __version__
 from mhd_model.commands.create.create import create_group
+from mhd_model.commands.mhd_client.mhd_client import mhd_client_group
 from mhd_model.commands.validate.validate import validate_group
 from mhd_model.log_utils import set_basic_logging_config
 
@@ -16,6 +17,8 @@ def cli():
 
 cli.add_command(create_group)
 cli.add_command(validate_group)
+cli.add_command(mhd_client_group)
+
 
 if __name__ == "__main__":
     set_basic_logging_config()
