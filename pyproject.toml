@@ -11,7 +11,7 @@ dependencies = [
     "cachetools>=7.0.5",
     "charset-normalizer>=3.4.2",
     "email-validator>=2.3.0",
-    "httpx2>=2.3.0",
+    "httpx2>=2.12.0",
     "jsonpath-ng>=1.8.0",
     "jsonschema>=4.26.0",
     "pydantic>=2.12.5",
@@ -22,7 +22,8 @@ dependencies = [
     # security fix
     "urllib3>=2.7.0",
     "idna>=3.17",
-    "h2>=4.4.1"
+    "h2>=4.4.1",
+    "httpcore2>=2.12.0"
 ]
 
 [dependency-groups]
