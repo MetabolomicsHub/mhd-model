@@ -421,6 +421,7 @@ def create_ms_announcement_file(
         measurement_type=list(measurement_types.values()) or None,
         technology_type=list(technology_types.values()) or None,
         assay_type=list(assay_types.values()) or None,
+        omics_type=list(omics_types.values()) or None,
         repository_metadata_file_list=None,
         result_file_list=None,
         raw_data_file_list=None,
