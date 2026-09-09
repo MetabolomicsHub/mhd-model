@@ -1,3 +1,9 @@
+## v0.1.96 (2026-09-09)
+
+### Fix
+
+- announcement file conversion error
+
 ## v0.1.95 (2026-09-09)
 
 ### Fix
