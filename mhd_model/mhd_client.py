@@ -41,7 +41,9 @@ AccessionType = Literal["mhd", "legacy", "test-legacy", "test-mhd", "dev"]
 
 
 class MhdClient:
-    def __init__(self, mhd_webservice_base_url: str, api_key: str):
+    def __init__(
+        self, mhd_webservice_base_url: str, api_key: str, api_version: str = "v0.1"
+    ):
         if not api_key:
             logger.error("API key is not provided")
             raise MhdClientError("API key is not provided")
@@ -49,7 +51,13 @@ class MhdClient:
             logger.error("MHD webservice base URL is not provided")
             raise MhdClientError("MHD webservice base URL is not provided")
         self.api_key = api_key
-        self.mhd_webservice_base_url = mhd_webservice_base_url
+        self.mhd_webservice_base_url = mhd_webservice_base_url.lstrip("/")
+        self.api_version = api_version.replace(".", "") if api_version else "v0_1"
+        suffix = "/" + self.api_version
+        if mhd_webservice_base_url.endswith(suffix):
+            self.mhd_webservice_base_url = self.mhd_webservice_base_url.replace(
+                suffix, ""
+            )
 
     def get_new_mhd_accession(
         self,
@@ -64,7 +72,7 @@ class MhdClient:
             message = "Accession type is not provided"
             logger.error(message)
             raise MhdClientError(message)
-        url = f"{self.mhd_webservice_base_url}/v0_1/identifiers"
+        url = f"{self.mhd_webservice_base_url}/{self.api_version}/identifiers"
         params = {
             "accession_type": accession_type,
             "dataset_repository_identifier": dataset_repository_identifier,
@@ -121,7 +129,7 @@ class MhdClient:
                 dataset_repository_id,
             )
 
-            url = f"{self.mhd_webservice_base_url}/v0_1/datasets/{mhd_id}/announcements"
+            url = f"{self.mhd_webservice_base_url}/{self.api_version}/datasets/{mhd_id}/announcements"
             headers = {"x-api-token": self.api_key, "Accept": "application/json"}
             post_headers = headers.copy()
             # post_headers["Content-Type"] = "multipart/form-data"
@@ -137,7 +145,7 @@ class MhdClient:
             task_id = response_json.get("taskId")
             if task_id and response.status_code == 200:
                 logger.info("Validation task started with id: %s", task_id)
-                status_url = f"{self.mhd_webservice_base_url}/v0_1/datasets/{mhd_id}/tasks/{task_id}"
+                status_url = f"{self.mhd_webservice_base_url}/{self.api_version}/datasets/{mhd_id}/tasks/{task_id}"
                 for iteration in range(max_retries):
                     try:
                         status_response = httpx2.get(status_url, headers=headers)

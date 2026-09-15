@@ -1,5 +1,6 @@
 import json
 import logging
+import pathlib
 from pathlib import Path
 from typing import Any
 
@@ -35,9 +36,22 @@ from mhd_model.model.v0_1.dataset.validation.base import MhdModelValidator
 from mhd_model.schema_utils import load_mhd_json_schema
 from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
+from mhd_model.shared.validation.base import BaseMhdFileValidator
 from mhd_model.utils import json_path, load_json
 
 logger = logging.getLogger(__name__)
+
+
+class MhdFileValidator_v0_1(BaseMhdFileValidator):
+    def validate(self, mhd_file_json: dict[str, Any]) -> list[str]:
+        errors = validate_mhd_file_json(mhd_file_json)
+        return [f"{k}: {v.message}" for k, v in errors]
+
+    def validate_file(self, mhd_file_path: str | pathlib.Path) -> list[str]:
+        if isinstance(mhd_file_path, str):
+            mhd_file_path = pathlib.Path(mhd_file_path)
+        json_data = load_json(mhd_file_path)
+        return self.validate(json_data)
 
 
 def validate_mhd_file(file_path: str):
@@ -45,12 +59,14 @@ def validate_mhd_file(file_path: str):
     return validate_mhd_file_json(json_data)
 
 
-def validate_mhd_file_json(json_data: dict[str, Any]):
+def validate_mhd_file_json(
+    json_data: dict[str, Any],
+) -> list[tuple[str, jsonschema.ValidationError]]:
     mhd_validator = MhdFileValidator()
     errors = mhd_validator.validate(json_data)
 
     messages = set()
-    validation_errors = []
+    validation_errors: list[tuple[str, jsonschema.ValidationError]] = []
     for x in errors:
         if x.message in messages:
             continue

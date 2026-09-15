@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import pathlib
 from typing import Any
 
 import jsonschema
@@ -15,6 +16,7 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
 )
 from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
+from mhd_model.shared.validation.base import BaseAnnouncementFileValidator
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
     AccessibleURI,
@@ -28,12 +30,12 @@ from mhd_model.shared.validation.registry import (
     register_validator_class,
     unregister_validator_class,
 )
-from mhd_model.utils import json_path
+from mhd_model.utils import json_path, load_json
 
 logger = logging.getLogger(__name__)
 
 
-class MhdAnnouncementFileValidator:
+class MhdAnnouncementFileValidator(BaseAnnouncementFileValidator):
     validators = {
         "validation-group": ProfileValidationGroup,
         "allowed-cv-terms": AllowedCvTerms,
@@ -132,3 +134,9 @@ class MhdAnnouncementFileValidator:
                 else:
                     errors.append(f"{error[0]}: {error[1]}")
         return errors
+
+    def validate_file(self, announcement_file_path: str | pathlib.Path) -> list[str]:
+        if isinstance(announcement_file_path, str):
+            announcement_file_path = pathlib.Path(announcement_file_path)
+        json_data = load_json(announcement_file_path)
+        return self.validate(json_data)
