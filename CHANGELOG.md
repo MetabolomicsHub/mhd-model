@@ -1,3 +1,9 @@
+## v0.1.103 (2026-09-15)
+
+### Fix
+
+- announcement file update to set repository revisions from mhd dataset
+
 ## v0.1.102 (2026-09-15)
 
 ### Fix
