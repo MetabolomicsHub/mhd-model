@@ -1,3 +1,9 @@
+## v0.1.101 (2026-09-15)
+
+### Fix
+
+- mhd file validation methods are refactored to support both path and json
+
 ## v0.1.100 (2026-09-09)
 
 ### Fix
