@@ -1,6 +1,7 @@
 import datetime
 import logging
 import time
+import traceback
 from pathlib import Path
 from typing import Literal
 
@@ -103,7 +104,7 @@ class MhdClient:
         file_path: str,
         announcement_reason: str,
         max_retries: int = 10,
-        sleep_time: int = 5,
+        sleep_time: int = 10,
     ) -> SubmittedRevision:
         file = Path(file_path)
         if not file.exists():
@@ -134,7 +135,9 @@ class MhdClient:
             post_headers = headers.copy()
             # post_headers["Content-Type"] = "multipart/form-data"
             post_headers["x-announcement-reason"] = announcement_reason or ""
-
+            logger.info(
+                "%s %s submission on URL  %s", dataset_repository_id, mhd_id, url
+            )
             with file.open("rb") as f:
                 files = {"file": (file.name, f, "application/json")}
 
@@ -148,20 +151,34 @@ class MhdClient:
                 status_url = f"{self.mhd_webservice_base_url}/{self.api_version}/datasets/{mhd_id}/tasks/{task_id}"
                 for iteration in range(max_retries):
                     try:
+                        logger.debug(
+                            "Validation task status check (Iteration: %s)",
+                            iteration + 1,
+                        )
                         status_response = httpx2.get(status_url, headers=headers)
+                        logger.debug(
+                            "Validation task check response code: %s",
+                            status_response.status_code,
+                        )
 
-                        if status_response.status_code == 200:
+                        if status_response.status_code in (200, 201):
                             status_data = status_response.json()
-                            accession = status_data.get("result", {}).get(
-                                "accession", ""
+                            task_status = status_data.get("taskStatus", "") or ""
+                            logger.debug(
+                                "Validation task check status: %s", task_status
                             )
-                            if accession:
-                                revision = SubmittedRevision.model_validate(
+                            if task_status.upper() == "SUCCESS":
+                                logger.info("Submission is successful")
+                                return SubmittedRevision.model_validate(
                                     status_data.get("result", {})
                                 )
-                            return revision
+                            elif task_status.upper() == "FAILED":
+                                logger.info("Submission failed")
+                                return MhdClientError(
+                                    str(status_data.get("messages", []))
+                                )
                         elif status_response.status_code != 425:
-                            message = "Validation task status check failed"
+                            message = f"Validation task status check failed: {status_response.text}"
                             logger.error(message)
                             raise MhdClientError(message)
                     except Exception as ex:
@@ -170,6 +187,7 @@ class MhdClient:
                             iteration + 1,
                             str(ex),
                         )
+                        traceback.print_exc()
                     time.sleep(sleep_time)
                 message = "Validation task failed after retries."
                 logger.error(message)
