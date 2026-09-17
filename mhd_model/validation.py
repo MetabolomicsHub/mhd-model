@@ -1,3 +1,4 @@
+import traceback
 from pathlib import Path
 from typing import Any
 
@@ -45,20 +46,28 @@ ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
 }
 
 
-def validate_mhd_file_json(json_data: dict[str, Any]):
+def validate_mhd_file_json(json_data: dict[str, Any]) -> list[str]:
     dataset: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_data)
     validator = MHD_VALIDATORS[dataset.profile_uri]()
-    return validator.validate(mhd_file_json=json_data)
+    try:
+        return validator.validate(mhd_file_json=json_data)
+    except Exception as ex:
+        traceback.print_exc()
+        return [str(ex)]
 
 
-def validate_mhd_model(mhd_file_path: str | Path):
+def validate_mhd_model(mhd_file_path: str | Path) -> list[str]:
     if isinstance(mhd_file_path, str):
         mhd_file_path = Path(mhd_file_path)
     json_data = load_json(mhd_file_path)
     dataset: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_data)
 
     validator = MHD_VALIDATORS[dataset.profile_uri]()
-    return validator.validate(mhd_file_json=json_data)
+    try:
+        validator.validate(mhd_file_json=json_data)
+    except Exception as ex:
+        traceback.print_exc()
+        return [str(ex)]
 
 
 def validate_announcement_file(announcement_file_path: str | Path) -> list[str]:
@@ -69,7 +78,12 @@ def validate_announcement_file(announcement_file_path: str | Path) -> list[str]:
     validator: BaseAnnouncementFileValidator = ANNOUNCEMENT_FILE_VALIDATORS[
         dataset.profile_uri
     ]()
-    return validator.validate(json_data)
+
+    try:
+        return validator.validate(json_data)
+    except Exception as ex:
+        traceback.print_exc()
+        return [str(ex)]
 
 
 def validate_announcement_file_json(input_json: dict) -> list[str]:
@@ -77,4 +91,8 @@ def validate_announcement_file_json(input_json: dict) -> list[str]:
     validator: BaseAnnouncementFileValidator = ANNOUNCEMENT_FILE_VALIDATORS[
         dataset.profile_uri
     ]()
-    return validator.validate(input_json)
+    try:
+        return validator.validate(input_json)
+    except Exception as ex:
+        traceback.print_exc()
+        return [str(ex)]
