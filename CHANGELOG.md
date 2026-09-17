@@ -1,3 +1,9 @@
+## v0.1.104 (2026-09-17)
+
+### Fix
+
+- announcement file generation error for v1.0
+
 ## v0.1.103 (2026-09-15)
 
 ### Fix
