@@ -1,3 +1,9 @@
+## v0.1.105 (2026-09-17)
+
+### Fix
+
+- return exception as error if validations are failed
+
 ## v0.1.104 (2026-09-17)
 
 ### Fix
