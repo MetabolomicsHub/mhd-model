@@ -53,7 +53,7 @@ class MhdClient:
             raise MhdClientError("MHD webservice base URL is not provided")
         self.api_key = api_key
         self.mhd_webservice_base_url = mhd_webservice_base_url.lstrip("/")
-        self.api_version = api_version.replace(".", "") if api_version else "v0_1"
+        self.api_version = api_version.replace(".", "_") if api_version else "v0_1"
         suffix = "/" + self.api_version
         if mhd_webservice_base_url.endswith(suffix):
             self.mhd_webservice_base_url = self.mhd_webservice_base_url.replace(

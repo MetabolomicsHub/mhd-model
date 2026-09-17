@@ -325,7 +325,6 @@ def create_ms_announcement_file(
             type_map["publication"].values()
         )
         for node in graph_publications:
-            relationships_map.get()
             item = AnnouncementPublication.model_validate(
                 node.model_dump(by_alias=True)
             )
