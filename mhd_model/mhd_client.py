@@ -146,6 +146,7 @@ class MhdClient:
                 response_json = response.json()
 
             task_id = response_json.get("taskId")
+            error = None
             if task_id and response.status_code == 200:
                 logger.info("Validation task started with id: %s", task_id)
                 status_url = f"{self.mhd_webservice_base_url}/{self.api_version}/datasets/{mhd_id}/tasks/{task_id}"
@@ -156,11 +157,11 @@ class MhdClient:
                             iteration + 1,
                         )
                         status_response = httpx2.get(status_url, headers=headers)
-                        logger.debug(
+                        logger.info(
                             "Validation task check response code: %s",
                             status_response.status_code,
                         )
-
+                        logger.info("Response: %s", status_response.text)
                         if status_response.status_code in (200, 201):
                             status_data = status_response.json()
                             task_status = status_data.get("taskStatus", "") or ""
@@ -174,7 +175,7 @@ class MhdClient:
                                 )
                             elif task_status.upper() == "FAILED":
                                 logger.info("Submission failed")
-                                return MhdClientError(
+                                raise MhdClientError(
                                     str(status_data.get("messages", []))
                                 )
                         elif status_response.status_code != 425:
@@ -182,14 +183,14 @@ class MhdClient:
                             logger.error(message)
                             raise MhdClientError(message)
                     except Exception as ex:
-                        logger.debug(
+                        logger.error(
                             "Validation task status check failed (Iteration: %s): %s",
                             iteration + 1,
                             str(ex),
                         )
                         traceback.print_exc()
                     time.sleep(sleep_time)
-                message = "Validation task failed after retries."
+                message = f"Validation task failed after retries: {error or ''}"
                 logger.error(message)
                 raise MhdClientError(message)
             else:
