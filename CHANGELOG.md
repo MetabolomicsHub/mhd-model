@@ -1,3 +1,9 @@
+## v0.1.106 (2026-09-19)
+
+### Fix
+
+- submit announcement file exception
+
 ## v0.1.105 (2026-09-17)
 
 ### Fix
