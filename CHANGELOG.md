@@ -1,3 +1,9 @@
+## v0.1.108 (2026-09-20)
+
+### Fix
+
+- ReferencedObject node mhd_revision is optional
+
 ## v0.1.107 (2026-09-19)
 
 ### Fix
