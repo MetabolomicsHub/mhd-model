@@ -13,6 +13,7 @@ from mhd_model.model.v1_0.dataset.profiles.base.base import (
     KeyValue,
     MhdObjectId,
     MhdObjectType,
+    MhdRelationshipObjectId,
 )
 from mhd_model.shared.fields import (
     DOI,
@@ -891,8 +892,8 @@ class CvTermValueObject(BasicCvTermValueModel):
 
 
 class ReferencedObject(IdentifiableMhdModel):
-    """Any MHD object reference defined in other MHD common data model file.
-    Node object with the specified id_ must be already defined in referenced dataset mhd_identifier.
+    """Node or link reference defined in other MHD common data model file.
+    The specified referenced_object_id must be already defined in the referenced file.
     """
 
     model_config = ConfigDict()
@@ -904,10 +905,13 @@ class ReferencedObject(IdentifiableMhdModel):
         ),
     ] = "referenced-object"
     referenced_object_id: Annotated[
-        None | MhdObjectId,
+        None
+        | MhdObjectId
+        | CvTermObjectId
+        | CvTermValueObjectId
+        | MhdRelationshipObjectId,
         Field(
-            alias="id",
-            description="Id of referenced object. "
+            description="Id of referenced node or link. "
             "This id must be defined in the referenced dataset with the specified type_.",
         ),
     ] = None
@@ -922,7 +926,6 @@ class ReferencedObject(IdentifiableMhdModel):
             "For legacy dataset references, repository identifier can be used as mhd_identifier."
         ),
     ] = None
-
     mhd_revision: Annotated[
         None | int,
         Field(description="MHD revision number of the referenced file."),

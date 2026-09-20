@@ -72,7 +72,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 identifier="referenced-object-004-01",
                 node_type="referenced-object",
                 node_property_name="mhd_revision",
-                constraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=False),
             ),
         ],
         relationships=[],

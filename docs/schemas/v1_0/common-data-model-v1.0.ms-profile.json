@@ -2777,7 +2777,7 @@
       ]
     },
     "ReferencedObject": {
-      "description": "Any MHD object reference defined in other MHD common data model file.\nNode object with the specified id_ must be already defined in referenced dataset mhd_identifier.",
+      "description": "Node or link reference defined in other MHD common data model file.\nThe specified referenced_object_id must be already defined in the referenced file.",
       "properties": {
         "id": {
           "anyOf": [
@@ -2786,12 +2786,24 @@
               "type": "string"
             },
             {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^rel--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Id of referenced object. This id must be defined in the referenced dataset with the specified type_.",
-          "title": "Referenced Object Id"
+          "description": "Unique identifier of graph node",
+          "title": "Id"
         },
         "type": {
           "anyOf": [
@@ -2806,6 +2818,32 @@
           "default": "referenced-object",
           "description": "The type property identifies the type of MHD Object. It must be `referenced-object`",
           "title": "Type"
+        },
+        "referenced_object_id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^rel--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_.",
+          "title": "Referenced Object Id"
         },
         "referenced_type": {
           "anyOf": [
