@@ -1994,10 +1994,35 @@ MHD_BASE_VALIDATION_V1_0.cv_nodes = [
             ),
         ],
     ),
-    CvNodeValidation(
+    NodeValidation(
         node_type="referenced-object",
         min=0,
-        validations=[],
+        validations=[
+            NodePropertyValidation(
+                identifier="referenced-object-001-01",
+                node_type="referenced-object",
+                node_property_name="referenced_type",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-002-01",
+                node_type="referenced-object",
+                node_property_name="referenced_object_id",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-003-01",
+                node_type="referenced-object",
+                node_property_name="mhd_identifier",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-004-01",
+                node_type="referenced-object",
+                node_property_name="mhd_revision",
+                constraints=PropertyConstraint(required=True),
+            ),
+        ],
         relationships=[],
     ),
 ]

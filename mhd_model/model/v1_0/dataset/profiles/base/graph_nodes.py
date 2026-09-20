@@ -890,20 +890,12 @@ class CvTermValueObject(BasicCvTermValueModel):
     ] = "cv-term-value"
 
 
-class MhdObjectReference(IdentifiableMhdModel):
-    """Any MHD object reference defined in other MHD dataset.
+class ReferencedObject(IdentifiableMhdModel):
+    """Any MHD object reference defined in other MHD common data model file.
     Node object with the specified id_ must be already defined in referenced dataset mhd_identifier.
     """
 
     model_config = ConfigDict()
-    id_: Annotated[
-        None | MhdObjectId,
-        Field(
-            alias="id",
-            description="Id of referenced object. "
-            "This id must be defined in the referenced dataset with the specified type_.",
-        ),
-    ] = None
     type_: Annotated[
         None | MhdObjectType,
         Field(
@@ -911,6 +903,14 @@ class MhdObjectReference(IdentifiableMhdModel):
             description="The type property identifies the type of MHD Object. It must be `referenced-object`",
         ),
     ] = "referenced-object"
+    referenced_object_id: Annotated[
+        None | MhdObjectId,
+        Field(
+            alias="id",
+            description="Id of referenced object. "
+            "This id must be defined in the referenced dataset with the specified type_.",
+        ),
+    ] = None
     referenced_type: Annotated[
         None | MhdObjectType,
         Field(description="Type of referenced object."),
@@ -918,12 +918,12 @@ class MhdObjectReference(IdentifiableMhdModel):
     mhd_identifier: Annotated[
         None | str,
         Field(
-            description="Unique MetabolomicsHub Data (MHD) identifier for the referenced dataset."
+            description="Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file."
             "For legacy dataset references, repository identifier can be used as mhd_identifier."
         ),
     ] = None
 
     mhd_revision: Annotated[
         None | int,
-        Field(description="MHD revision number of the referenced dataset."),
+        Field(description="MHD revision number of the referenced file."),
     ] = None

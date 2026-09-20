@@ -40,7 +40,7 @@ GraphNode = Annotated[
     | graph_nodes.DerivedDataFile
     | graph_nodes.SupplementaryFile
     | graph_nodes.BaseLabeledMhdModel
-    | graph_nodes.MhdObjectReference,
+    | graph_nodes.ReferencedObject,
     Field(description="Possible Node Type"),
 ]
 

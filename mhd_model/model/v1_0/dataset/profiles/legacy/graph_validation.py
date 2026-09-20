@@ -34,6 +34,37 @@ MHD_LEGACY_PROFILE_V1_0 = MhDatasetValidation(schema=MHD_MODEL_V1_0_LEGACY_PROFI
 
 MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
     NodeValidation(
+        node_type="referenced-object",
+        min=0,
+        validations=[
+            NodePropertyValidation(
+                identifier="referenced-object-001-01",
+                node_type="referenced-object",
+                node_property_name="referenced_type",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-002-01",
+                node_type="referenced-object",
+                node_property_name="referenced_object_id",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-003-01",
+                node_type="referenced-object",
+                node_property_name="mhd_identifier",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-004-01",
+                node_type="referenced-object",
+                node_property_name="mhd_revision",
+                constraints=PropertyConstraint(required=True),
+            ),
+        ],
+        relationships=[],
+    ),
+    NodeValidation(
         node_type="assay",
         min=0,
         validations=[

@@ -1296,17 +1296,18 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Prot
 
 ### Referenced Object
 
-Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Any MHD object reference defined in other MHD common data model file.<br>Node object with the specified id_ must be already defined in referenced dataset mhd_identifier. </br></br>Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**referenced-object**</code>|
-|**source**|optional|<code>*str*<code>|Ontology source name|
-|**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
-|**name**|optional|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*MhdObjectId or CvTermObjectId or CvTermValueObjectId or MhdRelationshipObjectId*<code>|Unique identifier of graph node|
+|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies the type of MHD Object. It must be `referenced-object`|
+|**id**|**required**|<code>*MhdObjectId*<code>|Id of referenced object. This id must be defined in the referenced dataset with the specified type_|
+|**referenced_type**|**required**|<code>*MhdObjectType*<code>|Type of referenced object|
+|**mhd_identifier**|**required**|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file.For legacy dataset references, repository identifier can be used as mhd_identifier|
+|**mhd_revision**|**required**|<code>*int*<code>|MHD revision number of the referenced file|
 
 
 **Node Relationships**

@@ -1592,7 +1592,7 @@
                 "$ref": "#/$defs/BaseLabeledMhdModel"
               },
               {
-                "$ref": "#/$defs/MhdObjectReference"
+                "$ref": "#/$defs/ReferencedObject"
               }
             ],
             "description": "Possible Node Type"
@@ -1610,83 +1610,6 @@
         }
       },
       "title": "MhdGraph",
-      "type": "object"
-    },
-    "MhdObjectReference": {
-      "description": "Any MHD object reference defined in other MHD dataset.\nNode object with the specified id_ must be already defined in referenced dataset mhd_identifier.",
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Id of referenced object. This id must be defined in the referenced dataset with the specified type_.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": "referenced-object",
-          "description": "The type property identifies the type of MHD Object. It must be `referenced-object`",
-          "title": "Type"
-        },
-        "referenced_type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Type of referenced object.",
-          "title": "Referenced Type"
-        },
-        "mhd_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique MetabolomicsHub Data (MHD) identifier for the referenced dataset.For legacy dataset references, repository identifier can be used as mhd_identifier.",
-          "title": "Mhd Identifier"
-        },
-        "mhd_revision": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "MHD revision number of the referenced dataset.",
-          "title": "Mhd Revision"
-        }
-      },
-      "required": [
-        "referenced_type"
-      ],
-      "title": "MhdObjectReference",
       "type": "object"
     },
     "Organization": {
@@ -2852,6 +2775,83 @@
       "unique_value_contribution": [
         "repository_identifier"
       ]
+    },
+    "ReferencedObject": {
+      "description": "Any MHD object reference defined in other MHD common data model file.\nNode object with the specified id_ must be already defined in referenced dataset mhd_identifier.",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Id of referenced object. This id must be defined in the referenced dataset with the specified type_.",
+          "title": "Referenced Object Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "referenced-object",
+          "description": "The type property identifies the type of MHD Object. It must be `referenced-object`",
+          "title": "Type"
+        },
+        "referenced_type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Type of referenced object.",
+          "title": "Referenced Type"
+        },
+        "mhd_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file.For legacy dataset references, repository identifier can be used as mhd_identifier.",
+          "title": "Mhd Identifier"
+        },
+        "mhd_revision": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "MHD revision number of the referenced file.",
+          "title": "Mhd Revision"
+        }
+      },
+      "required": [
+        "referenced_type"
+      ],
+      "title": "ReferencedObject",
+      "type": "object"
     },
     "Relationship": {
       "properties": {

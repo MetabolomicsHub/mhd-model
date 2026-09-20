@@ -634,6 +634,31 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |metadata-file|references|referenced-in|raw-data-file|0|N||
 |study|has-raw-data-file|created-in|raw-data-file|0|N||
 
+### Referenced Object
+
+Any MHD object reference defined in other MHD common data model file.<br>Node object with the specified id_ must be already defined in referenced dataset mhd_identifier. </br></br>Referenced Object node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+
+**Properties**
+
+|Property Name|Necessity|Type|Description|
+|-------------|---------|----|-----------|
+|**id**|optional|<code>*MhdObjectId or CvTermObjectId or CvTermValueObjectId or MhdRelationshipObjectId*<code>|Unique identifier of graph node|
+|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies the type of MHD Object. It must be `referenced-object`|
+|**id**|**required**|<code>*MhdObjectId*<code>|Id of referenced object. This id must be defined in the referenced dataset with the specified type_|
+|**referenced_type**|**required**|<code>*MhdObjectType*<code>|Type of referenced object|
+|**mhd_identifier**|**required**|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file.For legacy dataset references, repository identifier can be used as mhd_identifier|
+|**mhd_revision**|**required**|<code>*int*<code>|MHD revision number of the referenced file|
+
+
+**Node Relationships**
+
+No relationships defined.
+
+
+**Reverse Node Relationships**
+
+No relationships defined.
+
 ### Result File
 
 Processed result file (e.g. quantification or identification matrix). </br></br>Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
