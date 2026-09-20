@@ -6539,7 +6539,7 @@
 </tbody>
 </table>
 <h3 id="referenced-object">Referenced Object<a class="headerlink" href="#referenced-object" title="Permanent link">¶</a></h3>
-<p>Any MHD object reference defined in other MHD common data model file.<br/>Node object with the specified id_ must be already defined in referenced dataset mhd_identifier. Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Node or link reference defined in other MHD common data model file.<br/>The specified referenced_object_id must be already defined in the referenced file. Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6564,10 +6564,10 @@
 <td>The type property identifies the type of MHD Object. It must be <code>referenced-object</code></td>
 </tr>
 <tr>
-<td><strong>id</strong></td>
+<td><strong>referenced_object_id</strong></td>
 <td><strong>required</strong></td>
-<td><code><em>MhdObjectId</em><code></code></code></td>
-<td>Id of referenced object. This id must be defined in the referenced dataset with the specified type_</td>
+<td><code><em>MhdObjectId or CvTermObjectId or CvTermValueObjectId or MhdRelationshipObjectId</em><code></code></code></td>
+<td>Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_</td>
 </tr>
 <tr>
 <td><strong>referenced_type</strong></td>
@@ -6583,9 +6583,9 @@
 </tr>
 <tr>
 <td><strong>mhd_revision</strong></td>
-<td><strong>required</strong></td>
+<td>optional</td>
 <td><code><em>int</em><code></code></code></td>
-<td>MHD revision number of the referenced file</td>
+<td>MHD revision number of the referenced file<br/>Validation Rule:<br/> <code></code></td>
 </tr>
 </tbody>
 </table>
