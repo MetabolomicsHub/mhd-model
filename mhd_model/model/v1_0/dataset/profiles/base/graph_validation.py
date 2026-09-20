@@ -2020,7 +2020,7 @@ MHD_BASE_VALIDATION_V1_0.cv_nodes = [
                 identifier="referenced-object-004-01",
                 node_type="referenced-object",
                 node_property_name="mhd_revision",
-                constraints=PropertyConstraint(required=True),
+                constraints=PropertyConstraint(required=False),
             ),
         ],
         relationships=[],
