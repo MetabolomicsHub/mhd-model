@@ -6539,7 +6539,7 @@
 </tbody>
 </table>
 <h3 id="referenced-object">Referenced Object<a class="headerlink" href="#referenced-object" title="Permanent link">¶</a></h3>
-<p>Controlled Vocabulary (CV) term object node in the dataset graph. Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
+<p>Any MHD object reference defined in other MHD common data model file.<br/>Node object with the specified id_ must be already defined in referenced dataset mhd_identifier. Referenced Object node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code></p>
 <p><strong>Properties</strong></p>
 <table>
 <thead>
@@ -6554,32 +6554,38 @@
 <tr>
 <td><strong>id</strong></td>
 <td>optional</td>
-<td><code><em>CvTermObjectId</em><code></code></code></td>
-<td>The id property uniquely identifies the object</td>
+<td><code><em>MhdObjectId or CvTermObjectId or CvTermValueObjectId or MhdRelationshipObjectId</em><code></code></code></td>
+<td>Unique identifier of graph node</td>
 </tr>
 <tr>
 <td><strong>type</strong></td>
 <td>optional</td>
 <td><code><em>MhdObjectType</em><code></code></code></td>
-<td>The type property identifies type of the CV Term object<br/>Its value MUST be <code><strong>referenced-object</strong></code></td>
+<td>The type property identifies the type of MHD Object. It must be <code>referenced-object</code></td>
 </tr>
 <tr>
-<td><strong>source</strong></td>
-<td>optional</td>
-<td><code><em>str</em><code></code></code></td>
-<td>Ontology source name</td>
+<td><strong>id</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>MhdObjectId</em><code></code></code></td>
+<td>Id of referenced object. This id must be defined in the referenced dataset with the specified type_</td>
 </tr>
 <tr>
-<td><strong>accession</strong></td>
-<td>optional</td>
-<td><code><em>str</em><code></code></code></td>
-<td>Accession number of CV term in compact URI format</td>
+<td><strong>referenced_type</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>MhdObjectType</em><code></code></code></td>
+<td>Type of referenced object</td>
 </tr>
 <tr>
-<td><strong>name</strong></td>
-<td>optional</td>
+<td><strong>mhd_identifier</strong></td>
+<td><strong>required</strong></td>
 <td><code><em>str</em><code></code></code></td>
-<td>Label of CV term</td>
+<td>Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file.For legacy dataset references, repository identifier can be used as mhd_identifier</td>
+</tr>
+<tr>
+<td><strong>mhd_revision</strong></td>
+<td><strong>required</strong></td>
+<td><code><em>int</em><code></code></code></td>
+<td>MHD revision number of the referenced file</td>
 </tr>
 </tbody>
 </table>
