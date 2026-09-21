@@ -1,3 +1,9 @@
+## v0.1.109 (2026-09-20)
+
+### Fix
+
+- reference object documentation and field validation error
+
 ## v0.1.108 (2026-09-20)
 
 ### Fix
