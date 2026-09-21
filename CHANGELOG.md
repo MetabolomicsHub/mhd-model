@@ -1,3 +1,9 @@
+## v0.1.111 (2026-09-21)
+
+### Fix
+
+- missing command and documentation
+
 ## v0.1.110 (2026-09-21)
 
 ### Fix
