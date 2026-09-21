@@ -4557,18 +4557,6 @@
     }
   },
   "properties": {
-    "repository_name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Name"
-    },
     "mhd_identifier": {
       "anyOf": [
         {
@@ -4581,18 +4569,6 @@
       "default": null,
       "title": "Mhd Identifier"
     },
-    "repository_identifier": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Identifier"
-    },
     "revision": {
       "anyOf": [
         {
@@ -4604,6 +4580,18 @@
       ],
       "default": null,
       "title": "Revision"
+    },
+    "revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revision Comment"
     },
     "revision_datetime": {
       "anyOf": [
@@ -4618,6 +4606,30 @@
       "default": null,
       "title": "Revision Datetime"
     },
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Name"
+    },
+    "repository_identifier": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Identifier"
+    },
     "repository_revision": {
       "anyOf": [
         {
@@ -4629,6 +4641,18 @@
       ],
       "default": null,
       "title": "Repository Revision"
+    },
+    "repository_revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Revision Comment"
     },
     "repository_revision_datetime": {
       "anyOf": [
@@ -4688,7 +4712,7 @@
         }
       ],
       "default": null,
-      "description": "Unique identifier of graph node",
+      "description": "Unique identifier of the dataset",
       "title": "Id"
     },
     "type": {
@@ -4696,6 +4720,20 @@
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
       "title": "Type",
       "type": "string"
+    },
+    "created_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Created at",
+      "title": "Created At"
     },
     "name": {
       "anyOf": [

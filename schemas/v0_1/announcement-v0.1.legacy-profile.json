@@ -895,18 +895,6 @@
   },
   "description": "Legacy profile for dataset announcements.\n\nMain differences from Base Profile:\n- Required Fields: Enforces strict non-null values for submission_date, public_release_date,\n  submitters, and repository_metadata_file_list.\n- Contact Constraints: Requires non-null full_name (min_length=5) on AnnouncementContact.\n- Relaxed Length Constraints: Reduces minimum length restrictions for title (min 1 vs 25)\n  and description (min 1 vs 60) to accommodate legacy repository data.",
   "properties": {
-    "repository_name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Name"
-    },
     "mhd_identifier": {
       "anyOf": [
         {
@@ -920,11 +908,6 @@
       "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
       "title": "Mhd Identifier"
     },
-    "repository_identifier": {
-      "description": "Original dataset accession number or identifier in the source repository.",
-      "title": "Repository Identifier",
-      "type": "string"
-    },
     "revision": {
       "anyOf": [
         {
@@ -936,6 +919,18 @@
       ],
       "default": null,
       "title": "Revision"
+    },
+    "revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revision Comment"
     },
     "revision_datetime": {
       "anyOf": [
@@ -950,6 +945,23 @@
       "default": null,
       "title": "Revision Datetime"
     },
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Name"
+    },
+    "repository_identifier": {
+      "description": "Original dataset accession number or identifier in the source repository.",
+      "title": "Repository Identifier",
+      "type": "string"
+    },
     "repository_revision": {
       "anyOf": [
         {
@@ -961,6 +973,18 @@
       ],
       "default": null,
       "title": "Repository Revision"
+    },
+    "repository_revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Revision Comment"
     },
     "repository_revision_datetime": {
       "anyOf": [
