@@ -1,3 +1,4 @@
+import datetime
 from typing import Annotated, Any
 
 from pydantic import Field, field_validator
@@ -129,11 +130,14 @@ class MhDatasetBaseProfile(GraphEnabledBaseDataset):
         None | str,
         Field(
             alias="id",
-            description="Unique identifier of graph node",
+            description="Unique identifier of the dataset",
         ),
     ] = None
     type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
         "base-dataset"
+    )
+    created_at: Annotated[datetime.datetime | None, Field(description="Created at")] = (
+        None
     )
     name: Annotated[None | str, Field()] = None
     description: Annotated[None | str, Field()] = None

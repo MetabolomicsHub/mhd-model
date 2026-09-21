@@ -39,7 +39,7 @@ uv run pre-commit
 
 ```
 
-## Commandline Usage
+## Commandline (CLI) Tool Usage
 
 ```bash
 # you can use any python version >= 3.12
@@ -55,12 +55,12 @@ mhd-cli
 ```python
 from mhd_model.mhd_client import MhdClient, MhdClientError
 
-mhd_webservice_base_url = "https://www.metabolomicshub.org/api/submission"
-api_key = "<your-api-key>"
+mhd_webservice_base_url = "https://www.metabolomicshub.org/test/api/submission"
+api_token = "<your-api-token>"
 
 
 def get_new_mhd_accession_example():
-    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_token)
 
     try:
         accession = mhd_client.get_new_mhd_accession(
@@ -72,7 +72,7 @@ def get_new_mhd_accession_example():
 
 
 def get_new_test_mhd_accession_example():
-    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_token)
 
     try:
         accession = mhd_client.get_new_mhd_accession(
@@ -87,7 +87,7 @@ def submit_legacy_dataset_example():
     announcement_file_path = "MTBLS9876543.announcement.json"
     dataset_repository_id = "MTBLS9876543"
     announcement_reason = "Initial revision"
-    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_token)
 
     try:
         revision: SubmittedRevision = mhd_client.submit_announcement_file(
@@ -106,7 +106,7 @@ def submit_mhd_dataset_example():
     mhd_id = "MHD0000001"
     dataset_repository_id = "MTBLS22222"
     announcement_reason = "Initial revision"
-    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_key)
+    mhd_client: MhdClient = MhdClient(mhd_webservice_base_url, api_token)
 
     try:
         revision: SubmittedRevision = mhd_client.submit_announcement_file(

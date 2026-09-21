@@ -115,12 +115,14 @@ class Revision(MhdConfigModel):
 
 
 class BaseMhdDataset(MhdConfigModel):
-    repository_name: Annotated[None | str, Field()] = None
     mhd_identifier: Annotated[None | str, Field()] = None
-    repository_identifier: Annotated[None | str, Field()] = None
     revision: Annotated[None | int, Field()] = None
+    revision_comment: Annotated[None | str, Field()] = None
     revision_datetime: Annotated[None | datetime.datetime, Field()] = None
+    repository_name: Annotated[None | str, Field()] = None
+    repository_identifier: Annotated[None | str, Field()] = None
     repository_revision: Annotated[None | int, Field()] = None
+    repository_revision_comment: Annotated[None | str, Field()] = None
     repository_revision_datetime: Annotated[None | datetime.datetime, Field()] = None
 
     change_log: Annotated[
