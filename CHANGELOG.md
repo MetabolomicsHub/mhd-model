@@ -1,3 +1,9 @@
+## v0.1.110 (2026-09-21)
+
+### Fix
+
+- MHDClient fixes and commandline tool improvements
+
 ## v0.1.109 (2026-09-20)
 
 ### Fix
