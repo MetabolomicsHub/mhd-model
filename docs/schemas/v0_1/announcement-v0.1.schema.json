@@ -832,18 +832,6 @@
   },
   "description": "Base Profile for dataset announcement files.",
   "properties": {
-    "repository_name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Name"
-    },
     "mhd_identifier": {
       "anyOf": [
         {
@@ -857,11 +845,6 @@
       "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
       "title": "Mhd Identifier"
     },
-    "repository_identifier": {
-      "description": "Original dataset accession number or identifier in the source repository.",
-      "title": "Repository Identifier",
-      "type": "string"
-    },
     "revision": {
       "anyOf": [
         {
@@ -873,6 +856,18 @@
       ],
       "default": null,
       "title": "Revision"
+    },
+    "revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revision Comment"
     },
     "revision_datetime": {
       "anyOf": [
@@ -887,6 +882,23 @@
       "default": null,
       "title": "Revision Datetime"
     },
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Name"
+    },
+    "repository_identifier": {
+      "description": "Original dataset accession number or identifier in the source repository.",
+      "title": "Repository Identifier",
+      "type": "string"
+    },
     "repository_revision": {
       "anyOf": [
         {
@@ -898,6 +910,18 @@
       ],
       "default": null,
       "title": "Repository Revision"
+    },
+    "repository_revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Revision Comment"
     },
     "repository_revision_datetime": {
       "anyOf": [

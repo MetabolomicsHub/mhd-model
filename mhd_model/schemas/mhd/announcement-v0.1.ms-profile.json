@@ -1122,27 +1122,10 @@
   },
   "description": "Mass spectrometry profile for dataset announcements.\n\nMain differences from Base Profile:\n- Mass Spectrometry Specialization: Restricts technology_type, measurement_type, omics_type,\n  and assay_type to controlled mass spectrometry terms (defaults technology_type to OBI:0000470).\n- Required Fields: Enforces strict non-null values for mhd_identifier, submitters, principal_investigators,\n  measurement_type, omics_type, assay_type, publications (or missing publication reason),\n  study_factors, characteristic_values, and raw_data_file_list.\n- Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),\n  publications (formatted DOI and PubMed IDs), metabolites, and protocols.",
   "properties": {
-    "repository_name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Name"
-    },
     "mhd_identifier": {
       "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
       "pattern": "^MHD[A-Z]?[0-9]{6,8}$",
       "title": "MHD Identifier",
-      "type": "string"
-    },
-    "repository_identifier": {
-      "description": "Original dataset accession number or identifier in the source repository.",
-      "title": "Repository Identifier",
       "type": "string"
     },
     "revision": {
@@ -1157,6 +1140,18 @@
       "default": null,
       "title": "Revision"
     },
+    "revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revision Comment"
+    },
     "revision_datetime": {
       "anyOf": [
         {
@@ -1170,6 +1165,23 @@
       "default": null,
       "title": "Revision Datetime"
     },
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Name"
+    },
+    "repository_identifier": {
+      "description": "Original dataset accession number or identifier in the source repository.",
+      "title": "Repository Identifier",
+      "type": "string"
+    },
     "repository_revision": {
       "anyOf": [
         {
@@ -1181,6 +1193,18 @@
       ],
       "default": null,
       "title": "Repository Revision"
+    },
+    "repository_revision_comment": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Revision Comment"
     },
     "repository_revision_datetime": {
       "anyOf": [

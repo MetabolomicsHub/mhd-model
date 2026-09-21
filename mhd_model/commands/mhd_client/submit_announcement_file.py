@@ -55,12 +55,25 @@ from mhd_model.mhd_client import MhdClient, MhdClientError
     default="",
     help="""Repository API token""",
 )
-@click.argument("dataset-repository-identifier")
+@click.option(
+    "--api-token-file-path",
+    default="",
+    help="""Repository API token file path
+    """,
+)
+@click.option(
+    "--dataset-repository-identifier",
+    default="",
+    help="""Dataset Identifier managed by repository
+    """,
+    required=True,
+)
 def submit_announcement_file_task(
     dataset_repository_identifier: str,
     mhd_id: str,
     announcement_reason: str,
-    api_token: str,
+    api_token: None | str,
+    api_token_file_path: None | str,
     announcement_file_path: click.Path,
     mhd_server_url: str,
     mhd_server_api_version: str,
@@ -73,10 +86,13 @@ def submit_announcement_file_task(
     """
     set_basic_logging_config()
     if not api_token:
-        api_token = os.environ.get("MHD_CLIENT_API_TOKEN")
+        if api_token_file_path and Path(api_token_file_path).exists():
+            api_token = Path(api_token_file_path).read_text().strip()
         if not api_token:
-            click.echo("Repository API token is not defined.")
-            sys.exit(1)
+            api_token = os.environ.get("MHD_CLIENT_API_TOKEN")
+            if not api_token:
+                click.echo("Repository API token is not defined.")
+                sys.exit(1)
     if not mhd_server_url:
         mhd_server_url = os.environ.get("MHD_SERVER_URL")
         if not mhd_server_url:

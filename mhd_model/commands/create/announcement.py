@@ -20,42 +20,39 @@ from mhd_model.log_utils import set_basic_logging_config
     show_default=True,
     help="MHD announcement filename (e.g., MHD000001.announcement.json, ST000001.announcement.json)",
 )
-@click.argument("mhd_study_id")
-@click.argument("mhd_model_file_path")
-@click.argument("target_mhd_model_file_url")
+@click.option("--mhd-id", help="MHD Id")
+@click.option(
+    "--mhd-common-data-file-path", help="MHD common data filepath", required=True
+)
+@click.option(
+    "--target-mhd-common-data-file-url",
+    help="Target URL of MHD common data file. "
+    "If announcement file is shared with MetabolomicsHub, "
+    "MetabolomicsHub will check the URL for accessibility",
+    required=True,
+)
 def create_announcement_file_task(
-    mhd_study_id: str,
-    mhd_model_file_path: str,
-    target_mhd_model_file_url: str,
+    mhd_id: None | str,
+    mhd_common_data_file_path: str,
+    target_mhd_common_data_file_url: str,
     output_dir: str,
-    output_filename: str,
+    output_filename: None | str,
 ):
-    """Create announcement file from MHD data model file.
-
-    Args:
-
-    mhd_study_id (str): MHD study identifier
-
-    mhd_model_file_path (str): MHD data model file path
-
-    target_mhd_model_file_url (str): (Planned) Target URL of MHD data model.
-        If announcement file is shared with MetabolomicsHub,
-        MetabolomicsHub will check the URL for accessibility.
-    """
+    """Create announcement file from MHD data model file."""
     set_basic_logging_config()
-    file = Path(mhd_model_file_path)
+    file = Path(mhd_common_data_file_path)
     txt = file.read_text()
     mhd_data_json = json.loads(txt)
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-    announcement_file_path = f"{output_dir}/{mhd_study_id}.announcement.json"
+    announcement_file_path = f"{output_dir}/{mhd_id}.announcement.json"
     if output_filename:
         announcement_file_path = f"{output_dir}/{output_filename}"
     try:
         create_announcement_file(
-            mhd_data_json, target_mhd_model_file_url, announcement_file_path
+            mhd_data_json, target_mhd_common_data_file_url, announcement_file_path
         )
-        click.echo(f"{mhd_study_id} announcement file conversion completed.")
+        click.echo(f"{mhd_id} announcement file conversion completed.")
     except Exception as ex:
-        click.echo(f"{mhd_study_id} announcement file conversion failed. {ex!s}")
+        click.echo(f"{mhd_id} announcement file conversion failed. {ex!s}")

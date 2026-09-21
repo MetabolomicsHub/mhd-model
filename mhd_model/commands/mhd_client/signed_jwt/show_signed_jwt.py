@@ -1,7 +1,6 @@
 import datetime
 import json
 import logging
-import os
 import sys
 from pathlib import Path
 
@@ -17,7 +16,11 @@ logger = logging.getLogger(__name__)
 @click.option(
     "--signed-jwt",
     help="""A signed JWT token of the repository.
-    It is required if there is no MHD_CLIENT_SIGNED_JWT environment variable.
+    """,
+)
+@click.option(
+    "--signed-jwt-file-path",
+    help="""A file that contains a signed JWT token of the repository.
     """,
 )
 @click.option(
@@ -34,16 +37,23 @@ logger = logging.getLogger(__name__)
 @click.option("--output-file-path", help="Output file path to save JWT token content")
 def show_signed_jwt_task(
     signed_jwt: None | str,
+    signed_jwt_file_path: None | str,
     audience: str,
     public_key_path: None | str,
     output_file_path: None | str = None,
 ):
     """Show a signed JWT token content."""
-    if not signed_jwt:
-        signed_jwt = os.environ.get("MHD_CLIENT_SIGNED_JWT")
-        if not signed_jwt:
-            click.echo("Repository API token is not defined.")
-            sys.exit(1)
+    if not signed_jwt and not signed_jwt_file_path:
+        click.echo("Select one of them: signed-jwt, signed-jwt-file-path")
+        sys.exit(1)
+    if signed_jwt and signed_jwt_file_path:
+        click.echo("Select only one of them: signed-jwt, signed-jwt-file-path")
+        sys.exit(1)
+    if signed_jwt_file_path and not Path(signed_jwt_file_path).exists():
+        click.echo(f"{signed_jwt_file_path} does not exist")
+        sys.exit(1)
+    if signed_jwt_file_path:
+        signed_jwt = Path(signed_jwt_file_path).read_text()
 
     set_basic_logging_config()
     public_key = None

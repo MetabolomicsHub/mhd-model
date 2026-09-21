@@ -1,5 +1,6 @@
 import os
 import sys
+from pathlib import Path
 
 import click
 
@@ -20,7 +21,8 @@ from mhd_model.mhd_client import MhdAuthClient
 @click.option(
     "--signed-jwt",
     help="""A valid signed JWT token of the repository.
-    It is required if there is no MHD_CLIENT_SIGNED_JWT environment variable.
+    It is required if there is no MHD_CLIENT_SIGNED_JWT or
+    MHD_CLIENT_SIGNED_JWT_FILE_PATH environment variable.
     """,
 )
 @click.option(
@@ -48,8 +50,11 @@ def list_api_tokens_task(
     if not signed_jwt:
         signed_jwt = os.environ.get("MHD_CLIENT_SIGNED_JWT")
         if not signed_jwt:
-            click.echo("Repository API token is not defined.")
-            sys.exit(1)
+            signed_jwt_path = os.environ.get("MHD_CLIENT_SIGNED_JWT_FILE_PATH")
+            if not signed_jwt_path or not Path(signed_jwt_path).exists():
+                click.echo("Repository signed JWT token is not defined.")
+                sys.exit(1)
+            signed_jwt = Path(signed_jwt_path).read_text()
     if not mhd_server_url:
         mhd_server_url = os.environ.get("MHD_SERVER_URL")
         if not mhd_server_url:
