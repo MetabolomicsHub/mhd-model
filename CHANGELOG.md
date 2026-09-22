@@ -1,3 +1,9 @@
+## v0.1.112 (2026-09-22)
+
+### Fix
+
+- documentation errors and graph model interoperability issues.
+
 ## v0.1.111 (2026-09-21)
 
 ### Fix
