@@ -112,18 +112,20 @@ mhd-cli client api-token create \
 
 ```
 
-### Step 4: MHD Accession Integration
+### Step 4: Integration of MHD Dataset Accession
 
 After completion of a dataset in repository, repositories will request an MHD accession for each MHD dataset.
 
 ```bash
 ##################################################################################
-# STEP 1: ENSURE DATASET MHD TYPE (MHD OR LEGACY)
-#         AND MHD VERSION IS STORED IN DATABASE FOR EACH DATASET
+# STEP 1: STORE THE FOLLOWING INFORMATION IN DATABASE FOR EACH DATASET
+#         - DATASET CATEGORY (MS MHD, MS LEGACY, OTHER, etc.), 
+#         - MHD VERSION (IF DATASET IS MS MHD OR LEGACY)
+#         - MHD ACCESSION (IF DATASET IS MS MHD)
 ##################################################################################
 
 ##################################################################################
-# STEP 2.1: REQUEST MHD ACCESSION FOR EACH MS DATASET AFTER ITS COMPLETION
+# STEP 2.1: REQUEST MHD ACCESSION FOR EACH MS MHD DATASET AFTER ITS COMPLETION
 ##################################################################################
 
 export PRODUCTION_MHD_SERVER_URL="https://www.metabolomicshub.org/api/submission"
@@ -136,19 +138,20 @@ mhd-cli client fetch-mhd-accession \
     --mhd-server-url $TEST_MHD_SERVER_URL \
     --accession-type mhd
 
-##################################################################################
-# STEP 2.2: REGISTER EACH LEGACY DATASET AFTER ITS COMPLETION
-##################################################################################
-
-# Register a legacy dateset for a repository dataset on test MHD server
+# If it is legacy dataset. Register it on test MHD server
 mhd-cli client fetch-mhd-accession \
     --dataset-repository-identifier ST004212
     --api-token-file-path mhd-test-keys/api-token-test-2026-09.txt \
     --mhd-server-url $TEST_MHD_SERVER_URL \
     --accession-type legacy
+
+##################################################################################
+# STEP 3: UPDATE MS MHD DATASET METADATA (ADD ASSIGNED MHD ACCESSION)
+##################################################################################
+
 ```
 
-### Step 4: Announcement Integration
+### Step 4: MHD Dataset Announcement Integration
 
 After a dataset is public or there is a new revision for the dataset, repositories will generate MHD common data file, create an MHD announcement file and share the announcement file with MetabolomicsHub.
 
@@ -160,34 +163,37 @@ Create MHD Announcement File and make an announcement for MHD datasets
 
 ```bash
 ##################################################################################
-# STEP 1: CREATE MHD COMMON DATA FILE USING REPOSITORY CONVERTOR
+# STEP 1: CREATE MHD COMMON DATA FILE USING REPOSITORY SPECIFIC CONVERTOR
+#         (USE CONVERTOR CLI TOOL OR API TO CREATE IT)
 ##################################################################################
 
 ##################################################################################
-# STEP 2: CREATE MHD ANNOUNCEMENT FILE USING THE CREATED MHD COMMON DATA FILE
+# STEP 2: CREATE AND VALIDATE MHD FILES 
+#         MHD COMMON DATA FILE & MHD ANNOUNCEMENT FILE
 ##################################################################################
 # You have a dataset with repository id ST912345 and MHD accession ST912345.
 # MHD common data file is on current path
-# Target URL MUST be accessible after a study is public
+
+mhd-cli validate mhd ./ST912345.mhd.json --mhd-id MHD000021
+
+# target-mhd-common-data-file-url MUST be accessible after a study is public
 mhd-cli create announcement --mhd-id MHD000021 \
     --mhd-common-data-file-path ./ST912345.mhd.json \
     --output-dir . \
     --output-filename ST912345.announcement.json \
     --target-mhd-common-data-file-url 'https://www.metabolomicsworkbench.org/data/mhd.php?STUDY_ID=ST004212'
 
-##################################################################################
-# STEP 3: RUN VALIDATIONS FOR BOTH MHD COMMON DATA FILE AND MHD ANNOUNCEMENT FILE
-##################################################################################
+mhd-cli validate announcement ./ST912345.announcement.json
 
 ##################################################################################
-# STEP 4: MAKE STUDY PUBLIC AND HOST MHD COMMON DATA FILE ON INTERNET
+# STEP 3: MAKE STUDY PUBLIC AND HOST MHD COMMON DATA FILE ON INTERNET
 ##################################################################################
 # ENSURE URL defined with target-mhd-common-data-file-url is accessible
 # and downloadable as JSON file
 
 
 ##################################################################################
-# STEP 5: ANNOUNCE PUBLIC DATASET
+# STEP 4: ANNOUNCE PUBLIC DATASET
 ##################################################################################
 export PRODUCTION_MHD_SERVER_URL="https://www.metabolomicshub.org/api/submission"
 export TEST_MHD_SERVER_URL="https://www.metabolomicshub.org/test/api/submission"
@@ -211,30 +217,30 @@ Create MHD Announcement File and make an announcement for Legacy datasets
 ##################################################################################
 
 ##################################################################################
-# STEP 2: (LEGACY DATASET) CREATE MHD ANNOUNCEMENT FILE USING THE CREATED MHD COMMON DATA FILE
+# STEP 2: (LEGACY DATASET) CREATE AND VALIDATE MHD FILES
 ##################################################################################
 # You have a legacy dataset with repository id ST004083
 # MHD common data file for the legacy dataset is on current path
-# Target URL MUST be accessible after a study is public
+mhd-cli validate mhd ./ST004083.mhd.json
 
+# Target URL MUST be accessible after a study is public
 mhd-cli create announcement --mhd-id ST004083 \
     --mhd-common-data-file-path ./ST004083.mhd.json \
     --output-dir . \
     --output-filename ST004083.announcement.json \
     --target-mhd-common-data-file-url 'https://www.metabolomicsworkbench.org/data/mhd.php?STUDY_ID=ST004212'
 
-##################################################################################
-# STEP 3: (LEGACY DATASET) RUN VALIDATIONS FOR BOTH MHD COMMON DATA FILE AND MHD ANNOUNCEMENT FILE
-##################################################################################
+mhd-cli validate announcement ./ST004083.announcement.json
 
 ##################################################################################
-# STEP 4: (LEGACY DATASET) MAKE STUDY PUBLIC AND HOST MHD COMMON DATA FILE ON INTERNET
+# STEP 3: MAKE STUDY PUBLIC AND HOST MHD COMMON DATA FILE ON INTERNET
 ##################################################################################
 # ENSURE URL defined with target-mhd-common-data-file-url is accessible
 # and downloadable as JSON file
 
+
 ##################################################################################
-# STEP 5: (LEGACY DATASET) ANNOUNCE PUBLIC DATASET
+# STEP 4: (LEGACY DATASET) ANNOUNCE PUBLIC DATASET
 ##################################################################################
 # Announce an MHD announcement file for legacy studies
 mhd-cli client announce \

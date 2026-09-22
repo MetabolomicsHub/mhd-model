@@ -107,9 +107,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "An assay identifier that uniquely identifies the assay in repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -229,9 +237,6 @@
           "title": "Sample Run Refs"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Assay",
       "type": "object",
       "unique_value_contribution": [
@@ -454,9 +459,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "An assay identifier that uniquely identifies the assay in repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -559,9 +572,6 @@
           "title": "Protocol Refs"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "BasicAssay",
       "type": "object",
       "unique_value_contribution": [
@@ -994,9 +1004,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -1082,9 +1100,6 @@
           "title": "Extension"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "DerivedDataFile",
       "type": "object",
       "unique_value_contribution": [
@@ -1401,9 +1416,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -1489,9 +1512,6 @@
           "title": "Extension"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "MetadataFile",
       "type": "object",
       "unique_value_contribution": [
@@ -1720,9 +1740,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the organization in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "description": "Name of the organization.",
@@ -1784,7 +1812,6 @@
         }
       },
       "required": [
-        "repository_identifier",
         "name"
       ],
       "title": "Organization",
@@ -1901,9 +1928,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the person in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "full_name": {
           "anyOf": [
@@ -1994,9 +2029,6 @@
           "title": "Address List"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Person",
       "type": "object",
       "unique_value_contribution": [
@@ -2127,9 +2159,17 @@
           "title": "Title"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the project in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "description": {
           "anyOf": [
@@ -2178,9 +2218,6 @@
           "title": "Doi"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Project",
       "type": "object",
       "unique_value_contribution": [
@@ -2295,9 +2332,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the protocol in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -2357,9 +2402,6 @@
           "title": "Parameter Definition Refs"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Protocol",
       "type": "object",
       "unique_value_contribution": [
@@ -2679,9 +2721,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -2767,9 +2817,6 @@
           "title": "Extension"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "RawDataFile",
       "type": "object",
       "unique_value_contribution": [
@@ -3163,9 +3210,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -3251,9 +3306,6 @@
           "title": "Extension"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "ResultFile",
       "type": "object",
       "unique_value_contribution": [
@@ -3405,9 +3457,17 @@
           "title": "Name"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the sample in the repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -3426,9 +3486,6 @@
           "title": "Additional Identifier List"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Sample",
       "type": "object",
       "unique_value_contribution": [
@@ -3543,9 +3600,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the sample run in the repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -3660,9 +3725,6 @@
           "title": "Supplementary File Refs"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "SampleRun",
       "type": "object",
       "unique_value_contribution": [
@@ -3777,9 +3839,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the sample run configuration in the repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "protocol_ref": {
           "anyOf": [
@@ -3825,9 +3895,6 @@
           "title": "Parameter Value Refs"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "SampleRunConfiguration",
       "type": "object",
       "unique_value_contribution": [
@@ -3955,9 +4022,17 @@
           "title": "Name"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the specimen in the repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -3976,9 +4051,6 @@
           "title": "Additional Identifier List"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Specimen",
       "type": "object",
       "unique_value_contribution": [
@@ -4121,10 +4193,18 @@
           "title": "Doi"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Accession number or identifier in the source repository.",
-          "minLength": 2,
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -4285,9 +4365,6 @@
           "title": "Protocol Refs"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Study",
       "type": "object",
       "unique_value_contribution": [
@@ -4430,9 +4507,17 @@
           "title": "Subject Type Ref"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the subject in the repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -4451,9 +4536,6 @@
           "title": "Additional Identifier List"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "Subject",
       "type": "object",
       "unique_value_contribution": [
@@ -4568,9 +4650,17 @@
           "title": "Label"
         },
         "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier",
-          "type": "string"
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -4656,9 +4746,6 @@
           "title": "Extension"
         }
       },
-      "required": [
-        "repository_identifier"
-      ],
       "title": "SupplementaryFile",
       "type": "object",
       "unique_value_contribution": [

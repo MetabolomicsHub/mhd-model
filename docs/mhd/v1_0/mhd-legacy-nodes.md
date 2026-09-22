@@ -137,7 +137,7 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository|
 |**name**|**required**|<code>*str*<code>|Name of the characteristic attribute<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [EFO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
 
@@ -176,7 +176,7 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
@@ -216,7 +216,7 @@ Definition of an experimental factor varied across samples in a study. </br></br
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the factor definition in the repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the factor definition in the repository|
 |**name**|**required**|<code>*str*<code>|Name of the factor (e.g. dose, time point)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**factor_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the factor type CV term object<br>Target node type: <code>**factor-type**</code><br>Validation Rule:<br> <code>Target node type: <code>**factor-type**</code></code>|
 
@@ -295,7 +295,7 @@ Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
@@ -345,7 +345,7 @@ An institution, company, university, or department associated with a study or co
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the organization in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the organization in the source repository|
 |**name**|**required**|<code>*str*<code>|Name of the organization<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**ror_id**|optional|<code>*str*<code>|Research Organization Registry (ROR) identifier|
 |**department**|optional|<code>*str*<code>|Department within the organization|
@@ -390,7 +390,7 @@ Definition of an experimental parameter used within a protocol. </br></br>Parame
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the parameter definition in the repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the parameter definition in the repository|
 |**name**|**required**|<code>*str*<code>|Name of the parameter<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**parameter_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the parameter type CV term object<br>Target node type: <code>**parameter-type**</code><br>Validation Rule:<br> <code>Target node type: <code>**parameter-type**</code></code>|
 
@@ -429,7 +429,7 @@ An individual human being (e.g. author, submitter, principal investigator). </br
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the person in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the person in the source repository|
 |**full_name**|**required**|<code>*str*<code>|Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code>|
 |**email_list**|optional|<code>*list[EmailStr]*<code>|Email addresses of person|
@@ -477,7 +477,7 @@ An overarching research project encompassing one or more studies. </br></br>Proj
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**title**|**required**|<code>*str*<code>|Title of the project<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the project in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the project in the source repository|
 |**description**|optional|<code>*str*<code>|Summary description of the project goals and scope|
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>|List of grant identifiers funding the project|
 |**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) assigned to the project|
@@ -522,7 +522,7 @@ A defined and standardized procedure followed to collect, prepare, or analyze sa
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the protocol in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the protocol in the source repository|
 |**name**|**required**|<code>*str*<code>|Name or title of the protocol|
 |**protocol_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the protocol type CV term object<br>Target CV term type: <code>**protocol-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**protocol-type**</code><br>Allowed CV Terms:<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [MS, MS:1000831, sample preparation]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**description**|optional|<code>*str*<code>|Detailed description of the protocol procedure<br>Validation Rule:<br> <code></code>|
@@ -606,7 +606,7 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
@@ -673,7 +673,7 @@ Processed result file (e.g. quantification or identification matrix). </br></br>
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
@@ -759,7 +759,7 @@ An analytical run representing the measurement of a sample on an instrument. </b
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the sample run in the repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the sample run in the repository|
 |**name**|optional|<code>*str*<code>|Name or label of the sample run|
 |**sample_ref**|optional|<code>*MhdObjectId*<code>|Reference ID to the sample object measured in this run<br>Target node type: <code>**sample**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample**</code></code>|
 |**sample_run_configuration_refs**|optional|<code>*list[MhdObjectId]*<code>|List of configuration object IDs for the sample run<br>Target node type: <code>**sample-run-configuration**</code>|
@@ -801,7 +801,7 @@ Configuration settings and instrument parameters used for a sample run. </br></b
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the sample run configuration in the repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the sample run configuration in the repository|
 |**protocol_ref**|**required**|<code>*MhdObjectId*<code>|Reference ID to the protocol object defining the run configuration<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 |**parameter_value_refs**|optional|<code>*list[MhdObjectId or CvTermObjectId or CvTermValueObjectId]*<code>|List of parameter value object IDs specifying run parameters<br>Target node type: <code>**parameter-value**</code>|
 
@@ -1002,7 +1002,7 @@ Supplementary document or asset file associated with the dataset. </br></br>Supp
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
 |**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|

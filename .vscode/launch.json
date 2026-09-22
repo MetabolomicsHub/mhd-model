@@ -11,7 +11,9 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
-            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
             "justMyCode": false
         },
         {
@@ -21,10 +23,11 @@
             "program": "${workspaceFolder}/scripts/update_documentation.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
-            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
             "justMyCode": false
         },
-
         {
             "name": "mhd-model: Validate MHD File",
             "type": "debugpy",
@@ -32,8 +35,27 @@
             "program": "${workspaceFolder}/scripts/validate_mhd_file.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
-            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
             "justMyCode": false
+        },
+        {
+            "name": "mhd-cli",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/scripts/validate_mhd_file.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": false,
+            "args": [
+                "validate",
+                "mhd",
+                "ST912345.mhd.json"
+            ]
         },
         {
             "name": "mhd-model: Create Announcement File",
@@ -42,7 +64,9 @@
             "program": "${workspaceFolder}/scripts/create_announcement_file.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
-            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
             "justMyCode": false
         },
         {
@@ -52,10 +76,10 @@
             "program": "${workspaceFolder}/scripts/create_sdrf_files.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
-            "env": {"PYTHONPATH": "${workspaceFolder}"},
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
             "justMyCode": false
         },
-
-
     ]
 }

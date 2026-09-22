@@ -40,11 +40,11 @@ class Person(BaseLabeledMhdModel):
         ),
     ] = "person"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the person in the source repository."
         ),
-    ]
+    ] = None
     full_name: Annotated[
         None | str, Field(min_length=2, description="Full name of person")
     ] = None
@@ -93,11 +93,11 @@ class Organization(BaseLabeledMhdModel):
         ),
     ] = "organization"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the organization in the source repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         str,
         Field(min_length=2, description="Name of the organization."),
@@ -141,11 +141,11 @@ class Project(BaseLabeledMhdModel):
         Field(min_length=2, description="Title of the project."),
     ] = None
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the project in the source repository."
         ),
-    ]
+    ] = None
     description: Annotated[
         None | str,
         Field(description="Summary description of the project goals and scope."),
@@ -186,12 +186,12 @@ class Study(BaseLabeledMhdModel):
         ),
     ] = None
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             min_length=2,
             description="Accession number or identifier in the source repository.",
         ),
-    ]
+    ] = None
     additional_identifier_list: Annotated[
         None | list[CvTermValue],
         Field(
@@ -257,11 +257,11 @@ class Protocol(BaseLabeledMhdModel):
         ),
     ] = "protocol"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the protocol in the source repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         None | str,
         Field(description="Name or title of the protocol."),
@@ -300,11 +300,11 @@ class ParameterDefinition(BaseLabeledMhdModel):
         ),
     ] = "parameter-definition"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the parameter definition in the repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         None | str,
         Field(description="Name of the parameter."),
@@ -333,11 +333,11 @@ class FactorDefinition(BaseLabeledMhdModel):
         ),
     ] = "factor-definition"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the factor definition in the repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         None | str,
         Field(description="Name of the factor (e.g. dose, time point)."),
@@ -366,11 +366,11 @@ class CharacteristicDefinition(BaseLabeledMhdModel):
         ),
     ] = "characteristic-definition"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the characteristic definition in the repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         None | str,
         Field(description="Name of the characteristic attribute."),
@@ -427,11 +427,11 @@ class BasicAssay(BaseLabeledMhdModel):
         "assay"
     )
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="An assay identifier that uniquely identifies the assay in repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         None | str,
         Field(description="Name of the assay. It SHOULD be unique in a study."),
@@ -510,11 +510,11 @@ class Subject(BaseLabeledMhdModel):
         Field(description="Reference ID to the subject type CV term object."),
     ] = None
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the subject in the repository."
         ),
-    ]
+    ] = None
     additional_identifier_list: Annotated[
         None | list[CvTermValue],
         Field(description="List of additional secondary identifiers for the subject."),
@@ -543,11 +543,11 @@ class Specimen(BaseLabeledMhdModel):
         Field(description="Name or identifier of the specimen."),
     ] = None
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the specimen in the repository."
         ),
-    ]
+    ] = None
     additional_identifier_list: Annotated[
         None | list[CvTermValue],
         Field(description="List of additional secondary identifiers for the specimen."),
@@ -576,11 +576,11 @@ class Sample(BaseLabeledMhdModel):
         Field(description="Name or identifier of the sample."),
     ] = None
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the sample in the repository."
         ),
-    ]
+    ] = None
     additional_identifier_list: Annotated[
         None | list[CvTermValue],
         Field(description="List of additional secondary identifiers for the sample."),
@@ -605,11 +605,11 @@ class SampleRun(BaseLabeledMhdModel):
         ),
     ] = "sample-run"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the sample run in the repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         None | str,
         Field(description="Name or label of the sample run."),
@@ -666,11 +666,11 @@ class SampleRunConfiguration(BaseLabeledMhdModel):
         ),
     ] = "sample-run-configuration"
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the sample run configuration in the repository."
         ),
-    ]
+    ] = None
     protocol_ref: Annotated[
         None | MhdObjectId,
         Field(
@@ -716,11 +716,11 @@ class BaseFile(BaseLabeledMhdModel):
         json_schema_extra={"unique_value_contribution": ["repository_identifier"]}
     )
     repository_identifier: Annotated[
-        str,
+        None | str,
         Field(
             description="Unique identifier assigned to the file in the source repository."
         ),
-    ]
+    ] = None
     name: Annotated[
         None | str,
         Field(
