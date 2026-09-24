@@ -7,6 +7,18 @@ COMMON_CV_DEFINITIONS = {
         uri="http://purl.obolibrary.org/obo/bto.owl",
         prefix="http://purl.obolibrary.org/obo/BTO_",
     ),
+    "CL": CvDefinition(
+        label="CL",
+        name="Chemical Entities of Biological Interest",
+        uri="http://purl.obolibrary.org/obo/cl.owl",
+        prefix="http://purl.obolibrary.org/obo/CL_",
+    ),
+    "CLO": CvDefinition(
+        label="CLO",
+        name="CLO: Cell Line Ontology",
+        uri="http://purl.obolibrary.org/obo/clo.owl",
+        prefix="http://purl.obolibrary.org/obo/CLO_",
+    ),
     "CHEBI": CvDefinition(
         label="CHEBI",
         name="Chemical Entities of Biological Interest",
@@ -61,9 +73,21 @@ COMMON_CV_DEFINITIONS = {
         uri=" http://purl.obolibrary.org/obo/mi.owl",
         prefix="http://purl.obolibrary.org/obo/MI_",
     ),
+    "MONDO": CvDefinition(
+        label="MONDO",
+        name="Mondo Disease Ontology",
+        uri="http://purl.obolibrary.org/obo/mondo/mondo-international.owl",
+        prefix="http://purl.obolibrary.org/obo/MONDO_",
+    ),
+    "MP": CvDefinition(
+        label="MP",
+        name="The Mammalian Phenotype Ontology",
+        uri="http://purl.obolibrary.org/obo/mp/mp-international.owl",
+        prefix="http://purl.obolibrary.org/obo/MP_",
+    ),
     "MS": CvDefinition(
         label="MS",
-        name="MS",
+        name="Mass spectrometry ontology",
         uri="http://purl.obolibrary.org/obo/ms.owl",
         prefix="http://purl.obolibrary.org/obo/MS_",
     ),
@@ -93,11 +117,23 @@ COMMON_CV_DEFINITIONS = {
         uri="http://purl.obolibrary.org/obo/obi.owl",
         prefix="http://purl.obolibrary.org/obo/OBI_",
     ),
+    "SNOMED": CvDefinition(
+        label="SNOMED",
+        name="SNOMED CT (International Edition)",
+        uri="http://snomed.info/sct/9000000000002070081231",
+        prefix="http://snomed.info/id/",
+    ),
     "SWO": CvDefinition(
         label="SWO",
         name="Software Ontology",
         uri="http://www.ebi.ac.uk/swo/swo.owl",
         prefix="http://www.ebi.ac.uk/swo/SWO_",
+    ),
+    "UBERON": CvDefinition(
+        label="UBERON",
+        name="Uber-anatomy ontology",
+        uri="http://purl.obolibrary.org/obo/uberon.owl",
+        prefix="http://purl.obolibrary.org/obo/UBERON_",
     ),
 }
 

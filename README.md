@@ -119,7 +119,7 @@ After completion of a dataset in repository, repositories will request an MHD ac
 ```bash
 ##################################################################################
 # STEP 1: STORE THE FOLLOWING INFORMATION IN DATABASE FOR EACH DATASET
-#         - DATASET CATEGORY (MS MHD, MS LEGACY, OTHER, etc.), 
+#         - DATASET CATEGORY (MS MHD, MS LEGACY, OTHER, etc.),
 #         - MHD VERSION (IF DATASET IS MS MHD OR LEGACY)
 #         - MHD ACCESSION (IF DATASET IS MS MHD)
 ##################################################################################
@@ -168,7 +168,7 @@ Create MHD Announcement File and make an announcement for MHD datasets
 ##################################################################################
 
 ##################################################################################
-# STEP 2: CREATE AND VALIDATE MHD FILES 
+# STEP 2: CREATE AND VALIDATE MHD FILES
 #         MHD COMMON DATA FILE & MHD ANNOUNCEMENT FILE
 ##################################################################################
 # You have a dataset with repository id ST912345 and MHD accession ST912345.

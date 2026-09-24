@@ -306,7 +306,7 @@ def update_nodes(
         if node.has_value:
             model = CvTermValueObject
     elif isinstance(node, NodeValidation):
-        model = MhdGraph.get_mhd_class_by_type(node.node_type)
+        model = MhdGraph.get_mhd_class_by_type_and_id_prefix("", node.node_type)
     if not model:
         logger.info("invalid type: %s", node.node_type)
         return

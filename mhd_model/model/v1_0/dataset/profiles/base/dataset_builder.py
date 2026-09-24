@@ -1,3 +1,4 @@
+import datetime
 import logging
 from collections.abc import Sequence
 from typing import Annotated, Any, Self
@@ -43,7 +44,18 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
     type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
         "dataset"
     )
-
+    id_: Annotated[
+        None | str,
+        Field(
+            alias="id",
+            description="Unique identifier of the dataset",
+        ),
+    ] = None
+    created_at: Annotated[datetime.datetime | None, Field(description="Created at")] = (
+        None
+    )
+    name: Annotated[None | str, Field()] = None
+    description: Annotated[None | str, Field()] = None
     objects: dict[str, IdentifiableMhdModel] = {}
 
     def add(
@@ -178,6 +190,11 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         mhd_dataset.cv_definitions = (
             self.cv_definitions.copy() if self.cv_definitions else []
         )
+
+        mhd_dataset.name = self.name or None
+        mhd_dataset.description = self.description or None
+        mhd_dataset.created_at = self.created_at or datetime.datetime.now(datetime.UTC)
+
         mhd_dataset.repository_name = self.repository_name
         mhd_dataset.revision = self.revision
         mhd_dataset.repository_identifier = self.repository_identifier
@@ -185,6 +202,9 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         mhd_dataset.revision_datetime = self.revision_datetime
         mhd_dataset.repository_revision = self.repository_revision
         mhd_dataset.repository_revision_datetime = self.repository_revision_datetime
+        mhd_dataset.repository_revision_comment = (
+            self.repository_revision_comment or None
+        )
         mhd_dataset.change_log = self.change_log.copy() if self.change_log else None
 
         iterated_items: set[str] = set()

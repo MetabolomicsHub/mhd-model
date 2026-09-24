@@ -645,7 +645,12 @@
         }
       },
       "title": "CvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     },
     "CvTermKeyValue": {
       "properties": {
@@ -739,7 +744,14 @@
         }
       },
       "title": "CvTermValue",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name",
+        "value",
+        "unit"
+      ]
     },
     "QuantitativeValue": {
       "properties": {
@@ -827,7 +839,12 @@
         }
       },
       "title": "UnitCvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     }
   },
   "description": "Base Profile for dataset announcement files.",

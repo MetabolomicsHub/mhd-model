@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD Legacy Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a> 
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v0_1/common-data-model-v0.1.legacy-profile.json</a>
 
-## Required Nodes & Relationships 
+## Required Nodes & Relationships
 
  **Required MHD Nodes**
 
@@ -137,7 +137,7 @@ Characteristic Definition node is **required in the MHD Legacy Profile.** <code>
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository|
 |**name**|**required**|<code>*str*<code>|Name of the characteristic attribute<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [EFO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
+|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [MONDO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
 
 
 **Node Relationships**

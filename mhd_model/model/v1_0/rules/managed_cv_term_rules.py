@@ -25,7 +25,7 @@ MANAGED_CHARACTERISTIC_VALUE_RULES: dict[str, ProfileValidation] = {
         allowed_missing_cv_terms=list(COMMON_MISSING_DATA_TERMS.values()),
     ),
     "disease": AllowedCvList(
-        source_names=["MONDO", "MP", "SNOMED", "PATO"],
+        source_names=["MONDO", "MP", "SNOMED"],
         allowed_other_sources=["wikidata", "ILX"],
         allowed_missing_cv_terms=list(COMMON_MISSING_DATA_TERMS.values()),
     ),
@@ -34,7 +34,7 @@ MANAGED_CHARACTERISTIC_VALUE_RULES: dict[str, ProfileValidation] = {
 
 MANAGED_FACTOR_VALUE_RULES: dict[str, ProfileValidation] = {
     "disease": AllowedCvList(
-        source_names=["MONDO", "MP", "SNOMED", "PATO"],
+        source_names=["MONDO", "MP", "SNOMED"],
         allowed_other_sources=["wikidata", "ILX"],
         allowed_missing_cv_terms=list(COMMON_MISSING_DATA_TERMS.values()),
     )

@@ -52,14 +52,8 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
             NodePropertyValidation(
                 identifier="referenced-object-003-01",
                 node_type="referenced-object",
-                node_property_name="mhd_identifier",
+                node_property_name="dataset_repository_identifier",
                 constraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                identifier="referenced-object-004-01",
-                node_type="referenced-object",
-                node_property_name="mhd_revision",
-                constraints=PropertyConstraint(required=False),
             ),
         ],
         relationships=[],

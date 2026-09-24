@@ -577,7 +577,12 @@
         }
       },
       "title": "CvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     },
     "CvTermKeyValue": {
       "properties": {
@@ -671,7 +676,14 @@
         }
       },
       "title": "CvTermValue",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name",
+        "value",
+        "unit"
+      ]
     },
     "QuantitativeValue": {
       "properties": {
@@ -759,7 +771,12 @@
         }
       },
       "title": "UnitCvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     },
     "mhd_model__model__v0_1__announcement__profiles__base__profile__AnnouncementContact": {
       "description": "A contact person associated with the dataset.\nThis can be a submitter, author, or a principal investigator.",

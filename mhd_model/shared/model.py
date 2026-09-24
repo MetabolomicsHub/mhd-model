@@ -1,9 +1,12 @@
 import datetime
 import decimal
+import logging
 from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_pascal
+
+logger = logging.getLogger(__name__)
 
 
 class MhdConfigModel(BaseModel):
@@ -18,8 +21,43 @@ class MhdConfigModel(BaseModel):
         # alias_generator=to_camel,
     )
 
+    def get_unique_id(self, type_: None | str = None):
+        extra = self.model_config.get("json_schema_extra", {})
+        contribution: list[str] = extra.get("unique_value_contribution") or []
+        values = [type_] if type_ else []
+        if contribution:
+            for field_name in contribution:
+                value = ""
+                if hasattr(self, field_name):
+                    value = getattr(self, field_name) or ""
+                    if isinstance(value, (dict, list)):
+                        logger.warning(
+                            "%s %s value is dict or list. It is not used to create unique id",
+                            self.__class__,
+                            field_name,
+                        )
+                        continue
+                    if isinstance(value, MhdConfigModel):
+                        sub_type = value.type_ if hasattr(value, "type_") else None
+                        value = f"[{value.get_unique_id(sub_type)}]"
+                    elif isinstance(value, datetime.datetime):
+                        value = str(value.timestamp()).lower()
+                    else:
+                        value = str(value).lower()
+                else:
+                    logger.warning(
+                        "%s has no field named %s", self.__class__, field_name
+                    )
+
+                values.append(f"{field_name.lower()}={value}")
+
+        return "&".join(values)
+
 
 class CvTerm(MhdConfigModel):
+    model_config = ConfigDict(
+        json_schema_extra={"unique_value_contribution": ["source", "accession", "name"]}
+    )
     source: Annotated[
         str,
         Field(description="Ontology source name."),
@@ -32,9 +70,6 @@ class CvTerm(MhdConfigModel):
         str,
         Field(description="Label of CV term."),
     ] = ""
-
-    def get_unique_id(self) -> str:
-        return f"{self.source or ''},{self.accession or ''},{self.name or ''}"
 
     def __hash__(self) -> int:
         return hash(self.get_unique_id())
@@ -60,6 +95,17 @@ class QuantitativeValue(MhdConfigModel):
 
 
 class CvTermValue(CvTerm, QuantitativeValue):
+    model_config = ConfigDict(
+        json_schema_extra={
+            "unique_value_contribution": [
+                "source",
+                "accession",
+                "name",
+                "value",
+                "unit",
+            ]
+        }
+    )
     value: Annotated[
         None | str | int | float | decimal.Decimal,
         Field(description="Value of CV term."),
@@ -68,18 +114,6 @@ class CvTermValue(CvTerm, QuantitativeValue):
         None | UnitCvTerm,
         Field(description="Unit CV term if value has a unit."),
     ] = None
-
-    def get_unique_id(self) -> str:
-        unit_key = self.unit.get_unique_id() if self.unit else ""
-        value_key = (
-            self.value.get_unique_id()
-            if isinstance(self.value, CvTerm)
-            else str(self.value)
-            if self.value is not None
-            else ""
-        )
-
-        return f"{super().get_unique_id()},{value_key or ''},{unit_key or ''}"
 
     def get_label(self) -> str:
         unit_key = self.unit.get_label() if self.unit else ""
@@ -100,10 +134,11 @@ class CvTermKeyValue(MhdConfigModel):
 
 
 class CvDefinition(MhdConfigModel):
-    label: str = ""
-    name: str = ""
-    uri: str = ""
-    prefix: str = ""
+    label: None | str = None
+    name: None | str = None
+    uri: None | str = None
+    prefix: None | str = None
+    version: None | str = None
     alternative_labels: Annotated[None | list[str], Field(exclude=True)] = None
     alternative_prefixes: Annotated[None | list[str], Field(exclude=True)] = None
 

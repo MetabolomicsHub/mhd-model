@@ -393,7 +393,11 @@ class CharacteristicDefinition(BaseLabeledMhdModel):
 class Publication(BaseLabeledMhdModel):
     """A document that is the output of a publishing process. [IAO, IAO:0000311, publication]"""
 
-    model_config = ConfigDict(json_schema_extra={"unique_value_contribution": ["doi"]})
+    model_config = ConfigDict(
+        json_schema_extra={
+            "unique_value_contribution": ["repository_identifier", "doi"]
+        }
+    )
     type_: Annotated[
         None | MhdObjectType,
         Field(
@@ -696,7 +700,11 @@ class Metabolite(BaseLabeledMhdModel):
     The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite]
     """
 
-    model_config = ConfigDict(json_schema_extra={"unique_value_contribution": ["name"]})
+    model_config = ConfigDict(
+        json_schema_extra={
+            "unique_value_contribution": ["repository_identifier", "name"]
+        }
+    )
 
     type_: Annotated[
         None | MhdObjectType,
@@ -918,15 +926,24 @@ class ReferencedObject(IdentifiableMhdModel):
     referenced_type: Annotated[
         None | MhdObjectType,
         Field(description="Type of referenced object."),
-    ]
-    mhd_identifier: Annotated[
-        None | str,
-        Field(
-            description="Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file."
-            "For legacy dataset references, repository identifier can be used as mhd_identifier."
-        ),
     ] = None
-    mhd_revision: Annotated[
+    dataset_id: Annotated[
+        None | str,
+        Field(description="Id of dataset."),
+    ] = None
+    dataset_repository_identifier: Annotated[
+        None | str,
+        Field(description="Dataset Repository Identifier."),
+    ] = None
+    dataset_repository_revision: Annotated[
+        None | str,
+        Field(description="Dataset revision assigned by repository."),
+    ] = None
+    dataset_mhd_identifier: Annotated[
+        None | str,
+        Field(description="MHD Identifier of the dataset."),
+    ] = None
+    dataset_mhd_revision: Annotated[
         None | int,
-        Field(description="MHD revision number of the referenced file."),
+        Field(description="Dataset revision assigned by MetabolomicsHub."),
     ] = None

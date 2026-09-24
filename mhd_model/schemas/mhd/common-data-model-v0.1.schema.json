@@ -352,8 +352,8 @@
       "title": "BaseLabeledMhdModel",
       "type": "object"
     },
-    "BasicAssay": {
-      "description": "Basic analytical assay node representing an experimental measurement procedure.",
+    "CharacteristicDefinition": {
+      "description": "Definition of a sample characteristic or attribute (e.g. organism, tissue).",
       "properties": {
         "id": {
           "anyOf": [
@@ -379,7 +379,8 @@
               "type": "null"
             }
           ],
-          "default": "assay",
+          "default": "characteristic-definition",
+          "description": "The type property identifies type of the object",
           "title": "Type"
         },
         "created_by_ref": {
@@ -468,7 +469,7 @@
             }
           ],
           "default": null,
-          "description": "An assay identifier that uniquely identifies the assay in repository.",
+          "description": "Unique identifier assigned to the characteristic definition in the repository.",
           "title": "Repository Identifier"
         },
         "name": {
@@ -481,24 +482,10 @@
             }
           ],
           "default": null,
-          "description": "Name of the assay. It SHOULD be unique in a study.",
+          "description": "Name of the characteristic attribute.",
           "title": "Name"
         },
-        "metadata_file_ref": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the metadata file describing the assay.",
-          "title": "Metadata File Ref"
-        },
-        "technology_type_ref": {
+        "characteristic_type_ref": {
           "anyOf": [
             {
               "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -509,70 +496,11 @@
             }
           ],
           "default": null,
-          "description": "Reference ID to the technology type CV term object.",
-          "title": "Technology Type Ref"
-        },
-        "assay_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the assay type CV term object.",
-          "title": "Assay Type Ref"
-        },
-        "measurement_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the measurement type CV term object.",
-          "title": "Measurement Type Ref"
-        },
-        "omics_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the omics type CV term object.",
-          "title": "Omics Type Ref"
-        },
-        "protocol_refs": {
-          "anyOf": [
-            {
-              "items": {
-                "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples.",
-          "title": "Protocol Refs"
+          "description": "Reference ID to the characteristic type CV term object.",
+          "title": "Characteristic Type Ref"
         }
       },
-      "title": "BasicAssay",
+      "title": "CharacteristicDefinition",
       "type": "object",
       "unique_value_contribution": [
         "repository_identifier"
@@ -656,7 +584,12 @@
         }
       },
       "title": "CvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     },
     "CvTermObject": {
       "description": "Controlled Vocabulary (CV) term object node in the dataset graph.",
@@ -786,7 +719,14 @@
         }
       },
       "title": "CvTermValue",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name",
+        "value",
+        "unit"
+      ]
     },
     "CvTermValueObject": {
       "description": "Controlled Vocabulary (CV) term value object node with quantitative or string value.",
@@ -1101,6 +1041,160 @@
         }
       },
       "title": "DerivedDataFile",
+      "type": "object",
+      "unique_value_contribution": [
+        "repository_identifier"
+      ]
+    },
+    "FactorDefinition": {
+      "description": "Definition of an experimental factor varied across samples in a study.",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property uniquely identifies the object.",
+          "title": "Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "factor-definition",
+          "description": "The type property identifies type of the object",
+          "title": "Type"
+        },
+        "created_by_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property of the data-provider who created the object.",
+          "title": "Created By Ref"
+        },
+        "tag_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Key-value tags related to the object.",
+          "title": "Tag List"
+        },
+        "external_reference_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External references related to the object.",
+          "title": "External Reference List"
+        },
+        "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL list related to the object.",
+          "title": "Url List"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the factor definition in the repository.",
+          "title": "Repository Identifier"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name of the factor (e.g. dose, time point).",
+          "title": "Name"
+        },
+        "factor_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the factor type CV term object.",
+          "title": "Factor Type Ref"
+        }
+      },
+      "title": "FactorDefinition",
       "type": "object",
       "unique_value_contribution": [
         "repository_identifier"
@@ -1570,9 +1664,6 @@
                 "$ref": "#/$defs/Publication"
               },
               {
-                "$ref": "#/$defs/BasicAssay"
-              },
-              {
                 "$ref": "#/$defs/Assay"
               },
               {
@@ -1610,8 +1701,18 @@
               },
               {
                 "$ref": "#/$defs/BaseLabeledMhdModel"
+              },
+              {
+                "$ref": "#/$defs/CharacteristicDefinition"
+              },
+              {
+                "$ref": "#/$defs/FactorDefinition"
+              },
+              {
+                "$ref": "#/$defs/ParameterDefinition"
               }
-            ]
+            ],
+            "description": "Possible Node Type"
           },
           "title": "Nodes",
           "type": "array"
@@ -1811,6 +1912,160 @@
         "name"
       ],
       "title": "Organization",
+      "type": "object",
+      "unique_value_contribution": [
+        "repository_identifier"
+      ]
+    },
+    "ParameterDefinition": {
+      "description": "Definition of an experimental parameter used within a protocol.",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property uniquely identifies the object.",
+          "title": "Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "parameter-definition",
+          "description": "The type property identifies type of the object",
+          "title": "Type"
+        },
+        "created_by_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property of the data-provider who created the object.",
+          "title": "Created By Ref"
+        },
+        "tag_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Key-value tags related to the object.",
+          "title": "Tag List"
+        },
+        "external_reference_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External references related to the object.",
+          "title": "External Reference List"
+        },
+        "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL list related to the object.",
+          "title": "Url List"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the parameter definition in the repository.",
+          "title": "Repository Identifier"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name of the parameter.",
+          "title": "Name"
+        },
+        "parameter_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the parameter type CV term object.",
+          "title": "Parameter Type Ref"
+        }
+      },
+      "title": "ParameterDefinition",
       "type": "object",
       "unique_value_contribution": [
         "repository_identifier"
@@ -2981,7 +3236,14 @@
         "target_ref"
       ],
       "title": "Relationship",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source_ref",
+        "relationship_name",
+        "target_ref",
+        "source_role",
+        "target_role"
+      ]
     },
     "ResultFile": {
       "description": "Processed result file (e.g. quantification or identification matrix).",
@@ -4640,7 +4902,12 @@
         }
       },
       "title": "UnitCvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     }
   },
   "properties": {
@@ -4803,7 +5070,7 @@
       "title": "Id"
     },
     "type": {
-      "default": "base-dataset",
+      "default": "dataset",
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
       "title": "Type",
       "type": "string"

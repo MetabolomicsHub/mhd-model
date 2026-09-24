@@ -195,7 +195,12 @@
         }
       },
       "title": "CvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     },
     "CvTermKeyValue": {
       "properties": {
@@ -289,7 +294,14 @@
         }
       },
       "title": "CvTermValue",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name",
+        "value",
+        "unit"
+      ]
     },
     "ExtendedCvTermKeyValue": {
       "description": "Extended CV term key-value pair supporting custom CV term keys.",
@@ -1106,7 +1118,12 @@
         }
       },
       "title": "UnitCvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     }
   },
   "description": "Mass spectrometry profile for dataset announcements.\n\nMain differences from Base Profile:\n- Mass Spectrometry Specialization: Restricts technology_type, measurement_type, omics_type,\n  and assay_type to controlled mass spectrometry terms (defaults technology_type to OBI:0000470).\n- Required Fields: Enforces strict non-null values for mhd_identifier, submitters, principal_investigators,\n  measurement_type, omics_type, assay_type, publications (or missing publication reason),\n  study_factors, characteristic_values, and raw_data_file_list.\n- Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),\n  publications (formatted DOI and PubMed IDs), metabolites, and protocols.",
@@ -1667,7 +1684,7 @@
             "cvTermKey": {
               "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "EFO"
+              "source": "MONDO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",
@@ -1740,7 +1757,7 @@
             "cvTermKey": {
               "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "EFO"
+              "source": "MONDO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",

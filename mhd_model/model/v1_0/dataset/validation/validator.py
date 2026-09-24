@@ -32,7 +32,10 @@ from mhd_model.model.v1_0.dataset.profiles.legacy.graph_validation import (
 from mhd_model.model.v1_0.dataset.profiles.ms.graph_validation import (
     MHD_MS_PROFILE_V1_0,
 )
-from mhd_model.model.v1_0.dataset.validation.base import MhdModelValidator
+from mhd_model.model.v1_0.dataset.validation.base import (
+    MhdModelValidationContext,
+    MhdModelValidator,
+)
 from mhd_model.schema_utils import load_mhd_json_schema
 from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
@@ -176,7 +179,9 @@ MHD_PROFILE_VALIDATIONS_V1_0 = {
 
 
 def new_validator(
-    schema_uri: None | str, profile_uri: None | str
+    schema_uri: None | str,
+    profile_uri: None | str,
+    mhd_model_validation_context: None | MhdModelValidationContext = None,
 ) -> protocols.Validator:
     if not schema_uri:
         schema_uri = SUPPORTED_SCHEMA_MAP.schemas[
@@ -194,7 +199,10 @@ def new_validator(
             _, schema_file = load_mhd_json_schema(profile_uri)
             node_validation = MHD_PROFILE_VALIDATIONS_V1_0[profile_uri]
 
-            mhd_model_validator = MhdModelValidator(node_validation)
+            mhd_model_validator = MhdModelValidator(
+                node_validation,
+                mhd_model_validation_context=mhd_model_validation_context,
+            )
 
             validator = validators.extend(
                 jsonschema.Draft202012Validator,
@@ -228,10 +236,16 @@ def get_profile(schema_uri: None | str, profile_uri: None | str) -> protocols.Va
 
 
 class MhdFileValidator:
-    def validate(self, json_file: dict[str, Any]) -> list[jsonschema.ValidationError]:
+    def validate(
+        self,
+        json_file: dict[str, Any],
+        mhd_model_validation_context: None | MhdModelValidationContext = None,
+    ) -> list[jsonschema.ValidationError]:
         profile: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_file)
         validator: jsonschema.protocols.Validator = new_validator(
-            profile.schema_name, profile.profile_uri
+            profile.schema_name,
+            profile.profile_uri,
+            mhd_model_validation_context=mhd_model_validation_context,
         )
         if not validator:
             logger.error(

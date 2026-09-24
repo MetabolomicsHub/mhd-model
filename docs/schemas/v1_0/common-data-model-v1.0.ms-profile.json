@@ -94,18 +94,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -118,6 +106,18 @@
           "default": null,
           "description": "An assay identifier that uniquely identifies the assay in repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -336,6 +336,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier in the source repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -352,8 +365,8 @@
       "title": "BaseLabeledMhdModel",
       "type": "object"
     },
-    "BasicAssay": {
-      "description": "Basic analytical assay node representing an experimental measurement procedure.",
+    "CharacteristicDefinition": {
+      "description": "Definition of a sample characteristic or attribute (e.g. organism, tissue).",
       "properties": {
         "id": {
           "anyOf": [
@@ -379,7 +392,8 @@
               "type": "null"
             }
           ],
-          "default": "assay",
+          "default": "characteristic-definition",
+          "description": "The type property identifies type of the object",
           "title": "Type"
         },
         "created_by_ref": {
@@ -446,6 +460,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the characteristic definition in the repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -458,19 +485,6 @@
           "default": null,
           "title": "Label"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "An assay identifier that uniquely identifies the assay in repository.",
-          "title": "Repository Identifier"
-        },
         "name": {
           "anyOf": [
             {
@@ -481,24 +495,10 @@
             }
           ],
           "default": null,
-          "description": "Name of the assay. It SHOULD be unique in a study.",
+          "description": "Name of the characteristic attribute.",
           "title": "Name"
         },
-        "metadata_file_ref": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the metadata file describing the assay.",
-          "title": "Metadata File Ref"
-        },
-        "technology_type_ref": {
+        "characteristic_type_ref": {
           "anyOf": [
             {
               "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -509,70 +509,11 @@
             }
           ],
           "default": null,
-          "description": "Reference ID to the technology type CV term object.",
-          "title": "Technology Type Ref"
-        },
-        "assay_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the assay type CV term object.",
-          "title": "Assay Type Ref"
-        },
-        "measurement_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the measurement type CV term object.",
-          "title": "Measurement Type Ref"
-        },
-        "omics_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the omics type CV term object.",
-          "title": "Omics Type Ref"
-        },
-        "protocol_refs": {
-          "anyOf": [
-            {
-              "items": {
-                "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples.",
-          "title": "Protocol Refs"
+          "description": "Reference ID to the characteristic type CV term object.",
+          "title": "Characteristic Type Ref"
         }
       },
-      "title": "BasicAssay",
+      "title": "CharacteristicDefinition",
       "type": "object",
       "unique_value_contribution": [
         "repository_identifier"
@@ -656,7 +597,12 @@
         }
       },
       "title": "CvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     },
     "CvTermObject": {
       "description": "Controlled Vocabulary (CV) term object node in the dataset graph.",
@@ -786,7 +732,14 @@
         }
       },
       "title": "CvTermValue",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name",
+        "value",
+        "unit"
+      ]
     },
     "CvTermValueObject": {
       "description": "Controlled Vocabulary (CV) term value object node with quantitative or string value.",
@@ -991,18 +944,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -1015,6 +956,18 @@
           "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -1101,6 +1054,160 @@
         }
       },
       "title": "DerivedDataFile",
+      "type": "object",
+      "unique_value_contribution": [
+        "repository_identifier"
+      ]
+    },
+    "FactorDefinition": {
+      "description": "Definition of an experimental factor varied across samples in a study.",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property uniquely identifies the object.",
+          "title": "Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "factor-definition",
+          "description": "The type property identifies type of the object",
+          "title": "Type"
+        },
+        "created_by_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property of the data-provider who created the object.",
+          "title": "Created By Ref"
+        },
+        "tag_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Key-value tags related to the object.",
+          "title": "Tag List"
+        },
+        "external_reference_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External references related to the object.",
+          "title": "External Reference List"
+        },
+        "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL list related to the object.",
+          "title": "Url List"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the factor definition in the repository.",
+          "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name of the factor (e.g. dose, time point).",
+          "title": "Name"
+        },
+        "factor_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the factor type CV term object.",
+          "title": "Factor Type Ref"
+        }
+      },
+      "title": "FactorDefinition",
       "type": "object",
       "unique_value_contribution": [
         "repository_identifier"
@@ -1276,6 +1383,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier in the source repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -1305,6 +1425,7 @@
       "title": "Metabolite",
       "type": "object",
       "unique_value_contribution": [
+        "repository_identifier",
         "name"
       ]
     },
@@ -1403,18 +1524,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -1427,6 +1536,18 @@
           "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -1570,9 +1691,6 @@
                 "$ref": "#/$defs/Publication"
               },
               {
-                "$ref": "#/$defs/BasicAssay"
-              },
-              {
                 "$ref": "#/$defs/Assay"
               },
               {
@@ -1613,6 +1731,15 @@
               },
               {
                 "$ref": "#/$defs/ReferencedObject"
+              },
+              {
+                "$ref": "#/$defs/CharacteristicDefinition"
+              },
+              {
+                "$ref": "#/$defs/FactorDefinition"
+              },
+              {
+                "$ref": "#/$defs/ParameterDefinition"
               }
             ],
             "description": "Possible Node Type"
@@ -1727,18 +1854,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -1751,6 +1866,18 @@
           "default": null,
           "description": "Unique identifier assigned to the organization in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "description": "Name of the organization.",
@@ -1815,6 +1942,160 @@
         "name"
       ],
       "title": "Organization",
+      "type": "object",
+      "unique_value_contribution": [
+        "repository_identifier"
+      ]
+    },
+    "ParameterDefinition": {
+      "description": "Definition of an experimental parameter used within a protocol.",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property uniquely identifies the object.",
+          "title": "Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "parameter-definition",
+          "description": "The type property identifies type of the object",
+          "title": "Type"
+        },
+        "created_by_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property of the data-provider who created the object.",
+          "title": "Created By Ref"
+        },
+        "tag_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Key-value tags related to the object.",
+          "title": "Tag List"
+        },
+        "external_reference_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External references related to the object.",
+          "title": "External Reference List"
+        },
+        "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL list related to the object.",
+          "title": "Url List"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the parameter definition in the repository.",
+          "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name of the parameter.",
+          "title": "Name"
+        },
+        "parameter_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the parameter type CV term object.",
+          "title": "Parameter Type Ref"
+        }
+      },
+      "title": "ParameterDefinition",
       "type": "object",
       "unique_value_contribution": [
         "repository_identifier"
@@ -1915,18 +2196,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -1939,6 +2208,18 @@
           "default": null,
           "description": "Unique identifier assigned to the person in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "full_name": {
           "anyOf": [
@@ -2132,6 +2413,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the project in the source repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -2157,19 +2451,6 @@
           "default": null,
           "description": "Title of the project.",
           "title": "Title"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the project in the source repository.",
-          "title": "Repository Identifier"
         },
         "description": {
           "anyOf": [
@@ -2319,18 +2600,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -2343,6 +2612,18 @@
           "default": null,
           "description": "Unique identifier assigned to the protocol in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -2503,6 +2784,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier in the source repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -2570,6 +2864,7 @@
       "title": "Publication",
       "type": "object",
       "unique_value_contribution": [
+        "repository_identifier",
         "doi"
       ]
     },
@@ -2708,18 +3003,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -2732,6 +3015,18 @@
           "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -2902,10 +3197,11 @@
               "type": "null"
             }
           ],
+          "default": null,
           "description": "Type of referenced object.",
           "title": "Referenced Type"
         },
-        "mhd_identifier": {
+        "dataset_id": {
           "anyOf": [
             {
               "type": "string"
@@ -2915,10 +3211,49 @@
             }
           ],
           "default": null,
-          "description": "Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file.For legacy dataset references, repository identifier can be used as mhd_identifier.",
-          "title": "Mhd Identifier"
+          "description": "Id of dataset.",
+          "title": "Dataset Id"
         },
-        "mhd_revision": {
+        "dataset_repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Dataset Repository Identifier.",
+          "title": "Dataset Repository Identifier"
+        },
+        "dataset_repository_revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Dataset revision assigned by repository.",
+          "title": "Dataset Repository Revision"
+        },
+        "dataset_mhd_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "MHD Identifier of the dataset.",
+          "title": "Dataset Mhd Identifier"
+        },
+        "dataset_mhd_revision": {
           "anyOf": [
             {
               "type": "integer"
@@ -2928,13 +3263,10 @@
             }
           ],
           "default": null,
-          "description": "MHD revision number of the referenced file.",
-          "title": "Mhd Revision"
+          "description": "Dataset revision assigned by MetabolomicsHub.",
+          "title": "Dataset Mhd Revision"
         }
       },
-      "required": [
-        "referenced_type"
-      ],
       "title": "ReferencedObject",
       "type": "object"
     },
@@ -3031,6 +3363,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier in the source repository.",
+          "title": "Repository Identifier"
+        },
         "source_ref": {
           "anyOf": [
             {
@@ -3100,7 +3445,14 @@
         "target_ref"
       ],
       "title": "Relationship",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source_ref",
+        "relationship_name",
+        "target_ref",
+        "source_role",
+        "target_role"
+      ]
     },
     "ResultFile": {
       "description": "Processed result file (e.g. quantification or identification matrix).",
@@ -3197,18 +3549,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -3221,6 +3561,18 @@
           "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -3431,6 +3783,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the sample in the repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -3455,19 +3820,6 @@
           "default": null,
           "description": "Name or identifier of the sample.",
           "title": "Name"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the sample in the repository.",
-          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -3587,18 +3939,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -3611,6 +3951,18 @@
           "default": null,
           "description": "Unique identifier assigned to the sample run in the repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -3826,18 +4178,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -3850,6 +4190,18 @@
           "default": null,
           "description": "Unique identifier assigned to the sample run configuration in the repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "protocol_ref": {
           "anyOf": [
@@ -3996,6 +4348,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the specimen in the repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -4020,19 +4385,6 @@
           "default": null,
           "description": "Name or identifier of the specimen.",
           "title": "Name"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the specimen in the repository.",
-          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -4152,6 +4504,20 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Accession number or identifier in the source repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -4191,20 +4557,6 @@
           "default": null,
           "description": "Digital Object Identifier (DOI) for the study.",
           "title": "Doi"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "minLength": 2,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Accession number or identifier in the source repository.",
-          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -4467,6 +4819,19 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the subject in the repository.",
+          "title": "Repository Identifier"
+        },
         "label": {
           "anyOf": [
             {
@@ -4505,19 +4870,6 @@
           "default": null,
           "description": "Reference ID to the subject type CV term object.",
           "title": "Subject Type Ref"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the subject in the repository.",
-          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -4637,18 +4989,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -4661,6 +5001,18 @@
           "default": null,
           "description": "Unique identifier assigned to the file in the source repository.",
           "title": "Repository Identifier"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
           "anyOf": [
@@ -4774,7 +5126,12 @@
         }
       },
       "title": "UnitCvTerm",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        "source",
+        "accession",
+        "name"
+      ]
     }
   },
   "properties": {

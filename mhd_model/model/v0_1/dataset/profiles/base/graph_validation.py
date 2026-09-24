@@ -1016,11 +1016,6 @@ MHD_BASE_VALIDATION_V0_1.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="study",
-                node_property_name="mhd_identifier",
-                constraints=PropertyConstraint(required=True, min_length=8),
-            ),
-            NodePropertyValidation(
-                node_type="study",
                 node_property_name="repository_identifier",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),

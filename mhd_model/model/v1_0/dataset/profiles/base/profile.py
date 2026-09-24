@@ -1,11 +1,13 @@
 import datetime
+import uuid
 from typing import Annotated, Any
 
-from pydantic import Field, field_validator
+from pydantic import Field, ValidationInfo, field_validator, model_validator
 from pydantic.alias_generators import to_pascal
 
 from mhd_model.model.v1_0.dataset.profiles.base import base, graph_nodes, relationships
 from mhd_model.model.v1_0.dataset.profiles.base.base import (
+    NAMESPACE_VALUE,
     BaseMhdModel,
     BaseMhdRelationship,
     CvTermObjectId,
@@ -17,6 +19,7 @@ from mhd_model.model.v1_0.dataset.profiles.base.base import (
 )
 from mhd_model.model.v1_0.dataset.profiles.base.relationships import Relationship
 from mhd_model.shared.model import CvEnabledDataset
+from mhd_model.shared.validation.definitions import MhdModelValidationContext
 
 GraphNode = Annotated[
     graph_nodes.CvTermValueObject
@@ -27,7 +30,6 @@ GraphNode = Annotated[
     | graph_nodes.Study
     | graph_nodes.Protocol
     | graph_nodes.Publication
-    | graph_nodes.BasicAssay
     | graph_nodes.Assay
     | graph_nodes.Specimen
     | graph_nodes.Subject
@@ -41,7 +43,10 @@ GraphNode = Annotated[
     | graph_nodes.DerivedDataFile
     | graph_nodes.SupplementaryFile
     | graph_nodes.BaseLabeledMhdModel
-    | graph_nodes.ReferencedObject,
+    | graph_nodes.ReferencedObject
+    | graph_nodes.CharacteristicDefinition
+    | graph_nodes.FactorDefinition
+    | graph_nodes.ParameterDefinition,
     Field(description="Possible Node Type"),
 ]
 
@@ -58,14 +63,16 @@ class MhdGraph(MhdConfigModel):
 
     @field_validator("nodes", mode="before")
     @classmethod
-    def node_validator(cls, v) -> list[BaseMhdModel]:
+    def node_validator(
+        cls, v, info: None | ValidationInfo = None
+    ) -> list[BaseMhdModel]:
         if isinstance(v, list):
             items = []
             for item in v:
                 if isinstance(item, BaseMhdModel):
                     items.append(item)
                 elif isinstance(item, dict):
-                    val = cls.create_model(item)
+                    val = cls.create_model(item, info=info)
                     if not val:
                         raise ValueError("invalid type in nodes")
                     items.append(val)
@@ -95,37 +102,72 @@ class MhdGraph(MhdConfigModel):
         raise ValueError("invalid type")
 
     @staticmethod
-    def create_model(item: dict[str, Any]):
-        class_name = to_pascal(item["type"].replace("-", "_"))
-        if item["id"].startswith("cv--"):
+    def create_model(item: dict[str, Any], info: None | ValidationInfo = None):
+        type_: None | str = item.get("type")
+        id_: None | str = item.get("id")
+        if not type or not id_:
+            raise ValueError("type and id properties are required.")
+        if info and isinstance(info.context, dict):
+            context = MhdModelValidationContext.model_validate(info.context)
+            class_object = context.type_class_mapping.get(type_)
+            if class_object:
+                return class_object.model_validate(item)
+
+        default_class_name = to_pascal(type_.replace("-", "_"))
+        if id_.startswith("cv--"):
             return graph_nodes.CvTermObject.model_validate(item)
-        elif item["id"].startswith("cv-value--"):
+        elif id_.startswith("cv-value--"):
             return graph_nodes.CvTermValueObject.model_validate(item)
-        elif hasattr(graph_nodes, class_name):
-            class_object = getattr(graph_nodes, class_name)
+        elif hasattr(graph_nodes, default_class_name):
+            class_object: type[BaseMhdModel] = getattr(graph_nodes, default_class_name)
             return class_object.model_validate(item)
+
         return None
 
     @staticmethod
-    def get_node_class(item: dict[str, Any]):
-        if not item or not item.get("type") or not item.get("id"):
+    def get_node_class(
+        item: dict[str, Any], type_class_mapping: None | type[MhdConfigModel] = None
+    ):
+        if (
+            not item
+            or not isinstance(item, dict)
+            or not item.get("type")
+            or not item.get("id")
+        ):
             return
+        return MhdGraph.get_mhd_class_by_type_and_id_prefix(
+            id_=item.get("id"),
+            node_type=item.get("type"),
+            type_class_mapping=type_class_mapping,
+        )
 
     @staticmethod
-    def get_mhd_class_by_type(node_type: str) -> None | IdentifiableMhdModel:
+    def get_mhd_class_by_type_and_id_prefix(
+        id_: str,
+        node_type: str,
+        type_class_mapping: None | dict[str, type[MhdConfigModel]] = None,
+    ) -> None | IdentifiableMhdModel:
+        node_class = None
+        if type_class_mapping:
+            node_class = type_class_mapping.get(node_type)
+        if node_class:
+            return node_class
         class_name = to_pascal(node_type.replace("-", "_"))
         class_object = None
         if hasattr(graph_nodes, class_name):
             class_object = getattr(graph_nodes, class_name)
         if not class_object:
-            class_object = getattr(base, class_name)
+            if hasattr(base, class_name):
+                class_object = getattr(base, class_name)
+            elif id_.startswith("cv--"):
+                class_object = graph_nodes.CvTermObject
+            elif id_.startswith("cv-value--"):
+                class_object = graph_nodes.CvTermValueObject
+
         return class_object
 
 
-class GraphEnabledBaseDataset(CvEnabledDataset): ...
-
-
-class MhDatasetBaseProfile(GraphEnabledBaseDataset):
+class GraphEnabledBaseDataset(CvEnabledDataset):
     id_: Annotated[
         None | str,
         Field(
@@ -134,8 +176,24 @@ class MhDatasetBaseProfile(GraphEnabledBaseDataset):
         ),
     ] = None
     type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
-        "base-dataset"
+        "dataset"
     )
+
+    @model_validator(mode="wrap")
+    @classmethod
+    def validate_model(cls, v: Any, handler) -> "GraphEnabledBaseDataset":
+        item: GraphEnabledBaseDataset = handler(v)
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id(item.type_)}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"dataset--{item.type_}--{identifier}"
+        if hasattr(item, "label") and not item.label:
+            item.label = item.get_label()
+        return item
+
+
+class MhDatasetBaseProfile(GraphEnabledBaseDataset):
     created_at: Annotated[datetime.datetime | None, Field(description="Created at")] = (
         None
     )

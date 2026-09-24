@@ -1,13 +1,17 @@
 from typing import Annotated, Any, Literal
 
-from pydantic import Field, ValidationError, field_validator
+from pydantic import BaseModel, Field, ValidationError, field_validator
 
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.model import CvTerm, MhdConfigModel
 from mhd_model.shared.validation.registry import (
     VALIDATORS,
     ProfileValidation,
     ValidatorBaseModel,
 )
+
+
+class MhdModelValidationContext(BaseModel):
+    type_class_mapping: dict[str, type[MhdConfigModel]] = {}
 
 
 class CvTermPlaceholder(ValidatorBaseModel):

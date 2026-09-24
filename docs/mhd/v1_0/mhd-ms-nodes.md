@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD MS Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json</a> 
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json</a>
 
-## Required Nodes & Relationships 
+## Required Nodes & Relationships
 
  **Required MHD Nodes**
 
@@ -170,7 +170,7 @@ The following nodes are required with the specified value.
 |Source Node|Minimum Node Count|Property / Relationship|Value|
 |-----------|-----------|------------|------------|
 |characteristic-value|1|[instance-of].characteristic_type_ref.name|[EFO, EFO:0000324, cell type]|
-|characteristic-value|1|[instance-of].characteristic_type_ref.name|[EFO, MONDO:0000001, disease]|
+|characteristic-value|1|[instance-of].characteristic_type_ref.name|[MONDO, MONDO:0000001, disease]|
 |characteristic-value|1|[instance-of].characteristic_type_ref.name|[NCIT, NCIT:C14250, Organism]|
 |characteristic-value|1|[instance-of].characteristic_type_ref.name|[NCIT, NCIT:C103199, Organism Part]|
 |parameter-definition|1|[used-in].protocol_type_ref.name|[CHMO, CHMO:0000470, mass spectrometry]|
@@ -242,7 +242,7 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository|
 |**name**|**required**|<code>*str*<code>|Name of the characteristic attribute<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [EFO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
+|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [MONDO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
 
 
 **Node Relationships**
@@ -324,7 +324,7 @@ Definition of an experimental factor varied across samples in a study. </br></br
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the factor definition in the repository|
 |**name**|**required**|<code>*str*<code>|Name of the factor (e.g. dose, time point)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**factor_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the factor type CV term object<br>Target CV term type: <code>**factor-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**factor-type**</code><br>Allowed CV Terms:<br>* [EFO, MONDO:0000001, disease]</code>|
+|**factor_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the factor type CV term object<br>Target CV term type: <code>**factor-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**factor-type**</code><br>Allowed CV Terms:<br>* [MONDO, MONDO:0000001, disease]</code>|
 
 
 **Node Relationships**
@@ -361,6 +361,7 @@ Any intermediate or product resulting from metabolism.<br>The term 'metabolite' 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier in the source repository|
 |**name**|**required**|<code>*str*<code>|Name or chemical label of the metabolite<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
@@ -585,8 +586,8 @@ An overarching research project encompassing one or more studies. </br></br>Proj
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**title**|**required**|<code>*str*<code>|Title of the project<br>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the project in the source repository|
+|**title**|**required**|<code>*str*<code>|Title of the project<br>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**description**|optional|<code>*str*<code>|Summary description of the project goals and scope|
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>|List of grant identifiers funding the project|
 |**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) assigned to the project|
@@ -678,6 +679,7 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier in the source repository|
 |**title**|**required**|<code>*str*<code>|Title of the publication|
 |**doi**|**required**|<code>*str*<code>|Digital Object Identifier (DOI) for the publication|
 |**pubmed_id**|optional|<code>*str*<code>|PubMed unique identifier (PMID) of the publication|
@@ -760,8 +762,11 @@ Node or link reference defined in other MHD common data model file.<br>The speci
 |**type**|optional|<code>*MhdObjectType*<code>|The type property identifies the type of MHD Object. It must be `referenced-object`|
 |**referenced_object_id**|**required**|<code>*MhdObjectId or CvTermObjectId or CvTermValueObjectId or MhdRelationshipObjectId*<code>|Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_|
 |**referenced_type**|**required**|<code>*MhdObjectType*<code>|Type of referenced object|
-|**mhd_identifier**|**required**|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier of the referenced mhd file.For legacy dataset references, repository identifier can be used as mhd_identifier|
-|**mhd_revision**|optional|<code>*int*<code>|MHD revision number of the referenced file<br>Validation Rule:<br> <code></code>|
+|**dataset_id**|optional|<code>*str*<code>|Id of dataset|
+|**dataset_repository_identifier**|**required**|<code>*str*<code>|Dataset Repository Identifier|
+|**dataset_repository_revision**|optional|<code>*str*<code>|Dataset revision assigned by repository|
+|**dataset_mhd_identifier**|optional|<code>*str*<code>|MHD Identifier of the dataset|
+|**dataset_mhd_revision**|optional|<code>*int*<code>|Dataset revision assigned by MetabolomicsHub|
 
 
 **Node Relationships**
@@ -834,8 +839,8 @@ A biological sample prepared for analytical measurement. </br></br>Sample node i
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**name**|**required**|<code>*str*<code>|Name or identifier of the sample<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the sample in the repository<br>Validation Rule:<br> <code></code>|
+|**name**|**required**|<code>*str*<code>|Name or identifier of the sample<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the sample|
 
 
@@ -953,8 +958,8 @@ A biological specimen collected from a subject. </br></br>Specimen node is optio
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**name**|**required**|<code>*str*<code>|Name or identifier of the specimen<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the specimen in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1</code>|
+|**name**|**required**|<code>*str*<code>|Name or identifier of the specimen<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the specimen|
 
 
@@ -992,9 +997,9 @@ A biological research study or experiment comprising samples, protocols, and dat
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|**required**|<code>*str*<code>|Accession number or identifier in the source repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**mhd_identifier**|**required**|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier for the study<br>Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
 |**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) for the study|
-|**repository_identifier**|**required**|<code>*str*<code>|Accession number or identifier in the source repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional database or secondary identifiers for the study|
 |**title**|**required**|<code>*str*<code>|Title of the study<br>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**description**|**required**|<code>*str*<code>|Detailed abstract or summary description of the study<br>Minimum length: <code>150</code><br>Validation Rule:<br> <code>Min Length: 150, Required</code>|
@@ -1078,9 +1083,9 @@ An individual organism or subject from which biological samples are derived. </b
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the subject in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1</code>|
 |**name**|**required**|<code>*str*<code>|Name or identifier of the subject<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**subject_type_ref**|optional|<code>*CvTermObjectId*<code>|Reference ID to the subject type CV term object<br>Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the subject in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the subject|
 
 
