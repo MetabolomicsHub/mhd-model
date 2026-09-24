@@ -9,9 +9,12 @@ class ExcludeLoggerFilter(logging.Filter):
     def filter(self, record):
         if self.excludes:
             for exclude in self.excludes:
-                if record.name and record.name.startswith(exclude):
-                    if record.levelno < self.excludes[exclude]:
-                        return False
+                if (
+                    record.name
+                    and record.name.startswith(exclude)
+                    and record.levelno < self.excludes[exclude]
+                ):
+                    return False
         return True
 
 

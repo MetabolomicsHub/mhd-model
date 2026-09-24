@@ -370,12 +370,11 @@ def update_nodes(
                 node_rules = validation_rules_map[key]
                 for k, v in node_rules.items():
                     if k[6] is None:
-                        for val in v:
-                            field_rules.append(val)
+                        field_rules.extend(v)
         if field.endswith(("_ref", "_refs")):
             target_node_type = None
             if node_rules:
-                targets = [str(x[2]) for x in node_rules.keys() if x and x[2]]
+                targets = [str(x[2]) for x in node_rules if x and x[2]]
                 if len(targets) == 1:
                     target_node_type = (
                         f"Target CV term type: <code>**{targets[0]}**</code>"

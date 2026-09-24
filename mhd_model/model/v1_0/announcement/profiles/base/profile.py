@@ -196,6 +196,11 @@ class AnnouncementProtocol(AnnouncementBaseModel):
 class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
     """Base Profile for dataset announcement files."""
 
+    created_at: Annotated[
+        None | datetime.datetime,
+        Field(description="Creation time."),
+    ] = None
+
     mhd_identifier: Annotated[
         None | str,
         Field(

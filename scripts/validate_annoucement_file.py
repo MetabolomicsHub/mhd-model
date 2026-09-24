@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import sys
 
 from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.model.v0_1.announcement.validation.validator import (
@@ -24,6 +25,6 @@ if __name__ == "__main__":
         for idx, x in enumerate(all_errors, start=1):
             logger.info("%s | %s", idx, x)
         logger.info("-" * 80)
-        exit(1)
+        sys.exit(1)
     logger.info("Validation is successful.")
-    exit(0)
+    sys.exit(0)

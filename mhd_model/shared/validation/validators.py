@@ -78,9 +78,8 @@ class BaseProfileValidator(abc.ABC):
         else:
             validation = profile_validation
 
-        if not value:
-            if validation.allow_null_value:
-                return None
+        if not value and validation.allow_null_value:
+            return None
 
         if isinstance(validation, ProfileCvTermValidation):
             if isinstance(value, CvTermKeyValue) or (
@@ -89,16 +88,20 @@ class BaseProfileValidator(abc.ABC):
                 data = value
                 if isinstance(value, dict):
                     data = CvTermKeyValue.model_validate(value)
-                if validation.allowed_placeholder_values:
-                    if data.values and data.values[0].accession in {
-                        x.accession for x in validation.allowed_placeholder_values
-                    }:
-                        return None
-                if validation.allowed_missing_cv_terms:
-                    if data.values and data.values[0] in {
-                        x.accession for x in validation.allowed_missing_cv_terms
-                    }:
-                        return None
+                if (
+                    validation.allowed_placeholder_values
+                    and data.values
+                    and data.values[0].accession
+                    in {x.accession for x in validation.allowed_placeholder_values}
+                ):
+                    return None
+                if (
+                    validation.allowed_missing_cv_terms
+                    and data.values
+                    and data.values[0]
+                    in {x.accession for x in validation.allowed_missing_cv_terms}
+                ):
+                    return None
 
             if isinstance(value, CvTerm) or (
                 isinstance(value, dict) and "source" in value and "accession" in value
@@ -107,32 +110,31 @@ class BaseProfileValidator(abc.ABC):
                 if isinstance(value, dict):
                     data = CvTermPlaceholder.model_validate(value)
 
-                if validation.allowed_placeholder_values:
-                    if str(data) in {
-                        str(x) for x in validation.allowed_placeholder_values
-                    }:
+                if validation.allowed_placeholder_values and str(data) in {
+                    str(x) for x in validation.allowed_placeholder_values
+                }:
+                    return None
+                if validation.allowed_missing_cv_terms and data.accession in {
+                    x.accession for x in validation.allowed_missing_cv_terms
+                }:
+                    return None
+                if validation.allowed_other_sources and data.accession in {
+                    x for x in validation.allowed_other_sources
+                }:
+                    if not data.source:
+                        source = data.accession.split(":")[0]
+                        data.source = source
+                    url = self.cv_helper.get_uri(cv_term=data)
+                    acessible = self.is_accessible_url(url=url)
+                    if acessible:
                         return None
-                if validation.allowed_missing_cv_terms:
-                    if data.accession in {
-                        x.accession for x in validation.allowed_missing_cv_terms
-                    }:
-                        return None
-                if validation.allowed_other_sources:
-                    if data.accession in {x for x in validation.allowed_other_sources}:
-                        if not data.source:
-                            source = data.accession.split(":")[0]
-                            data.source = source
-                        url = self.cv_helper.get_uri(cv_term=data)
-                        acessible = self.is_accessible_url(url=url)
-                        if acessible:
-                            return None
-                        error = jsonschema.ValidationError(
-                            message=f"{data.accession} is not accessible",
-                            validator=validation.name,
-                            context=[],
-                            path=(),
-                            instance=data,
-                        )
+                    error = jsonschema.ValidationError(
+                        message=f"{data.accession} is not accessible",
+                        validator=validation.name,
+                        context=[],
+                        path=(),
+                        instance=data,
+                    )
 
         validation_result = self.evaluate(value, validation, [])
         valid = validation_result is None or validation_result.valid
@@ -775,16 +777,15 @@ class AccessibleCompactURIValidator(BaseProfileValidator):
                 follow_redirects=validator.follow_redirects,
                 timeout=60,
             )
-            if not validator.follow_redirects:
-                if result.status_code in (301, 302):
-                    logger.debug("URL is redirected: %s", default_uri)
-                    return ValidationResult(
-                        sub_path=sub_path,
-                        name=validator.name,
-                        valid=True,
-                        message=f"URL is redirected: {default_uri}",
-                        data=value,
-                    )
+            if not validator.follow_redirects and result.status_code in (301, 302):
+                logger.debug("URL is redirected: %s", default_uri)
+                return ValidationResult(
+                    sub_path=sub_path,
+                    name=validator.name,
+                    valid=True,
+                    message=f"URL is redirected: {default_uri}",
+                    data=value,
+                )
             if result.status_code == 404:
                 logger.warning("URL is not found: %s", default_uri)
                 return ValidationResult(
@@ -804,8 +805,7 @@ class AccessibleCompactURIValidator(BaseProfileValidator):
             )
 
         except Exception as ex:
-            logger.debug("Unaccessible URI: %s", default_uri)
-            logger.exception(ex)
+            logger.exception("Unaccessible URI: %s - %s", default_uri, ex)
             return ValidationResult(
                 sub_path=sub_path,
                 name=validator.name,

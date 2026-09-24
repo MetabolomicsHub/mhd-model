@@ -78,7 +78,7 @@ try:
             # print(f"File Upload completed: {str(file.name)}")
 
 
-except Exception:
+except ImportError:
     logger.error("neo4j library is not loaded.")
 
 if __name__ == "__main__":

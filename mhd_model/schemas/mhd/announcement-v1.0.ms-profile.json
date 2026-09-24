@@ -120,24 +120,64 @@
     "CvDefinition": {
       "properties": {
         "label": {
-          "default": "",
-          "title": "Label",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
         },
         "name": {
-          "default": "",
-          "title": "Name",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
         },
         "uri": {
-          "default": "",
-          "title": "Uri",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uri"
         },
         "prefix": {
-          "default": "",
-          "title": "Prefix",
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prefix"
+        },
+        "version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version"
         },
         "alternative_labels": {
           "anyOf": [
@@ -1260,6 +1300,20 @@
       "title": "Cv Definitions",
       "type": "array"
     },
+    "created_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Creation time.",
+      "title": "Created At"
+    },
     "mhd_metadata_file_url": {
       "description": "URL to the primary MHD metadata file for this dataset.",
       "format": "uri",
@@ -1676,8 +1730,7 @@
                 "sourceNames": [
                   "MONDO",
                   "MP",
-                  "SNOMED",
-                  "PATO"
+                  "SNOMED"
                 ]
               }
             ],
@@ -1749,8 +1802,7 @@
                 "sourceNames": [
                   "MONDO",
                   "MP",
-                  "SNOMED",
-                  "PATO"
+                  "SNOMED"
                 ]
               }
             ],

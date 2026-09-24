@@ -306,7 +306,7 @@ class MhdModelValidator:
                 )
                 continue
 
-            if isinstance(node, CvTermObject) or isinstance(node, CvTermValueObject):
+            if isinstance(node, (CvTermObject, CvTermValueObject)):
                 if (
                     node.type_ not in MANAGED_CV_TERM_OBJECTS
                     and not node.type_.startswith("x-")
@@ -616,7 +616,7 @@ class MhdModelValidator:
             if not vals:
                 continue
 
-            is_list = True if isinstance(vals, (list, set)) else False
+            is_list = isinstance(vals, (list, set))
             vals = vals if is_list else [vals]
 
             for ref_idx, val in enumerate(vals):
@@ -715,34 +715,36 @@ class MhdModelValidator:
                                 instance={},
                             )
                         )
-                if item.constraints.pattern and val is not None:
-                    if not re.match(item.constraints.pattern, val):
-                        sub_path = [path, node_idx] if path else [node_idx]
-                        errors.append(
-                            jsonschema.ValidationError(
-                                message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
-                                f"{node_idx} has a property named '{item.node_property_name}' "
-                                f"that violates pattern rule. Actual: {val}, Expected pattern: {item.constraints.pattern}",
-                                validator="check-property-constraint",
-                                context=(),
-                                path=sub_path,
-                                instance={},
-                            )
+                if (
+                    item.constraints.pattern
+                    and val is not None
+                    and not re.match(item.constraints.pattern, val)
+                ):
+                    sub_path = [path, node_idx] if path else [node_idx]
+                    errors.append(
+                        jsonschema.ValidationError(
+                            message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
+                            f"{node_idx} has a property named '{item.node_property_name}' "
+                            f"that violates pattern rule. Actual: {val}, Expected pattern: {item.constraints.pattern}",
+                            validator="check-property-constraint",
+                            context=(),
+                            path=sub_path,
+                            instance={},
                         )
-                if not min_length_violation and item.constraints.required:
-                    if not val:
-                        sub_path = [path, node_idx] if path else [node_idx]
-                        errors.append(
-                            jsonschema.ValidationError(
-                                message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
-                                f"{node_idx} has a property named '{item.node_property_name}' "
-                                f"that violates required rule.",
-                                validator="check-property-constraint",
-                                context=(),
-                                path=sub_path,
-                                instance={},
-                            )
+                    )
+                if not min_length_violation and item.constraints.required and not val:
+                    sub_path = [path, node_idx] if path else [node_idx]
+                    errors.append(
+                        jsonschema.ValidationError(
+                            message=f"{item.identifier} - {node_data.id_}: '{node_data.type_}' node at index "
+                            f"{node_idx} has a property named '{item.node_property_name}' "
+                            f"that violates required rule.",
+                            validator="check-property-constraint",
+                            context=(),
+                            path=sub_path,
+                            instance={},
                         )
+                    )
         return errors
 
     def check_custom_nodes(
@@ -837,7 +839,7 @@ class MhdModelValidator:
             if value.id_ not in target_rels:
                 continue
             targets = target_rels.get(value.id_)
-            for target_ref in targets.keys():
+            for target_ref in targets:
                 if not nodes_by_type.get(condition_item.start_node_type):
                     continue
                 target_nodes = nodes_by_type.get(condition_item.start_node_type)
@@ -1054,26 +1056,29 @@ class MhdModelValidator:
                         instance={},
                     )
                 )
-            if isinstance(item, CvTermValueObject):
-                if item.value and (
-                    not item.source and not item.accession and not item.name
-                ):
-                    if item.unit:
-                        valid, error_message = self.cv_helper.check_cv_term(item.unit)
-                        if not valid:
-                            message = "Unit cv term is not valid."
+            if (
+                isinstance(item, CvTermValueObject)
+                and item.unit
+                and item.value
+                and not item.source
+                and not item.accession
+                and not item.name
+            ):
+                valid, error_message = self.cv_helper.check_cv_term(item.unit)
+                if not valid:
+                    message = "Unit cv term is not valid."
 
-                            errors.append(
-                                jsonschema.ValidationError(
-                                    message=message
-                                    + f"[{item.unit.source}, {item.unit.accession}, {item.unit.name}] "
-                                    f"is not valid. {error_message}",
-                                    validator="check-child-cv-term",
-                                    context=(),
-                                    path=sub_path,
-                                    instance={},
-                                )
-                            )
+                    errors.append(
+                        jsonschema.ValidationError(
+                            message=message
+                            + f"[{item.unit.source}, {item.unit.accession}, {item.unit.name}] "
+                            f"is not valid. {error_message}",
+                            validator="check-child-cv-term",
+                            context=(),
+                            path=sub_path,
+                            instance={},
+                        )
+                    )
 
         return errors
 
@@ -1183,26 +1188,29 @@ class MhdModelValidator:
                         instance={},
                     )
                 )
-            if isinstance(item, CvTermValueObject):
-                if item.value and (
-                    not item.source and not item.accession and not item.name
-                ):
-                    if item.unit:
-                        valid, error_message = self.cv_helper.check_cv_term(item.unit)
-                        if not valid:
-                            message = "Unit cv term is not valid."
+            if (
+                isinstance(item, CvTermValueObject)
+                and item.unit
+                and item.value
+                and not item.source
+                and not item.accession
+                and not item.name
+            ):
+                valid, error_message = self.cv_helper.check_cv_term(item.unit)
+                if not valid:
+                    message = "Unit cv term is not valid."
 
-                            errors.append(
-                                jsonschema.ValidationError(
-                                    message=message
-                                    + f"[{item.unit.source}, {item.unit.accession}, {item.unit.name}] "
-                                    f"is not valid. {error_message}",
-                                    validator="check-cv-term",
-                                    context=(),
-                                    path=sub_path,
-                                    instance={},
-                                )
-                            )
+                    errors.append(
+                        jsonschema.ValidationError(
+                            message=message
+                            + f"[{item.unit.source}, {item.unit.accession}, {item.unit.name}] "
+                            f"is not valid. {error_message}",
+                            validator="check-cv-term",
+                            context=(),
+                            path=sub_path,
+                            instance={},
+                        )
+                    )
 
         return errors
 
@@ -1237,9 +1245,7 @@ class MhdModelValidator:
 
                     for val in vals:
                         if val.id_ in links:
-                            new_vals.extend(
-                                [nodes.get(x) for x in links[item.id_].keys()]
-                            )
+                            new_vals.extend([nodes.get(x) for x in links[item.id_]])
                 else:
                     new_vals.append(getattr(val, term))
 

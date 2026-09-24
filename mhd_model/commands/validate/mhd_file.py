@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import click
@@ -64,7 +65,7 @@ def validate_mhd_file_task(
         click.echo(
             f"{mhd_id}: File '{mhd_common_data_file_path}' is validated successfully."
         )
-        exit(0)
+        sys.exit(0)
 
     click.echo("")
     click.echo(
@@ -74,4 +75,4 @@ def validate_mhd_file_task(
     for idx, item in enumerate(errors_list, start=1):
         click.echo(f"{idx}\t{item}")
     click.echo("-" * 100)
-    exit(1)
+    sys.exit(1)

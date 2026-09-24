@@ -67,12 +67,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
                         properties[key] = json.dumps(
                             {k: str(v) for k, v in value.items()}
                         )
-                    elif (
-                        isinstance(value, str)
-                        or isinstance(value, int)
-                        or isinstance(value, float)
-                        or isinstance(value, bool)
-                    ):
+                    elif isinstance(value, (str, int, float, bool)):
                         properties[key] = value
                     else:
                         properties[key] = str(value)

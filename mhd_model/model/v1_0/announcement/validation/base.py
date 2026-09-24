@@ -410,10 +410,12 @@ class ProfileValidator:
                         if model.list_join_operator == "all":
                             if validation_error:
                                 yield validation_error
-                        elif model.list_join_operator in ("any", "minimum"):
-                            if model.minimum <= valid_count:
-                                valid = True
-                                break
+                        elif (
+                            model.list_join_operator in ("any", "minimum")
+                            and model.minimum <= valid_count
+                        ):
+                            valid = True
+                            break
 
                     if model.list_join_operator in ("any", "minimum") and not valid:
                         yield jsonschema.ValidationError(

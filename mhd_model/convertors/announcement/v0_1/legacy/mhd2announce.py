@@ -58,15 +58,17 @@ def get_characteristic_values(
     characteristic_values: OrderedDict[str, list[str]] = OrderedDict()
     for rel in relationships_map.values():
         source = all_nodes_map[rel.source_ref]
-        if rel.relationship_name == "has-characteristic-definition":
-            if isinstance(source, graph_nodes.Study):
-                study_characteristics.add(rel.target_ref)
+        if rel.relationship_name == "has-characteristic-definition" and isinstance(
+            source, graph_nodes.Study
+        ):
+            study_characteristics.add(rel.target_ref)
 
-        if rel.relationship_name == "has-instance":
-            if isinstance(source, graph_nodes.CharacteristicDefinition):
-                if rel.source_ref not in characteristic_values:
-                    characteristic_values[rel.source_ref] = []
-                characteristic_values[rel.source_ref].append(rel.target_ref)
+        if rel.relationship_name == "has-instance" and isinstance(
+            source, graph_nodes.CharacteristicDefinition
+        ):
+            if rel.source_ref not in characteristic_values:
+                characteristic_values[rel.source_ref] = []
+            characteristic_values[rel.source_ref].append(rel.target_ref)
     referenced_characteristics = {
         x: y
         for x, y in characteristic_values.items()
@@ -103,14 +105,13 @@ def get_keywords(
     if "has-submitter-keyword" in relationship_name_map:
         for rel in relationship_name_map.get("has-submitter-keyword").values():
             source = all_nodes_map.get(rel.source_ref)
-            if source:
-                if isinstance(source, graph_nodes.Study):
-                    keyword_node = all_nodes_map.get(rel.target_ref)
-                    if keyword_node:
-                        keyword = CvTerm.model_validate(
-                            keyword_node.model_dump(by_alias=True)
-                        )
-                        keywords.append(keyword)
+            if source and isinstance(source, graph_nodes.Study):
+                keyword_node = all_nodes_map.get(rel.target_ref)
+                if keyword_node:
+                    keyword = CvTerm.model_validate(
+                        keyword_node.model_dump(by_alias=True)
+                    )
+                    keywords.append(keyword)
     return keywords
 
 
@@ -122,14 +123,13 @@ def get_descriptors(
     if "has-repository-keyword" in relationship_name_map:
         for rel in relationship_name_map.get("has-repository-keyword").values():
             source = all_nodes_map.get(rel.source_ref)
-            if source:
-                if isinstance(source, graph_nodes.Study):
-                    descriptor_node = all_nodes_map.get(rel.target_ref)
-                    if descriptor_node:
-                        descriptor = CvTerm.model_validate(
-                            descriptor_node.model_dump(by_alias=True)
-                        )
-                        descriptors.append(descriptor)
+            if source and isinstance(source, graph_nodes.Study):
+                descriptor_node = all_nodes_map.get(rel.target_ref)
+                if descriptor_node:
+                    descriptor = CvTerm.model_validate(
+                        descriptor_node.model_dump(by_alias=True)
+                    )
+                    descriptors.append(descriptor)
     return descriptors
 
 
@@ -141,15 +141,17 @@ def get_study_factors(
     factors: OrderedDict[str, list[str]] = OrderedDict()
     for rel in relationships_map.values():
         source = all_nodes_map[rel.source_ref]
-        if rel.relationship_name == "has-factor-definition":
-            if isinstance(source, graph_nodes.Study):
-                study_factors.add(rel.target_ref)
+        if rel.relationship_name == "has-factor-definition" and isinstance(
+            source, graph_nodes.Study
+        ):
+            study_factors.add(rel.target_ref)
 
-        if rel.relationship_name == "has-instance":
-            if isinstance(source, graph_nodes.FactorDefinition):
-                if rel.source_ref not in factors:
-                    factors[rel.source_ref] = []
-                factors[rel.source_ref].append(rel.target_ref)
+        if rel.relationship_name == "has-instance" and isinstance(
+            source, graph_nodes.FactorDefinition
+        ):
+            if rel.source_ref not in factors:
+                factors[rel.source_ref] = []
+            factors[rel.source_ref].append(rel.target_ref)
     referenced_factors = {x: y for x, y in factors.items() if x in study_factors and y}
     factor_keys = [(x, all_nodes_map[x]) for x, y in referenced_factors.items()]
     factor_keys.sort(key=lambda x: x[1].name)

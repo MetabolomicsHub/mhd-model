@@ -139,7 +139,7 @@ class CvTermHelper:
             logger.debug("Children CV Terms are loaded. %s", file_path)
             return object_map
         except Exception as ex:
-            logger.exception(str(ex))
+            logger.exception("Failed to load children CV Terms: %s", ex)
             return None
 
     def get_children_of_cv_term(self, parent: ParentCvTerm) -> dict[str, CvTerm]:
@@ -435,7 +435,7 @@ class CvTermHelper:
                     self.cv_term_cache[key] = term
                 return term
         except Exception as ex:
-            logger.exception(str(ex))
+            logger.exception("Failed to find cv term: %s", ex)
             return None
 
     def check_cv_term(
@@ -459,11 +459,10 @@ class CvTermHelper:
             return True, ""
         parent = parent_cv_term.cv_term if parent_cv_term else None
 
-        if parent:
-            if not parent.accession or not parent.name or not parent.source:
-                message = f"Invalid cv term parent [{parent.source}, {parent.accession}, {parent.name}"
-                logger.error(message)
-                return False, message
+        if parent and (not parent.accession or not parent.name or not parent.source):
+            message = f"Invalid cv term parent [{parent.source}, {parent.accession}, {parent.name}"
+            logger.error(message)
+            return False, message
 
         key = ",".join([str(cv_term), str(parent), str(allow_synonym_search)])
 

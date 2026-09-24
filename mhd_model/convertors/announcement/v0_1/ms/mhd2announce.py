@@ -1,3 +1,4 @@
+import datetime
 import logging
 from collections import OrderedDict
 from pathlib import Path
@@ -53,15 +54,17 @@ def update_characteristic_values(
     characteristic_values: OrderedDict[str, list[str]] = OrderedDict()
     for rel in relationships_map.values():
         source = all_nodes_map[rel.source_ref]
-        if rel.relationship_name == "has-characteristic-definition":
-            if isinstance(source, graph_nodes.Study):
-                study_characteristics.add(rel.target_ref)
+        if rel.relationship_name == "has-characteristic-definition" and isinstance(
+            source, graph_nodes.Study
+        ):
+            study_characteristics.add(rel.target_ref)
 
-        if rel.relationship_name == "has-instance":
-            if isinstance(source, graph_nodes.CharacteristicDefinition):
-                if rel.source_ref not in characteristic_values:
-                    characteristic_values[rel.source_ref] = []
-                characteristic_values[rel.source_ref].append(rel.target_ref)
+        if rel.relationship_name == "has-instance" and isinstance(
+            source, graph_nodes.CharacteristicDefinition
+        ):
+            if rel.source_ref not in characteristic_values:
+                characteristic_values[rel.source_ref] = []
+            characteristic_values[rel.source_ref].append(rel.target_ref)
     referenced_characteristics = {
         x: y
         for x, y in characteristic_values.items()
@@ -100,16 +103,15 @@ def update_keywords(
     if "has-submitter-keyword" in relationship_name_map:
         for rel in relationship_name_map.get("has-submitter-keyword").values():
             source = all_nodes_map.get(rel.source_ref)
-            if source:
-                if isinstance(source, graph_nodes.Study):
-                    keyword_node = all_nodes_map.get(rel.target_ref)
-                    if keyword_node:
-                        keyword = CvTerm.model_validate(
-                            keyword_node.model_dump(by_alias=True)
-                        )
-                        if announcement.submitter_keywords is None:
-                            announcement.submitter_keywords = []
-                        announcement.submitter_keywords.append(keyword)
+            if source and isinstance(source, graph_nodes.Study):
+                keyword_node = all_nodes_map.get(rel.target_ref)
+                if keyword_node:
+                    keyword = CvTerm.model_validate(
+                        keyword_node.model_dump(by_alias=True)
+                    )
+                    if announcement.submitter_keywords is None:
+                        announcement.submitter_keywords = []
+                    announcement.submitter_keywords.append(keyword)
 
 
 def get_descriptors(
@@ -120,14 +122,13 @@ def get_descriptors(
     if "has-repository-keyword" in relationship_name_map:
         for rel in relationship_name_map.get("has-repository-keyword").values():
             source = all_nodes_map.get(rel.source_ref)
-            if source:
-                if isinstance(source, graph_nodes.Study):
-                    descriptor_node = all_nodes_map.get(rel.target_ref)
-                    if descriptor_node:
-                        descriptor = CvTerm.model_validate(
-                            descriptor_node.model_dump(by_alias=True)
-                        )
-                        descriptors.append(descriptor)
+            if source and isinstance(source, graph_nodes.Study):
+                descriptor_node = all_nodes_map.get(rel.target_ref)
+                if descriptor_node:
+                    descriptor = CvTerm.model_validate(
+                        descriptor_node.model_dump(by_alias=True)
+                    )
+                    descriptors.append(descriptor)
     return descriptors
 
 
@@ -140,15 +141,17 @@ def update_study_factors(
     factors: OrderedDict[str, list[str]] = OrderedDict()
     for rel in relationships_map.values():
         source = all_nodes_map[rel.source_ref]
-        if rel.relationship_name == "has-factor-definition":
-            if isinstance(source, graph_nodes.Study):
-                study_factors.add(rel.target_ref)
+        if rel.relationship_name == "has-factor-definition" and isinstance(
+            source, graph_nodes.Study
+        ):
+            study_factors.add(rel.target_ref)
 
-        if rel.relationship_name == "has-instance":
-            if isinstance(source, graph_nodes.FactorDefinition):
-                if rel.source_ref not in factors:
-                    factors[rel.source_ref] = []
-                factors[rel.source_ref].append(rel.target_ref)
+        if rel.relationship_name == "has-instance" and isinstance(
+            source, graph_nodes.FactorDefinition
+        ):
+            if rel.source_ref not in factors:
+                factors[rel.source_ref] = []
+            factors[rel.source_ref].append(rel.target_ref)
     referenced_factors = {x: y for x, y in factors.items() if x in study_factors and y}
     factor_keys = [(x, all_nodes_map[x]) for x, y in referenced_factors.items()]
     factor_keys.sort(key=lambda x: x[1].name)
@@ -331,15 +334,14 @@ def create_ms_announcement_file(
             publications.append(item)
 
     publication_status = None
-    if not publications:
-        if "defined-as" in relationship_name_map:
-            publication_status = list(relationship_name_map["defined-as"].values())
-            if publication_status:
-                status = publication_status[0]
+    if not publications and "defined-as" in relationship_name_map:
+        publication_status = list(relationship_name_map["defined-as"].values())
+        if publication_status:
+            status = publication_status[0]
 
-                publication_status = CvTerm.model_validate(
-                    nodes_map[status.target_ref].model_dump(by_alias=True)
-                )
+            publication_status = CvTerm.model_validate(
+                nodes_map[status.target_ref].model_dump(by_alias=True)
+            )
 
     submitter_links: list[BaseMhdRelationship] = []
     if "submits" in relationship_name_map:
@@ -400,8 +402,9 @@ def create_ms_announcement_file(
                 omics_types[term.accession] = term
 
     dataset_url_list = study.dataset_url_list
-
+    now = datetime.datetime.now(datetime.UTC)
     announcement = AnnouncementBaseProfile(
+        created_at=now,
         repository_name=mhd_dataset.repository_name,
         mhd_identifier=study.mhd_identifier,
         repository_identifier=study.repository_identifier,

@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -63,10 +64,10 @@ def create_neo4j_input_file_task(
             mhd_dataset = MhDatasetMsProfile.model_validate(json_data)
         else:
             click.echo(f"{profile.profile_uri} is not supported.")
-            exit(1)
+            sys.exit(1)
     else:
         click.echo(f"{profile.schema_name} is not schema.")
-        exit(1)
+        sys.exit(1)
 
     nodes_map = {x.id_: x for x in mhd_dataset.graph.nodes}
     relationships_map = {x.id_: x for x in mhd_dataset.graph.relationships}
@@ -113,12 +114,7 @@ def create_neo4j_input_file_task(
                     properties[key] = [str(x) for x in value]
                 elif isinstance(value, dict):
                     properties[key] = json.dumps({k: str(v) for k, v in value.items()})
-                elif (
-                    isinstance(value, str)
-                    or isinstance(value, int)
-                    or isinstance(value, float)
-                    or isinstance(value, bool)
-                ):
+                elif isinstance(value, (str, int, float, bool)):
                     properties[key] = value
                 else:
                     properties[key] = str(value)

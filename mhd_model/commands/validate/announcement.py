@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import click
@@ -49,9 +50,9 @@ def validate_announcement_file_task(
         click.echo(
             f"{mhd_id}: File '{announcement_file_path}' is validated successfully."
         )
-        exit(0)
+        sys.exit(0)
     click.echo(f"{mhd_id}: {announcement_file_path} has validation errors.")
     for idx, error in enumerate(errors_list, start=1):
         click.echo(f"{idx}: {error}")
 
-    exit(1)
+    sys.exit(1)

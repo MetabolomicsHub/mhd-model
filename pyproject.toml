@@ -95,8 +95,7 @@ testpaths = [
 
 [tool.ruff.lint]
 extend-select = ["E4", "E7", "E9", "F", "I", "G", "SLF", "PTH", "Q", "T"]
-ignore = [ "ANN401", "PLR1722", "SIM", "PERF402", "BLE001", "TRY401", "RUF012", "TRY201", "TRY203", "TRY004"]
-
+ignore = [ "BLE001", "RUF012", "TRY004", "TRY201", "TRY203", "TRY401" ]
 fixable = ["ALL"]
 
 

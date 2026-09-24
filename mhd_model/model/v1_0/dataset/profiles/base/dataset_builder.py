@@ -164,7 +164,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
     ) -> MhDatasetBaseProfile:
         cv_definitions_map: dict[str, CvDefinition] = {}
 
-        for source in self._cv_definitions_map.keys():
+        for source in self._cv_definitions_map:
             if not source:
                 continue
             if source in COMMON_CV_DEFINITIONS:

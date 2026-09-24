@@ -106,4 +106,4 @@ def get_new_accession_task(
     except Exception:
         traceback.print_exc()
 
-    exit(1)
+    sys.exit(1)
