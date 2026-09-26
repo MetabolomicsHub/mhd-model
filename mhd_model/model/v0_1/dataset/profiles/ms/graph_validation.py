@@ -294,7 +294,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
-                identifier="derived-data-file-003-01",
+                identifier="derived-data-file-002-02",
                 node_type="derived-data-file",
                 node_property_name="compression_format_refs",
                 constraints=PropertyConstraint(required=False),
