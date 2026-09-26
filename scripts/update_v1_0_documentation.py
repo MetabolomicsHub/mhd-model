@@ -17,7 +17,12 @@ from pydantic.fields import FieldInfo
 from pydantic_core import PydanticUndefined
 
 from mhd_model.log_utils import set_basic_logging_config
-from mhd_model.model.v1_0.dataset.profiles.base.base import BaseMhdModel
+from mhd_model.model.v1_0.dataset.profiles.base import graph_nodes
+from mhd_model.model.v1_0.dataset.profiles.base.base import (
+    BaseMhdModel,
+    GenericMhdEntityModel,
+    IdentifiableMhdEntityModel,
+)
 from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import (
     CvTermObject,
     CvTermValueObject,
@@ -25,7 +30,10 @@ from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import (
 from mhd_model.model.v1_0.dataset.profiles.base.graph_validation import (
     MHD_BASE_VALIDATION_V1_0,
 )
-from mhd_model.model.v1_0.dataset.profiles.base.profile import MhdGraph
+from mhd_model.model.v1_0.dataset.profiles.base.profile import (
+    MhdGraph,
+    get_default_type_class_mapping,
+)
 from mhd_model.model.v1_0.dataset.profiles.legacy.graph_validation import (
     MHD_LEGACY_PROFILE_V1_0,
 )
@@ -298,6 +306,7 @@ def update_nodes(
     node_documentation: dict[str, NodeDocumentation],
     node_doc: NodeDocumentation,
     node: NodeValidation,
+    node_type_class_mapping: dict[str, type[BaseMhdModel]],
 ) -> None:
     node_type = node.node_type
     model = None
@@ -306,7 +315,11 @@ def update_nodes(
         if node.has_value:
             model = CvTermValueObject
     elif isinstance(node, NodeValidation):
-        model = MhdGraph.get_mhd_class_by_type_and_id_prefix("", node.node_type)
+        model = MhdGraph.get_mhd_class_by_type_and_id_prefix(
+            id_="mhd--",
+            node_type=node.node_type,
+            node_type_class_mapping=node_type_class_mapping,
+        )
     if not model:
         logger.info("invalid type: %s", node.node_type)
         return
@@ -429,6 +442,10 @@ def update_nodes(
 
 
 def update_v1_0_documentation():
+    node_type_class_mapping = get_default_type_class_mapping(
+        module=graph_nodes,
+        base_classes=(GenericMhdEntityModel, IdentifiableMhdEntityModel),
+    )
     for profile, target_file_name, profile_name in [
         (MHD_MS_PROFILE_V1_0, "mhd-ms-nodes.md", "MHD MS Profile"),
         (MHD_LEGACY_PROFILE_V1_0, "mhd-legacy-nodes.md", "MHD Legacy Profile"),
@@ -459,6 +476,7 @@ def update_v1_0_documentation():
                     node_documentation,
                     node_documentation[node.node_type],
                     node,
+                    node_type_class_mapping=node_type_class_mapping,
                 )
 
                 node_type = node.node_type

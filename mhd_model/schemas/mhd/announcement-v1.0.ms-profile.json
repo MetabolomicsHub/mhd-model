@@ -2159,5 +2159,20 @@
     "raw_data_file_list"
   ],
   "title": "AnnouncementMsProfile",
-  "type": "object"
+  "type": "object",
+  "unique_value_contribution": [
+    [
+      "doi"
+    ],
+    [
+      "mhd_identifier"
+    ],
+    [
+      "repository_name",
+      "repository_identifier"
+    ],
+    [
+      "additional_identifier_list"
+    ]
+  ]
 }

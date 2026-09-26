@@ -13,13 +13,10 @@ from mhd_model.model.v1_0.dataset.profiles.base.base import (
     BaseMhdRelationship,
     BasicCvTermModel,
     BasicCvTermValueModel,
-    CvTermObjectId,
-    CvTermValueObjectId,
     GenericMhdEntityModel,
     IdentifiableMhdEntityModel,
     IdentifiableMhdModel,
     MhdConfigModel,
-    MhdObjectId,
     MhdObjectType,
 )
 from mhd_model.shared.model import CvEnabledDataset
@@ -112,9 +109,7 @@ def get_unique_id_contribution_fields():
 
 
 class MhdGraph(MhdConfigModel):
-    start_item_refs: Annotated[
-        list[MhdObjectId | CvTermObjectId | CvTermValueObjectId], Field()
-    ] = []
+    start_item_refs: Annotated[list[DEFAULT_GRAPH_NODES], Field()] = []
     nodes: Annotated[
         list[BaseLabeledMhdModel | BasicCvTermValueModel | BasicCvTermModel], Field()
     ] = []
