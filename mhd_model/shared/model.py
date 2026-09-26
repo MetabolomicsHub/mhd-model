@@ -7,7 +7,7 @@ from typing import Annotated
 from pydantic import AnyUrl, BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_pascal
 
-from build.lib.mhd_model.shared.fields import DOI
+from mhd_model.shared.fields import DOI
 
 logger = logging.getLogger(__name__)
 
