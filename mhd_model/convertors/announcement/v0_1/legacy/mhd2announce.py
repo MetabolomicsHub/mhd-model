@@ -455,21 +455,22 @@ def get_metabolites(
                     identification_map[item.source_ref] = []
                 identification_map[item.source_ref].append(identification)
     reported_metabolites: list[AnnouncementReportedMetabolite] = []
-    if "metabolite" in type_map:
-        for ref in type_map["metabolite"]:
-            met = type_map["metabolite"][ref]
-            item = AnnouncementReportedMetabolite(name=met.name)
-            reported_metabolites.append(item)
+    for reported_metbolite_type in ("metabolite", "molecular-entity"):
+        if reported_metbolite_type in type_map:
+            for ref in type_map[reported_metbolite_type]:
+                met = type_map[reported_metbolite_type][ref]
+                item = AnnouncementReportedMetabolite(name=met.name)
+                reported_metabolites.append(item)
 
-            if ref in identification_map:
-                identifications = identification_map[ref]
-                item.database_identifiers = [
-                    CvTermValue.model_validate(x.model_dump(by_alias=True))
-                    for x in identifications
-                ]
+                if ref in identification_map:
+                    identifications = identification_map[ref]
+                    item.database_identifiers = [
+                        CvTermValue.model_validate(x.model_dump(by_alias=True))
+                        for x in identifications
+                    ]
 
-        if reported_metabolites:
-            reported_metabolites.sort(key=lambda x: x.name)
+    if reported_metabolites:
+        reported_metabolites.sort(key=lambda x: x.name)
     return reported_metabolites or None
 
 

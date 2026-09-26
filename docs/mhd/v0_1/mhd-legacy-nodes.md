@@ -245,48 +245,6 @@ Factor Definition node is optional in the  MHD Legacy Profile. <code>Minimum: 0,
 |factor-value|instance-of|has-instance|factor-definition|1|N||
 |study|has-factor-definition|used-in|factor-definition|0|N||
 
-### Metabolite
-
-Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
-
-**Properties**
-
-|Property Name|Necessity|Type|Description|
-|-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the molecular entity|
-|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary identifiers|
-|**name**|**required**|<code>*str*<code>|Name or chemical label of the molecular entity<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-
-
-**Node Relationships**
-
-|Source|Relationship|Reverse Name|Target|Min|Max|Description|
-|------|------------|------------|------|---|---|-----------|
-|metabolite|described-as|describes|descriptor|0|N||
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No</code><br>-----|
-|metabolite|measured-in|measures|raw-data-file|0|N||
-|metabolite|reported-in|reports|study|1|N||
-|metabolite|reported-in|reports|metadata-file|0|N||
-|metabolite|reported-in|reports|result-file|0|N||
-
-
-**Reverse Node Relationships**
-
-|Source|Relationship|Reverse Name|Target|Min|Max|Description|
-|------|------------|------------|------|---|---|-----------|
-|descriptor|describes|described-as|metabolite|0|N||
-|metabolite-identifier|reported-identifier-of|identified-as|metabolite|1|N||
-|metadata-file|reports|reported-in|metabolite|0|N||
-|raw-data-file|measures|measured-in|metabolite|0|N||
-|result-file|reports|reported-in|metabolite|0|N||
-|study|reports|reported-in|metabolite|0|N||
-
 ### Metadata File
 
 Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
@@ -322,7 +280,7 @@ Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 |metadata-file|references|referenced-in|raw-data-file|0|N||
 |metadata-file|references|referenced-in|result-file|0|N||
 |metadata-file|references|referenced-in|supplementary-file|0|N||
-|metadata-file|reports|reported-in|metabolite|0|N||
+|metadata-file|reports|reported-in|molecular-entity|0|N||
 
 
 **Reverse Node Relationships**
@@ -331,12 +289,54 @@ Metadata File node is **required in the MHD Legacy Profile.** <code>Minimum: 1, 
 |------|------------|------------|------|---|---|-----------|
 |derived-data-file|referenced-in|references|metadata-file|0|N||
 |descriptor|describes|described-as|metadata-file|0|N||
-|metabolite|reported-in|reports|metadata-file|0|N||
 |metadata-file|referenced-in|references|metadata-file|0|N||
+|molecular-entity|reported-in|reports|metadata-file|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
 |study|has-metadata-file|describes|metadata-file|1|N||
 |supplementary-file|referenced-in|references|metadata-file|0|N||
+
+### Molecular Entity
+
+Molecular Entity node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+
+**Properties**
+
+|Property Name|Necessity|Type|Description|
+|-------------|---------|----|-----------|
+|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
+|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object|
+|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the molecular entity|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary identifiers|
+|**name**|**required**|<code>*str*<code>|Name or chemical label of the molecular entity<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+
+
+**Node Relationships**
+
+|Source|Relationship|Reverse Name|Target|Min|Max|Description|
+|------|------------|------------|------|---|---|-----------|
+|molecular-entity|described-as|describes|descriptor|0|N||
+|molecular-entity|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No</code><br>-----|
+|molecular-entity|measured-in|measures|raw-data-file|0|N||
+|molecular-entity|reported-in|reports|study|1|N||
+|molecular-entity|reported-in|reports|metadata-file|0|N||
+|molecular-entity|reported-in|reports|result-file|0|N||
+
+
+**Reverse Node Relationships**
+
+|Source|Relationship|Reverse Name|Target|Min|Max|Description|
+|------|------------|------------|------|---|---|-----------|
+|descriptor|describes|described-as|molecular-entity|0|N||
+|metabolite-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
+|metadata-file|reports|reported-in|molecular-entity|0|N||
+|raw-data-file|measures|measured-in|molecular-entity|0|N||
+|result-file|reports|reported-in|molecular-entity|0|N||
+|study|reports|reported-in|molecular-entity|0|N||
 
 ### Organization
 
@@ -638,7 +638,7 @@ Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Max
 |------|------------|------------|------|---|---|-----------|
 |raw-data-file|created-in|has-raw-data-file|study|1|N||
 |raw-data-file|described-as|describes|descriptor|0|N||
-|raw-data-file|measures|measured-in|metabolite|0|N||
+|raw-data-file|measures|measured-in|molecular-entity|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 
 
@@ -647,8 +647,8 @@ Raw Data File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Max
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|raw-data-file|0|N||
-|metabolite|measured-in|measures|raw-data-file|0|N||
 |metadata-file|references|referenced-in|raw-data-file|0|N||
+|molecular-entity|measured-in|measures|raw-data-file|0|N||
 |study|has-raw-data-file|created-in|raw-data-file|0|N||
 
 ### Result File
@@ -682,7 +682,7 @@ Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 |result-file|created-in|has-result-file|study|1|N||
 |result-file|described-as|describes|descriptor|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
-|result-file|reports|reported-in|metabolite|0|N||
+|result-file|reports|reported-in|molecular-entity|0|N||
 
 
 **Reverse Node Relationships**
@@ -690,8 +690,8 @@ Result File node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|result-file|0|N||
-|metabolite|reported-in|reports|result-file|0|N||
 |metadata-file|references|referenced-in|result-file|0|N||
+|molecular-entity|reported-in|reports|result-file|0|N||
 |study|has-result-file|created-in|result-file|0|N||
 
 ### Sample
@@ -908,7 +908,7 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |study|has-supplementary-file|created-in|supplementary-file|0|N||
 |study|part-of|has-study|project|0|N||
 |study|provided-by|provides|data-provider|1|1||
-|study|reports|reported-in|metabolite|0|N||
+|study|reports|reported-in|molecular-entity|0|N||
 |study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
 
 
@@ -926,8 +926,8 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |descriptor|describes|described-as|study|0|N||
 |descriptor|keyword-of|has-repository-keyword|study|0|N||
 |factor-definition|used-in|has-factor-definition|study|1|N||
-|metabolite|reported-in|reports|study|1|N||
 |metadata-file|describes|has-metadata-file|study|1|1|**Required min count in the dataset: 1.**|
+|molecular-entity|reported-in|reports|study|1|N||
 |organization|funds|funded-by|study|0|N||
 |person|contributes|has-contributor|study|0|N||
 |person|principal-investigator-of|has-principal-investigator|study|0|N||
@@ -1145,7 +1145,7 @@ Descriptor node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 |descriptor|describes|described-as|derived-data-file|0|N||
 |descriptor|describes|described-as|supplementary-file|0|N||
 |descriptor|describes|described-as|result-file|0|N||
-|descriptor|describes|described-as|metabolite|0|N||
+|descriptor|describes|described-as|molecular-entity|0|N||
 |descriptor|describes|described-as|organization|0|N||
 |descriptor|describes|described-as|person|0|N||
 |descriptor|describes|described-as|project|0|N||
@@ -1165,8 +1165,8 @@ Descriptor node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 |------|------------|------------|------|---|---|-----------|
 |assay|described-as|describes|descriptor|0|N|A link to a descriptor that describes the assay.|
 |derived-data-file|described-as|describes|descriptor|0|N|A link to a descriptor that describes the derived data file.|
-|metabolite|described-as|describes|descriptor|0|N||
 |metadata-file|described-as|describes|descriptor|0|N||
+|molecular-entity|described-as|describes|descriptor|0|N||
 |organization|described-as|describes|descriptor|0|N||
 |person|described-as|describes|descriptor|0|N||
 |project|described-as|describes|descriptor|0|N||
@@ -1266,14 +1266,14 @@ Metabolite Identifier node is optional in the  MHD Legacy Profile. <code>Minimum
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|metabolite-identifier|reported-identifier-of|identified-as|metabolite|1|N||
+|metabolite-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N||
+|molecular-entity|identified-as|reported-identifier-of|metabolite-identifier|0|N||
 
 ### Parameter Type
 
@@ -1380,12 +1380,6 @@ graph LR
   Factor_Definition[Factor Definition] ==>|has-type| Factor_Type[Factor Type];
   Factor_Definition[Factor Definition] ==>|has-instance| Factor_Value[Factor Value];
   Factor_Definition[Factor Definition] ==>|used-in| Study[Study];
-  Metabolite[Metabolite] ==>|identified-as| Metabolite_Identifier[Metabolite Identifier];
-  Metabolite[Metabolite] ==>|described-as| Descriptor[Descriptor];
-  Metabolite[Metabolite] ==>|reported-in| Study[Study];
-  Metabolite[Metabolite] ==>|reported-in| Metadata_File[Metadata File];
-  Metabolite[Metabolite] ==>|reported-in| Result_File[Result File];
-  Metabolite[Metabolite] ==>|measured-in| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==>|described-as| Descriptor[Descriptor];
   Metadata_File[Metadata File] ==>|referenced-in| Metadata_File[Metadata File];
   Metadata_File[Metadata File] ==>|describes| Study[Study];
@@ -1393,7 +1387,13 @@ graph LR
   Metadata_File[Metadata File] ==>|references| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==>|references| Result_File[Result File];
   Metadata_File[Metadata File] ==>|references| Supplementary_File[Supplementary File];
-  Metadata_File[Metadata File] ==>|reports| Metabolite[Metabolite];
+  Metadata_File[Metadata File] ==>|reports| Molecular_Entity[Molecular Entity];
+  Molecular_Entity[Molecular Entity] ==>|identified-as| Metabolite_Identifier[Metabolite Identifier];
+  Molecular_Entity[Molecular Entity] ==>|described-as| Descriptor[Descriptor];
+  Molecular_Entity[Molecular Entity] ==>|reported-in| Study[Study];
+  Molecular_Entity[Molecular Entity] ==>|reported-in| Metadata_File[Metadata File];
+  Molecular_Entity[Molecular Entity] ==>|reported-in| Result_File[Result File];
+  Molecular_Entity[Molecular Entity] ==>|measured-in| Raw_Data_File[Raw Data File];
   Organization[Organization] ==>|funds| Project[Project];
   Organization[Organization] ==>|funds| Study[Study];
   Organization[Organization] ==>|manages| Project[Project];
@@ -1429,11 +1429,11 @@ graph LR
   Raw_Data_File[Raw Data File] ==>|described-as| Descriptor[Descriptor];
   Raw_Data_File[Raw Data File] ==>|created-in| Study[Study];
   Raw_Data_File[Raw Data File] ==>|referenced-in| Metadata_File[Metadata File];
-  Raw_Data_File[Raw Data File] ==>|measures| Metabolite[Metabolite];
+  Raw_Data_File[Raw Data File] ==>|measures| Molecular_Entity[Molecular Entity];
   Result_File[Result File] ==>|described-as| Descriptor[Descriptor];
   Result_File[Result File] ==>|created-in| Study[Study];
   Result_File[Result File] ==>|referenced-in| Metadata_File[Metadata File];
-  Result_File[Result File] ==>|reports| Metabolite[Metabolite];
+  Result_File[Result File] ==>|reports| Molecular_Entity[Molecular Entity];
   Sample[Sample] ==>|described-as| Descriptor[Descriptor];
   Sample[Sample] ==>|has-factor-value| Factor_Value[Factor Value];
   Sample[Sample] ==>|used-in| Study[Study];
@@ -1455,7 +1455,7 @@ graph LR
   Study[Study] ==>|has-factor-definition| Factor_Definition[Factor Definition];
   Study[Study] ==>|has-repository-keyword| Descriptor[Descriptor];
   Study[Study] ==>|has-submitter-keyword| Descriptor[Descriptor];
-  Study[Study] ==>|reports| Metabolite[Metabolite];
+  Study[Study] ==>|reports| Molecular_Entity[Molecular Entity];
   Study[Study] ==>|has-metadata-file| Metadata_File[Metadata File];
   Study[Study] ==>|has-contributor| Person[Person];
   Study[Study] ==>|has-principal-investigator| Person[Person];
@@ -1488,7 +1488,7 @@ graph LR
   Descriptor[Descriptor] ==>|describes| Derived_Data_File[Derived Data File];
   Descriptor[Descriptor] ==>|describes| Supplementary_File[Supplementary File];
   Descriptor[Descriptor] ==>|describes| Result_File[Result File];
-  Descriptor[Descriptor] ==>|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==>|describes| Molecular_Entity[Molecular Entity];
   Descriptor[Descriptor] ==>|describes| Organization[Organization];
   Descriptor[Descriptor] ==>|describes| Person[Person];
   Descriptor[Descriptor] ==>|describes| Project[Project];
@@ -1498,7 +1498,7 @@ graph LR
   Descriptor[Descriptor] ==>|describes| Subject[Subject];
   Descriptor[Descriptor] ==>|describes| Sample_Run[Sample Run];
   Descriptor[Descriptor] ==>|describes| Sample_Run_Configuration[Sample Run Configuration];
-  Descriptor[Descriptor] ==>|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==>|describes| Molecular_Entity[Molecular Entity];
   Descriptor[Descriptor] ==>|keyword-of| Study[Study];
   Descriptor[Descriptor] ==>|keyword-of| Study[Study];
   Descriptor[Descriptor] ==>|keyword-of| Specimen[Specimen];
@@ -1507,7 +1507,7 @@ graph LR
   Factor_Value[Factor Value] ==>|value-of| Sample[Sample];
   Factor_Value[Factor Value] ==>|value-of| Specimen[Specimen];
   Factor_Value[Factor Value] ==>|value-of| Subject[Subject];
-  Metabolite_Identifier[Metabolite Identifier] ==>|reported-identifier-of| Metabolite[Metabolite];
+  Metabolite_Identifier[Metabolite Identifier] ==>|reported-identifier-of| Molecular_Entity[Molecular Entity];
   Parameter_Type[Parameter Type] ==>|type-of| Parameter_Definition[Parameter Definition];
   Parameter_Value[Parameter Value] ==>|instance-of| Parameter_Definition[Parameter Definition];
   Protocol_Type[Protocol Type] ==>|type-of| Protocol[Protocol];

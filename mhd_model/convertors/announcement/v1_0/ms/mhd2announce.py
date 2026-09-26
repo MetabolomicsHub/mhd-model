@@ -516,23 +516,25 @@ def create_ms_announcement_file(
                     identification_map[item.source_ref] = []
                 identification_map[item.source_ref].append(identification)
 
-    if "metabolite" in type_map:
-        reported_metabolites = []
-        for ref in type_map["metabolite"]:
-            met = type_map["metabolite"][ref]
-            item = AnnouncementReportedMetabolite(name=met.name)
-            reported_metabolites.append(item)
+    reported_metabolites = []
 
-            if ref in identification_map:
-                identifications = identification_map[ref]
-                item.database_identifiers = [
-                    CvTermValue.model_validate(x.model_dump(by_alias=True))
-                    for x in identifications
-                ]
+    for reported_metbolite_type in ("metabolite", "molecular-entity"):
+        if reported_metbolite_type in type_map:
+            for ref in type_map[reported_metbolite_type]:
+                met = type_map[reported_metbolite_type][ref]
+                item = AnnouncementReportedMetabolite(name=met.name)
+                reported_metabolites.append(item)
 
-        if reported_metabolites:
-            announcement.reported_metabolites = reported_metabolites
-            announcement.reported_metabolites.sort(key=lambda x: x.name)
+                if ref in identification_map:
+                    identifications = identification_map[ref]
+                    item.database_identifiers = [
+                        CvTermValue.model_validate(x.model_dump(by_alias=True))
+                        for x in identifications
+                    ]
+
+    if reported_metabolites:
+        announcement.reported_metabolites = reported_metabolites
+        announcement.reported_metabolites.sort(key=lambda x: x.name)
     cv_sources = set()
     collect_cv_term_sources(announcement, cv_sources)
     cv_sources = list(cv_sources)
