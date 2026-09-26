@@ -280,128 +280,6 @@
         ]
       ]
     },
-    "BaseLabeledMhdModel": {
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": "base-mhd-model",
-          "title": "Type"
-        },
-        "created_by_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property of the data-provider who created the object.",
-          "title": "Created By Ref"
-        },
-        "tag_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Key-value tags related to the object.",
-          "title": "Tag List"
-        },
-        "external_reference_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "External references related to the object.",
-          "title": "External Reference List"
-        },
-        "url_list": {
-          "anyOf": [
-            {
-              "items": {
-                "format": "uri",
-                "minLength": 1,
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "URL list related to the object.",
-          "title": "Url List"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        }
-      },
-      "title": "BaseLabeledMhdModel",
-      "type": "object"
-    },
     "BaseMhdRelationship": {
       "properties": {
         "id": {
@@ -587,179 +465,6 @@
         ],
         [
           "repository_identifier"
-        ]
-      ]
-    },
-    "BasicCvTermModel": {
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Type"
-        },
-        "source": {
-          "default": "",
-          "description": "Ontology source name.",
-          "title": "Source",
-          "type": "string"
-        },
-        "accession": {
-          "default": "",
-          "description": "Accession number of CV term in compact URI format.",
-          "title": "Accession",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "description": "Label of CV term.",
-          "title": "Name",
-          "type": "string"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        }
-      },
-      "required": [
-        "type"
-      ],
-      "title": "BasicCvTermModel",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name"
-        ]
-      ]
-    },
-    "BasicCvTermValueModel": {
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "default": "cv-term-value",
-          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-          "title": "Type",
-          "type": "string"
-        },
-        "value": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Value of CV term.",
-          "title": "Value"
-        },
-        "unit": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/UnitCvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unit CV term if value has a unit.",
-          "title": "Unit"
-        },
-        "source": {
-          "default": "",
-          "description": "Ontology source name.",
-          "title": "Source",
-          "type": "string"
-        },
-        "accession": {
-          "default": "",
-          "description": "Accession number of CV term in compact URI format.",
-          "title": "Accession",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "description": "Label of CV term.",
-          "title": "Name",
-          "type": "string"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        }
-      },
-      "title": "BasicCvTermValueModel",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name",
-          "value",
-          "unit"
         ]
       ]
     },
@@ -2073,6 +1778,27 @@
           "items": {
             "anyOf": [
               {
+                "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              }
+            ]
+          },
+          "title": "Start Item Refs",
+          "type": "array"
+        },
+        "nodes": {
+          "default": [],
+          "items": {
+            "anyOf": [
+              {
                 "$ref": "#/$defs/CvTermValueObject"
               },
               {
@@ -2149,24 +1875,6 @@
               }
             ],
             "description": "Possible Default Node Type"
-          },
-          "title": "Start Item Refs",
-          "type": "array"
-        },
-        "nodes": {
-          "default": [],
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/$defs/BaseLabeledMhdModel"
-              },
-              {
-                "$ref": "#/$defs/BasicCvTermValueModel"
-              },
-              {
-                "$ref": "#/$defs/BasicCvTermModel"
-              }
-            ]
           },
           "title": "Nodes",
           "type": "array"

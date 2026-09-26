@@ -1,6 +1,7 @@
 import datetime
 import inspect
 import logging
+import uuid
 from typing import Annotated, Any
 
 from pydantic import Field, ValidationInfo, model_validator
@@ -22,7 +23,10 @@ from mhd_model.model.v1_0.dataset.profiles.base.base import (
     MhdObjectId,
     MhdObjectType,
 )
-from mhd_model.shared.model import CvEnabledDataset
+from mhd_model.shared.model import (
+    CvEnabledDataset,
+    generate_unique_id,
+)
 from mhd_model.shared.validation.definitions import MhdModelValidationContext
 
 logger = logging.getLogger(__name__)
@@ -369,6 +373,13 @@ class GraphEnabledBaseDataset(CvEnabledDataset, BaseLabeledMhdModel):
         if hasattr(item, "label") and not item.label:
             item.label = item.get_label()
         return item
+
+    def get_unique_id(self, namespace: str, prefix: str, type_: str):
+        if not type_:
+            raise ValueError("type is not defined to create unique id")
+        identifier_name = generate_unique_id(source=self, type_=type_)
+        identifier = str(uuid.uuid5(namespace, name=identifier_name))
+        return f"{prefix}--{type_}--{identifier}"
 
     def get_label(self):
         return self.doi or self.mhd_identifier or self.repository_identifier or ""

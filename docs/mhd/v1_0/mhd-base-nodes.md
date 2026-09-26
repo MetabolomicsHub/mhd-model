@@ -50,7 +50,7 @@ Basic analytical assay node representing an experimental measurement procedure. 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|An assay identifier that uniquely identifies the assay in repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**repository_identifier**|**required**|<code>*str*<code>|An assay identifier that uniquely identifies the assay in repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**global_identifier**|optional|<code>*CvTerm*<code>|Unique identifier in the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary identifiers for the node|
 |**name**|**required**|<code>*str*<code>|Name of the assay. It SHOULD be unique in a study<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
@@ -96,7 +96,7 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository|
+|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**global_identifier**|optional|<code>*CvTerm*<code>|Unique identifier in the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary identifiers for the node|
 |**name**|**required**|<code>*str*<code>|Name of the characteristic attribute<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|

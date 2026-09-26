@@ -12,6 +12,43 @@ from build.lib.mhd_model.shared.fields import DOI
 logger = logging.getLogger(__name__)
 
 
+class MhdConfigModel: ...
+
+
+def generate_id_from_property(
+    source: MhdConfigModel,
+    type_: str,
+    property_name: str = "repository_identifier",
+) -> str:
+
+    value = ""
+    if hasattr(source, property_name):
+        value = getattr(source, property_name) or ""
+        if isinstance(value, list) and value:
+            value = value[0]
+        if not isinstance(
+            value,
+            (str, int, AnyUrl, CvTerm, CvTermValue),
+        ):
+            raise ValueError(
+                f"{source.__class__} {property_name} value '{value.__class__}' "
+                "is not valid to create unique id."
+            )
+
+        if isinstance(value, (CvTerm, CvTermValue)):
+            value = value.get_unique_id()
+        else:
+            value = str(value)
+        value = value.lower().strip()
+    else:
+        raise ValueError(f"{source.__class__} has no field named {property_name}")
+
+    if value:
+        return f"type={type_}&{property_name}={value.lower().strip()}"
+
+    raise ValueError(f"{source.__class__} {property_name} value is not defined")
+
+
 def generate_unique_id(
     source: BaseModel,
     type_: None | str,
@@ -74,7 +111,7 @@ class MhdConfigModel(BaseModel):
     def get_unique_id(self, namespace: str, prefix: str, type_: str):
         if not type_:
             raise ValueError("type is not defined to create unique id")
-        identifier_name = generate_unique_id(source=self, type_=type_)
+        identifier_name = generate_id_from_property(source=self, type_=type_)
         identifier = str(uuid.uuid5(namespace, name=identifier_name))
         return f"{prefix}--{type_}--{identifier}"
 

@@ -315,5 +315,12 @@ class BaseMhdRelationship(BaseMhdModel):
             )
         return item
 
+    def get_unique_id(self, namespace: str, prefix: str, type_: str):
+        if not type_:
+            raise ValueError("type is not defined to create unique id")
+        identifier_name = generate_unique_id(source=self, type_=type_)
+        identifier = str(uuid.uuid5(namespace, name=identifier_name))
+        return f"{prefix}--{type_}--{identifier}"
+
     def get_label(self):
         return self.relationship_name

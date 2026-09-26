@@ -44,52 +44,61 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="assay-property-001-01",
                 node_type="assay",
                 node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True, min_length=2),
+                constraints=PropertyConstraint(required=True, min_length=1),
             ),
             NodePropertyValidation(
+                identifier="assay-property-002-01",
                 node_type="assay",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
             EmbeddedRefValidation(
+                identifier="assay-property-003-01",
                 node_type="assay",
                 node_property_name="metadata_file_ref",
                 required=False,
                 target_ref_types=["metadata-file"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-property-004-01",
                 node_type="assay",
                 node_property_name="technology_type_ref",
                 required=False,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-property-005-01",
                 node_type="assay",
                 node_property_name="assay_type_ref",
                 required=False,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-property-006-01",
                 node_type="assay",
                 node_property_name="measurement_type_ref",
                 required=False,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-property-007-01",
                 node_type="assay",
                 node_property_name="omics_type_ref",
                 required=False,
                 target_ref_types=["descriptor"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-property-008-01",
                 node_type="assay",
                 node_property_name="protocol_refs",
                 required=False,
                 target_ref_types=["protocol"],
             ),
             EmbeddedRefValidation(
+                identifier="assay-property-009-01",
                 node_type="assay",
                 node_property_name="sample_run_refs",
                 required=False,
@@ -98,6 +107,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="assay-relationship-001-01",
                 description="A link to a descriptor that describes the assay.",
                 source="assay",
                 relationship_name="described-as",
@@ -108,6 +118,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 max_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="assay-relationship-002-01",
                 description="A link to a study that the assay was conducted as part of it "
                 "to generate data addressing study objectives",
                 source="assay",
@@ -119,6 +130,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 max_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="assay-relationship-003-01",
                 description="A link to a protocol conducted in assay.",
                 source="assay",
                 relationship_name="follows",
@@ -133,13 +145,21 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
         node_type="characteristic-definition",
         min=0,
         validations=[
+            NodePropertyValidation(
+                identifier="characteristic-definition-property-001-01",
+                node_type="characteristic-definition",
+                node_property_name="repository_identifier",
+                constraints=PropertyConstraint(required=True, min_length=1),
+            ),
             EmbeddedRefValidation(
+                identifier="characteristic-definition-property-002-01",
                 node_type="characteristic-definition",
                 node_property_name="characteristic_type_ref",
                 required=True,
                 target_ref_types=["characteristic-type"],
             ),
             NodePropertyValidation(
+                identifier="characteristic-definition-property-003-01",
                 node_type="characteristic-definition",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
@@ -147,6 +167,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
+                identifier="characteristic-definition-relationship-001-01",
                 source="characteristic-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -155,6 +176,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-relationship-002-01",
                 source="characteristic-definition",
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
@@ -171,6 +193,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 ],
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-relationship-003-01",
                 source="characteristic-definition",
                 relationship_name="has-type",
                 reverse_relationship_name="type-of",
@@ -180,6 +203,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="characteristic-definition-relationship-004-01",
                 source="characteristic-definition",
                 relationship_name="used-in",
                 reverse_relationship_name="has-characteristic-definition",
@@ -194,18 +218,15 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
+                identifier="derived-data-file-property-001-01",
                 node_type="derived-data-file",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
-            NodePropertyValidation(
-                node_type="derived-data-file",
-                node_property_name="format_ref",
-                constraints=PropertyConstraint(required=True),
-            ),
         ],
         relationships=[
             RelationshipValidation(
+                identifier="derived-data-file-reference-001-01",
                 source="derived-data-file",
                 relationship_name="referenced-in",
                 reverse_relationship_name="references",
@@ -215,6 +236,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 max_for_each_source=0,
             ),
             RelationshipValidation(
+                identifier="derived-data-file-reference-002-01",
                 source="derived-data-file",
                 relationship_name="created-in",
                 reverse_relationship_name="has-derived-data-file",
@@ -224,6 +246,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 max_for_each_source=1,
             ),
             RelationshipValidation(
+                identifier="derived-data-file-reference-003-01",
                 description="A link to a descriptor that describes the derived data file.",
                 source="derived-data-file",
                 relationship_name="described-as",
