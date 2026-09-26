@@ -7,15 +7,21 @@ from typing import Any
 import jsonschema
 from jsonschema import ValidationError, protocols
 
+from mhd_model.model.v0_1.dataset.profiles.base import graph_nodes, relationships
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
+    GenericMhdEntityModel,
+    IdentifiableMhdEntityModel,
     IdentifiableMhdModel,
 )
 from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import (
     CvTermObject,
     CvTermValueObject,
 )
-from mhd_model.model.v0_1.dataset.profiles.base.profile import MhdGraph
+from mhd_model.model.v0_1.dataset.profiles.base.profile import (
+    MhdGraph,
+    get_default_type_class_mapping,
+)
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     FilterCondition,
@@ -57,8 +63,20 @@ class MhdModelValidator:
         self.mhd_model_validation_context = (
             mhd_model_validation_context or MhdModelValidationContext()
         )
-        if not self.mhd_model_validation_context.type_class_mapping:
-            self.mhd_model_validation_context.type_class_mapping = {}
+        if not self.mhd_model_validation_context.node_type_class_mapping:
+            self.mhd_model_validation_context.node_type_class_mapping = (
+                get_default_type_class_mapping(
+                    module=graph_nodes,
+                    base_classes=(GenericMhdEntityModel, IdentifiableMhdEntityModel),
+                )
+            )
+        if not self.mhd_model_validation_context.relationship_type_class_mapping:
+            self.mhd_model_validation_context.relationship_type_class_mapping = (
+                get_default_type_class_mapping(
+                    module=relationships,
+                    base_classes=(BaseMhdRelationship),
+                )
+            )
 
     def anyOf(self, validator, anyOf, instance, schema):
         node_class = None
@@ -260,6 +278,7 @@ class MhdModelValidator:
         logger.info(
             "Start node id and type consistency checks for %s items...", len(nodes)
         )
+
         for idx, item in enumerate(nodes):
             if not item.get("id") or not item.get("type"):
                 yield jsonschema.ValidationError(
@@ -272,7 +291,9 @@ class MhdModelValidator:
                 continue
             node: None | IdentifiableMhdModel = None
             try:
-                node = MhdGraph.create_model(item)
+                node = MhdGraph.create_model(
+                    item, context=self.mhd_model_validation_context
+                )
             except Exception as err:
                 try:
                     node = IdentifiableMhdModel.model_validate(item)
@@ -304,7 +325,6 @@ class MhdModelValidator:
                     instance=item,
                 )
                 continue
-
             if isinstance(node, (CvTermObject, CvTermValueObject)):
                 if (
                     node.type_ not in MANAGED_CV_TERM_OBJECTS

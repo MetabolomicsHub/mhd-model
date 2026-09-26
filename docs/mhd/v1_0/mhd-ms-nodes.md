@@ -349,7 +349,7 @@ Definition of an experimental factor varied across samples in a study. </br></br
 
 ### Metabolite
 
-Any intermediate or product resulting from metabolism.<br>The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite] </br></br>Metabolite node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Any intermediate or product resulting from metabolism.<br>The term 'metabolite' subsumes the classes commonly known as primary<br>and secondary metabolites. [CHEBI, CHEBI:25212, metabolite] </br></br>Metabolite node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -361,7 +361,7 @@ Any intermediate or product resulting from metabolism.<br>The term 'metabolite' 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier in the source repository|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the metabolite|
 |**name**|**required**|<code>*str*<code>|Name or chemical label of the metabolite<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
@@ -633,6 +633,7 @@ A defined and standardized procedure followed to collect, prepare, or analyze sa
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the protocol in the source repository|
+|**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) for the protocol|
 |**name**|**required**|<code>*str*<code>|Name or title of the protocol|
 |**protocol_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the protocol type CV term object<br>Target CV term type: <code>**protocol-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**protocol-type**</code><br>Allowed CV Terms:<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [MS, MS:1000831, sample preparation]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**description**|optional|<code>*str*<code>|Detailed description of the protocol procedure<br>Validation Rule:<br> <code></code>|

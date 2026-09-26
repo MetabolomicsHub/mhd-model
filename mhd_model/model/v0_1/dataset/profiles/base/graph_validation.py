@@ -1989,6 +1989,31 @@ MHD_BASE_VALIDATION_V0_1.cv_nodes = [
             ),
         ],
     ),
+    NodeValidation(
+        node_type="referenced-object",
+        min=0,
+        validations=[
+            NodePropertyValidation(
+                identifier="referenced-object-001-01",
+                node_type="referenced-object",
+                node_property_name="referenced_type",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-002-01",
+                node_type="referenced-object",
+                node_property_name="referenced_object_id",
+                constraints=PropertyConstraint(required=True),
+            ),
+            NodePropertyValidation(
+                identifier="referenced-object-003-01",
+                node_type="referenced-object",
+                node_property_name="dataset_repository_identifier",
+                constraints=PropertyConstraint(required=True),
+            ),
+        ],
+        relationships=[],
+    ),
 ]
 
 MHD_BASE_VALIDATION_V0_1.mhd_nodes.sort(key=lambda x: x.node_type)

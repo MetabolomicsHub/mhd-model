@@ -1,12 +1,60 @@
 import datetime
 import decimal
 import logging
+import uuid
 from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import AnyUrl, BaseModel, ConfigDict, Field
 from pydantic.alias_generators import to_pascal
 
+from build.lib.mhd_model.shared.fields import DOI
+
 logger = logging.getLogger(__name__)
+
+
+def generate_unique_id(
+    source: BaseModel,
+    type_: None | str,
+    contribution: None | list[tuple[str, ...]] = None,
+    unique_value_contribution_field: None | str = "unique_value_contribution",
+) -> str:
+    if not contribution:
+        extra = source.__class__.model_config.get("json_schema_extra", {})
+        contribution: list[tuple[str, ...]] = (
+            extra.get(unique_value_contribution_field) or []
+        )
+
+    for field_names in contribution:
+        values = []
+        for field_name in field_names:
+            value = ""
+            if hasattr(source, field_name):
+                value = getattr(source, field_name) or ""
+                if isinstance(value, list) and value:
+                    # Use first item in list
+                    value = value[0]
+                if not isinstance(
+                    value,
+                    (str, int, AnyUrl, CvTerm, CvTermValue),
+                ):
+                    raise ValueError(
+                        f"{source.__class__} {field_name} value '{value.__class__}' is not valid to create unique id."
+                    )
+
+                if isinstance(value, (CvTerm, CvTermValue)):
+                    value = value.get_unique_id()
+                else:
+                    value = str(value)
+            else:
+                raise ValueError(f"{source.__class__} has no field named {field_name}")
+            values.append((field_name.lower().strip(), value.lower().strip()))
+        non_empty_values = [x[1] for x in values if x[1]]
+        if non_empty_values:
+            if type_:
+                return f"type={type_}&" + "&".join([f"{x[0]}={x[1]}" for x in values])
+            return "&".join([f"{x[0]}='{x[1]}'" for x in values])
+
+    raise ValueError(f"{source.__class__} has no valid values to create unique id")
 
 
 class MhdConfigModel(BaseModel):
@@ -21,42 +69,25 @@ class MhdConfigModel(BaseModel):
         # alias_generator=to_camel,
     )
 
-    def get_unique_id(self, type_: None | str = None):
-        extra = self.model_config.get("json_schema_extra", {})
-        contribution: list[str] = extra.get("unique_value_contribution") or []
-        values = [type_] if type_ else []
-        if contribution:
-            for field_name in contribution:
-                value = ""
-                if hasattr(self, field_name):
-                    value = getattr(self, field_name) or ""
-                    if isinstance(value, (dict, list)):
-                        logger.warning(
-                            "%s %s value is dict or list. It is not used to create unique id",
-                            self.__class__,
-                            field_name,
-                        )
-                        continue
-                    if isinstance(value, MhdConfigModel):
-                        sub_type = value.type_ if hasattr(value, "type_") else None
-                        value = f"[{value.get_unique_id(sub_type)}]"
-                    elif isinstance(value, datetime.datetime):
-                        value = str(value.timestamp()).lower()
-                    else:
-                        value = str(value).lower()
-                else:
-                    logger.warning(
-                        "%s has no field named %s", self.__class__, field_name
-                    )
-
-                values.append(f"{field_name.lower()}={value}")
-
-        return "&".join(values)
+    def get_unique_id(self, namespace: str, prefix: str, type_: str):
+        if not type_:
+            raise ValueError("type is not defined to create unique id")
+        identifier_name = generate_unique_id(source=self, type_=type_)
+        identifier = str(uuid.uuid5(namespace, name=identifier_name))
+        return f"{prefix}--{type_}--{identifier}"
 
 
 class CvTerm(MhdConfigModel):
     model_config = ConfigDict(
-        json_schema_extra={"unique_value_contribution": ["source", "accession", "name"]}
+        json_schema_extra={
+            "unique_value_contribution": [
+                (
+                    "source",
+                    "accession",
+                    "name",
+                )
+            ]
+        }
     )
     source: Annotated[
         str,
@@ -85,6 +116,9 @@ class CvTerm(MhdConfigModel):
     def __str__(self) -> str:
         return self.get_label()
 
+    def get_unique_id(self):
+        return generate_unique_id(source=self, type_=None)
+
 
 class UnitCvTerm(CvTerm): ...
 
@@ -98,11 +132,13 @@ class CvTermValue(CvTerm, QuantitativeValue):
     model_config = ConfigDict(
         json_schema_extra={
             "unique_value_contribution": [
-                "source",
-                "accession",
-                "name",
-                "value",
-                "unit",
+                (
+                    "source",
+                    "accession",
+                    "name",
+                    "value",
+                    "unit",
+                ),
             ]
         }
     )
@@ -127,6 +163,9 @@ class CvTermValue(CvTerm, QuantitativeValue):
 
         return f"[{self.source or ''}, {self.accession or ''}, {self.name or ''}, {value_key or ''}, {unit_key or ''}]"
 
+    def get_unique_id(self):
+        return generate_unique_id(source=self, type_=None)
+
 
 class CvTermKeyValue(MhdConfigModel):
     key: Annotated[CvTerm, Field()]
@@ -150,7 +189,24 @@ class Revision(MhdConfigModel):
 
 
 class BaseMhdDataset(MhdConfigModel):
+    model_config = ConfigDict(
+        json_schema_extra={
+            "unique_value_contribution": [
+                ("doi",),
+                ("mhd_identifier",),
+                (
+                    "repository_name",
+                    "repository_identifier",
+                ),
+                ("additional_identifier_list",),
+            ],
+        }
+    )
     mhd_identifier: Annotated[None | str, Field()] = None
+    doi: Annotated[
+        None | DOI,
+        Field(description="Digital Object Identifier (DOI) for the dataset."),
+    ] = None
     revision: Annotated[None | int, Field()] = None
     revision_comment: Annotated[None | str, Field()] = None
     revision_datetime: Annotated[None | datetime.datetime, Field()] = None

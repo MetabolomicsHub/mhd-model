@@ -237,9 +237,11 @@
       "title": "CvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     },
     "CvTermKeyValue": {
@@ -336,11 +338,13 @@
       "title": "CvTermValue",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name",
-        "value",
-        "unit"
+        [
+          "source",
+          "accession",
+          "name",
+          "value",
+          "unit"
+        ]
       ]
     },
     "ExtendedCvTermKeyValue": {
@@ -1171,9 +1175,11 @@
       "title": "UnitCvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     }
   },
@@ -1184,6 +1190,21 @@
       "pattern": "^MHD[A-Z]?[0-9]{6,8}$",
       "title": "MHD Identifier",
       "type": "string"
+    },
+    "doi": {
+      "anyOf": [
+        {
+          "pattern": "^10[.].+/.+$",
+          "title": "DOI",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Digital Object Identifier (DOI) for the dataset.",
+      "title": "Doi"
     },
     "revision": {
       "anyOf": [

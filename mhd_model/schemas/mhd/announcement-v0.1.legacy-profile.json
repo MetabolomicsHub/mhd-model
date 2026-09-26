@@ -619,9 +619,11 @@
       "title": "CvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     },
     "CvTermKeyValue": {
@@ -718,11 +720,13 @@
       "title": "CvTermValue",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name",
-        "value",
-        "unit"
+        [
+          "source",
+          "accession",
+          "name",
+          "value",
+          "unit"
+        ]
       ]
     },
     "QuantitativeValue": {
@@ -813,9 +817,11 @@
       "title": "UnitCvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     },
     "mhd_model__model__v0_1__announcement__profiles__base__profile__AnnouncementContact": {
@@ -964,6 +970,21 @@
       "default": null,
       "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
       "title": "Mhd Identifier"
+    },
+    "doi": {
+      "anyOf": [
+        {
+          "pattern": "^10[.].+/.+$",
+          "title": "DOI",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Digital Object Identifier (DOI) for the dataset.",
+      "title": "Doi"
     },
     "revision": {
       "anyOf": [

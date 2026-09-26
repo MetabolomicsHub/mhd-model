@@ -31,9 +31,9 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
 )
 from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import CvTermValueObject
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
-from mhd_model.model.v0_1.rules.cv_definitions import (
-    CONTROLLED_CV_DEFINITIONS,
-    OTHER_CONTROLLED_CV_DEFINITIONS,
+from mhd_model.shared.cv_definitions import (
+    COMMON_CV_DEFINITIONS,
+    OTHER_COMMON_CV_DEFINITIONS,
 )
 from mhd_model.shared.model import (
     CvDefinition,
@@ -536,10 +536,10 @@ def create_ms_announcement_file(
     cv_sources = list(cv_sources)
     cv_sources.sort()
     for source in cv_sources:
-        if source in CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
-        elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(OTHER_CONTROLLED_CV_DEFINITIONS[source])
+        if source in COMMON_CV_DEFINITIONS:
+            announcement.cv_definitions.append(COMMON_CV_DEFINITIONS[source])
+        elif source in OTHER_COMMON_CV_DEFINITIONS:
+            announcement.cv_definitions.append(OTHER_COMMON_CV_DEFINITIONS[source])
         else:
             announcement.cv_definitions.append(
                 CvDefinition(label=source, alternative_labels=[source.lower()])

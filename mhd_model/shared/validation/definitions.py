@@ -11,7 +11,8 @@ from mhd_model.shared.validation.registry import (
 
 
 class MhdModelValidationContext(BaseModel):
-    type_class_mapping: dict[str, type[MhdConfigModel]] = {}
+    node_type_class_mapping: dict[str, type[MhdConfigModel]] = {}
+    relationship_type_class_mapping: dict[str, type[MhdConfigModel]] = {}
 
 
 class CvTermPlaceholder(ValidatorBaseModel):

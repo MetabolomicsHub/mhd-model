@@ -3,7 +3,7 @@ import logging
 from collections.abc import Sequence
 from typing import Annotated, Any, Self
 
-from pydantic import ConfigDict, Field
+from pydantic import Field
 
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseLabeledMhdModel,
@@ -17,9 +17,9 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import (
 )
 from mhd_model.model.v0_1.dataset.profiles.base.relationships import Relationship
 from mhd_model.model.v0_1.dataset.validation.utils import search_ontology_definition
-from mhd_model.model.v0_1.rules.cv_definitions import (
-    CONTROLLED_CV_DEFINITIONS,
-    OTHER_CONTROLLED_CV_DEFINITIONS,
+from mhd_model.shared.cv_definitions import (
+    COMMON_CV_DEFINITIONS,
+    OTHER_COMMON_CV_DEFINITIONS,
 )
 from mhd_model.shared.model import CvDefinition, CvTerm, CvTermValue
 from mhd_model.shared.validation.cv_term_helper import CvTermHelper
@@ -37,22 +37,11 @@ def _get_cv_helper() -> CvTermHelper:
 
 
 class MhDatasetBuilder(GraphEnabledBaseDataset):
-    model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "mhd_identifier",
-                "repository_name",
-                "repository_identifier",
-            ]
-        }
-    )
     _cv_definitions_map: Annotated[
         dict[str, None | CvDefinition], Field(exclude=True)
     ] = {}
 
-    type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
-        "dataset"
-    )
+    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("dataset")
     id_: Annotated[
         None | str,
         Field(
@@ -65,7 +54,6 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
     )
     name: Annotated[None | str, Field()] = None
     description: Annotated[None | str, Field()] = None
-
     objects: dict[str, IdentifiableMhdModel] = {}
 
     def add(
@@ -177,12 +165,12 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         for source in self._cv_definitions_map:
             if not source:
                 continue
-            if source in CONTROLLED_CV_DEFINITIONS:
-                cv_definition = CONTROLLED_CV_DEFINITIONS[source]
+            if source in COMMON_CV_DEFINITIONS:
+                cv_definition = COMMON_CV_DEFINITIONS[source]
                 self.cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
-            elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
-                cv_definition = OTHER_CONTROLLED_CV_DEFINITIONS[source]
+            elif source in OTHER_COMMON_CV_DEFINITIONS:
+                cv_definition = OTHER_COMMON_CV_DEFINITIONS[source]
                 self.cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
             else:
@@ -200,13 +188,13 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         mhd_dataset.cv_definitions = (
             self.cv_definitions.copy() if self.cv_definitions else []
         )
+
         mhd_dataset.name = self.name or None
         mhd_dataset.description = self.description or None
         mhd_dataset.created_at = self.created_at or datetime.datetime.now(datetime.UTC)
 
         mhd_dataset.repository_name = self.repository_name or None
         mhd_dataset.revision = self.revision or None
-        mhd_dataset.revision_datetime = self.revision_datetime or None
         mhd_dataset.repository_identifier = self.repository_identifier or None
         mhd_dataset.mhd_identifier = self.mhd_identifier or None
         mhd_dataset.repository_revision = self.repository_revision or None

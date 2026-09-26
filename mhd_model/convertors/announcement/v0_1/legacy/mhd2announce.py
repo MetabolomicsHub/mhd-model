@@ -29,16 +29,16 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
 )
 from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import CvTermValueObject
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
-from mhd_model.model.v0_1.rules.cv_definitions import (
-    CONTROLLED_CV_DEFINITIONS,
-    OTHER_CONTROLLED_CV_DEFINITIONS,
-)
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_MEASUREMENT_TYPES,
     COMMON_OMICS_TYPES,
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
+)
+from mhd_model.shared.cv_definitions import (
+    COMMON_CV_DEFINITIONS,
+    OTHER_COMMON_CV_DEFINITIONS,
 )
 from mhd_model.shared.model import (
     CvDefinition,
@@ -293,6 +293,7 @@ def create_legacy_announcement_file(
     mhd_file: dict[str, Any], mhd_file_url: str, announcement_file_path: str
 ):
     mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_file)
+    # new_dataset = mhd_dataset.regenerate_ids()
     announcement_schema_name, announcement_profile_uri = (
         MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
             mhd_dataset.profile_uri, (None, None)
@@ -421,13 +422,11 @@ def create_legacy_announcement_file(
     for source in cv_sources:
         if source.upper() in mhd_cv_definitions:
             announcement.cv_definitions.append(mhd_cv_definitions[source.upper()])
-        elif source.upper() in CONTROLLED_CV_DEFINITIONS:
+        elif source.upper() in COMMON_CV_DEFINITIONS:
+            announcement.cv_definitions.append(COMMON_CV_DEFINITIONS[source.upper()])
+        elif source.upper() in OTHER_COMMON_CV_DEFINITIONS:
             announcement.cv_definitions.append(
-                CONTROLLED_CV_DEFINITIONS[source.upper()]
-            )
-        elif source.upper() in OTHER_CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(
-                OTHER_CONTROLLED_CV_DEFINITIONS[source.upper()]
+                OTHER_COMMON_CV_DEFINITIONS[source.upper()]
             )
         else:
             announcement.cv_definitions.append(

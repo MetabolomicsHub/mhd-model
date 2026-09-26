@@ -240,7 +240,9 @@
       "title": "Assay",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "BaseLabeledMhdModel": {
@@ -363,7 +365,12 @@
         }
       },
       "title": "BaseLabeledMhdModel",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        [
+          "repository_identifier"
+        ]
+      ]
     },
     "CharacteristicDefinition": {
       "description": "Definition of a sample characteristic or attribute (e.g. organism, tissue).",
@@ -516,7 +523,9 @@
       "title": "CharacteristicDefinition",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "CvDefinition": {
@@ -639,9 +648,11 @@
       "title": "CvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     },
     "CvTermObject": {
@@ -709,9 +720,11 @@
       "title": "CvTermObject",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     },
     "CvTermValue": {
@@ -774,11 +787,13 @@
       "title": "CvTermValue",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name",
-        "value",
-        "unit"
+        [
+          "source",
+          "accession",
+          "name",
+          "value",
+          "unit"
+        ]
       ]
     },
     "CvTermValueObject": {
@@ -882,11 +897,13 @@
       "title": "CvTermValueObject",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name",
-        "value",
-        "unit"
+        [
+          "source",
+          "accession",
+          "name",
+          "value",
+          "unit"
+        ]
       ]
     },
     "DerivedDataFile": {
@@ -1096,7 +1113,12 @@
       "title": "DerivedDataFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "url_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "FactorDefinition": {
@@ -1250,7 +1272,9 @@
       "title": "FactorDefinition",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "KeyValue": {
@@ -1329,7 +1353,7 @@
       "type": "object"
     },
     "Metabolite": {
-      "description": "Any intermediate or product resulting from metabolism.\nThe term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite]",
+      "description": "Any intermediate or product resulting from metabolism.\nThe term 'metabolite' subsumes the classes commonly known as primary\nand secondary metabolites. [CHEBI, CHEBI:25212, metabolite]",
       "properties": {
         "id": {
           "anyOf": [
@@ -1433,7 +1457,7 @@
             }
           ],
           "default": null,
-          "description": "Unique identifier in the source repository.",
+          "description": "Unique identifier assigned to the metabolite.",
           "title": "Repository Identifier"
         },
         "label": {
@@ -1465,8 +1489,9 @@
       "title": "Metabolite",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "name"
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "MetadataFile": {
@@ -1676,7 +1701,12 @@
       "title": "MetadataFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "url_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "MhdGraph": {
@@ -1984,7 +2014,12 @@
       "title": "Organization",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "ror_id"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "ParameterDefinition": {
@@ -2138,7 +2173,9 @@
       "title": "ParameterDefinition",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Person": {
@@ -2353,9 +2390,15 @@
       "title": "Person",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "full_name",
-        "orcid"
+        [
+          "orcid"
+        ],
+        [
+          "email_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Project": {
@@ -2542,7 +2585,12 @@
       "title": "Project",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "doi"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Protocol": {
@@ -2665,6 +2713,21 @@
           "default": null,
           "title": "Label"
         },
+        "doi": {
+          "anyOf": [
+            {
+              "pattern": "^10[.].+/.+$",
+              "title": "DOI",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Digital Object Identifier (DOI) for the protocol.",
+          "title": "Doi"
+        },
         "name": {
           "anyOf": [
             {
@@ -2726,7 +2789,12 @@
       "title": "Protocol",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "doi"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Publication": {
@@ -2904,8 +2972,15 @@
       "title": "Publication",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier",
-        "doi"
+        [
+          "doi"
+        ],
+        [
+          "pubmed_id"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "QuantitativeValue": {
@@ -3155,7 +3230,12 @@
       "title": "RawDataFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "url_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "ReferencedObject": {
@@ -3308,7 +3388,15 @@
         }
       },
       "title": "ReferencedObject",
-      "type": "object"
+      "type": "object",
+      "unique_value_contribution": [
+        [
+          "referenced_object_id"
+        ],
+        [
+          "repository_identifier"
+        ]
+      ]
     },
     "Relationship": {
       "properties": {
@@ -3487,11 +3575,16 @@
       "title": "Relationship",
       "type": "object",
       "unique_value_contribution": [
-        "source_ref",
-        "relationship_name",
-        "target_ref",
-        "source_role",
-        "target_role"
+        [
+          "source_ref",
+          "relationship_name",
+          "target_ref",
+          "source_role",
+          "target_role"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "ResultFile": {
@@ -3701,7 +3794,12 @@
       "title": "ResultFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "url_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Revision": {
@@ -3881,7 +3979,12 @@
       "title": "Sample",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "additional_identifier_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "SampleRun": {
@@ -4120,7 +4223,9 @@
       "title": "SampleRun",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "SampleRunConfiguration": {
@@ -4290,7 +4395,9 @@
       "title": "SampleRunConfiguration",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Specimen": {
@@ -4446,7 +4553,12 @@
       "title": "Specimen",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "additional_identifier_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Study": {
@@ -4760,8 +4872,15 @@
       "title": "Study",
       "type": "object",
       "unique_value_contribution": [
-        "mhd_identifier",
-        "repository_identifier"
+        [
+          "doi"
+        ],
+        [
+          "mhd_identifier"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "Subject": {
@@ -4931,7 +5050,12 @@
       "title": "Subject",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "additional_identifier_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "SupplementaryFile": {
@@ -5141,7 +5265,12 @@
       "title": "SupplementaryFile",
       "type": "object",
       "unique_value_contribution": [
-        "repository_identifier"
+        [
+          "url_list"
+        ],
+        [
+          "repository_identifier"
+        ]
       ]
     },
     "UnitCvTerm": {
@@ -5168,13 +5297,34 @@
       "title": "UnitCvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     }
   },
   "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Unique identifier of the dataset",
+      "title": "Id"
+    },
+    "type": {
+      "default": "legacy-dataset",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Type",
+      "type": "string"
+    },
     "mhd_identifier": {
       "anyOf": [
         {
@@ -5186,6 +5336,21 @@
       ],
       "default": null,
       "title": "Mhd Identifier"
+    },
+    "doi": {
+      "anyOf": [
+        {
+          "pattern": "^10[.].+/.+$",
+          "title": "DOI",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Digital Object Identifier (DOI) for the dataset.",
+      "title": "Doi"
     },
     "revision": {
       "anyOf": [
@@ -5319,25 +5484,6 @@
       },
       "title": "Cv Definitions",
       "type": "array"
-    },
-    "id": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Unique identifier of the dataset",
-      "title": "Id"
-    },
-    "type": {
-      "default": "legacy-dataset",
-      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-      "title": "Type",
-      "type": "string"
     },
     "created_at": {
       "anyOf": [

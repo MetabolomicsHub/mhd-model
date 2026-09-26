@@ -253,6 +253,7 @@ Metabolite node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximu
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the metabolite|
 |**name**|**required**|<code>*str*<code>|Name or chemical label of the metabolite<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 
 
@@ -474,8 +475,8 @@ Project node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**title**|**required**|<code>*str*<code>|Title of the project<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the project in the source repository|
+|**title**|**required**|<code>*str*<code>|Title of the project<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**description**|optional|<code>*str*<code>|Summary description of the project goals and scope|
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>|List of grant identifiers funding the project|
 |**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) assigned to the project|
@@ -565,6 +566,7 @@ Publication node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maxim
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|optional|<code>*str*<code>|Unique identifier in the source repository|
 |**title**|**required**|<code>*str*<code>|Title of the publication|
 |**doi**|**required**|<code>*str*<code>|Digital Object Identifier (DOI) for the publication|
 |**pubmed_id**|optional|<code>*str*<code>|PubMed unique identifier (PMID) of the publication|
@@ -688,8 +690,8 @@ Sample node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: N
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**name**|**required**|<code>*str*<code>|Name or identifier of the sample<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the sample in the repository|
+|**name**|**required**|<code>*str*<code>|Name or identifier of the sample<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the sample|
 
 
@@ -805,8 +807,8 @@ Specimen node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum:
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**name**|**required**|<code>*str*<code>|Name or identifier of the specimen<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the specimen in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**name**|**required**|<code>*str*<code>|Name or identifier of the specimen<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the specimen|
 
 
@@ -844,8 +846,9 @@ Study node is **required in the MHD Legacy Profile.** <code>Minimum: 1, Maximum:
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**mhd_identifier**|optional|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier for the study|
 |**repository_identifier**|**required**|<code>*str*<code>|Accession number or identifier in the source repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**mhd_identifier**|optional|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier for the study|
+|**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) for the study|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional database or secondary identifiers for the study|
 |**title**|**required**|<code>*str*<code>|Title of the study<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**description**|**required**|<code>*str*<code>|Detailed abstract or summary description of the study<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
@@ -927,9 +930,9 @@ Subject node is optional in the  MHD Legacy Profile. <code>Minimum: 0, Maximum: 
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the subject in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**name**|**required**|<code>*str*<code>|Name or identifier of the subject<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**subject_type_ref**|optional|<code>*CvTermObjectId*<code>|Reference ID to the subject type CV term object|
-|**repository_identifier**|**required**|<code>*str*<code>|Unique identifier assigned to the subject in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the subject|
 
 

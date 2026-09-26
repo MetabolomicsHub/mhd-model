@@ -41,9 +41,7 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         dict[str, None | CvDefinition], Field(exclude=True)
     ] = {}
 
-    type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
-        "dataset"
-    )
+    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("dataset")
     id_: Annotated[
         None | str,
         Field(
@@ -195,13 +193,14 @@ class MhDatasetBuilder(GraphEnabledBaseDataset):
         mhd_dataset.description = self.description or None
         mhd_dataset.created_at = self.created_at or datetime.datetime.now(datetime.UTC)
 
-        mhd_dataset.repository_name = self.repository_name
-        mhd_dataset.revision = self.revision
-        mhd_dataset.repository_identifier = self.repository_identifier
-        mhd_dataset.mhd_identifier = self.mhd_identifier
-        mhd_dataset.revision_datetime = self.revision_datetime
-        mhd_dataset.repository_revision = self.repository_revision
-        mhd_dataset.repository_revision_datetime = self.repository_revision_datetime
+        mhd_dataset.repository_name = self.repository_name or None
+        mhd_dataset.revision = self.revision or None
+        mhd_dataset.repository_identifier = self.repository_identifier or None
+        mhd_dataset.mhd_identifier = self.mhd_identifier or None
+        mhd_dataset.repository_revision = self.repository_revision or None
+        mhd_dataset.repository_revision_datetime = (
+            self.repository_revision_datetime or None
+        )
         mhd_dataset.repository_revision_comment = (
             self.repository_revision_comment or None
         )

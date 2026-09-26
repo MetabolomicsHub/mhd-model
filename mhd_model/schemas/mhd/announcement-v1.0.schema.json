@@ -687,9 +687,11 @@
       "title": "CvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     },
     "CvTermKeyValue": {
@@ -786,11 +788,13 @@
       "title": "CvTermValue",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name",
-        "value",
-        "unit"
+        [
+          "source",
+          "accession",
+          "name",
+          "value",
+          "unit"
+        ]
       ]
     },
     "QuantitativeValue": {
@@ -881,9 +885,11 @@
       "title": "UnitCvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     }
   },
@@ -901,6 +907,19 @@
       "default": null,
       "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
       "title": "Mhd Identifier"
+    },
+    "doi": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Digital Object Identifier (DOI) assigned to the dataset.",
+      "title": "Doi"
     },
     "revision": {
       "anyOf": [
@@ -1059,19 +1078,6 @@
       "minItems": 1,
       "title": "Dataset Url List",
       "type": "array"
-    },
-    "doi": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Digital Object Identifier (DOI) assigned to the dataset.",
-      "title": "Doi"
     },
     "license": {
       "anyOf": [
