@@ -1332,20 +1332,6 @@
       "title": "Cv Definitions",
       "type": "array"
     },
-    "created_at": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Creation time.",
-      "title": "Created At"
-    },
     "mhd_metadata_file_url": {
       "description": "URL to the primary MHD metadata file for this dataset.",
       "format": "uri",
@@ -1757,7 +1743,7 @@
             "cvTermKey": {
               "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "MONDO"
+              "source": "EFO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",
@@ -1830,7 +1816,7 @@
             "cvTermKey": {
               "accession": "MONDO:0000001",
               "name": "disease",
-              "source": "MONDO"
+              "source": "EFO"
             },
             "inputType": "list-or-item",
             "joinOperator": "and",

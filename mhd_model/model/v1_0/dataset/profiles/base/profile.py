@@ -13,10 +13,13 @@ from mhd_model.model.v1_0.dataset.profiles.base.base import (
     BaseMhdRelationship,
     BasicCvTermModel,
     BasicCvTermValueModel,
+    CvTermObjectId,
+    CvTermValueObjectId,
     GenericMhdEntityModel,
     IdentifiableMhdEntityModel,
     IdentifiableMhdModel,
     MhdConfigModel,
+    MhdObjectId,
     MhdObjectType,
 )
 from mhd_model.shared.model import CvEnabledDataset
@@ -109,10 +112,10 @@ def get_unique_id_contribution_fields():
 
 
 class MhdGraph(MhdConfigModel):
-    start_item_refs: Annotated[list[DEFAULT_GRAPH_NODES], Field()] = []
-    nodes: Annotated[
-        list[BaseLabeledMhdModel | BasicCvTermValueModel | BasicCvTermModel], Field()
+    start_item_refs: Annotated[
+        list[MhdObjectId | CvTermValueObjectId | CvTermObjectId], Field()
     ] = []
+    nodes: Annotated[list[DEFAULT_GRAPH_NODES], Field()] = []
     relationships: Annotated[list[BaseMhdRelationship], Field()] = []
 
     @model_validator(mode="wrap")
@@ -122,8 +125,9 @@ class MhdGraph(MhdConfigModel):
     ) -> "MhdGraph":
         if isinstance(v, MhdGraph):
             return v
+        graph = handler(v)
 
-        if isinstance(v, dict):
+        if isinstance(graph, dict):
             context = None
             if info and isinstance(info.context, dict):
                 context = MhdModelValidationContext.model_validate(info.context)
@@ -158,9 +162,9 @@ class MhdGraph(MhdConfigModel):
                             items.append(val)
                         else:
                             raise ValueError("invalid type in nodes")
-                    v[entities] = items
+                    graph[entities] = items
 
-        return handler(v)
+        return graph
 
     @staticmethod
     def create_model(item: dict[str, Any], context: MhdModelValidationContext):

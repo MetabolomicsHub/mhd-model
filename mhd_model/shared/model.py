@@ -26,6 +26,8 @@ def generate_unique_id(
 
     for field_names in contribution:
         values = []
+        if isinstance(field_names, str):
+            field_names = [field_names]
         for field_name in field_names:
             value = ""
             if hasattr(source, field_name):

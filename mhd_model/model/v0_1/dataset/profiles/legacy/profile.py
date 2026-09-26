@@ -11,6 +11,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import (
 
 
 class MhDatasetLegacyProfile(MhDatasetBaseProfile):
-    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType(
+    type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
         "legacy-dataset"
     )

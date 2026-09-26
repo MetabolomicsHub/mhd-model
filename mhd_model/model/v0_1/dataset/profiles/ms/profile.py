@@ -11,4 +11,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.profile import (
 
 
 class MhDatasetMsProfile(MhDatasetBaseProfile):
-    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("ms-dataset")
+    type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
+        "ms-dataset"
+    )

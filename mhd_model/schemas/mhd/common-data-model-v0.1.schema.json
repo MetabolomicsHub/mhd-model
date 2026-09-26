@@ -94,19 +94,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "An assay identifier that uniquely identifies the assay in repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -119,34 +106,18 @@
           "default": null,
           "title": "Label"
         },
-        "global_identifier": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers for the node.",
-          "title": "Additional Identifier List"
+          "description": "An assay identifier that uniquely identifies the assay in repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -269,15 +240,7 @@
       "title": "Assay",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "BaseLabeledMhdModel": {
@@ -373,19 +336,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -402,12 +352,13 @@
       "title": "BaseLabeledMhdModel",
       "type": "object"
     },
-    "BaseMhdRelationship": {
+    "BasicAssay": {
+      "description": "Basic analytical assay node representing an experimental measurement procedure.",
       "properties": {
         "id": {
           "anyOf": [
             {
-              "pattern": "^rel--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
               "type": "string"
             },
             {
@@ -415,6 +366,7 @@
             }
           ],
           "default": null,
+          "description": "The id property uniquely identifies the object.",
           "title": "Id"
         },
         "type": {
@@ -427,7 +379,7 @@
               "type": "null"
             }
           ],
-          "default": "base-mhd-model",
+          "default": "assay",
           "title": "Type"
         },
         "created_by_ref": {
@@ -494,148 +446,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Repository Identifier"
-        },
-        "source_ref": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            }
-          ],
-          "title": "Source Ref"
-        },
-        "relationship_name": {
-          "title": "Relationship Name",
-          "type": "string"
-        },
-        "target_ref": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            }
-          ],
-          "title": "Target Ref"
-        },
-        "source_role": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Source Role"
-        },
-        "target_role": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Target Role"
-        }
-      },
-      "required": [
-        "source_ref",
-        "relationship_name",
-        "target_ref"
-      ],
-      "title": "BaseMhdRelationship",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source_ref",
-          "relationship_name",
-          "target_ref",
-          "source_role",
-          "target_role"
-        ],
-        [
-          "repository_identifier"
-        ]
-      ]
-    },
-    "BasicCvTermModel": {
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "title": "Type"
-        },
-        "source": {
-          "default": "",
-          "description": "Ontology source name.",
-          "title": "Source",
-          "type": "string"
-        },
-        "accession": {
-          "default": "",
-          "description": "Accession number of CV term in compact URI format.",
-          "title": "Accession",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "description": "Label of CV term.",
-          "title": "Name",
-          "type": "string"
-        },
         "label": {
           "anyOf": [
             {
@@ -647,216 +457,6 @@
           ],
           "default": null,
           "title": "Label"
-        }
-      },
-      "required": [
-        "type"
-      ],
-      "title": "BasicCvTermModel",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name"
-        ]
-      ]
-    },
-    "BasicCvTermValueModel": {
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "default": "cv-term-value",
-          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-          "title": "Type",
-          "type": "string"
-        },
-        "value": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Value of CV term.",
-          "title": "Value"
-        },
-        "unit": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/UnitCvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unit CV term if value has a unit.",
-          "title": "Unit"
-        },
-        "source": {
-          "default": "",
-          "description": "Ontology source name.",
-          "title": "Source",
-          "type": "string"
-        },
-        "accession": {
-          "default": "",
-          "description": "Accession number of CV term in compact URI format.",
-          "title": "Accession",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "description": "Label of CV term.",
-          "title": "Name",
-          "type": "string"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        }
-      },
-      "title": "BasicCvTermValueModel",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name",
-          "value",
-          "unit"
-        ]
-      ]
-    },
-    "CharacteristicDefinition": {
-      "description": "Definition of a sample characteristic or attribute (e.g. organism, tissue).",
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": "characteristic-definition",
-          "description": "The type property identifies type of the object",
-          "title": "Type"
-        },
-        "created_by_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property of the data-provider who created the object.",
-          "title": "Created By Ref"
-        },
-        "tag_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Key-value tags related to the object.",
-          "title": "Tag List"
-        },
-        "external_reference_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "External references related to the object.",
-          "title": "External Reference List"
-        },
-        "url_list": {
-          "anyOf": [
-            {
-              "items": {
-                "format": "uri",
-                "minLength": 1,
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "URL list related to the object.",
-          "title": "Url List"
         },
         "repository_identifier": {
           "anyOf": [
@@ -868,49 +468,8 @@
             }
           ],
           "default": null,
-          "description": "Unique identifier assigned to the characteristic definition in the repository.",
+          "description": "An assay identifier that uniquely identifies the assay in repository.",
           "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
-        "global_identifier": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers for the node.",
-          "title": "Additional Identifier List"
         },
         "name": {
           "anyOf": [
@@ -922,10 +481,24 @@
             }
           ],
           "default": null,
-          "description": "Name of the characteristic attribute.",
+          "description": "Name of the assay. It SHOULD be unique in a study.",
           "title": "Name"
         },
-        "characteristic_type_ref": {
+        "metadata_file_ref": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the metadata file describing the assay.",
+          "title": "Metadata File Ref"
+        },
+        "technology_type_ref": {
           "anyOf": [
             {
               "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -936,22 +509,73 @@
             }
           ],
           "default": null,
-          "description": "Reference ID to the characteristic type CV term object.",
-          "title": "Characteristic Type Ref"
+          "description": "Reference ID to the technology type CV term object.",
+          "title": "Technology Type Ref"
+        },
+        "assay_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the assay type CV term object.",
+          "title": "Assay Type Ref"
+        },
+        "measurement_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the measurement type CV term object.",
+          "title": "Measurement Type Ref"
+        },
+        "omics_type_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reference ID to the omics type CV term object.",
+          "title": "Omics Type Ref"
+        },
+        "protocol_refs": {
+          "anyOf": [
+            {
+              "items": {
+                "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples.",
+          "title": "Protocol Refs"
         }
       },
-      "title": "CharacteristicDefinition",
+      "title": "BasicAssay",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "CvDefinition": {
@@ -1146,11 +770,9 @@
       "title": "CvTermObject",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name"
-        ]
+        "source",
+        "accession",
+        "name"
       ]
     },
     "CvTermValue": {
@@ -1323,13 +945,11 @@
       "title": "CvTermValueObject",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name",
-          "value",
-          "unit"
-        ]
+        "source",
+        "accession",
+        "name",
+        "value",
+        "unit"
       ]
     },
     "DerivedDataFile": {
@@ -1427,19 +1047,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -1452,21 +1059,18 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the file in the source repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -1555,206 +1159,7 @@
       "title": "DerivedDataFile",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "url_list"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
-      ]
-    },
-    "FactorDefinition": {
-      "description": "Definition of an experimental factor varied across samples in a study.",
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": "factor-definition",
-          "description": "The type property identifies type of the object",
-          "title": "Type"
-        },
-        "created_by_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property of the data-provider who created the object.",
-          "title": "Created By Ref"
-        },
-        "tag_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Key-value tags related to the object.",
-          "title": "Tag List"
-        },
-        "external_reference_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "External references related to the object.",
-          "title": "External Reference List"
-        },
-        "url_list": {
-          "anyOf": [
-            {
-              "items": {
-                "format": "uri",
-                "minLength": 1,
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "URL list related to the object.",
-          "title": "Url List"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the factor definition in the repository.",
-          "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
-        "global_identifier": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers for the node.",
-          "title": "Additional Identifier List"
-        },
-        "name": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Name of the factor (e.g. dose, time point).",
-          "title": "Name"
-        },
-        "factor_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the factor type CV term object.",
-          "title": "Factor Type Ref"
-        }
-      },
-      "title": "FactorDefinition",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "KeyValue": {
@@ -1831,6 +1236,133 @@
       },
       "title": "KeyValue",
       "type": "object"
+    },
+    "Metabolite": {
+      "description": "Any intermediate or product resulting from metabolism.\nThe term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite]",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property uniquely identifies the object.",
+          "title": "Id"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "metabolite",
+          "description": "The type property identifies type of the object",
+          "title": "Type"
+        },
+        "created_by_ref": {
+          "anyOf": [
+            {
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id property of the data-provider who created the object.",
+          "title": "Created By Ref"
+        },
+        "tag_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Key-value tags related to the object.",
+          "title": "Tag List"
+        },
+        "external_reference_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/KeyValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External references related to the object.",
+          "title": "External Reference List"
+        },
+        "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL list related to the object.",
+          "title": "Url List"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name or chemical label of the metabolite.",
+          "title": "Name"
+        }
+      },
+      "title": "Metabolite",
+      "type": "object",
+      "unique_value_contribution": [
+        "name"
+      ]
     },
     "MetadataFile": {
       "description": "Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples.",
@@ -1927,19 +1459,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -1952,21 +1471,18 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the file in the source repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -2055,20 +1571,33 @@
       "title": "MetadataFile",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "url_list"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "MhdGraph": {
       "properties": {
         "start_item_refs": {
+          "default": [],
+          "items": {
+            "anyOf": [
+              {
+                "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              }
+            ]
+          },
+          "title": "Start Item Refs",
+          "type": "array"
+        },
+        "nodes": {
           "default": [],
           "items": {
             "anyOf": [
@@ -2097,6 +1626,9 @@
                 "$ref": "#/$defs/Publication"
               },
               {
+                "$ref": "#/$defs/BasicAssay"
+              },
+              {
                 "$ref": "#/$defs/Assay"
               },
               {
@@ -2115,7 +1647,7 @@
                 "$ref": "#/$defs/SampleRunConfiguration"
               },
               {
-                "$ref": "#/$defs/MolecularEntity"
+                "$ref": "#/$defs/Metabolite"
               },
               {
                 "$ref": "#/$defs/MetadataFile"
@@ -2133,38 +1665,7 @@
                 "$ref": "#/$defs/SupplementaryFile"
               },
               {
-                "$ref": "#/$defs/CharacteristicDefinition"
-              },
-              {
-                "$ref": "#/$defs/FactorDefinition"
-              },
-              {
-                "$ref": "#/$defs/ParameterDefinition"
-              },
-              {
-                "$ref": "#/$defs/ReferencedObject"
-              },
-              {
-                "$ref": "#/$defs/Spectra"
-              }
-            ],
-            "description": "Possible Default Node Type"
-          },
-          "title": "Start Item Refs",
-          "type": "array"
-        },
-        "nodes": {
-          "default": [],
-          "items": {
-            "anyOf": [
-              {
                 "$ref": "#/$defs/BaseLabeledMhdModel"
-              },
-              {
-                "$ref": "#/$defs/BasicCvTermValueModel"
-              },
-              {
-                "$ref": "#/$defs/BasicCvTermModel"
               }
             ]
           },
@@ -2174,7 +1675,7 @@
         "relationships": {
           "default": [],
           "items": {
-            "$ref": "#/$defs/BaseMhdRelationship"
+            "$ref": "#/$defs/Relationship"
           },
           "title": "Relationships",
           "type": "array"
@@ -2182,173 +1683,6 @@
       },
       "title": "MhdGraph",
       "type": "object"
-    },
-    "MolecularEntity": {
-      "alternative_types": [
-        "metabolite"
-      ],
-      "description": "Any constitutionally or isotopically distinct atom, molecule, ion,\nion pair, radical, radical ion, complex, conformer etc.,\nidentifiable as a separately distinguishable entity. [CHEBI, CHEBI:23367, molecular entity]",
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": "molecular-entity",
-          "description": "The type property identifies type of the object",
-          "title": "Type"
-        },
-        "created_by_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property of the data-provider who created the object.",
-          "title": "Created By Ref"
-        },
-        "tag_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Key-value tags related to the object.",
-          "title": "Tag List"
-        },
-        "external_reference_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "External references related to the object.",
-          "title": "External Reference List"
-        },
-        "url_list": {
-          "anyOf": [
-            {
-              "items": {
-                "format": "uri",
-                "minLength": 1,
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "URL list related to the object.",
-          "title": "Url List"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the molecular entity.",
-          "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
-        },
-        "name": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Name or chemical label of the molecular entity.",
-          "title": "Name"
-        }
-      },
-      "title": "MolecularEntity",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "name"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
-      ]
     },
     "Organization": {
       "description": "An institution, company, university, or department associated with a study or contact.",
@@ -2445,19 +1779,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the organization in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -2470,21 +1791,18 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the organization in the source repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "description": "Name of the organization.",
@@ -2551,206 +1869,7 @@
       "title": "Organization",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "ror_id"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
-      ]
-    },
-    "ParameterDefinition": {
-      "description": "Definition of an experimental parameter used within a protocol.",
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": "parameter-definition",
-          "description": "The type property identifies type of the object",
-          "title": "Type"
-        },
-        "created_by_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property of the data-provider who created the object.",
-          "title": "Created By Ref"
-        },
-        "tag_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Key-value tags related to the object.",
-          "title": "Tag List"
-        },
-        "external_reference_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "External references related to the object.",
-          "title": "External Reference List"
-        },
-        "url_list": {
-          "anyOf": [
-            {
-              "items": {
-                "format": "uri",
-                "minLength": 1,
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "URL list related to the object.",
-          "title": "Url List"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the parameter definition in the repository.",
-          "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
-        "global_identifier": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers for the node.",
-          "title": "Additional Identifier List"
-        },
-        "name": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Name of the parameter.",
-          "title": "Name"
-        },
-        "parameter_type_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Reference ID to the parameter type CV term object.",
-          "title": "Parameter Type Ref"
-        }
-      },
-      "title": "ParameterDefinition",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "Person": {
@@ -2848,19 +1967,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the person in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -2873,21 +1979,18 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the person in the source repository.",
+          "title": "Repository Identifier"
         },
         "full_name": {
           "anyOf": [
@@ -2981,18 +2084,9 @@
       "title": "Person",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "orcid"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "email_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier",
+        "full_name",
+        "orcid"
       ]
     },
     "Project": {
@@ -3090,19 +2184,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the project in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -3114,22 +2195,6 @@
           ],
           "default": null,
           "title": "Label"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
         },
         "title": {
           "anyOf": [
@@ -3144,6 +2209,19 @@
           "default": null,
           "description": "Title of the project.",
           "title": "Title"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the project in the source repository.",
+          "title": "Repository Identifier"
         },
         "description": {
           "anyOf": [
@@ -3195,15 +2273,7 @@
       "title": "Project",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "doi"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "Protocol": {
@@ -3301,19 +2371,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the protocol in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -3326,27 +2383,9 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
-        },
-        "doi": {
-          "anyOf": [
-            {
-              "pattern": "^10[.].+/.+$",
-              "title": "DOI",
               "type": "string"
             },
             {
@@ -3354,8 +2393,8 @@
             }
           ],
           "default": null,
-          "description": "Digital Object Identifier (DOI) for the protocol.",
-          "title": "Doi"
+          "description": "Unique identifier assigned to the protocol in the source repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -3418,15 +2457,7 @@
       "title": "Protocol",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "doi"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "Publication": {
@@ -3524,19 +2555,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -3548,22 +2566,6 @@
           ],
           "default": null,
           "title": "Label"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
         },
         "title": {
           "description": "Title of the publication.",
@@ -3620,18 +2622,7 @@
       "title": "Publication",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "doi"
-        ],
-        [
-          "pubmed_id"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "doi"
       ]
     },
     "QuantitativeValue": {
@@ -3769,19 +2760,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -3794,21 +2772,18 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the file in the source repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -3897,24 +2872,15 @@
       "title": "RawDataFile",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "url_list"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
-    "ReferencedObject": {
-      "description": "Node or link reference defined in other MHD common data model file.\nThe specified referenced_object_id must be already defined in the referenced file.",
+    "Relationship": {
       "properties": {
         "id": {
           "anyOf": [
             {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "pattern": "^rel--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
               "type": "string"
             },
             {
@@ -3922,7 +2888,6 @@
             }
           ],
           "default": null,
-          "description": "The id property uniquely identifies the object.",
           "title": "Id"
         },
         "type": {
@@ -3935,8 +2900,8 @@
               "type": "null"
             }
           ],
-          "default": "referenced-object",
-          "description": "The type property identifies the type of MHD Object. It must be `referenced-object`",
+          "default": "relationship",
+          "description": "The type property identifies type of the MHD Relationship Object",
           "title": "Type"
         },
         "created_by_ref": {
@@ -4003,61 +2968,7 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
-        "global_identifier": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers for the node.",
-          "title": "Additional Identifier List"
-        },
-        "referenced_object_id": {
+        "source_ref": {
           "anyOf": [
             {
               "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
@@ -4070,47 +2981,32 @@
             {
               "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
               "type": "string"
-            },
-            {
-              "pattern": "^rel--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
             }
           ],
-          "default": null,
-          "description": "Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_.",
-          "title": "Referenced Object Id"
+          "title": "Source Ref"
         },
-        "referenced_type": {
+        "relationship_name": {
+          "title": "Relationship Name",
+          "type": "string"
+        },
+        "target_ref": {
           "anyOf": [
             {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
               "type": "string"
             },
             {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Type of referenced object.",
-          "title": "Referenced Type"
-        },
-        "dataset_id": {
-          "anyOf": [
-            {
+              "pattern": "^cv--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
               "type": "string"
             },
             {
-              "type": "null"
+              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
             }
           ],
-          "default": null,
-          "description": "Id of dataset.",
-          "title": "Dataset Id"
+          "title": "Target Ref"
         },
-        "dataset_repository_identifier": {
+        "source_role": {
           "anyOf": [
             {
               "type": "string"
@@ -4120,10 +3016,9 @@
             }
           ],
           "default": null,
-          "description": "Dataset Repository Identifier.",
-          "title": "Dataset Repository Identifier"
+          "title": "Source Role"
         },
-        "dataset_repository_revision": {
+        "target_role": {
           "anyOf": [
             {
               "type": "string"
@@ -4133,49 +3028,16 @@
             }
           ],
           "default": null,
-          "description": "Dataset revision assigned by repository.",
-          "title": "Dataset Repository Revision"
-        },
-        "dataset_mhd_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "MHD Identifier of the dataset.",
-          "title": "Dataset Mhd Identifier"
-        },
-        "dataset_mhd_revision": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Dataset revision assigned by MetabolomicsHub.",
-          "title": "Dataset Mhd Revision"
+          "title": "Target Role"
         }
       },
-      "title": "ReferencedObject",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
-      ]
+      "required": [
+        "source_ref",
+        "relationship_name",
+        "target_ref"
+      ],
+      "title": "Relationship",
+      "type": "object"
     },
     "ResultFile": {
       "description": "Processed result file (e.g. quantification or identification matrix).",
@@ -4272,19 +3134,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -4297,21 +3146,18 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the file in the source repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -4400,15 +3246,7 @@
       "title": "ResultFile",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "url_list"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "Revision": {
@@ -4530,19 +3368,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the sample in the repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -4554,22 +3379,6 @@
           ],
           "default": null,
           "title": "Label"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTermValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional identifiers for the sample.",
-          "title": "Additional Identifier List"
         },
         "name": {
           "anyOf": [
@@ -4584,7 +3393,7 @@
           "description": "Name or identifier of the sample.",
           "title": "Name"
         },
-        "biosamples_accession": {
+        "repository_identifier": {
           "anyOf": [
             {
               "type": "string"
@@ -4594,22 +3403,30 @@
             }
           ],
           "default": null,
-          "description": "Biosamples accession of the sample.",
-          "title": "Biosamples Accession"
+          "description": "Unique identifier assigned to the sample in the repository.",
+          "title": "Repository Identifier"
+        },
+        "additional_identifier_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTermValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of additional secondary identifiers for the sample.",
+          "title": "Additional Identifier List"
         }
       },
       "title": "Sample",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "biosamples_accession"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "SampleRun": {
@@ -4707,19 +3524,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the sample run in the repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -4732,34 +3536,18 @@
           "default": null,
           "title": "Label"
         },
-        "global_identifier": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers for the node.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the sample run in the repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -4877,15 +3665,7 @@
       "title": "SampleRun",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "SampleRunConfiguration": {
@@ -4983,19 +3763,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the sample run configuration in the repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -5008,34 +3775,18 @@
           "default": null,
           "title": "Label"
         },
-        "global_identifier": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers for the node.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the sample run configuration in the repository.",
+          "title": "Repository Identifier"
         },
         "protocol_ref": {
           "anyOf": [
@@ -5084,15 +3835,7 @@
       "title": "SampleRunConfiguration",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "Specimen": {
@@ -5190,19 +3933,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the specimen in the repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -5215,18 +3945,31 @@
           "default": null,
           "title": "Label"
         },
-        "global_identifier": {
+        "name": {
           "anyOf": [
             {
-              "$ref": "#/$defs/CvTerm"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
+          "description": "Name or identifier of the specimen.",
+          "title": "Name"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the specimen in the repository.",
+          "title": "Repository Identifier"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -5241,199 +3984,14 @@
             }
           ],
           "default": null,
-          "description": "List of additional identifiers for the specimen.",
+          "description": "List of additional secondary identifiers for the specimen.",
           "title": "Additional Identifier List"
-        },
-        "name": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Name or identifier of the specimen.",
-          "title": "Name"
         }
       },
       "title": "Specimen",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
-      ]
-    },
-    "Spectra": {
-      "description": "Signal, peak, or pattern data\nthat represents the types and amounts of small-molecule metabolites present in a sample",
-      "properties": {
-        "id": {
-          "anyOf": [
-            {
-              "pattern": "^mhd--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property uniquely identifies the object.",
-          "title": "Id"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": "spectra",
-          "description": "The type property identifies the type of MHD Object. It must be `spectra`",
-          "title": "Type"
-        },
-        "created_by_ref": {
-          "anyOf": [
-            {
-              "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The id property of the data-provider who created the object.",
-          "title": "Created By Ref"
-        },
-        "tag_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Key-value tags related to the object.",
-          "title": "Tag List"
-        },
-        "external_reference_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/KeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "External references related to the object.",
-          "title": "External Reference List"
-        },
-        "url_list": {
-          "anyOf": [
-            {
-              "items": {
-                "format": "uri",
-                "minLength": 1,
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "URL list related to the object.",
-          "title": "Url List"
-        },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
-        },
-        "usi": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Id of dataset.",
-          "title": "Usi"
-        }
-      },
-      "title": "Spectra",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "usi"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "Study": {
@@ -5531,6 +4089,31 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "mhd_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique MetabolomicsHub Data (MHD) identifier for the study.",
+          "title": "Mhd Identifier"
+        },
         "repository_identifier": {
           "anyOf": [
             {
@@ -5544,18 +4127,6 @@
           "default": null,
           "description": "Accession number or identifier in the source repository.",
           "title": "Repository Identifier"
-        },
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
         },
         "additional_identifier_list": {
           "anyOf": [
@@ -5572,34 +4143,6 @@
           "default": null,
           "description": "List of additional database or secondary identifiers for the study.",
           "title": "Additional Identifier List"
-        },
-        "mhd_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique MetabolomicsHub Data (MHD) identifier for the study.",
-          "title": "Mhd Identifier"
-        },
-        "doi": {
-          "anyOf": [
-            {
-              "pattern": "^10[.].+/.+$",
-              "title": "DOI",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Digital Object Identifier (DOI) for the study.",
-          "title": "Doi"
         },
         "title": {
           "anyOf": [
@@ -5747,18 +4290,8 @@
       "title": "Study",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "doi"
-        ],
-        [
-          "mhd_identifier"
-        ],
-        [
-          "repository_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ]
+        "mhd_identifier",
+        "repository_identifier"
       ]
     },
     "Subject": {
@@ -5856,19 +4389,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the subject in the repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -5880,35 +4400,6 @@
           ],
           "default": null,
           "title": "Label"
-        },
-        "global_identifier": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier in the source repository.",
-          "title": "Global Identifier"
-        },
-        "additional_identifier_list": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTermValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of additional identifiers for the subject.",
-          "title": "Additional Identifier List"
         },
         "name": {
           "anyOf": [
@@ -5936,20 +4427,41 @@
           "default": null,
           "description": "Reference ID to the subject type CV term object.",
           "title": "Subject Type Ref"
+        },
+        "repository_identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unique identifier assigned to the subject in the repository.",
+          "title": "Repository Identifier"
+        },
+        "additional_identifier_list": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CvTermValue"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of additional secondary identifiers for the subject.",
+          "title": "Additional Identifier List"
         }
       },
       "title": "Subject",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "global_identifier"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "SupplementaryFile": {
@@ -6047,19 +4559,6 @@
           "description": "URL list related to the object.",
           "title": "Url List"
         },
-        "repository_identifier": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unique identifier assigned to the file in the source repository.",
-          "title": "Repository Identifier"
-        },
         "label": {
           "anyOf": [
             {
@@ -6072,21 +4571,18 @@
           "default": null,
           "title": "Label"
         },
-        "additional_identifier_list": {
+        "repository_identifier": {
           "anyOf": [
             {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
-              },
-              "type": "array"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "description": "List of additional database or secondary identifiers.",
-          "title": "Additional Identifier List"
+          "description": "Unique identifier assigned to the file in the source repository.",
+          "title": "Repository Identifier"
         },
         "name": {
           "anyOf": [
@@ -6175,15 +4671,7 @@
       "title": "SupplementaryFile",
       "type": "object",
       "unique_value_contribution": [
-        [
-          "url_list"
-        ],
-        [
-          "additional_identifier_list"
-        ],
-        [
-          "repository_identifier"
-        ]
+        "repository_identifier"
       ]
     },
     "UnitCvTerm": {
@@ -6219,113 +4707,6 @@
     }
   },
   "properties": {
-    "id": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Unique identifier of the dataset",
-      "title": "Id"
-    },
-    "type": {
-      "default": "dataset",
-      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-      "title": "Type",
-      "type": "string"
-    },
-    "created_by_ref": {
-      "anyOf": [
-        {
-          "pattern": "^cv-value--[-a-zA-Z0-9]+--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "The id property of the data-provider who created the object.",
-      "title": "Created By Ref"
-    },
-    "tag_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/KeyValue"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Key-value tags related to the object.",
-      "title": "Tag List"
-    },
-    "external_reference_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/KeyValue"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "External references related to the object.",
-      "title": "External Reference List"
-    },
-    "url_list": {
-      "anyOf": [
-        {
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "URL list related to the object.",
-      "title": "Url List"
-    },
-    "repository_identifier": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Identifier"
-    },
-    "label": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Label"
-    },
     "mhd_identifier": {
       "anyOf": [
         {
@@ -6402,6 +4783,18 @@
       "default": null,
       "title": "Repository Name"
     },
+    "repository_identifier": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Repository Identifier"
+    },
     "repository_revision": {
       "anyOf": [
         {
@@ -6473,6 +4866,25 @@
       },
       "title": "Cv Definitions",
       "type": "array"
+    },
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Unique identifier of the dataset",
+      "title": "Id"
+    },
+    "type": {
+      "default": "base-dataset",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Type",
+      "type": "string"
     },
     "created_at": {
       "anyOf": [

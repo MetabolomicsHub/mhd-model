@@ -2,15 +2,13 @@ import datetime
 import uuid
 from typing import Annotated, Any
 
-from pydantic import AnyUrl, ConfigDict, Field, field_validator, model_validator
-from pydantic.alias_generators import to_pascal
+from pydantic import AnyUrl, Field, field_validator, model_validator
 
 from mhd_model.shared.model import (
     CvTerm,
     CvTermValue,
     MhdConfigModel,
     QuantitativeValue,
-    generate_unique_id,
 )
 
 NAMESPACE_VALUE = uuid.UUID("efb4f8e4-d08b-4979-916e-600c4985e7f2")
@@ -56,6 +54,11 @@ class KeyValue(MhdConfigModel):
     ) = None
 
 
+# class CvTermKeyValue(MhdConfigModel):
+#     key: CvTerm
+#     value: str | datetime.datetime | bool | CvTerm | CvTermValue | QuantitativeValue
+
+
 class IdentifiableMhdModel(MhdConfigModel):
     id_: Annotated[
         None
@@ -77,18 +80,8 @@ class IdentifiableMhdModel(MhdConfigModel):
         ),
     ]
 
-    def __hash__(self) -> int:
-        return hash(self.id_)
-
 
 class BaseMhdModel(IdentifiableMhdModel):
-    model_config = ConfigDict(
-        populate_by_name=True,
-        json_schema_serialization_defaults_required=True,
-        field_title_generator=lambda field_name, field_info: to_pascal(
-            field_name.replace("_", " ").strip()
-        ),
-    )
     id_: Annotated[
         None | MhdObjectId,
         Field(
@@ -116,10 +109,6 @@ class BaseMhdModel(IdentifiableMhdModel):
         None | list[AnyUrl],
         Field(description="URL list related to the object."),
     ] = None
-    repository_identifier: Annotated[
-        None | str,
-        Field(description="Unique identifier in the source repository."),
-    ] = None
 
     @field_validator("id_", mode="before")
     @classmethod
@@ -136,11 +125,35 @@ class BaseMhdModel(IdentifiableMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BaseMhdModel":
         item: BaseMhdModel = handler(v)
-        if not item.id_:
-            item.id_ = item.get_unique_id(
-                prefix="mhd", namespace=NAMESPACE_VALUE, type_=item.type_
-            )
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"mhd--{item.type_}--{identifier}"
+        if not item.label:
+            item.label = item.get_label()
         return item
+
+    def get_unique_id(self):
+        extra = self.model_config.get("json_schema_extra", {})
+        contribution = extra.get("unique_value_contribution") or []
+        values = [self.type_]
+        if contribution:
+            for field_name in contribution:
+                value = ""
+                if hasattr(self, field_name):
+                    value = getattr(self, field_name) or ""
+                    if isinstance(value, list) and value:
+                        value = value[0].lower()
+                    else:
+                        value = str(value).lower()
+
+                values.append(f"{field_name.lower()}={value}")
+
+        return "&".join(values)
+
+    def __hash__(self) -> int:
+        return hash(self.get_unique_id())
 
 
 class BaseLabeledMhdModel(BaseMhdModel):
@@ -150,50 +163,17 @@ class BaseLabeledMhdModel(BaseMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BaseLabeledMhdModel":
         item: BaseLabeledMhdModel = handler(v)
-        if not item.id_:
-            item.id_ = item.get_unique_id(
-                prefix="mhd", namespace=NAMESPACE_VALUE, type_=item.type_
-            )
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"mhd--{item.type_}--{identifier}"
         if not item.label:
             item.label = item.get_label()
         return item
 
     def get_label(self) -> str:
         return self.id_ or ""
-
-
-class IdentifiableMhdEntityModel(BaseLabeledMhdModel):
-    additional_identifier_list: Annotated[
-        None | list[CvTerm],
-        Field(description="List of additional database or secondary identifiers."),
-    ] = None
-
-
-class GenericMhdEntityModel(BaseLabeledMhdModel):
-    model_config = ConfigDict(
-        populate_by_name=True,
-        json_schema_serialization_defaults_required=True,
-        field_title_generator=lambda field_name, field_info: to_pascal(
-            field_name.replace("_", " ").strip()
-        ),
-        json_schema_extra={
-            "unique_value_contribution": [
-                ("global_identifier",),
-                ("additional_identifier_list",),
-                ("repository_identifier",),
-            ]
-        },
-    )
-    global_identifier: Annotated[
-        None | CvTerm,
-        Field(description="Unique identifier in the source repository."),
-    ] = None
-    additional_identifier_list: Annotated[
-        None | list[CvTerm],
-        Field(
-            description="List of additional database or secondary identifiers for the node."
-        ),
-    ] = None
 
 
 class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
@@ -223,26 +203,20 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BasicCvTermModel":
         item: BasicCvTermModel = handler(v)
-        if not item.id_:
-            item.id_ = item.get_unique_id(
-                prefix="cv", namespace=NAMESPACE_VALUE, type_=item.type_
-            )
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"cv--{item.type_}--{identifier}"
         if not item.label:
             item.label = item.get_label()
         return item
-
-    def get_unique_id(self, namespace: str, prefix: str, type_: str):
-        if not type_:
-            raise ValueError("type is not defined to create unique id")
-        identifier_name = generate_unique_id(source=self, type_=type_)
-        identifier = str(uuid.uuid5(namespace, name=identifier_name))
-        return f"{prefix}--{type_}--{identifier}"
 
     def get_label(self):
         return self.name or self.id_ or ""
 
     def __hash__(self) -> int:
-        return hash(self.id_)
+        return hash(self.get_unique_id())
 
 
 class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
@@ -255,49 +229,29 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
         ),
     ] = None
     label: Annotated[None | str, Field(exclude=True)] = None
-    type_: Annotated[MhdObjectType, Field(alias="type")] = "cv-term-value"
+    type_: Annotated[MhdObjectType, Field(frozen=False, alias="type")] = "cv-term-value"
 
     @model_validator(mode="wrap")
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BasicCvTermValueModel":
         item: BasicCvTermValueModel = handler(v)
-        if not item.id_:
-            item.id_ = item.get_unique_id(
-                prefix="cv-value", namespace=NAMESPACE_VALUE, type_=item.type_
-            )
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"cv-value--{item.type_}--{identifier}"
         if not item.label:
             item.label = item.get_label()
         return item
-
-    def get_unique_id(self, namespace: str, prefix: str, type_: str):
-        if not type_:
-            raise ValueError("type is not defined to create unique id")
-        identifier_name = generate_unique_id(source=self, type_=type_)
-        identifier = str(uuid.uuid5(namespace, name=identifier_name))
-        return f"{prefix}--{type_}--{identifier}"
 
     def get_label(self):
         return self.value or self.name or self.id_ or ""
 
     def __hash__(self) -> int:
-        return hash(self.id_)
+        return hash(self.get_unique_id())
 
 
 class BaseMhdRelationship(BaseMhdModel):
-    model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                (
-                    "source_ref",
-                    "relationship_name",
-                    "target_ref",
-                    "source_role",
-                    "target_role",
-                ),
-                ("repository_identifier",),
-            ]
-        }
-    )
     id_: Annotated[None | MhdRelationshipObjectId, Field(alias="id")] = None
     source_ref: MhdObjectId | CvTermObjectId | CvTermValueObjectId
     relationship_name: str
@@ -309,11 +263,15 @@ class BaseMhdRelationship(BaseMhdModel):
     @classmethod
     def validate_model(cls, v: Any, handler) -> "BaseMhdRelationship":
         item: BaseMhdRelationship = handler(v)
-        if not item.id_:
-            item.id_ = item.get_unique_id(
-                prefix="rel", namespace=NAMESPACE_VALUE, type_=item.type_
-            )
+        if not item.type_:
+            raise ValueError("type_ is required")
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
+        identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
+        item.id_ = item.id_ or f"rel--{item.type_}--{identifier}"
         return item
+
+    def get_unique_id(self):
+        return f"{self.source_ref or ''},{self.relationship_name or ''},{self.target_ref or ''}"
 
     def get_label(self):
         return self.relationship_name

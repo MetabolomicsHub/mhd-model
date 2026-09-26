@@ -32,10 +32,7 @@ from mhd_model.model.v0_1.dataset.profiles.legacy.graph_validation import (
 from mhd_model.model.v0_1.dataset.profiles.ms.graph_validation import (
     MHD_MS_PROFILE_V0_1,
 )
-from mhd_model.model.v0_1.dataset.validation.base import (
-    MhdModelValidationContext,
-    MhdModelValidator,
-)
+from mhd_model.model.v0_1.dataset.validation.base import MhdModelValidator
 from mhd_model.schema_utils import load_mhd_json_schema
 from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
@@ -46,47 +43,27 @@ logger = logging.getLogger(__name__)
 
 
 class MhdFileValidator_v0_1(BaseMhdFileValidator):
-    def validate(
-        self,
-        mhd_file_json: dict[str, Any],
-        mhd_model_validation_context: None | MhdModelValidationContext = None,
-    ) -> list[str]:
-        errors = validate_mhd_file_json(
-            mhd_file_json, mhd_model_validation_context=mhd_model_validation_context
-        )
+    def validate(self, mhd_file_json: dict[str, Any]) -> list[str]:
+        errors = validate_mhd_file_json(mhd_file_json)
         return [f"{k}: {v.message}" for k, v in errors]
 
-    def validate_file(
-        self,
-        mhd_file_path: str | pathlib.Path,
-        mhd_model_validation_context: None | MhdModelValidationContext = None,
-    ) -> list[str]:
+    def validate_file(self, mhd_file_path: str | pathlib.Path) -> list[str]:
         if isinstance(mhd_file_path, str):
             mhd_file_path = pathlib.Path(mhd_file_path)
         json_data = load_json(mhd_file_path)
-        return self.validate(
-            json_data, mhd_model_validation_context=mhd_model_validation_context
-        )
+        return self.validate(json_data)
 
 
-def validate_mhd_file(
-    file_path: str,
-    mhd_model_validation_context: None | MhdModelValidationContext = None,
-):
+def validate_mhd_file(file_path: str):
     json_data = load_json(file_path)
-    return validate_mhd_file_json(
-        json_data, mhd_model_validation_context=mhd_model_validation_context
-    )
+    return validate_mhd_file_json(json_data)
 
 
 def validate_mhd_file_json(
     json_data: dict[str, Any],
-    mhd_model_validation_context: None | MhdModelValidationContext = None,
 ) -> list[tuple[str, jsonschema.ValidationError]]:
     mhd_validator = MhdFileValidator()
-    errors = mhd_validator.validate(
-        json_data, mhd_model_validation_context=mhd_model_validation_context
-    )
+    errors = mhd_validator.validate(json_data)
 
     messages = set()
     validation_errors: list[tuple[str, jsonschema.ValidationError]] = []
@@ -130,7 +107,6 @@ def validate_mhd_model(
     validate_announcement_file: bool = True,
     announcement_file_path: None | Path = None,
     mhd_file_url: None | str = None,
-    mhd_model_validation_context: None | MhdModelValidationContext = None,
 ):
     success = False
     all_validation_errors = {}
@@ -144,9 +120,7 @@ def validate_mhd_model(
             f"MHD model file '{mhd_model_filename}' not found"
         ]
 
-    validation_errors = validate_mhd_file(
-        str(mhd_file_path), mhd_model_validation_context=mhd_model_validation_context
-    )
+    validation_errors = validate_mhd_file(str(mhd_file_path))
     if validation_errors:
         logger.error("MHD model validation errors found for %s", repository_study_id)
         for error in validation_errors:
@@ -204,9 +178,7 @@ MHD_PROFILE_VALIDATIONS_V0_1 = {
 
 
 def new_validator(
-    schema_uri: None | str,
-    profile_uri: None | str,
-    mhd_model_validation_context: None | MhdModelValidationContext = None,
+    schema_uri: None | str, profile_uri: None | str
 ) -> protocols.Validator:
     if not schema_uri:
         schema_uri = SUPPORTED_SCHEMA_MAP.schemas[
@@ -224,10 +196,7 @@ def new_validator(
             _, schema_file = load_mhd_json_schema(profile_uri)
             node_validation = MHD_PROFILE_VALIDATIONS_V0_1[profile_uri]
 
-            mhd_model_validator = MhdModelValidator(
-                node_validation,
-                mhd_model_validation_context=mhd_model_validation_context,
-            )
+            mhd_model_validator = MhdModelValidator(node_validation)
 
             validator = validators.extend(
                 jsonschema.Draft202012Validator,
@@ -261,16 +230,10 @@ def get_profile(schema_uri: None | str, profile_uri: None | str) -> protocols.Va
 
 
 class MhdFileValidator:
-    def validate(
-        self,
-        json_file: dict[str, Any],
-        mhd_model_validation_context: None | MhdModelValidationContext = None,
-    ) -> list[jsonschema.ValidationError]:
+    def validate(self, json_file: dict[str, Any]) -> list[jsonschema.ValidationError]:
         profile: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_file)
         validator: jsonschema.protocols.Validator = new_validator(
-            profile.schema_name,
-            profile.profile_uri,
-            mhd_model_validation_context=mhd_model_validation_context,
+            profile.schema_name, profile.profile_uri
         )
         if not validator:
             logger.error(
