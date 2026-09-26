@@ -64,9 +64,19 @@ class MhdFileValidator_v1_0(BaseMhdFileValidator):
         if isinstance(mhd_file_path, str):
             mhd_file_path = pathlib.Path(mhd_file_path)
         json_data = load_json(mhd_file_path)
-        return self.validate(
-            json_data, mhd_model_validation_context=mhd_model_validation_context
-        )
+        context = mhd_model_validation_context
+        repository_name = json_data.get("repository_name", "")
+        repository_dataset_identifier = json_data.get("repository_identifier", "")
+        if not context:
+            context = MhdModelValidationContext(
+                repository_name=repository_name,
+                repository_dataset_identifier=repository_dataset_identifier,
+            )
+        else:
+            context.repository_name = repository_name
+            context.repository_dataset_identifier = repository_dataset_identifier
+
+        return self.validate(json_data, mhd_model_validation_context=context)
 
 
 def validate_mhd_file(

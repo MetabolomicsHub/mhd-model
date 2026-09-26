@@ -17,6 +17,7 @@ class MhdConfigModel: ...
 
 def generate_id_from_property(
     source: MhdConfigModel,
+    prefix: str,
     type_: str,
     property_name: str = "repository_identifier",
 ) -> str:
@@ -44,13 +45,14 @@ def generate_id_from_property(
         raise ValueError(f"{source.__class__} has no field named {property_name}")
 
     if value:
-        return f"type={type_}&{property_name}={value.lower().strip()}"
+        return f"prefix={prefix}&type={type_}&{property_name}={value.lower().strip()}"
 
     raise ValueError(f"{source.__class__} {property_name} value is not defined")
 
 
 def generate_unique_id(
     source: BaseModel,
+    prefix: None | str,
     type_: None | str,
     contribution: None | list[tuple[str, ...]] = None,
     unique_value_contribution_field: None | str = "unique_value_contribution",
@@ -60,6 +62,20 @@ def generate_unique_id(
         contribution: list[tuple[str, ...]] = (
             extra.get(unique_value_contribution_field) or []
         )
+    field_names_list = []
+    new_list = None
+    for x in contribution:
+        if isinstance(x, str):
+            if new_list is None:
+                new_list = []
+            new_list.append(x)
+        elif isinstance(x, (tuple, list)):
+            new_list = None
+            if new_list:
+                field_names_list.append(new_list)
+            field_names_list.append(x)
+    if new_list:
+        field_names_list.append(new_list)
 
     for field_names in contribution:
         values = []
@@ -89,9 +105,13 @@ def generate_unique_id(
             values.append((field_name.lower().strip(), value.lower().strip()))
         non_empty_values = [x[1] for x in values if x[1]]
         if non_empty_values:
+            values = []
+            if prefix:
+                values.append(("prefix", prefix))
             if type_:
-                return f"type={type_}&" + "&".join([f"{x[0]}={x[1]}" for x in values])
-            return "&".join([f"{x[0]}='{x[1]}'" for x in values])
+                values.append(("type", prefix))
+            values.extend(non_empty_values)
+            return "&".join([f"{x[0]}={x[1]}" for x in values])
 
     raise ValueError(f"{source.__class__} has no valid values to create unique id")
 
@@ -111,7 +131,9 @@ class MhdConfigModel(BaseModel):
     def get_unique_id(self, namespace: str, prefix: str, type_: str):
         if not type_:
             raise ValueError("type is not defined to create unique id")
-        identifier_name = generate_id_from_property(source=self, type_=type_)
+        identifier_name = generate_id_from_property(
+            source=self, prefix=prefix, type_=type_
+        )
         identifier = str(uuid.uuid5(namespace, name=identifier_name))
         return f"{prefix}--{type_}--{identifier}"
 
@@ -156,7 +178,7 @@ class CvTerm(MhdConfigModel):
         return self.get_label()
 
     def get_unique_id(self):
-        return generate_unique_id(source=self, type_=None)
+        return generate_unique_id(source=self, prefix=None, type_=None)
 
 
 class UnitCvTerm(CvTerm): ...
@@ -203,7 +225,7 @@ class CvTermValue(CvTerm, QuantitativeValue):
         return f"[{self.source or ''}, {self.accession or ''}, {self.name or ''}, {value_key or ''}, {unit_key or ''}]"
 
     def get_unique_id(self):
-        return generate_unique_id(source=self, type_=None)
+        return generate_unique_id(source=self, prefix=None, type_=None)
 
 
 class CvTermKeyValue(MhdConfigModel):

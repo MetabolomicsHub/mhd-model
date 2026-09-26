@@ -377,7 +377,7 @@ class GraphEnabledBaseDataset(CvEnabledDataset, BaseLabeledMhdModel):
     def get_unique_id(self, namespace: str, prefix: str, type_: str):
         if not type_:
             raise ValueError("type is not defined to create unique id")
-        identifier_name = generate_unique_id(source=self, type_=type_)
+        identifier_name = generate_unique_id(source=self, prefix=prefix, type_=type_)
         identifier = str(uuid.uuid5(namespace, name=identifier_name))
         return f"{prefix}--{type_}--{identifier}"
 

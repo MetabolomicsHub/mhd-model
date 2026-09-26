@@ -11,6 +11,8 @@ from mhd_model.shared.validation.registry import (
 
 
 class MhdModelValidationContext(BaseModel):
+    repository_name: None | str = None
+    repository_dataset_identifier: None | str = None
     node_type_class_mapping: dict[str, type[MhdConfigModel]] = {}
     relationship_type_class_mapping: dict[str, type[MhdConfigModel]] = {}
 
