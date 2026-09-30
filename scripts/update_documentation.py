@@ -85,17 +85,17 @@ def update_schema_files() -> None:
             "announcement-v1.0.ms-profile.json",
         ),
         (
-            v1_0_mhd_base_profile.MhDatasetBaseProfile,
+            v1_0_mhd_base_profile.MhDatasetBaseProfile_v1_0,
             "v1_0",
             "common-data-model-v1.0.schema.json",
         ),
         (
-            v1_0_mhd_legacy_profile.MhDatasetLegacyProfile,
+            v1_0_mhd_legacy_profile.MhDatasetLegacyProfile_v1_0,
             "v1_0",
             "common-data-model-v1.0.legacy-profile.json",
         ),
         (
-            v1_0_mhd_ms_profile.MhDatasetMsProfile,
+            v1_0_mhd_ms_profile.MhDatasetMsProfile_v1_0,
             "v1_0",
             "common-data-model-v1.0.ms-profile.json",
         ),

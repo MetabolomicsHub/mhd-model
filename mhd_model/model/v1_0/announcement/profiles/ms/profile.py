@@ -16,8 +16,8 @@ from mhd_model.model.v1_0.announcement.profiles.base.profile import (
     AnnouncementSupplementaryFile,
 )
 from mhd_model.model.v1_0.announcement.profiles.ms import fields as ms_fields
+from mhd_model.shared.base import CvTerm, MhdObjectType
 from mhd_model.shared.fields import Authors, MhdIdentifier
-from mhd_model.shared.model import CvTerm
 
 
 class MsAnnouncementMetadataFile(AnnouncementMetadataFile):
@@ -183,7 +183,7 @@ class MsAnnouncementProtocol(AnnouncementProtocol):
             description="List of protocol parameters specified as extended CV key-value pairs."
         ),
     ] = None
-    relates_assay_names: Annotated[
+    related_assay_names: Annotated[
         None | list[str],
         Field(description="List of assay names that utilize this protocol."),
     ] = None
@@ -201,6 +201,15 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
     - Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),
       publications (formatted DOI and PubMed IDs), metabolites, and protocols.
     """
+
+    type_: Annotated[
+        None | MhdObjectType,
+        Field(
+            frozen=True,
+            description="The type property identifies type of the file",
+            alias="type",
+        ),
+    ] = "announcement-ms"
 
     mhd_identifier: Annotated[
         MhdIdentifier,
@@ -334,17 +343,17 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
     ] = None
 
     study_factors: Annotated[
-        ms_fields.StudyFactors,
+        None | ms_fields.StudyFactors,
         Field(
             description="Experimental study factors varied across mass spectrometry samples."
         ),
-    ]
+    ] = None
     characteristic_values: Annotated[
-        ms_fields.ExtendedCharacteristicValues,
+        None | ms_fields.ExtendedCharacteristicValues,
         Field(
             description="Sample characteristics and metadata attributes for mass spectrometry samples."
         ),
-    ]
+    ] = None
     protocols: Annotated[
         None | ms_fields.Protocols,
         Field(
@@ -367,11 +376,11 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
         ),
     ] = None
     raw_data_file_list: Annotated[
-        list[MsAnnouncementRawDataFile],
+        None | list[MsAnnouncementRawDataFile],
         Field(
             description="List of mass spectrometry raw data files included in the dataset announcement."
         ),
-    ]
+    ] = None
     derived_data_file_list: Annotated[
         None | list[MsAnnouncementDerivedDataFile],
         Field(

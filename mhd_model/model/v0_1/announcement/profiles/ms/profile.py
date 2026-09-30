@@ -16,8 +16,8 @@ from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementSupplementaryFile,
 )
 from mhd_model.model.v0_1.announcement.profiles.ms import fields as ms_fields
+from mhd_model.model.v0_1.base import CvTerm
 from mhd_model.shared.fields import Authors, MhdIdentifier
-from mhd_model.shared.model import CvTerm
 
 
 class MsAnnouncementMetadataFile(AnnouncementMetadataFile):
@@ -183,7 +183,7 @@ class MsAnnouncementProtocol(AnnouncementProtocol):
             description="List of protocol parameters specified as extended CV key-value pairs."
         ),
     ] = None
-    relates_assay_names: Annotated[
+    related_assay_names: Annotated[
         None | list[str],
         Field(description="List of assay names that utilize this protocol."),
     ] = None

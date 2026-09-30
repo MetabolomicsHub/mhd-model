@@ -3,13 +3,14 @@ from typing import Annotated
 
 from pydantic import AnyUrl, Field, HttpUrl
 
-from mhd_model.shared.model import (
-    CvEnabledDataset,
+from mhd_model.shared.base import (
     CvTerm,
     CvTermKeyValue,
     CvTermValue,
     MhdConfigModel,
+    MhdObjectType,
 )
+from mhd_model.shared.model import CvEnabledDataset
 
 
 class AnnouncementBaseModel(MhdConfigModel):
@@ -187,7 +188,7 @@ class AnnouncementProtocol(AnnouncementBaseModel):
             description="List of protocol parameters specified as key-value CV pairs."
         ),
     ] = None
-    relates_assay_names: Annotated[
+    related_assay_names: Annotated[
         None | list[str],
         Field(description="List of assay names that utilize this protocol."),
     ] = None
@@ -195,6 +196,15 @@ class AnnouncementProtocol(AnnouncementBaseModel):
 
 class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
     """Base Profile for dataset announcement files."""
+
+    type_: Annotated[
+        None | MhdObjectType,
+        Field(
+            frozen=True,
+            description="The type property identifies type of the file",
+            alias="type",
+        ),
+    ] = "announcement-base"
 
     created_at: Annotated[
         None | datetime.datetime,
@@ -217,6 +227,13 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
         AnyUrl,
         Field(description="URL to the primary MHD metadata file for this dataset."),
     ]
+    mhd_metadata_file_hashes: Annotated[
+        None | list[CvTermValue],
+        Field(
+            description="The cryptographic hash values of the MHD file content, "
+            "used to verify file integrity and ensure that the file has not been altered. "
+        ),
+    ] = None
     dataset_url_list: Annotated[
         list[AnyUrl],
         Field(

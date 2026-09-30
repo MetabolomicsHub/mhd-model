@@ -1,4 +1,4 @@
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.base import CvTerm
 from mhd_model.shared.validation.definitions import ProfileValidationGroup
 from mhd_model.shared.validation.registry import ProfileValidation
 

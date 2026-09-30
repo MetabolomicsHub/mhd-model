@@ -79,6 +79,9 @@ class NodeValidation(ValidationId):
         return item
 
 
+class ReferenceNodeValidation(NodeValidation): ...
+
+
 class CvNodeValidation(NodeValidation):
     has_value: Annotated[bool, Field()] = False
     value_required: Annotated[bool, Field()] = False

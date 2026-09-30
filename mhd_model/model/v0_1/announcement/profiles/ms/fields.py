@@ -8,6 +8,7 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckCvTermKeyValue,
     CheckCvTermKeyValues,
 )
+from mhd_model.model.v0_1.base import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.model.v0_1.rules.managed_cv_term_rules import (
     MANAGED_CHARACTERISTIC_VALUE_RULES,
     MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
@@ -25,7 +26,6 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
 )
-from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
     AllowAnyCvTerm,

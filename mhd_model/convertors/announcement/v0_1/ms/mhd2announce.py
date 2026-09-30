@@ -23,6 +23,12 @@ from mhd_model.model.v0_1.announcement.profiles.base.profile import (
     AnnouncementSupplementaryFile,
 )
 from mhd_model.model.v0_1.announcement.profiles.ms.profile import AnnouncementMsProfile
+from mhd_model.model.v0_1.base import (
+    CvDefinition,
+    CvTerm,
+    CvTermKeyValue,
+    CvTermValue,
+)
 from mhd_model.model.v0_1.dataset.profiles.base import graph_nodes
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdModel,
@@ -31,15 +37,9 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
 )
 from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import CvTermValueObject
 from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
-from mhd_model.model.v0_1.rules.cv_definitions import (
-    CONTROLLED_CV_DEFINITIONS,
-    OTHER_CONTROLLED_CV_DEFINITIONS,
-)
-from mhd_model.shared.model import (
-    CvDefinition,
-    CvTerm,
-    CvTermKeyValue,
-    CvTermValue,
+from mhd_model.shared.cv_definitions import (
+    COMMON_CV_DEFINITIONS,
+    OTHER_COMMON_CV_DEFINITIONS,
 )
 
 logger = logging.getLogger(__name__)
@@ -513,33 +513,33 @@ def create_ms_announcement_file(
                 if item.source_ref not in identification_map:
                     identification_map[item.source_ref] = []
                 identification_map[item.source_ref].append(identification)
+    reported_metabolites = []
+    for reported_metabolite_type in ("metabolite", "molecular-entity"):
+        if reported_metabolite_type in type_map:
+            for ref in type_map[reported_metabolite_type]:
+                met = type_map[reported_metabolite_type][ref]
+                item = AnnouncementReportedMetabolite(name=met.name)
+                reported_metabolites.append(item)
 
-    if "metabolite" in type_map:
-        reported_metabolites = []
-        for ref in type_map["metabolite"]:
-            met = type_map["metabolite"][ref]
-            item = AnnouncementReportedMetabolite(name=met.name)
-            reported_metabolites.append(item)
+                if ref in identification_map:
+                    identifications = identification_map[ref]
+                    item.database_identifiers = [
+                        CvTermValue.model_validate(x.model_dump(by_alias=True))
+                        for x in identifications
+                    ]
 
-            if ref in identification_map:
-                identifications = identification_map[ref]
-                item.database_identifiers = [
-                    CvTermValue.model_validate(x.model_dump(by_alias=True))
-                    for x in identifications
-                ]
-
-        if reported_metabolites:
-            announcement.reported_metabolites = reported_metabolites
-            announcement.reported_metabolites.sort(key=lambda x: x.name)
+    if reported_metabolites:
+        announcement.reported_metabolites = reported_metabolites
+        announcement.reported_metabolites.sort(key=lambda x: x.name)
     cv_sources = set()
     collect_cv_term_sources(announcement, cv_sources)
     cv_sources = list(cv_sources)
     cv_sources.sort()
     for source in cv_sources:
-        if source in CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(CONTROLLED_CV_DEFINITIONS[source])
-        elif source in OTHER_CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(OTHER_CONTROLLED_CV_DEFINITIONS[source])
+        if source in COMMON_CV_DEFINITIONS:
+            announcement.cv_definitions.append(COMMON_CV_DEFINITIONS[source])
+        elif source in OTHER_COMMON_CV_DEFINITIONS:
+            announcement.cv_definitions.append(OTHER_COMMON_CV_DEFINITIONS[source])
         else:
             announcement.cv_definitions.append(
                 CvDefinition(label=source, alternative_labels=[source.lower()])

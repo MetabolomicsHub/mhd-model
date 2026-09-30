@@ -1,4 +1,5 @@
 from mhd_model.model.definitions import MHD_MODEL_V0_1_LEGACY_PROFILE_NAME
+from mhd_model.model.v0_1.base import CvTerm
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     RelationshipValidation,
@@ -21,7 +22,6 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
 )
-from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,

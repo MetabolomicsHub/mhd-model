@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 
 from mhd_model.log_utils import set_basic_logging_config
-from mhd_model.model.v0_1.dataset.validation.validator import validate_mhd_model
+from mhd_model.validation import validate_mhd_model
 
 logger = logging.getLogger(__name__)
 
@@ -12,22 +12,15 @@ if __name__ == "__main__":
 
     # study_id = "MSV000099062"
     # file_path = f"tests/data/mhd_data/legacy/{study_id}.mhd.json"
-    study_id = "ST00001"
-    file_path = Path("ST00001.mhd.json")
-    success, validation_errors = validate_mhd_model(
-        study_id, file_path, validate_announcement_file=True
-    )
+    study_id = "MTBLS30009012"
+    file_path = Path("MTBLS30009012.mhd.json")
+    validation_errors = validate_mhd_model(file_path)
 
-    if not success:
-        for key, errors in validation_errors.items():
-            logger.info("\n\n\n%s", "-" * 100)
-            logger.info(
-                "Found %s validation errors in the MHD file for study %s.",
-                len(errors),
-                study_id,
-            )
-            for idx, (error_path, error) in enumerate(errors, start=1):
-                logger.info("%s %s %s %s", key, idx, error_path, error.message)
+    if validation_errors:
+        logger.info("\n\n\n%s", "-" * 100)
+        for x in validation_errors:
+            logger.info(x)
+
         logger.info("\n%s", "-" * 100)
     else:
         logger.info("MHD file for study %s is validated successfully.", study_id)

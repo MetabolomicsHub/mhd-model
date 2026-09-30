@@ -128,7 +128,6 @@ graph LR
 |assay|metadata_file_ref|
 |assay|name|
 |assay|omics_type_ref|
-|assay|repository_identifier|
 |assay|sample_run_refs|
 |assay|technology_type_ref|
 |characteristic-definition|characteristic_type_ref|
@@ -181,27 +180,29 @@ The following nodes are required with the specified value.
 
 ### Assay
 
-[OBI, OBI:0000070, assay] A planned process that has the objective to produce information<br>about a material entity by examining it. </br></br>Assay node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+Basic analytical assay node representing an experimental measurement procedure. </br></br>Assay node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|Its value MUST be <code>**assay**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|Its value MUST be <code>**assay**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|An assay identifier that uniquely identifies the assay in repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the assay. It SHOULD be unique in a study<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**metadata_file_ref**|**required**|<code>*MhdObjectId*<code>|Reference ID to the metadata file describing the assay<br>Target node type: <code>**metadata-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**metadata-file**</code></code>|
-|**technology_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the technology type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
-|**assay_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the assay type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
-|**measurement_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the measurement type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MS, MS:1003904, untargeted analysis],<br>* [MS, MS:1003905, targeted analysis],<br>* [MS, MS:1003906, semi-targeted analysis]</code>|
-|**omics_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the omics type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [EDAM, EDAM:topic_4065, Exposomics]</code>|
-|**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
-|**sample_run_refs**|**required**|<code>*list[MhdObjectId]*<code>|List of sample run object IDs associated with the assay<br>Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
+|**metadata_file_ref**|**required**|<code>*str*<code>|Reference ID to the metadata file describing the assay<br>Target node type: <code>**metadata-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**metadata-file**</code></code>|
+|**technology_type_ref**|**required**|<code>*str*<code>|Reference ID to the technology type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
+|**assay_type_ref**|**required**|<code>*str*<code>|Reference ID to the assay type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
+|**measurement_type_ref**|**required**|<code>*str*<code>|Reference ID to the measurement type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MS, MS:1003904, untargeted analysis],<br>* [MS, MS:1003905, targeted analysis],<br>* [MS, MS:1003906, semi-targeted analysis]</code>|
+|**omics_type_ref**|**required**|<code>*str*<code>|Reference ID to the omics type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [EDAM, EDAM:topic_4065, Exposomics]</code>|
+|**protocol_refs**|optional|<code>*list[Annotated]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 
 
 **Node Relationships**
@@ -234,15 +235,18 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**characteristic-definition**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**characteristic-definition**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the characteristic attribute<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [MONDO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
+|**characteristic_type_ref**|**required**|<code>*str*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [MONDO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
 
 
 **Node Relationships**
@@ -265,6 +269,40 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |characteristic-value|instance-of|has-instance|characteristic-definition|1|N|**Required min count in the dataset: 2.**|
 |study|has-characteristic-definition|used-in|characteristic-definition|2|N|**Required min count in the dataset: 2.**|
 
+### Default
+
+Node or link reference defined in other MHD common data model file.<br>The specified referenced_id must be already defined in the referenced file. </br></br>Default node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+
+**Properties**
+
+|Property Name|Necessity|Type|Description|
+|-------------|---------|----|-----------|
+|**type**|optional|<code>*str*<code>|The type property identifies the type of MHD Object. It must be `referenced-object`<br>**Default value**: <code>reference</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies the type of MHD Object|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**referenced_id**|**required**|<code>*str or str or str or str or str or str*<code>|Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_|
+|**referenced_type**|**required**|<code>*str*<code>|Type of referenced object|
+|**dataset_id**|optional|<code>*str*<code>|Id of dataset contains referenced object|
+|**dataset_uri**|optional|<code>*str*<code>|URI of dataset contains referenced object|
+|**dataset_repository_identifier**|**required**|<code>*str*<code>|Dataset Repository Identifier|
+|**dataset_repository_revision**|optional|<code>*str*<code>|Dataset revision assigned by repository|
+|**dataset_mhd_identifier**|optional|<code>*str*<code>|MHD Identifier of the dataset|
+|**dataset_mhd_revision**|optional|<code>*int*<code>|Dataset revision assigned by MetabolomicsHub|
+
+
+**Node Relationships**
+
+No relationships defined.
+
+
+**Reverse Node Relationships**
+
+No relationships defined.
+
 ### Derived Data File
 
 [MS, MS:1003084, processed data file]<br>File that contains data that has been substantially processed or<br>transformed from what was originally acquired by an instrument. </br></br>Derived Data File node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
@@ -273,18 +311,21 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**derived-data-file**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**derived-data-file**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
-|**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**file_hashes**|optional|<code>*list[CvTermValue]*<code>|The cryptographic hash value of the file content, used to verify file integrity and ensure that the file has not been altered. e.g., [MS,  MS:1003151, SHA-256, 414e1797ec75b9dd6ce6ad33fb73f4b8cea2523c68bf14027dcd1d54ff953eba]|
+|**format_ref**|optional|<code>*str*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**compression_format_refs**|optional|<code>*list[Annotated]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
@@ -316,15 +357,18 @@ Definition of an experimental factor varied across samples in a study. </br></br
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**factor-definition**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**factor-definition**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the factor definition in the repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the factor (e.g. dose, time point)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**factor_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the factor type CV term object<br>Target CV term type: <code>**factor-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**factor-type**</code><br>Allowed CV Terms:<br>* [MONDO, MONDO:0000001, disease]</code>|
+|**factor_type_ref**|**required**|<code>*str*<code>|Reference ID to the factor type CV term object<br>Target CV term type: <code>**factor-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**factor-type**</code><br>Allowed CV Terms:<br>* [MONDO, MONDO:0000001, disease]</code>|
 
 
 **Node Relationships**
@@ -347,47 +391,6 @@ Definition of an experimental factor varied across samples in a study. </br></br
 |factor-value|instance-of|has-instance|factor-definition|1|N||
 |study|has-factor-definition|used-in|factor-definition|0|N||
 
-### Metabolite
-
-Any intermediate or product resulting from metabolism.<br>The term 'metabolite' subsumes the classes commonly known as primary and secondary metabolites. [CHEBI, CHEBI:25212, metabolite] </br></br>Metabolite node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
-
-**Properties**
-
-|Property Name|Necessity|Type|Description|
-|-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metabolite**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
-|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier in the source repository|
-|**name**|**required**|<code>*str*<code>|Name or chemical label of the metabolite<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-
-
-**Node Relationships**
-
-|Source|Relationship|Reverse Name|Target|Min|Max|Description|
-|------|------------|------------|------|---|---|-----------|
-|metabolite|described-as|describes|descriptor|0|N||
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
-|metabolite|measured-in|measures|raw-data-file|0|N||
-|metabolite|reported-in|reports|study|1|N||
-|metabolite|reported-in|reports|metadata-file|0|N||
-|metabolite|reported-in|reports|result-file|0|N||
-
-
-**Reverse Node Relationships**
-
-|Source|Relationship|Reverse Name|Target|Min|Max|Description|
-|------|------------|------------|------|---|---|-----------|
-|descriptor|describes|described-as|metabolite|0|N||
-|metabolite-identifier|reported-identifier-of|identified-as|metabolite|1|N||
-|metadata-file|reports|reported-in|metabolite|0|N||
-|raw-data-file|measures|measured-in|metabolite|0|N||
-|result-file|reports|reported-in|metabolite|0|N||
-|study|reports|reported-in|metabolite|0|N||
-
 ### Metadata File
 
 Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. </br></br>Metadata File node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
@@ -396,18 +399,21 @@ Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. 
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metadata-file**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metadata-file**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
-|**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**file_hashes**|optional|<code>*list[CvTermValue]*<code>|The cryptographic hash value of the file content, used to verify file integrity and ensure that the file has not been altered. e.g., [MS,  MS:1003151, SHA-256, 414e1797ec75b9dd6ce6ad33fb73f4b8cea2523c68bf14027dcd1d54ff953eba]|
+|**format_ref**|optional|<code>*str*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**compression_format_refs**|optional|<code>*list[Annotated]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
@@ -422,7 +428,7 @@ Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. 
 |metadata-file|references|referenced-in|raw-data-file|0|N||
 |metadata-file|references|referenced-in|result-file|0|N||
 |metadata-file|references|referenced-in|supplementary-file|0|N||
-|metadata-file|reports|reported-in|metabolite|0|N||
+|metadata-file|reports|reported-in|molecular-entity|0|N||
 
 
 **Embedded Relationships**: <code>descriptor</code>
@@ -434,12 +440,56 @@ Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. 
 |------|------------|------------|------|---|---|-----------|
 |derived-data-file|referenced-in|references|metadata-file|0|N||
 |descriptor|describes|described-as|metadata-file|0|N||
-|metabolite|reported-in|reports|metadata-file|0|N||
 |metadata-file|referenced-in|references|metadata-file|0|N||
+|molecular-entity|reported-in|reports|metadata-file|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
 |study|has-metadata-file|describes|metadata-file|1|N|**Required min count in the dataset: 1.**|
 |supplementary-file|referenced-in|references|metadata-file|0|N||
+
+### Molecular Entity
+
+Any constitutionally or isotopically distinct atom, molecule, ion,<br>ion pair, radical, radical ion, complex, conformer etc.,<br>identifiable as a separately distinguishable entity. [CHEBI, CHEBI:23367, molecular entity] </br></br>Molecular Entity node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+
+**Properties**
+
+|Property Name|Necessity|Type|Description|
+|-------------|---------|----|-----------|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
+|**name**|**required**|<code>*str*<code>|Name or chemical label of the molecular entity<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+
+
+**Node Relationships**
+
+|Source|Relationship|Reverse Name|Target|Min|Max|Description|
+|------|------------|------------|------|---|---|-----------|
+|molecular-entity|described-as|describes|descriptor|0|N||
+|molecular-entity|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
+|molecular-entity|measured-in|measures|raw-data-file|0|N||
+|molecular-entity|reported-in|reports|study|1|N||
+|molecular-entity|reported-in|reports|metadata-file|0|N||
+|molecular-entity|reported-in|reports|result-file|0|N||
+
+
+**Reverse Node Relationships**
+
+|Source|Relationship|Reverse Name|Target|Min|Max|Description|
+|------|------------|------------|------|---|---|-----------|
+|descriptor|describes|described-as|molecular-entity|0|N||
+|metabolite-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
+|metadata-file|reports|reported-in|molecular-entity|0|N||
+|raw-data-file|measures|measured-in|molecular-entity|0|N||
+|result-file|reports|reported-in|molecular-entity|0|N||
+|study|reports|reported-in|molecular-entity|0|N||
 
 ### Organization
 
@@ -449,13 +499,16 @@ An institution, company, university, or department associated with a study or co
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**organization**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**organization**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the organization in the source repository<br>Validation Rule:<br> <code></code>|
+|**uri**|**required**|<code>*str*<code>|URI of the person. e.g., urn:mhd:MTBLS:MTBLS1:organization:ROR_02catss52|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the organization<br>Minimum length: <code>9</code><br>Validation Rule:<br> <code>Min Length: 9, Required</code>|
 |**ror_id**|optional|<code>*str*<code>|Research Organization Registry (ROR) identifier|
 |**department**|optional|<code>*str*<code>|Department within the organization|
@@ -494,15 +547,18 @@ Definition of an experimental parameter used within a protocol. </br></br>Parame
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**parameter-definition**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**parameter-definition**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the parameter definition in the repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the parameter<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**parameter_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the parameter type CV term object<br>Target node type: <code>**parameter-type**</code><br>Validation Rule:<br> <code>Target node type: <code>**parameter-type**</code></code>|
+|**parameter_type_ref**|**required**|<code>*str*<code>|Reference ID to the parameter type CV term object<br>Target node type: <code>**parameter-type**</code><br>Validation Rule:<br> <code>Target node type: <code>**parameter-type**</code></code>|
 
 
 **Node Relationships**
@@ -527,23 +583,26 @@ Definition of an experimental parameter used within a protocol. </br></br>Parame
 
 ### Person
 
-An individual human being (e.g. author, submitter, principal investigator). </br></br>Person node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
+An individual human being (e.g. author, submitter, principal investigator).<br>Its meaning is based on Schema.org's ``Person`` type: https://schema.org/Person </br></br>Person node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (unbounded) </code>
 
 **Properties**
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The value of this property MUST be 'person'<br>Its value MUST be <code>**person**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The value of this property MUST be 'person'<br>Its value MUST be <code>**person**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the person in the source repository|
+|**uri**|**required**|<code>*str*<code>|URI of the person. e.g., urn:mhd:MTBLS:MTBLS1:person:submitter1@ebi.ac.uk|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**full_name**|**required**|<code>*str*<code>|Full name of person<br>Minimum length: <code>5</code><br>Validation Rule:<br> <code>Min Length: 5, Required</code>|
 |**orcid**|optional|<code>*str*<code>|ORCID identifier of person<br><br>Example: <br><code>"1234-0001-8473-1713"<br>"1234-0001-8473-171X"</code>|
 |**email_list**|**required**|<code>*list[EmailStr]*<code>|Email addresses of person<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**phone_list**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>"['+449340917271', '00449340917271']"</code>|
+|**phone_list**|optional|<code>*list[str]*<code>|Phone number of person (with international country code)<br><br>Example: <br><code>"['+449999917271', '00449340917271']"</code>|
 |**address_list**|optional|<code>*list[str]*<code>|Addresses of person|
 
 
@@ -580,13 +639,16 @@ An overarching research project encompassing one or more studies. </br></br>Proj
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**project**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**project**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the project in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**title**|**required**|<code>*str*<code>|Title of the project<br>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**description**|optional|<code>*str*<code>|Summary description of the project goals and scope|
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>|List of grant identifiers funding the project|
@@ -626,17 +688,21 @@ A defined and standardized procedure followed to collect, prepare, or analyze sa
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**protocol**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**protocol**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the protocol in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
+|**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) for the protocol|
 |**name**|**required**|<code>*str*<code>|Name or title of the protocol|
-|**protocol_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the protocol type CV term object<br>Target CV term type: <code>**protocol-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**protocol-type**</code><br>Allowed CV Terms:<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [MS, MS:1000831, sample preparation]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**protocol_type_ref**|**required**|<code>*str*<code>|Reference ID to the protocol type CV term object<br>Target CV term type: <code>**protocol-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**protocol-type**</code><br>Allowed CV Terms:<br>* [CHMO, CHMO:0000470, mass spectrometry],<br>* [CHMO, CHMO:0001000, chromatography],<br>* [EFO, EFO:0005518, sample collection protocol],<br>* [EFO, EFO:0003969, treatment protocol],<br>* [MS, MS:1000831, sample preparation]<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**description**|optional|<code>*str*<code>|Detailed description of the protocol procedure<br>Validation Rule:<br> <code></code>|
-|**parameter_definition_refs**|optional|<code>*list[MhdObjectId]*<code>|List of parameter definition object IDs associated with the protocol<br>Target node type: <code>**parameter-definition**</code>|
+|**parameter_definition_refs**|optional|<code>*list[Annotated]*<code>|List of parameter definition object IDs associated with the protocol<br>Target node type: <code>**parameter-definition**</code>|
 
 
 **Node Relationships**
@@ -673,13 +739,16 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**publication**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**publication**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**title**|**required**|<code>*str*<code>|Title of the publication|
 |**doi**|**required**|<code>*str*<code>|Digital Object Identifier (DOI) for the publication|
 |**pubmed_id**|optional|<code>*str*<code>|PubMed unique identifier (PMID) of the publication|
@@ -713,18 +782,21 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**raw-data-file**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**raw-data-file**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
-|**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**file_hashes**|optional|<code>*list[CvTermValue]*<code>|The cryptographic hash value of the file content, used to verify file integrity and ensure that the file has not been altered. e.g., [MS,  MS:1003151, SHA-256, 414e1797ec75b9dd6ce6ad33fb73f4b8cea2523c68bf14027dcd1d54ff953eba]|
+|**format_ref**|optional|<code>*str*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**compression_format_refs**|optional|<code>*list[Annotated]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
@@ -734,7 +806,7 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |------|------------|------------|------|---|---|-----------|
 |raw-data-file|created-in|has-raw-data-file|study|1|N||
 |raw-data-file|described-as|describes|descriptor|0|N||
-|raw-data-file|measures|measured-in|metabolite|0|N||
+|raw-data-file|measures|measured-in|molecular-entity|0|N||
 |raw-data-file|referenced-in|references|metadata-file|0|N||
 
 
@@ -746,37 +818,9 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|raw-data-file|0|N||
-|metabolite|measured-in|measures|raw-data-file|0|N||
 |metadata-file|references|referenced-in|raw-data-file|0|N||
+|molecular-entity|measured-in|measures|raw-data-file|0|N||
 |study|has-raw-data-file|created-in|raw-data-file|0|N||
-
-### Referenced Object
-
-Node or link reference defined in other MHD common data model file.<br>The specified referenced_object_id must be already defined in the referenced file. </br></br>Referenced Object node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
-
-**Properties**
-
-|Property Name|Necessity|Type|Description|
-|-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId or CvTermObjectId or CvTermValueObjectId or MhdRelationshipObjectId*<code>|Unique identifier of graph node|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies the type of MHD Object. It must be `referenced-object`|
-|**referenced_object_id**|**required**|<code>*MhdObjectId or CvTermObjectId or CvTermValueObjectId or MhdRelationshipObjectId*<code>|Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_|
-|**referenced_type**|**required**|<code>*MhdObjectType*<code>|Type of referenced object|
-|**dataset_id**|optional|<code>*str*<code>|Id of dataset|
-|**dataset_repository_identifier**|**required**|<code>*str*<code>|Dataset Repository Identifier|
-|**dataset_repository_revision**|optional|<code>*str*<code>|Dataset revision assigned by repository|
-|**dataset_mhd_identifier**|optional|<code>*str*<code>|MHD Identifier of the dataset|
-|**dataset_mhd_revision**|optional|<code>*int*<code>|Dataset revision assigned by MetabolomicsHub|
-
-
-**Node Relationships**
-
-No relationships defined.
-
-
-**Reverse Node Relationships**
-
-No relationships defined.
 
 ### Result File
 
@@ -786,18 +830,21 @@ Processed result file (e.g. quantification or identification matrix). </br></br>
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**result-file**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**result-file**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
-|**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**file_hashes**|optional|<code>*list[CvTermValue]*<code>|The cryptographic hash value of the file content, used to verify file integrity and ensure that the file has not been altered. e.g., [MS,  MS:1003151, SHA-256, 414e1797ec75b9dd6ce6ad33fb73f4b8cea2523c68bf14027dcd1d54ff953eba]|
+|**format_ref**|optional|<code>*str*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**compression_format_refs**|optional|<code>*list[Annotated]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
@@ -809,7 +856,7 @@ Processed result file (e.g. quantification or identification matrix). </br></br>
 |result-file|created-in|has-result-file|study|1|N||
 |result-file|described-as|describes|descriptor|0|N||
 |result-file|referenced-in|references|metadata-file|0|N||
-|result-file|reports|reported-in|metabolite|0|N||
+|result-file|reports|reported-in|molecular-entity|0|N||
 
 
 **Embedded Relationships**: <code>descriptor</code>
@@ -821,8 +868,8 @@ Processed result file (e.g. quantification or identification matrix). </br></br>
 |------|------------|------------|------|---|---|-----------|
 |assay|has|created-in|result-file|0|N|A link to a result file.|
 |descriptor|describes|described-as|result-file|0|N||
-|metabolite|reported-in|reports|result-file|0|N||
 |metadata-file|references|referenced-in|result-file|0|N||
+|molecular-entity|reported-in|reports|result-file|0|N||
 |study|has-result-file|created-in|result-file|0|N||
 
 ### Sample
@@ -833,15 +880,18 @@ A biological sample prepared for analytical measurement. </br></br>Sample node i
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the sample in the repository<br>Validation Rule:<br> <code></code>|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the sample|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name or identifier of the sample<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the sample|
+|**biosamples_accession**|optional|<code>*str*<code>|Biosamples accession of the sample|
 
 
 **Node Relationships**
@@ -875,20 +925,23 @@ An analytical run representing the measurement of a sample on an instrument. </b
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the sample run in the repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|optional|<code>*str*<code>|Name or label of the sample run<br>Validation Rule:<br> <code></code>|
-|**sample_ref**|**required**|<code>*MhdObjectId*<code>|Reference ID to the sample object measured in this run<br>Target node type: <code>**sample**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample**</code></code>|
-|**sample_run_configuration_refs**|optional|<code>*list[MhdObjectId]*<code>|List of configuration object IDs for the sample run<br>Target node type: <code>**sample-run-configuration**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run-configuration**</code></code>|
-|**raw_data_file_refs**|**required**|<code>*list[MhdObjectId]*<code>|List of raw data file object IDs produced by the sample run<br>Target node type: <code>**raw-data-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**raw-data-file**</code></code>|
-|**derived_data_file_refs**|optional|<code>*list[MhdObjectId]*<code>|List of derived data file object IDs generated from the sample run<br>Target node type: <code>**derived-data-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**derived-data-file**</code></code>|
-|**result_file_refs**|optional|<code>*list[MhdObjectId]*<code>|List of result file object IDs produced from the sample run<br>Target node type: <code>**result-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**result-file**</code></code>|
-|**supplementary_file_refs**|optional|<code>*list[MhdObjectId]*<code>|List of supplementary file object IDs associated with the sample run<br>Target node type: <code>**supplementary-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**supplementary-file**</code></code>|
+|**sample_ref**|**required**|<code>*str*<code>|Reference ID to the sample object measured in this run<br>Target node type: <code>**sample**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample**</code></code>|
+|**sample_run_configuration_refs**|optional|<code>*list[Annotated]*<code>|List of configuration object IDs for the sample run<br>Target node type: <code>**sample-run-configuration**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run-configuration**</code></code>|
+|**raw_data_file_refs**|**required**|<code>*list[Annotated]*<code>|List of raw data file object IDs produced by the sample run<br>Target node type: <code>**raw-data-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**raw-data-file**</code></code>|
+|**derived_data_file_refs**|optional|<code>*list[Annotated]*<code>|List of derived data file object IDs generated from the sample run<br>Target node type: <code>**derived-data-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**derived-data-file**</code></code>|
+|**result_file_refs**|optional|<code>*list[Annotated]*<code>|List of result file object IDs produced from the sample run<br>Target node type: <code>**result-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**result-file**</code></code>|
+|**supplementary_file_refs**|optional|<code>*list[Annotated]*<code>|List of supplementary file object IDs associated with the sample run<br>Target node type: <code>**supplementary-file**</code><br>Validation Rule:<br> <code>Target node type: <code>**supplementary-file**</code></code>|
 
 
 **Node Relationships**
@@ -917,15 +970,18 @@ Configuration settings and instrument parameters used for a sample run. </br></b
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run-configuration**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run-configuration**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the sample run configuration in the repository|
-|**protocol_ref**|**required**|<code>*MhdObjectId*<code>|Reference ID to the protocol object defining the run configuration<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
-|**parameter_value_refs**|optional|<code>*list[MhdObjectId or CvTermObjectId or CvTermValueObjectId]*<code>|List of parameter value object IDs specifying run parameters<br>Target node type: <code>**parameter-value**</code><br>Validation Rule:<br> <code>Target node type: <code>**parameter-value**</code></code>|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
+|**protocol_ref**|**required**|<code>*str*<code>|Reference ID to the protocol object defining the run configuration<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
+|**parameter_value_refs**|optional|<code>*list[str or str or str]*<code>|List of parameter value object IDs specifying run parameters<br>Target node type: <code>**parameter-value**</code><br>Validation Rule:<br> <code>Target node type: <code>**parameter-value**</code></code>|
 
 
 **Node Relationships**
@@ -952,15 +1008,17 @@ A biological specimen collected from a subject. </br></br>Specimen node is optio
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**specimen**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**specimen**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the specimen in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1</code>|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the specimen|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name or identifier of the specimen<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the specimen|
 
 
 **Node Relationships**
@@ -991,16 +1049,18 @@ A biological research study or experiment comprising samples, protocols, and dat
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**study**</code>|
-|**created_by_ref**|**required**|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rules:<br> <code>Target node type: <code>**data-provider**</code><br>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**study**</code>|
+|**created_by_ref**|**required**|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rules:<br> <code>Target node type: <code>**data-provider**</code><br>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|**required**|<code>*str*<code>|Accession number or identifier in the source repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|**required**|<code>*str*<code>|Accession number or identifier in the source repository. If there is no repository short name in identifier, repository short name MUST be defined as prefix, such as <repository>:<identifier><br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**mhd_identifier**|**required**|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier for the study<br>Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
 |**doi**|optional|<code>*str*<code>|Digital Object Identifier (DOI) for the study|
-|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional database or secondary identifiers for the study|
 |**title**|**required**|<code>*str*<code>|Title of the study<br>Minimum length: <code>25</code><br>Validation Rule:<br> <code>Min Length: 25, Required</code>|
 |**description**|**required**|<code>*str*<code>|Detailed abstract or summary description of the study<br>Minimum length: <code>150</code><br>Validation Rule:<br> <code>Min Length: 150, Required</code>|
 |**submission_date**|**required**|<code>*datetime*<code>|Date and time when the study was submitted|
@@ -1009,7 +1069,7 @@ A biological research study or experiment comprising samples, protocols, and dat
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>|List of grant identifiers funding the study|
 |**dataset_url_list**|**required**|<code>*list[AnyUrl]*<code>|List of dataset access or repository URLs|
 |**related_dataset_list**|optional|<code>*list[KeyValue]*<code>|List of related dataset key-value pairs|
-|**protocol_refs**|**required**|<code>*list[MhdObjectId]*<code>|List of protocol object IDs used in the study<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
+|**protocol_refs**|**required**|<code>*list[Annotated]*<code>|Ordered list of protocol object IDs used in the study<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 
 
 **Node Relationships**
@@ -1036,7 +1096,7 @@ A biological research study or experiment comprising samples, protocols, and dat
 |study|has-supplementary-file|created-in|supplementary-file|0|N||
 |study|part-of|has-study|project|0|N||
 |study|provided-by|provides|data-provider|1|1||
-|study|reports|reported-in|metabolite|0|N||
+|study|reports|reported-in|molecular-entity|0|N||
 |study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
 
 
@@ -1054,8 +1114,8 @@ A biological research study or experiment comprising samples, protocols, and dat
 |descriptor|describes|described-as|study|0|N||
 |descriptor|keyword-of|has-repository-keyword|study|0|N||
 |factor-definition|used-in|has-factor-definition|study|1|N||
-|metabolite|reported-in|reports|study|1|N||
 |metadata-file|describes|has-metadata-file|study|1|1|**Required min count in the dataset: 1.**|
+|molecular-entity|reported-in|reports|study|1|N||
 |organization|funds|funded-by|study|0|N||
 |person|contributes|has-contributor|study|0|N||
 |person|principal-investigator-of|has-principal-investigator|study|0|N|**Required min count in the dataset: 1.**|
@@ -1077,16 +1137,18 @@ An individual organism or subject from which biological samples are derived. </b
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**subject**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**subject**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the subject in the repository<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1</code>|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the subject|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name or identifier of the subject<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**subject_type_ref**|optional|<code>*CvTermObjectId*<code>|Reference ID to the subject type CV term object<br>Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
-|**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional secondary identifiers for the subject|
+|**subject_type_ref**|optional|<code>*str*<code>|Reference ID to the subject type CV term object<br>Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
 
 
 **Node Relationships**
@@ -1121,18 +1183,21 @@ Supplementary document or asset file associated with the dataset. </br></br>Supp
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*MhdObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the object<br>Its value MUST be <code>**supplementary-file**</code>|
-|**created_by_ref**|optional|<code>*CvTermValueObjectId*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**supplementary-file**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
-|**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the file in the source repository|
+|**uri**|**required**|<code>*str*<code>|Unified resource name|
+|**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
+|**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
+|**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
 |**name**|**required**|<code>*str*<code>|Name of the file. File MUST be a file (not folder or link).It MAY be relative path (e.g., FILES/study.txt) or a file in a compressed file (e.g., FILES/study.zip#data/metadata.tsv)<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**size**|optional|<code>*int*<code>|The size of the file in bytes, representing the total amount of data contained in the file|
-|**hash_sha256**|optional|<code>*str*<code>|The SHA-256 cryptographic hash of the file content, used to verify file integrity and ensure that the file has not been altered|
-|**format_ref**|optional|<code>*CvTermObjectId*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
-|**compression_format_refs**|optional|<code>*list[CvTermObjectId]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**file_hashes**|optional|<code>*list[CvTermValue]*<code>|The cryptographic hash value of the file content, used to verify file integrity and ensure that the file has not been altered. e.g., [MS,  MS:1003151, SHA-256, 414e1797ec75b9dd6ce6ad33fb73f4b8cea2523c68bf14027dcd1d54ff953eba]|
+|**format_ref**|optional|<code>*str*<code>|The structure or encoding used to store the contents of the file, typically indicated by its extension (e.g., .txt, .csv, .mzML, .raw, etc.)<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
+|**compression_format_refs**|optional|<code>*list[Annotated]*<code>|The structure or encoding used to compress the contents of the file, typically indicated by its extension (e.g., .zip, .tar, .gz, etc.). List item order shows order of compressions. e.g. [tar format, gzip format] for tar.gz<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:format_1915, Format]<br>Allow parent (root) CV Term: No,<br>* [MS, MS:1001459, file format]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Placeholder Values: source='' accession=''</code>|
 |**extension**|optional|<code>*str*<code>|The extension of file. It MUST contain all extensions (e.g., .raw, .mzML, .d.zip, .raw.zip, etc.)|
 
 
@@ -1166,11 +1231,15 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Char
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**characteristic-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|**required**|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**characteristic-type**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1194,13 +1263,17 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**characteristic-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**value**|optional|<code>*str or int or float or Decimal or datetime*<code>|Value of CV term|
 |**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**characteristic-value**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1230,13 +1303,17 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**data-provider**</code>|
 |**value**|**required**|<code>*str*<code>|Value of CV term|
 |**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**data-provider**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1260,11 +1337,15 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Desc
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**descriptor**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**descriptor**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1278,7 +1359,7 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Desc
 |descriptor|describes|described-as|derived-data-file|0|N||
 |descriptor|describes|described-as|supplementary-file|0|N||
 |descriptor|describes|described-as|result-file|0|N||
-|descriptor|describes|described-as|metabolite|0|N||
+|descriptor|describes|described-as|molecular-entity|0|N||
 |descriptor|describes|described-as|organization|0|N||
 |descriptor|describes|described-as|person|0|N||
 |descriptor|describes|described-as|project|0|N||
@@ -1298,8 +1379,8 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Desc
 |------|------------|------------|------|---|---|-----------|
 |assay|described-as|describes|descriptor|0|N|A link to a descriptor that describes the assay.|
 |derived-data-file|described-as|describes|descriptor|0|N|A link to a descriptor that describes the derived data file.|
-|metabolite|described-as|describes|descriptor|0|N||
 |metadata-file|described-as|describes|descriptor|0|N||
+|molecular-entity|described-as|describes|descriptor|0|N||
 |organization|described-as|describes|descriptor|0|N||
 |person|described-as|describes|descriptor|0|N||
 |project|described-as|describes|descriptor|0|N||
@@ -1325,11 +1406,15 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Fact
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**factor-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|**required**|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**factor-type**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1353,13 +1438,17 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**factor-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**value**|optional|<code>*str or int or float or Decimal or datetime*<code>|Value of CV term|
 |**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**factor-value**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1388,27 +1477,31 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**metabolite-identifier**</code>|
-|**value**|**required**|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**value**|**required**|<code>*str or int or float or Decimal or datetime*<code>|Value of CV term|
 |**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**metabolite-identifier**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|metabolite-identifier|reported-identifier-of|identified-as|metabolite|1|N||
+|metabolite-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N||
+|molecular-entity|identified-as|reported-identifier-of|metabolite-identifier|0|N||
 
 ### Parameter Type
 
@@ -1418,11 +1511,15 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Para
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**parameter-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|**required**|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**parameter-type**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1446,13 +1543,17 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermValueObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term Value object<br>Its value MUST be <code>**parameter-value**</code>|
-|**value**|optional|<code>*str or int or float or Decimal*<code>|Value of CV term|
+|**value**|optional|<code>*str or int or float or Decimal or datetime*<code>|Value of CV term|
 |**unit**|optional|<code>*UnitCvTerm*<code>|Unit CV term if value has a unit|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**parameter-value**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1478,11 +1579,15 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Prot
 
 |Property Name|Necessity|Type|Description|
 |-------------|---------|----|-----------|
-|**id**|optional|<code>*CvTermObjectId*<code>|The id property uniquely identifies the object|
-|**type**|optional|<code>*MhdObjectType*<code>|The type property identifies type of the CV Term object<br>Its value MUST be <code>**protocol-type**</code>|
 |**source**|optional|<code>*str*<code>|Ontology source name|
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|**required**|<code>*str*<code>|Label of CV term|
+|**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**protocol-type**</code>|
+|**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 
 
 **Node Relationships**
@@ -1522,12 +1627,6 @@ graph LR
   Factor_Definition[Factor Definition] ==>|has-type| Factor_Type[Factor Type];
   Factor_Definition[Factor Definition] ==>|has-instance| Factor_Value[Factor Value];
   Factor_Definition[Factor Definition] ==>|used-in| Study[Study];
-  Metabolite[Metabolite] ==>|identified-as| Metabolite_Identifier[Metabolite Identifier];
-  Metabolite[Metabolite] ==>|described-as| Descriptor[Descriptor];
-  Metabolite[Metabolite] ==>|reported-in| Study[Study];
-  Metabolite[Metabolite] ==>|reported-in| Metadata_File[Metadata File];
-  Metabolite[Metabolite] ==>|reported-in| Result_File[Result File];
-  Metabolite[Metabolite] ==>|measured-in| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==>|described-as| Descriptor[Descriptor];
   Metadata_File[Metadata File] ==>|referenced-in| Metadata_File[Metadata File];
   Metadata_File[Metadata File] ==>|describes| Study[Study];
@@ -1535,7 +1634,13 @@ graph LR
   Metadata_File[Metadata File] ==>|references| Raw_Data_File[Raw Data File];
   Metadata_File[Metadata File] ==>|references| Result_File[Result File];
   Metadata_File[Metadata File] ==>|references| Supplementary_File[Supplementary File];
-  Metadata_File[Metadata File] ==>|reports| Metabolite[Metabolite];
+  Metadata_File[Metadata File] ==>|reports| Molecular_Entity[Molecular Entity];
+  Molecular_Entity[Molecular Entity] ==>|identified-as| Metabolite_Identifier[Metabolite Identifier];
+  Molecular_Entity[Molecular Entity] ==>|described-as| Descriptor[Descriptor];
+  Molecular_Entity[Molecular Entity] ==>|reported-in| Study[Study];
+  Molecular_Entity[Molecular Entity] ==>|reported-in| Metadata_File[Metadata File];
+  Molecular_Entity[Molecular Entity] ==>|reported-in| Result_File[Result File];
+  Molecular_Entity[Molecular Entity] ==>|measured-in| Raw_Data_File[Raw Data File];
   Organization[Organization] ==>|funds| Project[Project];
   Organization[Organization] ==>|funds| Study[Study];
   Organization[Organization] ==>|manages| Project[Project];
@@ -1576,11 +1681,11 @@ graph LR
   Raw_Data_File[Raw Data File] ==>|described-as| Descriptor[Descriptor];
   Raw_Data_File[Raw Data File] ==>|created-in| Study[Study];
   Raw_Data_File[Raw Data File] ==>|referenced-in| Metadata_File[Metadata File];
-  Raw_Data_File[Raw Data File] ==>|measures| Metabolite[Metabolite];
+  Raw_Data_File[Raw Data File] ==>|measures| Molecular_Entity[Molecular Entity];
   Result_File[Result File] ==>|described-as| Descriptor[Descriptor];
   Result_File[Result File] ==>|created-in| Study[Study];
   Result_File[Result File] ==>|referenced-in| Metadata_File[Metadata File];
-  Result_File[Result File] ==>|reports| Metabolite[Metabolite];
+  Result_File[Result File] ==>|reports| Molecular_Entity[Molecular Entity];
   Result_File[Result File] ==>|created-in| Assay[Assay];
   Sample[Sample] ==>|described-as| Descriptor[Descriptor];
   Sample[Sample] ==>|has-factor-value| Factor_Value[Factor Value];
@@ -1604,7 +1709,7 @@ graph LR
   Study[Study] ==>|has-factor-definition| Factor_Definition[Factor Definition];
   Study[Study] ==>|has-repository-keyword| Descriptor[Descriptor];
   Study[Study] ==>|has-submitter-keyword| Descriptor[Descriptor];
-  Study[Study] ==>|reports| Metabolite[Metabolite];
+  Study[Study] ==>|reports| Molecular_Entity[Molecular Entity];
   Study[Study] ==>|has-metadata-file| Metadata_File[Metadata File];
   Study[Study] ==>|has-contributor| Person[Person];
   Study[Study] ==>|has-principal-investigator| Person[Person];
@@ -1638,7 +1743,7 @@ graph LR
   Descriptor[Descriptor] ==>|describes| Derived_Data_File[Derived Data File];
   Descriptor[Descriptor] ==>|describes| Supplementary_File[Supplementary File];
   Descriptor[Descriptor] ==>|describes| Result_File[Result File];
-  Descriptor[Descriptor] ==>|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==>|describes| Molecular_Entity[Molecular Entity];
   Descriptor[Descriptor] ==>|describes| Organization[Organization];
   Descriptor[Descriptor] ==>|describes| Person[Person];
   Descriptor[Descriptor] ==>|describes| Project[Project];
@@ -1648,7 +1753,7 @@ graph LR
   Descriptor[Descriptor] ==>|describes| Subject[Subject];
   Descriptor[Descriptor] ==>|describes| Sample_Run[Sample Run];
   Descriptor[Descriptor] ==>|describes| Sample_Run_Configuration[Sample Run Configuration];
-  Descriptor[Descriptor] ==>|describes| Metabolite[Metabolite];
+  Descriptor[Descriptor] ==>|describes| Molecular_Entity[Molecular Entity];
   Descriptor[Descriptor] ==>|keyword-of| Study[Study];
   Descriptor[Descriptor] ==>|keyword-of| Study[Study];
   Descriptor[Descriptor] ==>|keyword-of| Specimen[Specimen];
@@ -1657,7 +1762,7 @@ graph LR
   Factor_Value[Factor Value] ==>|value-of| Sample[Sample];
   Factor_Value[Factor Value] ==>|value-of| Specimen[Specimen];
   Factor_Value[Factor Value] ==>|value-of| Subject[Subject];
-  Metabolite_Identifier[Metabolite Identifier] ==>|reported-identifier-of| Metabolite[Metabolite];
+  Metabolite_Identifier[Metabolite Identifier] ==>|reported-identifier-of| Molecular_Entity[Molecular Entity];
   Parameter_Type[Parameter Type] ==>|type-of| Parameter_Definition[Parameter Definition];
   Parameter_Value[Parameter Value] ==>|instance-of| Parameter_Definition[Parameter Definition];
   Parameter_Value[Parameter Value] ==>|value-of| Protocol[Protocol];

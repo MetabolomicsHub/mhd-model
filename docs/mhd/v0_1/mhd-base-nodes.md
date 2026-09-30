@@ -32,6 +32,7 @@ graph LR
 |Source Node|Property Name|
 |-----------|------------|
 |data-provider|value|
+|study|mhd_identifier|
 |study|repository_identifier|
 
 ## MHD Domain Objects
@@ -97,7 +98,7 @@ Characteristic Definition node is optional in the  MHD Base Profile. <code>Minim
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
 |**repository_identifier**|optional|<code>*str*<code>|Unique identifier assigned to the characteristic definition in the repository|
 |**name**|**required**|<code>*str*<code>|Name of the characteristic attribute<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
-|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [MONDO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
+|**characteristic_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the characteristic type CV term object<br>Target CV term type: <code>**characteristic-type**</code><br>Validation Rules:<br> <code>Target node type: <code>**characteristic-type**</code><br>Allowed CV Terms:<br>* [NCIT, NCIT:C14250, Organism],<br>* [NCIT, NCIT:C103199, Organism Part],<br>* [EFO, MONDO:0000001, disease],<br>* [EFO, EFO:0000324, cell type]</code>|
 
 
 **Node Relationships**
@@ -804,7 +805,7 @@ Study node is **required in the MHD Base Profile.** <code>Minimum: 1, Maximum: N
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
 |**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
-|**mhd_identifier**|optional|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier for the study|
+|**mhd_identifier**|**required**|<code>*str*<code>|Unique MetabolomicsHub Data (MHD) identifier for the study<br>Minimum length: <code>8</code><br>Validation Rule:<br> <code>Min Length: 8, Required</code>|
 |**repository_identifier**|**required**|<code>*str*<code>|Accession number or identifier in the source repository<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional database or secondary identifiers for the study|
 |**title**|optional|<code>*str*<code>|Title of the study|

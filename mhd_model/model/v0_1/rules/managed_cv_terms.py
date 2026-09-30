@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from mhd_model.shared.model import CvTerm
+from mhd_model.model.v0_1.base import CvTerm
 
 COMMON_MISSING_DATA_TERMS: dict[str, CvTerm] = {
     "not applicable": CvTerm(
@@ -153,7 +153,7 @@ COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS: dict[str, dict[str, CvTerm]
         "organism part": CvTerm(
             source="NCIT", accession="NCIT:C103199", name="Organism Part"
         ),
-        "disease": CvTerm(source="MONDO", accession="MONDO:0000001", name="disease"),
+        "disease": CvTerm(source="EFO", accession="MONDO:0000001", name="disease"),
         "cell type": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
     },
     "recommended": {
@@ -179,7 +179,7 @@ COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS: dict[str, CvTerm] = {
     "required": {},
     "recommended": {},
     "optional": {
-        "disease": CvTerm(source="MONDO", accession="MONDO:0000001", name="disease"),
+        "disease": CvTerm(source="EFO", accession="MONDO:0000001", name="disease"),
     },
 }
 

@@ -2,7 +2,7 @@ import abc
 import pathlib
 from typing import Any
 
-from mhd_model.shared.validation.definitions import MhdModelValidationContext
+from mhd_model.shared.model import MhdModelValidationContext
 
 
 class BaseAnnouncementFileValidator(abc.ABC):

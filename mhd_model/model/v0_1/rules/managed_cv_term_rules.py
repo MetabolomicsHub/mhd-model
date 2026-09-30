@@ -1,5 +1,5 @@
+from mhd_model.model.v0_1.base import CvTerm
 from mhd_model.model.v0_1.rules.managed_cv_terms import COMMON_MISSING_DATA_TERMS
-from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,

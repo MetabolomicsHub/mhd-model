@@ -2,7 +2,7 @@ from typing import Annotated
 
 from pydantic import AnyUrl, Field
 
-from mhd_model.shared.model import (
+from mhd_model.model.v0_1.base import (
     CvTerm,
     MhdConfigModel,
     QuantitativeValue,

@@ -25,7 +25,7 @@ from mhd_model.model.v1_0.rules.managed_cv_terms import (
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
 )
-from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
+from mhd_model.shared.base import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
     AllowAnyCvTerm,

@@ -3,7 +3,7 @@ from typing import Annotated
 
 from pydantic import AnyUrl, Field, HttpUrl
 
-from mhd_model.shared.model import (
+from mhd_model.model.v0_1.base import (
     CvEnabledDataset,
     CvTerm,
     CvTermKeyValue,
@@ -186,7 +186,7 @@ class AnnouncementProtocol(AnnouncementBaseModel):
             description="List of protocol parameters specified as key-value CV pairs."
         ),
     ] = None
-    relates_assay_names: Annotated[
+    related_assay_names: Annotated[
         None | list[str],
         Field(description="List of assay names that utilize this protocol."),
     ] = None
@@ -194,11 +194,6 @@ class AnnouncementProtocol(AnnouncementBaseModel):
 
 class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
     """Base Profile for dataset announcement files."""
-
-    created_at: Annotated[
-        None | datetime.datetime,
-        Field(description="Creation time."),
-    ] = None
 
     mhd_identifier: Annotated[
         None | str,

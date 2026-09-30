@@ -1,3 +1,14 @@
+## v0.2.0 (2026-09-30)
+
+### Feat
+
+- v1.0 updates
+
+### Fix
+
+- id generation for datasets and refactoring
+- documentation errors and graph model interoperability issues.
+
 ## v0.1.111 (2026-09-21)
 
 ### Fix

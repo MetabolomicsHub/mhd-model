@@ -1,10 +1,12 @@
 import logging
 from collections import OrderedDict
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 from pydantic import AnyUrl, BaseModel
 
+from mhd_model.domain_utils import get_urn
 from mhd_model.model.definitions import MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP
 from mhd_model.model.v1_0.announcement.profiles.base.profile import (
     AnnouncementBaseFile,
@@ -22,13 +24,10 @@ from mhd_model.model.v1_0.announcement.profiles.legacy.profile import (
     AnnouncementLegacyProfile,
 )
 from mhd_model.model.v1_0.dataset.profiles.base import graph_nodes
-from mhd_model.model.v1_0.dataset.profiles.base.base import (
-    BaseMhdModel,
-    BaseMhdRelationship,
-    IdentifiableMhdModel,
-)
 from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import CvTermValueObject
-from mhd_model.model.v1_0.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
+from mhd_model.model.v1_0.dataset.profiles.legacy.profile import (
+    MhDatasetLegacyProfile_v1_0,
+)
 from mhd_model.model.v1_0.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_MEASUREMENT_TYPES,
@@ -36,15 +35,17 @@ from mhd_model.model.v1_0.rules.managed_cv_terms import (
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
 )
-from mhd_model.shared.cv_definitions import (
-    COMMON_CV_DEFINITIONS,
-    OTHER_COMMON_CV_DEFINITIONS,
-)
-from mhd_model.shared.model import (
-    CvDefinition,
+from mhd_model.shared.base import (
     CvTerm,
     CvTermKeyValue,
     CvTermValue,
+    MhdConfigModel,
+)
+from mhd_model.shared.model import (
+    BaseRelationshipModel,
+    IdentifiableMhdModel,
+    MhdModelValidationContext,
+    MhdNode,
 )
 
 logger = logging.getLogger(__name__)
@@ -52,7 +53,7 @@ logger = logging.getLogger(__name__)
 
 def get_characteristic_values(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationships_map: dict[str, BaseMhdRelationship],
+    relationships_map: dict[str, BaseRelationshipModel],
 ) -> list[CvTermKeyValue]:
     study_characteristics = set()
     characteristic_values: OrderedDict[str, list[str]] = OrderedDict()
@@ -99,7 +100,7 @@ def get_characteristic_values(
 
 def get_keywords(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
 ) -> list[CvTerm]:
     keywords = []
     if "has-submitter-keyword" in relationship_name_map:
@@ -117,7 +118,7 @@ def get_keywords(
 
 def get_descriptors(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
 ) -> list[CvTerm]:
     descriptors = []
     if "has-repository-keyword" in relationship_name_map:
@@ -135,7 +136,7 @@ def get_descriptors(
 
 def get_study_factors(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationships_map: dict[str, BaseMhdRelationship],
+    relationships_map: dict[str, BaseRelationshipModel],
 ):
     study_factors = set()
     factors: OrderedDict[str, list[str]] = OrderedDict()
@@ -175,7 +176,7 @@ def get_study_factors(
 
 def get_protocols(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, BaseMhdRelationship],
+    relationship_name_map: dict[str, BaseRelationshipModel],
     type_map: dict[str, dict[IdentifiableMhdModel]],
     study: graph_nodes.Study,
 ):
@@ -252,12 +253,12 @@ def convert_file(
     url_list = item.url_list
     format = None
     if item.format_ref in all_nodes_map:
-        format_node: BaseMhdModel = all_nodes_map[item.format_ref]
+        format_node: MhdConfigModel = all_nodes_map[item.format_ref]
         format = CvTerm.model_validate(format_node.model_dump(by_alias=True))
     compressions = []
     if item.compression_format_refs in all_nodes_map:
         for format_ref in item.compression_format_refs:
-            compression_node: BaseMhdModel = all_nodes_map[format_ref]
+            compression_node: MhdConfigModel = all_nodes_map[format_ref]
             compressions.append(
                 CvTerm.model_validate(compression_node.model_dump(by_alias=True))
             )
@@ -290,9 +291,15 @@ def collect_cv_term_sources(obj: BaseModel, cv_sources: set[str]):
 
 
 def create_legacy_announcement_file(
-    mhd_file: dict[str, Any], mhd_file_url: str, announcement_file_path: str
+    mhd_file: dict[str, Any],
+    mhd_file_url: str,
+    announcement_file_path: str,
+    mhd_metadata_file_hashes: None | list[CvTermValue] = None,
 ):
-    mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_file)
+    context = MhdModelValidationContext(
+        dataset_configuration=MhDatasetLegacyProfile_v1_0.get_config()
+    )
+    mhd_dataset = MhDatasetLegacyProfile_v1_0.model_validate(mhd_file, context=context)
     announcement_schema_name, announcement_profile_uri = (
         MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
             mhd_dataset.profile_uri, (None, None)
@@ -303,19 +310,19 @@ def create_legacy_announcement_file(
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }
-    relationships_map: dict[str, BaseMhdRelationship] = {
+    relationships_map: dict[str, BaseRelationshipModel] = {
         x.id_: x for x in mhd_dataset.graph.relationships
     }
 
-    all_nodes_map: dict[str, BaseMhdModel] = {}
-    type_map: dict[str, dict[str, BaseMhdModel]] = {}
+    all_nodes_map: dict[str, MhdNode] = {}
+    type_map: dict[str, dict[str, MhdNode]] = {}
     for node in mhd_dataset.graph.nodes:
         if node.type_ not in type_map:
             type_map[node.type_] = {}
         type_map[node.type_][node.id_] = node
         all_nodes_map[node.id_] = node
 
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]] = {}
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]] = {}
     for rel in mhd_dataset.graph.relationships:
         if rel.relationship_name not in relationship_name_map:
             relationship_name_map[rel.relationship_name] = {}
@@ -376,9 +383,20 @@ def create_legacy_announcement_file(
         ]
         if http:
             mhd_file_url = f"{http[0]}/{study.repository_identifier}.mhd.json"
-
+    urn = get_urn(
+        urn_namespace="mhd",
+        repository_short_name=mhd_dataset.repository_short_name,
+        dataset_id=study.repository_identifier,
+        node_class=AnnouncementLegacyProfile,
+        identifier=None,
+    )
+    now = datetime.datetime.now(datetime.UTC)
     announcement = AnnouncementLegacyProfile(
+        uri=urn,
+        created_at=now,
+        mhd_metadata_file_hashes=mhd_metadata_file_hashes or None,
         repository_name=mhd_dataset.repository_name,
+        repository_short_name=mhd_dataset.repository_short_name,
         mhd_identifier=study.mhd_identifier,
         repository_identifier=study.repository_identifier,
         repository_revision=mhd_dataset.repository_revision,
@@ -418,20 +436,10 @@ def create_legacy_announcement_file(
     collect_cv_term_sources(announcement, cv_sources)
     cv_sources = list(cv_sources)
     cv_sources.sort()
-    mhd_cv_definitions = {x.label: x for x in mhd_dataset.cv_definitions}
+    definitions = {x.label: x for x in mhd_dataset.cv_definitions}
     for source in cv_sources:
-        if source.upper() in mhd_cv_definitions:
-            announcement.cv_definitions.append(mhd_cv_definitions[source.upper()])
-        elif source.upper() in COMMON_CV_DEFINITIONS:
-            announcement.cv_definitions.append(COMMON_CV_DEFINITIONS[source.upper()])
-        elif source.upper() in OTHER_COMMON_CV_DEFINITIONS:
-            announcement.cv_definitions.append(
-                OTHER_COMMON_CV_DEFINITIONS[source.upper()]
-            )
-        else:
-            announcement.cv_definitions.append(
-                CvDefinition(label=source.upper(), alternative_labels=[source.lower()])
-            )
+        if source in definitions:
+            announcement.cv_definitions.append(definitions[source])
     logger.info("Writing to %s", announcement_file_path)
     Path(announcement_file_path).parent.mkdir(parents=True, exist_ok=True)
     with Path(announcement_file_path).open("w") as f:
@@ -455,27 +463,28 @@ def get_metabolites(
                     identification_map[item.source_ref] = []
                 identification_map[item.source_ref].append(identification)
     reported_metabolites: list[AnnouncementReportedMetabolite] = []
-    if "metabolite" in type_map:
-        for ref in type_map["metabolite"]:
-            met = type_map["metabolite"][ref]
-            item = AnnouncementReportedMetabolite(name=met.name)
-            reported_metabolites.append(item)
+    for reported_metabolite_type in ("metabolite", "molecular-entity"):
+        if reported_metabolite_type in type_map:
+            for ref in type_map[reported_metabolite_type]:
+                met = type_map[reported_metabolite_type][ref]
+                item = AnnouncementReportedMetabolite(name=met.name)
+                reported_metabolites.append(item)
 
-            if ref in identification_map:
-                identifications = identification_map[ref]
-                item.database_identifiers = [
-                    CvTermValue.model_validate(x.model_dump(by_alias=True))
-                    for x in identifications
-                ]
+                if ref in identification_map:
+                    identifications = identification_map[ref]
+                    item.database_identifiers = [
+                        CvTermValue.model_validate(x.model_dump(by_alias=True))
+                        for x in identifications
+                    ]
 
-        if reported_metabolites:
-            reported_metabolites.sort(key=lambda x: x.name)
+    if reported_metabolites:
+        reported_metabolites.sort(key=lambda x: x.name)
     return reported_metabolites or None
 
 
 def get_file_list(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    type_map: dict[str, dict[str, BaseMhdModel]],
+    type_map: dict[str, dict[str, MhdConfigModel]],
     node_type: str,
     file_class: type[AnnouncementBaseFile],
 ) -> list[AnnouncementBaseFile]:
@@ -567,10 +576,10 @@ def get_main_assay_descriptors(
 
 
 def get_submitter_and_pi(
-    type_map: dict[str, dict[str, BaseMhdModel]],
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+    type_map: dict[str, dict[str, MhdConfigModel]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
 ):
-    submitter_links: list[BaseMhdRelationship] = []
+    submitter_links: list[BaseRelationshipModel] = []
     if "submits" in relationship_name_map:
         submitter_links = list(relationship_name_map["submits"].values())
 
@@ -603,7 +612,7 @@ def get_submitter_and_pi(
                 submitters.append(contact)
 
         if "principal-investigator-of" in relationship_name_map:
-            pi_links: list[BaseMhdRelationship] = list(
+            pi_links: list[BaseRelationshipModel] = list(
                 relationship_name_map["principal-investigator-of"].values()
             )
             for item in pi_links:
@@ -639,8 +648,8 @@ MISSING_PUBLICATION_ACCESSIONS = {
 
 def get_publications(
     nodes_map: dict[str, IdentifiableMhdModel],
-    type_map: dict[str, dict[str, BaseMhdModel]],
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+    type_map: dict[str, dict[str, MhdConfigModel]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
 ) -> CvTerm | list[AnnouncementPublication]:
     publications: list[AnnouncementPublication] = []
     if "publication" in type_map:

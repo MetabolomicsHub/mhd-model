@@ -2,7 +2,7 @@ import logging
 
 import httpx2
 
-from mhd_model.shared.model import CvDefinition
+from mhd_model.model.v0_1.base import CvDefinition
 
 logger = logging.getLogger(__name__)
 

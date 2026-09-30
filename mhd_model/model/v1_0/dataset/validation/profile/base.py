@@ -2,7 +2,7 @@ from typing import Annotated, Any
 
 from pydantic import Field, model_validator
 
-from mhd_model.shared.model import CvTerm, MhdConfigModel
+from mhd_model.shared.base import CvTerm, MhdConfigModel
 
 
 class ValidationId(MhdConfigModel):

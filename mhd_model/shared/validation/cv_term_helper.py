@@ -11,8 +11,8 @@ from cachetools import TTLCache, cached
 from pydantic import BaseModel, ConfigDict, field_validator
 from pydantic.alias_generators import to_camel, to_pascal
 
+from mhd_model.shared.base import CvTerm
 from mhd_model.shared.cv_definitions import OTHER_COMMON_CV_DEFINITIONS
-from mhd_model.shared.model import CvTerm
 from mhd_model.shared.validation.definitions import ParentCvTerm
 
 logger = logging.getLogger(__name__)

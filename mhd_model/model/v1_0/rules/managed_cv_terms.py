@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.base import CvTerm
 
 COMMON_MISSING_DATA_TERMS: dict[str, CvTerm] = {
     "not applicable": CvTerm(
@@ -254,7 +254,7 @@ MANAGED_CV_TERM_OBJECTS: set[str] = {
     "characteristic-type",
     "characteristic-value",
     "metabolite-identifier",
-    "data-provider",
+    "creator",
     "descriptor",
     "factor-type",
     "factor-value",
@@ -262,6 +262,7 @@ MANAGED_CV_TERM_OBJECTS: set[str] = {
     "parameter-value",
     "protocol-type",
 }
+
 
 PREDEFINED_CV_TERM_GROUPS: list[dict[str, CvTerm]] = [
     COMMON_MISSING_DATA_TERMS,

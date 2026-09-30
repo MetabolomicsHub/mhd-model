@@ -687,9 +687,11 @@
       "title": "CvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     },
     "CvTermKeyValue": {
@@ -786,11 +788,13 @@
       "title": "CvTermValue",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name",
-        "value",
-        "unit"
+        [
+          "source",
+          "accession",
+          "name",
+          "value",
+          "unit"
+        ]
       ]
     },
     "QuantitativeValue": {
@@ -881,9 +885,11 @@
       "title": "UnitCvTerm",
       "type": "object",
       "unique_value_contribution": [
-        "source",
-        "accession",
-        "name"
+        [
+          "source",
+          "accession",
+          "name"
+        ]
       ]
     }
   },
@@ -901,6 +907,21 @@
       "default": null,
       "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
       "title": "Mhd Identifier"
+    },
+    "doi": {
+      "anyOf": [
+        {
+          "pattern": "^10[.].+/.+$",
+          "title": "DOI",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Digital Object Identifier (DOI) for the dataset.",
+      "title": "Doi"
     },
     "revision": {
       "anyOf": [
@@ -1027,20 +1048,6 @@
       },
       "title": "Cv Definitions",
       "type": "array"
-    },
-    "created_at": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Creation time.",
-      "title": "Created At"
     },
     "mhd_metadata_file_url": {
       "description": "URL to the primary MHD metadata file for this dataset.",
@@ -1437,5 +1444,20 @@
     "submitters"
   ],
   "title": "AnnouncementBaseProfile",
-  "type": "object"
+  "type": "object",
+  "unique_value_contribution": [
+    [
+      "doi"
+    ],
+    [
+      "mhd_identifier"
+    ],
+    [
+      "repository_name",
+      "repository_identifier"
+    ],
+    [
+      "additional_identifier_list"
+    ]
+  ]
 }

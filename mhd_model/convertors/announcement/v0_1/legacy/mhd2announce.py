@@ -21,6 +21,7 @@ from mhd_model.model.v0_1.announcement.profiles.legacy.profile import (
     AnnouncementContact,
     AnnouncementLegacyProfile,
 )
+from mhd_model.model.v0_1.base import CvDefinition, CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.model.v0_1.dataset.profiles.base import graph_nodes
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdModel,
@@ -29,10 +30,6 @@ from mhd_model.model.v0_1.dataset.profiles.base.base import (
 )
 from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import CvTermValueObject
 from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
-from mhd_model.model.v0_1.rules.cv_definitions import (
-    CONTROLLED_CV_DEFINITIONS,
-    OTHER_CONTROLLED_CV_DEFINITIONS,
-)
 from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_MEASUREMENT_TYPES,
@@ -40,11 +37,9 @@ from mhd_model.model.v0_1.rules.managed_cv_terms import (
     COMMON_TECHNOLOGY_TYPES,
     MISSING_PUBLICATION_REASON,
 )
-from mhd_model.shared.model import (
-    CvDefinition,
-    CvTerm,
-    CvTermKeyValue,
-    CvTermValue,
+from mhd_model.shared.cv_definitions import (
+    COMMON_CV_DEFINITIONS,
+    OTHER_COMMON_CV_DEFINITIONS,
 )
 
 logger = logging.getLogger(__name__)
@@ -293,6 +288,7 @@ def create_legacy_announcement_file(
     mhd_file: dict[str, Any], mhd_file_url: str, announcement_file_path: str
 ):
     mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_file)
+    # new_dataset = mhd_dataset.regenerate_ids()
     announcement_schema_name, announcement_profile_uri = (
         MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
             mhd_dataset.profile_uri, (None, None)
@@ -421,13 +417,11 @@ def create_legacy_announcement_file(
     for source in cv_sources:
         if source.upper() in mhd_cv_definitions:
             announcement.cv_definitions.append(mhd_cv_definitions[source.upper()])
-        elif source.upper() in CONTROLLED_CV_DEFINITIONS:
+        elif source.upper() in COMMON_CV_DEFINITIONS:
+            announcement.cv_definitions.append(COMMON_CV_DEFINITIONS[source.upper()])
+        elif source.upper() in OTHER_COMMON_CV_DEFINITIONS:
             announcement.cv_definitions.append(
-                CONTROLLED_CV_DEFINITIONS[source.upper()]
-            )
-        elif source.upper() in OTHER_CONTROLLED_CV_DEFINITIONS:
-            announcement.cv_definitions.append(
-                OTHER_CONTROLLED_CV_DEFINITIONS[source.upper()]
+                OTHER_COMMON_CV_DEFINITIONS[source.upper()]
             )
         else:
             announcement.cv_definitions.append(
@@ -456,21 +450,22 @@ def get_metabolites(
                     identification_map[item.source_ref] = []
                 identification_map[item.source_ref].append(identification)
     reported_metabolites: list[AnnouncementReportedMetabolite] = []
-    if "metabolite" in type_map:
-        for ref in type_map["metabolite"]:
-            met = type_map["metabolite"][ref]
-            item = AnnouncementReportedMetabolite(name=met.name)
-            reported_metabolites.append(item)
+    for reported_metabolite_type in ("metabolite", "molecular-entity"):
+        if reported_metabolite_type in type_map:
+            for ref in type_map[reported_metabolite_type]:
+                met = type_map[reported_metabolite_type][ref]
+                item = AnnouncementReportedMetabolite(name=met.name)
+                reported_metabolites.append(item)
 
-            if ref in identification_map:
-                identifications = identification_map[ref]
-                item.database_identifiers = [
-                    CvTermValue.model_validate(x.model_dump(by_alias=True))
-                    for x in identifications
-                ]
+                if ref in identification_map:
+                    identifications = identification_map[ref]
+                    item.database_identifiers = [
+                        CvTermValue.model_validate(x.model_dump(by_alias=True))
+                        for x in identifications
+                    ]
 
-        if reported_metabolites:
-            reported_metabolites.sort(key=lambda x: x.name)
+    if reported_metabolites:
+        reported_metabolites.sort(key=lambda x: x.name)
     return reported_metabolites or None
 
 

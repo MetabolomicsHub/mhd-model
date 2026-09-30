@@ -17,7 +17,6 @@ from pydantic.fields import FieldInfo
 from pydantic_core import PydanticUndefined
 
 from mhd_model.log_utils import set_basic_logging_config
-from mhd_model.model.v1_0.dataset.profiles.base.base import BaseMhdModel
 from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import (
     CvTermObject,
     CvTermValueObject,
@@ -25,7 +24,9 @@ from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import (
 from mhd_model.model.v1_0.dataset.profiles.base.graph_validation import (
     MHD_BASE_VALIDATION_V1_0,
 )
-from mhd_model.model.v1_0.dataset.profiles.base.profile import MhdGraph
+from mhd_model.model.v1_0.dataset.profiles.base.profile import (
+    MhDatasetBaseProfile_v1_0,
+)
 from mhd_model.model.v1_0.dataset.profiles.legacy.graph_validation import (
     MHD_LEGACY_PROFILE_V1_0,
 )
@@ -43,6 +44,7 @@ from mhd_model.model.v1_0.dataset.validation.profile.definition import (
     NodePropertyValidation,
     NodeValidation,
     PropertyConstraint,
+    ReferenceNodeValidation,
 )
 from mhd_model.model.v1_0.rules.managed_cv_terms import PREDEFINED_CV_TERM_LABELS
 
@@ -190,7 +192,7 @@ def get_custom_type_alias(annotation: Any) -> str | None:
 
 
 def get_inherited_fields(
-    child_cls: type[BaseMhdModel], parent_cls: type[BaseMhdModel]
+    child_cls: type[BaseModel], parent_cls: type[BaseModel]
 ) -> list:
     inherited = []
 
@@ -278,7 +280,7 @@ def get_embedded_relationships(
 
 
 def get_default_value(
-    node: NodeValidation, model: BaseMhdModel, field: str, info: FieldInfo
+    node: NodeValidation, model: BaseModel, field: str, info: FieldInfo
 ) -> tuple[bool | None, Any]:
     if (model is CvTermObject or model is CvTermValueObject) and field == "type_":
         return True, node.node_type
@@ -298,16 +300,20 @@ def update_nodes(
     node_documentation: dict[str, NodeDocumentation],
     node_doc: NodeDocumentation,
     node: NodeValidation,
+    mappings: dict[dict[str, type[BaseModel]]],
 ) -> None:
     node_type = node.node_type
-    model = None
+    model: None | type[BaseModel] = None
     if isinstance(node, CvNodeValidation):
-        model = CvTermObject
+        model = mappings.get("cv").get("default")
         if node.has_value:
-            model = CvTermValueObject
+            model = mappings.get("cv-value").get("default")
+    elif isinstance(node, ReferenceNodeValidation):
+        model = mappings.get("reference", {}).get(node.node_type)
     elif isinstance(node, NodeValidation):
-        model = MhdGraph.get_mhd_class_by_type_and_id_prefix("", node.node_type)
-    if not model:
+        model = mappings.get("domain", {}).get(node.node_type)
+
+    if not issubclass(model, BaseModel):
         logger.info("invalid type: %s", node.node_type)
         return
 
@@ -429,6 +435,7 @@ def update_nodes(
 
 
 def update_v1_0_documentation():
+    mappings = MhDatasetBaseProfile_v1_0.get_config().get_type_class_mapping()
     for profile, target_file_name, profile_name in [
         (MHD_MS_PROFILE_V1_0, "mhd-ms-nodes.md", "MHD MS Profile"),
         (MHD_LEGACY_PROFILE_V1_0, "mhd-legacy-nodes.md", "MHD Legacy Profile"),
@@ -459,6 +466,7 @@ def update_v1_0_documentation():
                     node_documentation,
                     node_documentation[node.node_type],
                     node,
+                    mappings=mappings,
                 )
 
                 node_type = node.node_type

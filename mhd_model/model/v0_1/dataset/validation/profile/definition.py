@@ -3,13 +3,13 @@ from typing import Annotated, Any, Literal
 
 from pydantic import AnyUrl, Field, model_validator
 
+from mhd_model.model.v0_1.base import MhdConfigModel
 from mhd_model.model.v0_1.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     FilterCondition,
     RelationshipValidation,
     ValidationId,
 )
-from mhd_model.shared.model import MhdConfigModel
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,

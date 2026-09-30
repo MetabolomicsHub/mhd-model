@@ -1,6 +1,9 @@
 import json
+import logging
 import pathlib
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 def load_json(file: str) -> dict[str, Any]:

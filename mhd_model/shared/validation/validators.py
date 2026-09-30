@@ -13,7 +13,7 @@ import jsonschema
 import reachable
 from pydantic import BaseModel, ValidationError
 
-from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
+from mhd_model.shared.base import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.shared.validation.cv_term_helper import (
     CvTermHelper,
 )

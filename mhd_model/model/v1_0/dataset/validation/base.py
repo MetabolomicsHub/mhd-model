@@ -7,15 +7,10 @@ from typing import Any
 import jsonschema
 from jsonschema import ValidationError, protocols
 
-from mhd_model.model.v1_0.dataset.profiles.base.base import (
-    BaseMhdRelationship,
-    IdentifiableMhdModel,
-)
 from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import (
     CvTermObject,
     CvTermValueObject,
 )
-from mhd_model.model.v1_0.dataset.profiles.base.profile import MhdGraph
 from mhd_model.model.v1_0.dataset.validation.profile.base import (
     EmbeddedRefValidation,
     FilterCondition,
@@ -29,8 +24,13 @@ from mhd_model.model.v1_0.dataset.validation.profile.definition import (
     NodeValidation,
 )
 from mhd_model.model.v1_0.rules.managed_cv_terms import MANAGED_CV_TERM_OBJECTS
-from mhd_model.shared.model import CvTerm
-from mhd_model.shared.validation.base import MhdModelValidationContext
+from mhd_model.shared.base import CvTerm
+from mhd_model.shared.model import (
+    BaseRelationshipModel,
+    IdentifiableMhdModel,
+    MhdGraph,
+    MhdModelValidationContext,
+)
 from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
@@ -54,19 +54,14 @@ class MhdModelValidator:
     ):
         self.cv_helper = CvTermHelper()
         self.node_validation: MhDatasetValidation = node_validation
-        self.mhd_model_validation_context = (
-            mhd_model_validation_context or MhdModelValidationContext()
-        )
-        if not self.mhd_model_validation_context.type_class_mapping:
-            self.mhd_model_validation_context.type_class_mapping = {}
+        self.mhd_model_validation_context = mhd_model_validation_context
 
     def anyOf(self, validator, anyOf, instance, schema):
         node_class = None
         all_errors = []
         if isinstance(instance, dict):
             node_class = MhdGraph.get_node_class(
-                instance,
-                type_class_mapping=self.mhd_model_validation_context.type_class_mapping,
+                instance, mhd_model_validation_context=self.mhd_model_validation_context
             )
             if node_class:
                 subschema = {"$ref": f"#/$defs/{node_class.__name__}"}
@@ -117,10 +112,10 @@ class MhdModelValidator:
         schema: dict[str, Any],
     ):
         nodes_path = "nodes"
-        relationhips_path = "relationships"
+        relationships_path = "relationships"
 
         nodes: list[dict[str, Any]] = instance.get(nodes_path, [])
-        relationhips = instance.get(relationhips_path, [])
+        relationships = instance.get(relationships_path, [])
 
         unique_nodes: IdentifiableElementDict = OrderedDict()
         nodes_by_type: dict[str, NodeByIndexDict] = {}
@@ -138,15 +133,15 @@ class MhdModelValidator:
         relationships_by_name = {}
         relationships_index: dict[str, dict[str, dict[str, tuple[int, str]]]] = {}
         yield from self.update_unique_relationships(
-            relationhips,
+            relationships,
             unique_relationships,
             relationships_by_name,
             relationships_index,
-            relationhips,
+            relationships,
             nodes_path,
         )
         yield from self.check_embedded_ref_ids_exist(
-            relationhips, unique_nodes, relationhips_path, "relationship"
+            relationships, unique_nodes, relationships_path, "relationship"
         )
 
         yield from self.validate_profile(
@@ -210,9 +205,11 @@ class MhdModelValidator:
                     instance=item,
                 )
                 continue
-            rel: BaseMhdRelationship = None
+            rel: BaseRelationshipModel = None
             try:
-                rel = BaseMhdRelationship.model_validate(item)
+                config = self.mhd_model_validation_context.dataset_configuration
+                model_class = config.get_relationship_type_class(item.get("type"))
+                rel = model_class.model_validate(item)
             except ValueError:
                 pass
 
@@ -261,6 +258,7 @@ class MhdModelValidator:
         logger.info(
             "Start node id and type consistency checks for %s items...", len(nodes)
         )
+
         for idx, item in enumerate(nodes):
             if not item.get("id") or not item.get("type"):
                 yield jsonschema.ValidationError(
@@ -273,7 +271,9 @@ class MhdModelValidator:
                 continue
             node: None | IdentifiableMhdModel = None
             try:
-                node = MhdGraph.create_model(item)
+                node = MhdGraph.create_model(
+                    item, context=self.mhd_model_validation_context
+                )
             except Exception as err:
                 try:
                     node = IdentifiableMhdModel.model_validate(item)
@@ -305,7 +305,6 @@ class MhdModelValidator:
                     instance=item,
                 )
                 continue
-
             if isinstance(node, (CvTermObject, CvTermValueObject)):
                 if (
                     node.type_ not in MANAGED_CV_TERM_OBJECTS
@@ -319,7 +318,10 @@ class MhdModelValidator:
                         path=(nodes_path, idx),
                         instance=item,
                     )
-                elif "--" + node.type_ + "--" not in node.id_:
+                elif not (
+                    "--" + node.type_ + "--" in node.id_
+                    or f":{node.type_}:" in node.id_
+                ):
                     yield jsonschema.ValidationError(
                         message=f"{node.id_}: Node at index {idx} does not have a valid type and id pair. "
                         f"Type: {node.type_} id: {node.id_}",
@@ -328,7 +330,13 @@ class MhdModelValidator:
                         path=(nodes_path, idx),
                         instance=item,
                     )
-            elif not node.id_.startswith("mhd--" + node.type_ + "--"):
+            elif not node.id_.startswith(
+                (
+                    "mhd--" + node.type_ + "--",
+                    f"domain:{node.type_}:",
+                    f"reference:{node.type_}:",
+                )
+            ):
                 yield jsonschema.ValidationError(
                     message=f"{node.id_}: Node at index {idx} does not have a valid type and id. "
                     f"Type: {node.type_} id: {node.id_}",
@@ -1058,11 +1066,9 @@ class MhdModelValidator:
                 )
             if (
                 isinstance(item, CvTermValueObject)
-                and item.unit
                 and item.value
-                and not item.source
-                and not item.accession
-                and not item.name
+                and (not item.source and not item.accession and not item.name)
+                and item.unit
             ):
                 valid, error_message = self.cv_helper.check_cv_term(item.unit)
                 if not valid:
@@ -1190,12 +1196,9 @@ class MhdModelValidator:
                 )
             if (
                 isinstance(item, CvTermValueObject)
-                and item.unit
                 and item.value
-                and not item.source
-                and not item.accession
-                and not item.name
-            ):
+                and (not item.source and not item.accession and not item.name)
+            ) and item.unit:
                 valid, error_message = self.cv_helper.check_cv_term(item.unit)
                 if not valid:
                     message = "Unit cv term is not valid."

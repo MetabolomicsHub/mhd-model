@@ -24,7 +24,9 @@ from mhd_model.model.v1_0.announcement.validation.validator import (
 from mhd_model.model.v1_0.dataset.validation.validator import (
     MhdFileValidator_v1_0,
 )
-from mhd_model.shared.model import ProfileEnabledDataset
+from mhd_model.shared.model import (
+    ProfileEnabledDataset,
+)
 from mhd_model.shared.validation.base import (
     BaseAnnouncementFileValidator,
     BaseMhdFileValidator,
@@ -38,6 +40,7 @@ MHD_VALIDATORS: dict[str, type[BaseMhdFileValidator]] = {
     MHD_MODEL_V1_0_MS_PROFILE_NAME: MhdFileValidator_v1_0,
 }
 
+
 ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
     ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME: MhdAnnouncementFileValidator_v0_1,
     ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME: MhdAnnouncementFileValidator_v0_1,
@@ -48,6 +51,7 @@ ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
 
 def validate_mhd_file_json(json_data: dict[str, Any]) -> list[str]:
     dataset: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_data)
+
     validator = MHD_VALIDATORS[dataset.profile_uri]()
     try:
         return validator.validate(mhd_file_json=json_data)

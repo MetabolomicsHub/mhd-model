@@ -44,7 +44,7 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
     PropertyConstraint,
 )
-from mhd_model.model.v0_1.rules.managed_cv_terms import PREDEFINED_CV_TERM_LABELS
+from mhd_model.model.v1_0.rules.managed_cv_terms import PREDEFINED_CV_TERM_LABELS
 
 logger = logging.getLogger(__name__)
 
@@ -306,7 +306,7 @@ def update_nodes(
         if node.has_value:
             model = CvTermValueObject
     elif isinstance(node, NodeValidation):
-        model = MhdGraph.get_mhd_class_by_type_and_id_prefix("", node.node_type)
+        model = MhdGraph.get_mhd_class_by_type(node.node_type)
     if not model:
         logger.info("invalid type: %s", node.node_type)
         return

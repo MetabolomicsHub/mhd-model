@@ -103,6 +103,7 @@ def get_new_accession_task(
         )
         repo_accession = dataset_repository_identifier
         click.echo(f"{repo_accession}: {new_accession}")
+        return
     except Exception:
         traceback.print_exc()
 

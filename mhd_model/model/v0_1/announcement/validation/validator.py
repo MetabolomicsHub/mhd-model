@@ -14,8 +14,8 @@ from mhd_model.model.v0_1.announcement.validation.definitions import (
     CheckCvTermKeyValue,
     CheckCvTermKeyValues,
 )
+from mhd_model.model.v0_1.base import ProfileEnabledDataset
 from mhd_model.shared.exceptions import MhdValidationError
-from mhd_model.shared.model import ProfileEnabledDataset
 from mhd_model.shared.validation.base import BaseAnnouncementFileValidator
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,

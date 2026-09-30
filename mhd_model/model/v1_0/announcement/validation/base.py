@@ -19,7 +19,7 @@ from mhd_model.model.v1_0.announcement.validation.definitions import (
     ProfileValidation,
 )
 from mhd_model.schema_utils import load_mhd_json_schema
-from mhd_model.shared.model import CvTerm, CvTermKeyValue
+from mhd_model.shared.base import CvTerm, CvTermKeyValue
 from mhd_model.shared.validation.cv_term_helper import (
     CvTermHelper,
 )

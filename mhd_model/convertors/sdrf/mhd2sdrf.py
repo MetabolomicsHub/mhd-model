@@ -28,12 +28,7 @@ from mhd_model.model.v0_1.sdrf.model import (
     SdrfKeyValue,
     SdrfSampleProtocolDefinition,
 )
-from mhd_model.shared.model import (
-    CvTerm,
-    CvTermKeyValue,
-    CvTermValue,
-    QuantitativeValue,
-)
+from mhd_model.shared.base import BasicValueModel, CvTerm, CvTermKeyValue, CvTermValue
 
 logger = logging.getLogger(__name__)
 
@@ -323,7 +318,7 @@ def create_sdrf_files(
                         if characteristic_type:
                             target_value = None
                             if value.value is not None and value.name is None:
-                                target_value = QuantitativeValue.model_validate(
+                                target_value = BasicValueModel.model_validate(
                                     value.model_dump(by_alias=True)
                                 )
                             else:
@@ -360,7 +355,7 @@ def create_sdrf_files(
                         if factor_type:
                             target_value = None
                             if value.value is not None and value.name is None:
-                                target_value = QuantitativeValue.model_validate(
+                                target_value = BasicValueModel.model_validate(
                                     value.model_dump(by_alias=True)
                                 )
                             else:
@@ -445,7 +440,7 @@ def create_sdrf_files(
                                     )
                                 target_value = None
                                 if value.value is not None and value.name is None:
-                                    target_value = QuantitativeValue.model_validate(
+                                    target_value = BasicValueModel.model_validate(
                                         value.model_dump(by_alias=True)
                                     )
                                 else:

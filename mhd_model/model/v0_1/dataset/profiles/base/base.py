@@ -2,9 +2,9 @@ import datetime
 import uuid
 from typing import Annotated, Any
 
-from pydantic import AnyUrl, ConfigDict, Field, field_validator, model_validator
+from pydantic import AnyUrl, Field, field_validator, model_validator
 
-from mhd_model.shared.model import (
+from mhd_model.model.v0_1.base import (
     CvTerm,
     CvTermValue,
     MhdConfigModel,
@@ -127,15 +127,33 @@ class BaseMhdModel(IdentifiableMhdModel):
         item: BaseMhdModel = handler(v)
         if not item.type_:
             raise ValueError("type_ is required")
-        identifier_name = f"{item.type_}--{item.get_unique_id(item.type_)}"
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
         item.id_ = item.id_ or f"mhd--{item.type_}--{identifier}"
-        if hasattr(item, "label") and not item.label:
+        if not item.label:
             item.label = item.get_label()
         return item
 
+    def get_unique_id(self):
+        extra = self.model_config.get("json_schema_extra", {})
+        contribution = extra.get("unique_value_contribution") or []
+        values = [self.type_]
+        if contribution:
+            for field_name in contribution:
+                value = ""
+                if hasattr(self, field_name):
+                    value = getattr(self, field_name) or ""
+                    if isinstance(value, list) and value:
+                        value = value[0].lower()
+                    else:
+                        value = str(value).lower()
+
+                values.append(f"{field_name.lower()}={value}")
+
+        return "&".join(values)
+
     def __hash__(self) -> int:
-        return hash(self.get_unique_id(self.type_))
+        return hash(self.get_unique_id())
 
 
 class BaseLabeledMhdModel(BaseMhdModel):
@@ -147,7 +165,7 @@ class BaseLabeledMhdModel(BaseMhdModel):
         item: BaseLabeledMhdModel = handler(v)
         if not item.type_:
             raise ValueError("type_ is required")
-        identifier_name = f"{item.type_}--{item.get_unique_id(item.type_)}"
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
         item.id_ = item.id_ or f"mhd--{item.type_}--{identifier}"
         if not item.label:
@@ -168,7 +186,13 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
         ),
     ] = None
     label: Annotated[None | str, Field(exclude=True)] = None
-    type_: Annotated[None | MhdObjectType, Field(..., alias="type")]
+    type_: Annotated[
+        None | MhdObjectType,
+        Field(
+            alias="type",
+            description="The type property identifies type of the CV Term object",
+        ),
+    ] = "default"
 
     @field_validator("id_", mode="before")
     @classmethod
@@ -187,7 +211,7 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
         item: BasicCvTermModel = handler(v)
         if not item.type_:
             raise ValueError("type_ is required")
-        identifier_name = f"{item.type_}--{item.get_unique_id(item.type_)}"
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
         item.id_ = item.id_ or f"cv--{item.type_}--{identifier}"
         if not item.label:
@@ -198,7 +222,7 @@ class BasicCvTermModel(CvTerm, IdentifiableMhdModel):
         return self.name or self.id_ or ""
 
     def __hash__(self) -> int:
-        return hash(self.get_unique_id(self.type_))
+        return hash(self.get_unique_id())
 
 
 class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
@@ -211,7 +235,13 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
         ),
     ] = None
     label: Annotated[None | str, Field(exclude=True)] = None
-    type_: Annotated[MhdObjectType, Field(frozen=False, alias="type")] = "cv-term-value"
+    type_: Annotated[
+        None | MhdObjectType,
+        Field(
+            alias="type",
+            description="The type property identifies type of the CV Term Value object",
+        ),
+    ] = "default"
 
     @model_validator(mode="wrap")
     @classmethod
@@ -219,10 +249,10 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
         item: BasicCvTermValueModel = handler(v)
         if not item.type_:
             raise ValueError("type_ is required")
-        identifier_name = f"{item.type_}--{item.get_unique_id(item.type_)}"
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
         item.id_ = item.id_ or f"cv-value--{item.type_}--{identifier}"
-        if hasattr(item, "label") and not item.label:
+        if not item.label:
             item.label = item.get_label()
         return item
 
@@ -230,21 +260,10 @@ class BasicCvTermValueModel(CvTermValue, IdentifiableMhdModel):
         return self.value or self.name or self.id_ or ""
 
     def __hash__(self) -> int:
-        return hash(self.get_unique_id(self.type_))
+        return hash(self.get_unique_id())
 
 
 class BaseMhdRelationship(BaseMhdModel):
-    model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_contribution": [
-                "source_ref",
-                "relationship_name",
-                "target_ref",
-                "source_role",
-                "target_role",
-            ]
-        }
-    )
     id_: Annotated[None | MhdRelationshipObjectId, Field(alias="id")] = None
     source_ref: MhdObjectId | CvTermObjectId | CvTermValueObjectId
     relationship_name: str
@@ -258,10 +277,13 @@ class BaseMhdRelationship(BaseMhdModel):
         item: BaseMhdRelationship = handler(v)
         if not item.type_:
             raise ValueError("type_ is required")
-        identifier_name = f"{item.type_}--{item.get_unique_id(item.type_)}"
+        identifier_name = f"{item.type_}--{item.get_unique_id()}"
         identifier = str(uuid.uuid5(NAMESPACE_VALUE, name=identifier_name))
         item.id_ = item.id_ or f"rel--{item.type_}--{identifier}"
         return item
+
+    def get_unique_id(self):
+        return f"{self.source_ref or ''},{self.relationship_name or ''},{self.target_ref or ''}"
 
     def get_label(self):
         return self.relationship_name

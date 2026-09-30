@@ -3,6 +3,7 @@ from typing import Annotated
 
 from pydantic import AnyUrl, ConfigDict, EmailStr, Field, HttpUrl
 
+from mhd_model.model.v0_1.base import CvTermValue
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseLabeledMhdModel,
     BasicCvTermModel,
@@ -20,7 +21,6 @@ from mhd_model.shared.fields import (
     GrantId,
     PubMedId,
 )
-from mhd_model.shared.model import CvTermValue
 
 
 class Person(BaseLabeledMhdModel):
@@ -859,7 +859,7 @@ class CvTermObject(BasicCvTermModel):
             alias="type",
             description="The type property identifies type of the CV Term object",
         ),
-    ] = "cv-term"
+    ] = "default"
 
 
 class CvTermValueObject(BasicCvTermValueModel):
@@ -882,4 +882,4 @@ class CvTermValueObject(BasicCvTermValueModel):
             alias="type",
             description="The type property identifies type of the CV Term Value object",
         ),
-    ] = "cv-term-value"
+    ] = "default"

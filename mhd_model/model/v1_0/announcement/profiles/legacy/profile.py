@@ -7,6 +7,7 @@ from mhd_model.model.v1_0.announcement.profiles.base import profile as base_prof
 from mhd_model.model.v1_0.announcement.profiles.base.profile import (
     AnnouncementBaseProfile,
 )
+from mhd_model.shared.base import MhdObjectType
 
 
 class AnnouncementContact(base_profile.AnnouncementContact):
@@ -28,6 +29,15 @@ class AnnouncementLegacyProfile(AnnouncementBaseProfile):
     - Relaxed Length Constraints: Reduces minimum length restrictions for title (min 1 vs 25)
       and description (min 1 vs 60) to accommodate legacy repository data.
     """
+
+    type_: Annotated[
+        None | MhdObjectType,
+        Field(
+            frozen=True,
+            description="The type property identifies type of the file",
+            alias="type",
+        ),
+    ] = "announcement-legacy"
 
     submitters: Annotated[
         list[AnnouncementContact],

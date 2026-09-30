@@ -7,6 +7,7 @@ from typing import Any
 import jsonschema
 from jsonschema import ValidationError, protocols
 
+from mhd_model.model.v0_1.base import CvTerm
 from mhd_model.model.v0_1.dataset.profiles.base.base import (
     BaseMhdRelationship,
     IdentifiableMhdModel,
@@ -29,8 +30,6 @@ from mhd_model.model.v0_1.dataset.validation.profile.definition import (
     NodeValidation,
 )
 from mhd_model.model.v0_1.rules.managed_cv_terms import MANAGED_CV_TERM_OBJECTS
-from mhd_model.shared.model import CvTerm
-from mhd_model.shared.validation.base import MhdModelValidationContext
 from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
@@ -47,26 +46,15 @@ IdentifiableElementDict = OrderedDict[str, IdentifiableMhdModel]
 
 
 class MhdModelValidator:
-    def __init__(
-        self,
-        node_validation: MhDatasetValidation,
-        mhd_model_validation_context: None | MhdModelValidationContext = None,
-    ):
+    def __init__(self, node_validation: MhDatasetValidation):
         self.cv_helper = CvTermHelper()
         self.node_validation: MhDatasetValidation = node_validation
-        self.mhd_model_validation_context = (
-            mhd_model_validation_context or MhdModelValidationContext()
-        )
-        if not self.mhd_model_validation_context.type_class_mapping:
-            self.mhd_model_validation_context.type_class_mapping = {}
 
     def anyOf(self, validator, anyOf, instance, schema):
         node_class = None
         all_errors = []
         if isinstance(instance, dict):
-            node_class = MhdGraph.get_node_class(
-                instance, mhd_model_validation_context=self.mhd_model_validation_context
-            )
+            node_class = MhdGraph.get_node_class(instance)
             if node_class:
                 subschema = {"$ref": f"#/$defs/{node_class.__name__}"}
                 if node_class is not None and subschema in anyOf:
@@ -1189,7 +1177,8 @@ class MhdModelValidator:
                 isinstance(item, CvTermValueObject)
                 and item.value
                 and (not item.source and not item.accession and not item.name)
-            ) and item.unit:
+                and item.unit
+            ):
                 valid, error_message = self.cv_helper.check_cv_term(item.unit)
                 if not valid:
                     message = "Unit cv term is not valid."
