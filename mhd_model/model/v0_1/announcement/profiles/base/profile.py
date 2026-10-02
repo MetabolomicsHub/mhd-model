@@ -24,12 +24,12 @@ class AnnouncementBaseFile(AnnouncementBaseModel):
         Field(min_length=1, description="Name of the file including extension."),
     ]
     url_list: Annotated[
-        list[AnyUrl],
+        None | list[AnyUrl],
         Field(
             min_length=1,
             description="List of direct download or access URLs for the file.",
         ),
-    ]
+    ] = None
     compression_formats: Annotated[
         None | list[CvTerm],
         Field(
@@ -212,12 +212,12 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
         Field(description="URL to the primary MHD metadata file for this dataset."),
     ]
     url_list: Annotated[
-        list[AnyUrl],
+        None | list[AnyUrl],
         Field(
             min_length=1,
             description="List of web page or repository URLs for accessing the dataset.",
         ),
-    ]
+    ] = None
     license: Annotated[
         None | HttpUrl | str,
         Field(

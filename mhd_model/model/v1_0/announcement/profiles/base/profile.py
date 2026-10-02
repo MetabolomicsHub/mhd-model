@@ -206,8 +206,7 @@ class AnnouncementBaseProfile(BaseAnnouncementFile, AnnouncementBaseModel):
         ),
     ] = "announcement-base-v1-0"
 
-    name: Annotated[str, Field(description="Name of the dataset.")]
-
+    name: Annotated[None | str, Field(description="Name of the dataset.")] = None
     submission_date: Annotated[
         None | datetime.datetime,
         Field(

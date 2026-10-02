@@ -1236,15 +1236,22 @@
       "title": "External Reference List"
     },
     "url_list": {
+      "anyOf": [
+        {
+          "items": {
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
       "description": "List of web page or repository URLs for accessing the dataset.",
-      "items": {
-        "format": "uri",
-        "minLength": 1,
-        "type": "string"
-      },
-      "minItems": 1,
-      "title": "Url List",
-      "type": "array"
+      "title": "Url List"
     },
     "uri": {
       "description": "Unified resource name",
@@ -1386,9 +1393,17 @@
       "title": "License Name"
     },
     "name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
       "description": "Name of the dataset.",
-      "title": "Name",
-      "type": "string"
+      "title": "Name"
     },
     "description": {
       "anyOf": [
@@ -1784,12 +1799,10 @@
   "required": [
     "$schema",
     "profile_uri",
-    "url_list",
     "uri",
     "repository_identifier",
     "repository_name",
     "repository_short_name",
-    "name",
     "submission_date",
     "public_release_date",
     "submitters"

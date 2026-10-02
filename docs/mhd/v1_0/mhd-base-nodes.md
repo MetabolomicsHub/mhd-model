@@ -49,7 +49,7 @@ Basic analytical assay node representing an experimental measurement procedure. 
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -96,7 +96,7 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -138,7 +138,7 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -181,7 +181,7 @@ Definition of an experimental factor varied across samples in a study. </br></br
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -276,7 +276,7 @@ Any constitutionally or isotopically distinct atom, molecule, ion,<br>ion pair, 
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -320,7 +320,7 @@ An institution, company, university, or department associated with a study or co
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|URI of the person. e.g., urn:mhd:MTBLS:MTBLS1:organization:ROR_02catss52|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -368,7 +368,7 @@ Definition of an experimental parameter used within a protocol. </br></br>Parame
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -410,7 +410,7 @@ An individual human being (e.g. author, submitter, principal investigator).<br>I
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|URI of the person. e.g., urn:mhd:MTBLS:MTBLS1:person:submitter1@ebi.ac.uk|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -460,7 +460,7 @@ An overarching research project encompassing one or more studies. </br></br>Proj
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -509,7 +509,7 @@ A defined and standardized procedure followed to collect, prepare, or analyze sa
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -558,7 +558,7 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -691,7 +691,7 @@ A biological sample prepared for analytical measurement. </br></br>Sample node i
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the sample|
@@ -736,7 +736,7 @@ An analytical run representing the measurement of a sample on an instrument. </b
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -779,7 +779,7 @@ Configuration settings and instrument parameters used for a sample run. </br></b
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -817,7 +817,7 @@ A biological specimen collected from a subject. </br></br>Specimen node is optio
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the specimen|
@@ -944,7 +944,7 @@ An individual organism or subject from which biological samples are derived. </b
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the subject|
@@ -1035,7 +1035,7 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Char
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1069,7 +1069,7 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1109,7 +1109,7 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1139,7 +1139,7 @@ Node or link reference defined in other MHD common data model file.<br>The speci
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**referenced_id**|**required**|<code>*str or str or str or str or str or str*<code>|Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_|
 |**referenced_type**|**required**|<code>*str*<code>|Type of referenced object|
 |**dataset_id**|optional|<code>*str*<code>|Id of dataset contains referenced object|
@@ -1175,7 +1175,7 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Desc
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1244,7 +1244,7 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Fact
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1278,7 +1278,7 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1315,7 +1315,7 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Mole
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1347,7 +1347,7 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Para
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1381,7 +1381,7 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1413,7 +1413,7 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Prot
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
 |**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**

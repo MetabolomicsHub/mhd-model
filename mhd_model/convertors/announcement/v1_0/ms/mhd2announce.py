@@ -455,7 +455,6 @@ def create_ms_announcement_file(
     announcement = AnnouncementMsProfile(
         uri=urn,
         created_at=now,
-        mhd_metadata_file_hashes=mhd_metadata_file_hashes or None,
         repository_name=mhd_dataset.repository_name,
         repository_short_name=mhd_dataset.repository_short_name,
         mhd_identifier=study.mhd_identifier,
@@ -467,6 +466,7 @@ def create_ms_announcement_file(
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
         mhd_metadata_file_url=AnyUrl(mhd_file_url),
+        mhd_metadata_file_hashes=mhd_metadata_file_hashes or None,
         url_list=url_list or None,
         license=study.license,
         license_name=study.license_name or None,

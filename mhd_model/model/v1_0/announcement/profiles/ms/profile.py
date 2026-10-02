@@ -244,11 +244,11 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
         None | str,
         Field(description="Data usage license name for the dataset."),
     ] = None
-    title: Annotated[
-        str,
+    name: Annotated[
+        None | str,
         Field(
             min_length=25,
-            description="Title describing the mass spectrometry study or dataset.",
+            description="Name describing the mass spectrometry study or dataset.",
         ),
     ]
     description: Annotated[

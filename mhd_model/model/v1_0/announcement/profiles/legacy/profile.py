@@ -52,7 +52,7 @@ class AnnouncementLegacyProfile(AnnouncementBaseProfile):
             description="List of repository metadata files included in the legacy dataset announcement."
         ),
     ]
-    title: Annotated[
+    name: Annotated[
         str,
         Field(
             min_length=1,

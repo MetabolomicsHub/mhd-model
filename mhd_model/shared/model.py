@@ -75,12 +75,11 @@ class IdentifiableMhdModel(MhdConfigModel, abc.ABC):
         Field(description="External references related to the object."),
     ] = None
     url_list: Annotated[
-        list[AnyUrl],
+        None | list[AnyUrl],
         Field(
-            min_length=1,
             description="List of web page or repository URLs for accessing the dataset.",
         ),
-    ]
+    ] = None
 
     def get_label(self) -> str:
         return self.id_ or ""

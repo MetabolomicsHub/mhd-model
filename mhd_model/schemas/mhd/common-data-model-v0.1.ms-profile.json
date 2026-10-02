@@ -93,15 +93,22 @@
           "title": "External Reference List"
         },
         "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "List of web page or repository URLs for accessing the dataset.",
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Url List",
-          "type": "array"
+          "title": "Url List"
         },
         "source_ref": {
           "anyOf": [
@@ -168,7 +175,6 @@
       },
       "required": [
         "type",
-        "url_list",
         "source_ref",
         "relationship_name",
         "target_ref"
@@ -664,20 +670,26 @@
           "title": "External Reference List"
         },
         "url_list": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uri",
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
           "description": "List of web page or repository URLs for accessing the dataset.",
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Url List",
-          "type": "array"
+          "title": "Url List"
         }
       },
       "required": [
-        "type",
-        "url_list"
+        "type"
       ],
       "title": "MhdNode",
       "type": "object"
@@ -976,15 +988,22 @@
       "title": "External Reference List"
     },
     "url_list": {
+      "anyOf": [
+        {
+          "items": {
+            "format": "uri",
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
       "description": "List of web page or repository URLs for accessing the dataset.",
-      "items": {
-        "format": "uri",
-        "minLength": 1,
-        "type": "string"
-      },
-      "minItems": 1,
-      "title": "Url List",
-      "type": "array"
+      "title": "Url List"
     },
     "uri": {
       "description": "Unified resource name",
@@ -1192,7 +1211,6 @@
   "required": [
     "$schema",
     "profile_uri",
-    "url_list",
     "uri",
     "repository_identifier",
     "repository_name",

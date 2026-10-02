@@ -79,6 +79,8 @@ class MhdFileValidator_v1_0(BaseMhdFileValidator):
         context.repository_dataset_identifier = mhd_file_json.get(
             "repository_identifier"
         )
+        context.repository_name = mhd_file_json.get("repository_name")
+        context.repository_short_name = mhd_file_json.get("repository_short_name")
         errors = validate_mhd_file_json(
             mhd_file_json, mhd_model_validation_context=context
         )

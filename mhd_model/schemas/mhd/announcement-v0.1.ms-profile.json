@@ -1670,9 +1670,17 @@
       "title": "License Name"
     },
     "name": {
-      "description": "Name of the dataset.",
-      "title": "Name",
-      "type": "string"
+      "anyOf": [
+        {
+          "minLength": 25,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Name describing the mass spectrometry study or dataset.",
+      "title": "Name"
     },
     "description": {
       "anyOf": [
@@ -2506,12 +2514,6 @@
       "default": null,
       "description": "List of result data files included in the dataset announcement.",
       "title": "Result File List"
-    },
-    "title": {
-      "description": "Title describing the mass spectrometry study or dataset.",
-      "minLength": 25,
-      "title": "Title",
-      "type": "string"
     }
   },
   "required": [
@@ -2533,8 +2535,7 @@
     "omics_type",
     "measurement_type",
     "assay_type",
-    "publications",
-    "title"
+    "publications"
   ],
   "title": "AnnouncementMsProfile",
   "type": "object",
