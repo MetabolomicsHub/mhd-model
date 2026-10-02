@@ -1024,7 +1024,7 @@ MHD_LEGACY_PROFILE_V0_1.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="study",
-                node_property_name="dataset_url_list",
+                node_property_name="url_list",
                 constraints=PropertyConstraint(required=True),
             ),
         ],
@@ -1825,9 +1825,9 @@ MHD_LEGACY_PROFILE_V0_1.cv_nodes = [
                     parent_cv_terms=[
                         ParentCvTerm(
                             cv_term=CvTerm(
-                                source="CHEMINF",
-                                accession="CHEMINF:000464",
-                                name="chemical database identifier",
+                                source="EDAM",
+                                accession="EDAM:data_2894",
+                                name="Compound accession",
                             ),
                             index_cv_terms=False,
                         )

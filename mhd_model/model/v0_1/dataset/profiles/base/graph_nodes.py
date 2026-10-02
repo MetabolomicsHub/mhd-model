@@ -217,15 +217,19 @@ class Study(BaseLabeledMhdModel):
     license: Annotated[
         None | HttpUrl,
         Field(
-            description="Data license or URL defining usage rights for the study.",
+            description="Data license URL defining usage rights for the study.",
             examples=[HttpUrl("https://creativecommons.org/publicdomain/zero/1.0/")],
         ),
+    ] = None
+    license_name: Annotated[
+        None | str,
+        Field(description="Data license name.", examples=["CC0 v1.0"]),
     ] = None
     grant_identifier_list: Annotated[
         None | list[GrantId],
         Field(description="List of grant identifiers funding the study."),
     ] = None
-    dataset_url_list: Annotated[
+    url_list: Annotated[
         None | list[AnyUrl],
         Field(description="List of dataset access or repository URLs."),
     ] = None

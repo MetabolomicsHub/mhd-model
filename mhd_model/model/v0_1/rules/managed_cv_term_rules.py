@@ -154,20 +154,12 @@ MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE: AllowedChildrenCvTerms = (
         parent_cv_terms=[
             ParentCvTerm(
                 cv_term=CvTerm(
-                    accession="CHEMINF:000464",
-                    source="CHEMINF",
-                    name="chemical database identifier",
-                ),
-            ),
-            ParentCvTerm(
-                cv_term=CvTerm(
                     accession="EDAM:data_2894",
                     source="EDAM",
                     name="Compound accession",
                 ),
             ),
         ],
-        allowed_other_sources=["REFMET"],
     )
 )
 

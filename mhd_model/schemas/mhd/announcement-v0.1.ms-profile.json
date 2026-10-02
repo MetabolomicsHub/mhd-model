@@ -42,7 +42,7 @@
           "description": "List of protocol parameters specified as key-value CV pairs.",
           "title": "Protocol Parameters"
         },
-        "relates_assay_names": {
+        "related_assay_names": {
           "anyOf": [
             {
               "items": {
@@ -56,7 +56,7 @@
           ],
           "default": null,
           "description": "List of assay names that utilize this protocol.",
-          "title": "Relates Assay Names"
+          "title": "Related Assay Names"
         }
       },
       "required": [
@@ -115,6 +115,41 @@
         "doi"
       ],
       "title": "AnnouncementPublication",
+      "type": "object"
+    },
+    "BasicValueModel": {
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "description": "Supported types",
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Value",
+          "title": "Value"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UnitCvTerm"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "unit of the value.",
+          "title": "Unit"
+        }
+      },
+      "title": "BasicValueModel",
       "type": "object"
     },
     "CvDefinition": {
@@ -235,32 +270,39 @@
         }
       },
       "title": "CvTerm",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name"
-        ]
-      ]
+      "type": "object"
     },
     "CvTermKeyValue": {
       "properties": {
         "key": {
           "$ref": "#/$defs/CvTerm",
+          "description": "key CV term of values.",
           "title": "Key"
         },
         "values": {
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/QuantitativeValue"
-              },
-              "type": "array"
-            },
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
+                "anyOf": [
+                  {
+                    "description": "Supported types",
+                    "format": "uri",
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "$ref": "#/$defs/BasicValueModel"
+                  },
+                  {
+                    "$ref": "#/$defs/CvTerm"
+                  },
+                  {
+                    "$ref": "#/$defs/CvTermValue"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             },
@@ -293,6 +335,10 @@
             },
             {
               "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "type": "string"
+            },
+            {
+              "format": "date-time",
               "type": "string"
             },
             {
@@ -336,16 +382,7 @@
         }
       },
       "title": "CvTermValue",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name",
-          "value",
-          "unit"
-        ]
-      ]
+      "type": "object"
     },
     "ExtendedCvTermKeyValue": {
       "description": "Extended CV term key-value pair supporting custom CV term keys.",
@@ -375,13 +412,26 @@
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/QuantitativeValue"
-              },
-              "type": "array"
-            },
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm"
+                "anyOf": [
+                  {
+                    "description": "Supported types",
+                    "format": "uri",
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "$ref": "#/$defs/BasicValueModel"
+                  },
+                  {
+                    "$ref": "#/$defs/CvTerm"
+                  },
+                  {
+                    "$ref": "#/$defs/CvTermValue"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "type": "array"
             },
@@ -397,6 +447,105 @@
         "key"
       ],
       "title": "ExtendedCvTermKeyValue",
+      "type": "object"
+    },
+    "KeyValue": {
+      "properties": {
+        "key": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^relationship:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                }
+              ],
+              "description": "Node Id"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/CvTerm"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Key"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                },
+                {
+                  "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                  "type": "string"
+                }
+              ],
+              "description": "Node Id"
+            },
+            {
+              "description": "Supported types",
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/CvTerm"
+            },
+            {
+              "$ref": "#/$defs/CvTermValue"
+            },
+            {
+              "$ref": "#/$defs/BasicValueModel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "title": "KeyValue",
       "type": "object"
     },
     "MsAnnouncementContact": {
@@ -795,11 +944,11 @@
       "title": "MsAnnouncementRawDataFile",
       "type": "object"
     },
-    "MsAnnouncementReportedMetabolite": {
-      "description": "A metabolite reported as identified or quantified in the mass spectrometry study.",
+    "MsAnnouncementReportedMolecularEntity": {
+      "description": "A molecular entity reported as identified or quantified in the mass spectrometry study.",
       "properties": {
         "name": {
-          "description": "Name or chemical label of the reported metabolite.",
+          "description": "Name or chemical label of the reported molecular entity.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
@@ -809,13 +958,11 @@
             {
               "items": {
                 "$ref": "#/$defs/CvTermValue",
-                "description": "Database identifier (e.g., ChEBI, HMDB, PubChem) for a reported metabolite.",
+                "description": "Database identifier (e.g., ChEBI, HMDB, PubChem) for a reported molecular entity.",
                 "profileValidation": {
                   "allowNullValue": false,
                   "allowedMissingCvTerms": null,
-                  "allowedOtherSources": [
-                    "REFMET"
-                  ],
+                  "allowedOtherSources": null,
                   "allowedPlaceholderValues": null,
                   "inputType": "list-or-item",
                   "listJoinOperator": "all",
@@ -823,17 +970,6 @@
                   "name": "allowed-children-cv-terms",
                   "negate": false,
                   "parentCvTerms": [
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "CHEMINF:000464",
-                        "name": "chemical database identifier",
-                        "source": "CHEMINF"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    },
                     {
                       "allowOnlyLeaf": false,
                       "allowParent": false,
@@ -855,14 +991,14 @@
             }
           ],
           "default": null,
-          "description": "List of database identifiers (e.g., ChEBI, HMDB, PubChem) for the metabolite.",
+          "description": "List of database identifiers (e.g., ChEBI, HMDB, PubChem) for the molecular entity.",
           "title": "Database Identifiers"
         }
       },
       "required": [
         "name"
       ],
-      "title": "MsAnnouncementReportedMetabolite",
+      "title": "MsAnnouncementReportedMolecularEntity",
       "type": "object"
     },
     "MsAnnouncementResultFile": {
@@ -1087,21 +1223,24 @@
       "title": "MsAnnouncementSupplementaryFile",
       "type": "object"
     },
-    "QuantitativeValue": {
+    "Revision": {
       "properties": {
-        "value": {
+        "revision": {
           "anyOf": [
-            {
-              "type": "string"
-            },
             {
               "type": "integer"
             },
             {
-              "type": "number"
-            },
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision"
+        },
+        "revision_datetime": {
+          "anyOf": [
             {
-              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+              "format": "date-time",
               "type": "string"
             },
             {
@@ -1109,45 +1248,21 @@
             }
           ],
           "default": null,
-          "title": "Value"
+          "title": "Revision Datetime"
         },
-        "unit": {
+        "comment": {
           "anyOf": [
             {
-              "$ref": "#/$defs/UnitCvTerm"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
           "default": null,
-          "title": "Unit"
+          "title": "Comment"
         }
       },
-      "title": "QuantitativeValue",
-      "type": "object"
-    },
-    "Revision": {
-      "properties": {
-        "revision": {
-          "title": "Revision",
-          "type": "integer"
-        },
-        "revision_datetime": {
-          "format": "date-time",
-          "title": "Revision Datetime",
-          "type": "string"
-        },
-        "comment": {
-          "title": "Comment",
-          "type": "string"
-        }
-      },
-      "required": [
-        "revision",
-        "revision_datetime",
-        "comment"
-      ],
       "title": "Revision",
       "type": "object"
     },
@@ -1173,39 +1288,11 @@
         }
       },
       "title": "UnitCvTerm",
-      "type": "object",
-      "unique_value_contribution": [
-        [
-          "source",
-          "accession",
-          "name"
-        ]
-      ]
+      "type": "object"
     }
   },
-  "description": "Mass spectrometry profile for dataset announcements.\n\nMain differences from Base Profile:\n- Mass Spectrometry Specialization: Restricts technology_type, measurement_type, omics_type,\n  and assay_type to controlled mass spectrometry terms (defaults technology_type to OBI:0000470).\n- Required Fields: Enforces strict non-null values for mhd_identifier, submitters, principal_investigators,\n  measurement_type, omics_type, assay_type, publications (or missing publication reason),\n  study_factors, characteristic_values, and raw_data_file_list.\n- Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),\n  publications (formatted DOI and PubMed IDs), metabolites, and protocols.",
+  "description": "Mass spectrometry profile for dataset announcements.\n\nMain differences from Base Profile:\n- Mass Spectrometry Specialization: Restricts technology_type, measurement_type, omics_type,\n  and assay_type to controlled mass spectrometry terms (defaults technology_type to OBI:0000470).\n- Required Fields: Enforces strict non-null values for mhd_identifier, submitters, principal_investigators,\n  measurement_type, omics_type, assay_type, publications (or missing publication reason),\n  study_factors, characteristic_values, and raw_data_file_list.\n- Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),\n  publications (formatted DOI and PubMed IDs), molecular entities, and protocols.",
   "properties": {
-    "mhd_identifier": {
-      "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
-      "pattern": "^MHD[A-Z]?[0-9]{6,8}$",
-      "title": "MHD Identifier",
-      "type": "string"
-    },
-    "doi": {
-      "anyOf": [
-        {
-          "pattern": "^10[.].+/.+$",
-          "title": "DOI",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Digital Object Identifier (DOI) for the dataset.",
-      "title": "Doi"
-    },
     "revision": {
       "anyOf": [
         {
@@ -1242,23 +1329,6 @@
       ],
       "default": null,
       "title": "Revision Datetime"
-    },
-    "repository_name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Name"
-    },
-    "repository_identifier": {
-      "description": "Original dataset accession number or identifier in the source repository.",
-      "title": "Repository Identifier",
-      "type": "string"
     },
     "repository_revision": {
       "anyOf": [
@@ -1324,22 +1394,138 @@
       "title": "Profile Uri",
       "type": "string"
     },
-    "cv_definitions": {
-      "default": [],
-      "items": {
-        "$ref": "#/$defs/CvDefinition"
-      },
-      "title": "Cv Definitions",
-      "type": "array"
+    "created_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Created at",
+      "title": "Created At"
     },
-    "mhd_metadata_file_url": {
-      "description": "URL to the primary MHD metadata file for this dataset.",
-      "format": "uri",
-      "minLength": 1,
-      "title": "Mhd Metadata File Url",
+    "prefix": {
+      "default": "dataset",
+      "description": "prefix of the id",
+      "title": "Prefix",
       "type": "string"
     },
-    "dataset_url_list": {
+    "id": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            {
+              "pattern": "^relationship:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "type": "string"
+            }
+          ],
+          "description": "Node Id"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Unique identifier of an MHD entity",
+      "title": "Id"
+    },
+    "type": {
+      "anyOf": [
+        {
+          "pattern": "^[a-z][-_a-z0-9]*[a-z0-9]$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "announcement-ms-v1-0",
+      "description": "The type property identifies type of the file",
+      "title": "Type"
+    },
+    "label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Label"
+    },
+    "created_by_ref": {
+      "anyOf": [
+        {
+          "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The id property of the data-provider who created the object.",
+      "title": "Created By Ref"
+    },
+    "tag_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/KeyValue"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Key-value descriptors related to the object.",
+      "title": "Tag List"
+    },
+    "external_reference_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/KeyValue"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "External references related to the object.",
+      "title": "External Reference List"
+    },
+    "url_list": {
       "description": "List of web page or repository URLs for accessing the dataset.",
       "items": {
         "format": "uri",
@@ -1347,8 +1533,109 @@
         "type": "string"
       },
       "minItems": 1,
-      "title": "Dataset Url List",
+      "title": "Url List",
       "type": "array"
+    },
+    "uri": {
+      "description": "Unified resource name",
+      "title": "Uri",
+      "type": "string"
+    },
+    "repository_identifier": {
+      "description": "Original dataset accession number or identifier in the source repository.",
+      "title": "Repository Identifier",
+      "type": "string"
+    },
+    "additional_identifier_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTerm"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "List of additional database or secondary unique identifiers.",
+      "title": "Additional Identifier List"
+    },
+    "alternative_id_list": {
+      "anyOf": [
+        {
+          "items": {
+            "anyOf": [
+              {
+                "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "type": "string"
+              }
+            ],
+            "description": "Node Id"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "List of additional ids populated from unique value contribution fields.",
+      "title": "Alternative Id List"
+    },
+    "doi": {
+      "anyOf": [
+        {
+          "pattern": "^10[.].+/.+$",
+          "title": "DOI",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Digital Object Identifier (DOI) for the dataset.",
+      "title": "Doi"
+    },
+    "repository_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Repository Name"
+    },
+    "repository_short_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Repository Short Name"
     },
     "license": {
       "anyOf": [
@@ -1359,17 +1646,32 @@
           "type": "string"
         },
         {
+          "type": "string"
+        },
+        {
           "type": "null"
         }
       ],
       "default": null,
-      "description": "Data usage license or URL defining licensing terms for the dataset.",
+      "description": "Data usage license URL defining licensing terms for the dataset.",
       "title": "License"
     },
-    "title": {
-      "description": "Title describing the mass spectrometry study or dataset.",
-      "minLength": 25,
-      "title": "Title",
+    "license_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Data usage license name for the dataset.",
+      "title": "License Name"
+    },
+    "name": {
+      "description": "Name of the dataset.",
+      "title": "Name",
       "type": "string"
     },
     "description": {
@@ -1384,6 +1686,50 @@
       ],
       "description": "Comprehensive description or summary abstract of the mass spectrometry study.",
       "title": "Description"
+    },
+    "cv_definitions": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvDefinition"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": [],
+      "title": "Cv Definitions"
+    },
+    "mhd_identifier": {
+      "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
+      "pattern": "^MHD[A-Z]?[0-9]{6,8}$",
+      "title": "MHD Identifier",
+      "type": "string"
+    },
+    "mhd_metadata_file_url": {
+      "description": "URL to the primary MHD metadata file for this dataset.",
+      "format": "uri",
+      "minLength": 1,
+      "title": "Mhd Metadata File Url",
+      "type": "string"
+    },
+    "mhd_metadata_file_hashes": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/CvTermValue"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The cryptographic hash values of the MHD file content, used to verify file integrity and ensure that the file has not been altered. ",
+      "title": "Mhd Metadata File Hashes"
     },
     "submission_date": {
       "anyOf": [
@@ -1461,9 +1807,9 @@
               "source": "EDAM"
             },
             {
-              "accession": "wikidata:Q115452339",
-              "name": "exposomics",
-              "source": "wikidata"
+              "accession": "EDAM:topic_4065",
+              "name": "Exposomics",
+              "source": "EDAM"
             }
           ],
           "inputType": "list-or-item",
@@ -1513,10 +1859,10 @@
       "type": "array"
     },
     "measurement_type": {
-      "description": "Types of MS measurements performed (e.g., Targeted or Untargeted metabolite profiling).",
+      "description": "Types of MS measurements performed (e.g., Targeted or Untargeted analysis).",
       "items": {
         "$ref": "#/$defs/CvTerm",
-        "description": "Controlled Vocabulary (CV) term for measurement type (e.g., Targeted or Untargeted metabolite profiling).",
+        "description": "Controlled Vocabulary (CV) term for measurement type (e.g., Targeted or Untargeted analysis).",
         "profileValidation": {
           "allowNullValue": false,
           "allowedMissingCvTerms": null,
@@ -1687,275 +2033,291 @@
       "title": "Publications"
     },
     "study_factors": {
-      "description": "Experimental study factors varied across mass spectrometry samples.",
-      "items": {
-        "$ref": "#/$defs/ExtendedCvTermKeyValue"
-      },
-      "minItems": 1,
-      "profileValidation": {
-        "allowNullValue": false,
-        "inputType": "list",
-        "listJoinOperator": "all",
-        "minimum": null,
-        "name": "check-cv-term-key-values",
-        "negate": false,
-        "optionalItems": [
-          {
+      "anyOf": [
+        {
+          "description": "List of experimental study factor key-value pairs varied across samples.",
+          "items": {
+            "$ref": "#/$defs/ExtendedCvTermKeyValue"
+          },
+          "minItems": 1,
+          "profileValidation": {
             "allowNullValue": false,
-            "controls": [
+            "inputType": "list",
+            "listJoinOperator": "all",
+            "minimum": null,
+            "name": "check-cv-term-key-values",
+            "negate": false,
+            "optionalItems": [
               {
                 "allowNullValue": false,
-                "allowedMissingCvTerms": [
+                "controls": [
                   {
-                    "accession": "NCIT:C48660",
-                    "name": "Not Applicable",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C126101",
-                    "name": "Not Available",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C150904",
-                    "name": "Masked Data",
-                    "source": "NCIT"
+                    "allowNullValue": false,
+                    "allowedMissingCvTerms": [
+                      {
+                        "accession": "NCIT:C48660",
+                        "name": "Not Applicable",
+                        "source": "NCIT"
+                      },
+                      {
+                        "accession": "NCIT:C126101",
+                        "name": "Not Available",
+                        "source": "NCIT"
+                      },
+                      {
+                        "accession": "NCIT:C150904",
+                        "name": "Masked Data",
+                        "source": "NCIT"
+                      }
+                    ],
+                    "allowedOtherSources": [
+                      "wikidata",
+                      "ILX"
+                    ],
+                    "allowedPlaceholderValues": null,
+                    "inputType": "list-or-item",
+                    "listJoinOperator": "all",
+                    "minimum": null,
+                    "name": "allowed-cv-list",
+                    "negate": false,
+                    "sourceNames": [
+                      "MONDO",
+                      "MP",
+                      "SNOMED"
+                    ]
                   }
                 ],
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
+                "cvTermKey": {
+                  "accession": "MONDO:0000001",
+                  "name": "disease",
+                  "source": "MONDO"
+                },
                 "inputType": "list-or-item",
+                "joinOperator": "and",
                 "listJoinOperator": "all",
+                "minValueCount": 1,
                 "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "MONDO",
-                  "MP",
-                  "SNOMED",
-                  "PATO"
-                ]
+                "name": "check-cv-term-key-value",
+                "negate": false
               }
             ],
-            "cvTermKey": {
-              "accession": "MONDO:0000001",
-              "name": "disease",
-              "source": "EFO"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          }
-        ],
-        "requiredItems": null
-      },
-      "title": "Study Factors",
-      "type": "array"
+            "requiredItems": null
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Experimental study factors varied across mass spectrometry samples.",
+      "title": "Study Factors"
     },
     "characteristic_values": {
+      "anyOf": [
+        {
+          "description": "List of sample characteristic key-value pairs (requiring organism and organism part).",
+          "items": {
+            "$ref": "#/$defs/CvTermKeyValue"
+          },
+          "minItems": 1,
+          "profileValidation": {
+            "allowNullValue": false,
+            "inputType": "list",
+            "listJoinOperator": "all",
+            "minimum": null,
+            "name": "check-cv-term-key-values",
+            "negate": false,
+            "optionalItems": [
+              {
+                "allowNullValue": false,
+                "controls": [
+                  {
+                    "allowNullValue": false,
+                    "allowedMissingCvTerms": [
+                      {
+                        "accession": "NCIT:C48660",
+                        "name": "Not Applicable",
+                        "source": "NCIT"
+                      },
+                      {
+                        "accession": "NCIT:C126101",
+                        "name": "Not Available",
+                        "source": "NCIT"
+                      },
+                      {
+                        "accession": "NCIT:C150904",
+                        "name": "Masked Data",
+                        "source": "NCIT"
+                      }
+                    ],
+                    "allowedOtherSources": [
+                      "wikidata",
+                      "ILX"
+                    ],
+                    "allowedPlaceholderValues": null,
+                    "inputType": "list-or-item",
+                    "listJoinOperator": "all",
+                    "minimum": null,
+                    "name": "allowed-cv-list",
+                    "negate": false,
+                    "sourceNames": [
+                      "MONDO",
+                      "MP",
+                      "SNOMED"
+                    ]
+                  }
+                ],
+                "cvTermKey": {
+                  "accession": "MONDO:0000001",
+                  "name": "disease",
+                  "source": "MONDO"
+                },
+                "inputType": "list-or-item",
+                "joinOperator": "and",
+                "listJoinOperator": "all",
+                "minValueCount": 1,
+                "minimum": null,
+                "name": "check-cv-term-key-value",
+                "negate": false
+              },
+              {
+                "allowNullValue": false,
+                "controls": [
+                  {
+                    "allowNullValue": false,
+                    "allowedMissingCvTerms": [
+                      {
+                        "accession": "NCIT:C48660",
+                        "name": "Not Applicable",
+                        "source": "NCIT"
+                      },
+                      {
+                        "accession": "NCIT:C126101",
+                        "name": "Not Available",
+                        "source": "NCIT"
+                      },
+                      {
+                        "accession": "NCIT:C150904",
+                        "name": "Masked Data",
+                        "source": "NCIT"
+                      }
+                    ],
+                    "allowedOtherSources": [
+                      "wikidata",
+                      "ILX"
+                    ],
+                    "allowedPlaceholderValues": null,
+                    "inputType": "list-or-item",
+                    "listJoinOperator": "all",
+                    "minimum": null,
+                    "name": "allowed-cv-list",
+                    "negate": false,
+                    "sourceNames": [
+                      "CL",
+                      "CLO"
+                    ]
+                  }
+                ],
+                "cvTermKey": {
+                  "accession": "EFO:0000324",
+                  "name": "cell type",
+                  "source": "EFO"
+                },
+                "inputType": "list-or-item",
+                "joinOperator": "and",
+                "listJoinOperator": "all",
+                "minValueCount": 1,
+                "minimum": null,
+                "name": "check-cv-term-key-value",
+                "negate": false
+              }
+            ],
+            "requiredItems": [
+              {
+                "allowNullValue": false,
+                "controls": [
+                  {
+                    "allowNullValue": false,
+                    "allowedMissingCvTerms": null,
+                    "allowedOtherSources": [
+                      "wikidata",
+                      "ILX"
+                    ],
+                    "allowedPlaceholderValues": null,
+                    "inputType": "list-or-item",
+                    "listJoinOperator": "all",
+                    "minimum": null,
+                    "name": "allowed-cv-list",
+                    "negate": false,
+                    "sourceNames": [
+                      "NCBITAXON",
+                      "ENVO",
+                      "CHEBI"
+                    ]
+                  }
+                ],
+                "cvTermKey": {
+                  "accession": "NCIT:C14250",
+                  "name": "Organism",
+                  "source": "NCIT"
+                },
+                "inputType": "list-or-item",
+                "joinOperator": "and",
+                "listJoinOperator": "all",
+                "minValueCount": 1,
+                "minimum": null,
+                "name": "check-cv-term-key-value",
+                "negate": false
+              },
+              {
+                "allowNullValue": false,
+                "controls": [
+                  {
+                    "allowNullValue": false,
+                    "allowedMissingCvTerms": null,
+                    "allowedOtherSources": [
+                      "wikidata",
+                      "ILX"
+                    ],
+                    "allowedPlaceholderValues": null,
+                    "inputType": "list-or-item",
+                    "listJoinOperator": "all",
+                    "minimum": null,
+                    "name": "allowed-cv-list",
+                    "negate": false,
+                    "sourceNames": [
+                      "UBERON",
+                      "BTO",
+                      "NCIT",
+                      "CHEBI"
+                    ]
+                  }
+                ],
+                "cvTermKey": {
+                  "accession": "NCIT:C103199",
+                  "name": "Organism Part",
+                  "source": "NCIT"
+                },
+                "inputType": "list-or-item",
+                "joinOperator": "and",
+                "listJoinOperator": "all",
+                "minValueCount": 1,
+                "minimum": null,
+                "name": "check-cv-term-key-value",
+                "negate": false
+              }
+            ]
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
       "description": "Sample characteristics and metadata attributes for mass spectrometry samples.",
-      "items": {
-        "$ref": "#/$defs/CvTermKeyValue"
-      },
-      "minItems": 1,
-      "profileValidation": {
-        "allowNullValue": false,
-        "inputType": "list",
-        "listJoinOperator": "all",
-        "minimum": null,
-        "name": "check-cv-term-key-values",
-        "negate": false,
-        "optionalItems": [
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": [
-                  {
-                    "accession": "NCIT:C48660",
-                    "name": "Not Applicable",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C126101",
-                    "name": "Not Available",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C150904",
-                    "name": "Masked Data",
-                    "source": "NCIT"
-                  }
-                ],
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "MONDO",
-                  "MP",
-                  "SNOMED",
-                  "PATO"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "MONDO:0000001",
-              "name": "disease",
-              "source": "EFO"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          },
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": [
-                  {
-                    "accession": "NCIT:C48660",
-                    "name": "Not Applicable",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C126101",
-                    "name": "Not Available",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C150904",
-                    "name": "Masked Data",
-                    "source": "NCIT"
-                  }
-                ],
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "CL",
-                  "CLO"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "EFO:0000324",
-              "name": "cell type",
-              "source": "EFO"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          }
-        ],
-        "requiredItems": [
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "NCBITAXON",
-                  "ENVO",
-                  "CHEBI"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "NCIT:C14250",
-              "name": "Organism",
-              "source": "NCIT"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          },
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "UBERON",
-                  "BTO",
-                  "NCIT",
-                  "CHEBI"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "NCIT:C103199",
-              "name": "Organism Part",
-              "source": "NCIT"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          }
-        ]
-      },
-      "title": "Characteristic Values",
-      "type": "array"
+      "title": "Characteristic Values"
     },
     "protocols": {
       "anyOf": [
@@ -2046,11 +2408,11 @@
       "description": "List of experimental protocols used in sample preparation and analysis.",
       "title": "Protocols"
     },
-    "reported_metabolites": {
+    "reported_molecular_entities": {
       "anyOf": [
         {
           "items": {
-            "$ref": "#/$defs/MsAnnouncementReportedMetabolite"
+            "$ref": "#/$defs/MsAnnouncementReportedMolecularEntity"
           },
           "type": "array"
         },
@@ -2059,8 +2421,8 @@
         }
       ],
       "default": null,
-      "description": "List of metabolites reported as identified or quantified in the dataset.",
-      "title": "Reported Metabolites"
+      "description": "List of molecular entities reported as identified or quantified in the dataset.",
+      "title": "Reported Molecular Entities"
     },
     "repository_metadata_file_list": {
       "anyOf": [
@@ -2080,12 +2442,20 @@
       "title": "Repository Metadata File List"
     },
     "raw_data_file_list": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/MsAnnouncementRawDataFile"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
       "description": "List of mass spectrometry raw data files included in the dataset announcement.",
-      "items": {
-        "$ref": "#/$defs/MsAnnouncementRawDataFile"
-      },
-      "title": "Raw Data File List",
-      "type": "array"
+      "title": "Raw Data File List"
     },
     "derived_data_file_list": {
       "anyOf": [
@@ -2136,17 +2506,26 @@
       "default": null,
       "description": "List of result data files included in the dataset announcement.",
       "title": "Result File List"
+    },
+    "title": {
+      "description": "Title describing the mass spectrometry study or dataset.",
+      "minLength": 25,
+      "title": "Title",
+      "type": "string"
     }
   },
   "required": [
-    "mhd_identifier",
-    "repository_identifier",
     "$schema",
     "profile_uri",
-    "mhd_metadata_file_url",
-    "dataset_url_list",
-    "title",
+    "url_list",
+    "uri",
+    "repository_identifier",
+    "repository_name",
+    "repository_short_name",
+    "name",
     "description",
+    "mhd_identifier",
+    "mhd_metadata_file_url",
     "submission_date",
     "public_release_date",
     "submitters",
@@ -2155,18 +2534,13 @@
     "measurement_type",
     "assay_type",
     "publications",
-    "study_factors",
-    "characteristic_values",
-    "raw_data_file_list"
+    "title"
   ],
   "title": "AnnouncementMsProfile",
   "type": "object",
-  "unique_value_contribution": [
+  "unique_value_alternatives": [
     [
       "doi"
-    ],
-    [
-      "mhd_identifier"
     ],
     [
       "repository_name",

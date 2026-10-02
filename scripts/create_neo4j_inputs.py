@@ -4,8 +4,10 @@ from pathlib import Path
 from typing import Any
 
 from mhd_model.log_utils import set_basic_logging_config
-from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import Study
-from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
+from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import Study
+from mhd_model.model.v1_0.dataset.profiles.legacy.profile import (
+    MhDatasetLegacyProfile_v1_0,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +18,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
     for file in files:
         txt = file.read_text()
         json_data = json.loads(txt)
-        mhd_dataset = MhDatasetLegacyProfile.model_validate(json_data)
+        mhd_dataset = MhDatasetLegacyProfile_v1_0.model_validate(json_data)
         nodes_map = {x.id_: x for x in mhd_dataset.graph.nodes}
         relationships_map = {x.id_: x for x in mhd_dataset.graph.relationships}
         # embedded_refs = []
@@ -89,7 +91,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
             #     "raw-data-file",
             #     "derived-data-file",
             #     "supplementary-file",
-            #     # "metabolite",
+            #     # "molecular-entity",
             # }:
             #     continue
             # if nodes_map[rel.target_ref].type_ == "study" and nodes_map[
@@ -98,7 +100,7 @@ def create_neo4j_input_file(input_root_path: str, output_root_path: str):
             #     "raw-data-file",
             #     "derived-data-file",
             #     "supplementary-file",
-            #     # "metabolite",
+            #     # "molecular-entity",
             # }:
             #     continue
             relationships.append(

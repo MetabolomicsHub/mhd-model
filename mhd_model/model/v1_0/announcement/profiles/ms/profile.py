@@ -11,7 +11,7 @@ from mhd_model.model.v1_0.announcement.profiles.base.profile import (
     AnnouncementProtocol,
     AnnouncementPublication,
     AnnouncementRawDataFile,
-    AnnouncementReportedMetabolite,
+    AnnouncementReportedMolecularEntity,
     AnnouncementResultFile,
     AnnouncementSupplementaryFile,
 )
@@ -140,20 +140,20 @@ class MsAnnouncementContact(AnnouncementContact):
     ] = None
 
 
-class MsAnnouncementReportedMetabolite(AnnouncementReportedMetabolite):
-    """A metabolite reported as identified or quantified in the mass spectrometry study."""
+class MsAnnouncementReportedMolecularEntity(AnnouncementReportedMolecularEntity):
+    """A molecular entity reported as identified or quantified in the mass spectrometry study."""
 
     name: Annotated[
         str,
         Field(
             min_length=1,
-            description="Name or chemical label of the reported metabolite.",
+            description="Name or chemical label of the reported molecular entity.",
         ),
     ]
     database_identifiers: Annotated[
-        None | list[ms_fields.MetaboliteDatabaseId],
+        None | list[ms_fields.MolecularEntityDatabaseId],
         Field(
-            description="List of database identifiers (e.g., ChEBI, HMDB, PubChem) for the metabolite."
+            description="List of database identifiers (e.g., ChEBI, HMDB, PubChem) for the molecular entity."
         ),
     ] = None
 
@@ -199,7 +199,7 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
       measurement_type, omics_type, assay_type, publications (or missing publication reason),
       study_factors, characteristic_values, and raw_data_file_list.
     - Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),
-      publications (formatted DOI and PubMed IDs), metabolites, and protocols.
+      publications (formatted DOI and PubMed IDs), molecular entities, and protocols.
     """
 
     type_: Annotated[
@@ -209,7 +209,7 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
             description="The type property identifies type of the file",
             alias="type",
         ),
-    ] = "announcement-ms"
+    ] = "announcement-ms-v1-0"
 
     mhd_identifier: Annotated[
         MhdIdentifier,
@@ -227,19 +227,22 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
         AnyUrl,
         Field(description="URL to the primary MHD metadata file for this dataset."),
     ]
-    dataset_url_list: Annotated[
+    url_list: Annotated[
         list[AnyUrl],
         Field(
             min_length=1,
             description="List of web page or repository URLs for accessing the dataset.",
         ),
     ]
-
     license: Annotated[
-        None | HttpUrl,
+        None | HttpUrl | str,
         Field(
-            description="Data usage license or URL defining licensing terms for the dataset."
+            description="Data usage license URL defining licensing terms for the dataset."
         ),
+    ] = None
+    license_name: Annotated[
+        None | str,
+        Field(description="Data usage license name for the dataset."),
     ] = None
     title: Annotated[
         str,
@@ -297,15 +300,15 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
             name="mass spectrometry assay",
         )
     ]
-    # Targeted metabolite profiling, Untargeted metabolite profiling, ...
+    # Targeted analysis, Untargeted analysis, ...
     measurement_type: Annotated[
         list[ms_fields.MeasurementType],
         Field(
             min_length=1,
-            description="Types of MS measurements performed (e.g., Targeted or Untargeted metabolite profiling).",
+            description="Types of MS measurements performed (e.g., Targeted or Untargeted analysis).",
         ),
     ]
-    # Metabolomics, Lipidomics, Proteomics, ...
+    # Metabolomics, Lipidomics, Exposomics, ...
     omics_type: Annotated[
         list[ms_fields.OmicsType],
         Field(
@@ -361,10 +364,10 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
         ),
     ] = None
 
-    reported_metabolites: Annotated[
-        None | list[MsAnnouncementReportedMetabolite],
+    reported_molecular_entities: Annotated[
+        None | list[MsAnnouncementReportedMolecularEntity],
         Field(
-            description="List of metabolites reported as identified or quantified in the dataset."
+            description="List of molecular entities reported as identified or quantified in the dataset."
         ),
     ] = None
 

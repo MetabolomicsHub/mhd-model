@@ -401,7 +401,7 @@ def create_ms_announcement_file(
                 term = CvTerm.model_validate(omics_type)
                 omics_types[term.accession] = term
 
-    dataset_url_list = study.dataset_url_list
+    url_list = study.url_list
     now = datetime.datetime.now(datetime.UTC)
     announcement = AnnouncementBaseProfile(
         created_at=now,
@@ -415,7 +415,7 @@ def create_ms_announcement_file(
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
         mhd_metadata_file_url=AnyUrl(mhd_file_url),
-        dataset_url_list=dataset_url_list or None,
+        url_list=url_list or None,
         license=study.license,
         title=study.title,
         description=study.description,

@@ -47,9 +47,9 @@ Basic analytical assay node representing an experimental measurement procedure. 
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|Its value MUST be <code>**assay**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -94,9 +94,9 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**characteristic-definition**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -136,9 +136,9 @@ Definition of a sample characteristic or attribute (e.g. organism, tissue). </br
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**derived-data-file**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -179,9 +179,9 @@ Definition of an experimental factor varied across samples in a study. </br></br
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**factor-definition**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -221,9 +221,9 @@ Metadata file (e.g., SDRF, ISA-Tab) describing experimental design and samples. 
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**metadata-file**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -274,9 +274,9 @@ Any constitutionally or isotopically distinct atom, molecule, ion,<br>ion pair, 
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -289,7 +289,7 @@ Any constitutionally or isotopically distinct atom, molecule, ion,<br>ion pair, 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |molecular-entity|described-as|describes|descriptor|0|N||
-|molecular-entity|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
+|molecular-entity|identified-as|reported-identifier-of|molecular-entity-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No</code><br>-----|
 |molecular-entity|measured-in|measures|raw-data-file|0|N||
 |molecular-entity|reported-in|reports|study|1|N||
 |molecular-entity|reported-in|reports|metadata-file|0|N||
@@ -301,8 +301,8 @@ Any constitutionally or isotopically distinct atom, molecule, ion,<br>ion pair, 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |descriptor|describes|described-as|molecular-entity|0|N||
-|metabolite-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
 |metadata-file|reports|reported-in|molecular-entity|0|N||
+|molecular-entity-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
 |raw-data-file|measures|measured-in|molecular-entity|0|N||
 |result-file|reports|reported-in|molecular-entity|0|N||
 |study|reports|reported-in|molecular-entity|0|N||
@@ -318,9 +318,9 @@ An institution, company, university, or department associated with a study or co
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**organization**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|URI of the person. e.g., urn:mhd:MTBLS:MTBLS1:organization:ROR_02catss52|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -366,9 +366,9 @@ Definition of an experimental parameter used within a protocol. </br></br>Parame
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**parameter-definition**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -408,9 +408,9 @@ An individual human being (e.g. author, submitter, principal investigator).<br>I
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The value of this property MUST be 'person'<br>Its value MUST be <code>**person**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|URI of the person. e.g., urn:mhd:MTBLS:MTBLS1:person:submitter1@ebi.ac.uk|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -458,9 +458,9 @@ An overarching research project encompassing one or more studies. </br></br>Proj
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**project**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -507,9 +507,9 @@ A defined and standardized procedure followed to collect, prepare, or analyze sa
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**protocol**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -556,9 +556,9 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**publication**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -599,9 +599,9 @@ A document that is the output of a publishing process. [IAO, IAO:0000311, public
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**raw-data-file**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -644,9 +644,9 @@ Processed result file (e.g. quantification or identification matrix). </br></br>
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**result-file**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -689,9 +689,9 @@ A biological sample prepared for analytical measurement. </br></br>Sample node i
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the sample|
@@ -734,9 +734,9 @@ An analytical run representing the measurement of a sample on an instrument. </b
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -777,9 +777,9 @@ Configuration settings and instrument parameters used for a sample run. </br></b
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**sample-run-configuration**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -815,9 +815,9 @@ A biological specimen collected from a subject. </br></br>Specimen node is optio
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**specimen**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the specimen|
@@ -856,9 +856,9 @@ A biological research study or experiment comprising samples, protocols, and dat
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**study**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rules:<br> <code>Target node type: <code>**data-provider**</code><br>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|optional|<code>*list[AnyUrl]*<code>|List of dataset access or repository URLs|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|**required**|<code>*str*<code>|Accession number or identifier in the source repository. If there is no repository short name in identifier, repository short name MUST be defined as prefix, such as <repository>:<identifier><br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -869,9 +869,9 @@ A biological research study or experiment comprising samples, protocols, and dat
 |**description**|optional|<code>*str*<code>|Detailed abstract or summary description of the study|
 |**submission_date**|optional|<code>*datetime*<code>|Date and time when the study was submitted|
 |**public_release_date**|optional|<code>*datetime*<code>|Date and time when the study was publicly released|
-|**license**|optional|<code>*HttpUrl*<code>|Data license or URL defining usage rights for the study<br><br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
+|**license**|optional|<code>*HttpUrl*<code>|Data license URL defining usage rights for the study<br><br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
+|**license_name**|optional|<code>*str*<code>|Data license name<br><br>Example: <br><code>"CC0 v1.0"</code>|
 |**grant_identifier_list**|optional|<code>*list[Annotated]*<code>|List of grant identifiers funding the study|
-|**dataset_url_list**|optional|<code>*list[AnyUrl]*<code>|List of dataset access or repository URLs|
 |**related_dataset_list**|optional|<code>*list[KeyValue]*<code>|List of related dataset key-value pairs|
 |**protocol_refs**|optional|<code>*list[Annotated]*<code>|Ordered list of protocol object IDs used in the study<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 
@@ -942,9 +942,9 @@ An individual organism or subject from which biological samples are derived. </b
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**subject**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional identifiers for the subject|
@@ -985,9 +985,9 @@ Supplementary document or asset file associated with the dataset. </br></br>Supp
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies type of the object<br>Its value MUST be <code>**supplementary-file**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|**required**|<code>*list[AnyUrl]*<code>|URL list related to the object<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset<br>Minimum length: <code>1</code><br>Validation Rule:<br> <code>Min Length: 1, Required</code>|
 |**uri**|**required**|<code>*str*<code>|Unified resource name|
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTerm]*<code>|List of additional database or secondary unique identifiers|
@@ -1033,9 +1033,9 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Char
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**characteristic-type**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1067,9 +1067,9 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**characteristic-value**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1107,9 +1107,9 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**data-provider**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1137,9 +1137,9 @@ Node or link reference defined in other MHD common data model file.<br>The speci
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|optional|<code>*str*<code>|The type property identifies the type of MHD Object|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 |**referenced_id**|**required**|<code>*str or str or str or str or str or str*<code>|Id of referenced node or link. This id must be defined in the referenced dataset with the specified type_|
 |**referenced_type**|**required**|<code>*str*<code>|Type of referenced object|
 |**dataset_id**|optional|<code>*str*<code>|Id of dataset contains referenced object|
@@ -1173,9 +1173,9 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Desc
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**descriptor**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1242,9 +1242,9 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Fact
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**factor-type**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1276,9 +1276,9 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**factor-value**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1299,9 +1299,9 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |sample|has-factor-value|value-of|factor-value|0|N||
 |subject|has-factor-value|value-of|factor-value|0|N||
 
-### Metabolite Identifier
+### Molecular Entity Identifier
 
-Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Metabolite Identifier node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Molecular Entity Identifier node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -1311,25 +1311,25 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Meta
 |**accession**|optional|<code>*str*<code>|Accession number of CV term in compact URI format|
 |**name**|optional|<code>*str*<code>|Label of CV term|
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
-|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**metabolite-identifier**</code>|
+|**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**molecular-entity-identifier**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|metabolite-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
+|molecular-entity-identifier|reported-identifier-of|identified-as|molecular-entity|1|N||
 
 
 **Reverse Node Relationships**
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
-|molecular-entity|identified-as|reported-identifier-of|metabolite-identifier|0|N||
+|molecular-entity|identified-as|reported-identifier-of|molecular-entity-identifier|0|N||
 
 ### Parameter Type
 
@@ -1345,9 +1345,9 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Para
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**parameter-type**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1379,9 +1379,9 @@ Controlled Vocabulary (CV) term value object node with quantitative or string va
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**parameter-value**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1411,9 +1411,9 @@ Controlled Vocabulary (CV) term object node in the dataset graph. </br></br>Prot
 |**id**|optional|<code>*str or str or str or str or str or str*<code>|Unique identifier of an MHD entity|
 |**type**|**required**|<code>*str*<code>|The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects<br>Its value MUST be <code>**protocol-type**</code>|
 |**created_by_ref**|optional|<code>*str*<code>|The id property of the data-provider who created the object<br>Target CV term type: <code>**data-provider**</code><br>Validation Rule:<br> <code>Allow any valid CV Term<br>Exceptions:<br>Allowed Other Sources: wikidata, ILX</code>|
-|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value tags related to the object|
+|**tag_list**|optional|<code>*list[KeyValue]*<code>|Key-value descriptors related to the object|
 |**external_reference_list**|optional|<code>*list[KeyValue]*<code>|External references related to the object|
-|**url_list**|optional|<code>*list[AnyUrl]*<code>|URL list related to the object|
+|**url_list**|**required**|<code>*list[AnyUrl]*<code>|List of web page or repository URLs for accessing the dataset|
 
 
 **Node Relationships**
@@ -1457,7 +1457,7 @@ graph LR
   Metadata_File[Metadata File] ==>|references| Result_File[Result File];
   Metadata_File[Metadata File] ==>|references| Supplementary_File[Supplementary File];
   Metadata_File[Metadata File] ==>|reports| Molecular_Entity[Molecular Entity];
-  Molecular_Entity[Molecular Entity] ==>|identified-as| Metabolite_Identifier[Metabolite Identifier];
+  Molecular_Entity[Molecular Entity] ==>|identified-as| Molecular_Entity_Identifier[Molecular Entity Identifier];
   Molecular_Entity[Molecular Entity] ==>|described-as| Descriptor[Descriptor];
   Molecular_Entity[Molecular Entity] ==>|reported-in| Study[Study];
   Molecular_Entity[Molecular Entity] ==>|reported-in| Metadata_File[Metadata File];
@@ -1576,7 +1576,7 @@ graph LR
   Factor_Value[Factor Value] ==>|value-of| Sample[Sample];
   Factor_Value[Factor Value] ==>|value-of| Specimen[Specimen];
   Factor_Value[Factor Value] ==>|value-of| Subject[Subject];
-  Metabolite_Identifier[Metabolite Identifier] ==>|reported-identifier-of| Molecular_Entity[Molecular Entity];
+  Molecular_Entity_Identifier[Molecular Entity Identifier] ==>|reported-identifier-of| Molecular_Entity[Molecular Entity];
   Parameter_Type[Parameter Type] ==>|type-of| Parameter_Definition[Parameter Definition];
   Parameter_Value[Parameter Value] ==>|instance-of| Parameter_Definition[Parameter Definition];
   Protocol_Type[Protocol Type] ==>|type-of| Protocol[Protocol];

@@ -3,20 +3,6 @@ import logging
 import pathlib
 
 from mhd_model.log_utils import set_basic_logging_config
-from mhd_model.model.v0_1.announcement.profiles.base import (
-    profile as v0_1_announcement_base_profile,
-)
-from mhd_model.model.v0_1.announcement.profiles.legacy import (
-    profile as v0_1_announcement_legacy_profile,
-)
-from mhd_model.model.v0_1.announcement.profiles.ms import (
-    profile as v0_1_announcement_ms_profile,
-)
-from mhd_model.model.v0_1.dataset.profiles.base import profile as v0_1_mhd_base_profile
-from mhd_model.model.v0_1.dataset.profiles.legacy import (
-    profile as v0_1_mhd_legacy_profile,
-)
-from mhd_model.model.v0_1.dataset.profiles.ms import profile as v0_1_mhd_ms_profile
 from mhd_model.model.v1_0.announcement.profiles.base import (
     profile as v1_0_announcement_base_profile,
 )
@@ -31,7 +17,7 @@ from mhd_model.model.v1_0.dataset.profiles.legacy import (
     profile as v1_0_mhd_legacy_profile,
 )
 from mhd_model.model.v1_0.dataset.profiles.ms import profile as v1_0_mhd_ms_profile
-from scripts.update_v0_1_documentation import update_v0_1_documentation
+from scripts.update_ontology_sources import update_ontology_source_json
 from scripts.update_v1_0_documentation import update_v1_0_documentation
 
 logger = logging.getLogger(__name__)
@@ -40,32 +26,32 @@ logger = logging.getLogger(__name__)
 def update_schema_files() -> None:
     models = [
         (
-            v0_1_announcement_base_profile.AnnouncementBaseProfile,
+            v1_0_announcement_base_profile.AnnouncementBaseProfile,
             "v0_1",
             "announcement-v0.1.schema.json",
         ),
         (
-            v0_1_announcement_legacy_profile.AnnouncementLegacyProfile,
+            v1_0_announcement_legacy_profile.AnnouncementLegacyProfile,
             "v0_1",
             "announcement-v0.1.legacy-profile.json",
         ),
         (
-            v0_1_announcement_ms_profile.AnnouncementMsProfile,
+            v1_0_announcement_ms_profile.AnnouncementMsProfile,
             "v0_1",
             "announcement-v0.1.ms-profile.json",
         ),
         (
-            v0_1_mhd_base_profile.MhDatasetBaseProfile,
+            v1_0_mhd_base_profile.MhDatasetBaseProfile_v1_0,
             "v0_1",
             "common-data-model-v0.1.schema.json",
         ),
         (
-            v0_1_mhd_legacy_profile.MhDatasetLegacyProfile,
+            v1_0_mhd_legacy_profile.MhDatasetLegacyProfile_v1_0,
             "v0_1",
             "common-data-model-v0.1.legacy-profile.json",
         ),
         (
-            v0_1_mhd_ms_profile.MhDatasetBaseProfile,
+            v1_0_mhd_ms_profile.MhDatasetBaseProfile_v1_0,
             "v0_1",
             "common-data-model-v0.1.ms-profile.json",
         ),
@@ -120,5 +106,6 @@ def update_schema_files() -> None:
 if __name__ == "__main__":
     set_basic_logging_config()
     update_schema_files()
-    update_v0_1_documentation()
+    update_ontology_source_json()
+    # update_v1_0_documentation()
     update_v1_0_documentation()

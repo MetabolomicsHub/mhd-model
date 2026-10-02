@@ -211,19 +211,22 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
         AnyUrl,
         Field(description="URL to the primary MHD metadata file for this dataset."),
     ]
-    dataset_url_list: Annotated[
+    url_list: Annotated[
         list[AnyUrl],
         Field(
             min_length=1,
             description="List of web page or repository URLs for accessing the dataset.",
         ),
     ]
-
     license: Annotated[
         None | HttpUrl | str,
         Field(
-            description="Data usage license or URL defining licensing terms for the dataset."
+            description="Data usage license URL defining licensing terms for the dataset."
         ),
+    ] = None
+    license_name: Annotated[
+        None | str,
+        Field(description="Data usage license name for the dataset."),
     ] = None
     title: Annotated[
         str,

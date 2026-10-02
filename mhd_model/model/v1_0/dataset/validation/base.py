@@ -64,11 +64,11 @@ class MhdModelValidator:
                 instance, mhd_model_validation_context=self.mhd_model_validation_context
             )
             if node_class:
-                subschema = {"$ref": f"#/$defs/{node_class.__name__}"}
-                if node_class is not None and subschema in anyOf:
-                    index = anyOf.index(subschema)
+                sub_schema = {"$ref": f"#/$defs/{node_class.__name__}"}
+                if node_class is not None and sub_schema in anyOf:
+                    index = anyOf.index(sub_schema)
                     errors = list(
-                        validator.descend(instance, subschema, schema_path=index)
+                        validator.descend(instance, sub_schema, schema_path=index)
                     )
                     if errors:
                         for error in errors:
@@ -78,11 +78,11 @@ class MhdModelValidator:
             if len(anyOf) == 2 and optional_type in anyOf:
                 null_errs = None
                 other_errors = None
-                for index, subschema in enumerate(anyOf):
+                for index, sub_schema in enumerate(anyOf):
                     errs = list(
-                        validator.descend(instance, subschema, schema_path=index)
+                        validator.descend(instance, sub_schema, schema_path=index)
                     )
-                    if subschema == optional_type:
+                    if sub_schema == optional_type:
                         null_errs = errs
                     else:
                         other_errors = errs
@@ -93,8 +93,8 @@ class MhdModelValidator:
                         yield error
         if node_class:
             return
-        for index, subschema in enumerate(anyOf):
-            errs = list(validator.descend(instance, subschema, schema_path=index))
+        for index, sub_schema in enumerate(anyOf):
+            errs = list(validator.descend(instance, sub_schema, schema_path=index))
             if not errs:
                 break
             all_errors.extend(errs)
@@ -481,7 +481,7 @@ class MhdModelValidator:
                     if isinstance(item, NodePropertyValidation):
                         if item.identifier:
                             logger.debug(
-                                "Node propertry validation '%s': Started",
+                                "Node property validation '%s': Started",
                                 item.identifier,
                             )
                         errors = self.check_property_constraint(
@@ -489,7 +489,7 @@ class MhdModelValidator:
                         )
                         if item.identifier:
                             logger.debug(
-                                "Node propertry validation '%s': Completed",
+                                "Node property validation '%s': Completed",
                                 item.identifier,
                             )
                     elif isinstance(item, CvTermValidation):
@@ -503,14 +503,14 @@ class MhdModelValidator:
                         if not selected_items:
                             if item.condition:
                                 logger.info(
-                                    "Cv Term validation '%s' - %s: %s: Skipping. No maching nodes.",
+                                    "Cv Term validation '%s' - %s: %s: Skipping. No matching nodes.",
                                     item.identifier,
                                     item.condition[0].expression or "",
                                     item.condition[0].expression_value or "",
                                 )
                             else:
                                 logger.info(
-                                    "Cv Term validation '%s': Skipping. No maching nodes.",
+                                    "Cv Term validation '%s': Skipping. No matching nodes.",
                                     item.identifier,
                                 )
                             continue
@@ -843,10 +843,10 @@ class MhdModelValidator:
             rel_name = condition_item.relationship_name
             if rel_name not in relationships_index:
                 continue
-            target_rels = relationships_index.get(rel_name)
-            if value.id_ not in target_rels:
+            target_relationships = relationships_index.get(rel_name)
+            if value.id_ not in target_relationships:
                 continue
-            targets = target_rels.get(value.id_)
+            targets = target_relationships.get(value.id_)
             for target_ref in targets:
                 if not nodes_by_type.get(condition_item.start_node_type):
                     continue
@@ -1057,7 +1057,7 @@ class MhdModelValidator:
                         message=message
                         + f"[{item.source}, {item.accession}, {item.name}] "
                         f"is not child of any parent cv term. "
-                        f"Valid parents: {valid_parents!s}. Error: {error_message}",
+                        f"Valid parents: {','.join([str(x) for x in valid_parents or []])}. Error: {error_message}",
                         validator="check-child-cv-term",
                         context=(),
                         path=sub_path,
@@ -1419,7 +1419,7 @@ class MhdModelValidator:
                     False,
                     jsonschema.ValidationError(
                         message=f"{property_name} does not exist at index {idx}",
-                        validator="check-propery",
+                        validator="check-property",
                         context=(),
                         path=("nodes", idx),
                         instance={},
@@ -1663,7 +1663,7 @@ class MhdModelValidator:
                         jsonschema.ValidationError(
                             message=f"{item.identifier} - {node.id_}: The source node at index {node_idx} has less relationship "
                             f"('{item.source} - {item.relationship_name} - {item.target}{' [' + condition.name + ']' if condition else ''}') "
-                            f"Actual: {target_count}, Minimim : {item.min_for_each_source}.",
+                            f"Actual: {target_count}, Minimum : {item.min_for_each_source}.",
                             validator="number-of-relationships",
                             context=(),
                             path=["nodes", node_idx],
@@ -1700,7 +1700,8 @@ class MhdModelValidator:
         if item_count < min:
             errors.append(
                 jsonschema.ValidationError(
-                    message=f"Number of {node_name} nodes is less than the minimum: {min}.",
+                    message=f"[{node_validation.identifier or ''}] Number of "
+                    f"{node_name} nodes is less than the minimum: {min}. {node_name}.",
                     validator="number-of-nodes",
                     context=(),
                     path=("nodes",),
@@ -1710,7 +1711,8 @@ class MhdModelValidator:
         if max is not None and item_count > max:
             errors.append(
                 jsonschema.ValidationError(
-                    message=f"Number of {node_name} nodes exceeds the allowed limit: {max}.",
+                    message=f"[{node_validation.identifier or ''}] "
+                    f"Number of {node_name} nodes exceeds the allowed limit: {max}.",
                     validator="number-of-nodes",
                     context=(),
                     path=("nodes",),

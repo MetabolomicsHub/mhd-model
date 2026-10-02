@@ -37,7 +37,7 @@ MHD_MODEL_V1_0_LEGACY_PROFILE_NAME = "https://metabolomicshub.github.io/mhd-mode
 
 
 SUPPORTED_SCHEMA_MAP = SupportedSchemaMap(
-    default_schema_uri=ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,
+    default_schema_uri=ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME,
     schemas={
         ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME: SupportedSchema(
             uri=ANNOUNCEMENT_FILE_V0_1_DEFAULT_SCHEMA_NAME,

@@ -110,11 +110,10 @@ COMMON_OMICS_TYPES: dict[str, CvTerm] = {
         accession="EDAM:topic_3955",
         name="Fluxomics",
     ),
-    # TODO: Update once EDAM ontolgy is updated on OLS
     "exposomics": CvTerm(
-        source="wikidata",
-        accession="wikidata:Q115452339",
-        name="exposomics",
+        source="EDAM",
+        accession="EDAM:topic_4065",
+        name="Exposomics",
     ),
 }
 

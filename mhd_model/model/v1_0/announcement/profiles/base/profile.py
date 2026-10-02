@@ -1,8 +1,9 @@
 import datetime
 from typing import Annotated
 
-from pydantic import AnyUrl, Field, HttpUrl
+from pydantic import AnyUrl, Field
 
+from mhd_model.model.base import BaseAnnouncementFile
 from mhd_model.shared.base import (
     CvTerm,
     CvTermKeyValue,
@@ -10,7 +11,6 @@ from mhd_model.shared.base import (
     MhdConfigModel,
     MhdObjectType,
 )
-from mhd_model.shared.model import CvEnabledDataset
 
 
 class AnnouncementBaseModel(MhdConfigModel):
@@ -144,21 +144,21 @@ class AnnouncementPublication(AnnouncementBaseModel):
     ] = None
 
 
-class AnnouncementReportedMetabolite(AnnouncementBaseModel):
-    """A metabolite reported as identified or quantified in the dataset."""
+class AnnouncementReportedMolecularEntity(AnnouncementBaseModel):
+    """A molecular entity reported as identified or quantified in the dataset."""
 
     name: Annotated[
         str,
         Field(
             min_length=1,
-            description="Name or chemical label of the reported metabolite.",
+            description="Name or chemical label of the reported molecular entity.",
         ),
     ]
     database_identifiers: Annotated[
         None | list[CvTermValue],
         Field(
-            description="List of database identifiers (e.g., ChEBI, RefMet, HMDB, PubChem) "
-            "for the metabolite as CV term values."
+            description="List of database identifiers (e.g., ChEBI, RefMet, PubChem) "
+            "for the molecular entity as CV term values."
         ),
     ] = None
 
@@ -194,7 +194,7 @@ class AnnouncementProtocol(AnnouncementBaseModel):
     ] = None
 
 
-class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
+class AnnouncementBaseProfile(BaseAnnouncementFile, AnnouncementBaseModel):
     """Base Profile for dataset announcement files."""
 
     type_: Annotated[
@@ -204,67 +204,10 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
             description="The type property identifies type of the file",
             alias="type",
         ),
-    ] = "announcement-base"
+    ] = "announcement-base-v1-0"
 
-    created_at: Annotated[
-        None | datetime.datetime,
-        Field(description="Creation time."),
-    ] = None
+    name: Annotated[str, Field(description="Name of the dataset.")]
 
-    mhd_identifier: Annotated[
-        None | str,
-        Field(
-            description="Unique MetabolomicsHub Data (MHD) identifier for the dataset."
-        ),
-    ] = None
-    repository_identifier: Annotated[
-        str,
-        Field(
-            description="Original dataset accession number or identifier in the source repository."
-        ),
-    ]
-    mhd_metadata_file_url: Annotated[
-        AnyUrl,
-        Field(description="URL to the primary MHD metadata file for this dataset."),
-    ]
-    mhd_metadata_file_hashes: Annotated[
-        None | list[CvTermValue],
-        Field(
-            description="The cryptographic hash values of the MHD file content, "
-            "used to verify file integrity and ensure that the file has not been altered. "
-        ),
-    ] = None
-    dataset_url_list: Annotated[
-        list[AnyUrl],
-        Field(
-            min_length=1,
-            description="List of web page or repository URLs for accessing the dataset.",
-        ),
-    ]
-    doi: Annotated[
-        None | str,
-        Field(description="Digital Object Identifier (DOI) assigned to the dataset."),
-    ] = None
-    license: Annotated[
-        None | HttpUrl | str,
-        Field(
-            description="Data usage license or URL defining licensing terms for the dataset."
-        ),
-    ] = None
-    title: Annotated[
-        str,
-        Field(
-            min_length=25,
-            description="Title describing the dataset and underlying study.",
-        ),
-    ]
-    description: Annotated[
-        None | str,
-        Field(
-            min_length=60,
-            description="Comprehensive description or summary abstract of the dataset.",
-        ),
-    ]
     submission_date: Annotated[
         None | datetime.datetime,
         Field(
@@ -277,7 +220,6 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
             description="Date and time when the dataset was made publicly accessible."
         ),
     ]
-
     submitters: Annotated[
         None | list[AnnouncementContact],
         Field(
@@ -292,7 +234,7 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
         ),
     ] = None
 
-    # Metabolomics, Lipidomics, Proteomics, ...
+    # Metabolomics, Lipidomics, Exposomics, ...
     omics_type: Annotated[
         None | list[CvTerm],
         Field(
@@ -308,11 +250,11 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
             description="Analytical technology platforms used (e.g., Mass Spectrometry, NMR).",
         ),
     ] = None
-    # Targeted metabolite profiling, Untargeted metabolite profiling, ...
+    # Targeted analysis, Untargeted analysis, ...
     measurement_type: Annotated[
         None | list[CvTerm],
         Field(
-            description="Types of measurements performed (e.g., Targeted or Untargeted metabolite profiling)."
+            description="Types of measurements performed (e.g., Targeted or Untargeted analysis)."
         ),
     ] = None
     # LC-MS, GC-MS, ...
@@ -363,10 +305,10 @@ class AnnouncementBaseProfile(CvEnabledDataset, AnnouncementBaseModel):
         ),
     ] = None
 
-    reported_metabolites: Annotated[
-        None | list[AnnouncementReportedMetabolite],
+    reported_molecular_entities: Annotated[
+        None | list[AnnouncementReportedMolecularEntity],
         Field(
-            description="List of metabolites reported as identified or quantified in the dataset."
+            description="List of molecular entities reported as identified or quantified in the dataset."
         ),
     ] = None
 

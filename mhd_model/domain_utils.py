@@ -14,6 +14,7 @@ from mhd_model.shared.model import IdentifiableMhdModel
 
 logger = logging.getLogger(__name__)
 
+
 COMMON_FILE_HASH_ALGORITHMS = {
     "sha256": CvTerm(source="MS", accession="MS:1003151", name="SHA-256"),
     "md5": CvTerm(source="MS", accession="MS:1000568", name="MD5"),
@@ -65,10 +66,10 @@ def get_file_hashes(file: bytes | Path):
 class OntologySourceReferenceTemplate(BaseModel):
     name: Annotated[str, Field(description="Source name")]
     file: Annotated[str, Field(description="Source file")]
-    version: Annotated[str, Field(description="Source version")]
-    description: Annotated[str, Field(description="Source full name")]
+    version: Annotated[str, Field(description="Source version")] = ""
+    description: Annotated[str, Field(description="Source full name")] = ""
     details: Annotated[str, Field(description="Source details")] = ""
-    prefix: Annotated[str, Field(description="Source prefix")]
+    prefix: Annotated[str, Field(description="Source prefix")] = ""
 
 
 class OntologySourceReference(BaseModel):

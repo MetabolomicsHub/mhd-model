@@ -16,13 +16,17 @@ def search_ontology_definition(ontology_name: str) -> None | CvDefinition:
         response = httpx2.get(url, timeout=2)
         response.raise_for_status()
         json_response = response.json()
-        base_uri = json_response.get("baseUri", [])
+        base_uri = json_response.get("baseUris", [])
 
         return CvDefinition(
-            name=json_response.get("label", [""])[0],
-            uri=json_response.get("versionIri", None) or json_response.get("iri", ""),
-            prefix=base_uri[0] if base_uri else "",
-            label=json_response.get("preferredPrefix", "").upper(),
+            name=json_response.get("label", [""])[0] or json_response.get("title"),
+            uri=json_response.get("versionIri")
+            or json_response.get("iri")
+            or json_response.get("ontologyIri", None),
+            prefix=base_uri[0] if base_uri else None,
+            label=json_response.get("preferredPrefix", "").upper()
+            or json_response.get("ontologyId", "").upper()
+            or None,
         )
     except Exception as e:
         logger.error(

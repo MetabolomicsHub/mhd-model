@@ -357,7 +357,7 @@ def create_legacy_announcement_file(
         AnnouncementSupplementaryFile,
     )
     reported_metabolites = get_metabolites(type_map, relationship_name_map)
-    dataset_url_list = study.dataset_url_list
+    url_list = study.url_list
 
     protocols = get_protocols(all_nodes_map, relationship_name_map, type_map, study)
 
@@ -367,7 +367,7 @@ def create_legacy_announcement_file(
     if not mhd_file_url:
         http = [
             str(x)
-            for x in study.dataset_url_list
+            for x in study.url_list
             if str(x).startswith("http://") or str(x).startswith("https://")
         ]
         if http:
@@ -384,7 +384,7 @@ def create_legacy_announcement_file(
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
         mhd_metadata_file_url=AnyUrl(mhd_file_url),
-        dataset_url_list=dataset_url_list,
+        url_list=url_list,
         license=study.license,
         title=study.title,
         description=study.description,

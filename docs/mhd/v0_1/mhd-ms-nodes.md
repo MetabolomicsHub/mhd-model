@@ -172,7 +172,7 @@ The following nodes are required with the specified value.
 |Source Node|Minimum Node Count|Property / Relationship|Value|
 |-----------|-----------|------------|------------|
 |characteristic-value|1|[instance-of].characteristic_type_ref.name|[EFO, EFO:0000324, cell type]|
-|characteristic-value|1|[instance-of].characteristic_type_ref.name|[EFO, MONDO:0000001, disease]|
+|characteristic-value|1|[instance-of].characteristic_type_ref.name|[MONDO, MONDO:0000001, disease]|
 |characteristic-value|1|[instance-of].characteristic_type_ref.name|[NCIT, NCIT:C14250, Organism]|
 |characteristic-value|1|[instance-of].characteristic_type_ref.name|[NCIT, NCIT:C103199, Organism Part]|
 |parameter-definition|1|[used-in].protocol_type_ref.name|[CHMO, CHMO:0000470, mass spectrometry]|
@@ -201,7 +201,7 @@ Assay node is **required in the MHD MS Profile.** <code>Minimum: 1, Maximum: N (
 |**technology_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the technology type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
 |**assay_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the assay type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay]</code>|
 |**measurement_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the measurement type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MS, MS:1003904, untargeted analysis],<br>* [MS, MS:1003905, targeted analysis],<br>* [MS, MS:1003906, semi-targeted analysis]</code>|
-|**omics_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the omics type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [wikidata, wikidata:Q115452339, exposomics]</code>|
+|**omics_type_ref**|**required**|<code>*CvTermObjectId*<code>|Reference ID to the omics type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [EDAM, EDAM:topic_4065, Exposomics]</code>|
 |**protocol_refs**|optional|<code>*list[MhdObjectId]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 |**sample_run_refs**|**required**|<code>*list[MhdObjectId]*<code>|List of sample run object IDs associated with the assay<br>Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
 
@@ -369,7 +369,7 @@ Metabolite node is optional in the  MHD MS Profile. <code>Minimum: 0, Maximum: N
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |metabolite|described-as|describes|descriptor|0|N||
-|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [CHEMINF, CHEMINF:000464, chemical database identifier]<br>Allow parent (root) CV Term: No,<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No<br>Exceptions:<br>Allowed Other Sources: REFMET</code><br>-----|
+|metabolite|identified-as|reported-identifier-of|metabolite-identifier|0|N|Target Validation Rule:<br><code>-----<br>Allowed Parent CV Terms:<br>* [EDAM, EDAM:data_2894, Compound accession]<br>Allow parent (root) CV Term: No</code><br>-----|
 |metabolite|measured-in|measures|raw-data-file|0|N||
 |metabolite|reported-in|reports|study|1|N||
 |metabolite|reported-in|reports|metadata-file|0|N||

@@ -664,7 +664,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
                 target="parameter-value",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
@@ -1432,7 +1432,7 @@ MHD_MS_PROFILE_V0_1.mhd_nodes = [
             NodePropertyValidation(
                 identifier="study-001-07",
                 node_type="study",
-                node_property_name="dataset_url_list",
+                node_property_name="url_list",
                 constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
@@ -2476,7 +2476,7 @@ MHD_MS_PROFILE_V0_1.cv_nodes = [
             CvTermValidation(
                 identifier="metabolite-identifier-004-01",
                 description="metabolite identifier in value. "
-                "Metabolite Database Identifier. e.g. CHEBI, REFET, HMDB, etc.",
+                "Metabolite Database Identifier. e.g. CHEBI, REFMET, HMDB, etc.",
                 node_type="metabolite-identifier",
                 validation=MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
                 condition=[

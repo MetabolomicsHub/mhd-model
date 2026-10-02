@@ -10,6 +10,7 @@ from pydantic import (
     AnyUrl,
     ConfigDict,
     Field,
+    HttpUrl,
     InstanceOf,
     ValidationInfo,
     field_validator,
@@ -74,9 +75,12 @@ class IdentifiableMhdModel(MhdConfigModel, abc.ABC):
         Field(description="External references related to the object."),
     ] = None
     url_list: Annotated[
-        None | list[AnyUrl],
-        Field(description="URL list to access the object."),
-    ] = None
+        list[AnyUrl],
+        Field(
+            min_length=1,
+            description="List of web page or repository URLs for accessing the dataset.",
+        ),
+    ]
 
     def get_label(self) -> str:
         return self.id_ or ""
@@ -431,29 +435,89 @@ class BaseMhdDataset(UriBasedMhdObjectModel, ProfileEnabledDataset, RevisionMode
     repository_name: Annotated[None | str, Field()]
     repository_short_name: Annotated[None | str, Field()]
     repository_identifier: Annotated[
-        None | str,
-        Field(description="unique identifier assigned by repository."),
+        str,
+        Field(
+            description="Original dataset accession number or identifier in the source repository."
+        ),
     ]
+    license: Annotated[
+        None | str | HttpUrl,
+        Field(
+            description="Dataset license URL defining usage rights for the study.",
+            examples=[HttpUrl("https://creativecommons.org/publicdomain/zero/1.0/")],
+        ),
+    ] = None
+    license_name: Annotated[
+        None | str,
+        Field(description="Dataset license name.", examples=["CC0 v1.0"]),
+    ] = None
+    name: Annotated[
+        None | str,
+        Field(description="Name of the dataset."),
+    ] = None
+    description: Annotated[
+        None | str,
+        Field(
+            description="Comprehensive description or summary abstract of the dataset.",
+        ),
+    ] = None
 
 
 class DatasetProfileConfiguration:
-    def __init__(self):
+    def __init__(
+        self,
+        node_modules: None | list[object] = None,
+        relationship_modules: None | list[object] = None,
+        default_reference_object_type: None | str = None,
+        default_relationship_type: None | str = "default",
+        default_cv_term_types: None | list[str] = None,
+        cv_term_class: None | type[BaseMhdObjectModel] = None,
+        cv_term_value_class: None | type[BaseMhdObjectModel] = None,
+        **kwargs,
+    ):
         self._type_class_mapping: dict[
             str, dict[str, type[InstanceOf[IdentifiableMhdModel]]]
         ] = {}
+        self.node_modules = node_modules
+        self.relationship_modules = relationship_modules
+        self.default_reference_object_type = default_reference_object_type
+        self.default_relationship_type = default_relationship_type
+
+        self.default_cv_term_types = default_cv_term_types or []
+        self.cv_term_class = cv_term_class
+        self.cv_term_value_class = cv_term_value_class
+        self.kwargs = kwargs
         self.update_type_class_mapping()
 
-    @abc.abstractmethod
-    def update_type_class_mapping(self): ...
+    def get_default_cv_term_types(self) -> list[str]:
+        return self.default_cv_term_types
 
-    @abc.abstractmethod
-    def get_default_relationship_type(self) -> str: ...
+    def get_default_relationship_type(self) -> str:
+        return self.default_relationship_type
 
-    @abc.abstractmethod
-    def get_default_reference_object_type(self) -> str: ...
+    def get_default_reference_object_type(self) -> str:
+        return self.default_reference_object_type
 
-    @abc.abstractmethod
-    def get_default_cv_term_types(self) -> list[str]: ...
+    def update_type_class_mapping(self):
+        type_class_mapping = self.get_type_class_mapping()
+
+        type_class_mapping["domain"] = self.get_default_type_class_mapping(
+            modules=self.node_modules,
+            base_class=BaseMhdObjectModel,
+            type_aliases_field="type_aliases",
+        )
+        type_class_mapping["reference"] = self.get_default_type_class_mapping(
+            modules=self.node_modules,
+            base_class=BaseReferencedObjectModel,
+            type_aliases_field="type_aliases",
+        )
+        type_class_mapping["relationship"] = self.get_default_type_class_mapping(
+            modules=self.relationship_modules,
+            base_class=BaseRelationshipModel,
+            type_aliases_field="type_aliases",
+        )
+        type_class_mapping["cv"] = {"default": self.cv_term_class}
+        type_class_mapping["cv-value"] = {"default": self.cv_term_value_class}
 
     def get_type_class_mapping(
         self,
@@ -495,6 +559,8 @@ class DatasetProfileConfiguration:
         type_aliases_field: None | str = None,
     ) -> dict[str, type[InstanceOf[MhdNode]]]:
         items: dict[str, type[InstanceOf[MhdNode]]] = {}
+        if not modules:
+            return items
         if not type_aliases_field:
             type_aliases_field = "type_aliases"
         for module in modules:
@@ -719,8 +785,6 @@ class MhdGraph(MhdConfigModel):
 
 
 class BaseMhDatasetProfile(CvEnabledDataset, abc.ABC):
-    name: Annotated[None | str, Field()] = None
-    description: Annotated[None | str, Field()] = None
     graph: Annotated[MhdGraph, Field(json_schema_extra={"mhdGraphValidation": {}})] = (
         MhdGraph()
     )

@@ -160,7 +160,6 @@ MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE: AllowedChildrenCvTerms = (
                 ),
             ),
         ],
-        allowed_other_sources=["REFMET"],
     )
 )
 

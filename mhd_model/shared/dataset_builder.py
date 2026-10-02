@@ -47,11 +47,6 @@ class MhDatasetBuilder(Generic[T]):
             dict[str, None | CvDefinition], Field(exclude=True)
         ] = {}
         self._links: Annotated[set[tuple[str, str, str]], Field(exclude=True)] = set()
-        # created_at: Annotated[datetime.datetime | None, Field(description="Created at")] = (
-        #     None
-        # )
-        # name: Annotated[None | str, Field()] = None
-        # description: Annotated[None | str, Field()] = None
         self.objects: dict[str, IdentifiableMhdModel] = {}
 
     def add(self, item: MhdNode, use_label_for_invalid_cv_term: bool = False) -> Self:
@@ -190,11 +185,11 @@ class MhDatasetBuilder(Generic[T]):
                 continue
 
             if source in COMMON_CV_DEFINITIONS:
-                cv_definition = COMMON_CV_DEFINITIONS[source]
+                cv_definition = COMMON_CV_DEFINITIONS[source].model_copy()
                 cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
             elif source in OTHER_COMMON_CV_DEFINITIONS:
-                cv_definition = OTHER_COMMON_CV_DEFINITIONS[source]
+                cv_definition = OTHER_COMMON_CV_DEFINITIONS[source].model_copy()
                 cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
             elif source in sources:
@@ -215,6 +210,8 @@ class MhDatasetBuilder(Generic[T]):
                 else:
                     cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
+            if source in sources:
+                cv_definition.version = sources[source].version
 
         cv_definitions.sort(key=lambda x: x.label)
         self.dataset.cv_definitions = cv_definitions

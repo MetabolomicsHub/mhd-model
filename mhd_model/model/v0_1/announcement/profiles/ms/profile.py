@@ -218,14 +218,13 @@ class AnnouncementMsProfile(AnnouncementBaseProfile):
         AnyUrl,
         Field(description="URL to the primary MHD metadata file for this dataset."),
     ]
-    dataset_url_list: Annotated[
+    url_list: Annotated[
         list[AnyUrl],
         Field(
             min_length=1,
             description="List of web page or repository URLs for accessing the dataset.",
         ),
     ]
-
     license: Annotated[
         None | HttpUrl,
         Field(

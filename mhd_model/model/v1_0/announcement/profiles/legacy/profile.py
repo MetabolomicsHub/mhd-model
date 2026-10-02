@@ -10,7 +10,7 @@ from mhd_model.model.v1_0.announcement.profiles.base.profile import (
 from mhd_model.shared.base import MhdObjectType
 
 
-class AnnouncementContact(base_profile.AnnouncementContact):
+class LegacyAnnouncementContact(base_profile.AnnouncementContact):
     """Contact person associated with a legacy dataset announcement."""
 
     full_name: Annotated[
@@ -37,10 +37,10 @@ class AnnouncementLegacyProfile(AnnouncementBaseProfile):
             description="The type property identifies type of the file",
             alias="type",
         ),
-    ] = "announcement-legacy"
+    ] = "announcement-legacy-v1-0"
 
     submitters: Annotated[
-        list[AnnouncementContact],
+        list[LegacyAnnouncementContact],
         Field(
             min_length=1,
             description="List of submitters who registered or submitted the dataset.",

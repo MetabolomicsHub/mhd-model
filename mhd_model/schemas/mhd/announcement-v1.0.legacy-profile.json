@@ -1,5 +1,73 @@
 {
   "$defs": {
+    "AnnouncementContact": {
+      "description": "A contact person associated with the dataset.\nThis can be a submitter, author, or a principal investigator.",
+      "properties": {
+        "full_name": {
+          "anyOf": [
+            {
+              "minLength": 5,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Full name of the contact person.",
+          "title": "Full Name"
+        },
+        "email_list": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of contact email addresses.",
+          "title": "Email List"
+        },
+        "orcid": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ORCID digital identifier of the contact person.",
+          "title": "ORCID"
+        },
+        "affiliation_list": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of institutional affiliations for the contact.",
+          "title": "Affiliation List"
+        }
+      },
+      "title": "AnnouncementContact",
+      "type": "object"
+    },
     "AnnouncementDerivedDataFile": {
       "description": "Derived or processed data file generated from raw data analysis.",
       "properties": {
@@ -182,7 +250,7 @@
           "description": "List of protocol parameters specified as key-value CV pairs.",
           "title": "Protocol Parameters"
         },
-        "relates_assay_names": {
+        "related_assay_names": {
           "anyOf": [
             {
               "items": {
@@ -196,7 +264,7 @@
           ],
           "default": null,
           "description": "List of assay names that utilize this protocol.",
-          "title": "Relates Assay Names"
+          "title": "Related Assay Names"
         }
       },
       "required": [
@@ -327,11 +395,11 @@
       "title": "AnnouncementRawDataFile",
       "type": "object"
     },
-    "AnnouncementReportedMetabolite": {
-      "description": "A metabolite reported as identified or quantified in the dataset.",
+    "AnnouncementReportedMolecularEntity": {
+      "description": "A molecular entity reported as identified or quantified in the dataset.",
       "properties": {
         "name": {
-          "description": "Name or chemical label of the reported metabolite.",
+          "description": "Name or chemical label of the reported molecular entity.",
           "minLength": 1,
           "title": "Name",
           "type": "string"
@@ -349,14 +417,14 @@
             }
           ],
           "default": null,
-          "description": "List of database identifiers (e.g., ChEBI, RefMet, HMDB, PubChem) for the metabolite as CV term values.",
+          "description": "List of database identifiers (e.g., ChEBI, RefMet, PubChem) for the molecular entity as CV term values.",
           "title": "Database Identifiers"
         }
       },
       "required": [
         "name"
       ],
-      "title": "AnnouncementReportedMetabolite",
+      "title": "AnnouncementReportedMolecularEntity",
       "type": "object"
     },
     "AnnouncementResultFile": {
@@ -865,6 +933,69 @@
       "title": "KeyValue",
       "type": "object"
     },
+    "LegacyAnnouncementContact": {
+      "description": "Contact person associated with a legacy dataset announcement.",
+      "properties": {
+        "full_name": {
+          "description": "Full name of the contact person.",
+          "minLength": 5,
+          "title": "Full Name",
+          "type": "string"
+        },
+        "email_list": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of contact email addresses.",
+          "title": "Email List"
+        },
+        "orcid": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ORCID digital identifier of the contact person.",
+          "title": "ORCID"
+        },
+        "affiliation_list": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of institutional affiliations for the contact.",
+          "title": "Affiliation List"
+        }
+      },
+      "required": [
+        "full_name"
+      ],
+      "title": "LegacyAnnouncementContact",
+      "type": "object"
+    },
     "Revision": {
       "properties": {
         "revision": {
@@ -930,137 +1061,6 @@
         }
       },
       "title": "UnitCvTerm",
-      "type": "object"
-    },
-    "mhd_model__model__v1_0__announcement__profiles__base__profile__AnnouncementContact": {
-      "description": "A contact person associated with the dataset.\nThis can be a submitter, author, or a principal investigator.",
-      "properties": {
-        "full_name": {
-          "anyOf": [
-            {
-              "minLength": 5,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Full name of the contact person.",
-          "title": "Full Name"
-        },
-        "email_list": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "minItems": 1,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of contact email addresses.",
-          "title": "Email List"
-        },
-        "orcid": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "ORCID digital identifier of the contact person.",
-          "title": "ORCID"
-        },
-        "affiliation_list": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "minItems": 1,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of institutional affiliations for the contact.",
-          "title": "Affiliation List"
-        }
-      },
-      "title": "AnnouncementContact",
-      "type": "object"
-    },
-    "mhd_model__model__v1_0__announcement__profiles__legacy__profile__AnnouncementContact": {
-      "description": "Contact person associated with a legacy dataset announcement.",
-      "properties": {
-        "full_name": {
-          "description": "Full name of the contact person.",
-          "minLength": 5,
-          "title": "Full Name",
-          "type": "string"
-        },
-        "email_list": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "minItems": 1,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of contact email addresses.",
-          "title": "Email List"
-        },
-        "orcid": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "ORCID digital identifier of the contact person.",
-          "title": "ORCID"
-        },
-        "affiliation_list": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "minItems": 1,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of institutional affiliations for the contact.",
-          "title": "Affiliation List"
-        }
-      },
-      "required": [
-        "full_name"
-      ],
-      "title": "AnnouncementContact",
       "type": "object"
     }
   },
@@ -1178,7 +1178,7 @@
         }
       ],
       "default": null,
-      "description": "Creation time.",
+      "description": "Created at",
       "title": "Created At"
     },
     "prefix": {
@@ -1236,7 +1236,8 @@
           "type": "null"
         }
       ],
-      "description": "The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects",
+      "default": "announcement-legacy-v1-0",
+      "description": "The type property identifies type of the file",
       "title": "Type"
     },
     "label": {
@@ -1278,7 +1279,7 @@
         }
       ],
       "default": null,
-      "description": "Key-value tags related to the object.",
+      "description": "Key-value descriptors related to the object.",
       "title": "Tag List"
     },
     "external_reference_list": {
@@ -1298,22 +1299,15 @@
       "title": "External Reference List"
     },
     "url_list": {
-      "anyOf": [
-        {
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "URL list related to the object.",
-      "title": "Url List"
+      "description": "List of web page or repository URLs for accessing the dataset.",
+      "items": {
+        "format": "uri",
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Url List",
+      "type": "array"
     },
     "uri": {
       "description": "Unified resource name",
@@ -1382,6 +1376,8 @@
     "doi": {
       "anyOf": [
         {
+          "pattern": "^10[.].+/.+$",
+          "title": "DOI",
           "type": "string"
         },
         {
@@ -1389,7 +1385,7 @@
         }
       ],
       "default": null,
-      "description": "Digital Object Identifier (DOI) assigned to the dataset.",
+      "description": "Digital Object Identifier (DOI) for the dataset.",
       "title": "Doi"
     },
     "repository_name": {
@@ -1402,6 +1398,73 @@
         }
       ],
       "title": "Repository Name"
+    },
+    "repository_short_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Repository Short Name"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Dataset license URL defining usage rights for the study.",
+      "examples": [
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "title": "License"
+    },
+    "license_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Dataset license name.",
+      "examples": [
+        "CC0 v1.0"
+      ],
+      "title": "License Name"
+    },
+    "name": {
+      "description": "Name of the dataset.",
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Description or summary abstract of the dataset.",
+      "title": "Description"
     },
     "cv_definitions": {
       "anyOf": [
@@ -1432,6 +1495,7 @@
       "title": "Mhd Identifier"
     },
     "mhd_metadata_file_url": {
+      "default": null,
       "description": "URL to the primary MHD metadata file for this dataset.",
       "format": "uri",
       "minLength": 1,
@@ -1454,55 +1518,6 @@
       "description": "The cryptographic hash values of the MHD file content, used to verify file integrity and ensure that the file has not been altered. ",
       "title": "Mhd Metadata File Hashes"
     },
-    "dataset_url_list": {
-      "description": "List of web page or repository URLs for accessing the dataset.",
-      "items": {
-        "format": "uri",
-        "minLength": 1,
-        "type": "string"
-      },
-      "minItems": 1,
-      "title": "Dataset Url List",
-      "type": "array"
-    },
-    "license": {
-      "anyOf": [
-        {
-          "format": "uri",
-          "maxLength": 2083,
-          "minLength": 1,
-          "type": "string"
-        },
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Data usage license or URL defining licensing terms for the dataset.",
-      "title": "License"
-    },
-    "title": {
-      "description": "Title describing the dataset and underlying study.",
-      "minLength": 1,
-      "title": "Title",
-      "type": "string"
-    },
-    "description": {
-      "anyOf": [
-        {
-          "minLength": 1,
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "description": "Description or summary abstract of the dataset.",
-      "title": "Description"
-    },
     "submission_date": {
       "description": "Date and time when the dataset was initially submitted.",
       "format": "date-time",
@@ -1518,7 +1533,7 @@
     "submitters": {
       "description": "List of submitters who registered or submitted the dataset.",
       "items": {
-        "$ref": "#/$defs/mhd_model__model__v1_0__announcement__profiles__legacy__profile__AnnouncementContact"
+        "$ref": "#/$defs/LegacyAnnouncementContact"
       },
       "minItems": 1,
       "title": "Submitters",
@@ -1528,7 +1543,7 @@
       "anyOf": [
         {
           "items": {
-            "$ref": "#/$defs/mhd_model__model__v1_0__announcement__profiles__base__profile__AnnouncementContact"
+            "$ref": "#/$defs/AnnouncementContact"
           },
           "type": "array"
         },
@@ -1587,7 +1602,7 @@
         }
       ],
       "default": null,
-      "description": "Types of measurements performed (e.g., Targeted or Untargeted metabolite profiling).",
+      "description": "Types of measurements performed (e.g., Targeted or Untargeted analysis).",
       "title": "Measurement Type"
     },
     "assay_type": {
@@ -1706,11 +1721,11 @@
       "description": "List of experimental protocols used in sample preparation and analysis.",
       "title": "Protocols"
     },
-    "reported_metabolites": {
+    "reported_molecular_entities": {
       "anyOf": [
         {
           "items": {
-            "$ref": "#/$defs/AnnouncementReportedMetabolite"
+            "$ref": "#/$defs/AnnouncementReportedMolecularEntity"
           },
           "type": "array"
         },
@@ -1719,8 +1734,8 @@
         }
       ],
       "default": null,
-      "description": "List of metabolites reported as identified or quantified in the dataset.",
-      "title": "Reported Metabolites"
+      "description": "List of molecular entities reported as identified or quantified in the dataset.",
+      "title": "Reported Molecular Entities"
     },
     "repository_metadata_file_list": {
       "description": "List of repository metadata files included in the legacy dataset announcement.",
@@ -1797,23 +1812,29 @@
       "default": null,
       "description": "List of result data files included in the dataset announcement.",
       "title": "Result File List"
+    },
+    "title": {
+      "description": "Title describing the dataset and underlying study.",
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
     }
   },
   "required": [
     "$schema",
     "profile_uri",
-    "type",
+    "url_list",
     "uri",
     "repository_identifier",
     "repository_name",
-    "mhd_metadata_file_url",
-    "dataset_url_list",
-    "title",
+    "repository_short_name",
+    "name",
     "description",
     "submission_date",
     "public_release_date",
     "submitters",
-    "repository_metadata_file_list"
+    "repository_metadata_file_list",
+    "title"
   ],
   "title": "AnnouncementLegacyProfile",
   "type": "object",

@@ -82,10 +82,10 @@ PubMedId = Annotated[
     ),
 ]
 
-MetaboliteDatabaseId = Annotated[
+MolecularEntityDatabaseId = Annotated[
     CvTermValue,
     Field(
-        description="Database identifier (e.g., ChEBI, HMDB, PubChem) for a reported metabolite.",
+        description="Database identifier (e.g., ChEBI, HMDB, PubChem) for a reported molecular entity.",
         json_schema_extra={
             "profileValidation": MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE.model_dump(
                 by_alias=True
@@ -158,7 +158,7 @@ MsAssayType = Annotated[
 MeasurementType = Annotated[
     CvTerm,
     Field(
-        description="Controlled Vocabulary (CV) term for measurement type (e.g., Targeted or Untargeted metabolite profiling).",
+        description="Controlled Vocabulary (CV) term for measurement type (e.g., Targeted or Untargeted analysis).",
         json_schema_extra={
             "profileValidation": AllowedCvTerms(
                 cv_terms=list(COMMON_MEASUREMENT_TYPES.values()),
