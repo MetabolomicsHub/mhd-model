@@ -160,11 +160,10 @@ MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE: AllowedChildrenCvTerms = (
                 ),
             ),
         ],
-        allowed_other_sources=["REFMET"],
     )
 )
 
-MANAGED_FILE_FORMAT_RULES: dict[str, ProfileValidation] = {
+MANAGED_FILE_FORMAT_RULES: dict[str, AllowedChildrenCvTerms] = {
     "raw data file format": AllowedChildrenCvTerms(
         parent_cv_terms=[
             ParentCvTerm(

@@ -87,7 +87,7 @@ def create_rs256_token(
 ):
     """Creates a JWT signed with RS256 using the provided private PEM."""
     # Define standard payload with expiration and security claims
-    now = datetime.datetime.now(datetime.timezone.utc)
+    now = datetime.datetime.now(datetime.UTC)
     payload = {
         "iss": payload_data.get("sub"),
         "exp": now + delta,

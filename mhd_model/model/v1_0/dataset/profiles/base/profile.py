@@ -1,20 +1,14 @@
 import inspect
 import logging
-import sys
 from typing import Annotated, Any
-from urllib.parse import quote
 
-from pydantic import ConfigDict, Field
+from pydantic import Field
 
+from mhd_model.model.base import BaseMhdFile
 from mhd_model.model.v1_0.dataset.profiles.base import graph_nodes, relationships
-from mhd_model.shared.base import MhdObjectType, UnitCvTerm
-from mhd_model.shared.dataset_builder import MhDatasetBuilder
+from mhd_model.shared.base import MhdObjectType
 from mhd_model.shared.model import (
-    BaseMhDatasetProfile,
     BaseMhdDataset,
-    BaseMhdObjectModel,
-    BaseReferencedObjectModel,
-    BaseRelationshipModel,
     DatasetProfileConfiguration,
     IdentifiableMhdModel,
     MhdNode,
@@ -58,9 +52,9 @@ DEFAULT_CV_TERM_TYPES = [
     "parameter-type",
     "protocol-type",
     "characteristic-value",
-    "creator",
+    "data-provider",
     "factor-value",
-    "metabolite-identifier",
+    "molecular-entity-identifier",
     "parameter-value",
 ]
 
@@ -99,123 +93,25 @@ def get_unique_id_contribution_fields():
 
 
 class DatasetProfileConfiguration_v1_0(DatasetProfileConfiguration):
-    def get_default_cv_term_types(self) -> list[str]:
-        return DEFAULT_CV_TERM_TYPES
-
-    def get_default_relationship_type(self) -> str:
-        return "default"
-
-    def get_default_reference_object_type(self) -> str:
-        return "default"
-
-    def update_type_class_mapping(self):
-        type_class_mapping = self.get_type_class_mapping()
-        type_class_mapping["domain"] = self.get_default_type_class_mapping(
-            modules=[graph_nodes],
-            base_class=BaseMhdObjectModel,
-            type_aliases_field="type_aliases",
+    def __init__(self, **kwargs):
+        super().__init__(
+            node_modules=[graph_nodes],
+            relationship_modules=[relationships],
+            default_reference_object_type="default",
+            default_relationship_type="default",
+            default_cv_term_types=DEFAULT_CV_TERM_TYPES,
+            cv_term_class=graph_nodes.CvTermObject,
+            cv_term_value_class=graph_nodes.CvTermValueObject,
+            **kwargs,
         )
-        type_class_mapping["reference"] = self.get_default_type_class_mapping(
-            modules=[graph_nodes],
-            base_class=BaseReferencedObjectModel,
-            type_aliases_field="type_aliases",
-        )
-        type_class_mapping["relationship"] = self.get_default_type_class_mapping(
-            modules=[relationships],
-            base_class=BaseRelationshipModel,
-            type_aliases_field="type_aliases",
-        )
-        type_class_mapping["cv"] = {"default": graph_nodes.CvTermObject}
-        type_class_mapping["cv-value"] = {"default": graph_nodes.CvTermValueObject}
 
 
 DEFAULT_PROFILE_CONFIG_V1_0 = DatasetProfileConfiguration_v1_0()
 
 
-class MhDatasetBaseProfile_v1_0(BaseMhDatasetProfile):
-    model_config = ConfigDict(
-        json_schema_extra={
-            "unique_value_alternatives": [
-                ("doi",),
-                ("mhd_identifier",),
-                (
-                    "repository_name",
-                    "repository_identifier",
-                ),
-                ("additional_identifier_list",),
-            ],
-        }
-    )
+class MhDatasetBaseProfile_v1_0(BaseMhdFile):
     type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("base-v1-0")
-    mhd_identifier: Annotated[None | str, Field()] = None
 
     @classmethod
     def get_config(cls) -> DatasetProfileConfiguration:
         return DEFAULT_PROFILE_CONFIG_V1_0
-
-
-if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO,
-        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
-        datefmt="%d/%b/%Y %H:%M:%S",
-        stream=sys.stdout,
-    )
-    dataset = MhDatasetBaseProfile_v1_0(
-        schema_name="https://metabolomicshub.org/schema/mhd-v1.0.json",
-        profile_uri="https://metabolomicshub.org/profile/mhd-v1.0",
-        uri="urn:mhd:mtbls:mtbls1",
-        repository_name="MetaboLights",
-        repository_identifier="MTBLS1",
-    )
-    builder = MhDatasetBuilder[MhDatasetBaseProfile_v1_0](dataset=dataset)
-    person = graph_nodes.Person(
-        uri="urn:mhd:MTBLS:MTBLS1:person:ozgury@ebi.ac.uk",
-        full_name="Ozgur Yurekten",
-        orcid="1234-0001-8473-171X",
-        email="ozgury@ebi.ac.uk",
-        address="EMBL-EBI UK",
-    )
-    encoded_name = quote("EMBL-EBI UK")
-    organization = graph_nodes.Organization(
-        uri=f"urn:mhd:MTBLS:MTBLS1:organization:{encoded_name}",
-        name="EMBL EBI",
-        ror_id="https://ror.org/02catss52",
-    )
-    disease = graph_nodes.CvTermObject(
-        type_="descriptor", source="MONDO", accession="MONDO:0000001", name="disease"
-    )
-    value = graph_nodes.CvTermValueObject(
-        type_="mass-spectrometry-instrument",
-        source="MONDO",
-        accession="MONDO:0000001",
-        name="disease",
-        value="23",
-        unit=UnitCvTerm(
-            source="UO",
-            accession="UO:0000196",
-            name="pH",
-        ),
-    )
-    reference = graph_nodes.ReferencedObject(referenced_id=person.id_)
-    builder.add(item=person)
-    builder.add(item=organization)
-    builder.add(item=disease, use_label_for_invalid_cv_term=True)
-    builder.add(item=reference)
-    builder.add(item=value)
-
-    builder.link(
-        source=person,
-        relationship_name="study-on",
-        target=disease,
-    )
-    builder.link(
-        source=person,
-        relationship_name="affiliated-by",
-        target=organization,
-        reverse_relationship_name="has-employee",
-    )
-    builder.build_dataset(start_item_refs=[person.id_])
-    values = list(dataset.graph.nodes)
-    for item in values:
-        logger.info(item)

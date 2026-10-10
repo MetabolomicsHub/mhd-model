@@ -3,25 +3,22 @@ import logging
 from collections import OrderedDict
 from pathlib import Path
 
-from mhd_model.model.v0_1.announcement.profiles.base.profile import (
+from mhd_model.model.v1_0.announcement.profiles.profile import (
     AnnouncementBaseFile,
     AnnouncementProtocol,
 )
-from mhd_model.model.v0_1.dataset.profiles.base import graph_nodes
-from mhd_model.model.v0_1.dataset.profiles.base.base import (
-    BaseMhdModel,
-    BaseMhdRelationship,
-    IdentifiableMhdModel,
+from mhd_model.model.v1_0.dataset.profiles.base import graph_nodes
+from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import CvTermValueObject
+from mhd_model.model.v1_0.dataset.profiles.legacy.profile import (
+    MhDatasetLegacyProfile_v1_0,
 )
-from mhd_model.model.v0_1.dataset.profiles.base.graph_nodes import CvTermValueObject
-from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
-from mhd_model.model.v0_1.rules.managed_cv_terms import (
+from mhd_model.model.v1_0.rules.managed_cv_terms import (
     COMMON_ASSAY_TYPES,
     COMMON_MEASUREMENT_TYPES,
     COMMON_OMICS_TYPES,
     COMMON_TECHNOLOGY_TYPES,
 )
-from mhd_model.model.v0_1.sdrf.model import (
+from mhd_model.model.v1_0.sdrf.model import (
     LegacySdrf,
     LegacySdrfRow,
     SdrfFile,
@@ -29,13 +26,14 @@ from mhd_model.model.v0_1.sdrf.model import (
     SdrfSampleProtocolDefinition,
 )
 from mhd_model.shared.base import BasicValueModel, CvTerm, CvTermKeyValue, CvTermValue
+from mhd_model.shared.model import IdentifiableMhdModel, MhdNode, MhdRelationship
 
 logger = logging.getLogger(__name__)
 
 
 def get_characteristic_values(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationships_map: dict[str, BaseMhdRelationship],
+    relationships_map: dict[str, MhdRelationship],
 ) -> list[CvTermKeyValue]:
     study_characteristics = set()
     characteristic_values: OrderedDict[str, list[str]] = OrderedDict()
@@ -82,7 +80,7 @@ def get_characteristic_values(
 
 def get_study_factors(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationships_map: dict[str, BaseMhdRelationship],
+    relationships_map: dict[str, MhdRelationship],
 ):
     study_factors = set()
     factors: OrderedDict[str, list[str]] = OrderedDict()
@@ -122,7 +120,7 @@ def get_study_factors(
 
 def get_protocols(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, BaseMhdRelationship],
+    relationship_name_map: dict[str, MhdRelationship],
     type_map: dict[str, dict[IdentifiableMhdModel]],
     study: graph_nodes.Study,
 ):
@@ -194,18 +192,18 @@ def convert_file(
     url_list = item.url_list
     format = None
     if item.format_ref in all_nodes_map:
-        format_node: BaseMhdModel = all_nodes_map[item.format_ref]
+        format_node: MhdNode = all_nodes_map[item.format_ref]
         format = CvTerm.model_validate(format_node.model_dump(by_alias=True))
     compressions = None
     if item.compression_format_refs in all_nodes_map:
         for format_ref in item.compression_format_refs:
-            compression_node: BaseMhdModel = all_nodes_map[format_ref]
+            compression_node: MhdNode = all_nodes_map[format_ref]
             compressions.append(
                 CvTerm.model_validate(compression_node.model_dump(by_alias=True))
             )
     file = file_class(
         name=item.name,
-        url_list=url_list,
+        url_list=[str(x) for x in url_list or [] if x],
         compression_formats=compressions,
         format=format,
     )
@@ -223,23 +221,23 @@ def create_sdrf_files(
     txt = Path(mhd_file_path).read_text()
     mhd_data_json = json.loads(txt)
 
-    mhd_dataset = MhDatasetLegacyProfile.model_validate(mhd_data_json)
+    mhd_dataset = MhDatasetLegacyProfile_v1_0.model_validate(mhd_data_json)
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }
-    # relationships_map: dict[str, BaseMhdRelationship] = {
+    # relationships_map: dict[str, MhdRelationship] = {
     #     x.id_: x for x in mhd_dataset.graph.relationships
     # }
 
-    all_nodes_map: dict[str, BaseMhdModel] = {}
-    type_map: dict[str, dict[str, BaseMhdModel]] = {}
+    all_nodes_map: dict[str, MhdNode] = {}
+    type_map: dict[str, dict[str, MhdNode]] = {}
     for node in mhd_dataset.graph.nodes:
         if node.type_ not in type_map:
             type_map[node.type_] = {}
         type_map[node.type_][node.id_] = node
         all_nodes_map[node.id_] = node
 
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]] = {}
+    relationship_name_map: dict[str, dict[str, MhdRelationship]] = {}
     node_relationships: dict[str, dict[str, list[str]]] = {}
     for rel in mhd_dataset.graph.relationships:
         if rel.relationship_name not in relationship_name_map:
@@ -710,7 +708,7 @@ def find_all_linked_nodes(
 
 def get_file_list(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    type_map: dict[str, dict[str, BaseMhdModel]],
+    type_map: dict[str, dict[str, MhdNode]],
     node_type: str,
     file_class: type[AnnouncementBaseFile],
 ) -> list[AnnouncementBaseFile]:

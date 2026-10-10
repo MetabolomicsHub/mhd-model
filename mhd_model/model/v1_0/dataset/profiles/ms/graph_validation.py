@@ -520,7 +520,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
         min=0,
         validations=[
             NodePropertyValidation(
-                identifier="metabolite-001-01",
+                identifier="molecular-entity-001-01",
                 node_type="molecular-entity",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
@@ -528,16 +528,16 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
         ],
         relationships=[
             RelationshipValidation(
-                identifier="metabolite-003-01",
+                identifier="molecular-entity-003-01",
                 source="molecular-entity",
                 relationship_name="identified-as",
                 reverse_relationship_name="reported-identifier-of",
-                target="metabolite-identifier",
+                target="molecular-entity-identifier",
                 min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                identifier="metabolite-003-02",
+                identifier="molecular-entity-003-02",
                 source="molecular-entity",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
@@ -546,7 +546,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                identifier="metabolite-003-03",
+                identifier="molecular-entity-003-03",
                 source="molecular-entity",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
@@ -555,7 +555,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
-                identifier="metabolite-003-04",
+                identifier="molecular-entity-003-04",
                 source="molecular-entity",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
@@ -564,7 +564,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                identifier="metabolite-003-05",
+                identifier="molecular-entity-003-05",
                 source="molecular-entity",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
@@ -573,7 +573,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                identifier="metabolite-003-06",
+                identifier="molecular-entity-003-06",
                 source="molecular-entity",
                 relationship_name="measured-in",
                 reverse_relationship_name="measures",
@@ -676,7 +676,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 relationship_name="has-instance",
                 reverse_relationship_name="instance-of",
                 target="parameter-value",
-                min=1,
+                min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
@@ -1445,7 +1445,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
             NodePropertyValidation(
                 identifier="study-001-07",
                 node_type="study",
-                node_property_name="dataset_url_list",
+                node_property_name="url_list",
                 constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
@@ -1459,7 +1459,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 node_type="study",
                 node_property_name="created_by_ref",
                 required=True,
-                target_ref_types=["creator"],
+                target_ref_types=["data-provider"],
             ),
             EmbeddedRefValidation(
                 identifier="study-002-02",
@@ -1475,7 +1475,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 source="study",
                 relationship_name="provided-by",
                 reverse_relationship_name="provides",
-                target="creator",
+                target="data-provider",
                 min=0,
                 min_for_each_source=1,
                 max_for_each_source=1,
@@ -1975,29 +1975,29 @@ MHD_MS_PROFILE_V1_0.cv_nodes = [
         ],
     ),
     CvNodeValidation(
-        node_type="creator",
+        node_type="data-provider",
         has_value=True,
         value_required=True,
         min=1,
         validations=[
             NodePropertyValidation(
-                identifier="creator-001-01",
-                node_type="creator",
+                identifier="data-provider-001-01",
+                node_type="data-provider",
                 node_property_name="value",
                 constraints=PropertyConstraint(required=True, allowed_types="str"),
             ),
             CvTermValidation(
-                identifier="creator-004-01",
-                node_type="creator",
+                identifier="data-provider-004-01",
+                node_type="data-provider",
                 validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
             ),
             CvTermValidation(
-                identifier="creator-004-02",
-                node_type="creator",
+                identifier="data-provider-004-02",
+                node_type="data-provider",
                 validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
                 condition=[
                     FilterCondition(
-                        name="Creator",
+                        name="Data provider",
                         relationship_name="[embedded].created_by_ref",
                         start_node_type=None,
                         expression="created_by_ref",
@@ -2007,8 +2007,8 @@ MHD_MS_PROFILE_V1_0.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
-                identifier="creator-003-01",
-                source="creator",
+                identifier="data-provider-003-01",
+                source="data-provider",
                 relationship_name="provides",
                 reverse_relationship_name="provided-by",
                 target="study",
@@ -2458,30 +2458,30 @@ MHD_MS_PROFILE_V1_0.cv_nodes = [
         ],
     ),
     CvNodeValidation(
-        node_type="metabolite-identifier",
+        node_type="molecular-entity-identifier",
         min=0,
         has_value=True,
         value_required=True,
         validations=[
             NodePropertyValidation(
-                identifier="metabolite-identifier-001-01",
-                description="Value MUST be identifier of metabolite.",
-                node_type="metabolite-identifier",
+                identifier="molecular-entity-identifier-001-01",
+                description="Value MUST be identifier of molecular entity.",
+                node_type="molecular-entity-identifier",
                 node_property_name="value",
                 constraints=PropertyConstraint(required=True),
             ),
             CvTermValidation(
-                identifier="metabolite-identifier-001-02",
-                node_type="metabolite-identifier",
+                identifier="molecular-entity-identifier-001-02",
+                node_type="molecular-entity-identifier",
                 validation=AllowAnyCvTerm(
                     allowed_other_sources=["wikidata", "ILX"],
                 ),
             ),
             CvTermValidation(
-                identifier="metabolite-identifier-004-01",
-                description="metabolite identifier in value. "
-                "Metabolite Database Identifier. e.g. CHEBI, REFET, HMDB, etc.",
-                node_type="metabolite-identifier",
+                identifier="molecular-entity-identifier-004-01",
+                description="molecular entity identifier in value. "
+                "Molecular entity database identifier. e.g. CHEBI, REFMET, HMDB, etc.",
+                node_type="molecular-entity-identifier",
                 validation=MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
                 condition=[
                     FilterCondition(
@@ -2494,8 +2494,8 @@ MHD_MS_PROFILE_V1_0.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
-                identifier="metabolite-identifier-003-01",
-                source="metabolite-identifier",
+                identifier="molecular-entity-identifier-003-01",
+                source="molecular-entity-identifier",
                 relationship_name="reported-identifier-of",
                 reverse_relationship_name="identified-as",
                 target="molecular-entity",

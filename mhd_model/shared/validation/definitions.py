@@ -2,7 +2,7 @@ from typing import Annotated, Any, Literal
 
 from pydantic import Field, ValidationError, field_validator
 
-from mhd_model.shared.base import CvTerm
+from mhd_model.shared.base import BaseParentCvTerm, CvTerm
 from mhd_model.shared.validation.registry import (
     VALIDATORS,
     ProfileValidation,
@@ -66,12 +66,9 @@ class AllowedCvList(ProfileCvTermValidation):
         return sources
 
 
-class ParentCvTerm(ValidatorBaseModel):
-    cv_term: CvTerm
-    allow_only_leaf: bool = False
-    allow_parent: None | bool = False
-    excluded_cv_terms: None | list[str] = None
-    index_cv_terms: None | bool = False
+class ParentCvTerm(BaseParentCvTerm, ValidatorBaseModel):
+    def get_as_string(self) -> str:
+        return self.__str__()
 
     def __str__(self) -> str:
         parent = str(self.cv_term)

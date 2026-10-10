@@ -73,7 +73,7 @@
             }
           ],
           "default": null,
-          "description": "Key-value tags related to the object.",
+          "description": "Key-value descriptors related to the object.",
           "title": "Tag List"
         },
         "external_reference_list": {
@@ -107,7 +107,7 @@
             }
           ],
           "default": null,
-          "description": "URL list related to the object.",
+          "description": "List of web page or repository URLs for accessing the dataset.",
           "title": "Url List"
         },
         "source_ref": {
@@ -356,10 +356,6 @@
             },
             {
               "type": "number"
-            },
-            {
-              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
-              "type": "string"
             },
             {
               "format": "date-time",
@@ -650,7 +646,7 @@
             }
           ],
           "default": null,
-          "description": "Key-value tags related to the object.",
+          "description": "Key-value descriptors related to the object.",
           "title": "Tag List"
         },
         "external_reference_list": {
@@ -684,7 +680,7 @@
             }
           ],
           "default": null,
-          "description": "URL list related to the object.",
+          "description": "List of web page or repository URLs for accessing the dataset.",
           "title": "Url List"
         }
       },
@@ -968,7 +964,7 @@
         }
       ],
       "default": null,
-      "description": "Key-value tags related to the object.",
+      "description": "Key-value descriptors related to the object.",
       "title": "Tag List"
     },
     "external_reference_list": {
@@ -1002,7 +998,7 @@
         }
       ],
       "default": null,
-      "description": "URL list related to the object.",
+      "description": "List of web page or repository URLs for accessing the dataset.",
       "title": "Url List"
     },
     "uri": {
@@ -1011,16 +1007,9 @@
       "type": "string"
     },
     "repository_identifier": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "description": "unique identifier assigned by repository.",
-      "title": "Repository Identifier"
+      "description": "Original dataset accession number or identifier in the source repository.",
+      "title": "Repository Identifier",
+      "type": "string"
     },
     "additional_identifier_list": {
       "anyOf": [
@@ -1102,6 +1091,81 @@
       ],
       "title": "Repository Name"
     },
+    "repository_short_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Repository Short Name"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Dataset license URL defining usage rights for the study.",
+      "examples": [
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "title": "License"
+    },
+    "license_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Dataset license name.",
+      "examples": [
+        "CC0 v1.0"
+      ],
+      "title": "License Name"
+    },
+    "name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Name of the dataset.",
+      "title": "Name"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Comprehensive description or summary abstract of the dataset.",
+      "title": "Description"
+    },
     "cv_definitions": {
       "anyOf": [
         {
@@ -1116,30 +1180,6 @@
       ],
       "default": [],
       "title": "Cv Definitions"
-    },
-    "name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Name"
-    },
-    "description": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Description"
     },
     "graph": {
       "$ref": "#/$defs/MhdGraph",
@@ -1169,7 +1209,8 @@
     "profile_uri",
     "uri",
     "repository_identifier",
-    "repository_name"
+    "repository_name",
+    "repository_short_name"
   ],
   "title": "MhDatasetBaseProfile_v1_0",
   "type": "object",
@@ -1187,5 +1228,8 @@
     [
       "additional_identifier_list"
     ]
+  ],
+  "unique_value_fields": [
+    "uri"
   ]
 }

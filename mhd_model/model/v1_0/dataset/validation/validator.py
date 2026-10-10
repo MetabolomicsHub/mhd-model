@@ -19,12 +19,14 @@ from mhd_model.model.definitions import (
     ANNOUNCEMENT_FILE_V1_0_LEGACY_PROFILE_NAME,
     ANNOUNCEMENT_FILE_V1_0_MS_PROFILE_NAME,
     MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
+    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
+    MHD_MODEL_V0_1_MS_PROFILE_NAME,
     MHD_MODEL_V1_0_LEGACY_PROFILE_NAME,
     MHD_MODEL_V1_0_MS_PROFILE_NAME,
     SUPPORTED_SCHEMA_MAP,
 )
-from mhd_model.model.v1_0.announcement.validation.validator import (
-    MhdAnnouncementFileValidator,
+from mhd_model.model.v1_0.announcement.validation.json_profie_validator import (
+    new_announcement_validator,
 )
 from mhd_model.model.v1_0.dataset.profiles.base.profile import MhDatasetBaseProfile_v1_0
 from mhd_model.model.v1_0.dataset.profiles.legacy.graph_validation import (
@@ -77,6 +79,8 @@ class MhdFileValidator_v1_0(BaseMhdFileValidator):
         context.repository_dataset_identifier = mhd_file_json.get(
             "repository_identifier"
         )
+        context.repository_name = mhd_file_json.get("repository_name")
+        context.repository_short_name = mhd_file_json.get("repository_short_name")
         errors = validate_mhd_file_json(
             mhd_file_json, mhd_model_validation_context=context
         )
@@ -172,6 +176,7 @@ def validate_mhd_model(
     announcement_file_path: None | Path = None,
     mhd_file_url: None | str = None,
     mhd_model_validation_context: None | MhdModelValidationContext = None,
+    ontology_lookup_file_path: None | str = None,
 ):
     success = False
     all_validation_errors = {}
@@ -223,8 +228,11 @@ def validate_mhd_model(
                 ]
             else:
                 announcement_file_json = json.loads(announcement_file_path.read_text())
-                validator = MhdAnnouncementFileValidator()
-                all_errors = validator.validate(announcement_file_json)
+                validator = new_announcement_validator(
+                    profile_uri=announcement_file_json.get("profile_uri"),
+                    ontology_lookup_file_path=ontology_lookup_file_path,
+                )
+                all_errors = validator.validate_json_file(announcement_file_json)
                 if all_errors:
                     logger.error(
                         "MHD announcement file validation errors found for %s",
@@ -243,8 +251,10 @@ def validate_mhd_model(
 
 
 MHD_PROFILE_VALIDATIONS_V1_0 = {
+    MHD_MODEL_V0_1_MS_PROFILE_NAME: MHD_MS_PROFILE_V1_0,
     MHD_MODEL_V1_0_MS_PROFILE_NAME: MHD_MS_PROFILE_V1_0,
     MHD_MODEL_V1_0_LEGACY_PROFILE_NAME: MHD_LEGACY_PROFILE_V1_0,
+    MHD_MODEL_V0_1_LEGACY_PROFILE_NAME: MHD_LEGACY_PROFILE_V1_0,
 }
 
 
@@ -281,7 +291,7 @@ def new_validator(
                     "anyOf": mhd_model_validator.anyOf,
                 },
             )
-            logger.info("Loaded schema: %s, profile: %s.", schema_uri, profile_uri)
+            logger.debug("Loaded schema: %s, profile: %s.", schema_uri, profile_uri)
             return validator(schema_file)
     return None
 

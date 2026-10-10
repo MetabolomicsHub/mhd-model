@@ -1,0 +1,1240 @@
+{
+  "id": "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/announcement-v1.0.base-profile.json",
+  "version": "v1.0",
+  "name": "MetabolomicsHub Announcement File v1.0 Base Profile",
+  "description": "MetabolomicsHub Announcement File v1.0 Base Profile",
+  "configuration": {
+    "cv_term_field_mapping": {
+      "label_field": "source",
+      "accession_field": "accession",
+      "name_field": "name",
+      "value_field": "value"
+    }
+  },
+  "requirements": {
+    "$": {
+      "enforcement_level": "required",
+      "requirements": [
+        {
+          "code": "base-required-0001",
+          "enforcement_level": "required",
+          "required_properties": [
+            "id",
+            "$schema",
+            "profile_uri",
+            "type",
+            "uri",
+            "mhd_metadata_file_url",
+            "cv_definitions",
+            "repository_name",
+            "repository_short_name",
+            "repository_identifier"
+          ],
+          "recommended_properties": [
+            "license",
+            "license_name",
+            "mhd_metadata_file_hashes",
+            "submitter_keywords",
+            "reported_molecular_entities",
+            "repository_metadata_file_list",
+            "raw_data_file_list",
+            "result_file_list"
+          ]
+        }
+      ]
+    },
+    "$.tag_list[*]": {
+      "code": "base-tag_list-0001",
+      "enforcement_level": "required",
+      "recommended_properties": [
+        "key",
+        "value"
+      ]
+    },
+    "$.tag_list[*].key": {
+      "enforcement_level": "required",
+      "requirements": [
+        {
+          "code": "base-tag_list-key-0001",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "not-null",
+            "precondition": {
+              "evaluations": [
+                {
+                  "constraint": {
+                    "type": "string-length",
+                    "exceptional_values": [
+                      null
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "null_values": [
+              null,
+              ""
+            ]
+          }
+        },
+        {
+          "code": "base-tag_list-key-0002",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "not-null",
+            "precondition": {
+              "evaluations": [
+                {
+                  "constraint": {
+                    "type": "cv-term",
+                    "allow_synonym": true,
+                    "allow_user_defined_terms": true
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            }
+          }
+        }
+      ]
+    },
+    "$.tag_list[*].value": {
+      "code": "base-tag_list-0004",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "not-null",
+        "null_values": [
+          null,
+          ""
+        ]
+      }
+    },
+    "$.repository_revision": {
+      "code": "base-repository_revision-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "$.repository_revision_comment": {
+      "code": "base-repository_revision_comment-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 0
+      }
+    },
+    "$.repository_revision_datetime": {
+      "code": "base-repository_revision_datetime-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "time"
+      }
+    },
+    "$.change_log": {
+      "code": "base-change_log-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.change_log[*]": {
+      "code": "base-change_log-revision-0001",
+      "enforcement_level": "required",
+      "required_properties": [
+        "revision",
+        "revision_datetime"
+      ]
+    },
+    "$.change_log[*].revision": {
+      "code": "base-change_log-revision-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "match_is_required": true
+    },
+    "$.change_log[*].revision_datetime": {
+      "code": "base-change_log-revision-0003",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "time"
+      }
+    },
+    "$.change_log[*].comment": {
+      "code": "base-change_log-revision-0004",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 0
+      }
+    },
+    "$['$schema']": {
+      "code": "base-schema-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 10
+      }
+    },
+    "$.profile_uri": {
+      "code": "base-profile_uri-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 10
+      }
+    },
+    "$.created_at": {
+      "code": "base-created_at-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "time"
+      }
+    },
+    "$.id": {
+      "code": "base-id-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 10
+      }
+    },
+    "$.type": {
+      "code": "base-type-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 1
+      }
+    },
+    "$.url_list": {
+      "code": "base-url-list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "min_occurs": 0
+      }
+    },
+    "$.url_list[*]": {
+      "code": "base-url-list-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https",
+          "ftp"
+        ]
+      }
+    },
+    "$.uri": {
+      "code": "base-uri-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri"
+      }
+    },
+    "$.repository_identifier": {
+      "code": "base-repository_identifier-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.alternative_id_list": {
+      "code": "base-alternative_id_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.alternative_id_list[*]": {
+      "code": "base-alternative_id_list-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 10
+      }
+    },
+    "$.repository_name": {
+      "code": "base-repository_name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.repository_short_name": {
+      "code": "base-repository_short_name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.license": {
+      "code": "base-license-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https"
+        ]
+      }
+    },
+    "$.license_name": {
+      "code": "base-license-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 0
+      }
+    },
+    "$.name": {
+      "code": "base-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 0
+      }
+    },
+    "$.description": {
+      "code": "base-description-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.cv_definitions": {
+      "code": "base-cv_definitions-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.cv_definitions[*]": {
+      "code": "base-cv_definitions-definition-0001",
+      "enforcement_level": "required",
+      "required_properties": [
+        "label",
+        "name",
+        "uri"
+      ]
+    },
+    "$.cv_definitions[*].label": {
+      "code": "base-cv_definitions-definition-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 1
+      }
+    },
+    "$.cv_definitions[*].name": {
+      "code": "base-cv_definitions-definition-0003",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.cv_definitions[*].uri": {
+      "code": "base-cv_definitions-definition-0004",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "exceptional_values": [
+          ""
+        ]
+      }
+    },
+    "$.cv_definitions[*].prefix": {
+      "code": "base-cv_definitions-prefix-0005",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.cv_definitions[*].version": {
+      "code": "base-cv_definitions-version-0006",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.mhd_identifier": {
+      "code": "base-mhd_identifier-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 9,
+        "maximum": 12
+      }
+    },
+    "$.mhd_metadata_file_url": {
+      "code": "base-mhd_metadata_file_url-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https"
+        ]
+      }
+    },
+    "$.mhd_metadata_file_hashes": {
+      "code": "base-mhd_metadata_file_hashes-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.mhd_metadata_file_hashes[*]": {
+      "code": "base-mhd_metadata_file_hashes_hash-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true,
+        "is_cv_term_value_required": true
+      },
+      "required_properties": [
+        "name",
+        "value"
+      ]
+    },
+    "$.mhd_metadata_file_hashes[*].value": {
+      "code": "base-mhd_metadata_file_hashes_hash-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 32
+      }
+    },
+    "$.mhd_metadata_file_hashes[*].name": {
+      "code": "base-mhd_metadata_file_hashes_hash-0003",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 2
+      }
+    },
+    "$.submission_date": {
+      "code": "base-submission_date-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "time"
+      }
+    },
+    "$.public_release_date": {
+      "code": "base-public_release_date-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "time"
+      }
+    },
+    "$.submitters": {
+      "code": "base-submitters-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.submitters[*]": {
+      "code": "base-submitters-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "full_name",
+        "email_list"
+      ]
+    },
+    "$.submitters[*].full_name": {
+      "code": "base-submitters-full_name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 5
+      }
+    },
+    "$.submitters[*].email_list": {
+      "code": "base-submitters_email_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.submitters[*].email_list[*]": {
+      "code": "base-submitters-email_list-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "email"
+      }
+    },
+    "$.submitters[*].orcid": {
+      "code": "base-submitters-orcid-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "regex",
+        "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
+        "case_sensitive": true
+      }
+    },
+    "$.submitters[*].affiliation_list": {
+      "code": "base-submitters-affiliation_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "min_match": 1
+      }
+    },
+    "$.principal_investigators": {
+      "code": "base-principal_investigators-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.principal_investigators[*]": {
+      "code": "base-principal_investigators-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "full_name",
+        "email_list"
+      ]
+    },
+    "$.principal_investigators[*].full_name": {
+      "code": "base-principal_investigators_full_name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 5
+      }
+    },
+    "$.principal_investigators[*].email_list": {
+      "code": "base-principal_investigators-email_list_0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.principal_investigators[*].email_list[*]": {
+      "code": "base-principal_investigators-email_list_0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "email"
+      }
+    },
+    "$.omics_type": {
+      "code": "base-omics_type-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.omics_type[*]": {
+      "code": "base-omics_type-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.technology_type": {
+      "code": "base-technology_type-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.technology_type[*]": {
+      "code": "base-technology_type-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.measurement_type": {
+      "code": "base-measurement_type-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.measurement_type[*]": {
+      "code": "base-measurement_type-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.assay_type": {
+      "code": "base-assay_type-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.assay_type[*]": {
+      "code": "base-assay_type-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.submitter_keywords": {
+      "code": "base-submitter_keywords-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.submitter_keywords[*]": {
+      "code": "base-submitter_keywords-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.descriptors": {
+      "code": "base-descriptors-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.descriptors[*]": {
+      "code": "base-descriptors-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.publications": {
+      "code": "base-publications-0001",
+      "description": "Publication must be defined or annotated with a missing cv term",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "items-count",
+            "min_occurs": 1
+          },
+          {
+            "type": "cv-term-enum",
+            "allowed_cv_terms": [
+              {
+                "cv_label": "MS",
+                "cv_accession": "MS:1002853",
+                "name": "Dataset with no associated published manuscript"
+              },
+              {
+                "cv_label": "MS",
+                "cv_accession": "MS:1002858",
+                "name": "Dataset with its publication pending"
+              }
+            ]
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.publications[*].doi": {
+      "code": "base-publications-0010",
+      "description": "Publication DOI must be valid",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "regex",
+        "pattern": "^10[.].+/.+$",
+        "case_sensitive": true
+      }
+    },
+    "$.publications[*].pubmed_id": {
+      "code": "base-publications-0011",
+      "description": "Publication PubMed Id must be valid",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "regex",
+        "pattern": "^[0-9]{1,20}$",
+        "case_sensitive": true
+      }
+    },
+    "$.publications[*].title": {
+      "code": "base-publications-0012",
+      "description": "Publication title must be valid",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 5
+      }
+    },
+    "$.publications[*].author_list[*]": {
+      "code": "base-publications-0013",
+      "description": "Publication author must be valid",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 2
+      }
+    },
+    "$.study_factors": {
+      "code": "base-study_factors-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.study_factors[*]": {
+      "code": "base-study_factors-factor-0001",
+      "enforcement_level": "required",
+      "required_properties": [
+        "key"
+      ]
+    },
+    "$.study_factors[*].key": {
+      "code": "base-study_factors-factor-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.study_factors[*].values": {
+      "code": "base-study_factors-factor-0003",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.study_factors[*].values[*]": {
+      "code": "base-study_factors-factor-0004-01",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "cv-term",
+            "allow_synonym": true,
+            "allow_user_defined_terms": true
+          },
+          {
+            "type": "string-length",
+            "json_path": ".value",
+            "minimum": 1
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.study_factors[*].values[*].unit": {
+      "code": "base-study_factors-factor-unit-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.characteristic_values": {
+      "code": "base-characteristic_values-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.characteristic_values[*]": {
+      "code": "base-characteristic_values-characteristic-0001",
+      "enforcement_level": "required",
+      "required_properties": [
+        "key"
+      ]
+    },
+    "$.characteristic_values[*].key": {
+      "code": "base-characteristic_values-characteristic-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.characteristic_values[*].values": {
+      "code": "base-characteristic_values-characteristic-0003",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.characteristic_values[*].values[*]": {
+      "code": "base-characteristic_values-characteristic-0004-01",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "cv-term",
+            "exceptional_cv_list": [
+              "ILX",
+              "wikidata"
+            ],
+            "allow_synonym": true,
+            "allow_user_defined_terms": true
+          },
+          {
+            "type": "string-length",
+            "json_path": ".value",
+            "minimum": 1
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.characteristic_values[*].values[*].unit": {
+      "code": "base-characteristic_values-characteristic-unit-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.protocols": {
+      "code": "base-protocols-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.protocols[*]": {
+      "code": "base-protocols-protocol-0001",
+      "enforcement_level": "required",
+      "required_properties": [
+        "name"
+      ]
+    },
+    "$.protocols[*].protocol_type": {
+      "code": "base-protocols-protocol_type-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.protocols[*].description": {
+      "code": "base-protocols-description-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.protocols[*].protocol_parameters": {
+      "code": "base-protocols-protocol_parameters-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.protocols[*].protocol_parameters[*]": {
+      "code": "base-protocols-protocol_parameters-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "key"
+      ]
+    },
+    "$.protocols[*].protocol_parameters[*].key": {
+      "code": "base-protocols-protocol_parameters-0003",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.protocols[*].protocol_parameters[*].values": {
+      "code": "base-protocols-protocol_parameters-0004",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.protocols[*].protocol_parameters[*].values[*]": {
+      "code": "base-characteristic_values-characteristic-0004-01",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "cv-term",
+            "exceptional_cv_list": [
+              "ILX",
+              "wikidata"
+            ],
+            "allow_synonym": true,
+            "allow_user_defined_terms": true
+          },
+          {
+            "type": "string-length",
+            "json_path": ".value",
+            "minimum": 1
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.protocols[*].protocol_parameters[*].values[*].unit": {
+      "code": "base-characteristic_values-characteristic-unit-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "exceptional_cv_list": [
+          "ILX",
+          "wikidata"
+        ],
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.reported_molecular_entities": {
+      "code": "base-reported_molecular_entities-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.reported_molecular_entities[*]": {
+      "code": "base-reported_molecular_entities-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "name"
+      ]
+    },
+    "$.reported_molecular_entities[*].name": {
+      "code": "base-reported_molecular_entities-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.reported_molecular_entities[*].database_identifiers": {
+      "code": "base-reported_molecular_entities-database_identifiers-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.reported_molecular_entities[*].database_identifiers[*]": {
+      "code": "base-reported_molecular_entities-database_identifiers-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true,
+        "allow_user_defined_terms": true
+      }
+    },
+    "$.repository_metadata_file_list": {
+      "code": "base-repository_metadata_file_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.repository_metadata_file_list[*]": {
+      "code": "base-repository_metadata_file_list-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "name",
+        "url_list"
+      ]
+    },
+    "$.repository_metadata_file_list[*].url_list[*]": {
+      "code": "base-repository_metadata_file_list-url_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https",
+          "ftp"
+        ]
+      }
+    },
+    "$.repository_metadata_file_list[*].name": {
+      "code": "base-repository_metadata_file_list-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.repository_metadata_file_list[*].format": {
+      "code": "base-repository_metadata_file_list-format-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.repository_metadata_file_list[*].compression_formats[*]": {
+      "code": "base-repository_metadata_file_list-compression_formats-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.repository_metadata_file_list[*].extension": {
+      "code": "base-repository_metadata_file_list-extension-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.raw_data_file_list": {
+      "code": "base-raw_data_file_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.raw_data_file_list[*]": {
+      "code": "base-raw_data_file_list-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "name",
+        "url_list"
+      ]
+    },
+    "$.raw_data_file_list[*].url_list[*]": {
+      "code": "base-raw_data_file_list-url_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https",
+          "ftp"
+        ]
+      }
+    },
+    "$.raw_data_file_list[*].name": {
+      "code": "base-raw_data_file_list-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.raw_data_file_list[*].format": {
+      "code": "base-raw_data_file_list-format-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.raw_data_file_list[*].compression_formats[*]": {
+      "code": "base-raw_data_file_list-compression_formats-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.raw_data_file_list[*].extension": {
+      "code": "base-raw_data_file_list-extension-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.result_file_list": {
+      "code": "base-result_file_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.result_file_list[*]": {
+      "code": "base-result_file_list-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "name",
+        "url_list"
+      ]
+    },
+    "$.result_file_list[*].url_list[*]": {
+      "code": "base-result_file_list-url_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https",
+          "ftp"
+        ]
+      }
+    },
+    "$.result_file_list[*].name": {
+      "code": "base-result_file_list-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.result_file_list[*].format": {
+      "code": "base-result_file_list-format-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.result_file_list[*].compression_formats[*]": {
+      "code": "base-result_file_list-compression_formats-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.result_file_list[*].extension": {
+      "code": "base-result_file_list-extension-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.derived_data_file_list": {
+      "code": "base-derived_data_file_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.derived_data_file_list[*]": {
+      "code": "base-derived_data_file_list-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "name",
+        "url_list"
+      ]
+    },
+    "$.derived_data_file_list[*].url_list[*]": {
+      "code": "base-derived_data_file_list-url_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https",
+          "ftp"
+        ]
+      }
+    },
+    "$.derived_data_file_list[*].name": {
+      "code": "base-derived_data_file_list-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.derived_data_file_list[*].format": {
+      "code": "base-derived_data_file_list-format-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.derived_data_file_list[*].compression_formats[*]": {
+      "code": "base-derived_data_file_list-compression_formats-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.derived_data_file_list[*].extension": {
+      "code": "base-derived_data_file_list-extension-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.supplementary_file_list": {
+      "code": "base-supplementary_file_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count"
+      }
+    },
+    "$.supplementary_file_list[*]": {
+      "code": "base-supplementary_file_list-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "name",
+        "url_list"
+      ]
+    },
+    "$.supplementary_file_list[*].url_list[*]": {
+      "code": "base-supplementary_file_list-url_list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "uri",
+        "allowed_schemes": [
+          "http",
+          "https",
+          "ftp"
+        ]
+      }
+    },
+    "$.supplementary_file_list[*].name": {
+      "code": "base-supplementary_file_list-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    },
+    "$.supplementary_file_list[*].format": {
+      "code": "base-supplementary_file_list-format-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.supplementary_file_list[*].compression_formats[*]": {
+      "code": "base-supplementary_file_list-compression_formats-0002",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term",
+        "allow_synonym": true
+      }
+    },
+    "$.supplementary_file_list[*].extension": {
+      "code": "base-supplementary_file_list-extension-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
+    }
+  }
+}

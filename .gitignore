@@ -1,5 +1,6 @@
 .DS_Store
 .data/
+.old/
 cache/
 config*.yaml
 # Byte-compiled / optimized / DLL files

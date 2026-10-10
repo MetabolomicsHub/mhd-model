@@ -15,7 +15,7 @@ def search_ontology_definition(ontology_name: str) -> None | CvDefinition:
         response = httpx2.get(url, timeout=2)
         response.raise_for_status()
         json_response = response.json()
-        base_uri = json_response.get("baseUri", [])
+        base_uri = json_response.get("baseUris", [])
 
         return CvDefinition(
             name=json_response.get("description", ""),
