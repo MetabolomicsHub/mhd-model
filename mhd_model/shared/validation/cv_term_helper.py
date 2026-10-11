@@ -1,9 +1,7 @@
 import json
 import logging
 import pathlib
-import re
-from typing import Any, Generic, TypeVar
-from urllib.parse import quote
+from typing import Any, TypeVar
 
 import bioregistry
 import httpx2
@@ -13,6 +11,7 @@ from pydantic.alias_generators import to_camel, to_pascal
 
 from mhd_model.shared.base import CvTerm
 from mhd_model.shared.cv_definitions import OTHER_COMMON_CV_DEFINITIONS
+from mhd_model.shared.validation.base_cv_term_helper import BaseCvTermHelper
 from mhd_model.shared.validation.definitions import ParentCvTerm
 
 logger = logging.getLogger(__name__)
@@ -33,7 +32,7 @@ class OlsBaseModel(BaseModel):
     )
 
 
-class OlsSearchModel(OlsBaseModel, Generic[T]):
+class OlsSearchModel[T](OlsBaseModel):
     page: int
     num_elements: int
     total_pages: int
@@ -82,7 +81,7 @@ def search_ols(
     return result.status_code, {}
 
 
-class CvTermHelper:
+class CvTermHelper(BaseCvTermHelper):
     def __init__(self) -> None:
         self.cache: dict[str, None | dict[str, CvTerm]] = {}
         self.search_cache: dict[str, tuple[bool, str | None]] = {}
@@ -141,106 +140,6 @@ class CvTermHelper:
         except Exception as ex:
             logger.exception("Failed to load children CV Terms: %s", ex)
             return None
-
-    def get_children_of_cv_term(self, parent: ParentCvTerm) -> dict[str, CvTerm]:
-        file_path = self.get_children_cache_file_path(parent)
-        if file_path in self.cache:
-            return self.cache[file_path]
-
-        children_map = self.load_children(parent)
-        if children_map is not None:
-            return children_map
-
-        children: list[ChildrenSearchModel] = []
-        if parent.allow_parent:
-            uri = self.get_uri(parent.cv_term)
-            children.append(
-                ChildrenSearchModel(
-                    curie=parent.cv_term.accession,
-                    has_direct_children=True,
-                    has_hierarchical_children=True,
-                    iri=uri,
-                    label=parent.cv_term.name,
-                    ontology_preferred_prefix=parent.cv_term.source,
-                    is_obsolete=False,
-                )
-            )
-        self.get_children(
-            parent.cv_term,
-            children,
-            parent.allow_only_leaf,
-            parent.excluded_cv_terms,
-        )
-        children.sort(key=lambda x: x.label)
-        children_cv_terms = {
-            x.curie: CvTerm(
-                accession=x.curie, source=x.ontology_preferred_prefix, name=x.label
-            )
-            for x in children
-        }
-        self.cache[file_path] = children_cv_terms
-        self.save_children(parent, children_cv_terms)
-        return children_cv_terms
-
-    def get_children(
-        self,
-        cv_term: CvTerm,
-        children: list[ChildrenSearchModel],
-        allow_only_leaf: bool = True,
-        excluded_cv_accessions: None | list[str] = None,
-    ) -> None:
-        parent_uri = self.get_uri(cv_term)
-
-        parent_uri_encoded = quote(quote(parent_uri, safe=[]))
-        children_subpath = f"/ontologies/{cv_term.source.lower()}/classes/{parent_uri_encoded}/children"
-        ols4_base_url = "https://www.ebi.ac.uk/ols4/api/v2"
-
-        url = ols4_base_url + children_subpath
-        page = 0
-        finished = False
-        headers = {"Accept": "application/json"}
-        selected_terms: list[ChildrenSearchModel] = []
-        while not finished:
-            params = {"page": page, "size": 100}
-            page += 1
-            _, result_json = search_ols(url, params, headers, timeout=10)
-            if not result_json:
-                logger.warning(
-                    "Could not find children CV Terms for %s - %s",
-                    cv_term.accession,
-                    cv_term.name,
-                )
-                break
-            search = OlsSearchModel[ChildrenSearchModel].model_validate(result_json)
-            selected_items = [x for x in search.elements if not x.is_obsolete]
-            selected = []
-            if excluded_cv_accessions:
-                for x in selected_items:
-                    for pattern in excluded_cv_accessions:
-                        if not re.match(pattern, x):
-                            selected.append(x)
-
-            if selected:
-                selected_terms.extend(selected)
-            if page >= search.total_pages:
-                finished = True
-        for term in selected_terms:
-            if not allow_only_leaf or (
-                allow_only_leaf and not term.has_hierarchical_children
-            ):
-                children.append(term)
-
-            if term.has_hierarchical_children:
-                self.get_children(
-                    cv_term=CvTerm(
-                        accession=term.curie,
-                        name=term.label,
-                        source=term.ontology_preferred_prefix,
-                    ),
-                    children=children,
-                    allow_only_leaf=allow_only_leaf,
-                    excluded_cv_accessions=excluded_cv_accessions,
-                )
 
     def get_uri_with_custom_convertor(self, cv_term: CvTerm) -> None | str:
         source = cv_term.source

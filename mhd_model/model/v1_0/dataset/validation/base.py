@@ -52,9 +52,13 @@ class MhdModelValidator:
         node_validation: MhDatasetValidation,
         mhd_model_validation_context: None | MhdModelValidationContext = None,
     ):
-        self.cv_helper = CvTermHelper()
         self.node_validation: MhDatasetValidation = node_validation
         self.mhd_model_validation_context = mhd_model_validation_context
+        if not self.mhd_model_validation_context:
+            self.mhd_model_validation_context = MhdModelValidationContext()
+        if not self.mhd_model_validation_context.cv_term_helper:
+            self.mhd_model_validation_context.cv_term_helper = CvTermHelper()
+        self.cv_term_helper = self.mhd_model_validation_context.cv_term_helper
 
     def anyOf(self, validator, anyOf, instance, schema):
         node_class = None
@@ -64,11 +68,11 @@ class MhdModelValidator:
                 instance, mhd_model_validation_context=self.mhd_model_validation_context
             )
             if node_class:
-                subschema = {"$ref": f"#/$defs/{node_class.__name__}"}
-                if node_class is not None and subschema in anyOf:
-                    index = anyOf.index(subschema)
+                sub_schema = {"$ref": f"#/$defs/{node_class.__name__}"}
+                if node_class is not None and sub_schema in anyOf:
+                    index = anyOf.index(sub_schema)
                     errors = list(
-                        validator.descend(instance, subschema, schema_path=index)
+                        validator.descend(instance, sub_schema, schema_path=index)
                     )
                     if errors:
                         for error in errors:
@@ -78,11 +82,11 @@ class MhdModelValidator:
             if len(anyOf) == 2 and optional_type in anyOf:
                 null_errs = None
                 other_errors = None
-                for index, subschema in enumerate(anyOf):
+                for index, sub_schema in enumerate(anyOf):
                     errs = list(
-                        validator.descend(instance, subschema, schema_path=index)
+                        validator.descend(instance, sub_schema, schema_path=index)
                     )
-                    if subschema == optional_type:
+                    if sub_schema == optional_type:
                         null_errs = errs
                     else:
                         other_errors = errs
@@ -93,8 +97,8 @@ class MhdModelValidator:
                         yield error
         if node_class:
             return
-        for index, subschema in enumerate(anyOf):
-            errs = list(validator.descend(instance, subschema, schema_path=index))
+        for index, sub_schema in enumerate(anyOf):
+            errs = list(validator.descend(instance, sub_schema, schema_path=index))
             if not errs:
                 break
             all_errors.extend(errs)
@@ -154,7 +158,7 @@ class MhdModelValidator:
         )
 
     def check_start_items(self, instance, unique_nodes, nodes_path):
-        logger.info("Start item reference check task started...")
+        logger.debug("Start item reference check task started...")
 
         start_item_refs_path = "start_item_refs"
         start_item_refs = instance.get(start_item_refs_path)
@@ -180,7 +184,7 @@ class MhdModelValidator:
                     path=(nodes_path, start_item_refs_path, idx),
                     instance=start,
                 )
-        logger.info("Start item reference check task ended.")
+        logger.debug("Start item reference check task ended.")
 
     def update_unique_relationships(
         self,
@@ -251,11 +255,11 @@ class MhdModelValidator:
         nodes_path: str,
     ):
         if not nodes:
-            logger.info(
+            logger.debug(
                 "There is no item. Node id and type consistency check is skipped."
             )
             return
-        logger.info(
+        logger.debug(
             "Start node id and type consistency checks for %s items...", len(nodes)
         )
 
@@ -372,7 +376,7 @@ class MhdModelValidator:
                 nodes_by_type[node.type_] = {}
             nodes_by_type[node.type_][node.id_] = (idx, node)
 
-        logger.info("Node id and type consistency checks are ended.")
+        logger.debug("Node id and type consistency checks are ended.")
 
     def check_embedded_ref_ids_exist(
         self,
@@ -382,12 +386,12 @@ class MhdModelValidator:
         item_name: str,
     ) -> Generator[Any, Any, jsonschema.ValidationError]:
         if not items:
-            logger.info(
+            logger.debug(
                 "There is no item. Embedded reference check in %s items is skipped.",
                 item_name,
             )
             return
-        logger.info(
+        logger.debug(
             "Start embedded reference checks in %s %s items...",
             len(items),
             item_name,
@@ -424,7 +428,7 @@ class MhdModelValidator:
                                 instance=item,
                             )
 
-        logger.info("Embedded reference check in %s items is ended...", item_name)
+        logger.debug("Embedded reference check in %s items is ended...", item_name)
 
     def validate_profile(
         self,
@@ -481,7 +485,7 @@ class MhdModelValidator:
                     if isinstance(item, NodePropertyValidation):
                         if item.identifier:
                             logger.debug(
-                                "Node propertry validation '%s': Started",
+                                "Node property validation '%s': Started",
                                 item.identifier,
                             )
                         errors = self.check_property_constraint(
@@ -489,7 +493,7 @@ class MhdModelValidator:
                         )
                         if item.identifier:
                             logger.debug(
-                                "Node propertry validation '%s': Completed",
+                                "Node property validation '%s': Completed",
                                 item.identifier,
                             )
                     elif isinstance(item, CvTermValidation):
@@ -502,15 +506,15 @@ class MhdModelValidator:
                         )
                         if not selected_items:
                             if item.condition:
-                                logger.info(
-                                    "Cv Term validation '%s' - %s: %s: Skipping. No maching nodes.",
+                                logger.debug(
+                                    "Cv Term validation '%s' - %s: %s: Skipping. No matching nodes.",
                                     item.identifier,
                                     item.condition[0].expression or "",
                                     item.condition[0].expression_value or "",
                                 )
                             else:
-                                logger.info(
-                                    "Cv Term validation '%s': Skipping. No maching nodes.",
+                                logger.debug(
+                                    "Cv Term validation '%s': Skipping. No matching nodes.",
                                     item.identifier,
                                 )
                             continue
@@ -559,13 +563,13 @@ class MhdModelValidator:
                             validation_match = False
                         if validation_match:
                             if not item.condition:
-                                logger.info(
+                                logger.debug(
                                     "%s validation '%s': Completed",
                                     item.validation.__class__.__name__,
                                     item.identifier,
                                 )
                             else:
-                                logger.info(
+                                logger.debug(
                                     "%s validation '%s' - %s: %s: Completed",
                                     item.validation.__class__.__name__,
                                     item.identifier,
@@ -843,10 +847,10 @@ class MhdModelValidator:
             rel_name = condition_item.relationship_name
             if rel_name not in relationships_index:
                 continue
-            target_rels = relationships_index.get(rel_name)
-            if value.id_ not in target_rels:
+            target_relationships = relationships_index.get(rel_name)
+            if value.id_ not in target_relationships:
                 continue
-            targets = target_rels.get(value.id_)
+            targets = target_relationships.get(value.id_)
             for target_ref in targets:
                 if not nodes_by_type.get(condition_item.start_node_type):
                     continue
@@ -924,7 +928,7 @@ class MhdModelValidator:
             valid = False
             error_message = ""
             if item.source.upper() in source_names:
-                valid, error_message = self.cv_helper.check_cv_term(item)
+                valid, error_message = self.cv_term_helper.check_cv_term(item)
             if not error_message:
                 error_message = ""
             else:
@@ -1047,7 +1051,7 @@ class MhdModelValidator:
             valid_parents = [x.cv_term for x in parent_cv_terms]
             valid = False
             for x in parent_cv_terms:
-                valid, error_message = self.cv_helper.check_cv_term(item, x)
+                valid, error_message = self.cv_term_helper.check_cv_term(item, x)
                 if valid:
                     break
             error_message = error_message if error_message else ""
@@ -1057,7 +1061,7 @@ class MhdModelValidator:
                         message=message
                         + f"[{item.source}, {item.accession}, {item.name}] "
                         f"is not child of any parent cv term. "
-                        f"Valid parents: {valid_parents!s}. Error: {error_message}",
+                        f"Valid parents: {','.join([str(x) for x in valid_parents or []])}. Error: {error_message}",
                         validator="check-child-cv-term",
                         context=(),
                         path=sub_path,
@@ -1070,7 +1074,7 @@ class MhdModelValidator:
                 and (not item.source and not item.accession and not item.name)
                 and item.unit
             ):
-                valid, error_message = self.cv_helper.check_cv_term(item.unit)
+                valid, error_message = self.cv_term_helper.check_cv_term(item.unit)
                 if not valid:
                     message = "Unit cv term is not valid."
 
@@ -1180,7 +1184,7 @@ class MhdModelValidator:
                     message = f"{rule_id} - {node.id_}: '{node.type_}' node at index {idx} has a property '{property_name}'. Its {sub_idx}. index item "
             if is_list:
                 sub_path.append(sub_idx)
-            valid, error_message = self.cv_helper.check_cv_term(item)
+            valid, error_message = self.cv_term_helper.check_cv_term(item)
             error_message = error_message if error_message else ""
             if not valid:
                 errors.append(
@@ -1199,7 +1203,7 @@ class MhdModelValidator:
                 and item.value
                 and (not item.source and not item.accession and not item.name)
             ) and item.unit:
-                valid, error_message = self.cv_helper.check_cv_term(item.unit)
+                valid, error_message = self.cv_term_helper.check_cv_term(item.unit)
                 if not valid:
                     message = "Unit cv term is not valid."
 
@@ -1419,7 +1423,7 @@ class MhdModelValidator:
                     False,
                     jsonschema.ValidationError(
                         message=f"{property_name} does not exist at index {idx}",
-                        validator="check-propery",
+                        validator="check-property",
                         context=(),
                         path=("nodes", idx),
                         instance={},
@@ -1663,7 +1667,7 @@ class MhdModelValidator:
                         jsonschema.ValidationError(
                             message=f"{item.identifier} - {node.id_}: The source node at index {node_idx} has less relationship "
                             f"('{item.source} - {item.relationship_name} - {item.target}{' [' + condition.name + ']' if condition else ''}') "
-                            f"Actual: {target_count}, Minimim : {item.min_for_each_source}.",
+                            f"Actual: {target_count}, Minimum : {item.min_for_each_source}.",
                             validator="number-of-relationships",
                             context=(),
                             path=["nodes", node_idx],
@@ -1700,7 +1704,8 @@ class MhdModelValidator:
         if item_count < min:
             errors.append(
                 jsonschema.ValidationError(
-                    message=f"Number of {node_name} nodes is less than the minimum: {min}.",
+                    message=f"[{node_validation.identifier or ''}] Number of "
+                    f"{node_name} nodes is less than the minimum: {min}. {node_name}.",
                     validator="number-of-nodes",
                     context=(),
                     path=("nodes",),
@@ -1710,7 +1715,8 @@ class MhdModelValidator:
         if max is not None and item_count > max:
             errors.append(
                 jsonschema.ValidationError(
-                    message=f"Number of {node_name} nodes exceeds the allowed limit: {max}.",
+                    message=f"[{node_validation.identifier or ''}] "
+                    f"Number of {node_name} nodes exceeds the allowed limit: {max}.",
                     validator="number-of-nodes",
                     context=(),
                     path=("nodes",),

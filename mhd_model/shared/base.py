@@ -106,6 +106,13 @@ class CvTerm(BaseValueModel):
         return f"[{self.source or ''}, {self.accession or ''}, {self.name or ''}]"
 
 
+class BaseParentCvTerm(BaseValueModel):
+    cv_term: CvTerm
+    allow_only_leaf: bool = False
+    allow_parent: None | bool = False
+    excluded_cv_terms: None | list[str] = None
+
+
 class UnitCvTerm(CvTerm): ...
 
 

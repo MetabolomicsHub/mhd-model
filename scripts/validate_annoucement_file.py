@@ -1,30 +1,18 @@
-from __future__ import annotations
-
 import logging
-import sys
+import pathlib
 
-from mhd_model.log_utils import set_basic_logging_config
-from mhd_model.model.v0_1.announcement.validation.validator import (
-    MhdAnnouncementFileValidator,
-)
-from mhd_model.utils import load_json
+from mhd_model.utils import setup_basic_logging_config
+from mhd_model.validation import validate_announcement_file
 
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    set_basic_logging_config()
-    validator = MhdAnnouncementFileValidator()
-    # test_data_file_path = (
-    #     "tests/data/announcement_files/legacy/MSV000099062.announcement.json"
-    # )
-    test_data_file_path = "MTBLS30008987.announcement.json"
-    announcement_file_json = load_json(test_data_file_path)
-    all_errors = validator.validate(announcement_file_json)
-    if all_errors:
-        logger.info("-" * 80)
-        for idx, x in enumerate(all_errors, start=1):
-            logger.info("%s | %s", idx, x)
-        logger.info("-" * 80)
-        sys.exit(1)
-    logger.info("Validation is successful.")
-    sys.exit(0)
+    # ontology_lookup_file_path = ".db/ontology_lookup.db"
+    ontology_lookup_file_path = None
+    setup_basic_logging_config()
+    result = validate_announcement_file(
+        announcement_file_path=pathlib.Path("example_input_01.json"),
+        ontology_lookup_file_path=ontology_lookup_file_path,
+    )
+    for message in result or []:
+        logger.error(message)

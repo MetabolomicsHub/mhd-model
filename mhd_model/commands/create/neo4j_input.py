@@ -11,8 +11,10 @@ from mhd_model.model.definitions import (
     MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
     MHD_MODEL_V0_1_MS_PROFILE_NAME,
 )
-from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
-from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
+from mhd_model.model.v1_0.dataset.profiles.legacy.profile import (
+    MhDatasetLegacyProfile_v1_0,
+)
+from mhd_model.model.v1_0.dataset.profiles.ms.profile import MhDatasetMsProfile_v1_0
 from mhd_model.shared.model import ProfileEnabledDataset
 
 
@@ -59,9 +61,9 @@ def create_neo4j_input_file_task(
     mhd_dataset = None
     if profile.schema_name == MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME:
         if profile.profile_uri == MHD_MODEL_V0_1_LEGACY_PROFILE_NAME:
-            mhd_dataset = MhDatasetLegacyProfile.model_validate(json_data)
+            mhd_dataset = MhDatasetLegacyProfile_v1_0.model_validate(json_data)
         elif profile.profile_uri == MHD_MODEL_V0_1_MS_PROFILE_NAME:
-            mhd_dataset = MhDatasetMsProfile.model_validate(json_data)
+            mhd_dataset = MhDatasetMsProfile_v1_0.model_validate(json_data)
         else:
             click.echo(f"{profile.profile_uri} is not supported.")
             sys.exit(1)
@@ -136,7 +138,6 @@ def create_neo4j_input_file_task(
         #     "raw-data-file",
         #     "derived-data-file",
         #     "supplementary-file",
-        #     # "metabolite",
         # }:
         #     continue
         # if nodes_map[rel.target_ref].type_ == "study" and nodes_map[
@@ -145,7 +146,6 @@ def create_neo4j_input_file_task(
         #     "raw-data-file",
         #     "derived-data-file",
         #     "supplementary-file",
-        #     # "metabolite",
         # }:
         #     continue
         relationships.append(

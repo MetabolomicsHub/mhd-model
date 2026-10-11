@@ -1,4 +1,4 @@
-from mhd_model.shared.model import CvDefinition
+from mhd_model.shared.base import CvDefinition
 
 COMMON_CV_DEFINITIONS = {
     "BTO": CvDefinition(
@@ -70,7 +70,7 @@ COMMON_CV_DEFINITIONS = {
     "MI": CvDefinition(
         label="MI",
         name="Molecular Interactions Controlled Vocabulary",
-        uri=" http://purl.obolibrary.org/obo/mi.owl",
+        uri="http://purl.obolibrary.org/obo/mi.owl",
         prefix="http://purl.obolibrary.org/obo/MI_",
     ),
     "MONDO": CvDefinition(

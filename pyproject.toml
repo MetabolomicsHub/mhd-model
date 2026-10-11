@@ -5,9 +5,9 @@ description = "MetabolomicsHub Common Data Model"
 authors = [{"name"="MetabolomicsHub Team", "email"="help@metabolomicshub.org"}]
 license = "Apache-2.0"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
-    "bioregistry>=0.13.28",
+    "bioregistry>=0.15.0",
     "cachetools>=7.0.5",
     "charset-normalizer>=3.4.2",
     "email-validator>=2.3.0",
@@ -19,34 +19,34 @@ dependencies = [
     "pytz>=2025.2",
     "pyyaml>=6.0.3",
     "reachable>=0.9.1",
-    # security fix
-    "urllib3>=2.7.0",
-    "idna>=3.17",
-    "h2>=4.4.1",
-    "httpcore2>=2.12.0",
-    "anyio>=4.14.2",
-    "soupsieve>=2.9.0",
-    "cryptography>=50.0.1",
-    "pyjwt>=2.14.0",
+    "pyjwt>=2.15.1",
+    "cryptography>=50.0.2",
+    "jsonprofile",
+    "ontology-lookup>=0.1.5",
 ]
 
 [dependency-groups]
 dev = [
+    "pylint>=4.1.1",
+    "importchecker>=3.0",
+    "findimports>=3.0.0",
     "commitizen>=4.13.9",
     "import-linter>=2.11",
     "mkdocs-material>=9.7.7",
     "pre-commit>=4.5.1",
-    "ruff>=0.16.6",
-    "pytest>=9.0.3",
+    "ruff>=0.16.10",
+    "pytest>=9.1.1",
     "pytest-cov>=6.2.1",
     "mkdocs-mermaid2-plugin>=1.2.3",
     "pymdown-extensions>=11.0.1",
-    "soupsieve>=2.8.4",
     "setuptools>=83.0.0"
 ]
 
 [tool.uv]
 default-groups = []
+
+[tool.uv.sources]
+jsonprofile = { git = "https://github.com/oyurekten/jsonprofile.git", subdirectory = "python" }
 
 
 [build-system]
@@ -103,59 +103,13 @@ fixable = ["ALL"]
 include_external_packages = true
 root_packages = ["mhd_model"]
 
-[[tool.importlinter.contracts]]
-name = "Announcement File Layer Dependencies"
-type = "layers"
-layers = [
-    "mhd_model.model.v0_1.announcement.profiles.ms",
-    "mhd_model.model.v0_1.announcement.profiles.legacy",
-    "mhd_model.model.v0_1.announcement.profiles.base",
-    "mhd_model.shared",
-]
 
 [[tool.importlinter.contracts]]
 name = "MHD Common Model File Layer Dependencies"
 type = "layers"
 layers = [
-    "mhd_model.model.v0_1.dataset.profiles.ms",
-    "mhd_model.model.v0_1.dataset.profiles.legacy",
-    "mhd_model.model.v0_1.dataset.profiles.base",
+    "mhd_model.model.v1_0.dataset.profiles.ms",
+    "mhd_model.model.v1_0.dataset.profiles.legacy",
+    "mhd_model.model.v1_0.dataset.profiles.base",
     "mhd_model.shared",
-]
-
-
-[[tool.importlinter.contracts]]
-name = "Announcement Base Profile Dependencies"
-type = "forbidden"
-source_modules = [
-   "mhd_model.model.v0_1.announcement.profiles.base",
-]
-forbidden_modules = [
-   "mhd_model.model.v0_1.announcement.profiles.ms",
-   "mhd_model.model.v0_1.announcement.profiles.legacy",
-   "mhd_model.model.v0_1.dataset",
-]
-ignore_imports = [
-]
-
-[[tool.importlinter.contracts]]
-name = "Announcement MS Profile Dependencies"
-type = "forbidden"
-source_modules = [
-   "mhd_model.model.v0_1.announcement.profiles.ms",
-]
-forbidden_modules = [
-   "mhd_model.mhd"
-]
-ignore_imports = [
-]
-
-[[tool.importlinter.contracts]]
-name = "Version independence"
-type = "independence"
-modules = [
-   "mhd_model.model.v0_1",
-   "mhd_model.model.v1_0",
-]
-ignore_imports = [
 ]

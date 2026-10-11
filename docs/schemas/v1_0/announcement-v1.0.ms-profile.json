@@ -1,2514 +1,1216 @@
 {
-  "$defs": {
-    "AnnouncementProtocol": {
-      "description": "A protocol is a defined and standardized procedure followed\nto collect, prepare, or analyze biological samples.",
-      "properties": {
-        "name": {
-          "description": "Name or title of the protocol.",
-          "title": "Name",
-          "type": "string"
-        },
-        "protocol_type": {
-          "$ref": "#/$defs/CvTerm",
-          "description": "Type of protocol specified as a Controlled Vocabulary (CV) term.",
-          "title": "Protocol Type"
-        },
-        "description": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Detailed description of the experimental protocol.",
-          "title": "Description"
-        },
-        "protocol_parameters": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTermKeyValue"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of protocol parameters specified as key-value CV pairs.",
-          "title": "Protocol Parameters"
-        },
-        "relates_assay_names": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of assay names that utilize this protocol.",
-          "title": "Relates Assay Names"
-        }
-      },
-      "required": [
-        "name",
-        "protocol_type"
-      ],
-      "title": "AnnouncementProtocol",
-      "type": "object"
-    },
-    "AnnouncementPublication": {
-      "description": "A publication associated with the dataset.",
-      "properties": {
-        "title": {
-          "description": "Title of the publication.",
-          "minLength": 10,
-          "title": "Title",
-          "type": "string"
-        },
-        "doi": {
-          "description": "Digital Object Identifier (DOI) for the publication.",
-          "title": "Doi",
-          "type": "string"
-        },
-        "pubmed_id": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "PubMed unique identifier (PMID) of the publication.",
-          "title": "Pubmed Id"
-        },
-        "author_list": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of author names for the publication.",
-          "title": "Author List"
-        }
-      },
-      "required": [
-        "title",
-        "doi"
-      ],
-      "title": "AnnouncementPublication",
-      "type": "object"
-    },
-    "BasicValueModel": {
-      "properties": {
-        "value": {
-          "anyOf": [
-            {
-              "description": "Supported types",
-              "format": "uri",
-              "minLength": 1,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Value",
-          "title": "Value"
-        },
-        "unit": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/UnitCvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "unit of the value.",
-          "title": "Unit"
-        }
-      },
-      "title": "BasicValueModel",
-      "type": "object"
-    },
-    "CvDefinition": {
-      "properties": {
-        "label": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Label"
-        },
-        "name": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Name"
-        },
-        "uri": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Uri"
-        },
-        "prefix": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Prefix"
-        },
-        "version": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Version"
-        },
-        "alternative_labels": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Alternative Labels"
-        },
-        "alternative_prefixes": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Alternative Prefixes"
-        }
-      },
-      "title": "CvDefinition",
-      "type": "object"
-    },
-    "CvTerm": {
-      "properties": {
-        "source": {
-          "default": "",
-          "description": "Ontology source name.",
-          "title": "Source",
-          "type": "string"
-        },
-        "accession": {
-          "default": "",
-          "description": "Accession number of CV term in compact URI format.",
-          "title": "Accession",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "description": "Label of CV term.",
-          "title": "Name",
-          "type": "string"
-        }
-      },
-      "title": "CvTerm",
-      "type": "object"
-    },
-    "CvTermKeyValue": {
-      "properties": {
-        "key": {
-          "$ref": "#/$defs/CvTerm",
-          "description": "key CV term of values.",
-          "title": "Key"
-        },
-        "values": {
-          "anyOf": [
-            {
-              "items": {
-                "anyOf": [
-                  {
-                    "description": "Supported types",
-                    "format": "uri",
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  {
-                    "$ref": "#/$defs/BasicValueModel"
-                  },
-                  {
-                    "$ref": "#/$defs/CvTerm"
-                  },
-                  {
-                    "$ref": "#/$defs/CvTermValue"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Values"
-        }
-      },
-      "required": [
-        "key"
-      ],
-      "title": "CvTermKeyValue",
-      "type": "object"
-    },
-    "CvTermValue": {
-      "properties": {
-        "value": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "integer"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
-              "type": "string"
-            },
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Value of CV term.",
-          "title": "Value"
-        },
-        "unit": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/UnitCvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Unit CV term if value has a unit.",
-          "title": "Unit"
-        },
-        "source": {
-          "default": "",
-          "description": "Ontology source name.",
-          "title": "Source",
-          "type": "string"
-        },
-        "accession": {
-          "default": "",
-          "description": "Accession number of CV term in compact URI format.",
-          "title": "Accession",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "description": "Label of CV term.",
-          "title": "Name",
-          "type": "string"
-        }
-      },
-      "title": "CvTermValue",
-      "type": "object"
-    },
-    "ExtendedCvTermKeyValue": {
-      "description": "Extended CV term key-value pair supporting custom CV term keys.",
-      "properties": {
-        "key": {
-          "$ref": "#/$defs/CvTerm",
-          "description": "The Controlled Vocabulary (CV) term key or parameter name.",
-          "profileValidation": {
-            "allowNullValue": false,
-            "allowedMissingCvTerms": null,
-            "allowedOtherSources": null,
-            "allowedPlaceholderValues": [
-              {
-                "accession": "",
-                "source": ""
-              }
-            ],
-            "inputType": "list-or-item",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "allow-any-cv-term",
-            "negate": false
-          },
-          "title": "Key"
-        },
-        "values": {
-          "anyOf": [
-            {
-              "items": {
-                "anyOf": [
-                  {
-                    "description": "Supported types",
-                    "format": "uri",
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  {
-                    "$ref": "#/$defs/BasicValueModel"
-                  },
-                  {
-                    "$ref": "#/$defs/CvTerm"
-                  },
-                  {
-                    "$ref": "#/$defs/CvTermValue"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Values"
-        }
-      },
-      "required": [
-        "key"
-      ],
-      "title": "ExtendedCvTermKeyValue",
-      "type": "object"
-    },
-    "KeyValue": {
-      "properties": {
-        "key": {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^relationship:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                }
-              ],
-              "description": "Node Id"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Key"
-        },
-        "value": {
-          "anyOf": [
-            {
-              "anyOf": [
-                {
-                  "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                },
-                {
-                  "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                  "type": "string"
-                }
-              ],
-              "description": "Node Id"
-            },
-            {
-              "description": "Supported types",
-              "format": "uri",
-              "minLength": 1,
-              "type": "string"
-            },
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "$ref": "#/$defs/CvTermValue"
-            },
-            {
-              "$ref": "#/$defs/BasicValueModel"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Value"
-        }
-      },
-      "title": "KeyValue",
-      "type": "object"
-    },
-    "MsAnnouncementContact": {
-      "description": "A contact person associated with the mass spectrometry dataset.\nThis can be a submitter or a principal investigator.",
-      "properties": {
-        "full_name": {
-          "description": "Full name of the contact person.",
-          "minLength": 5,
-          "title": "Full Name",
-          "type": "string"
-        },
-        "email_list": {
-          "default": null,
-          "description": "List of validated email addresses for the contact.",
-          "items": {
-            "format": "email",
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Email List",
-          "type": "array"
-        },
-        "orcid": {
-          "anyOf": [
-            {
-              "description": "ORCID digital identifier string matching the format 0000-0000-0000-000X.",
-              "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[X0-9]$",
-              "profileValidation": {
-                "allowNullValue": false,
-                "defaultPrefix": "orcid",
-                "followRedirects": false,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "accessible-compact-uri",
-                "negate": false
-              },
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "ORCID digital identifier of the contact person.",
-          "title": "ORCID"
-        },
-        "affiliation_list": {
-          "default": null,
-          "description": "List of institutional affiliations for the contact.",
-          "items": {
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Affiliation List",
-          "type": "array"
-        }
-      },
-      "required": [
-        "full_name"
-      ],
-      "title": "MsAnnouncementContact",
-      "type": "object"
-    },
-    "MsAnnouncementDerivedDataFile": {
-      "description": "Derived or processed data file in a mass spectrometry dataset.",
-      "properties": {
-        "name": {
-          "description": "Name of the file including extension.",
-          "minLength": 1,
-          "title": "Name",
-          "type": "string"
-        },
-        "url_list": {
-          "description": "List of direct download or access URLs for the file.",
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Url List",
-          "type": "array"
-        },
-        "compression_formats": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm",
-                "description": "Controlled Vocabulary (CV) term for file compression format.",
-                "profileValidation": {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": [
-                    {
-                      "accession": "",
-                      "source": ""
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "any",
-                  "minimum": null,
-                  "name": "allowed-children-cv-terms",
-                  "negate": false,
-                  "parentCvTerms": [
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "EDAM:format_1915",
-                        "name": "Format",
-                        "source": "EDAM"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    },
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "MS:1001459",
-                        "name": "file format",
-                        "source": "MS"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    }
-                  ]
-                }
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of MS-specific compression formats applied to the derived data file.",
-          "title": "Compression Formats"
-        },
-        "extension": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "File extension string (e.g., .mzML, .raw, .txt).",
-          "title": "Extension"
-        },
-        "format": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Format of the derived data file as a CV term.",
-          "title": "Format"
-        }
-      },
-      "required": [
-        "name",
-        "url_list"
-      ],
-      "title": "MsAnnouncementDerivedDataFile",
-      "type": "object"
-    },
-    "MsAnnouncementMetadataFile": {
-      "description": "Metadata file associated with a mass spectrometry dataset announcement.",
-      "properties": {
-        "name": {
-          "description": "Name of the file including extension.",
-          "minLength": 1,
-          "title": "Name",
-          "type": "string"
-        },
-        "url_list": {
-          "description": "List of direct download or access URLs for the file.",
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Url List",
-          "type": "array"
-        },
-        "compression_formats": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm",
-                "description": "Controlled Vocabulary (CV) term for file compression format.",
-                "profileValidation": {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": [
-                    {
-                      "accession": "",
-                      "source": ""
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "any",
-                  "minimum": null,
-                  "name": "allowed-children-cv-terms",
-                  "negate": false,
-                  "parentCvTerms": [
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "EDAM:format_1915",
-                        "name": "Format",
-                        "source": "EDAM"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    },
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "MS:1001459",
-                        "name": "file format",
-                        "source": "MS"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    }
-                  ]
-                }
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of MS-specific compression formats applied to the metadata file.",
-          "title": "Compression Formats"
-        },
-        "extension": {
-          "anyOf": [
-            {
-              "minLength": 2,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "File extension string (e.g. .sdrf, .tsv, .txt).",
-          "title": "Extension"
-        },
-        "format": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Format of the metadata file as a CV term.",
-          "title": "Format"
-        }
-      },
-      "required": [
-        "name",
-        "url_list"
-      ],
-      "title": "MsAnnouncementMetadataFile",
-      "type": "object"
-    },
-    "MsAnnouncementRawDataFile": {
-      "description": "Raw experimental data file associated with a mass spectrometry dataset.",
-      "properties": {
-        "name": {
-          "description": "Name of the file including extension.",
-          "minLength": 1,
-          "title": "Name",
-          "type": "string"
-        },
-        "url_list": {
-          "description": "List of direct download or access URLs for the file.",
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Url List",
-          "type": "array"
-        },
-        "compression_formats": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm",
-                "description": "Controlled Vocabulary (CV) term for file compression format.",
-                "profileValidation": {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": [
-                    {
-                      "accession": "",
-                      "source": ""
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "any",
-                  "minimum": null,
-                  "name": "allowed-children-cv-terms",
-                  "negate": false,
-                  "parentCvTerms": [
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "EDAM:format_1915",
-                        "name": "Format",
-                        "source": "EDAM"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    },
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "MS:1001459",
-                        "name": "file format",
-                        "source": "MS"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    }
-                  ]
-                }
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of MS-specific compression formats applied to the raw data file.",
-          "title": "Compression Formats"
-        },
-        "extension": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "File extension string (e.g., .mzML, .raw, .txt).",
-          "title": "Extension"
-        },
-        "format": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Format of the raw data file as a CV term.",
-          "title": "Format"
-        }
-      },
-      "required": [
-        "name",
-        "url_list"
-      ],
-      "title": "MsAnnouncementRawDataFile",
-      "type": "object"
-    },
-    "MsAnnouncementReportedMetabolite": {
-      "description": "A metabolite reported as identified or quantified in the mass spectrometry study.",
-      "properties": {
-        "name": {
-          "description": "Name or chemical label of the reported metabolite.",
-          "minLength": 1,
-          "title": "Name",
-          "type": "string"
-        },
-        "database_identifiers": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTermValue",
-                "description": "Database identifier (e.g., ChEBI, HMDB, PubChem) for a reported metabolite.",
-                "profileValidation": {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": [
-                    "REFMET"
-                  ],
-                  "allowedPlaceholderValues": null,
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "all",
-                  "minimum": null,
-                  "name": "allowed-children-cv-terms",
-                  "negate": false,
-                  "parentCvTerms": [
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "EDAM:data_2894",
-                        "name": "Compound accession",
-                        "source": "EDAM"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    }
-                  ]
-                }
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of database identifiers (e.g., ChEBI, HMDB, PubChem) for the metabolite.",
-          "title": "Database Identifiers"
-        }
-      },
-      "required": [
-        "name"
-      ],
-      "title": "MsAnnouncementReportedMetabolite",
-      "type": "object"
-    },
-    "MsAnnouncementResultFile": {
-      "description": "Processed result file associated with a mass spectrometry dataset.",
-      "properties": {
-        "name": {
-          "description": "Name of the file including extension.",
-          "minLength": 1,
-          "title": "Name",
-          "type": "string"
-        },
-        "url_list": {
-          "description": "List of direct download or access URLs for the file.",
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Url List",
-          "type": "array"
-        },
-        "compression_formats": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm",
-                "description": "Controlled Vocabulary (CV) term for file compression format.",
-                "profileValidation": {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": [
-                    {
-                      "accession": "",
-                      "source": ""
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "any",
-                  "minimum": null,
-                  "name": "allowed-children-cv-terms",
-                  "negate": false,
-                  "parentCvTerms": [
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "EDAM:format_1915",
-                        "name": "Format",
-                        "source": "EDAM"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    },
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "MS:1001459",
-                        "name": "file format",
-                        "source": "MS"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    }
-                  ]
-                }
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of MS-specific compression formats applied to the result file.",
-          "title": "Compression Formats"
-        },
-        "extension": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "File extension string (e.g., .mzML, .raw, .txt).",
-          "title": "Extension"
-        },
-        "format": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Format of the result data file as a CV term.",
-          "title": "Format"
-        }
-      },
-      "required": [
-        "name",
-        "url_list"
-      ],
-      "title": "MsAnnouncementResultFile",
-      "type": "object"
-    },
-    "MsAnnouncementSupplementaryFile": {
-      "description": "Supplementary file associated with a mass spectrometry dataset.",
-      "properties": {
-        "name": {
-          "description": "Name of the file including extension.",
-          "minLength": 1,
-          "title": "Name",
-          "type": "string"
-        },
-        "url_list": {
-          "description": "List of direct download or access URLs for the file.",
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "minItems": 1,
-          "title": "Url List",
-          "type": "array"
-        },
-        "compression_formats": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/CvTerm",
-                "description": "Controlled Vocabulary (CV) term for file compression format.",
-                "profileValidation": {
-                  "allowNullValue": false,
-                  "allowedMissingCvTerms": null,
-                  "allowedOtherSources": null,
-                  "allowedPlaceholderValues": [
-                    {
-                      "accession": "",
-                      "source": ""
-                    }
-                  ],
-                  "inputType": "list-or-item",
-                  "listJoinOperator": "any",
-                  "minimum": null,
-                  "name": "allowed-children-cv-terms",
-                  "negate": false,
-                  "parentCvTerms": [
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "EDAM:format_1915",
-                        "name": "Format",
-                        "source": "EDAM"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    },
-                    {
-                      "allowOnlyLeaf": false,
-                      "allowParent": false,
-                      "cvTerm": {
-                        "accession": "MS:1001459",
-                        "name": "file format",
-                        "source": "MS"
-                      },
-                      "excludedCvTerms": null,
-                      "indexCvTerms": false
-                    }
-                  ]
-                }
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of MS-specific compression formats applied to the supplementary file.",
-          "title": "Compression Formats"
-        },
-        "extension": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "File extension string (e.g., .mzML, .raw, .txt).",
-          "title": "Extension"
-        },
-        "format": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/CvTerm"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Format of the supplementary file as a CV term.",
-          "title": "Format"
-        }
-      },
-      "required": [
-        "name",
-        "url_list"
-      ],
-      "title": "MsAnnouncementSupplementaryFile",
-      "type": "object"
-    },
-    "Revision": {
-      "properties": {
-        "revision": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Revision"
-        },
-        "revision_datetime": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Revision Datetime"
-        },
-        "comment": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Comment"
-        }
-      },
-      "title": "Revision",
-      "type": "object"
-    },
-    "UnitCvTerm": {
-      "properties": {
-        "source": {
-          "default": "",
-          "description": "Ontology source name.",
-          "title": "Source",
-          "type": "string"
-        },
-        "accession": {
-          "default": "",
-          "description": "Accession number of CV term in compact URI format.",
-          "title": "Accession",
-          "type": "string"
-        },
-        "name": {
-          "default": "",
-          "description": "Label of CV term.",
-          "title": "Name",
-          "type": "string"
-        }
-      },
-      "title": "UnitCvTerm",
-      "type": "object"
+  "id": "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/announcement-v1.0.schema.ms-profile.json",
+  "extends": "https://metabolomicshub.github.io/mhd-model/schemas/v1_0/announcement-v1.0.legacy-profile.json",
+  "version": "v1.0",
+  "name": "MetabolomicsHub Announcement File v1.0 MS Profile",
+  "description": "MetabolomicsHub Announcement File v1.0 MS Profile",
+  "configuration": {
+    "cv_term_field_mapping": {
+      "label_field": "source",
+      "accession_field": "accession",
+      "name_field": "name",
+      "value_field": "value"
     }
   },
-  "description": "Mass spectrometry profile for dataset announcements.\n\nMain differences from Base Profile:\n- Mass Spectrometry Specialization: Restricts technology_type, measurement_type, omics_type,\n  and assay_type to controlled mass spectrometry terms (defaults technology_type to OBI:0000470).\n- Required Fields: Enforces strict non-null values for mhd_identifier, submitters, principal_investigators,\n  measurement_type, omics_type, assay_type, publications (or missing publication reason),\n  study_factors, characteristic_values, and raw_data_file_list.\n- Enhanced Validation: Uses specialized MS models for contacts (requiring email and affiliation),\n  publications (formatted DOI and PubMed IDs), metabolites, and protocols.",
-  "properties": {
-    "revision": {
-      "anyOf": [
+  "requirements": {
+    "$": {
+      "enforcement_level": "required",
+      "requirements": [
         {
-          "type": "integer"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Revision"
-    },
-    "revision_comment": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Revision Comment"
-    },
-    "revision_datetime": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Revision Datetime"
-    },
-    "repository_revision": {
-      "anyOf": [
-        {
-          "type": "integer"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Revision"
-    },
-    "repository_revision_comment": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Revision Comment"
-    },
-    "repository_revision_datetime": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Repository Revision Datetime"
-    },
-    "change_log": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/Revision"
-          },
-          "minItems": 1,
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Revision",
-      "title": "Change Log"
-    },
-    "$schema": {
-      "description": "Schema name of the file",
-      "title": "Schema Name",
-      "type": "string"
-    },
-    "profile_uri": {
-      "description": "Validation Profiles",
-      "title": "Profile Uri",
-      "type": "string"
-    },
-    "created_at": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Creation time.",
-      "title": "Created At"
-    },
-    "prefix": {
-      "default": "dataset",
-      "description": "prefix of the id",
-      "title": "Prefix",
-      "type": "string"
-    },
-    "id": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            },
-            {
-              "pattern": "^relationship:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-              "type": "string"
-            }
+          "code": "ms-required-0001",
+          "enforcement_level": "required",
+          "required_properties": [
+            "id",
+            "$schema",
+            "profile_uri",
+            "type",
+            "uri",
+            "mhd_metadata_file_url",
+            "cv_definitions",
+            "repository_name",
+            "repository_short_name",
+            "repository_identifier",
+            "license",
+            "url_list",
+            "name",
+            "description",
+            "submission_date",
+            "public_release_date",
+            "submitters",
+            "repository_metadata_file_list",
+            "characteristic_values",
+            "protocols"
           ],
-          "description": "Node Id"
-        },
-        {
-          "type": "null"
+          "recommended_properties": [
+            "submitter_keywords",
+            "raw_data_file_list",
+            "result_file_list",
+            "reported_molecular_entities",
+            "principal_investigators"
+          ]
         }
-      ],
-      "default": null,
-      "description": "Unique identifier of an MHD entity",
-      "title": "Id"
+      ]
     },
-    "type": {
-      "anyOf": [
-        {
-          "pattern": "^[a-z][-_a-z0-9]*[a-z0-9]$",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "description": "The type property identifies the type of MHD Object. Its value MUST be the name of one of the types of MHD Objects",
-      "title": "Type"
+    "$.url_list": {
+      "code": "ms-url-list-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "min_occurs": 1
+      }
     },
-    "label": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Label"
+    "$.repository_name": {
+      "code": "ms-repository_name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 1
+      }
     },
-    "created_by_ref": {
-      "anyOf": [
-        {
-          "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "The id property of the data-provider who created the object.",
-      "title": "Created By Ref"
+    "$.repository_short_name": {
+      "code": "ms-repository_short_name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 1
+      }
     },
-    "tag_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/KeyValue"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Key-value tags related to the object.",
-      "title": "Tag List"
+    "$.repository_identifier": {
+      "code": "ms-repository_identifier-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 1
+      }
     },
-    "external_reference_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/KeyValue"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "External references related to the object.",
-      "title": "External Reference List"
+    "$.license_name": {
+      "code": "ms-license-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 1
+      }
     },
-    "url_list": {
-      "anyOf": [
-        {
-          "items": {
-            "format": "uri",
-            "minLength": 1,
-            "type": "string"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "URL list related to the object.",
-      "title": "Url List"
+    "$.name": {
+      "code": "ms-name-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 0
+      }
     },
-    "uri": {
-      "description": "Unified resource name",
-      "title": "Uri",
-      "type": "string"
+    "$.description": {
+      "code": "ms-description-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length"
+      }
     },
-    "repository_identifier": {
-      "description": "Original dataset accession number or identifier in the source repository.",
-      "title": "Repository Identifier",
-      "type": "string"
+    "$.submitters": {
+      "code": "ms-submitters-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "min_occurs": 1
+      }
     },
-    "additional_identifier_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/CvTerm"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "List of additional database or secondary unique identifiers.",
-      "title": "Additional Identifier List"
+    "$.submitters[*].email_list": {
+      "code": "ms-submitters_emails-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "min_occurs": 1
+      }
     },
-    "alternative_id_list": {
-      "anyOf": [
+    "$.principal_investigators": {
+      "code": "ms-principal_investigators-0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "min_occurs": 1
+      }
+    },
+    "$.principal_investigators[*].email_list": {
+      "code": "ms-principal_investigators-email_list_0001",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "min_occurs": 1
+      }
+    },
+    "$.characteristic_values": {
+      "enforcement_level": "required",
+      "requirements": [
         {
-          "items": {
-            "anyOf": [
-              {
-                "pattern": "^domain:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              },
-              {
-                "pattern": "^cv:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              },
-              {
-                "pattern": "^cv-value:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              },
-              {
-                "pattern": "^dataset:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              },
-              {
-                "pattern": "^reference:[a-z][-_a-z0-9]*[a-z0-9]:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-                "type": "string"
-              }
+          "code": "ms-characteristic_values-0001",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "There must be a characteristic with type [NCIT, NCIT:C14250, Organism] in characteristic_values",
+            "item_value_jsonpath_list": [
+              ".[*].key"
             ],
-            "description": "Node Id"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "List of additional ids populated from unique value contribution fields.",
-      "title": "Alternative Id List"
-    },
-    "doi": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Digital Object Identifier (DOI) assigned to the dataset.",
-      "title": "Doi"
-    },
-    "repository_name": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "title": "Repository Name"
-    },
-    "cv_definitions": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/CvDefinition"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": [],
-      "title": "Cv Definitions"
-    },
-    "mhd_identifier": {
-      "description": "Unique MetabolomicsHub Data (MHD) identifier for the dataset.",
-      "pattern": "^MHD[A-Z]?[0-9]{6,8}$",
-      "title": "MHD Identifier",
-      "type": "string"
-    },
-    "mhd_metadata_file_url": {
-      "description": "URL to the primary MHD metadata file for this dataset.",
-      "format": "uri",
-      "minLength": 1,
-      "title": "Mhd Metadata File Url",
-      "type": "string"
-    },
-    "mhd_metadata_file_hashes": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/CvTermValue"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "The cryptographic hash values of the MHD file content, used to verify file integrity and ensure that the file has not been altered. ",
-      "title": "Mhd Metadata File Hashes"
-    },
-    "dataset_url_list": {
-      "description": "List of web page or repository URLs for accessing the dataset.",
-      "items": {
-        "format": "uri",
-        "minLength": 1,
-        "type": "string"
-      },
-      "minItems": 1,
-      "title": "Dataset Url List",
-      "type": "array"
-    },
-    "license": {
-      "anyOf": [
-        {
-          "format": "uri",
-          "maxLength": 2083,
-          "minLength": 1,
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Data usage license or URL defining licensing terms for the dataset.",
-      "title": "License"
-    },
-    "title": {
-      "description": "Title describing the mass spectrometry study or dataset.",
-      "minLength": 25,
-      "title": "Title",
-      "type": "string"
-    },
-    "description": {
-      "anyOf": [
-        {
-          "minLength": 60,
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "description": "Comprehensive description or summary abstract of the mass spectrometry study.",
-      "title": "Description"
-    },
-    "submission_date": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "description": "Date and time when the dataset was initially submitted to the repository.",
-      "title": "Submission Date"
-    },
-    "public_release_date": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "description": "Date and time when the dataset was made publicly accessible.",
-      "title": "Public Release Date"
-    },
-    "submitters": {
-      "description": "List of submitters who registered or submitted the dataset.",
-      "items": {
-        "$ref": "#/$defs/MsAnnouncementContact"
-      },
-      "minItems": 1,
-      "title": "Submitters",
-      "type": "array"
-    },
-    "principal_investigators": {
-      "description": "List of principal investigators leading the research study.",
-      "items": {
-        "$ref": "#/$defs/MsAnnouncementContact"
-      },
-      "minItems": 1,
-      "title": "Principal Investigators",
-      "type": "array"
-    },
-    "omics_type": {
-      "description": "Omics domains involved in the mass spectrometry study.",
-      "items": {
-        "$ref": "#/$defs/CvTerm",
-        "description": "Controlled Vocabulary (CV) term for omics domain (e.g., Metabolomics, Lipidomics).",
-        "profileValidation": {
-          "allowNullValue": false,
-          "allowedMissingCvTerms": null,
-          "allowedOtherSources": null,
-          "allowedPlaceholderValues": [
-            {
-              "accession": "",
-              "source": ""
-            }
-          ],
-          "cvTerms": [
-            {
-              "accession": "EDAM:topic_3172",
-              "name": "Metabolomics",
-              "source": "EDAM"
-            },
-            {
-              "accession": "EDAM:topic_0153",
-              "name": "Lipidomics",
-              "source": "EDAM"
-            },
-            {
-              "accession": "EDAM:topic_3955",
-              "name": "Fluxomics",
-              "source": "EDAM"
-            },
-            {
-              "accession": "EDAM:topic_4065",
-              "name": "Exposomics",
-              "source": "EDAM"
-            }
-          ],
-          "inputType": "list-or-item",
-          "listJoinOperator": "all",
-          "minimum": null,
-          "name": "allowed-cv-terms",
-          "negate": false
-        }
-      },
-      "minItems": 1,
-      "title": "Omics Type",
-      "type": "array"
-    },
-    "technology_type": {
-      "default": [
-        {
-          "source": "OBI",
-          "accession": "OBI:0000470",
-          "name": "mass spectrometry assay"
-        }
-      ],
-      "description": "Analytical technology platform (defaults to mass spectrometry assay OBI:0000470).",
-      "items": {
-        "$ref": "#/$defs/CvTerm",
-        "description": "Controlled Vocabulary (CV) term for mass spectrometry technology type.",
-        "profileValidation": {
-          "allowNullValue": false,
-          "allowedMissingCvTerms": null,
-          "allowedOtherSources": null,
-          "allowedPlaceholderValues": null,
-          "cvTerms": [
-            {
-              "accession": "OBI:0000470",
-              "name": "mass spectrometry assay",
-              "source": "OBI"
-            }
-          ],
-          "inputType": "list-or-item",
-          "listJoinOperator": "all",
-          "minimum": null,
-          "name": "allowed-cv-terms",
-          "negate": false
-        }
-      },
-      "minItems": 1,
-      "title": "Technology Type",
-      "type": "array"
-    },
-    "measurement_type": {
-      "description": "Types of MS measurements performed (e.g., Targeted or Untargeted metabolite profiling).",
-      "items": {
-        "$ref": "#/$defs/CvTerm",
-        "description": "Controlled Vocabulary (CV) term for measurement type (e.g., Targeted or Untargeted metabolite profiling).",
-        "profileValidation": {
-          "allowNullValue": false,
-          "allowedMissingCvTerms": null,
-          "allowedOtherSources": null,
-          "allowedPlaceholderValues": [
-            {
-              "accession": "",
-              "source": ""
-            }
-          ],
-          "cvTerms": [
-            {
-              "accession": "MS:1003904",
-              "name": "untargeted analysis",
-              "source": "MS"
-            },
-            {
-              "accession": "MS:1003905",
-              "name": "targeted analysis",
-              "source": "MS"
-            },
-            {
-              "accession": "MS:1003906",
-              "name": "semi-targeted analysis",
-              "source": "MS"
-            }
-          ],
-          "inputType": "list-or-item",
-          "listJoinOperator": "all",
-          "minimum": null,
-          "name": "allowed-cv-terms",
-          "negate": false
-        }
-      },
-      "minItems": 1,
-      "title": "Measurement Type",
-      "type": "array"
-    },
-    "assay_type": {
-      "description": "Mass spectrometry assay techniques employed (e.g., LC-MS, GC-MS).",
-      "items": {
-        "$ref": "#/$defs/CvTerm",
-        "description": "Controlled Vocabulary (CV) term for mass spectrometry assay type (e.g., LC-MS, GC-MS).",
-        "profileValidation": {
-          "allowNullValue": false,
-          "allowedMissingCvTerms": null,
-          "allowedOtherSources": null,
-          "allowedPlaceholderValues": null,
-          "cvTerms": [
-            {
-              "accession": "OBI:0003097",
-              "name": "liquid chromatography mass spectrometry assay",
-              "source": "OBI"
-            },
-            {
-              "accession": "OBI:0003110",
-              "name": "gas chromatography mass spectrometry assay",
-              "source": "OBI"
-            },
-            {
-              "accession": "OBI:0003741",
-              "name": "capillary electrophoresis mass spectrometry assay",
-              "source": "OBI"
-            },
-            {
-              "accession": "OBI:0000470",
-              "name": "mass spectrometry assay",
-              "source": "OBI"
-            }
-          ],
-          "inputType": "list-or-item",
-          "listJoinOperator": "all",
-          "minimum": null,
-          "name": "allowed-cv-terms",
-          "negate": false
-        }
-      },
-      "minItems": 1,
-      "title": "Assay Type",
-      "type": "array"
-    },
-    "submitter_keywords": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/CvTerm",
-            "description": "Controlled Vocabulary (CV) term or plain text string keyword.",
-            "profileValidation": {
-              "allowNullValue": false,
-              "allowedMissingCvTerms": null,
-              "allowedOtherSources": null,
-              "allowedPlaceholderValues": [
+            "item_value_match_constraint": {
+              "type": "cv-term-enum",
+              "allowed_cv_terms": [
                 {
-                  "accession": "",
-                  "source": ""
-                }
-              ],
-              "inputType": "list-or-item",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "allow-any-cv-term",
-              "negate": false
-            }
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Keywords provided by the dataset submitter as CV terms or strings.",
-      "title": "Submitter Keywords"
-    },
-    "descriptors": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/CvTerm"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Subject descriptors or tags characterizing the dataset as CV terms.",
-      "title": "Descriptors"
-    },
-    "publications": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/CvTerm",
-          "description": "Controlled Vocabulary (CV) term specifying reason why publication details are missing.",
-          "profileValidation": {
-            "allowNullValue": false,
-            "allowedMissingCvTerms": null,
-            "allowedOtherSources": null,
-            "allowedPlaceholderValues": null,
-            "cvTerms": [
-              {
-                "accession": "MS:1002853",
-                "name": "Dataset with no associated published manuscript",
-                "source": "MS"
-              },
-              {
-                "accession": "MS:1002858",
-                "name": "Dataset with its publication pending",
-                "source": "MS"
-              }
-            ],
-            "inputType": "list-or-item",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "allowed-cv-terms",
-            "negate": false
-          }
-        },
-        {
-          "items": {
-            "$ref": "#/$defs/AnnouncementPublication"
-          },
-          "type": "array"
-        }
-      ],
-      "description": "Publications or specified reason for missing publication in the dataset.",
-      "title": "Publications"
-    },
-    "study_factors": {
-      "description": "Experimental study factors varied across mass spectrometry samples.",
-      "items": {
-        "$ref": "#/$defs/ExtendedCvTermKeyValue"
-      },
-      "minItems": 1,
-      "profileValidation": {
-        "allowNullValue": false,
-        "inputType": "list",
-        "listJoinOperator": "all",
-        "minimum": null,
-        "name": "check-cv-term-key-values",
-        "negate": false,
-        "optionalItems": [
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": [
-                  {
-                    "accession": "NCIT:C48660",
-                    "name": "Not Applicable",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C126101",
-                    "name": "Not Available",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C150904",
-                    "name": "Masked Data",
-                    "source": "NCIT"
-                  }
-                ],
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "MONDO",
-                  "MP",
-                  "SNOMED"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "MONDO:0000001",
-              "name": "disease",
-              "source": "MONDO"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          }
-        ],
-        "requiredItems": null
-      },
-      "title": "Study Factors",
-      "type": "array"
-    },
-    "characteristic_values": {
-      "description": "Sample characteristics and metadata attributes for mass spectrometry samples.",
-      "items": {
-        "$ref": "#/$defs/CvTermKeyValue"
-      },
-      "minItems": 1,
-      "profileValidation": {
-        "allowNullValue": false,
-        "inputType": "list",
-        "listJoinOperator": "all",
-        "minimum": null,
-        "name": "check-cv-term-key-values",
-        "negate": false,
-        "optionalItems": [
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": [
-                  {
-                    "accession": "NCIT:C48660",
-                    "name": "Not Applicable",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C126101",
-                    "name": "Not Available",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C150904",
-                    "name": "Masked Data",
-                    "source": "NCIT"
-                  }
-                ],
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "MONDO",
-                  "MP",
-                  "SNOMED"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "MONDO:0000001",
-              "name": "disease",
-              "source": "MONDO"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          },
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": [
-                  {
-                    "accession": "NCIT:C48660",
-                    "name": "Not Applicable",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C126101",
-                    "name": "Not Available",
-                    "source": "NCIT"
-                  },
-                  {
-                    "accession": "NCIT:C150904",
-                    "name": "Masked Data",
-                    "source": "NCIT"
-                  }
-                ],
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "CL",
-                  "CLO"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "EFO:0000324",
-              "name": "cell type",
-              "source": "EFO"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          }
-        ],
-        "requiredItems": [
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "NCBITAXON",
-                  "ENVO",
-                  "CHEBI"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "NCIT:C14250",
-              "name": "Organism",
-              "source": "NCIT"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          },
-          {
-            "allowNullValue": false,
-            "controls": [
-              {
-                "allowNullValue": false,
-                "allowedMissingCvTerms": null,
-                "allowedOtherSources": [
-                  "wikidata",
-                  "ILX"
-                ],
-                "allowedPlaceholderValues": null,
-                "inputType": "list-or-item",
-                "listJoinOperator": "all",
-                "minimum": null,
-                "name": "allowed-cv-list",
-                "negate": false,
-                "sourceNames": [
-                  "UBERON",
-                  "BTO",
-                  "NCIT",
-                  "CHEBI"
-                ]
-              }
-            ],
-            "cvTermKey": {
-              "accession": "NCIT:C103199",
-              "name": "Organism Part",
-              "source": "NCIT"
-            },
-            "inputType": "list-or-item",
-            "joinOperator": "and",
-            "listJoinOperator": "all",
-            "minValueCount": 1,
-            "minimum": null,
-            "name": "check-cv-term-key-value",
-            "negate": false
-          }
-        ]
-      },
-      "title": "Characteristic Values",
-      "type": "array"
-    },
-    "protocols": {
-      "anyOf": [
-        {
-          "description": "List of experimental protocols used in sample collection, preparation, or analysis.",
-          "items": {
-            "$ref": "#/$defs/AnnouncementProtocol"
-          },
-          "profileValidation": {
-            "allowNullValue": false,
-            "conditionalCvTerm": {
-              "accession": "CHMO:0000470",
-              "name": "mass spectrometry",
-              "source": "CHMO"
-            },
-            "conditionalFieldName": "protocol_type",
-            "inputType": "list-or-item",
-            "keyValuesControl": {
-              "allowNullValue": false,
-              "inputType": "list",
-              "listJoinOperator": "all",
-              "minimum": null,
-              "name": "check-cv-term-key-values",
-              "negate": false,
-              "optionalItems": null,
-              "requiredItems": [
-                {
-                  "allowNullValue": false,
-                  "controls": [
-                    {
-                      "allowNullValue": false,
-                      "allowedMissingCvTerms": null,
-                      "allowedOtherSources": [
-                        "wikidata",
-                        "ILX"
-                      ],
-                      "allowedPlaceholderValues": null,
-                      "inputType": "list-or-item",
-                      "listJoinOperator": "all",
-                      "minimum": null,
-                      "name": "allowed-children-cv-terms",
-                      "negate": false,
-                      "parentCvTerms": [
-                        {
-                          "allowOnlyLeaf": false,
-                          "allowParent": false,
-                          "cvTerm": {
-                            "accession": "MS:1000031",
-                            "name": "instrument model",
-                            "source": "MS"
-                          },
-                          "excludedCvTerms": [
-                            "^.*instrument model"
-                          ],
-                          "indexCvTerms": false
-                        }
-                      ]
-                    }
-                  ],
-                  "cvTermKey": {
-                    "accession": "MSIO:0000171",
-                    "name": "mass spectrometry instrument",
-                    "source": "MSIO"
-                  },
-                  "inputType": "list-or-item",
-                  "joinOperator": "and",
-                  "listJoinOperator": "all",
-                  "minValueCount": 0,
-                  "minimum": null,
-                  "name": "check-cv-term-key-value",
-                  "negate": false
+                  "cv_label": "NCIT",
+                  "cv_accession": "NCIT:C14250",
+                  "name": "Organism"
                 }
               ]
             },
-            "keyValuesFieldName": "protocol_parameters",
-            "listJoinOperator": "all",
-            "minimum": null,
-            "name": "check-conditional-cv-term-key-values",
-            "negate": false
-          },
-          "type": "array"
+            "min_referenced_value_match": 1,
+            "max_referenced_value_match": 1
+          }
         },
         {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "List of experimental protocols used in sample preparation and analysis.",
-      "title": "Protocols"
-    },
-    "reported_metabolites": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/MsAnnouncementReportedMetabolite"
-          },
-          "type": "array"
+          "code": "ms-characteristic_values-0002",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "There must be a characteristic named [NCIT, NCIT:C103199, Organism Part] in characteristic_values",
+            "item_value_jsonpath_list": [
+              ".[*].key"
+            ],
+            "item_value_match_constraint": {
+              "type": "cv-term-enum",
+              "allowed_cv_terms": [
+                {
+                  "cv_label": "NCIT",
+                  "cv_accession": "NCIT:C103199",
+                  "name": "Organism Part"
+                }
+              ]
+            },
+            "min_referenced_value_match": 1,
+            "max_referenced_value_match": 1
+          }
         },
         {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "List of metabolites reported as identified or quantified in the dataset.",
-      "title": "Reported Metabolites"
-    },
-    "repository_metadata_file_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/MsAnnouncementMetadataFile"
-          },
-          "minItems": 1,
-          "type": "array"
+          "code": "ms-characteristic_values-0003",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "There must be a characteristic with type [EFO, EFO:0000324, cell type] in characteristic_values",
+            "item_value_jsonpath_list": [
+              ".[*].key"
+            ],
+            "item_value_match_constraint": {
+              "type": "cv-term-enum",
+              "allowed_cv_terms": [
+                {
+                  "cv_label": "EFO",
+                  "cv_accession": "EFO:0000324",
+                  "name": "cell type"
+                }
+              ]
+            },
+            "min_referenced_value_match": 1,
+            "max_referenced_value_match": 1
+          }
         },
         {
-          "type": "null"
+          "code": "ms-characteristic_values-0004",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "There must be a characteristic with type [MONDO, MONDO:0000001, disease] in characteristic_values",
+            "item_value_jsonpath_list": [
+              ".[*].key"
+            ],
+            "item_value_match_constraint": {
+              "type": "cv-term-enum",
+              "allowed_cv_terms": [
+                {
+                  "cv_label": "MONDO",
+                  "cv_accession": "MONDO:0000001",
+                  "name": "disease"
+                }
+              ]
+            },
+            "min_referenced_value_match": 1,
+            "max_referenced_value_match": 1
+          }
         }
-      ],
-      "default": null,
-      "description": "List of repository metadata files included in the dataset announcement.",
-      "title": "Repository Metadata File List"
+      ]
     },
-    "raw_data_file_list": {
-      "description": "List of mass spectrometry raw data files included in the dataset announcement.",
-      "items": {
-        "$ref": "#/$defs/MsAnnouncementRawDataFile"
-      },
-      "title": "Raw Data File List",
-      "type": "array"
-    },
-    "derived_data_file_list": {
-      "anyOf": [
+    "$.characteristic_values[*]": {
+      "enforcement_level": "required",
+      "requirements": [
         {
-          "items": {
-            "$ref": "#/$defs/MsAnnouncementDerivedDataFile"
-          },
-          "minItems": 1,
-          "type": "array"
+          "code": "ms-characteristic_values-0010",
+          "description": "At least one organism characteristic from NCBITAXON, ENVO and CHEBI is required.",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "Organism value is required from NCBITAXON, ENVO, CHEBI ontologies",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "NCIT",
+                        "cv_accession": "NCIT:C14250",
+                        "name": "Organism"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "NCBITAXON",
+                    "ENVO",
+                    "CHEBI"
+                  ]
+                },
+                {
+                  "type": "cv-term-enum",
+                  "allowed_cv_terms": [
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C48660",
+                      "name": "Not Applicable"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C126101",
+                      "name": "Not Available"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C150904",
+                      "name": "Masked Data"
+                    }
+                  ]
+                }
+              ],
+              "join_operator": "or",
+              "min_valid": 1
+            }
+          }
         },
         {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "List of derived data files included in the dataset announcement.",
-      "title": "Derived Data File List"
-    },
-    "supplementary_file_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/MsAnnouncementSupplementaryFile"
-          },
-          "minItems": 1,
-          "type": "array"
+          "code": "ms-characteristic_values-0011",
+          "description": "At least one organism part characteristic from BTO, ENVO and CHEBI is required.",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "Organism Part value is required from UBERON, BTO, NCIT, CHEBI ontologies",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "NCIT",
+                        "cv_accession": "NCIT:C103199",
+                        "name": "Organism Part"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "UBERON",
+                    "BTO",
+                    "NCIT",
+                    "CHEBI"
+                  ]
+                },
+                {
+                  "type": "cv-term-enum",
+                  "allowed_cv_terms": [
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C48660",
+                      "name": "Not Applicable"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C126101",
+                      "name": "Not Available"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C150904",
+                      "name": "Masked Data"
+                    }
+                  ]
+                }
+              ],
+              "join_operator": "or",
+              "min_valid": 1
+            }
+          }
         },
         {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "List of supplementary files included in the dataset announcement.",
-      "title": "Supplementary File List"
-    },
-    "result_file_list": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/MsAnnouncementResultFile"
-          },
-          "type": "array"
+          "code": "ms-characteristic_values-0012",
+          "description": "At least one cell type characteristic from CL, CLO ontologies is required.",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "cell type value is required from CL, CLO ontologies",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "EFO",
+                        "cv_accession": "EFO:0000324",
+                        "name": "cell type"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "CL",
+                    "CLO"
+                  ]
+                },
+                {
+                  "type": "cv-term-enum",
+                  "allowed_cv_terms": [
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C48660",
+                      "name": "Not Applicable"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C126101",
+                      "name": "Not Available"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C150904",
+                      "name": "Masked Data"
+                    }
+                  ]
+                }
+              ],
+              "join_operator": "or"
+            }
+          }
         },
         {
-          "type": "null"
+          "code": "ms-characteristic_values-0013",
+          "description": "At least one disease characteristic value from MONDO, SNOMED ontologies is required.",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "disease value is required from MONDO, MP, SNOMED, ILX, wikidata ontologies",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "MONDO",
+                        "cv_accession": "MONDO:0000001",
+                        "name": "disease"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "MONDO",
+                    "MP",
+                    "SNOMED",
+                    "ILX",
+                    "wikidata"
+                  ]
+                },
+                {
+                  "type": "cv-term-enum",
+                  "allowed_cv_terms": [
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C48660",
+                      "name": "Not Applicable"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C126101",
+                      "name": "Not Available"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C150904",
+                      "name": "Masked Data"
+                    }
+                  ]
+                }
+              ],
+              "join_operator": "or",
+              "min_valid": 1
+            }
+          }
         }
-      ],
-      "default": null,
-      "description": "List of result data files included in the dataset announcement.",
-      "title": "Result File List"
+      ]
+    },
+    "$.protocols": {
+      "enforcement_level": "required",
+      "requirements": [
+        {
+          "code": "ms-protocols-0001",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "description": "There must be a protocol with type [CHMO, CHMO:0000470, mass spectrometry] in protocols",
+            "item_value_jsonpath_list": [
+              ".[*].protocol_type"
+            ],
+            "item_value_match_constraint": {
+              "type": "cv-term-enum",
+              "allowed_cv_terms": [
+                {
+                  "cv_label": "CHMO",
+                  "cv_accession": "CHMO:0000470",
+                  "name": "mass spectrometry"
+                }
+              ]
+            },
+            "min_referenced_value_match": 1,
+            "max_referenced_value_match": 1
+          }
+        }
+      ]
+    },
+    "$.protocols[*]": {
+      "enforcement_level": "required",
+      "requirements": [
+        {
+          "code": "ms-protocols-0010",
+          "description": "mass spectrometer parameter must be defined in mass spectrometry protocol",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".protocol_type",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "CHMO",
+                        "cv_accession": "CHMO:0000470",
+                        "name": "mass spectrometry"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".protocol_parameters[*].key"
+            ],
+            "item_value_match_constraint": {
+              "type": "cv-term-enum",
+              "allowed_cv_terms": [
+                {
+                  "cv_label": "OBI",
+                  "cv_accession": "OBI:0000049",
+                  "name": "mass spectrometer"
+                }
+              ]
+            },
+            "min_referenced_value_match": 1,
+            "max_referenced_value_match": 1
+          }
+        },
+        {
+          "code": "ms-protocols-0011",
+          "description": "acquisition polarity parameter must be defined in mass spectrometry protocol",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".protocol_type",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "CHMO",
+                        "cv_accession": "CHMO:0000470",
+                        "name": "mass spectrometry"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".protocol_parameters[*].key"
+            ],
+            "item_value_match_constraint": {
+              "type": "cv-term-enum",
+              "allowed_cv_terms": [
+                {
+                  "cv_label": "MS",
+                  "cv_accession": "MS:1003776",
+                  "name": "acquisition polarity"
+                }
+              ]
+            },
+            "min_referenced_value_match": 1,
+            "max_referenced_value_match": 1
+          }
+        }
+      ]
+    },
+    "$.protocols[*].protocol_parameters[*]": {
+      "enforcement_level": "required",
+      "requirements": [
+        {
+          "code": "ms-protocols-parameters-0010",
+          "description": "At least one mass spectrometer parameter value must be defined and the values must be a child of [MS, MS:1000031, instrument model] CV Term",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "OBI",
+                        "cv_accession": "OBI:0000049",
+                        "name": "mass spectrometer"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "parent-cv-term",
+                  "parent_cv_terms": [
+                    {
+                      "cv_label": "MS",
+                      "cv_accession": "MS:1000031",
+                      "name": "instrument model"
+                    }
+                  ]
+                },
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "ILX",
+                    "wikidata"
+                  ]
+                }
+              ],
+              "join_operator": "or",
+              "min_valid": 1
+            },
+            "min_referenced_value_match": 1
+          }
+        },
+        {
+          "code": "ms-protocols-parameters-0020",
+          "description": "At least one acquisition polarity parameter value must be defined and the values must be a child of [MS, MS:1003776, acquisition polarity] CV Term",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "MS",
+                        "cv_accession": "MS:1003776",
+                        "name": "acquisition polarity"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "parent-cv-term",
+                  "parent_cv_terms": [
+                    {
+                      "cv_label": "MS",
+                      "cv_accession": "MS:1003776",
+                      "name": "acquisition polarity"
+                    }
+                  ]
+                },
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "ILX",
+                    "wikidata"
+                  ]
+                }
+              ],
+              "join_operator": "or",
+              "min_valid": 1
+            },
+            "min_referenced_value_match": 1
+          }
+        },
+        {
+          "code": "ms-protocols-parameters-0030",
+          "description": "Ionization type parameter value must be a child of [MS, MS:1000008, ionization type] CV Term",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "MS",
+                        "cv_accession": "MS:1000008",
+                        "name": "ionization type"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "parent-cv-term",
+                  "parent_cv_terms": [
+                    {
+                      "cv_label": "MS",
+                      "cv_accession": "MS:1000008",
+                      "name": "ionization type"
+                    }
+                  ]
+                },
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "ILX",
+                    "wikidata"
+                  ]
+                },
+                {
+                  "type": "cv-term-enum",
+                  "allowed_cv_terms": [
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C48660",
+                      "name": "Not Applicable"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C126101",
+                      "name": "Not Available"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C150904",
+                      "name": "Masked Data"
+                    }
+                  ]
+                }
+              ],
+              "join_operator": "or",
+              "min_valid": 1
+            }
+          }
+        },
+        {
+          "code": "ms-protocols-parameters-0040",
+          "description": "Inlet parameter value must be a child of [MS, MS:1000007, inlet type] CV Term",
+          "enforcement_level": "required",
+          "value_constraint": {
+            "type": "items-count",
+            "precondition": {
+              "evaluations": [
+                {
+                  "json_path": ".key",
+                  "constraint": {
+                    "type": "cv-term-enum",
+                    "allowed_cv_terms": [
+                      {
+                        "cv_label": "MS",
+                        "cv_accession": "MS:1000007",
+                        "name": "inlet type"
+                      }
+                    ]
+                  },
+                  "join_operator": "and"
+                }
+              ],
+              "join_operator": "and"
+            },
+            "item_value_jsonpath_list": [
+              ".values[*]"
+            ],
+            "item_value_match_constraint": {
+              "type": "group",
+              "constraints": [
+                {
+                  "type": "parent-cv-term",
+                  "parent_cv_terms": [
+                    {
+                      "cv_label": "MS",
+                      "cv_accession": "MS:1000007",
+                      "name": "inlet type"
+                    }
+                  ]
+                },
+                {
+                  "type": "string-enum",
+                  "json_path": ".source",
+                  "options": [
+                    "ILX",
+                    "wikidata"
+                  ]
+                },
+                {
+                  "type": "cv-term-enum",
+                  "allowed_cv_terms": [
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C48660",
+                      "name": "Not Applicable"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C126101",
+                      "name": "Not Available"
+                    },
+                    {
+                      "cv_label": "NCIT",
+                      "cv_accession": "NCIT:C150904",
+                      "name": "Masked Data"
+                    }
+                  ]
+                }
+              ],
+              "join_operator": "or",
+              "min_valid": 1
+            }
+          }
+        }
+      ]
+    },
+    "$.reported_molecular_entities[*]": {
+      "code": "ms-reported_molecular_entities-identifiers-0010",
+      "description": "Molecular entity identifier must be a child of [EDAM, EDAM:data_2894, Compound accession]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "items-count",
+        "item_value_jsonpath_list": [
+          ".database_identifiers[*]"
+        ],
+        "item_value_match_constraint": {
+          "type": "group",
+          "constraints": [
+            {
+              "type": "string-enum",
+              "json_path": ".source",
+              "options": [
+                "ILX",
+                "wikidata"
+              ]
+            },
+            {
+              "type": "parent-cv-term",
+              "parent_cv_terms": [
+                {
+                  "cv_label": "EDAM",
+                  "cv_accession": "EDAM:data_2894",
+                  "name": "Compound accession"
+                }
+              ]
+            }
+          ],
+          "join_operator": "or"
+        }
+      }
+    },
+    "$.repository_metadata_file_list[*].format": {
+      "code": "ms-repository_metadata_file_list-format-0010",
+      "description": "File extension must be a child of [EDAM, EDAM:format_1915, Format] or [MS, MS:1001459, file format]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "string-enum",
+            "json_path": ".source",
+            "options": [
+              "ILX",
+              "wikidata"
+            ]
+          },
+          {
+            "type": "parent-cv-term",
+            "parent_cv_terms": [
+              {
+                "cv_label": "EDAM",
+                "cv_accession": "EDAM:format_1915",
+                "name": "Format"
+              },
+              {
+                "cv_label": "MS",
+                "cv_accession": "MS:1001459",
+                "name": "file format"
+              }
+            ]
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.raw_data_file_list[*].format": {
+      "code": "ms-raw_data_file_list-format-0010",
+      "description": "Raw data file extension must be a child of [EDAM, EDAM:format_1915, Format] or [MS, MS:1001459, file format]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "string-enum",
+            "json_path": ".source",
+            "options": [
+              "ILX",
+              "wikidata"
+            ]
+          },
+          {
+            "type": "parent-cv-term",
+            "parent_cv_terms": [
+              {
+                "cv_label": "EDAM",
+                "cv_accession": "EDAM:format_1915",
+                "name": "Format"
+              },
+              {
+                "cv_label": "MS",
+                "cv_accession": "MS:1001459",
+                "name": "file format"
+              }
+            ]
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.derived_data_file_list[*].format": {
+      "code": "ms-derived_data_file_list-format-0010",
+      "description": "Derived data file extension must be a child of [EDAM, EDAM:format_1915, Format] or [MS, MS:1001459, file format]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "string-enum",
+            "json_path": ".source",
+            "options": [
+              "ILX",
+              "wikidata"
+            ]
+          },
+          {
+            "type": "parent-cv-term",
+            "parent_cv_terms": [
+              {
+                "cv_label": "EDAM",
+                "cv_accession": "EDAM:format_1915",
+                "name": "Format"
+              },
+              {
+                "cv_label": "MS",
+                "cv_accession": "MS:1001459",
+                "name": "file format"
+              }
+            ]
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.result_file_list[*].format": {
+      "code": "ms-result_file_list-format-0010",
+      "description": "Result file extension must be a child of [EDAM, EDAM:format_1915, Format] or [MS, MS:1001459, file format]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "string-enum",
+            "json_path": ".source",
+            "options": [
+              "ILX",
+              "wikidata"
+            ]
+          },
+          {
+            "type": "parent-cv-term",
+            "parent_cv_terms": [
+              {
+                "cv_label": "EDAM",
+                "cv_accession": "EDAM:format_1915",
+                "name": "Format"
+              },
+              {
+                "cv_label": "MS",
+                "cv_accession": "MS:1001459",
+                "name": "file format"
+              }
+            ]
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.supplementary_file_list[*].format": {
+      "code": "ms-supplementary_file_list-format-0010",
+      "description": "Supplementary file extension must be a child of [EDAM, EDAM:format_1915, Format] or [MS, MS:1001459, file format]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "group",
+        "constraints": [
+          {
+            "type": "string-enum",
+            "json_path": ".source",
+            "options": [
+              "ILX",
+              "wikidata"
+            ]
+          },
+          {
+            "type": "parent-cv-term",
+            "parent_cv_terms": [
+              {
+                "cv_label": "EDAM",
+                "cv_accession": "EDAM:format_1915",
+                "name": "Format"
+              },
+              {
+                "cv_label": "MS",
+                "cv_accession": "MS:1001459",
+                "name": "file format"
+              }
+            ]
+          }
+        ],
+        "join_operator": "or",
+        "min_valid": 1
+      }
+    },
+    "$.omics_type[*]": {
+      "code": "ms-omics_type-0010",
+      "description": "Omics type value must be in this list: [EDAM, EDAM:topic_3172, Metabolomics, ],[EDAM, EDAM:topic_0153, Lipidomics, ],[EDAM, EDAM:topic_3955, Fluxomics, ],[EDAM, EDAM:topic_4065, Exposomics, ]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term-enum",
+        "allowed_cv_terms": [
+          {
+            "cv_label": "EDAM",
+            "cv_accession": "EDAM:topic_3172",
+            "name": "Metabolomics"
+          },
+          {
+            "cv_label": "EDAM",
+            "cv_accession": "EDAM:topic_0153",
+            "name": "Lipidomics"
+          },
+          {
+            "cv_label": "EDAM",
+            "cv_accession": "EDAM:topic_3955",
+            "name": "Fluxomics"
+          },
+          {
+            "cv_label": "EDAM",
+            "cv_accession": "EDAM:topic_4065",
+            "name": "Exposomics"
+          }
+        ]
+      }
+    },
+    "$.measurement_type[*]": {
+      "code": "ms-measurement_type-0010",
+      "description": "Measurement type value must be in this list: [MS, MS:1003904, untargeted analysis, ],[MS, MS:1003905, targeted analysis, ],[MS, MS:1003906, semi-targeted analysis, ]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term-enum",
+        "allowed_cv_terms": [
+          {
+            "cv_label": "MS",
+            "cv_accession": "MS:1003904",
+            "name": "untargeted analysis"
+          },
+          {
+            "cv_label": "MS",
+            "cv_accession": "MS:1003905",
+            "name": "targeted analysis"
+          },
+          {
+            "cv_label": "MS",
+            "cv_accession": "MS:1003906",
+            "name": "semi-targeted analysis"
+          }
+        ]
+      }
+    },
+    "$.technology_type[*]": {
+      "code": "ms-technology_type-0010",
+      "description": "Technology type value must be in this list: [OBI, OBI:0000470, mass spectrometry assay, ]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term-enum",
+        "allowed_cv_terms": [
+          {
+            "cv_label": "OBI",
+            "cv_accession": "OBI:0000470",
+            "name": "mass spectrometry assay"
+          }
+        ]
+      }
+    },
+    "$.assay_type[*]": {
+      "code": "ms-assay_type-0010",
+      "description": "Assay type value must be in this list: [OBI, OBI:0003097, liquid chromatography mass spectrometry assay, ],[OBI, OBI:0003110, gas chromatography mass spectrometry assay, ],[OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay, ],[OBI, OBI:0000470, mass spectrometry assay, ]",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "cv-term-enum",
+        "allowed_cv_terms": [
+          {
+            "cv_label": "OBI",
+            "cv_accession": "OBI:0003097",
+            "name": "liquid chromatography mass spectrometry assay"
+          },
+          {
+            "cv_label": "OBI",
+            "cv_accession": "OBI:0003110",
+            "name": "gas chromatography mass spectrometry assay"
+          },
+          {
+            "cv_label": "OBI",
+            "cv_accession": "OBI:0003741",
+            "name": "capillary electrophoresis mass spectrometry assay"
+          },
+          {
+            "cv_label": "OBI",
+            "cv_accession": "OBI:0000470",
+            "name": "mass spectrometry assay"
+          }
+        ]
+      }
+    },
+    "$.publications[*].title": {
+      "code": "ms-publications-0011",
+      "description": "Publication title must be valid",
+      "enforcement_level": "required",
+      "value_constraint": {
+        "type": "string-length",
+        "minimum": 10
+      }
     }
-  },
-  "required": [
-    "$schema",
-    "profile_uri",
-    "type",
-    "uri",
-    "repository_identifier",
-    "repository_name",
-    "mhd_identifier",
-    "mhd_metadata_file_url",
-    "dataset_url_list",
-    "title",
-    "description",
-    "submission_date",
-    "public_release_date",
-    "submitters",
-    "principal_investigators",
-    "omics_type",
-    "measurement_type",
-    "assay_type",
-    "publications",
-    "study_factors",
-    "characteristic_values",
-    "raw_data_file_list"
-  ],
-  "title": "AnnouncementMsProfile",
-  "type": "object",
-  "unique_value_alternatives": [
-    [
-      "doi"
-    ],
-    [
-      "repository_name",
-      "repository_identifier"
-    ],
-    [
-      "additional_identifier_list"
-    ]
-  ]
+  }
 }

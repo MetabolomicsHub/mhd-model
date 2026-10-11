@@ -1,6 +1,6 @@
 import logging
 from collections.abc import Sequence
-from typing import Annotated, Any, Generic, Self, TypeVar
+from typing import Annotated, Any, Self, TypeVar
 
 from pydantic import Field
 
@@ -19,39 +19,27 @@ from mhd_model.shared.model import (
     CvTermValue,
     IdentifiableMhdModel,
     MhdNode,
+    MhdRelationship,
 )
 from mhd_model.shared.utils import search_ontology_definition
-from mhd_model.shared.validation.cv_term_helper import CvTermHelper
+from mhd_model.shared.validation.cv_term_helper import BaseCvTermHelper
 
 logger = logging.getLogger(__name__)
-
-_cv_helper: CvTermHelper | None = None
-
-
-def _get_cv_helper() -> CvTermHelper:
-    global _cv_helper
-    if _cv_helper is None:
-        _cv_helper = CvTermHelper()
-    return _cv_helper
 
 
 T = TypeVar("T", bound=BaseMhDatasetProfile)
 
 
-class MhDatasetBuilder(Generic[T]):
-    def __init__(self, dataset: T, **kwargs):
+class MhDatasetBuilder[T]:
+    def __init__(self, dataset: T, cv_term_helper: BaseCvTermHelper, **kwargs):
         self.kwargs = kwargs
         self.dataset = dataset
+        self.cv_term_helper = cv_term_helper
 
         self._cv_definitions_map: Annotated[
             dict[str, None | CvDefinition], Field(exclude=True)
         ] = {}
         self._links: Annotated[set[tuple[str, str, str]], Field(exclude=True)] = set()
-        # created_at: Annotated[datetime.datetime | None, Field(description="Created at")] = (
-        #     None
-        # )
-        # name: Annotated[None | str, Field()] = None
-        # description: Annotated[None | str, Field()] = None
         self.objects: dict[str, IdentifiableMhdModel] = {}
 
     def add(self, item: MhdNode, use_label_for_invalid_cv_term: bool = False) -> Self:
@@ -68,7 +56,8 @@ class MhDatasetBuilder(Generic[T]):
         target_role: None | str = None,
         relationship_type: None | str = None,
         **kwargs,
-    ) -> Self:
+    ) -> list[MhdRelationship]:
+        links = []
         default_relation_type = (
             self.dataset.get_config().get_default_relationship_type()
         )
@@ -87,6 +76,7 @@ class MhDatasetBuilder(Generic[T]):
             link = relationship_class.model_validate(data)
             self._links.add((source.id_, relationship_name, target.id_))
             self.objects[link.id_] = link
+            links.append(link)
         if target.id_ != source.id_ and (
             add_reverse_relationship or reverse_relationship_name
         ):
@@ -106,7 +96,8 @@ class MhDatasetBuilder(Generic[T]):
                 data.update(**kwargs)
                 link = relationship_class.model_validate(data)
                 self.objects[link.id_] = link
-        return self
+                links.append(link)
+        return links
 
     def add_node(
         self, item: MhdNode, use_label_for_invalid_cv_term: bool = False
@@ -120,7 +111,7 @@ class MhDatasetBuilder(Generic[T]):
             if item.source:
                 item.source = item.source.upper()
                 if not item.accession:
-                    term = _get_cv_helper().find_cv_term(
+                    term = self.cv_term_helper.find_cv_term(
                         item.source, item.name, allow_synonym_search=False
                     )
                     if term and term.name == item.name:
@@ -134,7 +125,7 @@ class MhDatasetBuilder(Generic[T]):
                         item.accession = ""
                         item.source = ""
                 else:
-                    term = _get_cv_helper().find_cv_term(
+                    term = self.cv_term_helper.find_cv_term(
                         item.source,
                         item.name,
                         matched_accession=item.accession,
@@ -190,11 +181,11 @@ class MhDatasetBuilder(Generic[T]):
                 continue
 
             if source in COMMON_CV_DEFINITIONS:
-                cv_definition = COMMON_CV_DEFINITIONS[source]
+                cv_definition = COMMON_CV_DEFINITIONS[source].model_copy()
                 cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
             elif source in OTHER_COMMON_CV_DEFINITIONS:
-                cv_definition = OTHER_COMMON_CV_DEFINITIONS[source]
+                cv_definition = OTHER_COMMON_CV_DEFINITIONS[source].model_copy()
                 cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
             elif source in sources:
@@ -215,6 +206,8 @@ class MhDatasetBuilder(Generic[T]):
                 else:
                     cv_definitions.append(cv_definition)
                 cv_definitions_map[source] = cv_definition
+            if source in sources:
+                cv_definition.version = sources[source].version
 
         cv_definitions.sort(key=lambda x: x.label)
         self.dataset.cv_definitions = cv_definitions
@@ -286,8 +279,12 @@ class MhDatasetBuilder(Generic[T]):
         return self.dataset
 
     @classmethod
-    def from_dataset(cls, mhd_dataset: BaseMhDatasetProfile) -> "MhDatasetBuilder":
-        dataset = cls(dataset=mhd_dataset)
+    def from_dataset(
+        cls, mhd_dataset: BaseMhDatasetProfile, cv_term_helper: BaseCvTermHelper
+    ) -> "MhDatasetBuilder":
+        dataset = cls[BaseMhDatasetProfile](
+            dataset=mhd_dataset, cv_term_helper=cv_term_helper
+        )
         # dataset.cv_definitions = (
         #     mhd_dataset.cv_definitions.copy() if mhd_dataset.cv_definitions else []
         # )

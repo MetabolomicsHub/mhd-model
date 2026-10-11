@@ -394,7 +394,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 source="molecular-entity",
                 relationship_name="identified-as",
                 reverse_relationship_name="reported-identifier-of",
-                target="metabolite-identifier",
+                target="molecular-entity-identifier",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1019,7 +1019,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 node_type="study",
                 node_property_name="created_by_ref",
                 required=False,
-                target_ref_types=["creator"],
+                target_ref_types=["data-provider"],
             ),
             NodePropertyValidation(
                 node_type="study",
@@ -1038,7 +1038,7 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 source="study",
                 relationship_name="provided-by",
                 reverse_relationship_name="provides",
-                target="creator",
+                target="data-provider",
                 min=0,
                 min_for_each_source=1,
                 max_for_each_source=1,
@@ -1432,26 +1432,26 @@ MHD_BASE_VALIDATION_V1_0.cv_nodes = [
         ],
     ),
     CvNodeValidation(
-        node_type="creator",
+        node_type="data-provider",
         has_value=True,
         value_required=True,
         min=1,
         validations=[
             NodePropertyValidation(
-                node_type="creator",
+                node_type="data-provider",
                 node_property_name="value",
                 constraints=PropertyConstraint(required=True, allowed_types="str"),
             ),
             CvTermValidation(
-                node_type="creator",
+                node_type="data-provider",
                 validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
             ),
             CvTermValidation(
-                node_type="creator",
+                node_type="data-provider",
                 validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
                 condition=[
                     FilterCondition(
-                        name="Creator",
+                        name="Data provider",
                         relationship_name="[embedded].created_by_ref",
                         start_node_type=None,
                         expression="created_by_ref",
@@ -1461,7 +1461,7 @@ MHD_BASE_VALIDATION_V1_0.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
-                source="creator",
+                source="data-provider",
                 relationship_name="provides",
                 reverse_relationship_name="provided-by",
                 target="study",
@@ -1823,15 +1823,15 @@ MHD_BASE_VALIDATION_V1_0.cv_nodes = [
         ],
     ),
     CvNodeValidation(
-        node_type="metabolite-identifier",
+        node_type="molecular-entity-identifier",
         min=0,
         validations=[
             CvTermValidation(
-                node_type="metabolite-identifier",
+                node_type="molecular-entity-identifier",
                 validation=MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE,
                 condition=[
                     FilterCondition(
-                        name="Reported Metabolite Identifier",
+                        name="Reported Molecular Entity Identifier",
                         relationship_name="identified-as",
                         start_node_type="molecular-entity",
                     )
@@ -1840,7 +1840,7 @@ MHD_BASE_VALIDATION_V1_0.cv_nodes = [
         ],
         relationships=[
             RelationshipValidation(
-                source="metabolite-identifier",
+                source="molecular-entity-identifier",
                 relationship_name="reported-identifier-of",
                 reverse_relationship_name="identified-as",
                 target="molecular-entity",

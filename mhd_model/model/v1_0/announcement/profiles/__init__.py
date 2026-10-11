@@ -1,1 +1,1 @@
-__all__ = ["base", "legacy", "ms"]
+__all__ = ["base_profile", "legacy_profile", "ms_profile", "profile"]

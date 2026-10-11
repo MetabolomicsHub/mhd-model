@@ -93,6 +93,18 @@ COMMON_ASSAY_TYPES: dict[str, CvTerm] = {
     #     name="NMR spectroscopy assay",
     # ),
 }
+COMMON_MOLECULAR_ENTITY_IDENTIFIERS: dict[str, CvTerm] = {
+    "chebi": CvTerm(
+        source="EDAM",
+        accession="EDAM:data_1174",
+        name="ChEBI ID",
+    ),
+    "refmet": CvTerm(
+        source="EDAM",
+        accession="EDAM:data_4075",
+        name="RefMet ID",
+    ),
+}
 
 COMMON_OMICS_TYPES: dict[str, CvTerm] = {
     "metabolomics": CvTerm(
@@ -193,9 +205,9 @@ COMMON_PARAMETER_ENFORCEMENT_LEVELS: dict[str, dict[str, dict[str, CvTerm]]] = {
     "mass spectrometry": {
         "required": {
             "mass spectrometry instrument": CvTerm(
-                source="MSIO",
-                accession="MSIO:0000171",
-                name="mass spectrometry instrument",
+                source="OBI",
+                accession="OBI:0000049",
+                name="mass spectrometer",
             ),
             "acquisition polarity": CvTerm(
                 source="MS",
@@ -253,8 +265,8 @@ for protocol, enforcements in COMMON_PARAMETER_ENFORCEMENT_LEVELS.items():
 MANAGED_CV_TERM_OBJECTS: set[str] = {
     "characteristic-type",
     "characteristic-value",
-    "metabolite-identifier",
-    "creator",
+    "molecular-entity-identifier",
+    "data-provider",
     "descriptor",
     "factor-type",
     "factor-value",
@@ -275,6 +287,7 @@ PREDEFINED_CV_TERM_GROUPS: list[dict[str, CvTerm]] = [
     COMMON_CHARACTERISTIC_DEFINITIONS,
     COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_PARAMETER_DEFINITIONS,
+    COMMON_MOLECULAR_ENTITY_IDENTIFIERS,
 ]
 
 PREDEFINED_CV_TERMS: dict[str, CvTerm] = {}

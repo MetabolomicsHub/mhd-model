@@ -13,22 +13,23 @@ logger = logging.getLogger(__name__)
 
 
 def fetch_ols_ontologies() -> OntologySourceReference:
-    params = {"lang": "en", "size": 10000}
+    params = {"lang": "en", "size": 1000}
     headers = {"accept": "application/json"}
     url = "https://www.ebi.ac.uk/ols4/api/ontologies"
     refs: list[OntologySourceReferenceTemplate] = []
 
     try:
-        response = httpx2.get(url, params=params, headers=headers)
+        response = httpx2.get(url, params=params, headers=headers, timeout=20)
         json_data = response.json()
         ontologies = json_data.get("_embedded", {}).get("ontologies")
         ontology_configs = [x.get("config", {}) for x in ontologies]
         for ontology in ontology_configs:
-            prefix = (
-                ontology.get("baseUri", [""])[0]
-                or ontology.get("preferredPrefix", "")
-                or ""
-            )
+            base_uri = ontology.get("baseUris", None)
+            if isinstance(base_uri, str):
+                base_uri = [base_uri]
+            elif isinstance(base_uri, list) and base_uri:
+                base_uri = base_uri[0]
+            prefix = base_uri or ontology.get("preferredPrefix", "") or ""
             namespace = ontology.get("namespace", "") or ""
             title = ontology.get("title", "") or ""
             file_location = ontology.get("fileLocation", "") or ""
@@ -55,14 +56,17 @@ def fetch_ols_ontologies() -> OntologySourceReference:
             refs.append(
                 OntologySourceReferenceTemplate(
                     name=source_name.upper(),
-                    file=file_location or iri,
-                    version=str(version),
-                    description=title,
-                    details=description or None,
-                    prefix=prefix or None,
+                    file=file_location or iri or "",
+                    version=str(version) or "",
+                    description=title or "",
+                    details=description or "",
+                    prefix=prefix or "",
                 )
             )
     except Exception as ex:
+        import traceback
+
+        traceback.print_exc()
         logger.error("Ontologies are not fetched from OLS: %s", ex)
 
     return OntologySourceReference(ontologies=refs)
