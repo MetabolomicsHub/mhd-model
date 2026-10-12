@@ -22,7 +22,7 @@ dependencies = [
     "pyjwt>=2.15.1",
     "cryptography>=50.0.2",
     "jsonprofile",
-    "ontology-lookup>=0.1.5",
+    "ontology-lookup>=0.1.6",
 ]
 
 [dependency-groups]

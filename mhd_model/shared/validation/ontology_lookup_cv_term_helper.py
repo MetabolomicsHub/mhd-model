@@ -25,8 +25,10 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
         cv_term: CvTerm,
         parent_cv_term: None | ParentCvTerm = None,
         allow_synonym_search: bool = False,
+        allow_obsoletes: bool = True,
     ) -> tuple[bool, str]:
         ontology = cv_term.source
+        ignore_obsolete = not allow_obsoletes
         if not cv_term.source:
             if ":" in cv_term.accession:
                 ontology = cv_term.source.split(":", maxsplit=1)[0]
@@ -41,7 +43,7 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
                 label_or_synonym=cv_term.name,
                 parent_curie=parent_cv_term.cv_term.accession,
                 search_in_synonyms=allow_synonym_search,
-                connection=self.conn,
+                ignore_obsolete=ignore_obsolete,
             )
             if result:
                 return (
@@ -56,6 +58,7 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
             ontology=ontology,
             label_or_synonym=cv_term.name,
             search_in_synonyms=allow_synonym_search,
+            ignore_obsolete=ignore_obsolete,
             limit=1,
         )
         if result:
@@ -84,18 +87,24 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
         accession_or_label: str,
         matched_accession: None | str = None,
         allow_synonym_search: bool = False,
+        allow_obsoletes: bool = True,
     ) -> None | CvTerm:
         result = None
+        ignore_obsolete = not allow_obsoletes
         if matched_accession:
             result: TermResponse = self.svc.get_term_by_accession(
-                ontology=source, accession=matched_accession
+                ontology=source,
+                accession=matched_accession,
+                ignore_obsolete=ignore_obsolete,
             )
         if result:
             return CvTerm(
                 source=result.ontology, accession=result.curie, name=result.label
             )
         result: TermResponse = self.svc.get_term_by_accession(
-            ontology=source, accession=accession_or_label
+            ontology=source,
+            accession=accession_or_label,
+            ignore_obsolete=ignore_obsolete,
         )
         if result:
             return CvTerm(
@@ -103,13 +112,17 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
             )
         if allow_synonym_search:
             result: list[SearchTermSummary] = self.svc.search_by_label(
-                ontology=source, label_or_synonym=accession_or_label
+                ontology=source,
+                label_or_synonym=accession_or_label,
+                ignore_obsolete=ignore_obsolete,
             )
             if result:
                 result = result[0]
         else:
             result: TermResponse = self.svc.get_term_by_exact_label(
-                ontology=source, label=accession_or_label
+                ontology=source,
+                label=accession_or_label,
+                ignore_obsolete=ignore_obsolete,
             )
         if result:
             return CvTerm(
@@ -118,17 +131,20 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
         return None
 
     def find_cv_term_with_accession(
-        self, source: str, accession: str
+        self,
+        source: str,
+        accession: str,
+        allow_obsoletes: bool = True,
     ) -> tuple[CvTerm, list[str]]:
         ontology = source
+        ignore_obsolete = not allow_obsoletes
         if not ontology:
             if ":" in accession:
                 ontology = accession.split(":", maxsplit=1)[0]
             else:
                 return None, []
-
         result: None | TermResponse = self.svc.get_term_by_accession(
-            ontology=ontology, accession=accession
+            ontology=ontology, accession=accession, ignore_obsolete=ignore_obsolete
         )
         if result:
             profile_cv_term = CvTerm(

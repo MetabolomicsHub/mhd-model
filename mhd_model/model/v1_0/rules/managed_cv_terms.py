@@ -39,12 +39,11 @@ COMMON_TECHNOLOGY_TYPES: dict[str, CvTerm] = {
         accession="OBI:0000470",
         name="mass spectrometry assay",
     ),
-    # TODO: Will be enabled in future
-    # "OBI:0000623": CvTerm(
-    #     source="OBI",
-    #     accession="OBI:0000623",
-    #     name="NMR spectroscopy assay",
-    # ),
+    "nmr spectroscopy assay": CvTerm(
+        source="OBI",
+        accession="OBI:0000623",
+        name="NMR spectroscopy assay",
+    ),
 }
 
 COMMON_MEASUREMENT_TYPES: dict[str, CvTerm] = {
@@ -86,12 +85,11 @@ COMMON_ASSAY_TYPES: dict[str, CvTerm] = {
         accession="OBI:0000470",
         name="mass spectrometry assay",
     ),
-    # TODO: Will be enabled in future
-    # "OBI:0000623": CvTerm(
-    #     source="OBI",
-    #     accession="OBI:0000623",
-    #     name="NMR spectroscopy assay",
-    # ),
+    "nmr": CvTerm(
+        source="OBI",
+        accession="OBI:0000623",
+        name="NMR spectroscopy assay",
+    ),
 }
 COMMON_MOLECULAR_ENTITY_IDENTIFIERS: dict[str, CvTerm] = {
     "chebi": CvTerm(
@@ -157,6 +155,12 @@ COMMON_PROTOCOLS: dict[str, CvTerm] = {
         name="sample preparation",
     ),
 }
+
+COMMON_FILE_HASH_ALGORITHMS = {
+    "sha256": CvTerm(source="MS", accession="MS:1003151", name="SHA-256"),
+    "md5": CvTerm(source="MS", accession="MS:1000568", name="MD5"),
+}
+
 
 COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS: dict[str, dict[str, CvTerm]] = {
     "required": {
@@ -288,6 +292,7 @@ PREDEFINED_CV_TERM_GROUPS: list[dict[str, CvTerm]] = [
     COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_PARAMETER_DEFINITIONS,
     COMMON_MOLECULAR_ENTITY_IDENTIFIERS,
+    COMMON_FILE_HASH_ALGORITHMS,
 ]
 
 PREDEFINED_CV_TERMS: dict[str, CvTerm] = {}

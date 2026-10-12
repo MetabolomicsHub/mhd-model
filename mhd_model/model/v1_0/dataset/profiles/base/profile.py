@@ -110,7 +110,7 @@ DEFAULT_PROFILE_CONFIG_V1_0 = DatasetProfileConfiguration_v1_0()
 
 
 class MhDatasetBaseProfile_v1_0(BaseMhdFile):
-    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("base-v1-0")
+    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("base-v1_0")
 
     @classmethod
     def get_config(cls) -> DatasetProfileConfiguration:

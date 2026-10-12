@@ -4,7 +4,6 @@ import inspect
 import logging
 import uuid
 from typing import Annotated, Any
-from urllib.parse import quote
 
 from pydantic import (
     AnyUrl,
@@ -124,17 +123,12 @@ class IdentifiableMhdModel(MhdConfigModel, abc.ABC):
             prefix=self.prefix, namespace=namespace, type_=self.type_
         )
 
-    @abc.abstractmethod
     def get_unique_id(
-        self, namespace: str, prefix: str, type_: str, property_name: None | str = None
-    ) -> str: ...
-
-    def generate_id_from_contribution_fields(
         self,
         namespace: str,
         prefix: None | str,
         type_: None | str,
-        unique_value_contribution_field: None | str = "unique_value_alternatives",
+        unique_value_contribution_extra_field: None | str = "unique_value_fields",
     ) -> None | list[str]:
         if not type_:
             raise ValueError("type is not defined to create unique id")
@@ -142,9 +136,9 @@ class IdentifiableMhdModel(MhdConfigModel, abc.ABC):
             source=self,
             prefix=prefix,
             type_=type_,
-            unique_value_contribution_field=unique_value_contribution_field,
+            unique_value_contribution_extra_field=unique_value_contribution_extra_field,
         )
-        identifier = str(uuid.uuid5(namespace, name=quote(identifier_name)))
+        identifier = str(uuid.uuid5(namespace, name=identifier_name))
         return f"{prefix}:{type_}:{identifier}"
 
 
@@ -174,16 +168,6 @@ class BaseRelationshipModel(MhdRelationship, abc.ABC):
     target_ref: MhdObjectId | CvTermObjectId | CvTermValueObjectId
     source_role: None | str = None
     target_role: None | str = None
-
-    def get_unique_id(
-        self, namespace: str, prefix: str, type_: str, property_name: None | str = None
-    ) -> str:
-        return self.generate_id_from_contribution_fields(
-            namespace=namespace,
-            prefix=prefix or self.prefix,
-            type_=type_ or self.type_,
-            unique_value_contribution_field=property_name or "unique_value_fields",
-        )
 
     def get_label(self):
         return self.relationship_name
@@ -253,16 +237,6 @@ class BaseReferencedObjectModel(MhdNode, abc.ABC):
         Field(description="Dataset revision assigned by MetabolomicsHub."),
     ] = None
 
-    def get_unique_id(
-        self, namespace: str, prefix: str, type_: str, property_name: None | str = None
-    ) -> str:
-        return self.generate_id_from_contribution_fields(
-            namespace=namespace,
-            prefix=prefix or self.prefix,
-            type_=type_ or self.type_,
-            unique_value_contribution_field=property_name or "unique_value_fields",
-        )
-
 
 class BaseCvTermModel(MhdNode, CvTerm, abc.ABC):
     model_config = ConfigDict(
@@ -272,16 +246,6 @@ class BaseCvTermModel(MhdNode, CvTerm, abc.ABC):
         str,
         Field(exclude=True, description="prefix of the id"),
     ] = "cv"
-
-    def get_unique_id(
-        self, namespace: str, prefix: str, type_: str, property_name: None | str = None
-    ) -> str:
-        return self.generate_id_from_contribution_fields(
-            namespace=namespace,
-            prefix=prefix or self.prefix,
-            type_=type_ or self.type_,
-            unique_value_contribution_field=property_name or "unique_value_fields",
-        )
 
     def get_label(self):
         return self.get_as_string()
@@ -303,16 +267,6 @@ class BaseCvTermValueModel(MhdNode, CvTermValue, abc.ABC):
         str,
         Field(exclude=True, description="prefix of the id"),
     ] = "cv-value"
-
-    def get_unique_id(
-        self, namespace: str, prefix: str, type_: str, property_name: None | str = None
-    ) -> str:
-        return self.generate_id_from_contribution_fields(
-            namespace=namespace,
-            prefix=prefix or self.prefix,
-            type_=type_ or self.type_,
-            unique_value_contribution_field=property_name or "unique_value_fields",
-        )
 
     def get_label(self):
         return self.get_as_string()
@@ -349,30 +303,16 @@ class UriBasedMhdObjectModel(IdentifiableMhdModel, abc.ABC):
         ),
     ] = None
 
-    def get_unique_id(
-        self, namespace: str, prefix: str, type_: str, property_name: None | str = None
-    ) -> str:
-        return self.generate_id_from_contribution_fields(
-            namespace=namespace,
-            prefix=prefix or self.prefix,
-            type_=type_ or self.type_,
-            unique_value_contribution_field=property_name or "unique_value_fields",
-        )
-
-    def update_id(self, namespace: None | str = None):
-        if not namespace:
-            namespace = NAMESPACE_VALUE
-        self.id_ = self.get_unique_id(
-            prefix=self.prefix, namespace=namespace, type_=self.type_
-        )
-        self.update_alternative_id_list(namespace=namespace)
-
     def update_alternative_id_list(self, namespace: str) -> list[str]:
         identifier_names = generate_unique_id(
-            source=self, prefix=self.prefix, type_=self.type_, calculate_all=True
+            source=self,
+            prefix=self.prefix,
+            type_=self.type_,
+            calculate_all=True,
+            unique_value_contribution_extra_field="unique_value_alternatives",
         )
         generated_ids = [
-            f"{self.prefix}:{self.type_}:{uuid.uuid5(namespace, name=quote(x))!s}"
+            f"{self.prefix}:{self.type_}:{uuid.uuid5(namespace, name=x)!s}"
             for x in identifier_names or []
         ]
 

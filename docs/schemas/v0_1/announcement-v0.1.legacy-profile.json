@@ -122,22 +122,6 @@
         "min_occurs": 1
       }
     },
-    "$.principal_investigators": {
-      "code": "legacy-principal_investigators-0001",
-      "enforcement_level": "required",
-      "value_constraint": {
-        "type": "items-count",
-        "min_occurs": 1
-      }
-    },
-    "$.principal_investigators[*].email_list": {
-      "code": "legacy-principal_investigators-email_list_0001",
-      "enforcement_level": "required",
-      "value_constraint": {
-        "type": "items-count",
-        "min_occurs": 1
-      }
-    },
     "$.characteristic_values": {
       "enforcement_level": "required",
       "requirements": [

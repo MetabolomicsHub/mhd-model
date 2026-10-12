@@ -100,14 +100,6 @@ LEGACY_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
             code="legacy-submitters_emails-0001",
             value_constraint=constraints.CollectionConstraint(min_occurs=1),
         ),
-        "$.principal_investigators": FieldRequirement(
-            code="legacy-principal_investigators-0001",
-            value_constraint=constraints.CollectionConstraint(min_occurs=1),
-        ),
-        "$.principal_investigators[*].email_list": FieldRequirement(
-            code="legacy-principal_investigators-email_list_0001",
-            value_constraint=constraints.CollectionConstraint(min_occurs=1),
-        ),
         "$.characteristic_values": FieldRequirementGroup(
             requirements=[
                 FieldRequirement(

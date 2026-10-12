@@ -7,4 +7,4 @@ from mhd_model.shared.base import MhdObjectType
 
 
 class MhDatasetLegacyProfile_v1_0(MhDatasetBaseProfile_v1_0):
-    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("legacy-v1-0")
+    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("legacy-v1_0")

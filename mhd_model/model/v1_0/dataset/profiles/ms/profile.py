@@ -9,4 +9,4 @@ from mhd_model.shared.model import MhdObjectType
 
 
 class MhDatasetMsProfile_v1_0(MhDatasetBaseProfile_v1_0):
-    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("ms-v1-0")
+    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("ms-v1_0")

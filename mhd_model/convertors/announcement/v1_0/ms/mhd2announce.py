@@ -465,10 +465,14 @@ def create_announcement_file(
         list(type_map.get("assay", {}).values()) or []
     )
     study_funds = get_fund_list(
-        study=study, type_map=type_map, relationship_name_map=relationship_name_map
+        source_node=study,
+        type_map=type_map,
+        relationship_name_map=relationship_name_map,
     )
     project_list = get_projects(
-        study=study, type_map=type_map, relationship_name_map=relationship_name_map
+        source_node=study,
+        type_map=type_map,
+        relationship_name_map=relationship_name_map,
     )
     publications: list[AnnouncementPublication] = []
     if "publication" in type_map:

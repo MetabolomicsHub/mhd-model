@@ -130,6 +130,14 @@
         "min_occurs": 1
       }
     },
+    "$.principal_investigators[*]": {
+      "code": "ms-principal_investigators-0002",
+      "enforcement_level": "required",
+      "required_properties": [
+        "full_name",
+        "email_list"
+      ]
+    },
     "$.principal_investigators[*].email_list": {
       "code": "ms-principal_investigators-email_list_0001",
       "enforcement_level": "required",
@@ -1160,7 +1168,7 @@
     },
     "$.technology_type[*]": {
       "code": "ms-technology_type-0010",
-      "description": "Technology type value must be in this list: [OBI, OBI:0000470, mass spectrometry assay, ]",
+      "description": "Technology type value must be in this list: [OBI, OBI:0000470, mass spectrometry assay, ],[OBI, OBI:0000623, NMR spectroscopy assay, ]",
       "enforcement_level": "required",
       "value_constraint": {
         "type": "cv-term-enum",
@@ -1169,13 +1177,18 @@
             "cv_label": "OBI",
             "cv_accession": "OBI:0000470",
             "name": "mass spectrometry assay"
+          },
+          {
+            "cv_label": "OBI",
+            "cv_accession": "OBI:0000623",
+            "name": "NMR spectroscopy assay"
           }
         ]
       }
     },
     "$.assay_type[*]": {
       "code": "ms-assay_type-0010",
-      "description": "Assay type value must be in this list: [OBI, OBI:0003097, liquid chromatography mass spectrometry assay, ],[OBI, OBI:0003110, gas chromatography mass spectrometry assay, ],[OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay, ],[OBI, OBI:0000470, mass spectrometry assay, ]",
+      "description": "Assay type value must be in this list: [OBI, OBI:0003097, liquid chromatography mass spectrometry assay, ],[OBI, OBI:0003110, gas chromatography mass spectrometry assay, ],[OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay, ],[OBI, OBI:0000470, mass spectrometry assay, ],[OBI, OBI:0000623, NMR spectroscopy assay, ]",
       "enforcement_level": "required",
       "value_constraint": {
         "type": "cv-term-enum",
@@ -1199,6 +1212,11 @@
             "cv_label": "OBI",
             "cv_accession": "OBI:0000470",
             "name": "mass spectrometry assay"
+          },
+          {
+            "cv_label": "OBI",
+            "cv_accession": "OBI:0000623",
+            "name": "NMR spectroscopy assay"
           }
         ]
       }

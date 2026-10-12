@@ -229,6 +229,10 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
             code="ms-principal_investigators-0001",
             value_constraint=constraints.CollectionConstraint(min_occurs=1),
         ),
+        "$.principal_investigators[*]": FieldRequirement(
+            code="ms-principal_investigators-0002",
+            required_properties=["full_name", "email_list"],
+        ),
         "$.principal_investigators[*].email_list": FieldRequirement(
             code="ms-principal_investigators-email_list_0001",
             value_constraint=constraints.CollectionConstraint(min_occurs=1),

@@ -13,6 +13,7 @@ class BaseCvTermHelper(abc.ABC):
         cv_term: CvTerm,
         parent_cv_term: None | BaseParentCvTerm = None,
         allow_synonym_search: bool = False,
+        allow_obsoletes: bool = True,
     ) -> tuple[bool, str]: ...
 
     @abc.abstractmethod
@@ -25,9 +26,13 @@ class BaseCvTermHelper(abc.ABC):
         accession_or_label: str,
         matched_accession: None | str = None,
         allow_synonym_search: bool = False,
+        allow_obsoletes: bool = True,
     ) -> None | CvTerm: ...
 
     @abc.abstractmethod
     def find_cv_term_with_accession(
-        self, source: str, accession: str
+        self,
+        source: str,
+        accession: str,
+        allow_obsoletes: bool = True,
     ) -> tuple[CvTerm, list[str]]: ...

@@ -581,7 +581,7 @@ class Sample(BaseMhdObjectModel):
         json_schema_extra={
             "unique_value_fields": ["uri"],
             "unique_value_alternatives": [
-                ("biosamples_accession",),
+                ("biosample_accession",),
                 ("additional_identifier_list",),
             ],
         }
@@ -598,9 +598,9 @@ class Sample(BaseMhdObjectModel):
         None | str,
         Field(description="Name or identifier of the sample."),
     ] = None
-    biosamples_accession: Annotated[
+    biosample_accession: Annotated[
         None | str,
-        Field(description="Biosamples accession of the sample."),
+        Field(description="Biosample accession of the sample."),
     ] = None
     additional_identifier_list: Annotated[
         None | list[CvTermValue],

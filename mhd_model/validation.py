@@ -3,6 +3,8 @@ import traceback
 from pathlib import Path
 from typing import Any
 
+from cachetools import cached
+
 from mhd_model.model.definitions import (
     ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
     ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
@@ -21,6 +23,10 @@ from mhd_model.shared.model import MhdModelValidationContext, ProfileEnabledData
 from mhd_model.shared.validation.base import (
     BaseAnnouncementFileValidator,
     BaseMhdFileValidator,
+)
+from mhd_model.shared.validation.cv_term_helper import CvTermHelper
+from mhd_model.shared.validation.ontology_lookup_cv_term_helper import (
+    OntologyLookupCvTermHelper,
 )
 from mhd_model.utils import load_json
 
@@ -42,6 +48,13 @@ ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
 }
 
 
+@cached(cache={})
+def select_cv_term_helper(db_path: None | str):
+    if not db_path:
+        return CvTermHelper()
+    return OntologyLookupCvTermHelper(db_path=db_path)
+
+
 def validate_mhd_file_json(
     json_data: dict[str, Any],
     ontology_lookup_file_path: None | str = None,
@@ -50,7 +63,13 @@ def validate_mhd_file_json(
 
     validator = MHD_VALIDATORS[dataset.profile_uri]()
     try:
-        return validator.validate(mhd_file_json=json_data)
+        mhd_model_validation_context = MhdModelValidationContext(
+            cv_term_helper=select_cv_term_helper(ontology_lookup_file_path),
+        )
+        return validator.validate(
+            mhd_file_json=json_data,
+            mhd_model_validation_context=mhd_model_validation_context,
+        )
     except Exception as ex:
         traceback.print_exc()
         return [str(ex)]
@@ -60,6 +79,9 @@ def validate_mhd_model(
     mhd_file_path: str | Path,
     ontology_lookup_file_path: None | str = None,
 ) -> list[str]:
+    context = MhdModelValidationContext(
+        cv_term_helper=select_cv_term_helper(ontology_lookup_file_path),
+    )
     if isinstance(mhd_file_path, str):
         mhd_file_path = Path(mhd_file_path)
     json_data = load_json(mhd_file_path)
@@ -67,7 +89,6 @@ def validate_mhd_model(
 
     validator = MHD_VALIDATORS[dataset.profile_uri]()
     try:
-        context = MhdModelValidationContext()
         validator.validate(
             mhd_file_json=json_data, mhd_model_validation_context=context
         )

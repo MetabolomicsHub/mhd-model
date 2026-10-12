@@ -342,7 +342,7 @@ BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
         ),
         "$.principal_investigators[*]": FieldRequirement(
             code="base-principal_investigators-0002",
-            required_properties=["full_name", "email_list"],
+            required_properties=["full_name"],
         ),
         "$.principal_investigators[*].full_name": FieldRequirement(
             code="base-principal_investigators_full_name-0001",

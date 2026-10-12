@@ -521,8 +521,7 @@
       "code": "base-principal_investigators-0002",
       "enforcement_level": "required",
       "required_properties": [
-        "full_name",
-        "email_list"
+        "full_name"
       ]
     },
     "$.principal_investigators[*].full_name": {

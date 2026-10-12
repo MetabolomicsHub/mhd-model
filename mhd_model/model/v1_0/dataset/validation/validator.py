@@ -68,6 +68,12 @@ class MhdFileValidator_v1_0(BaseMhdFileValidator):
                 uuid_namespace=str(NAMESPACE_VALUE),
             )
 
+        context = self.default_validation_context
+        if not context.dataset_configuration:
+            context.dataset_configuration = MhDatasetBaseProfile_v1_0.get_config()
+        if not context.uuid_namespace:
+            context.uuid_namespace = str(NAMESPACE_VALUE)
+
     def validate(
         self,
         mhd_file_json: dict[str, Any],
@@ -81,6 +87,10 @@ class MhdFileValidator_v1_0(BaseMhdFileValidator):
         )
         context.repository_name = mhd_file_json.get("repository_name")
         context.repository_short_name = mhd_file_json.get("repository_short_name")
+        if not context.dataset_configuration:
+            context.dataset_configuration = MhDatasetBaseProfile_v1_0.get_config()
+        if not context.uuid_namespace:
+            context.uuid_namespace = str(NAMESPACE_VALUE)
         errors = validate_mhd_file_json(
             mhd_file_json, mhd_model_validation_context=context
         )

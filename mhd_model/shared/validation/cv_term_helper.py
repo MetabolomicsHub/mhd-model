@@ -180,7 +180,7 @@ class CvTermHelper(BaseCvTermHelper):
         return uri or None
 
     def find_cv_term_with_accession(
-        self, source: str, accession: str
+        self, source: str, accession: str, allow_obsoletes: bool = True
     ) -> tuple[CvTerm, list[str]]:
 
         curi = accession
@@ -199,7 +199,7 @@ class CvTermHelper(BaseCvTermHelper):
             "start": 0,
             "rows": 1,
             "local": False,
-            "obsoletes": False,
+            "obsoletes": allow_obsoletes,
             "lang": "en",
         }
 
@@ -235,6 +235,7 @@ class CvTermHelper(BaseCvTermHelper):
         accession_or_label: str,
         matched_accession: None | str = None,
         allow_synonym_search: bool = False,
+        allow_obsoletes: bool = True,
     ) -> None | CvTerm:
         key = (source, accession_or_label, matched_accession, allow_synonym_search)
         if self.cv_term_cache.get(key):
@@ -276,7 +277,7 @@ class CvTermHelper(BaseCvTermHelper):
             "start": 0,
             "rows": 1,
             "local": False,
-            "obsoletes": False,
+            "obsoletes": allow_obsoletes,
             "lang": "en",
             # "isLeaf": (
             #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
@@ -342,6 +343,7 @@ class CvTermHelper(BaseCvTermHelper):
         cv_term: CvTerm,
         parent_cv_term: None | ParentCvTerm = None,
         allow_synonym_search: bool = False,
+        allow_obsoletes: bool = True,
     ) -> tuple[bool, str]:
         if not cv_term.accession or not cv_term.name or not cv_term.source:
             message = f"Invalid cv term [{cv_term.source}, {cv_term.accession}, {cv_term.name}]"
@@ -388,7 +390,7 @@ class CvTermHelper(BaseCvTermHelper):
             "type": "class,property,individual",
             "exact": True,
             "start": 0,
-            "obsoletes": False,
+            "obsoletes": allow_obsoletes,
             "rows": 1,
             # "local": False,
             "format": "json",

@@ -41,22 +41,33 @@ def generate_unique_id(
     source: BaseModel,
     prefix: None | str,
     type_: None | str,
-    contribution: None | list[tuple[str, ...]] = None,
-    unique_value_contribution_field: None | str = "unique_value_alternatives",
+    unique_value_contribution_extra_field: str,
     calculate_all: bool = False,
 ) -> None | str | list[str]:
-    all_identifiers: list[str] = []
-    if not contribution:
-        extra = source.__class__.model_config.get("json_schema_extra", {})
-        contribution: list[tuple[str, ...]] = (
-            extra.get(unique_value_contribution_field) or []
-        )
-    elif isinstance(contribution, tuple):
-        contribution = [contribution]
+    extra = source.__class__.model_config.get("json_schema_extra", {})
+    contribution_fields: list[tuple[str, ...]] = (
+        extra.get(unique_value_contribution_extra_field) or []
+    )
+    return generate_unique_id_from_fields(
+        source=source,
+        prefix=prefix,
+        type_=type_,
+        contribution_fields=contribution_fields,
+        calculate_all=calculate_all,
+    )
 
+
+def generate_unique_id_from_fields(
+    source: BaseModel,
+    prefix: None | str,
+    type_: None | str,
+    contribution_fields: list[tuple[str, ...]],
+    calculate_all: bool = False,
+) -> None | str | list[str]:
+    all_identifiers = []
     field_names_list = []
     new_list = None
-    for x in contribution:
+    for x in contribution_fields:
         if isinstance(x, str):
             if new_list is None:
                 new_list = []
@@ -106,7 +117,7 @@ def generate_unique_id(
             if type_:
                 new_values.append(("type", type_.lower().strip()))
             new_values.extend(values)
-            identifier = "&".join([f"{x[0]}:{x[1]}" for x in new_values])
+            identifier = "&".join([f"{x[0]}={x[1]}" for x in new_values])
             if not calculate_all:
                 return identifier
             else:
