@@ -324,7 +324,7 @@ BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
         ),
         "$.submitters[*].email_list[*]": FieldRequirement(
             code="base-submitters-email_list-0002",
-            value_constraint=constraints.EmailConstraint(),
+            value_constraint=constraints.EmailConstraint(check_deliverability=False),
         ),
         "$.submitters[*].orcid": FieldRequirement(
             code="base-submitters-orcid-0002",
@@ -354,7 +354,7 @@ BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
         ),
         "$.principal_investigators[*].email_list[*]": FieldRequirement(
             code="base-principal_investigators-email_list_0002",
-            value_constraint=constraints.EmailConstraint(),
+            value_constraint=constraints.EmailConstraint(check_deliverability=False),
         ),
         "$.omics_type": FieldRequirement(
             code="base-omics_type-0001",
