@@ -201,8 +201,8 @@ class CvTermHelper(BaseCvTermHelper):
             "local": False,
             "lang": "en",
         }
-        if allow_obsoletes:
-            params["obsoletes"] = True
+        if not allow_obsoletes:
+            params["obsoletes"] = False
         params["queryFields"] = "obo_id,iri,short_form"
         params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix,synonym"
         children_subpath = "/search"
@@ -282,8 +282,8 @@ class CvTermHelper(BaseCvTermHelper):
             #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
             # ),
         }
-        if allow_obsoletes:
-            params["obsoletes"] = True
+        if not allow_obsoletes:
+            params["obsoletes"] = False
         if allow_synonym_search:
             params["queryFields"] = "obo_id,iri,label,short_form,synonym"
             params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix,synonym"
@@ -399,8 +399,8 @@ class CvTermHelper(BaseCvTermHelper):
             #     True if parent_cv_term and parent_cv_term.allow_only_leaf else False
             # ),
         }
-        if allow_obsoletes:
-            params["obsoletes"] = True
+        if not allow_obsoletes:
+            params["obsoletes"] = False
         if allow_synonym_search:
             params["queryFields"] = "obo_id,short_form,iri,synonym"
             params["fieldList"] = "iri,obo_id,label,short_form,ontology_prefix,synonym"
