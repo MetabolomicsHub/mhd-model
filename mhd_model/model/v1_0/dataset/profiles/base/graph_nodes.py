@@ -465,7 +465,7 @@ class BasicAssay(BaseMhdObjectModel, abc.ABC):
     """Basic analytical assay node representing an experimental measurement procedure."""
 
     type_: Annotated[None | MhdObjectType, Field(..., frozen=True, alias="type")] = (
-        "assay"
+        "basic-assay"
     )
     name: Annotated[
         None | str,

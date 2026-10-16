@@ -241,7 +241,7 @@ class AnnouncementFile_v1_0(BaseAnnouncementFile, MhdConfigModel):
         None | list[AnnouncementFund], Field(description="List of funds.")
     ] = None
     projects: Annotated[
-        None | list[AnnouncementFund], Field(description="List of projects.")
+        None | list[AnnouncementProject], Field(description="List of projects.")
     ] = None
     submitters: Annotated[
         None | list[AnnouncementContact],

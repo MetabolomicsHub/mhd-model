@@ -401,17 +401,17 @@ def get_projects(
         if item.source_ref == source_node.id_:
             project: None | graph_nodes.Project = projects.get(item.target_ref)
             if project:
-                organizations = []
+                organization_list = []
                 for x in managed_by_links.values():
-                    if item.source_ref == project.id_:
+                    if x.source_ref == project.id_:
                         organization: None | graph_nodes.Organization = (
-                            organizations.get(item.target_ref)
+                            organizations.get(x.target_ref)
                         )
-                        organizations.append(organization.name)
+                        organization_list.append(organization.name)
                 project_item = AnnouncementProject(
                     name=project.title,
                     identifier=project.doi,
-                    organizations=organizations or None,
+                    organizations=organization_list or None,
                 )
                 project_list.append(project_item)
 

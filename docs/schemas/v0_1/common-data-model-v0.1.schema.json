@@ -194,10 +194,30 @@
         "value": {
           "anyOf": [
             {
-              "description": "Supported types",
-              "format": "uri",
-              "minLength": 1,
-              "type": "string"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "format": "uri",
+                  "minLength": 1,
+                  "type": "string"
+                }
+              ],
+              "description": "Supported types"
             },
             {
               "type": "null"
@@ -478,10 +498,30 @@
               "description": "Node Id"
             },
             {
-              "description": "Supported types",
-              "format": "uri",
-              "minLength": 1,
-              "type": "string"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "format": "uri",
+                  "minLength": 1,
+                  "type": "string"
+                }
+              ],
+              "description": "Supported types"
             },
             {
               "$ref": "#/$defs/CvTerm"
@@ -920,7 +960,7 @@
       "title": "Id"
     },
     "type": {
-      "default": "base-v1-0",
+      "default": "base-v1_0",
       "pattern": "^[a-z][-_a-z0-9]*[a-z0-9]$",
       "title": "Type",
       "type": "string"

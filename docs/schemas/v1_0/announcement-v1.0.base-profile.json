@@ -490,7 +490,8 @@
       "code": "base-submitters-email_list-0002",
       "enforcement_level": "required",
       "value_constraint": {
-        "type": "email"
+        "type": "email",
+        "check_deliverability": false
       }
     },
     "$.submitters[*].orcid": {
@@ -543,7 +544,8 @@
       "code": "base-principal_investigators-email_list_0002",
       "enforcement_level": "required",
       "value_constraint": {
-        "type": "email"
+        "type": "email",
+        "check_deliverability": false
       }
     },
     "$.omics_type": {

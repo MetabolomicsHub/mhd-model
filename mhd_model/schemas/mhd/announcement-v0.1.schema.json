@@ -253,6 +253,55 @@
       "title": "AnnouncementMetadataFile",
       "type": "object"
     },
+    "AnnouncementProject": {
+      "description": "Project",
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name of the project.",
+          "title": "Name"
+        },
+        "identifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Identifier of the project, such as DOI, ",
+          "title": "Identifier"
+        },
+        "organizations": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "organizations that conduct the project.",
+          "title": "Organizations"
+        }
+      },
+      "title": "AnnouncementProject",
+      "type": "object"
+    },
     "AnnouncementProtocol": {
       "description": "A protocol is a defined and standardized procedure followed\nto collect, prepare, or analyze biological samples.",
       "properties": {
@@ -611,10 +660,30 @@
         "value": {
           "anyOf": [
             {
-              "description": "Supported types",
-              "format": "uri",
-              "minLength": 1,
-              "type": "string"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "format": "uri",
+                  "minLength": 1,
+                  "type": "string"
+                }
+              ],
+              "description": "Supported types"
             },
             {
               "type": "null"
@@ -774,10 +843,30 @@
               "items": {
                 "anyOf": [
                   {
-                    "description": "Supported types",
-                    "format": "uri",
-                    "minLength": 1,
-                    "type": "string"
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "format": "uri",
+                        "minLength": 1,
+                        "type": "string"
+                      }
+                    ],
+                    "description": "Supported types"
                   },
                   {
                     "$ref": "#/$defs/BasicValueModel"
@@ -943,10 +1032,30 @@
               "description": "Node Id"
             },
             {
-              "description": "Supported types",
-              "format": "uri",
-              "minLength": 1,
-              "type": "string"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "format": "uri",
+                  "minLength": 1,
+                  "type": "string"
+                }
+              ],
+              "description": "Supported types"
             },
             {
               "$ref": "#/$defs/CvTerm"
@@ -1549,7 +1658,7 @@
       "anyOf": [
         {
           "items": {
-            "$ref": "#/$defs/AnnouncementFund"
+            "$ref": "#/$defs/AnnouncementProject"
           },
           "type": "array"
         },

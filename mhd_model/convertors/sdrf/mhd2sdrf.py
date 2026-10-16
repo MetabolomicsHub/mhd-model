@@ -26,7 +26,12 @@ from mhd_model.model.v1_0.sdrf.model import (
     SdrfSampleProtocolDefinition,
 )
 from mhd_model.shared.base import BasicValueModel, CvTerm, CvTermKeyValue, CvTermValue
-from mhd_model.shared.model import IdentifiableMhdModel, MhdNode, MhdRelationship
+from mhd_model.shared.model import (
+    IdentifiableMhdModel,
+    MhdModelValidationContext,
+    MhdNode,
+    MhdRelationship,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -220,8 +225,13 @@ def create_sdrf_files(
     sdrf_files = []
     txt = Path(mhd_file_path).read_text()
     mhd_data_json = json.loads(txt)
+    context = MhdModelValidationContext(
+        dataset_configuration=MhDatasetLegacyProfile_v1_0.get_config()
+    )
 
-    mhd_dataset = MhDatasetLegacyProfile_v1_0.model_validate(mhd_data_json)
+    mhd_dataset = MhDatasetLegacyProfile_v1_0.model_validate(
+        mhd_data_json, context=context
+    )
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }

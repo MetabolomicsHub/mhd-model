@@ -30,9 +30,7 @@ MhdDatasetId = Annotated[str, Field(pattern=DATASET_UUID_PATTERN)]
 MhdReferencedObjectId = Annotated[str, Field(pattern=REFERENCE_UUID_PATTERN)]
 
 MhdSupportedPrimitiveType = Annotated[
-    str | int | float | datetime.datetime | bool,
-    AnyUrl,
-    bool,
+    str | int | float | datetime.datetime | bool | AnyUrl,
     Field(description="Supported types"),
 ]
 

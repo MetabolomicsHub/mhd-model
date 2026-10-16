@@ -552,7 +552,7 @@ class MhdGraph(MhdConfigModel):
                 context = info.context
             elif info and isinstance(info.context, dict):
                 context = MhdModelValidationContext.model_validate(info.context)
-        if isinstance(v, dict):
+        if v and isinstance(v, dict):
             for entities in ("nodes", "relationships"):
                 nodes = v.get(entities) or []
                 if isinstance(nodes, list):
@@ -562,6 +562,10 @@ class MhdGraph(MhdConfigModel):
                         if isinstance(item, MhdConfigModel):
                             items.append(item)
                         elif isinstance(item, dict):
+                            if not context:
+                                raise ValueError(
+                                    f"Context is required to convert '{item}'"
+                                )
                             val = cls.create_model(item, context=context)
                             if not val:
                                 raise ValueError("invalid type in nodes")

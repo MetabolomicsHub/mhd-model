@@ -38,7 +38,7 @@ graph LR
 
 ### Assay
 
-Basic analytical assay node representing an experimental measurement procedure. </br></br>Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
+[OBI, OBI:0000070, assay] A planned process that has the objective to produce information<br>about a material entity by examining it. </br></br>Assay node is optional in the  MHD Base Profile. <code>Minimum: 0, Maximum: N (unbounded) </code>
 
 **Properties**
 
@@ -61,6 +61,7 @@ Basic analytical assay node representing an experimental measurement procedure. 
 |**measurement_type_ref**|optional|<code>*str*<code>|Reference ID to the measurement type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MS, MS:1003904, untargeted analysis],<br>* [MS, MS:1003905, targeted analysis],<br>* [MS, MS:1003906, semi-targeted analysis]</code>|
 |**omics_type_ref**|optional|<code>*str*<code>|Reference ID to the omics type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [EDAM, EDAM:topic_4065, Exposomics]</code>|
 |**protocol_refs**|optional|<code>*list[Annotated]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
+|**sample_run_refs**|optional|<code>*list[Annotated]*<code>|List of sample run object IDs associated with the assay<br>Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
 
 
 **Node Relationships**

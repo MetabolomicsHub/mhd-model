@@ -579,7 +579,7 @@
     {
       "name": "EMRO",
       "file": "http://purl.obolibrary.org/obo/emro.owl",
-      "version": "2026-08-24",
+      "version": "2026-10-15",
       "description": "Emotion Response Ontology",
       "details": "The Emotion Response Ontology represents emotions as behavioral responses.",
       "prefix": "EMRO"
@@ -707,7 +707,7 @@
     {
       "name": "FLOPO",
       "file": "http://purl.obolibrary.org/obo/flopo.owl",
-      "version": "2026-10-05",
+      "version": "2026-10-14",
       "description": "Flora Phenotype Ontology",
       "details": "Traits and phenotypes of flowering plants occurring in digitized Floras",
       "prefix": "FLOPO"
@@ -1339,7 +1339,7 @@
     {
       "name": "OBA",
       "file": "http://purl.obolibrary.org/obo/oba.owl",
-      "version": "2026-07-14",
+      "version": "2026-10-10",
       "description": "Ontology of Biological Attributes (OBA)",
       "details": "A collection of biological attributes (traits) covering all kingdoms of life. Interoperable with VT (vertebrate trait ontology) and TO (plant trait ontology). Extends PATO.",
       "prefix": "OBA"
@@ -1579,7 +1579,7 @@
     {
       "name": "PAIN",
       "file": "http://purl.obolibrary.org/obo/pain.owl",
-      "version": "2026-10-01",
+      "version": "2026-10-15",
       "description": "The Pain Ontology",
       "details": "An ontology that formalizes IASP's definition of pain as both an unpleasant physical and emotional experience, and it provides terms and axioms to represent the multidimensional aspects of pain, such as temporality, quality, extent, biological mechanism, and anatomical location.",
       "prefix": "PAIN"
@@ -1923,7 +1923,7 @@
     {
       "name": "HTTP://SEMANTICSCIENCE.ORG/RESOURCE/SIO_",
       "file": "https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-release.owl",
-      "version": "1.61",
+      "version": "1.62",
       "description": "Semanticscience Integrated Ontology",
       "details": "The Semanticscience Integrated Ontology (SIO) provides a simple, integrated ontology of types and relations for rich description of objects, processes and their attributes.",
       "prefix": "http://semanticscience.org/resource/SIO_"
@@ -2123,7 +2123,7 @@
     {
       "name": "UO",
       "file": "http://purl.obolibrary.org/obo/uo.owl",
-      "version": "2026-07-31",
+      "version": "2026-10-12",
       "description": "Units of measurement ontology",
       "details": "Metrical units for use in conjunction with PATO",
       "prefix": "UO"

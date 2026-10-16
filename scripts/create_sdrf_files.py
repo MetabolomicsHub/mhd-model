@@ -9,7 +9,7 @@ if __name__ == "__main__":
         "ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public"
     )
 
-    files = list(Path("tests/data/mhd_data/legacy").glob("MTBLS113.mhd.json"))
+    files = list(Path("tests/data/sdrf").glob("*.mhd.json"))
     sdrf_file_root_path = "tests/data/sdrf_files/legacy"
     Path(sdrf_file_root_path).mkdir(parents=True, exist_ok=True)
     for file in files:
