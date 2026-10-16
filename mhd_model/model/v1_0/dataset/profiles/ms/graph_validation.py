@@ -1354,7 +1354,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                identifier="sample-run-003-02",
+                identifier="sample-run-003-03",
                 source="sample-run",
                 reverse_relationship_name="has-sample-run",
                 relationship_name="part-of",

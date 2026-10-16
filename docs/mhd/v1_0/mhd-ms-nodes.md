@@ -205,6 +205,7 @@ The following nodes are required with the specified value.
 |assay|described-as|describes|descriptor|0|N|A link to a descriptor that describes the assay.|
 |assay|follows|used-in|protocol|1|N|A link to a protocol conducted in assay.|
 |assay|has|created-in|result-file|0|N|A link to a result file.|
+|assay|has-sample-run|part-of|sample-run|0|N||
 |assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br>**Required min count in the dataset: 1.**|
 
 
@@ -218,6 +219,7 @@ The following nodes are required with the specified value.
 |descriptor|describes|described-as|assay|0|N||
 |protocol|used-in|follows|assay|0|N||
 |result-file|created-in|has|assay|0|N|A link to a result file.|
+|sample-run|part-of|has-sample-run|assay|0|N||
 |study|has-assay|part-of|assay|1|N|**Required min count in the dataset: 1.**|
 
 ### Characteristic Definition
@@ -941,6 +943,7 @@ An analytical run representing the measurement of a sample on an instrument. </b
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
 |sample-run|described-as|describes|descriptor|0|N||
+|sample-run|part-of|has-sample-run|assay|0|N||
 |sample-run|used-in|has-sample-run|study|0|N||
 
 
@@ -951,6 +954,7 @@ An analytical run representing the measurement of a sample on an instrument. </b
 
 |Source|Relationship|Reverse Name|Target|Min|Max|Description|
 |------|------------|------------|------|---|---|-----------|
+|assay|has-sample-run|part-of|sample-run|0|N||
 |descriptor|describes|described-as|sample-run|0|N||
 |study|has-sample-run|used-in|sample-run|0|N||
 
@@ -1604,6 +1608,7 @@ graph LR
   Assay[Assay] ==>|part-of| Study[Study];
   Assay[Assay] ==>|follows| Protocol[Protocol];
   Assay[Assay] ==>|has| Result_File[Result File];
+  Assay[Assay] ==>|has-sample-run| Sample_Run[Sample Run];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
@@ -1685,6 +1690,7 @@ graph LR
   Sample[Sample] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
   Sample_Run[Sample Run] ==>|described-as| Descriptor[Descriptor];
   Sample_Run[Sample Run] ==>|used-in| Study[Study];
+  Sample_Run[Sample Run] ==>|part-of| Assay[Assay];
   Sample_Run_Configuration[Sample Run Configuration] ==>|described-as| Descriptor[Descriptor];
   Specimen[Specimen] ==>|described-as| Descriptor[Descriptor];
   Specimen[Specimen] ==>|has-characteristic-value| Characteristic_Value[Characteristic Value];
