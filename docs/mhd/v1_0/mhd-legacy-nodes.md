@@ -99,8 +99,6 @@ The following nodes are required with the specified value.
 |**assay_type_ref**|optional|<code>*str*<code>|Reference ID to the assay type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code>|
 |**measurement_type_ref**|optional|<code>*str*<code>|Reference ID to the measurement type CV term object<br>Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
 |**omics_type_ref**|optional|<code>*str*<code>|Reference ID to the omics type CV term object<br>Validation Rule:<br> <code>Target node type: <code>**descriptor**</code></code>|
-|**protocol_refs**|optional|<code>*list[Annotated]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
-|**sample_run_refs**|optional|<code>*list[Annotated]*<code>|List of sample run object IDs associated with the assay<br>Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
 
 
 **Node Relationships**
@@ -113,7 +111,7 @@ The following nodes are required with the specified value.
 |assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives|
 
 
-**Embedded Relationships**: <code>descriptor, metadata-file, protocol, sample-run</code>
+**Embedded Relationships**: <code>descriptor, metadata-file</code>
 
 
 **Reverse Node Relationships**
@@ -951,7 +949,6 @@ A biological research study or experiment comprising samples, protocols, and dat
 |**license**|optional|<code>*HttpUrl*<code>|Data license URL defining usage rights for the study<br><br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
 |**license_name**|optional|<code>*str*<code>|Data license name<br><br>Example: <br><code>"CC0 v1.0"</code>|
 |**related_dataset_list**|optional|<code>*list[KeyValue]*<code>|List of related dataset key-value pairs|
-|**protocol_refs**|optional|<code>*list[Annotated]*<code>|Ordered list of protocol object IDs used in the study<br>Target node type: <code>**protocol**</code>|
 
 
 **Node Relationships**

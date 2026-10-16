@@ -21,14 +21,12 @@ graph LR
   Assay[Assay] ==>|embedded - assay_type_ref| Descriptor[Descriptor];
   Assay[Assay] ==>|embedded - measurement_type_ref| Descriptor[Descriptor];
   Assay[Assay] ==>|embedded - omics_type_ref| Descriptor[Descriptor];
-  Assay[Assay] ==>|embedded - sample_run_refs| Sample_Run[Sample Run];
   Characteristic_Definition[Characteristic Definition] ==>|embedded - characteristic_type_ref| Characteristic_Type[Characteristic Type];
   Parameter_Definition[Parameter Definition] ==>|embedded - parameter_type_ref| Parameter_Type[Parameter Type];
   Protocol[Protocol] ==>|embedded - protocol_type_ref| Protocol_Type[Protocol Type];
   Sample_Run[Sample Run] ==>|embedded - sample_ref| Sample[Sample];
   Sample_Run[Sample Run] ==>|embedded - raw_data_file_refs| Raw_Data_File[Raw Data File];
   Study[Study] ==>|embedded - created_by_ref| Data_Provider[Data Provider];
-  Study[Study] ==>|embedded - protocol_refs| Protocol[Protocol];
   Assay[Assay] ==>|part-of| Study[Study];
   Assay[Assay] ==>|follows| Protocol[Protocol];
   Characteristic_Definition[Characteristic Definition] ==>|has-instance| Characteristic_Value[Characteristic Value];
@@ -74,7 +72,6 @@ graph LR
 |Assay|[embedded] - measurement_type_ref|Descriptor|1|1|
 |Assay|[embedded] - metadata_file_ref|Metadata File|1|1|
 |Assay|[embedded] - omics_type_ref|Descriptor|1|1|
-|Assay|[embedded] - sample_run_refs|Sample Run|1|N (unbounded)|
 |Assay|[embedded] - technology_type_ref|Descriptor|1|1|
 |Assay|follows|Protocol|1|N (unbounded)|
 |Assay|part-of|Study|1|1|
@@ -108,7 +105,6 @@ graph LR
 |Sample Run|[embedded] - raw_data_file_refs|Raw Data File|1|N (unbounded)|
 |Sample Run|[embedded] - sample_ref|Sample|1|1|
 |Study|[embedded] - created_by_ref|Data Provider|1|1|
-|Study|[embedded] - protocol_refs|Protocol|1|N (unbounded)|
 |Study|has-assay|Assay|1|N (unbounded)|
 |Study|has-characteristic-definition|Characteristic Definition|2|N (unbounded)|
 |Study|has-metadata-file|Metadata File|1|N (unbounded)|
@@ -128,7 +124,6 @@ graph LR
 |assay|metadata_file_ref|
 |assay|name|
 |assay|omics_type_ref|
-|assay|sample_run_refs|
 |assay|technology_type_ref|
 |characteristic-definition|characteristic_type_ref|
 |characteristic-definition|name|
@@ -154,7 +149,6 @@ graph LR
 |study|description|
 |study|license|
 |study|mhd_identifier|
-|study|protocol_refs|
 |study|public_release_date|
 |study|repository_identifier|
 |study|submission_date|
@@ -202,8 +196,6 @@ The following nodes are required with the specified value.
 |**assay_type_ref**|**required**|<code>*str*<code>|Reference ID to the assay type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [OBI, OBI:0003097, liquid chromatography mass spectrometry assay],<br>* [OBI, OBI:0003110, gas chromatography mass spectrometry assay],<br>* [OBI, OBI:0003741, capillary electrophoresis mass spectrometry assay],<br>* [OBI, OBI:0000470, mass spectrometry assay],<br>* [OBI, OBI:0000623, NMR spectroscopy assay]</code>|
 |**measurement_type_ref**|**required**|<code>*str*<code>|Reference ID to the measurement type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [MS, MS:1003904, untargeted analysis],<br>* [MS, MS:1003905, targeted analysis],<br>* [MS, MS:1003906, semi-targeted analysis]</code>|
 |**omics_type_ref**|**required**|<code>*str*<code>|Reference ID to the omics type CV term object<br>Target CV term type: <code>**descriptor**</code><br>Validation Rules:<br> <code>Target node type: <code>**descriptor**</code><br>Allowed CV Terms:<br>* [EDAM, EDAM:topic_3172, Metabolomics],<br>* [EDAM, EDAM:topic_0153, Lipidomics],<br>* [EDAM, EDAM:topic_3955, Fluxomics],<br>* [EDAM, EDAM:topic_4065, Exposomics]</code>|
-|**protocol_refs**|optional|<code>*list[Annotated]*<code>|The id properties of protocols used in assay. A protocol is a defined and standardized procedure followed to collect, prepare, or analyze biological samples<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
-|**sample_run_refs**|**required**|<code>*list[Annotated]*<code>|List of sample run object IDs associated with the assay<br>Target node type: <code>**sample-run**</code><br>Validation Rule:<br> <code>Target node type: <code>**sample-run**</code></code>|
 
 
 **Node Relationships**
@@ -216,7 +208,7 @@ The following nodes are required with the specified value.
 |assay|part-of|has-assay|study|1|1|A link to a study that the assay was conducted as part of it to generate data addressing study objectives<br>**Required min count in the dataset: 1.**|
 
 
-**Embedded Relationships**: <code>descriptor, metadata-file, protocol, sample-run</code>
+**Embedded Relationships**: <code>descriptor, metadata-file</code>
 
 
 **Reverse Node Relationships**
@@ -1068,7 +1060,6 @@ A biological research study or experiment comprising samples, protocols, and dat
 |**license**|**required**|<code>*HttpUrl*<code>|Data license URL defining usage rights for the study<br><br>Example: <br><code>"https://creativecommons.org/publicdomain/zero/1.0/"</code>|
 |**license_name**|optional|<code>*str*<code>|Data license name<br><br>Example: <br><code>"CC0 v1.0"</code>|
 |**related_dataset_list**|optional|<code>*list[KeyValue]*<code>|List of related dataset key-value pairs|
-|**protocol_refs**|**required**|<code>*list[Annotated]*<code>|Ordered list of protocol object IDs used in the study<br>Target node type: <code>**protocol**</code><br>Validation Rule:<br> <code>Target node type: <code>**protocol**</code></code>|
 
 
 **Node Relationships**
@@ -1099,7 +1090,7 @@ A biological research study or experiment comprising samples, protocols, and dat
 |study|submitted-by|submits|person|1|N|**Required min count in the dataset: 1.**|
 
 
-**Embedded Relationships**: <code>data-provider, protocol</code>
+**Embedded Relationships**: <code>data-provider</code>
 
 
 **Reverse Node Relationships**

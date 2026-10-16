@@ -85,20 +85,6 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 required=False,
                 target_ref_types=["descriptor"],
             ),
-            EmbeddedRefValidation(
-                identifier="assay-property-008-01",
-                node_type="assay",
-                node_property_name="protocol_refs",
-                required=False,
-                target_ref_types=["protocol"],
-            ),
-            EmbeddedRefValidation(
-                identifier="assay-property-009-01",
-                node_type="assay",
-                node_property_name="sample_run_refs",
-                required=False,
-                target_ref_types=["sample-run"],
-            ),
         ],
         relationships=[
             RelationshipValidation(
@@ -1025,12 +1011,6 @@ MHD_BASE_VALIDATION_V1_0.mhd_nodes = [
                 node_type="study",
                 node_property_name="repository_identifier",
                 constraints=PropertyConstraint(required=True, min_length=2),
-            ),
-            EmbeddedRefValidation(
-                node_type="study",
-                node_property_name="protocol_refs",
-                required=False,
-                target_ref_types=["protocol"],
             ),
         ],
         relationships=[

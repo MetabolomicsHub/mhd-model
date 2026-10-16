@@ -592,6 +592,8 @@ class MhdGraph(MhdConfigModel):
             node_class_object = config.get_cv_term_type_class()
         elif prefix == "cv-value":
             node_class_object = config.get_cv_term_value_type_class()
+        elif prefix == "relationship":
+            node_class_object = config.get_relationship_type_class(type_)
         else:
             node_class_object = config.get_type_class(prefix, type_)
 

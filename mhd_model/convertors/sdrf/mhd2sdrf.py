@@ -5,7 +5,6 @@ from pathlib import Path
 
 from mhd_model.model.v1_0.announcement.profiles.profile import (
     AnnouncementBaseFile,
-    AnnouncementProtocol,
 )
 from mhd_model.model.v1_0.dataset.profiles.base import graph_nodes
 from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import CvTermValueObject
@@ -123,67 +122,6 @@ def get_study_factors(
     return announcement_factors
 
 
-def get_protocols(
-    all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, MhdRelationship],
-    type_map: dict[str, dict[IdentifiableMhdModel]],
-    study: graph_nodes.Study,
-):
-    protocols: list[AnnouncementProtocol] = []
-    if not study.protocol_refs:
-        return protocols
-
-    for ref in study.protocol_refs:
-        if ref not in type_map["protocol"]:
-            logger.error("Protocol %s is not defined in dataset.", ref)
-        protocol_parameters = []
-        protocol_node: graph_nodes.Protocol = type_map["protocol"].get(ref)
-        protocol_type_object = all_nodes_map.get(protocol_node.protocol_type_ref, None)
-        # if not protocol_node.parameter_definition_refs:
-        #     continue
-        protocol_parameters = []
-        if protocol_node.parameter_definition_refs:
-            for definition_key in protocol_node.parameter_definition_refs:
-                if definition_key not in all_nodes_map:
-                    continue
-                definition = all_nodes_map[definition_key]
-                if not isinstance(definition, graph_nodes.ParameterDefinition):
-                    continue
-                vals = []
-                for rel in relationship_name_map["has-instance"].values():
-                    if rel.source_ref == definition.id_:
-                        val_obj = all_nodes_map.get(rel.target_ref)
-                        if val_obj.value or val_obj.name:
-                            val = CvTermValue.model_validate(
-                                val_obj.model_dump(by_alias=True)
-                            )
-                            vals.append(val)
-                # if vals:
-                def_type = all_nodes_map.get(definition.parameter_type_ref)
-                key = CvTerm.model_validate(def_type.model_dump(by_alias=True))
-                param = CvTermKeyValue(
-                    key=key,
-                    values=vals or None,
-                )
-                protocol_parameters.append(param)
-        if not protocol_parameters:
-            protocol_parameters = None
-        else:
-            protocol_parameters.sort(key=lambda x: x.key.name)
-        protocol_type = CvTerm.model_validate(
-            protocol_type_object.model_dump(by_alias=True)
-        )
-        protocol = AnnouncementProtocol(
-            name=protocol_node.name,
-            protocol_type=protocol_type,
-            description=protocol_node.description,
-            protocol_parameters=protocol_parameters,
-        )
-        protocols.append(protocol)
-
-    return protocols
-
-
 def convert_file(
     all_nodes_map,
     type_map: dict[str, dict[str, IdentifiableMhdModel]],
@@ -248,8 +186,22 @@ def create_sdrf_files(
         all_nodes_map[node.id_] = node
 
     relationship_name_map: dict[str, dict[str, MhdRelationship]] = {}
+    all_relationships: dict[str, dict[str, list[MhdRelationship]]] = {}
     node_relationships: dict[str, dict[str, list[str]]] = {}
+
     for rel in mhd_dataset.graph.relationships:
+        if rel.relationship_name not in all_relationships:
+            all_relationships[rel.relationship_name] = {}
+        sources = all_relationships[rel.relationship_name]
+
+        if rel.source_ref not in sources:
+            sources[rel.source_ref] = {}
+        targets = sources[rel.source_ref]
+
+        if rel.target_ref not in targets:
+            targets[rel.target_ref] = []
+        targets[rel.target_ref].append(rel)
+
         if rel.relationship_name not in relationship_name_map:
             relationship_name_map[rel.relationship_name] = {}
         relationship_name_map[rel.relationship_name][rel.id_] = rel
@@ -280,18 +232,47 @@ def create_sdrf_files(
     if not selected_assays:
         logger.error("Study %s has no assay with name %s", study_id, assay_name)
         return False, sdrf_files
+    assay_sample_runs = {}
     for idx, assay in selected_assays:
-        if not assay.sample_run_refs:
+        sample_run_links = [
+            v
+            for k, v in relationship_name_map.get("has-sample-run", {}).items()
+            if v.source_ref == assay.id_
+        ]
+
+        sample_run_links.sort(
+            key=lambda x: x.tag_list[0].value if x.tag_list and x.tag_list[0] else -1
+        )
+        if sample_run_links:
+            assay_sample_runs[assay.id_] = sample_run_links
+
+    if not sample_run_links:
+        sample_run_links = [
+            v
+            for k, v in relationship_name_map.get("has-sample-run", {}).items()
+            if v.source_ref == assay.id_
+        ]
+        if sample_run_links and selected_assays:
+            assay = selected_assays[0][1]
+            assay_sample_runs[assay.id_] = sample_run_links
+
+    for idx, assay in selected_assays:
+        if assay.id_ not in assay_sample_runs:
+            continue
+        sample_run_links = assay_sample_runs[assay.id_]
+        if not sample_run_links:
             logger.error("Study %s Assay '%s' has no sample run", study_id, assay.name)
             continue
         sdrf_file = LegacySdrf(
             study_identifier=study.repository_identifier,
-            assay_identifier=assay.repository_identifier,
+            assay_identifier=assay.repository_identifier or str(idx),
         )
         parameter_type_cv_terms: dict[str, CvTerm] = {}
 
-        for sample_run_ref in assay.sample_run_refs:
-            sample_run: graph_nodes.SampleRun = all_nodes_map[sample_run_ref]
+        for sample_run_link in sample_run_links:
+            sample_run: graph_nodes.SampleRun = all_nodes_map[
+                sample_run_link.target_ref
+            ]
             sample: graph_nodes.Sample = all_nodes_map[sample_run.sample_ref]
 
             subjects = find_all_linked_nodes(
@@ -325,7 +306,11 @@ def create_sdrf_files(
                         )
                         if characteristic_type:
                             target_value = None
-                            if value.value is not None and value.name is None:
+                            if (
+                                hasattr(value, "value")
+                                and value.value is not None
+                                and value.name is None
+                            ):
                                 target_value = BasicValueModel.model_validate(
                                     value.model_dump(by_alias=True)
                                 )
@@ -415,6 +400,7 @@ def create_sdrf_files(
                     for x in supplementary_file_nodes
                 ]
             protocol_parameters = []
+
             if sample_run.sample_run_configuration_refs:
                 run_configs: graph_nodes.SampleRunConfiguration = [
                     nodes_map[x] for x in sample_run.sample_run_configuration_refs
@@ -514,8 +500,27 @@ def create_sdrf_files(
             characteristic_headers[name] = header
 
         headers["assay name"] = None
-        if assay.protocol_refs:
-            protocols = [nodes_map[x] for x in assay.protocol_refs]
+        protocol_references = find_all_linked_nodes(
+            all_nodes_map,
+            node_relationships,
+            assay.id_,
+            relationship_name="follows",
+            target_node_type="protocol",
+        )
+        if protocol_references:
+            follows = [
+                (k, v[0])
+                for k, v in all_relationships.get("follows").get(assay.id_, {}).items()
+            ]
+
+            follows.sort(
+                key=lambda x: (
+                    x[1].tag_list[0].value
+                    if x and x[1].tag_list and x[1].tag_list[0]
+                    else -1
+                )
+            )
+            protocols = [nodes_map[x] for x, _ in follows]
             for protocol_item in protocols:
                 parameter_definitions: list[IdentifiableMhdModel] = (
                     find_all_linked_nodes(
@@ -635,7 +640,7 @@ def create_sdrf_files(
                     row.supplementary_files,
                 ),
             ]:
-                for idx, item in enumerate(files, start=1):
+                for idx, item in enumerate(values, start=1):
                     if not item:
                         continue
                     header = f"comment[{name_prefix} name.{idx}]"

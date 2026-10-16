@@ -117,20 +117,6 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 required=True,
                 target_ref_types=["descriptor"],
             ),
-            EmbeddedRefValidation(
-                identifier="assay-002-06",
-                node_type="assay",
-                node_property_name="protocol_refs",
-                required=False,
-                target_ref_types=["protocol"],
-            ),
-            EmbeddedRefValidation(
-                identifier="assay-002-07",
-                node_type="assay",
-                node_property_name="sample_run_refs",
-                required=True,
-                target_ref_types=["sample-run"],
-            ),
         ],
         relationships=[
             RelationshipValidation(
@@ -1452,13 +1438,6 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="created_by_ref",
                 required=True,
                 target_ref_types=["data-provider"],
-            ),
-            EmbeddedRefValidation(
-                identifier="study-002-02",
-                node_type="study",
-                node_property_name="protocol_refs",
-                required=True,
-                target_ref_types=["protocol"],
             ),
         ],
         relationships=[

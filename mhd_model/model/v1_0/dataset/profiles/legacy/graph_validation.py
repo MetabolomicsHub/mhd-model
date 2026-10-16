@@ -98,18 +98,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 required=False,
                 target_ref_types=["descriptor"],
             ),
-            EmbeddedRefValidation(
-                node_type="assay",
-                node_property_name="protocol_refs",
-                required=False,
-                target_ref_types=["protocol"],
-            ),
-            EmbeddedRefValidation(
-                node_type="assay",
-                node_property_name="sample_run_refs",
-                required=False,
-                target_ref_types=["sample-run"],
-            ),
         ],
         relationships=[
             RelationshipValidation(

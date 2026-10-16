@@ -285,10 +285,6 @@ class Study(BaseMhdObjectModel):
         None | list[KeyValue],
         Field(description="List of related dataset key-value pairs."),
     ] = None
-    protocol_refs: Annotated[
-        None | list[MhdObjectId],
-        Field(description="Ordered list of protocol object IDs used in the study."),
-    ] = None
 
     def get_label(self):
         return (
@@ -492,14 +488,6 @@ class BasicAssay(BaseMhdObjectModel, abc.ABC):
         None | CvTermObjectId,
         Field(description="Reference ID to the omics type CV term object."),
     ] = None
-    protocol_refs: Annotated[
-        None | list[MhdObjectId],
-        Field(
-            description="The id properties of protocols used in assay. A protocol "
-            "is a defined and standardized procedure followed to collect, prepare, "
-            "or analyze biological samples.",
-        ),
-    ] = None
 
     def get_label(self):
         return self.name or self.id_
@@ -513,10 +501,6 @@ class Assay(BasicAssay):
     type_: Annotated[None | MhdObjectType, Field(..., frozen=True, alias="type")] = (
         "assay"
     )
-    sample_run_refs: Annotated[
-        None | list[MhdObjectId],
-        Field(description="List of sample run object IDs associated with the assay."),
-    ] = None
 
     def get_label(self):
         return self.name or self.id_
