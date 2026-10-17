@@ -687,7 +687,7 @@ def get_sdrf_file_column_name(idx: int, name_prefix: str):
             url_header = "comment[file uri]"
         elif idx == 2:
             column_header = "comment[associated data file]"
-            url_header = "comment[file uri]"
+            url_header = "comment[associated data file uri]"
         else:
             column_header = f"comment[associated data file.{idx}]"
             url_header = f"comment[associated data file.{idx} uri]"
