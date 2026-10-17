@@ -31,6 +31,8 @@ class LegacySdrfRow(MhdConfigModel):
     derived_data_files: Annotated[list[SdrfFile], Field()] = []
     result_files: Annotated[list[SdrfFile], Field()] = []
     supplementary_files: Annotated[list[SdrfFile], Field()] = []
+    technology_type: Annotated[None | str, Field()]
+    biosample_accession: Annotated[None | str, Field()]
 
 
 class LegacySdrf(MhdConfigModel):
