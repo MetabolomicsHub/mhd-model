@@ -157,7 +157,6 @@ BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
         ),
         "$.change_log[*].revision": FieldRequirement(
             code="base-change_log-revision-0002",
-            match_is_required=True,
             value_constraint=constraints.IntegerConstraint(minimum=0),
         ),
         "$.change_log[*].revision_datetime": FieldRequirement(

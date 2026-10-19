@@ -176,8 +176,7 @@
       "value_constraint": {
         "type": "integer",
         "minimum": 0
-      },
-      "match_is_required": true
+      }
     },
     "$.change_log[*].revision_datetime": {
       "code": "base-change_log-revision-0003",
