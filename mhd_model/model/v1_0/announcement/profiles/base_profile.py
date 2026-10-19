@@ -519,7 +519,7 @@ BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
             value_constraint=constraints.CollectionConstraint(),
         ),
         "$.characteristic_values[*].values[*]": FieldRequirement(
-            code="base-characteristic_values-characteristic-value-0001-01",
+            code="base-characteristic_values-characteristic-value-0001",
             value_constraint=constraints.ConstraintGroup(
                 join_operator="or",
                 min_valid=1,
@@ -534,7 +534,7 @@ BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
             ),
         ),
         "$.characteristic_values[*].values[*].unit": FieldRequirement(
-            code="base-characteristic_values-characteristic-unit-0001",
+            code="base-characteristic_values-values-unit-0001",
             value_constraint=constraints.CVTermConstraint(
                 allow_user_defined_terms=True,
                 allow_synonym=True,

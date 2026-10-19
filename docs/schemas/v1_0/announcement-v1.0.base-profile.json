@@ -804,7 +804,7 @@
       }
     },
     "$.characteristic_values[*].values[*]": {
-      "code": "base-characteristic_values-characteristic-0004-01",
+      "code": "base-characteristic_values-characteristic-value-0001",
       "enforcement_level": "required",
       "value_constraint": {
         "type": "group",
@@ -829,7 +829,7 @@
       }
     },
     "$.characteristic_values[*].values[*].unit": {
-      "code": "base-characteristic_values-characteristic-unit-0001",
+      "code": "base-characteristic_values-values-unit-0001",
       "enforcement_level": "required",
       "value_constraint": {
         "type": "cv-term",
@@ -923,7 +923,7 @@
       }
     },
     "$.protocols[*].protocol_parameters[*].values[*].unit": {
-      "code": "base-characteristic_values-characteristic-unit-0001",
+      "code": "base-protocols-protocol_parameters-values-unit-0001",
       "enforcement_level": "required",
       "value_constraint": {
         "type": "cv-term",
