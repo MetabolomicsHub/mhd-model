@@ -577,7 +577,7 @@ BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
             value_constraint=constraints.CollectionConstraint(),
         ),
         "$.protocols[*].protocol_parameters[*].values[*]": FieldRequirement(
-            code="base-characteristic_values-characteristic-0004-01",
+            code="base-protocols-protocol_parameters-values-0004-01",
             value_constraint=constraints.ConstraintGroup(
                 join_operator="or",
                 min_valid=1,

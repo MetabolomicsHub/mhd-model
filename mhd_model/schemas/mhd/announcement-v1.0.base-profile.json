@@ -898,7 +898,7 @@
       }
     },
     "$.protocols[*].protocol_parameters[*].values[*]": {
-      "code": "base-characteristic_values-characteristic-0004-01",
+      "code": "base-protocols-protocol_parameters-values-0004-01",
       "enforcement_level": "required",
       "value_constraint": {
         "type": "group",
