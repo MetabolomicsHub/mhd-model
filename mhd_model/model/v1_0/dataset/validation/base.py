@@ -1307,7 +1307,7 @@ class MhdModelValidator:
                         relationships_index=relationships_index,
                     )
                     for val in vals:
-                        if val == source_value:
+                        if val and val.lower() == source_value.lower():
                             if relationships:
                                 current_idx, selected = nodes_by_type.get(
                                     node_type, {}
