@@ -204,7 +204,25 @@ def create_sdrf_files(
             assay_identifier=assay.repository_identifier or str(idx),
         )
         parameter_type_cv_terms: dict[str, CvTerm] = {}
-
+        study_characteristic_definitions = find_all_linked_nodes(
+            all_nodes_map,
+            node_relationships,
+            study.id_,
+            "has-characteristic-definition",
+            "characteristic-definition",
+        )
+        char_val_defs = {}
+        for def_ in study_characteristic_definitions:
+            vals_ = find_all_linked_nodes(
+                all_nodes_map,
+                node_relationships,
+                def_.id_,
+                "has-instance",
+                "characteristic-value",
+            )
+            char_type = all_nodes_map[def_.characteristic_type_ref]
+            for val_ in vals_:
+                char_val_defs[val_.id_] = (def_, char_type)
         for sample_run_link in sample_run_links:
             sample_run: graph_nodes.SampleRun = all_nodes_map[
                 sample_run_link.target_ref
@@ -228,40 +246,29 @@ def create_sdrf_files(
                     "characteristic-value",
                 )
                 characteristic_values = []
-                if values:
-                    for value in values:
-                        characteristic_types = find_all_linked_nodes(
-                            all_nodes_map,
-                            node_relationships,
-                            value.id_,
-                            "has-type",
-                            "characteristic-type",
+                for value in values or []:
+                    _, characteristic_type = char_val_defs.get(value.id_)
+                    target_value = None
+                    if (
+                        isinstance(value, CvTermValueObject)
+                        and value.value is not None
+                        and value.name is None
+                    ):
+                        target_value = BasicValueModel.model_validate(
+                            value.model_dump(by_alias=True)
                         )
-                        characteristic_type = (
-                            characteristic_types[0] if characteristic_types else None
+                    else:
+                        target_value = CvTerm.model_validate(
+                            value.model_dump(by_alias=True)
                         )
-                        if characteristic_type:
-                            target_value = None
-                            if (
-                                isinstance(value, CvTermValueObject)
-                                and value.value is not None
-                                and value.name is None
-                            ):
-                                target_value = BasicValueModel.model_validate(
-                                    value.model_dump(by_alias=True)
-                                )
-                            else:
-                                target_value = CvTerm.model_validate(
-                                    value.model_dump(by_alias=True)
-                                )
-                            characteristic_values.append(
-                                SdrfKeyValue(
-                                    key=CvTerm.model_validate(
-                                        characteristic_type.model_dump(by_alias=True)
-                                    ),
-                                    value=target_value,
-                                )
-                            )
+                    characteristic_values.append(
+                        SdrfKeyValue(
+                            key=CvTerm.model_validate(
+                                characteristic_type.model_dump(by_alias=True)
+                            ),
+                            value=target_value,
+                        )
+                    )
                 values: list[IdentifiableMhdModel] = find_all_linked_nodes(
                     all_nodes_map,
                     node_relationships,
@@ -342,11 +349,36 @@ def create_sdrf_files(
             protocol_parameters = []
 
             if sample_run.sample_run_configuration_refs:
-                run_configs: graph_nodes.SampleRunConfiguration = [
+                run_configs: list[graph_nodes.SampleRunConfiguration] = [
                     nodes_map[x] for x in sample_run.sample_run_configuration_refs
                 ]
+                protocol_parameter_values: dict[str, dict[str, tuple]] = {}
                 for run_config in run_configs:
                     protocol = nodes_map[run_config.protocol_ref]
+                    if run_config.protocol_ref not in protocol_parameter_values:
+                        protocol_parameter_values[run_config.protocol_ref] = {}
+                        parameter_definitions = find_all_linked_nodes(
+                            all_nodes_map,
+                            node_relationships,
+                            protocol.id_,
+                            "has-parameter-definition",
+                            "parameter-definition",
+                        )
+                        for def_ in parameter_definitions:
+                            def_type = all_nodes_map[def_.parameter_type_ref]
+                            parameter_values: list[IdentifiableMhdModel] = (
+                                find_all_linked_nodes(
+                                    all_nodes_map,
+                                    node_relationships,
+                                    def_.id_,
+                                    "has-instance",
+                                    "parameter-value",
+                                )
+                            )
+                            for val_ in parameter_values:
+                                protocol_parameter_values[run_config.protocol_ref][
+                                    val_.id_
+                                ] = (def_, def_type)
                     protocol_type = nodes_map[protocol.protocol_type_ref]
                     protocol_name = protocol.name
                     if run_config.parameter_value_refs:
@@ -355,42 +387,35 @@ def create_sdrf_files(
                         ]
                         parameter_values = []
                         for value in parameter_value_nodes:
-                            parameter_types: list[IdentifiableMhdModel] = (
-                                find_all_linked_nodes(
-                                    all_nodes_map,
-                                    node_relationships,
-                                    value.id_,
-                                    "has-type",
-                                    "parameter-type",
+                            def_, parameter_type = protocol_parameter_values[
+                                protocol.id_
+                            ][value.id_]
+
+                            if parameter_type.id_ not in parameter_type_cv_terms:
+                                parameter_type_cv_terms[parameter_type.id_] = (
+                                    CvTerm.model_validate(
+                                        parameter_type.model_dump(by_alias=True)
+                                    )
+                                )
+                            target_value = None
+                            if (
+                                isinstance(value, CvTermValueObject)
+                                and value.value is not None
+                                and value.name is None
+                            ):
+                                target_value = BasicValueModel.model_validate(
+                                    value.model_dump(by_alias=True)
+                                )
+                            else:
+                                target_value = CvTerm.model_validate(
+                                    value.model_dump(by_alias=True)
+                                )
+                            parameter_values.append(
+                                SdrfKeyValue(
+                                    key=parameter_type_cv_terms[parameter_type.id_],
+                                    value=target_value,
                                 )
                             )
-                            if parameter_types:
-                                parameter_type = parameter_types[0]
-                                if parameter_type.id_ not in parameter_type_cv_terms:
-                                    parameter_type_cv_terms[parameter_type.id_] = (
-                                        CvTerm.model_validate(
-                                            parameter_type.model_dump(by_alias=True)
-                                        )
-                                    )
-                                target_value = None
-                                if (
-                                    isinstance(value, CvTermValueObject)
-                                    and value.value is not None
-                                    and value.name is None
-                                ):
-                                    target_value = BasicValueModel.model_validate(
-                                        value.model_dump(by_alias=True)
-                                    )
-                                else:
-                                    target_value = CvTerm.model_validate(
-                                        value.model_dump(by_alias=True)
-                                    )
-                                parameter_values.append(
-                                    SdrfKeyValue(
-                                        key=parameter_type_cv_terms[parameter_type.id_],
-                                        value=target_value,
-                                    )
-                                )
 
                     protocol_parameters.append(
                         SdrfSampleProtocolDefinition(
@@ -721,7 +746,7 @@ def find_all_linked_nodes(
     source_id: str,
     relationship_name: str,
     target_node_type: str,
-):
+) -> list[MhdNode]:
     links = node_relationships.get(source_id, {}).get(relationship_name, [])
     nodes = [
         all_nodes_map[x]

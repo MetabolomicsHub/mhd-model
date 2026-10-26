@@ -89,7 +89,7 @@ def validate_mhd_model(
 
     validator = MHD_VALIDATORS[dataset.profile_uri]()
     try:
-        validator.validate(
+        return validator.validate(
             mhd_file_json=json_data, mhd_model_validation_context=context
         )
     except Exception as ex:
