@@ -156,7 +156,7 @@
             "type": "items-count",
             "description": "There must be a characteristic with type [NCIT, NCIT:C14250, Organism] in characteristic_values",
             "item_value_jsonpath_list": [
-              ".[*].key"
+              "key"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
@@ -179,7 +179,7 @@
             "type": "items-count",
             "description": "There must be a characteristic named [NCIT, NCIT:C103199, Organism Part] in characteristic_values",
             "item_value_jsonpath_list": [
-              ".[*].key"
+              "key"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
@@ -202,7 +202,7 @@
             "type": "items-count",
             "description": "There must be a characteristic with type [EFO, EFO:0000324, cell type] in characteristic_values",
             "item_value_jsonpath_list": [
-              ".[*].key"
+              "key"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
@@ -225,7 +225,7 @@
             "type": "items-count",
             "description": "There must be a characteristic with type [MONDO, MONDO:0000001, disease] in characteristic_values",
             "item_value_jsonpath_list": [
-              ".[*].key"
+              "key"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
@@ -256,7 +256,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -273,14 +273,14 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
               "constraints": [
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "NCBITAXON",
                     "ENVO",
@@ -323,7 +323,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -340,14 +340,14 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
               "constraints": [
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "UBERON",
                     "BTO",
@@ -391,7 +391,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -408,14 +408,14 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
               "constraints": [
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "CL",
                     "CLO"
@@ -456,7 +456,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -473,14 +473,14 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
               "constraints": [
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "MONDO",
                     "MP",
@@ -527,7 +527,7 @@
             "type": "items-count",
             "description": "There must be a protocol with type [CHMO, CHMO:0000470, mass spectrometry] in protocols",
             "item_value_jsonpath_list": [
-              ".[*].protocol_type"
+              "protocol_type"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
@@ -557,7 +557,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".protocol_type",
+                  "json_path": "protocol_type",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -574,7 +574,7 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".protocol_parameters[*].key"
+              "protocol_parameters[*].key"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
@@ -599,7 +599,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".protocol_type",
+                  "json_path": "protocol_type",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -616,7 +616,7 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".protocol_parameters[*].key"
+              "protocol_parameters[*].key"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
@@ -646,7 +646,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -663,7 +663,7 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
@@ -680,7 +680,7 @@
                 },
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "ILX",
                     "wikidata"
@@ -702,7 +702,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -719,7 +719,7 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
@@ -736,7 +736,7 @@
                 },
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "ILX",
                     "wikidata"
@@ -758,7 +758,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -775,7 +775,7 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
@@ -792,7 +792,7 @@
                 },
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "ILX",
                     "wikidata"
@@ -833,7 +833,7 @@
             "precondition": {
               "evaluations": [
                 {
-                  "json_path": ".key",
+                  "json_path": "key",
                   "constraint": {
                     "type": "cv-term-enum",
                     "allowed_cv_terms": [
@@ -850,7 +850,7 @@
               "join_operator": "and"
             },
             "item_value_jsonpath_list": [
-              ".values[*]"
+              "values[*]"
             ],
             "item_value_match_constraint": {
               "type": "group",
@@ -867,7 +867,7 @@
                 },
                 {
                   "type": "string-enum",
-                  "json_path": ".source",
+                  "json_path": "source",
                   "options": [
                     "ILX",
                     "wikidata"
@@ -908,14 +908,14 @@
       "value_constraint": {
         "type": "items-count",
         "item_value_jsonpath_list": [
-          ".database_identifiers[*]"
+          "database_identifiers[*]"
         ],
         "item_value_match_constraint": {
           "type": "group",
           "constraints": [
             {
               "type": "string-enum",
-              "json_path": ".source",
+              "json_path": "source",
               "options": [
                 "ILX",
                 "wikidata"
@@ -945,7 +945,7 @@
         "constraints": [
           {
             "type": "string-enum",
-            "json_path": ".source",
+            "json_path": "source",
             "options": [
               "ILX",
               "wikidata"
@@ -980,7 +980,7 @@
         "constraints": [
           {
             "type": "string-enum",
-            "json_path": ".source",
+            "json_path": "source",
             "options": [
               "ILX",
               "wikidata"
@@ -1015,7 +1015,7 @@
         "constraints": [
           {
             "type": "string-enum",
-            "json_path": ".source",
+            "json_path": "source",
             "options": [
               "ILX",
               "wikidata"
@@ -1050,7 +1050,7 @@
         "constraints": [
           {
             "type": "string-enum",
-            "json_path": ".source",
+            "json_path": "source",
             "options": [
               "ILX",
               "wikidata"
@@ -1085,7 +1085,7 @@
         "constraints": [
           {
             "type": "string-enum",
-            "json_path": ".source",
+            "json_path": "source",
             "options": [
               "ILX",
               "wikidata"

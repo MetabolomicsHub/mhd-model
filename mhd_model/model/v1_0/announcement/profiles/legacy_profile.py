@@ -106,7 +106,7 @@ LEGACY_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                     code="legacy-characteristic_values-0001",
                     value_constraint=constraints.CollectionConstraint(
                         description="There must be a characteristic named 'Organism' in characteristic_values",
-                        item_value_jsonpath_list=[".[*].key"],
+                        item_value_jsonpath_list=["key"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(

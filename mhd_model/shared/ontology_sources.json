@@ -539,7 +539,7 @@
     {
       "name": "HTTP://WWW.EBI.AC.UK/EFO/EFO_",
       "file": "http://www.ebi.ac.uk/efo/efo.owl",
-      "version": "3.94.0",
+      "version": "3.95.0",
       "description": "Experimental Factor Ontology",
       "details": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for projects such as the NHGRI-EBI GWAS catalog. It combines parts of several biological ontologies, such as UBERON anatomy, ChEBI chemical compounds, Cell Ontology and the Monarch Disease Ontology (MONDO). The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for Open Targets.",
       "prefix": "http://www.ebi.ac.uk/efo/EFO_"
@@ -603,7 +603,7 @@
     {
       "name": "ENVO",
       "file": "http://purl.obolibrary.org/obo/envo.owl",
-      "version": "2026-06-26",
+      "version": "2026-10-23",
       "description": "The Environment Ontology",
       "details": "ENVO is an ontology which represents knowledge about environments,environmental processes, ecosystems, habitats, and related entities",
       "prefix": "ENVO"
@@ -1243,7 +1243,7 @@
     {
       "name": "MRO",
       "file": "http://purl.obolibrary.org/obo/mro.owl",
-      "version": "2026-09-15",
+      "version": "2026-10-20",
       "description": "MHC Restriction Ontology",
       "details": "The MHC Restriction Ontology is an application ontology capturing how Major Histocompatibility Complex (MHC) restriction is defined in experiments, spanning exact protein complexes, individual protein chains, serotypes, haplotypes and mutant molecules, as well as evidence for MHC restrictions.",
       "prefix": "MRO"
@@ -2051,7 +2051,7 @@
     {
       "name": "HTTP://OPENDATA.INRAE.FR/PO2/ONTOLOGY/TRANSFORMON/",
       "file": "http://opendata.inrae.fr/PO2/Ontology/transformON.rdf",
-      "version": "32.0",
+      "version": "33.0",
       "description": "TransformON",
       "details": "A domain ontology on food and bioproduct processing and characterization that is a specialization of the PO2 ontology (Process and Observation Ontology).",
       "prefix": "http://opendata.inrae.fr/PO2/Ontology/TransformON/"
@@ -2139,7 +2139,7 @@
     {
       "name": "UPHENO",
       "file": "http://purl.obolibrary.org/obo/upheno.owl",
-      "version": "2025-10-12",
+      "version": "2026-10-19",
       "description": "Unified Phenotype Ontology (uPheno)",
       "details": "The uPheno ontology integrates multiple phenotype ontologies into a unified cross-species phenotype ontology.",
       "prefix": "UPHENO"

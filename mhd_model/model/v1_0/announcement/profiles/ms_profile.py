@@ -45,7 +45,7 @@ def create_file_format_constraint(file_key: str):
         min_valid=1,
         constraints=[
             constraints.StringEnumConstraint(
-                json_path=".source", options=["ILX", "wikidata"]
+                json_path="source", options=["ILX", "wikidata"]
             ),
             constraints.ParentCVTermConstraint(
                 parent_cv_terms=get_parent_list_for_file_format(file_key)
@@ -73,17 +73,17 @@ def create_characteristic_value_constraint(
         precondition=Precondition(
             evaluations=[
                 Evaluation(
-                    json_path=".key",
+                    json_path="key",
                     constraint=constraints.CVTermEnumConstraint(allowed_cv_terms=[key]),
                 ),
             ]
         ),
-        item_value_jsonpath_list=[".values[*]"],
+        item_value_jsonpath_list=["values[*]"],
         item_value_match_constraint=constraints.ConstraintGroup(
             join_operator="or",
             min_valid=1 if required else None,
             constraints=[
-                constraints.StringEnumConstraint(json_path=".source", options=cv_list),
+                constraints.StringEnumConstraint(json_path="source", options=cv_list),
             ],
         ),
     )
@@ -91,7 +91,7 @@ def create_characteristic_value_constraint(
     if allow_exceptional_cv_list:
         group.constraints.append(
             constraints.StringEnumConstraint(
-                json_path=".source", options=["ILX", "wikidata"]
+                json_path="source", options=["ILX", "wikidata"]
             )
         )
     if allow_missing_terms:
@@ -115,12 +115,12 @@ def create_parent_parameter_constraint(
         precondition=Precondition(
             evaluations=[
                 Evaluation(
-                    json_path=".key",
+                    json_path="key",
                     constraint=constraints.CVTermEnumConstraint(allowed_cv_terms=[key]),
                 ),
             ]
         ),
-        item_value_jsonpath_list=[".values[*]"],
+        item_value_jsonpath_list=["values[*]"],
         min_referenced_value_match=1 if required else None,
         item_value_match_constraint=constraints.ConstraintGroup(
             join_operator="or",
@@ -132,7 +132,7 @@ def create_parent_parameter_constraint(
     if allow_exceptional_cv_list:
         group.constraints.append(
             constraints.StringEnumConstraint(
-                json_path=".source", options=["ILX", "wikidata"]
+                json_path="source", options=["ILX", "wikidata"]
             )
         )
     if allow_missing_terms:
@@ -244,7 +244,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                     value_constraint=constraints.CollectionConstraint(
                         description="There must be a characteristic with type "
                         "[NCIT, NCIT:C14250, Organism] in characteristic_values",
-                        item_value_jsonpath_list=[".[*].key"],
+                        item_value_jsonpath_list=["key"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(
@@ -263,7 +263,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                     value_constraint=constraints.CollectionConstraint(
                         description="There must be a characteristic named "
                         "[NCIT, NCIT:C103199, Organism Part] in characteristic_values",
-                        item_value_jsonpath_list=[".[*].key"],
+                        item_value_jsonpath_list=["key"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(
@@ -282,7 +282,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                     value_constraint=constraints.CollectionConstraint(
                         description="There must be a characteristic with type "
                         "[EFO, EFO:0000324, cell type] in characteristic_values",
-                        item_value_jsonpath_list=[".[*].key"],
+                        item_value_jsonpath_list=["key"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(
@@ -301,7 +301,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                     value_constraint=constraints.CollectionConstraint(
                         description="There must be a characteristic with type "
                         "[MONDO, MONDO:0000001, disease] in characteristic_values",
-                        item_value_jsonpath_list=[".[*].key"],
+                        item_value_jsonpath_list=["key"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(
@@ -388,7 +388,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                     value_constraint=constraints.CollectionConstraint(
                         description="There must be a protocol with type "
                         "[CHMO, CHMO:0000470, mass spectrometry] in protocols",
-                        item_value_jsonpath_list=[".[*].protocol_type"],
+                        item_value_jsonpath_list=["protocol_type"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(
@@ -413,7 +413,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                         precondition=Precondition(
                             evaluations=[
                                 Evaluation(
-                                    json_path=".protocol_type",
+                                    json_path="protocol_type",
                                     constraint=constraints.CVTermEnumConstraint(
                                         allowed_cv_terms=[
                                             BaseCvTerm(
@@ -426,7 +426,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                                 ),
                             ]
                         ),
-                        item_value_jsonpath_list=[".protocol_parameters[*].key"],
+                        item_value_jsonpath_list=["protocol_parameters[*].key"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(
@@ -447,7 +447,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                         precondition=Precondition(
                             evaluations=[
                                 Evaluation(
-                                    json_path=".protocol_type",
+                                    json_path="protocol_type",
                                     constraint=constraints.CVTermEnumConstraint(
                                         allowed_cv_terms=[
                                             BaseCvTerm(
@@ -460,7 +460,7 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
                                 ),
                             ]
                         ),
-                        item_value_jsonpath_list=[".protocol_parameters[*].key"],
+                        item_value_jsonpath_list=["protocol_parameters[*].key"],
                         item_value_match_constraint=constraints.CVTermEnumConstraint(
                             allowed_cv_terms=[
                                 BaseCvTerm(
@@ -573,12 +573,12 @@ MS_ANNOUNCEMENT_FILE_PROFILE_v1_0 = JsonProfile(
             "[EDAM, EDAM:data_2894, Compound accession]",
             code="ms-reported_molecular_entities-identifiers-0010",
             value_constraint=constraints.CollectionConstraint(
-                item_value_jsonpath_list=[".database_identifiers[*]"],
+                item_value_jsonpath_list=["database_identifiers[*]"],
                 item_value_match_constraint=constraints.ConstraintGroup(
                     join_operator="or",
                     constraints=[
                         constraints.StringEnumConstraint(
-                            json_path=".source", options=["ILX", "wikidata"]
+                            json_path="source", options=["ILX", "wikidata"]
                         ),
                         constraints.ParentCVTermConstraint(
                             parent_cv_terms=[

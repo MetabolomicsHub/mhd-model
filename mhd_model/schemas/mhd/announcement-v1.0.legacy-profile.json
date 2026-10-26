@@ -132,7 +132,7 @@
             "type": "items-count",
             "description": "There must be a characteristic named 'Organism' in characteristic_values",
             "item_value_jsonpath_list": [
-              ".[*].key"
+              "key"
             ],
             "item_value_match_constraint": {
               "type": "cv-term-enum",
