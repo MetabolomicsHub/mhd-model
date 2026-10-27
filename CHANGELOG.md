@@ -1,3 +1,25 @@
+## v1.0.0 (2026-10-27)
+
+### BREAKING CHANGE
+
+- MHD Version 1.0 implementation
+- v1.0 support
+
+### Fix
+
+- jsonpath update
+- announcement file validation update
+- ontology term check
+- change log requirement is updated
+- jsonschema update
+- sample run validation id update
+- update sample run -> assay link
+- sample_run_refs and protocol_refs are removed
+- sdrf file creation errors
+- ontology search and profile to schema map errors
+- ontology search and profile to schema map errors
+- id generation for datasets and refactoring
+
 ## v0.1.112 (2026-09-22)
 
 ### Fix
