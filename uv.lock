@@ -1212,7 +1212,7 @@ wheels = [
 [[package]]
 name = "jsonprofile"
 version = "0.1.1"
-source = { git = "https://github.com/MetabolomicsHub/jsonprofile.git?subdirectory=python#190afd9fb912702553530086c4a3473f5f90a9c5" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bioregistry" },
     { name = "cachetools" },
@@ -1225,6 +1225,10 @@ dependencies = [
     { name = "pydantic" },
     { name = "pyyaml" },
     { name = "rfc3986" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/76/34/291f0a8ff17c07132636579d6f2cf87809ec6b2a347ac19cbf01cbc2b717/jsonprofile-0.1.1.tar.gz", hash = "sha256:49992c695d1da5b930fd623f0cda7cacf3284f9bbc4e3f4121249e9ea0c8d168", size = 55017, upload-time = "2026-10-27T15:56:26.843Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c5/e0/fa9abd32e4c5d96a51cf9b5342d9316252d304a0c19b3a3a25fd5c3ec6b6/jsonprofile-0.1.1-py3-none-any.whl", hash = "sha256:1659413c0659b6a93349b804cf560a13c08f2583ab657fcbc9523b4192c576a6", size = 64248, upload-time = "2026-10-27T15:56:25.491Z" },
 ]
 
 [[package]]
@@ -1504,7 +1508,7 @@ requires-dist = [
     { name = "email-validator", specifier = ">=2.3.0" },
     { name = "httpx2", specifier = ">=2.12.0" },
     { name = "jsonpath-ng", specifier = ">=1.8.0" },
-    { name = "jsonprofile", git = "https://github.com/MetabolomicsHub/jsonprofile.git?subdirectory=python" },
+    { name = "jsonprofile", specifier = ">=0.1.0" },
     { name = "jsonschema", specifier = ">=4.26.0" },
     { name = "neo4j", marker = "extra == 'neo4j'", specifier = ">=5.28.2" },
     { name = "ontology-lookup", specifier = ">=0.1.6" },

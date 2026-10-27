@@ -21,7 +21,7 @@ dependencies = [
     "reachable>=0.9.1",
     "pyjwt>=2.15.1",
     "cryptography>=50.0.2",
-    "jsonprofile",
+    "jsonprofile>=0.1.0",
     "ontology-lookup>=0.1.6",
 ]
 
@@ -44,10 +44,6 @@ dev = [
 
 [tool.uv]
 default-groups = []
-
-[tool.uv.sources]
-jsonprofile = { git = "https://github.com/MetabolomicsHub/jsonprofile.git", subdirectory = "python" }
-
 
 [build-system]
 requires = ["setuptools>=83.0.0"]
