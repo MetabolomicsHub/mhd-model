@@ -1,5 +1,5 @@
 from mhd_model.model.v1_0.rules.managed_cv_terms import COMMON_MISSING_DATA_TERMS
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.base import CvTerm
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,
@@ -25,7 +25,7 @@ MANAGED_CHARACTERISTIC_VALUE_RULES: dict[str, ProfileValidation] = {
         allowed_missing_cv_terms=list(COMMON_MISSING_DATA_TERMS.values()),
     ),
     "disease": AllowedCvList(
-        source_names=["MONDO", "MP", "SNOMED", "PATO"],
+        source_names=["MONDO", "MP", "SNOMED"],
         allowed_other_sources=["wikidata", "ILX"],
         allowed_missing_cv_terms=list(COMMON_MISSING_DATA_TERMS.values()),
     ),
@@ -34,7 +34,7 @@ MANAGED_CHARACTERISTIC_VALUE_RULES: dict[str, ProfileValidation] = {
 
 MANAGED_FACTOR_VALUE_RULES: dict[str, ProfileValidation] = {
     "disease": AllowedCvList(
-        source_names=["MONDO", "MP", "SNOMED", "PATO"],
+        source_names=["MONDO", "MP", "SNOMED"],
         allowed_other_sources=["wikidata", "ILX"],
         allowed_missing_cv_terms=list(COMMON_MISSING_DATA_TERMS.values()),
     )
@@ -160,11 +160,10 @@ MANAGED_CHEMICAL_DATABASE_IDENTIFIER_RULE: AllowedChildrenCvTerms = (
                 ),
             ),
         ],
-        allowed_other_sources=["REFMET"],
     )
 )
 
-MANAGED_FILE_FORMAT_RULES: dict[str, ProfileValidation] = {
+MANAGED_FILE_FORMAT_RULES: dict[str, AllowedChildrenCvTerms] = {
     "raw data file format": AllowedChildrenCvTerms(
         parent_cv_terms=[
             ParentCvTerm(

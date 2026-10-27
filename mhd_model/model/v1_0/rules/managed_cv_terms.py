@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.base import CvTerm
 
 COMMON_MISSING_DATA_TERMS: dict[str, CvTerm] = {
     "not applicable": CvTerm(
@@ -39,12 +39,11 @@ COMMON_TECHNOLOGY_TYPES: dict[str, CvTerm] = {
         accession="OBI:0000470",
         name="mass spectrometry assay",
     ),
-    # TODO: Will be enabled in future
-    # "OBI:0000623": CvTerm(
-    #     source="OBI",
-    #     accession="OBI:0000623",
-    #     name="NMR spectroscopy assay",
-    # ),
+    "nmr spectroscopy assay": CvTerm(
+        source="OBI",
+        accession="OBI:0000623",
+        name="NMR spectroscopy assay",
+    ),
 }
 
 COMMON_MEASUREMENT_TYPES: dict[str, CvTerm] = {
@@ -86,12 +85,23 @@ COMMON_ASSAY_TYPES: dict[str, CvTerm] = {
         accession="OBI:0000470",
         name="mass spectrometry assay",
     ),
-    # TODO: Will be enabled in future
-    # "OBI:0000623": CvTerm(
-    #     source="OBI",
-    #     accession="OBI:0000623",
-    #     name="NMR spectroscopy assay",
-    # ),
+    "nmr": CvTerm(
+        source="OBI",
+        accession="OBI:0000623",
+        name="NMR spectroscopy assay",
+    ),
+}
+COMMON_MOLECULAR_ENTITY_IDENTIFIERS: dict[str, CvTerm] = {
+    "chebi": CvTerm(
+        source="EDAM",
+        accession="EDAM:data_1174",
+        name="ChEBI ID",
+    ),
+    "refmet": CvTerm(
+        source="EDAM",
+        accession="EDAM:data_4075",
+        name="RefMet ID",
+    ),
 }
 
 COMMON_OMICS_TYPES: dict[str, CvTerm] = {
@@ -146,13 +156,19 @@ COMMON_PROTOCOLS: dict[str, CvTerm] = {
     ),
 }
 
+COMMON_FILE_HASH_ALGORITHMS = {
+    "sha256": CvTerm(source="MS", accession="MS:1003151", name="SHA-256"),
+    "md5": CvTerm(source="MS", accession="MS:1000568", name="MD5"),
+}
+
+
 COMMON_CHARACTERISTIC_DEFINITION_ENFORCEMENT_LEVELS: dict[str, dict[str, CvTerm]] = {
     "required": {
         "organism": CvTerm(source="NCIT", accession="NCIT:C14250", name="Organism"),
         "organism part": CvTerm(
             source="NCIT", accession="NCIT:C103199", name="Organism Part"
         ),
-        "disease": CvTerm(source="EFO", accession="MONDO:0000001", name="disease"),
+        "disease": CvTerm(source="MONDO", accession="MONDO:0000001", name="disease"),
         "cell type": CvTerm(source="EFO", accession="EFO:0000324", name="cell type"),
     },
     "recommended": {
@@ -178,7 +194,7 @@ COMMON_STUDY_FACTOR_DEFINITION_ENFORCEMENT_LEVELS: dict[str, CvTerm] = {
     "required": {},
     "recommended": {},
     "optional": {
-        "disease": CvTerm(source="EFO", accession="MONDO:0000001", name="disease"),
+        "disease": CvTerm(source="MONDO", accession="MONDO:0000001", name="disease"),
     },
 }
 
@@ -193,9 +209,9 @@ COMMON_PARAMETER_ENFORCEMENT_LEVELS: dict[str, dict[str, dict[str, CvTerm]]] = {
     "mass spectrometry": {
         "required": {
             "mass spectrometry instrument": CvTerm(
-                source="MSIO",
-                accession="MSIO:0000171",
-                name="mass spectrometry instrument",
+                source="OBI",
+                accession="OBI:0000049",
+                name="mass spectrometer",
             ),
             "acquisition polarity": CvTerm(
                 source="MS",
@@ -253,7 +269,7 @@ for protocol, enforcements in COMMON_PARAMETER_ENFORCEMENT_LEVELS.items():
 MANAGED_CV_TERM_OBJECTS: set[str] = {
     "characteristic-type",
     "characteristic-value",
-    "metabolite-identifier",
+    "molecular-entity-identifier",
     "data-provider",
     "descriptor",
     "factor-type",
@@ -262,6 +278,7 @@ MANAGED_CV_TERM_OBJECTS: set[str] = {
     "parameter-value",
     "protocol-type",
 }
+
 
 PREDEFINED_CV_TERM_GROUPS: list[dict[str, CvTerm]] = [
     COMMON_MISSING_DATA_TERMS,
@@ -274,6 +291,8 @@ PREDEFINED_CV_TERM_GROUPS: list[dict[str, CvTerm]] = [
     COMMON_CHARACTERISTIC_DEFINITIONS,
     COMMON_STUDY_FACTOR_DEFINITIONS,
     COMMON_PARAMETER_DEFINITIONS,
+    COMMON_MOLECULAR_ENTITY_IDENTIFIERS,
+    COMMON_FILE_HASH_ALGORITHMS,
 ]
 
 PREDEFINED_CV_TERMS: dict[str, CvTerm] = {}

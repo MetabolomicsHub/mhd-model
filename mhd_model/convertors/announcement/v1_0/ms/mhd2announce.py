@@ -1,67 +1,107 @@
+import datetime
 import logging
 from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
-from pydantic import AnyUrl, BaseModel
+from pydantic import BaseModel
 
+from mhd_model.domain_utils import get_urn
 from mhd_model.model.definitions import (
     MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP,
 )
-from mhd_model.model.v1_0.announcement.profiles.base.profile import (
+from mhd_model.model.v1_0.announcement.profiles.profile import (
     AnnouncementBaseFile,
-    AnnouncementBaseProfile,
     AnnouncementContact,
     AnnouncementDerivedDataFile,
+    AnnouncementFile_v1_0,
+    AnnouncementFund,
     AnnouncementMetadataFile,
+    AnnouncementProject,
     AnnouncementProtocol,
     AnnouncementPublication,
     AnnouncementRawDataFile,
-    AnnouncementReportedMetabolite,
+    AnnouncementReportedMolecularEntity,
     AnnouncementResultFile,
     AnnouncementSupplementaryFile,
 )
-from mhd_model.model.v1_0.announcement.profiles.ms.profile import AnnouncementMsProfile
 from mhd_model.model.v1_0.dataset.profiles.base import graph_nodes
-from mhd_model.model.v1_0.dataset.profiles.base.base import (
-    BaseMhdModel,
-    BaseMhdRelationship,
-    IdentifiableMhdModel,
-)
 from mhd_model.model.v1_0.dataset.profiles.base.graph_nodes import CvTermValueObject
-from mhd_model.model.v1_0.dataset.profiles.ms.profile import MhDatasetMsProfile
-from mhd_model.shared.cv_definitions import (
-    COMMON_CV_DEFINITIONS,
-    OTHER_COMMON_CV_DEFINITIONS,
+from mhd_model.model.v1_0.dataset.profiles.ms.profile import (
+    MhDatasetMsProfile_v1_0 as MhDatasetProfile_v1_0,
 )
-from mhd_model.shared.model import (
-    CvDefinition,
+from mhd_model.shared.base import (
+    BasicValueModel,
     CvTerm,
     CvTermKeyValue,
     CvTermValue,
+)
+from mhd_model.shared.model import (
+    BaseRelationshipModel,
+    IdentifiableMhdModel,
+    MhdModelValidationContext,
+    MhdNode,
 )
 
 logger = logging.getLogger(__name__)
 
 
+def convert_to_cv_term(val: CvTerm):
+    val.source = val.source or ""
+    val.name = val.name or ""
+    val.accession = val.accession or ""
+    return CvTerm.model_validate(val.model_dump(by_alias=True, exclude_none=True))
+
+
+def convert_to_cv_term_value(val: CvTermValue, allow_only_value: bool = False):
+    val.source = val.source or ""
+    val.name = val.name or ""
+    val.accession = val.accession or ""
+    val.value = val.value or None
+    if (
+        val.unit
+        and not val.unit.source
+        and not val.unit.name
+        and not val.unit.accession
+    ):
+        val.unit = None
+
+    if val.unit:
+        val.unit.source = val.unit.source or val.source or ""
+        val.unit.name = val.unit.name or val.name or ""
+        val.unit.accession = val.unit.accession or val.accession or ""
+        if allow_only_value:
+            val.accession = "" if val.accession == val.unit.source else val.accession
+            val.name = "" if val.name == val.unit.name else val.name
+            val.source = "" if val.source == val.unit.source else val.source
+
+    if allow_only_value and not val.source and not val.name and not val.accession:
+        return BasicValueModel.model_validate(
+            val.model_dump(by_alias=True, exclude_none=True)
+        )
+    return CvTermValue.model_validate(val.model_dump(by_alias=True, exclude_none=True))
+
+
 def update_characteristic_values(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationships_map: dict[str, BaseMhdRelationship],
-    announcement: AnnouncementMsProfile,
+    relationships_map: dict[str, BaseRelationshipModel],
+    announcement: AnnouncementFile_v1_0,
 ):
     study_characteristics = set()
     characteristic_values: OrderedDict[str, list[str]] = OrderedDict()
     for rel in relationships_map.values():
         source = all_nodes_map[rel.source_ref]
-        if rel.relationship_name == "has-characteristic-definition":
-            if isinstance(source, graph_nodes.Study):
-                study_characteristics.add(rel.target_ref)
+        if rel.relationship_name == "has-characteristic-definition" and isinstance(
+            source, graph_nodes.Study
+        ):
+            study_characteristics.add(rel.target_ref)
 
-        if rel.relationship_name == "has-instance":
-            if isinstance(source, graph_nodes.CharacteristicDefinition):
-                if rel.source_ref not in characteristic_values:
-                    characteristic_values[rel.source_ref] = []
-                characteristic_values[rel.source_ref].append(rel.target_ref)
+        if rel.relationship_name == "has-instance" and isinstance(
+            source, graph_nodes.CharacteristicDefinition
+        ):
+            if rel.source_ref not in characteristic_values:
+                characteristic_values[rel.source_ref] = []
+            characteristic_values[rel.source_ref].append(rel.target_ref)
     referenced_characteristics = {
         x: y
         for x, y in characteristic_values.items()
@@ -78,13 +118,13 @@ def update_characteristic_values(
         for x in value_ids:
             val_obj = all_nodes_map[x]
             if isinstance(val_obj, CvTermValueObject) and val_obj.value:
-                val = CvTermValue.model_validate(val_obj.model_dump(by_alias=True))
+                val = convert_to_cv_term_value(val_obj, allow_only_value=True)
                 values.append(val)
             elif val_obj.name:
-                val = CvTerm.model_validate(val_obj.model_dump(by_alias=True))
+                val = convert_to_cv_term(val_obj)
                 values.append(val)
         type_node = all_nodes_map.get(characteristic.characteristic_type_ref, None)
-        key = CvTerm.model_validate(type_node.model_dump(by_alias=True))
+        key = convert_to_cv_term(type_node)
         if not announcement.characteristic_values:
             announcement.characteristic_values = []
         announcement.characteristic_values.append(
@@ -94,61 +134,57 @@ def update_characteristic_values(
 
 def update_keywords(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
-    announcement: AnnouncementMsProfile,
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
+    announcement: AnnouncementFile_v1_0,
 ):
     if "has-submitter-keyword" in relationship_name_map:
         for rel in relationship_name_map.get("has-submitter-keyword").values():
             source = all_nodes_map.get(rel.source_ref)
-            if source:
-                if isinstance(source, graph_nodes.Study):
-                    keyword_node = all_nodes_map.get(rel.target_ref)
-                    if keyword_node:
-                        keyword = CvTerm.model_validate(
-                            keyword_node.model_dump(by_alias=True)
-                        )
-                        if announcement.submitter_keywords is None:
-                            announcement.submitter_keywords = []
-                        announcement.submitter_keywords.append(keyword)
+            if source and isinstance(source, graph_nodes.Study):
+                keyword_node = all_nodes_map.get(rel.target_ref)
+                if keyword_node:
+                    keyword = convert_to_cv_term(keyword_node)
+                    if announcement.submitter_keywords is None:
+                        announcement.submitter_keywords = []
+                    announcement.submitter_keywords.append(keyword)
 
 
 def get_descriptors(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
 ) -> list[CvTerm]:
     descriptors = []
     if "has-repository-keyword" in relationship_name_map:
         for rel in relationship_name_map.get("has-repository-keyword").values():
             source = all_nodes_map.get(rel.source_ref)
-            if source:
-                if isinstance(source, graph_nodes.Study):
-                    descriptor_node = all_nodes_map.get(rel.target_ref)
-                    if descriptor_node:
-                        descriptor = CvTerm.model_validate(
-                            descriptor_node.model_dump(by_alias=True)
-                        )
-                        descriptors.append(descriptor)
+            if source and isinstance(source, graph_nodes.Study):
+                descriptor_node = all_nodes_map.get(rel.target_ref)
+                if descriptor_node:
+                    descriptor = convert_to_cv_term(descriptor_node)
+                    descriptors.append(descriptor)
     return descriptors
 
 
 def update_study_factors(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationships_map: dict[str, BaseMhdRelationship],
-    announcement: AnnouncementMsProfile,
+    relationships_map: dict[str, BaseRelationshipModel],
+    announcement: AnnouncementFile_v1_0,
 ):
     study_factors = set()
     factors: OrderedDict[str, list[str]] = OrderedDict()
     for rel in relationships_map.values():
         source = all_nodes_map[rel.source_ref]
-        if rel.relationship_name == "has-factor-definition":
-            if isinstance(source, graph_nodes.Study):
-                study_factors.add(rel.target_ref)
+        if rel.relationship_name == "has-factor-definition" and isinstance(
+            source, graph_nodes.Study
+        ):
+            study_factors.add(rel.target_ref)
 
-        if rel.relationship_name == "has-instance":
-            if isinstance(source, graph_nodes.FactorDefinition):
-                if rel.source_ref not in factors:
-                    factors[rel.source_ref] = []
-                factors[rel.source_ref].append(rel.target_ref)
+        if rel.relationship_name == "has-instance" and isinstance(
+            source, graph_nodes.FactorDefinition
+        ):
+            if rel.source_ref not in factors:
+                factors[rel.source_ref] = []
+            factors[rel.source_ref].append(rel.target_ref)
     referenced_factors = {x: y for x, y in factors.items() if x in study_factors and y}
     factor_keys = [(x, all_nodes_map[x]) for x, y in referenced_factors.items()]
     factor_keys.sort(key=lambda x: x[1].name)
@@ -159,13 +195,13 @@ def update_study_factors(
         for x in value_ids:
             val_obj = all_nodes_map[x]
             if isinstance(val_obj, CvTermValueObject) and val_obj.value:
-                val = CvTermValue.model_validate(val_obj.model_dump(by_alias=True))
+                val = convert_to_cv_term_value(val_obj, allow_only_value=True)
                 values.append(val)
             elif val_obj.name:
-                val = CvTerm.model_validate(val_obj.model_dump(by_alias=True))
+                val = convert_to_cv_term(val_obj)
                 values.append(val)
         type_node = all_nodes_map.get(factor.factor_type_ref, None)
-        key = CvTerm.model_validate(type_node.model_dump(by_alias=True))
+        key = convert_to_cv_term(type_node)
         if not announcement.study_factors:
             announcement.study_factors = []
         announcement.study_factors.append(CvTermKeyValue(key=key, values=values))
@@ -173,61 +209,56 @@ def update_study_factors(
 
 def update_protocol_parameters(
     all_nodes_map: dict[str, IdentifiableMhdModel],
-    relationship_name_map: dict[str, BaseMhdRelationship],
-    type_map: dict[str, dict[IdentifiableMhdModel]],
+    relationship_name_map: dict[str, BaseRelationshipModel],
+    type_map: dict[str, dict[str, IdentifiableMhdModel]],
     study: graph_nodes.Study,
-    announcement: AnnouncementMsProfile,
+    announcement: AnnouncementFile_v1_0,
 ):
-    if "protocol" in type_map:
-        for ref in type_map["protocol"]:
-            protocol_parameters = []
-            protocol_node: graph_nodes.Protocol = type_map["protocol"].get(ref)
-            if not protocol_node.parameter_definition_refs:
+    protocols = type_map.get("protocol", {})
+
+    for ref in protocols:
+        protocol_parameters = []
+        protocol_node: graph_nodes.Protocol = protocols.get(ref)
+        for definition_key in protocol_node.parameter_definition_refs or []:
+            if definition_key not in all_nodes_map:
                 continue
-            for definition_key in protocol_node.parameter_definition_refs:
-                if definition_key not in all_nodes_map:
-                    continue
-                definition = all_nodes_map[definition_key]
-                if not isinstance(definition, graph_nodes.ParameterDefinition):
-                    continue
-                vals = []
-                for rel in relationship_name_map["has-instance"].values():
-                    if rel.source_ref == definition.id_:
-                        val_obj = all_nodes_map.get(rel.target_ref)
-                        if isinstance(val_obj, CvTermValueObject) and val_obj.value:
-                            val = CvTermValue.model_validate(
-                                val_obj.model_dump(by_alias=True)
-                            )
-                            vals.append(val)
-                        elif val_obj.name:
-                            val = CvTerm.model_validate(
-                                val_obj.model_dump(by_alias=True)
-                            )
-                            vals.append(val)
-                if vals:
-                    def_type = all_nodes_map.get(definition.parameter_type_ref)
-                    key = CvTerm.model_validate(def_type.model_dump(by_alias=True))
-                    param = CvTermKeyValue(
-                        key=key,
-                        values=vals if vals else None,
-                    )
-                    protocol_parameters.append(param)
-            if not protocol_parameters:
-                protocol_parameters = None
-            else:
-                protocol_parameters.sort(key=lambda x: x.key.name)
-            protocol_type_object = all_nodes_map.get(
-                protocol_node.protocol_type_ref, None
-            )
-            protocol = AnnouncementProtocol(
-                name=protocol_node.name,
-                protocol_type=protocol_type_object,
-                description=protocol_node.description,
-                protocol_parameters=protocol_parameters,
-            )
-            if not announcement.protocols:
-                announcement.protocols = []
-            announcement.protocols.append(protocol)
+            definition = all_nodes_map[definition_key]
+            if not isinstance(definition, graph_nodes.ParameterDefinition):
+                continue
+            vals = []
+            for rel in relationship_name_map["has-instance"].values():
+                if rel.source_ref == definition.id_:
+                    val_obj = all_nodes_map.get(rel.target_ref)
+                    if isinstance(val_obj, CvTermValueObject) and val_obj.value:
+                        val = convert_to_cv_term_value(val_obj, allow_only_value=True)
+                        vals.append(val)
+                    elif val_obj.name:
+                        val = convert_to_cv_term(val_obj)
+                        vals.append(val)
+            if vals:
+                def_type = all_nodes_map.get(definition.parameter_type_ref)
+                key = convert_to_cv_term(def_type)
+                param = CvTermKeyValue(
+                    key=key,
+                    values=vals if vals else None,
+                )
+                protocol_parameters.append(param)
+        if not protocol_parameters:
+            protocol_parameters = None
+        else:
+            protocol_parameters.sort(key=lambda x: x.key.name)
+        protocol_type_object = all_nodes_map.get(protocol_node.protocol_type_ref, None)
+        protocol_type = convert_to_cv_term(protocol_type_object)
+
+        protocol = AnnouncementProtocol(
+            name=protocol_node.name,
+            protocol_type=protocol_type,
+            description=protocol_node.description,
+            protocol_parameters=protocol_parameters,
+        )
+        if not announcement.protocols:
+            announcement.protocols = []
+        announcement.protocols.append(protocol)
 
 
 def convert_file(
@@ -237,26 +268,25 @@ def convert_file(
     ref: str,
     file_class: type[AnnouncementBaseFile],
 ):
-    if file_type_name not in type_map or ref not in type_map[file_type_name]:
+    if file_type_name not in type_map or ref not in type_map.get(file_type_name, {}):
         return None
-    item: graph_nodes.BaseFile = type_map[file_type_name][ref]
+    item: graph_nodes.BaseFile = type_map.get(file_type_name, {}).get(ref)
     url_list = item.url_list
     format = None
     if item.format_ref in all_nodes_map:
-        format_node: BaseMhdModel = all_nodes_map[item.format_ref]
-        format = CvTerm.model_validate(format_node.model_dump(by_alias=True))
-    compressions = None
+        format_node: MhdNode = all_nodes_map[item.format_ref]
+        format = convert_to_cv_term(format_node)
+    compressions = []
     if item.compression_format_refs in all_nodes_map:
         for format_ref in item.compression_format_refs:
-            compression_node: BaseMhdModel = all_nodes_map[format_ref]
-            compressions.append(
-                CvTerm.model_validate(compression_node.model_dump(by_alias=True))
-            )
+            compression_node: MhdNode = all_nodes_map[format_ref]
+            compressions.append(convert_to_cv_term(compression_node))
     file = file_class(
         name=item.name,
-        url_list=url_list,
-        compression_formats=compressions,
-        format=format,
+        url_list=[str(x) for x in url_list or [] if x],
+        compression_formats=compressions or None,
+        format=format or None,
+        extension=item.extension or None,
     )
 
     return file
@@ -278,33 +308,149 @@ def collect_cv_term_sources(obj: BaseModel, cv_sources: set[str]):
             collect_cv_term_sources(value, cv_sources)
 
 
-def create_ms_announcement_file(
+def get_submitter_and_pi_list(
+    type_map: dict[str, dict[str, MhdNode]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
+):
+    submitter_links = relationship_name_map.get("submits", {})
+    affiliations = relationship_name_map.get("affiliated-with") or {}
+    organizations = type_map.get("organization") or {}
+    pi_links = relationship_name_map.get("principal-investigator-of", {}) or {}
+    people = type_map.get("person") or {}
+
+    submitters = []
+    principal_investigators = []
+    for item in submitter_links.values():
+        if item.source_ref in people:
+            submitter = people[item.source_ref]
+            contact = AnnouncementContact.model_validate(
+                submitter, from_attributes=True
+            )
+            affiliation_list = []
+
+            for relationship in affiliations.values():
+                submitter_ref = relationship.source_ref
+                if submitter_ref == submitter.id_:
+                    organization = organizations.get(relationship.target_ref)
+                    if organization:
+                        affiliation_list.append(organization.name)
+            if affiliation_list:
+                contact.affiliation_list = affiliation_list
+            if contact.email_list:
+                contact.email_list = [x.lower() for x in contact.email_list]
+
+            submitters.append(contact)
+
+    for item in pi_links.values():
+        if item.source_ref in people:
+            pi = people[item.source_ref]
+            contact = AnnouncementContact.model_validate(pi, from_attributes=True)
+        affiliation_list = []
+        for relationship in affiliations.values():
+            submitter_ref = relationship.source_ref
+            if submitter_ref == submitter.id_:
+                organization = organizations.get(relationship.target_ref)
+                if organization:
+                    affiliation_list.append(organization.name)
+        if affiliation_list:
+            contact.affiliation_list = affiliation_list
+            if contact.email_list:
+                contact.email_list = [x.lower() for x in contact.email_list]
+            principal_investigators.append(contact)
+
+    return submitters or None, principal_investigators or None
+
+
+def get_fund_list(
+    source_node: MhdNode,
+    type_map: dict[str, dict[str, MhdNode]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
+):
+    funded_by_links = relationship_name_map.get("funded-by", {})
+    organizations = type_map.get("organization") or {}
+    funds = []
+    for item in funded_by_links.values():
+        grant_ids = [
+            str(x.value)
+            for x in item.tag_list or []
+            if x and isinstance(x.key, CvTerm) and x.key.name == "grant identifier"
+        ]
+
+        fund = AnnouncementFund(grant_ids=grant_ids or None)
+        if item.source_ref == source_node.id_:
+            organization = organizations.get(item.target_ref)
+            if organization:
+                fund.funder = organization.name
+                fund.funder_ror_id = organization.ror_id
+        if fund.grant_ids or fund.funder or fund.funder_ror_id:
+            funds.append(fund)
+    return funds or None
+
+
+def get_projects(
+    source_node: MhdNode,
+    type_map: dict[str, dict[str, MhdNode]],
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]],
+):
+    project_links = relationship_name_map.get("part-of", {})
+    managed_by_links = relationship_name_map.get("managed-by", {})
+    projects = type_map.get("project") or {}
+    organizations = type_map.get("organization") or {}
+    project_list = []
+    for item in project_links.values():
+        if item.source_ref == source_node.id_:
+            project: None | graph_nodes.Project = projects.get(item.target_ref)
+            if project:
+                organization_list = []
+                for x in managed_by_links.values():
+                    if x.source_ref == project.id_:
+                        organization: None | graph_nodes.Organization = (
+                            organizations.get(x.target_ref)
+                        )
+                        organization_list.append(organization.name)
+                project_item = AnnouncementProject(
+                    name=project.title,
+                    identifier=project.doi,
+                    organizations=organization_list or None,
+                )
+                project_list.append(project_item)
+
+    return project_list or None
+
+
+def create_announcement_file(
     mhd_file: dict[str, Any],
     mhd_file_url: str,
     announcement_file_path: str,
+    mhd_metadata_file_hashes: None | list[CvTermValue] = None,
 ):
-    mhd_dataset = MhDatasetMsProfile.model_validate(mhd_file)
+    context = MhdModelValidationContext(
+        dataset_configuration=MhDatasetProfile_v1_0.get_config()
+    )
+    mhd_dataset = MhDatasetProfile_v1_0.model_validate(mhd_file, context=context)
     announcement_schema_name, announcement_profile_uri = (
         MHD_MODEL_ANNOUNCEMENT_FILE_PROFILE_MAP.get(
             mhd_dataset.profile_uri, (None, None)
         )
     )
+    if not announcement_schema_name or not announcement_profile_uri:
+        raise ValueError("Announcement Schema or profile is not defined")
     nodes_map: dict[str, IdentifiableMhdModel] = {
         x.id_: x for x in mhd_dataset.graph.nodes
     }
-    relationships_map: dict[str, BaseMhdRelationship] = {
+    relationships_map: dict[str, BaseRelationshipModel] = {
         x.id_: x for x in mhd_dataset.graph.relationships
     }
 
-    all_nodes_map: dict[str, BaseMhdModel] = {}
-    type_map: dict[str, dict[str, BaseMhdModel]] = {}
+    all_nodes_map: dict[str, MhdNode] = {}
+    type_map: dict[str, dict[str, MhdNode]] = {}
     for node in mhd_dataset.graph.nodes:
         if node.type_ not in type_map:
             type_map[node.type_] = {}
         type_map[node.type_][node.id_] = node
         all_nodes_map[node.id_] = node
 
-    relationship_name_map: dict[str, dict[str, BaseMhdRelationship]] = {}
+    relationship_name_map: dict[str, dict[str, BaseRelationshipModel]] = {}
     for rel in mhd_dataset.graph.relationships:
         if rel.relationship_name not in relationship_name_map:
             relationship_name_map[rel.relationship_name] = {}
@@ -313,16 +459,25 @@ def create_ms_announcement_file(
     if "study" not in type_map:
         logger.error("Study not found for in the input file")
         return
-    study: graph_nodes.Study = next(iter(type_map["study"].values()))
+    study: graph_nodes.Study = next(iter(type_map.get("study", {}).values()))
 
-    study_assays: list[graph_nodes.Assay] = []
-    if "assay" in type_map:
-        study_assays = list(type_map["assay"].values())
-
+    study_assays: list[graph_nodes.Assay] = (
+        list(type_map.get("assay", {}).values()) or []
+    )
+    study_funds = get_fund_list(
+        source_node=study,
+        type_map=type_map,
+        relationship_name_map=relationship_name_map,
+    )
+    project_list = get_projects(
+        source_node=study,
+        type_map=type_map,
+        relationship_name_map=relationship_name_map,
+    )
     publications: list[AnnouncementPublication] = []
     if "publication" in type_map:
         graph_publications: list[graph_nodes.Publication] = list(
-            type_map["publication"].values()
+            type_map.get("publication", {}).values()
         )
         for node in graph_publications:
             item = AnnouncementPublication.model_validate(
@@ -331,41 +486,15 @@ def create_ms_announcement_file(
             publications.append(item)
 
     publication_status = None
-    if not publications:
-        if "defined-as" in relationship_name_map:
-            publication_status = list(relationship_name_map["defined-as"].values())
-            if publication_status:
-                status = publication_status[0]
+    if not publications and "defined-as" in relationship_name_map:
+        publication_status = list(relationship_name_map["defined-as"].values())
+        if publication_status:
+            status = publication_status[0]
+            publication_status = convert_to_cv_term(nodes_map[status.target_ref])
 
-                publication_status = CvTerm.model_validate(
-                    nodes_map[status.target_ref].model_dump(by_alias=True)
-                )
-
-    submitter_links: list[BaseMhdRelationship] = []
-    if "submits" in relationship_name_map:
-        submitter_links = list(relationship_name_map["submits"].values())
-
-    submitters = []
-
-    principal_investigators = []
-    if "person" in type_map:
-        for item in submitter_links:
-            if item.source_ref in type_map["person"]:
-                submitter = type_map["person"][item.source_ref]
-                submitters.append(
-                    AnnouncementContact.model_validate(submitter, from_attributes=True)
-                )
-
-        if "principal-investigator-of" in relationship_name_map:
-            pi_links: list[BaseMhdRelationship] = list(
-                relationship_name_map["principal-investigator-of"].values()
-            )
-            for item in pi_links:
-                if item.source_ref in type_map["person"]:
-                    pi = type_map["person"][item.source_ref]
-                    principal_investigators.append(
-                        AnnouncementContact.model_validate(pi, from_attributes=True)
-                    )
+    submitters, principal_investigators = get_submitter_and_pi_list(
+        type_map, relationship_name_map
+    )
 
     assay_types: OrderedDict[str, CvTerm] = OrderedDict()
     technology_types: OrderedDict[str, CvTerm] = OrderedDict()
@@ -375,7 +504,7 @@ def create_ms_announcement_file(
         if item.assay_type_ref in nodes_map:
             assay_type: graph_nodes.CvTermObject = nodes_map[item.assay_type_ref]
             if assay_type.accession not in assay_types:
-                term = CvTerm.model_validate(assay_type)
+                term = convert_to_cv_term(assay_type)
                 assay_types[term.accession] = term
 
         if item.technology_type_ref in nodes_map:
@@ -383,53 +512,83 @@ def create_ms_announcement_file(
                 item.technology_type_ref
             ]
             if technology_type.accession not in technology_types:
-                term = CvTerm.model_validate(technology_type)
+                term = convert_to_cv_term(technology_type)
                 technology_types[term.accession] = term
         if item.measurement_type_ref in nodes_map:
             measurement_type: graph_nodes.CvTermObject = nodes_map[
                 item.measurement_type_ref
             ]
             if measurement_type.accession not in measurement_types:
-                term = CvTerm.model_validate(measurement_type)
+                term = convert_to_cv_term(measurement_type)
                 measurement_types[term.accession] = term
 
         if item.omics_type_ref in nodes_map:
             omics_type: graph_nodes.CvTermObject = nodes_map[item.omics_type_ref]
             if omics_type.accession not in omics_types:
-                term = CvTerm.model_validate(omics_type)
+                term = convert_to_cv_term(omics_type)
                 omics_types[term.accession] = term
 
-    dataset_url_list = study.dataset_url_list
-
-    announcement = AnnouncementBaseProfile(
+    url_list = study.url_list
+    repository_metadata_file_list = []
+    if "metadata-file" in type_map:
+        for ref in type_map.get("metadata-file", {}):
+            metadata = convert_file(
+                all_nodes_map,
+                type_map,
+                "metadata-file",
+                ref,
+                AnnouncementMetadataFile,
+            )
+            if metadata:
+                repository_metadata_file_list.append(metadata)
+    urn = get_urn(
+        urn_namespace="mhd",
+        repository_short_name=mhd_dataset.repository_short_name,
+        dataset_id=study.mhd_identifier or study.repository_identifier,
+        node_class=AnnouncementFile_v1_0,
+        identifier=None,
+    )
+    now = datetime.datetime.now(datetime.UTC)
+    announcement = AnnouncementFile_v1_0(
+        uri=urn,
+        created_at=now,
+        tag_list=mhd_dataset.tag_list,
+        additional_identifier_list=mhd_dataset.additional_identifier_list,
+        external_reference_list=mhd_dataset.external_reference_list,
         repository_name=mhd_dataset.repository_name,
+        repository_short_name=mhd_dataset.repository_short_name,
         mhd_identifier=study.mhd_identifier,
         repository_identifier=study.repository_identifier,
         repository_revision=mhd_dataset.repository_revision,
-        repository_revision_datetime=mhd_dataset.repository_revision_datetime,
+        repository_revision_datetime=mhd_dataset.repository_revision_datetime or None,
+        repository_revision_comment=mhd_dataset.repository_revision_comment or None,
         change_log=mhd_dataset.change_log if mhd_dataset.change_log else None,
         schema_name=announcement_schema_name,
         profile_uri=announcement_profile_uri,
-        mhd_metadata_file_url=AnyUrl(mhd_file_url),
-        dataset_url_list=dataset_url_list or None,
+        mhd_metadata_file_url=str(mhd_file_url),
+        mhd_metadata_file_hashes=mhd_metadata_file_hashes or None,
+        url_list=url_list or None,
         license=study.license,
-        title=study.title,
+        license_name=study.license_name or None,
+        name=study.title,
         description=study.description,
         submission_date=study.submission_date,
         public_release_date=study.public_release_date,
-        doi=study.doi,
+        doi=study.doi or None,
         submitters=submitters or None,
         principal_investigators=principal_investigators or None,
         measurement_type=list(measurement_types.values()) or None,
         technology_type=list(technology_types.values()) or None,
         assay_type=list(assay_types.values()) or None,
         omics_type=list(omics_types.values()) or None,
-        repository_metadata_file_list=None,
+        repository_metadata_file_list=repository_metadata_file_list or None,
         result_file_list=None,
         raw_data_file_list=None,
         derived_data_file_list=None,
         supplementary_file_list=None,
         publications=publications if publications else publication_status,
+        funded_by=study_funds or None,
+        projects=project_list or None,
         # study_factors=[],
         # characteristic_values=[],
     )
@@ -444,18 +603,8 @@ def create_ms_announcement_file(
     update_study_factors(all_nodes_map, relationships_map, announcement)
     update_characteristic_values(all_nodes_map, relationships_map, announcement)
 
-    if "metadata-file" in type_map:
-        for ref in type_map["metadata-file"]:
-            metadata = convert_file(
-                all_nodes_map, type_map, "metadata-file", ref, AnnouncementMetadataFile
-            )
-            if metadata:
-                if not announcement.repository_metadata_file_list:
-                    announcement.repository_metadata_file_list = []
-                announcement.repository_metadata_file_list.append(metadata)
-
     if "result-file" in type_map:
-        for ref in type_map["result-file"]:
+        for ref in type_map.get("result-file", {}):
             file = convert_file(
                 all_nodes_map, type_map, "result-file", ref, AnnouncementResultFile
             )
@@ -465,7 +614,7 @@ def create_ms_announcement_file(
                 announcement.result_file_list.append(file)
 
     if "raw-data-file" in type_map:
-        for ref in type_map["raw-data-file"]:
+        for ref in type_map.get("raw-data-file", {}):
             file = convert_file(
                 all_nodes_map, type_map, "raw-data-file", ref, AnnouncementRawDataFile
             )
@@ -474,7 +623,7 @@ def create_ms_announcement_file(
                     announcement.raw_data_file_list = []
                 announcement.raw_data_file_list.append(file)
     if "derived-data-file" in type_map:
-        for ref in type_map["derived-data-file"]:
+        for ref in type_map.get("derived-data-file", {}):
             file = convert_file(
                 all_nodes_map,
                 type_map,
@@ -487,7 +636,7 @@ def create_ms_announcement_file(
                     announcement.derived_data_file_list = []
                 announcement.derived_data_file_list.append(file)
     if "supplementary-file" in type_map:
-        for ref in type_map["supplementary-file"]:
+        for ref in type_map.get("supplementary-file", {}):
             file = convert_file(
                 all_nodes_map,
                 type_map,
@@ -501,7 +650,7 @@ def create_ms_announcement_file(
                 announcement.supplementary_file_list.append(file)
     identification_map = {}
     identification_links = relationship_name_map.get("identified-as")
-    items = type_map.get("metabolite-identification")
+    items = type_map.get("molecular-entity-identifier")
     if identification_links and items:
         for ref in identification_links:
             item = identification_links[ref]
@@ -510,37 +659,41 @@ def create_ms_announcement_file(
                 if item.source_ref not in identification_map:
                     identification_map[item.source_ref] = []
                 identification_map[item.source_ref].append(identification)
+    reported_molecular_entities_dict: dict[
+        str, AnnouncementReportedMolecularEntity
+    ] = {}
+    for reported_entity_type in ("metabolite", "molecular-entity"):
+        if reported_entity_type in type_map:
+            for ref in type_map.get(reported_entity_type, {}):
+                met = type_map.get(reported_entity_type, {})[ref]
+                item = reported_molecular_entities_dict.get(met.name.lower())
+                if not item:
+                    item = AnnouncementReportedMolecularEntity(name=met.name)
+                    reported_molecular_entities_dict[met.name.lower()] = item
 
-    if "metabolite" in type_map:
-        reported_metabolites = []
-        for ref in type_map["metabolite"]:
-            met = type_map["metabolite"][ref]
-            item = AnnouncementReportedMetabolite(name=met.name)
-            reported_metabolites.append(item)
+                if ref in identification_map:
+                    identifications = identification_map[ref]
+                    for x in identifications:
+                        val = convert_to_cv_term_value(x)
+                        if val not in (item.database_identifiers or []):
+                            if not item.database_identifiers:
+                                item.database_identifiers = []
+                            item.database_identifiers.append(val)
 
-            if ref in identification_map:
-                identifications = identification_map[ref]
-                item.database_identifiers = [
-                    CvTermValue.model_validate(x.model_dump(by_alias=True))
-                    for x in identifications
-                ]
-
-        if reported_metabolites:
-            announcement.reported_metabolites = reported_metabolites
-            announcement.reported_metabolites.sort(key=lambda x: x.name)
+    if reported_molecular_entities_dict:
+        announcement.reported_molecular_entities = sorted(
+            reported_molecular_entities_dict.values(), key=lambda x: x.name
+        )
+        announcement.reported_molecular_entities.sort(key=lambda x: x.name)
     cv_sources = set()
     collect_cv_term_sources(announcement, cv_sources)
+    definitions = {x.label: x for x in mhd_dataset.cv_definitions}
     cv_sources = list(cv_sources)
     cv_sources.sort()
     for source in cv_sources:
-        if source in COMMON_CV_DEFINITIONS:
-            announcement.cv_definitions.append(COMMON_CV_DEFINITIONS[source])
-        elif source in OTHER_COMMON_CV_DEFINITIONS:
-            announcement.cv_definitions.append(OTHER_COMMON_CV_DEFINITIONS[source])
-        else:
-            announcement.cv_definitions.append(
-                CvDefinition(label=source, alternative_labels=[source.lower()])
-            )
+        if source in definitions:
+            announcement.cv_definitions.append(definitions[source])
+
     logger.info("Writing to %s", announcement_file_path)
     Path(announcement_file_path).parent.mkdir(parents=True, exist_ok=True)
     with Path(announcement_file_path).open("w") as f:

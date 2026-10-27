@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -10,8 +11,10 @@ from mhd_model.model.definitions import (
     MHD_MODEL_V0_1_LEGACY_PROFILE_NAME,
     MHD_MODEL_V0_1_MS_PROFILE_NAME,
 )
-from mhd_model.model.v0_1.dataset.profiles.legacy.profile import MhDatasetLegacyProfile
-from mhd_model.model.v0_1.dataset.profiles.ms.profile import MhDatasetMsProfile
+from mhd_model.model.v1_0.dataset.profiles.legacy.profile import (
+    MhDatasetLegacyProfile_v1_0,
+)
+from mhd_model.model.v1_0.dataset.profiles.ms.profile import MhDatasetMsProfile_v1_0
 from mhd_model.shared.model import ProfileEnabledDataset
 
 
@@ -58,15 +61,15 @@ def create_neo4j_input_file_task(
     mhd_dataset = None
     if profile.schema_name == MHD_MODEL_V0_1_DEFAULT_SCHEMA_NAME:
         if profile.profile_uri == MHD_MODEL_V0_1_LEGACY_PROFILE_NAME:
-            mhd_dataset = MhDatasetLegacyProfile.model_validate(json_data)
+            mhd_dataset = MhDatasetLegacyProfile_v1_0.model_validate(json_data)
         elif profile.profile_uri == MHD_MODEL_V0_1_MS_PROFILE_NAME:
-            mhd_dataset = MhDatasetMsProfile.model_validate(json_data)
+            mhd_dataset = MhDatasetMsProfile_v1_0.model_validate(json_data)
         else:
             click.echo(f"{profile.profile_uri} is not supported.")
-            exit(1)
+            sys.exit(1)
     else:
         click.echo(f"{profile.schema_name} is not schema.")
-        exit(1)
+        sys.exit(1)
 
     nodes_map = {x.id_: x for x in mhd_dataset.graph.nodes}
     relationships_map = {x.id_: x for x in mhd_dataset.graph.relationships}
@@ -113,12 +116,7 @@ def create_neo4j_input_file_task(
                     properties[key] = [str(x) for x in value]
                 elif isinstance(value, dict):
                     properties[key] = json.dumps({k: str(v) for k, v in value.items()})
-                elif (
-                    isinstance(value, str)
-                    or isinstance(value, int)
-                    or isinstance(value, float)
-                    or isinstance(value, bool)
-                ):
+                elif isinstance(value, (str, int, float, bool)):
                     properties[key] = value
                 else:
                     properties[key] = str(value)
@@ -140,7 +138,6 @@ def create_neo4j_input_file_task(
         #     "raw-data-file",
         #     "derived-data-file",
         #     "supplementary-file",
-        #     # "metabolite",
         # }:
         #     continue
         # if nodes_map[rel.target_ref].type_ == "study" and nodes_map[
@@ -149,7 +146,6 @@ def create_neo4j_input_file_task(
         #     "raw-data-file",
         #     "derived-data-file",
         #     "supplementary-file",
-        #     # "metabolite",
         # }:
         #     continue
         relationships.append(

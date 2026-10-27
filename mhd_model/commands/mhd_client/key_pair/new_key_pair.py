@@ -1,32 +1,9 @@
 from pathlib import Path
 
 import click
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import rsa
 
 from mhd_model.log_utils import set_basic_logging_config
-
-
-def generate_rsa_key_pair(key_size: int = 4096):
-    """Generates an RSA private key and its public counterpart."""
-    private_key = rsa.generate_private_key(
-        public_exponent=65537, key_size=key_size, backend=default_backend()
-    )
-
-    private_pem = private_key.private_bytes(
-        encoding=serialization.Encoding.PEM,
-        format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption(),
-    )
-
-    public_key = private_key.public_key()
-    public_pem = public_key.public_bytes(
-        encoding=serialization.Encoding.PEM,
-        format=serialization.PublicFormat.SubjectPublicKeyInfo,
-    )
-
-    return private_pem, public_pem
+from mhd_model.mhd_client_utils import generate_rsa_key_pair
 
 
 @click.command(name="create", no_args_is_help=False)

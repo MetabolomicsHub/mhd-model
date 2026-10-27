@@ -1,24 +1,22 @@
-import datetime
+import inspect
+import logging
 from typing import Annotated, Any
 
-from pydantic import Field, field_validator
-from pydantic.alias_generators import to_pascal
+from pydantic import Field
 
-from mhd_model.model.v1_0.dataset.profiles.base import base, graph_nodes, relationships
-from mhd_model.model.v1_0.dataset.profiles.base.base import (
-    BaseMhdModel,
-    BaseMhdRelationship,
-    CvTermObjectId,
-    CvTermValueObjectId,
+from mhd_model.model.base import BaseMhdFile
+from mhd_model.model.v1_0.dataset.profiles.base import graph_nodes, relationships
+from mhd_model.shared.base import MhdObjectType
+from mhd_model.shared.model import (
+    BaseMhdDataset,
+    DatasetProfileConfiguration,
     IdentifiableMhdModel,
-    MhdConfigModel,
-    MhdObjectId,
-    MhdObjectType,
+    MhdNode,
 )
-from mhd_model.model.v1_0.dataset.profiles.base.relationships import Relationship
-from mhd_model.shared.model import CvEnabledDataset
 
-GraphNode = Annotated[
+logger = logging.getLogger(__name__)
+
+DEFAULT_GRAPH_NODES = Annotated[
     graph_nodes.CvTermValueObject
     | graph_nodes.CvTermObject
     | graph_nodes.Organization
@@ -27,120 +25,93 @@ GraphNode = Annotated[
     | graph_nodes.Study
     | graph_nodes.Protocol
     | graph_nodes.Publication
-    | graph_nodes.BasicAssay
     | graph_nodes.Assay
     | graph_nodes.Specimen
     | graph_nodes.Subject
     | graph_nodes.Sample
     | graph_nodes.SampleRun
     | graph_nodes.SampleRunConfiguration
-    | graph_nodes.Metabolite
+    | graph_nodes.MolecularEntity
     | graph_nodes.MetadataFile
     | graph_nodes.ResultFile
     | graph_nodes.RawDataFile
     | graph_nodes.DerivedDataFile
     | graph_nodes.SupplementaryFile
-    | graph_nodes.BaseLabeledMhdModel
-    | graph_nodes.ReferencedObject,
-    Field(description="Possible Node Type"),
+    | graph_nodes.CharacteristicDefinition
+    | graph_nodes.FactorDefinition
+    | graph_nodes.ParameterDefinition
+    | graph_nodes.ReferencedObject
+    | graph_nodes.Spectra,
+    Field(description="Possible Default Node Type"),
+]
+
+DEFAULT_CV_TERM_TYPES = [
+    "characteristic-type",
+    "descriptor",
+    "factor-type",
+    "parameter-type",
+    "protocol-type",
+    "characteristic-value",
+    "data-provider",
+    "factor-value",
+    "molecular-entity-identifier",
+    "parameter-value",
 ]
 
 
-class MhdGraph(MhdConfigModel):
-    start_item_refs: Annotated[
-        list[MhdObjectId | CvTermObjectId | CvTermValueObjectId], Field()
-    ] = []
-    nodes: Annotated[
-        list[GraphNode],
-        Field(),
-    ] = []
-    relationships: Annotated[list[Relationship], Field()] = []
+def get_default_type_class_mapping(
+    module: Any, base_classes: tuple[IdentifiableMhdModel, ...]
+):
+    items: dict[str, IdentifiableMhdModel] = {}
+    alternative_types_label = "alternative_types"
+    for _, node_class in inspect.getmembers(module, inspect.isclass):
+        if issubclass(node_class, base_classes):
+            node_class_type: type[IdentifiableMhdModel] = node_class
+            json_schema_extra = node_class_type.model_config.get(
+                "json_schema_extra", {}
+            )
+            alternative_types = json_schema_extra.get(alternative_types_label)
+            default_type = node_class_type.model_fields.get("type_").default
+            items[default_type] = node_class_type
+            if alternative_types:
+                for alternative_type in alternative_types:
+                    items[alternative_type] = node_class_type
+    return items
 
-    @field_validator("nodes", mode="before")
+
+def get_unique_id_contribution_fields():
+    contribution_map: dict[str, IdentifiableMhdModel] = {}
+    contributions_label = "unique_value_contribution"
+    for _, node_class in inspect.getmembers(graph_nodes, inspect.isclass):
+        if issubclass(node_class, (MhdNode, BaseMhdDataset)):
+            json_schema_extra = node_class.model_config.get("json_schema_extra", {})
+            contributions = json_schema_extra.get(contributions_label)
+            default_type = node_class.model_fields.get("type_").default
+            contribution_map[default_type] = contributions
+
+    return contribution_map
+
+
+class DatasetProfileConfiguration_v1_0(DatasetProfileConfiguration):
+    def __init__(self, **kwargs):
+        super().__init__(
+            node_modules=[graph_nodes],
+            relationship_modules=[relationships],
+            default_reference_object_type="default",
+            default_relationship_type="default",
+            default_cv_term_types=DEFAULT_CV_TERM_TYPES,
+            cv_term_class=graph_nodes.CvTermObject,
+            cv_term_value_class=graph_nodes.CvTermValueObject,
+            **kwargs,
+        )
+
+
+DEFAULT_PROFILE_CONFIG_V1_0 = DatasetProfileConfiguration_v1_0()
+
+
+class MhDatasetBaseProfile_v1_0(BaseMhdFile):
+    type_: Annotated[MhdObjectType, Field(alias="type")] = MhdObjectType("base-v1_0")
+
     @classmethod
-    def node_validator(cls, v) -> list[BaseMhdModel]:
-        if isinstance(v, list):
-            items = []
-            for item in v:
-                if isinstance(item, BaseMhdModel):
-                    items.append(item)
-                elif isinstance(item, dict):
-                    val = cls.create_model(item)
-                    if not val:
-                        raise ValueError("invalid type in nodes")
-                    items.append(val)
-                else:
-                    raise ValueError("invalid type in nodes")
-            return items
-
-        raise ValueError("invalid type")
-
-    @field_validator("relationships", mode="before")
-    @classmethod
-    def relationship_validator(cls, v) -> list[BaseMhdRelationship]:
-        if isinstance(v, list):
-            items = []
-            for item in v:
-                if isinstance(item, BaseMhdRelationship):
-                    items.append(item)
-                elif isinstance(item, dict):
-                    class_name = to_pascal(item["type"].replace("-", "_"))
-                    if hasattr(relationships, class_name):
-                        class_object = getattr(relationships, class_name)
-                        items.append(class_object.model_validate(item))
-                else:
-                    raise ValueError("invalid type in nodes")
-            return items
-
-        raise ValueError("invalid type")
-
-    @staticmethod
-    def create_model(item: dict[str, Any]):
-        class_name = to_pascal(item["type"].replace("-", "_"))
-        if item["id"].startswith("cv--"):
-            return graph_nodes.CvTermObject.model_validate(item)
-        elif item["id"].startswith("cv-value--"):
-            return graph_nodes.CvTermValueObject.model_validate(item)
-        elif hasattr(graph_nodes, class_name):
-            class_object = getattr(graph_nodes, class_name)
-            return class_object.model_validate(item)
-        return None
-
-    @staticmethod
-    def get_node_class(item: dict[str, Any]):
-        if not item or not item.get("type") or not item.get("id"):
-            return
-
-    @staticmethod
-    def get_mhd_class_by_type(node_type: str) -> None | IdentifiableMhdModel:
-        class_name = to_pascal(node_type.replace("-", "_"))
-        class_object = None
-        if hasattr(graph_nodes, class_name):
-            class_object = getattr(graph_nodes, class_name)
-        if not class_object:
-            class_object = getattr(base, class_name)
-        return class_object
-
-
-class GraphEnabledBaseDataset(CvEnabledDataset): ...
-
-
-class MhDatasetBaseProfile(GraphEnabledBaseDataset):
-    id_: Annotated[
-        None | str,
-        Field(
-            alias="id",
-            description="Unique identifier of the dataset",
-        ),
-    ] = None
-    type_: Annotated[MhdObjectType, Field(frozen=True, alias="type")] = MhdObjectType(
-        "base-dataset"
-    )
-    created_at: Annotated[datetime.datetime | None, Field(description="Created at")] = (
-        None
-    )
-    name: Annotated[None | str, Field()] = None
-    description: Annotated[None | str, Field()] = None
-    graph: Annotated[MhdGraph, Field(json_schema_extra={"mhdGraphValidation": {}})] = (
-        MhdGraph()
-    )
+    def get_config(cls) -> DatasetProfileConfiguration:
+        return DEFAULT_PROFILE_CONFIG_V1_0

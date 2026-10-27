@@ -76,4 +76,4 @@ def delete_api_token_task(
         click.echo("API token deletion failed.")
         click.echo(ex)
 
-    exit(1)
+    sys.exit(1)

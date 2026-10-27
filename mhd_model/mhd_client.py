@@ -75,7 +75,7 @@ AccessionType = Literal["mhd", "legacy", "test-legacy", "test-mhd", "dev"]
 
 class MhdAuthClient:
     def __init__(
-        self, signed_jwt: str, mhd_webservice_base_url: str, api_version: str = "v0.1"
+        self, signed_jwt: str, mhd_webservice_base_url: str, api_version: str = "v1.0"
     ):
         if not signed_jwt:
             logger.error("Signed JWT token is not provided")
@@ -85,7 +85,7 @@ class MhdAuthClient:
             raise MhdClientError("MHD webservice base URL is not provided")
         self.signed_jwt = signed_jwt
         self.mhd_webservice_base_url = mhd_webservice_base_url.lstrip("/")
-        self.api_version = api_version.replace(".", "_") if api_version else "v0_1"
+        self.api_version = api_version.replace(".", "_") if api_version else "v1_0"
         suffix = "/" + self.api_version
         if mhd_webservice_base_url.endswith(suffix):
             self.mhd_webservice_base_url = self.mhd_webservice_base_url.replace(
@@ -222,7 +222,7 @@ class MhdAuthClient:
 
 class MhdClient:
     def __init__(
-        self, mhd_webservice_base_url: str, api_token: str, api_version: str = "v0.1"
+        self, mhd_webservice_base_url: str, api_token: str, api_version: str = "v1.0"
     ):
         if not api_token:
             logger.error("API token is not provided")
@@ -232,7 +232,7 @@ class MhdClient:
             raise MhdClientError("MHD webservice base URL is not provided")
         self.api_token = api_token
         self.mhd_webservice_base_url = mhd_webservice_base_url.lstrip("/")
-        self.api_version = api_version.replace(".", "_") if api_version else "v0_1"
+        self.api_version = api_version.replace(".", "_") if api_version else "v1_0"
         suffix = "/" + self.api_version
         if mhd_webservice_base_url.endswith(suffix):
             self.mhd_webservice_base_url = self.mhd_webservice_base_url.replace(

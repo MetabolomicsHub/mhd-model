@@ -1,3 +1,5 @@
+import sys
+
 import click
 
 from mhd_model.convertors.sdrf.mhd2sdrf import create_sdrf_files
@@ -49,7 +51,7 @@ def create_sdrf_file_task(
             click.echo(f"{mhd_study_id}: {len(sdrf_files)} SDRF files created.")
         else:
             click.echo(f"There is no SDRF file for {mhd_study_id}.")
-            exit(1)
+            sys.exit(1)
     except Exception as ex:
         click.echo(f"{mhd_study_id} SDRF file creation failed. {ex!s}")
-        exit(1)
+        sys.exit(1)

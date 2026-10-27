@@ -89,4 +89,4 @@ def list_api_tokens_task(
         click.echo("API token creation failed.")
         click.echo(ex)
 
-    exit(1)
+    sys.exit(1)

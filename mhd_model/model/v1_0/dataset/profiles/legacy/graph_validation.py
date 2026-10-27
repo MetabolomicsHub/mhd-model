@@ -11,6 +11,7 @@ from mhd_model.model.v1_0.dataset.validation.profile.definition import (
     NodePropertyValidation,
     NodeValidation,
     PropertyConstraint,
+    ReferenceNodeValidation,
 )
 from mhd_model.model.v1_0.rules.managed_cv_term_rules import MANAGED_FILE_FORMAT_RULES
 from mhd_model.model.v1_0.rules.managed_cv_terms import (
@@ -21,7 +22,7 @@ from mhd_model.model.v1_0.rules.managed_cv_terms import (
     COMMON_PROTOCOLS,
     COMMON_TECHNOLOGY_TYPES,
 )
-from mhd_model.shared.model import CvTerm
+from mhd_model.shared.base import CvTerm
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,
@@ -33,33 +34,27 @@ from mhd_model.shared.validation.definitions import (
 MHD_LEGACY_PROFILE_V1_0 = MhDatasetValidation(schema=MHD_MODEL_V1_0_LEGACY_PROFILE_NAME)
 
 MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
-    NodeValidation(
-        node_type="referenced-object",
+    ReferenceNodeValidation(
+        node_type="default",
         min=0,
         validations=[
             NodePropertyValidation(
-                identifier="referenced-object-001-01",
-                node_type="referenced-object",
+                identifier="reference-default-001-01",
+                node_type="default",
                 node_property_name="referenced_type",
                 constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
-                identifier="referenced-object-002-01",
-                node_type="referenced-object",
-                node_property_name="referenced_object_id",
+                identifier="reference-default-002-01",
+                node_type="default",
+                node_property_name="referenced_id",
                 constraints=PropertyConstraint(required=True),
             ),
             NodePropertyValidation(
-                identifier="referenced-object-003-01",
-                node_type="referenced-object",
-                node_property_name="mhd_identifier",
+                identifier="reference-default-003-01",
+                node_type="default",
+                node_property_name="dataset_repository_identifier",
                 constraints=PropertyConstraint(required=True),
-            ),
-            NodePropertyValidation(
-                identifier="referenced-object-004-01",
-                node_type="referenced-object",
-                node_property_name="mhd_revision",
-                constraints=PropertyConstraint(required=False),
             ),
         ],
         relationships=[],
@@ -68,11 +63,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
         node_type="assay",
         min=0,
         validations=[
-            NodePropertyValidation(
-                node_type="assay",
-                node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
             NodePropertyValidation(
                 node_type="assay",
                 node_property_name="name",
@@ -107,18 +97,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="omics_type_ref",
                 required=False,
                 target_ref_types=["descriptor"],
-            ),
-            EmbeddedRefValidation(
-                node_type="assay",
-                node_property_name="protocol_refs",
-                required=False,
-                target_ref_types=["protocol"],
-            ),
-            EmbeddedRefValidation(
-                node_type="assay",
-                node_property_name="sample_run_refs",
-                required=False,
-                target_ref_types=["sample-run"],
             ),
         ],
         relationships=[
@@ -158,6 +136,15 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 relationship_name="has",
                 reverse_relationship_name="created-in",
                 target="result-file",
+                min=0,
+                min_for_each_source=0,
+            ),
+            RelationshipValidation(
+                identifier="assay-004-04",
+                source="assay",
+                relationship_name="has-sample-run",
+                reverse_relationship_name="part-of",
+                target="sample-run",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -374,33 +361,33 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 source="metadata-file",
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
-                target="metabolite",
+                target="molecular-entity",
                 min=0,
                 min_for_each_source=0,
             ),
         ],
     ),
     NodeValidation(
-        node_type="metabolite",
+        node_type="molecular-entity",
         min=0,
         validations=[
             NodePropertyValidation(
-                node_type="metabolite",
+                node_type="molecular-entity",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
             RelationshipValidation(
-                source="metabolite",
+                source="molecular-entity",
                 relationship_name="identified-as",
                 reverse_relationship_name="reported-identifier-of",
-                target="metabolite-identifier",
+                target="molecular-entity-identifier",
                 min=0,
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                source="metabolite",
+                source="molecular-entity",
                 relationship_name="described-as",
                 reverse_relationship_name="describes",
                 target="descriptor",
@@ -408,7 +395,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                source="metabolite",
+                source="molecular-entity",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
                 target="study",
@@ -416,7 +403,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=1,
             ),
             RelationshipValidation(
-                source="metabolite",
+                source="molecular-entity",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
                 target="metadata-file",
@@ -424,7 +411,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                source="metabolite",
+                source="molecular-entity",
                 relationship_name="reported-in",
                 reverse_relationship_name="reports",
                 target="result-file",
@@ -432,7 +419,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 min_for_each_source=0,
             ),
             RelationshipValidation(
-                source="metabolite",
+                source="molecular-entity",
                 relationship_name="measured-in",
                 reverse_relationship_name="measures",
                 target="raw-data-file",
@@ -839,7 +826,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 source="raw-data-file",
                 relationship_name="measures",
                 reverse_relationship_name="measured-in",
-                target="metabolite",
+                target="molecular-entity",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -889,7 +876,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 source="result-file",
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
-                target="metabolite",
+                target="molecular-entity",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -913,11 +900,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 node_type="sample",
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=1),
-            ),
-            NodePropertyValidation(
-                node_type="sample",
-                node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True),
             ),
         ],
         relationships=[
@@ -1007,6 +989,15 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 min=0,
                 min_for_each_source=0,
             ),
+            RelationshipValidation(
+                identifier="sample-run-003-03",
+                source="sample-run",
+                reverse_relationship_name="has-sample-run",
+                relationship_name="part-of",
+                target="assay",
+                min=0,
+                min_for_each_source=0,
+            ),
         ],
     ),
     NodeValidation(
@@ -1044,11 +1035,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="study",
-                node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True, min_length=2),
-            ),
-            NodePropertyValidation(
-                node_type="study",
                 node_property_name="title",
                 constraints=PropertyConstraint(required=True, min_length=5),
             ),
@@ -1069,7 +1055,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
             ),
             NodePropertyValidation(
                 node_type="study",
-                node_property_name="dataset_url_list",
+                node_property_name="url_list",
                 constraints=PropertyConstraint(required=True),
             ),
         ],
@@ -1151,7 +1137,7 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 source="study",
                 relationship_name="reports",
                 reverse_relationship_name="reported-in",
-                target="metabolite",
+                target="molecular-entity",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1262,11 +1248,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
                 node_property_name="name",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
-            NodePropertyValidation(
-                node_type="specimen",
-                node_property_name="repository_identifier",
-                constraints=PropertyConstraint(required=True, min_length=1),
-            ),
         ],
         relationships=[
             RelationshipValidation(
@@ -1310,11 +1291,6 @@ MHD_LEGACY_PROFILE_V1_0.mhd_nodes = [
             NodePropertyValidation(
                 node_type="subject",
                 node_property_name="name",
-                constraints=PropertyConstraint(required=True, min_length=1),
-            ),
-            NodePropertyValidation(
-                node_type="subject",
-                node_property_name="repository_identifier",
                 constraints=PropertyConstraint(required=True, min_length=1),
             ),
         ],
@@ -1527,7 +1503,7 @@ MHD_LEGACY_PROFILE_V1_0.cv_nodes = [
                 validation=AllowAnyCvTerm(allowed_other_sources=["wikidata", "ILX"]),
                 condition=[
                     FilterCondition(
-                        name="Data Provider",
+                        name="Data provider",
                         relationship_name="[embedded].created_by_ref",
                         start_node_type=None,
                         expression="created_by_ref",
@@ -1689,7 +1665,7 @@ MHD_LEGACY_PROFILE_V1_0.cv_nodes = [
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
-                target="metabolite",
+                target="molecular-entity",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1769,7 +1745,7 @@ MHD_LEGACY_PROFILE_V1_0.cv_nodes = [
                 source="descriptor",
                 relationship_name="describes",
                 reverse_relationship_name="described-as",
-                target="metabolite",
+                target="molecular-entity",
                 min=0,
                 min_for_each_source=0,
             ),
@@ -1869,38 +1845,37 @@ MHD_LEGACY_PROFILE_V1_0.cv_nodes = [
         ],
     ),
     CvNodeValidation(
-        node_type="metabolite-identifier",
+        node_type="molecular-entity-identifier",
         min=0,
         validations=[
             CvTermValidation(
-                node_type="metabolite-identifier",
+                node_type="molecular-entity-identifier",
                 validation=AllowedChildrenCvTerms(
                     parent_cv_terms=[
                         ParentCvTerm(
                             cv_term=CvTerm(
-                                source="CHEMINF",
-                                accession="CHEMINF:000464",
-                                name="chemical database identifier",
+                                source="EDAM",
+                                accession="EDAM:data_2894",
+                                name="Compound accession",
                             ),
-                            index_cv_terms=False,
                         )
                     ]
                 ),
                 condition=[
                     FilterCondition(
-                        name="Reported Metabolite Identifier",
+                        name="Reported Molecular Entity Identifier",
                         relationship_name="identified-as",
-                        start_node_type="metabolite",
+                        start_node_type="molecular-entity",
                     )
                 ],
             ),
         ],
         relationships=[
             RelationshipValidation(
-                source="metabolite-identifier",
+                source="molecular-entity-identifier",
                 relationship_name="reported-identifier-of",
                 reverse_relationship_name="identified-as",
-                target="metabolite",
+                target="molecular-entity",
                 min=0,
                 min_for_each_source=1,
             ),

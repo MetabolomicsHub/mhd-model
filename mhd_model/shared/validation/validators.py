@@ -13,9 +13,9 @@ import jsonschema
 import reachable
 from pydantic import BaseModel, ValidationError
 
-from mhd_model.shared.model import CvTerm, CvTermKeyValue, CvTermValue
+from mhd_model.shared.base import CvTerm, CvTermKeyValue, CvTermValue
 from mhd_model.shared.validation.cv_term_helper import (
-    CvTermHelper,
+    BaseCvTermHelper,
 )
 from mhd_model.shared.validation.definitions import (
     AccessibleCompactURI,
@@ -47,8 +47,8 @@ class ValidationResult(BaseModel):
 
 
 class BaseProfileValidator(abc.ABC):
-    def __init__(self, cv_helper: CvTermHelper) -> None:
-        self.cv_helper = cv_helper
+    def __init__(self, cv_term_helper: BaseCvTermHelper) -> None:
+        self.cv_term_helper = cv_term_helper
 
     def is_accessible_url(self, url: str) -> bool:
         try:
@@ -78,9 +78,8 @@ class BaseProfileValidator(abc.ABC):
         else:
             validation = profile_validation
 
-        if not value:
-            if validation.allow_null_value:
-                return None
+        if not value and validation.allow_null_value:
+            return None
 
         if isinstance(validation, ProfileCvTermValidation):
             if isinstance(value, CvTermKeyValue) or (
@@ -89,16 +88,20 @@ class BaseProfileValidator(abc.ABC):
                 data = value
                 if isinstance(value, dict):
                     data = CvTermKeyValue.model_validate(value)
-                if validation.allowed_placeholder_values:
-                    if data.values and data.values[0].accession in {
-                        x.accession for x in validation.allowed_placeholder_values
-                    }:
-                        return None
-                if validation.allowed_missing_cv_terms:
-                    if data.values and data.values[0] in {
-                        x.accession for x in validation.allowed_missing_cv_terms
-                    }:
-                        return None
+                if (
+                    validation.allowed_placeholder_values
+                    and data.values
+                    and data.values[0].accession
+                    in {x.accession for x in validation.allowed_placeholder_values}
+                ):
+                    return None
+                if (
+                    validation.allowed_missing_cv_terms
+                    and data.values
+                    and data.values[0]
+                    in {x.accession for x in validation.allowed_missing_cv_terms}
+                ):
+                    return None
 
             if isinstance(value, CvTerm) or (
                 isinstance(value, dict) and "source" in value and "accession" in value
@@ -107,32 +110,31 @@ class BaseProfileValidator(abc.ABC):
                 if isinstance(value, dict):
                     data = CvTermPlaceholder.model_validate(value)
 
-                if validation.allowed_placeholder_values:
-                    if str(data) in {
-                        str(x) for x in validation.allowed_placeholder_values
-                    }:
+                if validation.allowed_placeholder_values and str(data) in {
+                    str(x) for x in validation.allowed_placeholder_values
+                }:
+                    return None
+                if validation.allowed_missing_cv_terms and data.accession in {
+                    x.accession for x in validation.allowed_missing_cv_terms
+                }:
+                    return None
+                if validation.allowed_other_sources and data.accession in {
+                    x for x in validation.allowed_other_sources
+                }:
+                    if not data.source:
+                        source = data.accession.split(":")[0]
+                        data.source = source
+                    url = self.cv_term_helper.get_uri(cv_term=data)
+                    acessible = self.is_accessible_url(url=url)
+                    if acessible:
                         return None
-                if validation.allowed_missing_cv_terms:
-                    if data.accession in {
-                        x.accession for x in validation.allowed_missing_cv_terms
-                    }:
-                        return None
-                if validation.allowed_other_sources:
-                    if data.accession in {x for x in validation.allowed_other_sources}:
-                        if not data.source:
-                            source = data.accession.split(":")[0]
-                            data.source = source
-                        url = self.cv_helper.get_uri(cv_term=data)
-                        acessible = self.is_accessible_url(url=url)
-                        if acessible:
-                            return None
-                        error = jsonschema.ValidationError(
-                            message=f"{data.accession} is not accessible",
-                            validator=validation.name,
-                            context=[],
-                            path=(),
-                            instance=data,
-                        )
+                    error = jsonschema.ValidationError(
+                        message=f"{data.accession} is not accessible",
+                        validator=validation.name,
+                        context=[],
+                        path=(),
+                        instance=data,
+                    )
 
         validation_result = self.evaluate(value, validation, [])
         valid = validation_result is None or validation_result.valid
@@ -218,8 +220,8 @@ class BaseProfileValidator(abc.ABC):
 
 
 class AllowedCvTermValidator(BaseProfileValidator):
-    def __init__(self, cv_helper: CvTermHelper) -> None:
-        super().__init__(cv_helper)
+    def __init__(self, cv_term_helper: BaseCvTermHelper) -> None:
+        super().__init__(cv_term_helper)
 
     def get_profile_validation_class(self) -> type[AllowedCvTerms]:
         return AllowedCvTerms
@@ -266,8 +268,8 @@ class AllowedCvTermValidator(BaseProfileValidator):
 
 
 class AllowAnyCvTermValidator(BaseProfileValidator):
-    def __init__(self, cv_helper: CvTermHelper) -> None:
-        super().__init__(cv_helper)
+    def __init__(self, cv_term_helper: BaseCvTermHelper) -> None:
+        super().__init__(cv_term_helper)
 
     def get_profile_validation_class(self) -> type[AllowAnyCvTerm]:
         return AllowAnyCvTerm
@@ -291,7 +293,7 @@ class AllowAnyCvTermValidator(BaseProfileValidator):
 
             # prefix, identifier = tuple(data.accession.split(":"))
 
-            result = self.cv_helper.get_uri(data)
+            result = self.cv_term_helper.get_uri(data)
             if not result:
                 return ValidationResult(
                     sub_path=sub_path,
@@ -318,12 +320,12 @@ class AllowAnyCvTermValidator(BaseProfileValidator):
 class ProfileValidationGroupValidator(BaseProfileValidator):
     def __init__(
         self,
-        cv_helper: CvTermHelper,
+        cv_term_helper: BaseCvTermHelper,
         validators: dict[str, BaseProfileValidator],
         ftp_client_pool: dict[str, FTP],
         url_client: reachable.client.Client,
     ) -> None:
-        super().__init__(cv_helper)
+        super().__init__(cv_term_helper)
         self.ftp_client_pool = ftp_client_pool
         self.url_client = url_client
         self.validators = validators
@@ -396,8 +398,8 @@ class ProfileValidationGroupValidator(BaseProfileValidator):
 
 
 class AllowedChildrenCvTermsValidator(BaseProfileValidator):
-    def __init__(self, cv_helper: CvTermHelper) -> None:
-        super().__init__(cv_helper)
+    def __init__(self, cv_term_helper: BaseCvTermHelper) -> None:
+        super().__init__(cv_term_helper)
 
     def get_profile_validation_class(self) -> type[AllowedChildrenCvTerms]:
         return AllowedChildrenCvTerms
@@ -436,36 +438,24 @@ class AllowedChildrenCvTermsValidator(BaseProfileValidator):
                 data=value,
             )
         for parent in validator.parent_cv_terms:
-            if parent.index_cv_terms:
-                terms = self.cv_helper.get_children_of_cv_term(parent)
-                if cv_term.accession in terms:
-                    return ValidationResult(
-                        sub_path=sub_path,
-                        name=validator.name,
-                        valid=True,
-                        message=f"[{cv_term.source}, {cv_term.accession}, {cv_term.name}] is a child of allowed CV terms. ",
-                        data=value,
-                    )
-
-            else:
-                search_result, message = self.cv_helper.check_cv_term(
-                    cv_term=cv_term, parent_cv_term=parent
-                )
-                if search_result:
-                    return ValidationResult(
-                        sub_path=sub_path,
-                        name=validator.name,
-                        valid=True,
-                        message=f"[{cv_term.source}, {cv_term.accession}, {cv_term.name}] is a child of allowed CV terms. ",
-                        data=value,
-                    )
+            search_result, message = self.cv_term_helper.check_cv_term(
+                cv_term=cv_term, parent_cv_term=parent
+            )
+            if search_result:
                 return ValidationResult(
                     sub_path=sub_path,
                     name=validator.name,
-                    valid=search_result,
-                    message=message,
+                    valid=True,
+                    message=f"[{cv_term.source}, {cv_term.accession}, {cv_term.name}] is a child of allowed CV terms. ",
                     data=value,
                 )
+            return ValidationResult(
+                sub_path=sub_path,
+                name=validator.name,
+                valid=search_result,
+                message=message,
+                data=value,
+            )
 
         return ValidationResult(
             sub_path=sub_path,
@@ -478,8 +468,8 @@ class AllowedChildrenCvTermsValidator(BaseProfileValidator):
 
 
 class AllowedCvListValidator(BaseProfileValidator):
-    def __init__(self, cv_helper: CvTermHelper) -> None:
-        super().__init__(cv_helper)
+    def __init__(self, cv_term_helper: BaseCvTermHelper) -> None:
+        super().__init__(cv_term_helper)
 
     def get_profile_validation_class(self) -> type[AllowedCvList]:
         return AllowedCvList
@@ -505,7 +495,7 @@ class AllowedCvListValidator(BaseProfileValidator):
         source_names = [x.lower() for x in validator.source_names]
 
         if data.source.lower() in source_names:
-            check_valid, message = self.cv_helper.check_cv_term(data)
+            check_valid, message = self.cv_term_helper.check_cv_term(data)
             if check_valid:
                 return ValidationResult(
                     sub_path=sub_path,
@@ -539,11 +529,11 @@ class AllowedCvListValidator(BaseProfileValidator):
 class AccessibleURIValidator(BaseProfileValidator):
     def __init__(
         self,
-        cv_helper: CvTermHelper,
+        cv_term_helper: BaseCvTermHelper,
         ftp_client_pool: dict[str, FTP],
         url_client: reachable.client.Client,
     ) -> None:
-        super().__init__(cv_helper)
+        super().__init__(cv_term_helper)
         self.ftp_client_pool = ftp_client_pool
         self.url_client = url_client
         self.cache: dict[None | str, ValidationResult] = {}
@@ -695,11 +685,11 @@ class AccessibleURIValidator(BaseProfileValidator):
 class AccessibleCompactURIValidator(BaseProfileValidator):
     def __init__(
         self,
-        cv_helper: CvTermHelper,
+        cv_term_helper: BaseCvTermHelper,
         ftp_client_pool: dict[str, FTP],
         url_client: reachable.client.Client,
     ) -> None:
-        super().__init__(cv_helper)
+        super().__init__(cv_term_helper)
         self.ftp_client_pool = ftp_client_pool
         self.url_client = url_client
 
@@ -775,16 +765,15 @@ class AccessibleCompactURIValidator(BaseProfileValidator):
                 follow_redirects=validator.follow_redirects,
                 timeout=60,
             )
-            if not validator.follow_redirects:
-                if result.status_code in (301, 302):
-                    logger.debug("URL is redirected: %s", default_uri)
-                    return ValidationResult(
-                        sub_path=sub_path,
-                        name=validator.name,
-                        valid=True,
-                        message=f"URL is redirected: {default_uri}",
-                        data=value,
-                    )
+            if not validator.follow_redirects and result.status_code in (301, 302):
+                logger.debug("URL is redirected: %s", default_uri)
+                return ValidationResult(
+                    sub_path=sub_path,
+                    name=validator.name,
+                    valid=True,
+                    message=f"URL is redirected: {default_uri}",
+                    data=value,
+                )
             if result.status_code == 404:
                 logger.warning("URL is not found: %s", default_uri)
                 return ValidationResult(
@@ -804,8 +793,7 @@ class AccessibleCompactURIValidator(BaseProfileValidator):
             )
 
         except Exception as ex:
-            logger.debug("Unaccessible URI: %s", default_uri)
-            logger.exception(ex)
+            logger.exception("Unaccessible URI: %s - %s", default_uri, ex)
             return ValidationResult(
                 sub_path=sub_path,
                 name=validator.name,

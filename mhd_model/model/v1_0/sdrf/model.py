@@ -2,16 +2,12 @@ from typing import Annotated
 
 from pydantic import AnyUrl, Field
 
-from mhd_model.shared.model import (
-    CvTerm,
-    MhdConfigModel,
-    QuantitativeValue,
-)
+from mhd_model.shared.base import BasicValueModel, CvTerm, MhdConfigModel
 
 
 class SdrfKeyValue(MhdConfigModel):
     key: Annotated[CvTerm, Field()]
-    value: Annotated[None | CvTerm | QuantitativeValue, Field()] = None
+    value: Annotated[None | CvTerm | BasicValueModel, Field()] = None
 
 
 class SdrfFile(MhdConfigModel):
@@ -35,6 +31,8 @@ class LegacySdrfRow(MhdConfigModel):
     derived_data_files: Annotated[list[SdrfFile], Field()] = []
     result_files: Annotated[list[SdrfFile], Field()] = []
     supplementary_files: Annotated[list[SdrfFile], Field()] = []
+    technology_type: Annotated[None | str, Field()]
+    biosample_accession: Annotated[None | str, Field()]
 
 
 class LegacySdrf(MhdConfigModel):
