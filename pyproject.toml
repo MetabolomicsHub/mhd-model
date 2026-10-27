@@ -46,7 +46,7 @@ dev = [
 default-groups = []
 
 [tool.uv.sources]
-jsonprofile = { git = "https://github.com/oyurekten/jsonprofile.git", subdirectory = "python" }
+jsonprofile = { git = "https://github.com/MetabolomicsHub/jsonprofile.git", subdirectory = "python" }
 
 
 [build-system]
