@@ -1,3 +1,9 @@
+## v1.0.1 (2026-10-27)
+
+### Fix
+
+- dependency updates to use jsonprofile from pypi package registry
+
 ## v1.0.0 (2026-10-27)
 
 ### BREAKING CHANGE
