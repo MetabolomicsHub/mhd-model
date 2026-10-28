@@ -1,3 +1,9 @@
+## v1.0.3 (2026-10-28)
+
+### Fix
+
+- announcement file raw file updates, announcement file converter error and cv term suggestion
+
 ## v1.0.2 (2026-10-28)
 
 ### Fix
