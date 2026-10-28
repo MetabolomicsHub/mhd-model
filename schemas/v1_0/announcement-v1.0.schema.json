@@ -478,6 +478,19 @@
           "default": null,
           "description": "Format of the raw data file as a CV term.",
           "title": "Format"
+        },
+        "sample_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Sample name used to generate this data file.",
+          "title": "Sample Name"
         }
       },
       "required": [
