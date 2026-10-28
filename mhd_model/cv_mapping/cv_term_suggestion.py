@@ -5,6 +5,7 @@ from importlib import resources
 from cachetools import TTLCache, cached
 
 from mhd_model import cv_mapping
+from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.shared.base import CvTerm
 from mhd_model.validation import select_cv_term_helper
 
@@ -23,6 +24,7 @@ DEFAULT_GROUP_CV_MAPPING = {
     "acquisition polarity": ["MS"],
     "instrument class": ["MS"],
     "omics type": ["EDAM"],
+    "sample type": ["CHMO", "NCBITAXON"],
 }
 
 
@@ -102,7 +104,7 @@ class CvTermSuggestion:
                 allow_synonym_search=synonym_match,
             )
 
-        if not search:
+        if not search and source:
             search = self.cv_term_helper.find_cv_term(
                 source=source,
                 accession_or_label=cv_term.name,
@@ -176,11 +178,18 @@ class CvTermSuggestion:
             if transform:
                 result = cv_terms_map.get(transform.lower())
             else:
-                result = search
+                if (
+                    cv_term.source and search.source.lower() == cv_term.source.lower()
+                ) or (
+                    cv_list and search.source.lower() in {x.lower() for x in cv_list}
+                ):
+                    result = search
 
         if result:
             if str(result) != str(cv_term):
-                logger.info("%s is transformed to %s", cv_term, result)
+                logger.info(
+                    "%s: %s is transformed to %s", group or "No group", cv_term, result
+                )
         else:
             logger.info("%s does not match any ontology term", cv_term)
         return result
@@ -267,9 +276,11 @@ def load_cv_terms_mapping() -> tuple[
 
 
 if __name__ == "__main__":
+    set_basic_logging_config()
     suggestion = CvTermSuggestion()
-    suggestion.match_cv_term(
-        CvTerm(source="", accession="BTO:10091", name="human"),
+    result = suggestion.match_cv_term(
+        CvTerm(source="", accession="", name="Arabidopsis thaliana"),
         group="organism",
         # cv_list=["BTO", "UBERON"],
     )
+    logger.info(result)
