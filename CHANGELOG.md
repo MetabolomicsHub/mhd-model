@@ -1,3 +1,9 @@
+## v1.0.2 (2026-10-28)
+
+### Fix
+
+- announcement file validation error for v0.1
+
 ## v1.0.1 (2026-10-27)
 
 ### Fix
