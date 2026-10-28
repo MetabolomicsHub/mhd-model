@@ -9,6 +9,7 @@ sys.path.append(str(application_root_path))
 
 __all__ = [
     "convertors",
+    "cv_mapping",
     "domain_utils",
     "model",
     "schema_utils",

@@ -602,52 +602,63 @@ def create_announcement_file(
     )
     update_study_factors(all_nodes_map, relationships_map, announcement)
     update_characteristic_values(all_nodes_map, relationships_map, announcement)
+    samples: list[graph_nodes.SampleRun] = [
+        x for x in all_nodes_map.values() if x.type_ == "sample-run"
+    ]
+    raw_file_sample_name_mapping = {}
+    for sample_run in samples:
+        sample: graph_nodes.Sample = all_nodes_map.get(sample_run.sample_ref)
+        raw_data_files: list[graph_nodes.RawDataFile] = [
+            all_nodes_map.get(x) for x in sample_run.raw_data_file_refs or []
+        ]
+        for raw_data_file in raw_data_files:
+            raw_file_sample_name_mapping[raw_data_file.name] = (
+                sample.name if sample else None
+            )
+    for ref in type_map.get("result-file", {}) or {}:
+        file = convert_file(
+            all_nodes_map, type_map, "result-file", ref, AnnouncementResultFile
+        )
+        if file:
+            if not announcement.result_file_list:
+                announcement.result_file_list = []
+            announcement.result_file_list.append(file)
 
-    if "result-file" in type_map:
-        for ref in type_map.get("result-file", {}):
-            file = convert_file(
-                all_nodes_map, type_map, "result-file", ref, AnnouncementResultFile
-            )
-            if file:
-                if not announcement.result_file_list:
-                    announcement.result_file_list = []
-                announcement.result_file_list.append(file)
+    for ref in type_map.get("raw-data-file", {}) or {}:
+        file: AnnouncementRawDataFile = convert_file(
+            all_nodes_map, type_map, "raw-data-file", ref, AnnouncementRawDataFile
+        )
+        if file:
+            file.sample_name = raw_file_sample_name_mapping.get(file.name)
+            if not announcement.raw_data_file_list:
+                announcement.raw_data_file_list = []
+            announcement.raw_data_file_list.append(file)
 
-    if "raw-data-file" in type_map:
-        for ref in type_map.get("raw-data-file", {}):
-            file = convert_file(
-                all_nodes_map, type_map, "raw-data-file", ref, AnnouncementRawDataFile
-            )
-            if file:
-                if not announcement.raw_data_file_list:
-                    announcement.raw_data_file_list = []
-                announcement.raw_data_file_list.append(file)
-    if "derived-data-file" in type_map:
-        for ref in type_map.get("derived-data-file", {}):
-            file = convert_file(
-                all_nodes_map,
-                type_map,
-                "derived-data-file",
-                ref,
-                AnnouncementDerivedDataFile,
-            )
-            if file:
-                if not announcement.derived_data_file_list:
-                    announcement.derived_data_file_list = []
-                announcement.derived_data_file_list.append(file)
-    if "supplementary-file" in type_map:
-        for ref in type_map.get("supplementary-file", {}):
-            file = convert_file(
-                all_nodes_map,
-                type_map,
-                "supplementary-file",
-                ref,
-                AnnouncementSupplementaryFile,
-            )
-            if file:
-                if not announcement.supplementary_file_list:
-                    announcement.supplementary_file_list = []
-                announcement.supplementary_file_list.append(file)
+    for ref in type_map.get("derived-data-file", {}) or {}:
+        file = convert_file(
+            all_nodes_map,
+            type_map,
+            "derived-data-file",
+            ref,
+            AnnouncementDerivedDataFile,
+        )
+        if file:
+            if not announcement.derived_data_file_list:
+                announcement.derived_data_file_list = []
+            announcement.derived_data_file_list.append(file)
+
+    for ref in type_map.get("supplementary-file", {}) or {}:
+        file = convert_file(
+            all_nodes_map,
+            type_map,
+            "supplementary-file",
+            ref,
+            AnnouncementSupplementaryFile,
+        )
+        if file:
+            if not announcement.supplementary_file_list:
+                announcement.supplementary_file_list = []
+            announcement.supplementary_file_list.append(file)
     identification_map = {}
     identification_links = relationship_name_map.get("identified-as")
     items = type_map.get("molecular-entity-identifier")

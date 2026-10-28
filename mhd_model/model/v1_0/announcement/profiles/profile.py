@@ -61,6 +61,10 @@ class AnnouncementRawDataFile(AnnouncementBaseFile):
         None | CvTerm,
         Field(description="Format of the raw data file as a CV term."),
     ] = None
+    sample_name: Annotated[
+        None | str,
+        Field(description="Sample name used to generate this data file."),
+    ] = None
 
 
 class AnnouncementResultFile(AnnouncementBaseFile):

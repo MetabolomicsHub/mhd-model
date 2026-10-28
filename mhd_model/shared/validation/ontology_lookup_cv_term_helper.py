@@ -2,6 +2,7 @@ import logging
 
 from ontology_lookup import OntologyLookupService
 from ontology_lookup.models import (
+    CurieResolutionResponse,
     IriResolutionResponse,
     SearchTermSummary,
     TermResponse,
@@ -80,6 +81,13 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
         if not result:
             return None
         return result.iri or None
+
+    def get_curie(self, cv_term: CvTerm) -> str | None:
+        if cv_term.accession.startswith(("http://", "https://")):
+            result: None | CurieResolutionResponse = self.svc.find_curie(
+                iri=cv_term.accession, ontology=cv_term.source
+            )
+        return result.curie if result else None
 
     def find_cv_term(
         self,

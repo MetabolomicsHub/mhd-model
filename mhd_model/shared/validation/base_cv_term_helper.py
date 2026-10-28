@@ -20,6 +20,9 @@ class BaseCvTermHelper(abc.ABC):
     def get_uri(self, cv_term: CvTerm) -> str | None: ...
 
     @abc.abstractmethod
+    def get_curie(self, cv_term: CvTerm) -> str | None: ...
+
+    @abc.abstractmethod
     def find_cv_term(
         self,
         source: str,

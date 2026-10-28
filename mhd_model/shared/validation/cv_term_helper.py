@@ -179,6 +179,12 @@ class CvTermHelper(BaseCvTermHelper):
 
         return uri or None
 
+    def get_curie(self, cv_term: CvTerm) -> str | None:
+        result, _ = self.find_cv_term_with_accession(
+            source=cv_term.source, accession=cv_term.accession
+        )
+        return result.accession if result else None
+
     def find_cv_term_with_accession(
         self, source: str, accession: str, allow_obsoletes: bool = True
     ) -> tuple[CvTerm, list[str]]:
@@ -268,14 +274,15 @@ class CvTermHelper(BaseCvTermHelper):
                         return term_result
 
         label = accession_or_label.strip().lower()
+        source_list = [x.strip().lower() for x in source.split(",") if x and x.strip()]
         params = {
             "q": label,
-            "ontology": source.lower(),
+            "ontology": ",".join(source_list),
             "type": "class,property,individual",
             "exact": True,
             "format": "json",
             "start": 0,
-            "rows": 1,
+            "rows": len(source_list) * 2,
             "local": False,
             "lang": "en",
             # "isLeaf": (
@@ -303,26 +310,29 @@ class CvTermHelper(BaseCvTermHelper):
                 self.search_cache[key] = None
                 return self.search_cache[key]
             docs = result_json.get("response", {}).get("docs")
-            if docs:
-                obo_id = docs[0].get("obo_id", "")
-                iri = docs[0].get("iri", "")
-                label = docs[0].get("label", "")
+            results = []
+            for doc in docs or []:
+                obo_id = doc.get("obo_id", "")
+                iri = doc.get("iri", "")
+                label = doc.get("label", "")
                 # synonyms = docs[0].get("synonym", [])
-                ontology_prefix = docs[0].get("ontology_prefix", "").lower()
-                if ontology_prefix != source.lower():
+                ontology_prefix = doc.get("ontology_prefix", "").lower()
+                if ontology_prefix not in source_list:
                     logger.warning(
                         "CV Term %s not found in %s", accession_or_label, source
                     )
-                    return None
-                uppercase_source = source.upper()
-                if obo_id == label:
-                    result_source = uppercase_source
+                    continue
+                # uppercase_source = source.upper()
+                if obo_id == label and len(source_list) == 1:
+                    result_source = source_list[0].upper()
                 else:
                     result_source = (
                         ontology_prefix.upper() or obo_id.split(":")[0].upper()
                     )
                     if obo_id.upper() == result_source.upper():
-                        result_source = uppercase_source
+                        result_source = (
+                            source_list[0].upper() if len(source_list) == 1 else ""
+                        )
                 if ":" in obo_id:
                     result_accession = obo_id
                 else:
@@ -332,9 +342,14 @@ class CvTermHelper(BaseCvTermHelper):
                     name=label,
                     source=result_source,
                 )
-                if key not in self.cv_term_cache or not self.cv_term_cache[key]:
-                    self.cv_term_cache[key] = term
-                return term
+
+                results.append(term)
+            source_order = {x.lower(): idx for idx, x in enumerate(source_list)}
+            results.sort(key=lambda x: source_order.get(x.source.lower(), 1000))
+            selected = results[0] if results else None
+            if key not in self.cv_term_cache or not self.cv_term_cache[key]:
+                self.cv_term_cache[key] = selected
+            return selected
         except Exception as ex:
             logger.exception("Failed to find cv term: %s", ex)
             return None
