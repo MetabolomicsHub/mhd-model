@@ -25,7 +25,7 @@ from mhd_model.model.definitions import (
     MHD_MODEL_V1_0_MS_PROFILE_NAME,
     SUPPORTED_SCHEMA_MAP,
 )
-from mhd_model.model.v1_0.announcement.validation.json_profie_validator import (
+from mhd_model.model.v1_0.announcement.validation.json_profile_validator import (
     new_announcement_validator,
 )
 from mhd_model.model.v1_0.dataset.profiles.base.profile import MhDatasetBaseProfile_v1_0

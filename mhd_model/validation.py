@@ -15,7 +15,7 @@ from mhd_model.model.definitions import (
     MHD_MODEL_V1_0_LEGACY_PROFILE_NAME,
     MHD_MODEL_V1_0_MS_PROFILE_NAME,
 )
-from mhd_model.model.v1_0.announcement.validation.json_profie_validator import (
+from mhd_model.model.v1_0.announcement.validation.json_profile_validator import (
     MhdAnnouncementFileJsonProfileValidator_v1_0,
 )
 from mhd_model.model.v1_0.dataset.validation.validator import MhdFileValidator_v1_0

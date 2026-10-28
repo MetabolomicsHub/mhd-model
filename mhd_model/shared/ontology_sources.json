@@ -251,7 +251,7 @@
     {
       "name": "CHMO",
       "file": "http://purl.obolibrary.org/obo/chmo.owl",
-      "version": "2026-05-28",
+      "version": "2026-05-27",
       "description": "Chemical Methods Ontology",
       "details": "CHMO, the chemical methods ontology, describes methods used to",
       "prefix": "CHMO"
@@ -707,7 +707,7 @@
     {
       "name": "FLOPO",
       "file": "http://purl.obolibrary.org/obo/flopo.owl",
-      "version": "2026-10-14",
+      "version": "2026-10-25",
       "description": "Flora Phenotype Ontology",
       "details": "Traits and phenotypes of flowering plants occurring in digitized Floras",
       "prefix": "FLOPO"

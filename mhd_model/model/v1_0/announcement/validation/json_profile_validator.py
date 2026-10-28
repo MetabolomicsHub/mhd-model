@@ -6,7 +6,12 @@ from cachetools import TTLCache, cached
 from jsonprofile.profile.base import ValidationRuntimeConfiguration
 from jsonprofile.validator import JsonValidator
 
-from mhd_model.model.definitions import ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME
+from mhd_model.model.definitions import (
+    ANNOUNCEMENT_FILE_V0_1_BASE_PROFILE_NAME,
+    ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
+    ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
+    ANNOUNCEMENT_FILE_V1_0_DEFAULT_SCHEMA_NAME,
+)
 from mhd_model.model.v1_0.announcement.profiles.base_profile import (
     BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0,
 )
@@ -43,6 +48,9 @@ def new_announcement_validator(
         BASE_ANNOUNCEMENT_FILE_PROFILE_v1_0.id: base_profile,
         LEGACY_ANNOUNCEMENT_FILE_PROFILE_v1_0.id: legacy_profile,
         MS_ANNOUNCEMENT_FILE_PROFILE_v1_0.id: ms_profile,
+        ANNOUNCEMENT_FILE_V0_1_BASE_PROFILE_NAME: base_profile,
+        ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME: legacy_profile,
+        ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME: ms_profile,
     }
     active_profile = profiles.get(profile_uri)
     if ontology_lookup_file_path:
