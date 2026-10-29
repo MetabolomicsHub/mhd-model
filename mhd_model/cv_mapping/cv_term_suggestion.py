@@ -191,7 +191,9 @@ class CvTermSuggestion:
                     "%s: %s is transformed to %s", group or "No group", cv_term, result
                 )
         else:
-            logger.info("%s does not match any ontology term", cv_term)
+            logger.info(
+                "%s: %s does not match any ontology term", group or "No group", cv_term
+            )
         return result
 
 
