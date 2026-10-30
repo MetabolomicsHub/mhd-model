@@ -23,13 +23,13 @@ class OntologyLookupCvTermHelper(BaseCvTermHelper):
         self.svc = OntologyLookupService(db_path=db_path)
 
     def get_ontology_definition(self, ontology_name: str) -> None | CvDefinition:
-        result: OntologyInfo = self.get_ontology(ontology=ontology_name)
+        result: OntologyInfo = self.svc.get_ontology(ontology=ontology_name)
         if result:
             return CvDefinition(
                 name=result.name,
                 uri=result.source_uri,
                 prefix=result.iri_prefix or None,
-                label=result.prefix,
+                label=result.ontology,
                 version=result.version or None,
             )
         return None

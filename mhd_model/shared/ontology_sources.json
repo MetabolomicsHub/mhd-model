@@ -1,7 +1,7 @@
 {
   "ontologies": [
     {
-      "name": "HTTP://ADDICTOVOCAB.ORG/ADDICTO_",
+      "name": "ADDICTO",
       "file": "http://addictovocab.org/addicto.owl",
       "version": "",
       "description": "Addiction Ontology",
@@ -25,7 +25,7 @@
       "prefix": "AEO"
     },
     {
-      "name": "HTTP://PURL.ALLOTROPE.ORG/ONTOLOGIES",
+      "name": "AFO",
       "file": "http://purl.allotrope.org/voc/afo/latest.xml",
       "version": "REC/2026/09",
       "description": "Allotrope Merged Ontology Suite",
@@ -49,7 +49,7 @@
       "prefix": "AGRO"
     },
     {
-      "name": "HTTPS://W3ID.ORG/AIO/",
+      "name": "AIO",
       "file": "https://w3id.org/aio/aio.owl",
       "version": "2026-07-22",
       "description": "Artificial Intelligence Ontology (AIO)",
@@ -65,7 +65,7 @@
       "prefix": "AISM"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/AMPHX_",
+      "name": "AMPHX",
       "file": "http://purl.obolibrary.org/obo/amphx.owl",
       "version": "",
       "description": "Amphioxus Development and Anatomy Ontology (AMPHX)",
@@ -97,7 +97,7 @@
       "prefix": "ARO"
     },
     {
-      "name": "HTTP://WWW.BIOASSAYONTOLOGY.ORG/BAO#BAO_",
+      "name": "BAO",
       "file": "http://www.bioassayontology.org/bao/",
       "version": "2.8.19",
       "description": "BioAssay Ontology",
@@ -105,15 +105,7 @@
       "prefix": "http://www.bioassayontology.org/bao#BAO_"
     },
     {
-      "name": "BCGO",
-      "file": "http://purl.obolibrary.org/obo/bcgo.owl",
-      "version": "",
-      "description": "Beta Cell Genomics Ontology",
-      "details": "An application ontology built for beta cell genomics studies.",
-      "prefix": ""
-    },
-    {
-      "name": "HTTP://HUMANBEHAVIOURCHANGE.ORG/ONTOLOGY/BCIO_",
+      "name": "BCIO",
       "file": "http://humanbehaviourchange.org/ontology/bcio.owl",
       "version": "",
       "description": "The Behaviour Change Intervention Ontology",
@@ -135,14 +127,6 @@
       "description": "Basic Formal Ontology",
       "details": "The upper level ontology upon which OBO Foundry ontologies are built.",
       "prefix": "BFO"
-    },
-    {
-      "name": "BIOLINK",
-      "file": "https://w3id.org/biolink/biolink-model.owl.ttl",
-      "version": "",
-      "description": "",
-      "details": "",
-      "prefix": ""
     },
     {
       "name": "BMONT",
@@ -169,7 +153,7 @@
       "prefix": "BTO"
     },
     {
-      "name": "HTTP://CHAMP-PROJECT.ORG/IMAGES/ONTOLOGY/CAO.OWL#CAO_",
+      "name": "CAO",
       "file": "https://champ.stuchalk.domains.unf.edu/images/ontology/cao.owl",
       "version": "0.2",
       "description": "Chemical Analysis Metadata Platform (ChAMP) Ontology version 0.2",
@@ -185,7 +169,7 @@
       "prefix": "CARO"
     },
     {
-      "name": "HTTPS://PURL.ORG/CCF/",
+      "name": "CCF",
       "file": "https://cdn.humanatlas.io/digital-objects/vocab/ccf/latest/graph.xml",
       "version": "",
       "description": "Human Reference Atlas Common Coordinate Framework Ontology",
@@ -193,7 +177,7 @@
       "prefix": "https://purl.org/ccf/"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/CCO_",
+      "name": "CCO",
       "file": "http://www.bio.ntnu.no/ontology/CCO/cco.owl",
       "version": "",
       "description": "Cell Cycle Ontology",
@@ -215,14 +199,6 @@
       "description": "Compositional Dietary Nutrition Ontology",
       "details": "The CDNO provides structured terminologies to describe nutritional attributes of material entities that contribute to human diet. These terms are intended primarily to be associated with datasets that quantify concentration of chemical nutritional components derived from samples taken from any stage in the production of food raw materials (including from crops, livestock, fisheries) and through processing and supply chains. Additional knowledge associated with these dietary sources may be represented by terms that describe functional, physical and other attributes. Whilst recognising that dietary nutrients within food substrates may be present as complex and dynamic physical and chemical structures or mixtures, CDNO focuses on components typically quantified in an analytical chemistry laboratory. The primary CDNO class ‘dietary nutritional component’ contains hierarchical sets of terms organised to reflect commonly used classifications of chemical food composition. This class does not represent an exhaustive classification of chemical components, but focuses on structuring terms according to widely accepted categories. This class is independent of, but may be used in conjunction with, classes that describe ‘analytical methods’ for quantification, ‘physical properties’ or ‘dietary function’. Quantification data may be used and reported in research literature, to inform food composition tables and labelling, or for supply chain quality assurance and control. More specifically, terms within the ‘nutritional component concentration’ class may be used to represent quantification of components described in the ‘dietary nutritional component’ class. Concentration data are intended to be described in conjunction with post-composed metadata concepts, such as represented by the Food Ontology (FoodOn) ‘Food product by organism’, which derives from some food or anatomical entity and a NCBI organismal classification ontology (NCBITaxon) entity. The common vocabulary and relationships defined within CDNO should facilitate description, communication and exchange of material entity-derived nutritional composition datasets typically generated by analytical laboratories. The organisation of the vocabulary is structured to reflect common categories variously used by those involved in crop, livestock or other organismal production, associated R&D and breeding, as well as the food processing and supply sector, and nutritionists, inlcuding compilers and users of food composition databases. The CDNO therefore supports characterisation of genetic diversity and management of biodiversity collections, as well as sharing of knowledge relating to dietary composition between a wider set of researchers, breeders, farmers, processors and other stakeholders. Further development of the functional class should also assist in understanding how interactions between organismal genetic and environmental variation contribute to human diet and health in the farm to fork continuum.",
       "prefix": "CDNO"
-    },
-    {
-      "name": "CEPH",
-      "file": "http://purl.obolibrary.org/obo/ceph.owl",
-      "version": "",
-      "description": "Cephalopod Ontology",
-      "details": "An anatomical and developmental ontology for cephalopods",
-      "prefix": ""
     },
     {
       "name": "CHEBI",
@@ -297,7 +273,7 @@
       "prefix": "CLO"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/CLYH_",
+      "name": "CLYH",
       "file": "http://purl.obolibrary.org/obo/clyh.owl",
       "version": "",
       "description": "Clytia hemisphaerica Development and Anatomy Ontology (CLYH)",
@@ -313,7 +289,7 @@
       "prefix": "CMO"
     },
     {
-      "name": "HTTP://WWW.EBI.AC.UK/CMPO/CMPO_",
+      "name": "CMPO",
       "file": "http://www.ebi.ac.uk/cmpo/releases/2017-12-19/cmpo.owl",
       "version": "",
       "description": "Cellular Microscopy Phenotype Ontology",
@@ -345,7 +321,7 @@
       "prefix": "COLAO"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/COVOC_",
+      "name": "COVOC",
       "file": "https://github.com/EBISPOT/covoc/releases/download/current/covoc.owl",
       "version": "2022-10-26",
       "description": "CoVoc Coronavirus Vocabulary",
@@ -353,7 +329,7 @@
       "prefix": "http://purl.obolibrary.org/obo/COVOC_"
     },
     {
-      "name": "HTTPS://W3ID.ORG/CPONT",
+      "name": "CPONT",
       "file": "https://w3id.org/cpont/cpont.owl",
       "version": "2024-05-21",
       "description": "Critical Path Ontology",
@@ -361,7 +337,7 @@
       "prefix": "https://w3id.org/cpont"
     },
     {
-      "name": "HTTPS://CREDIT.NISO.ORG/CONTRIBUTOR-ROLES/",
+      "name": "CREDIT",
       "file": "https://w3id.org/biopragmatics/resources/credit/credit.owl",
       "version": "2022",
       "description": "Contributor Roles Taxonomy",
@@ -377,7 +353,7 @@
       "prefix": "CRO"
     },
     {
-      "name": "HTTP://SCIPION.I2PC.ES/ONTOLOGY/",
+      "name": "CRYOEM",
       "file": "http://scipion.i2pc.es/ontology/cryoem.owl",
       "version": "2021-03-09",
       "description": "Cryo Electron Microscopy ontology",
@@ -401,15 +377,7 @@
       "prefix": "CVDO"
     },
     {
-      "name": "DCAT",
-      "file": "https://www.w3.org/ns/dcat.ttl",
-      "version": "3",
-      "description": "",
-      "details": "",
-      "prefix": ""
-    },
-    {
-      "name": "HTTP://PURL.ORG/DC/ELEMENTS/1.1/",
+      "name": "DC",
       "file": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_elements.rdf",
       "version": "",
       "description": "",
@@ -417,7 +385,7 @@
       "prefix": "http://purl.org/dc/elements/1.1/"
     },
     {
-      "name": "HTTP://PURL.ORG/DC/TERMS/",
+      "name": "DCTERMS",
       "file": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.rdf",
       "version": "",
       "description": "",
@@ -505,7 +473,7 @@
       "prefix": "ECOCORE"
     },
     {
-      "name": "HTTPS://WWW.ENZYME-DATABASE.ORG/QUERY.PHP?EC=",
+      "name": "EC",
       "file": "https://w3id.org/biopragmatics/resources/ec/ec.owl",
       "version": "2025-04-09",
       "description": "Enzyme Nomenclature",
@@ -529,7 +497,7 @@
       "prefix": "ECTO"
     },
     {
-      "name": "HTTP://EDAMONTOLOGY.ORG/DATA_",
+      "name": "EDAM",
       "file": "https://raw.githubusercontent.com/edamontology/edamontology/master/releases/EDAM.owl",
       "version": "1.25-20260626T1230Z",
       "description": "EDAM - The ontology of data analysis and management",
@@ -537,20 +505,12 @@
       "prefix": "http://edamontology.org/data_"
     },
     {
-      "name": "HTTP://WWW.EBI.AC.UK/EFO/EFO_",
+      "name": "EFO",
       "file": "http://www.ebi.ac.uk/efo/efo.owl",
       "version": "3.95.0",
       "description": "Experimental Factor Ontology",
       "details": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for projects such as the NHGRI-EBI GWAS catalog. It combines parts of several biological ontologies, such as UBERON anatomy, ChEBI chemical compounds, Cell Ontology and the Monarch Disease Ontology (MONDO). The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for Open Targets.",
       "prefix": "http://www.ebi.ac.uk/efo/EFO_"
-    },
-    {
-      "name": "EHDAA2",
-      "file": "http://purl.obolibrary.org/obo/ehdaa2.owl",
-      "version": "",
-      "description": "Human developmental anatomy, abstract",
-      "details": "A structured controlled vocabulary of stage-specific anatomical structures of the developing human.",
-      "prefix": ""
     },
     {
       "name": "EMAPA",
@@ -561,15 +521,7 @@
       "prefix": "EMAPA"
     },
     {
-      "name": "EMAP",
-      "file": "http://purl.obolibrary.org/obo/emap.owl",
-      "version": "",
-      "description": "Mouse gross anatomy and development, timed",
-      "details": "A structured controlled vocabulary of stage-specific anatomical structures of the mouse (Mus).",
-      "prefix": ""
-    },
-    {
-      "name": "HTTPS://W3ID.ORG/EMI#",
+      "name": "EMI",
       "file": "https://w3id.org/emi/ols.ttl",
       "version": "1.0",
       "description": "The Earth Metabolome Initiative (EMI) ontology",
@@ -585,7 +537,7 @@
       "prefix": "EMRO"
     },
     {
-      "name": "HTTP://PURL.ENANOMAPPER.ORG/ONTO/ENM_",
+      "name": "ENM",
       "file": "http://enanomapper.github.io/ontologies/enanomapper.owl",
       "version": "10.0",
       "description": "eNanoMapper ontology",
@@ -593,7 +545,7 @@
       "prefix": "http://purl.enanomapper.org/onto/ENM_"
     },
     {
-      "name": "HTTP://ENSEMBL.ORG/GLOSSARY/ENSGLOSS_",
+      "name": "ENSEMBLGLOSSARY",
       "file": "https://raw.githubusercontent.com/Ensembl/ensembl-glossary/master/ensembl-glossary.owl",
       "version": "",
       "description": "Ensembl Glossary",
@@ -625,7 +577,7 @@
       "prefix": "EUPATH"
     },
     {
-      "name": "HTTPS://W3ID.ORG/EVORAO/",
+      "name": "EVORAO",
       "file": "https://raw.githubusercontent.com/EVORA-project/evora-ontology/refs/heads/main/models/owl/evora_ontology.owl.ttl",
       "version": "1.2.0",
       "description": "",
@@ -695,14 +647,6 @@
       "description": "Food Interactions with Drugs Evidence Ontology",
       "details": "Food-Drug interactions automatically extracted from scientific literature",
       "prefix": "FIDEO"
-    },
-    {
-      "name": "FIX",
-      "file": "http://purl.obolibrary.org/obo/fix.owl",
-      "version": "2026-03-31",
-      "description": "Physico-chemical methods and properties",
-      "details": "An ontology of physico-chemical methods and properties.",
-      "prefix": ""
     },
     {
       "name": "FLOPO",
@@ -801,7 +745,7 @@
       "prefix": "GEO"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/GEXO_",
+      "name": "GEXO",
       "file": "http://www.bio.ntnu.no/ontology/GeXO/gexo.rdf",
       "version": "",
       "description": "Gene Expression Ontology",
@@ -809,7 +753,7 @@
       "prefix": "http://purl.obolibrary.org/obo/GeXO_"
     },
     {
-      "name": "HTTPS://GALENOS.ORG.UK/ONTOLOGIES/GMHO_",
+      "name": "GMHO",
       "file": "https://galenos.org.uk/ontologies/gmho.owl",
       "version": "",
       "description": "GALENOS Mental Health Ontology",
@@ -825,14 +769,6 @@
       "prefix": "GNO"
     },
     {
-      "name": "GOLD",
-      "file": "https://raw.githubusercontent.com/cmungall/gold-ontology/refs/heads/main/gold.owl",
-      "version": "",
-      "description": "",
-      "details": "",
-      "prefix": ""
-    },
-    {
       "name": "GO",
       "file": "http://purl.obolibrary.org/obo/go/extensions/go-plus.owl",
       "version": "2026-07-26",
@@ -841,7 +777,7 @@
       "prefix": "GO"
     },
     {
-      "name": "HTTPS://W3ID.ORG/MIXS/",
+      "name": "GSCMIXS",
       "file": "https://w3id.org/mixs/mixs.owl.ttl",
       "version": "",
       "description": "Minimum Information about any (x) Sequence (MIxS) standard",
@@ -873,7 +809,7 @@
       "prefix": "HAO"
     },
     {
-      "name": "HTTP://ONTOLOGY.DATA.HUMANCELLATLAS.ORG/ONTOLOGIES/HCA_",
+      "name": "HCAO",
       "file": "https://raw.githubusercontent.com/ebi-ait/ontology/master/hcao.owl",
       "version": "",
       "description": "Human Cell Atlas Ontology",
@@ -881,7 +817,7 @@
       "prefix": "http://ontology.data.humancellatlas.org/ontologies/HCA_"
     },
     {
-      "name": "HTTPS://WWW.GENENAMES.ORG/DATA/GENEGROUP/#!/GROUP/",
+      "name": "HGNC.GENEGROUP",
       "file": "https://w3id.org/biopragmatics/resources/hgnc.genegroup/hgnc.genegroup.owl",
       "version": "2025-10-07",
       "description": "HGNC Gene Group",
@@ -889,7 +825,7 @@
       "prefix": "https://www.genenames.org/data/genegroup/#!/group/"
     },
     {
-      "name": "HTTPS://WWW.GENENAMES.ORG/DATA/GENE-SYMBOL-REPORT/#!/HGNC_ID/",
+      "name": "HGNC",
       "file": "https://w3id.org/biopragmatics/resources/hgnc/hgnc.owl.gz",
       "version": "2026-02-06",
       "description": "HUGO Gene Nomenclature Committee",
@@ -911,14 +847,6 @@
       "description": "Human Phenotype Ontology",
       "details": "The Human Phenotype Ontology (HPO) provides a standardized vocabulary of phenotypic abnormalities and clinical features encountered in human disease.",
       "prefix": "HP"
-    },
-    {
-      "name": "HRA",
-      "file": "https://cdn.humanatlas.io/digital-objects/collection/hra-ols/latest/graph.ttl",
-      "version": "",
-      "description": "Human Reference Atlas (HRA)",
-      "details": "The Human Reference Atlas (HRA) is a comprehensive, high-resolution, three-dimensional atlas of all the cells in the healthy human body. The Human Reference Atlas provides standard terminologies and data structures for describing specimens, biological structures, and spatial positions linked to existing ontologies.",
-      "prefix": ""
     },
     {
       "name": "HSAPDV",
@@ -969,28 +897,12 @@
       "prefix": "ICO"
     },
     {
-      "name": "ICTV",
-      "file": "https://github.com/EVORA-project/ictv-ontology/releases/latest/download/ictv_all_versions.owl.ttl.gz",
-      "version": "MSL41",
-      "description": "",
-      "details": "",
-      "prefix": ""
-    },
-    {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/IDO-COVID-19",
+      "name": "IDOCOVID19",
       "file": "https://raw.githubusercontent.com/infectious-disease-ontology-extensions/ido-covid-19/master/ontology/ido%20covid-19",
       "version": "",
       "description": "The COVID-19 Infectious Disease Ontology",
       "details": "The COVID-19 Infectious Disease Ontology (IDO-COVID-19) is an extension of the Infectious Disease Ontology (IDO) and the Virus Infectious Disease Ontology (VIDO). IDO-COVID-19 follows OBO Foundry guidelines, employs the Basic Formal Ontology as its starting point, and covers epidemiology, classification, pathogenesis, and treatment of terms used to represent infection by the SARS-CoV-2 virus strain, and the associated COVID-19 disease.",
       "prefix": "http://purl.obolibrary.org/obo/IDO-COVID-19"
-    },
-    {
-      "name": "IDOMAL",
-      "file": "http://purl.obolibrary.org/obo/idomal.owl",
-      "version": "",
-      "description": "Malaria Ontology",
-      "details": "An application ontology to cover all aspects of malaria as well as the intervention attempts to control it.",
-      "prefix": ""
     },
     {
       "name": "IDO",
@@ -1041,7 +953,7 @@
       "prefix": "LIFESTYLEFACTORS"
     },
     {
-      "name": "HTTPS://WWW.LIPIDMAPS.ORG/RDF/",
+      "name": "LIPIDMAPS",
       "file": "https://lipidmaps.org/files/?file=sparql_lipids&ext=ttl",
       "version": "",
       "description": "LIPID MAPS",
@@ -1089,15 +1001,7 @@
       "prefix": "MCRO"
     },
     {
-      "name": "MEDGEN",
-      "file": "https://github.com/monarch-initiative/medgen/releases/latest/download/medgen.ttl.gz",
-      "version": "",
-      "description": "",
-      "details": "",
-      "prefix": ""
-    },
-    {
-      "name": "HTTP://ID.NLM.NIH.GOV/MESH/",
+      "name": "MESH",
       "file": "https://w3id.org/biopragmatics/resources/mesh/mesh.owl.gz",
       "version": "2025",
       "description": "Medical Subject Headings",
@@ -1105,7 +1009,7 @@
       "prefix": "http://id.nlm.nih.gov/mesh/"
     },
     {
-      "name": "HTTPS://W3ID.ORG/METPO/",
+      "name": "METPO",
       "file": "https://w3id.org/metpo/metpo.owl",
       "version": "2026-06-12",
       "description": "Microbial Ecophysiological Trait and Phenotype Ontology (METPO)",
@@ -1167,14 +1071,6 @@
       "description": "Molecular Interactions Controlled Vocabulary",
       "details": "A structured controlled vocabulary for the annotation of experiments concerned with protein-protein interactions.",
       "prefix": "MI"
-    },
-    {
-      "name": "MIRO",
-      "file": "http://purl.obolibrary.org/obo/miro.owl",
-      "version": "",
-      "description": "Mosquito insecticide resistance",
-      "details": "Application ontology for entities related to insecticide resistance in mosquitos",
-      "prefix": ""
     },
     {
       "name": "MMO",
@@ -1249,7 +1145,7 @@
       "prefix": "MRO"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/MSIO_",
+      "name": "MSIO",
       "file": "https://raw.githubusercontent.com/MSI-Metabolomics-Standards-Initiative/MSIO/master/releases/latest_release/MSIO-merged-reasoned.owl",
       "version": "1.0.1",
       "description": "Metabolomics Standards Initiative Ontology (MSIO)",
@@ -1273,7 +1169,7 @@
       "prefix": "NBO"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/NCBITAXON_",
+      "name": "NCBITAXON",
       "file": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
       "version": "2026-07-12",
       "description": "NCBI organismal classification",
@@ -1305,7 +1201,7 @@
       "prefix": "NGBO"
     },
     {
-      "name": "HTTP://NMRML.ORG/NMRCV#NMR",
+      "name": "NMRCV",
       "file": "http://nmrml.org/cv/stable/nmrCV.owl",
       "version": "1.1.0",
       "description": "nuclear magnetic resonance CV",
@@ -1417,7 +1313,7 @@
       "prefix": "OHPI"
     },
     {
-      "name": "HTTP://WWW.GENEONTOLOGY.ORG/FORMATS/OBOINOWL#",
+      "name": "OIO",
       "file": "https://raw.githubusercontent.com/geneontology/go-ontology/master/contrib/oboInOwl",
       "version": "",
       "description": "",
@@ -1433,14 +1329,6 @@
       "prefix": "OlatDv"
     },
     {
-      "name": "OMIABIS",
-      "file": "http://purl.obolibrary.org/obo/omiabis.owl",
-      "version": " 2014-05-28",
-      "description": "Ontologized MIABIS",
-      "details": "An ontological version of MIABIS (Minimum Information About BIobank data Sharing)",
-      "prefix": ""
-    },
-    {
       "name": "OMIT",
       "file": "http://purl.obolibrary.org/obo/omit.owl",
       "version": "",
@@ -1449,7 +1337,7 @@
       "prefix": "OMIT"
     },
     {
-      "name": "HTTP://WWW.ONTOLOGY-OF-UNITS-OF-MEASURE.ORG/RESOURCE/OM-2/",
+      "name": "OM",
       "file": "https://raw.githubusercontent.com/HajoRijgersberg/OM/master/om-2.0.rdf",
       "version": "2.0.59",
       "description": "Ontology of units of Measure (OM)",
@@ -1537,7 +1425,7 @@
       "prefix": "OPMI"
     },
     {
-      "name": "HTTP://WWW.ORPHA.NET/ORDO/ORPHANET_",
+      "name": "ORDO",
       "file": "https://www.orphadata.com/data/ontologies/ordo/last_version/ordo_orphanet.owl",
       "version": "4.9",
       "description": "Orphanet Rare Disease Ontology",
@@ -1553,7 +1441,7 @@
       "prefix": "ORNASEQ"
     },
     {
-      "name": "HTTP://PURL.ORG/NET/ORTH#",
+      "name": "ORTH",
       "file": "http://purl.org/net/orth",
       "version": "2.0",
       "description": "Orthology Ontology",
@@ -1569,7 +1457,7 @@
       "prefix": "OVAE"
     },
     {
-      "name": "HTTP://WWW.W3.ORG/2002/07/OWL#",
+      "name": "OWL",
       "file": "https://www.w3.org/2002/07/owl",
       "version": "$Date: 2009/11/15 10:54:12 $",
       "description": "The OWL 2 Schema vocabulary (OWL 2)",
@@ -1641,7 +1529,7 @@
       "prefix": "PECO"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/PHI_",
+      "name": "PHI",
       "file": "http://purl.obolibrary.org/obo/PHI/releases/2017-11-06/PHI.owl",
       "version": "",
       "description": "PHI-base Ontology",
@@ -1697,7 +1585,7 @@
       "prefix": "PPO"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/PREFER_",
+      "name": "PREFER",
       "file": "https://github.com/Multiomics-Analytics-Group/prefer_ontology/releases/latest/download/prefer.owl",
       "version": "2026-08-24",
       "description": "PREFER Ontology",
@@ -1705,7 +1593,7 @@
       "prefix": "http://purl.obolibrary.org/obo/PREFER_"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/PRIDE_",
+      "name": "PRIDE",
       "file": "https://raw.githubusercontent.com/PRIDE-Utilities/pride-ontology/master/pride_cv.owl",
       "version": "",
       "description": "Proteomics Identification Database Ontology",
@@ -1713,7 +1601,7 @@
       "prefix": "http://purl.obolibrary.org/obo/PRIDE_"
     },
     {
-      "name": "HTTP://WWW.PROBONTO.ORG/CORE",
+      "name": "PROBONTO",
       "file": "",
       "version": "2.5.0",
       "description": "Probability Distribution Ontology",
@@ -1737,7 +1625,7 @@
       "prefix": "PR"
     },
     {
-      "name": "HTTP://WWW.BIOASSAYONTOLOGY.ORG/BAO#",
+      "name": "PROV",
       "file": "https://www.w3.org/ns/prov-o",
       "version": "",
       "description": "Provenance Ontology (PROV-O)",
@@ -1777,7 +1665,7 @@
       "prefix": "RBO"
     },
     {
-      "name": "HTTP://WWW.W3.ORG/2000/01/RDF-SCHEMA#",
+      "name": "RDFS",
       "file": "https://www.w3.org/2000/01/rdf-schema",
       "version": "",
       "description": "The RDF Schema vocabulary (RDFS)",
@@ -1793,7 +1681,7 @@
       "prefix": "rehabo"
     },
     {
-      "name": "HTTPS://W3ID.ORG/REPRODUCEME#",
+      "name": "REPRODUCEME",
       "file": "https://sheeba-samuel.github.io/REPRODUCE-ME/doc/reproduce-me.xml",
       "version": "1.1",
       "description": "REPRODUCE-ME Ontology",
@@ -1801,7 +1689,7 @@
       "prefix": "https://w3id.org/reproduceme#"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/RETO_",
+      "name": "RETO",
       "file": "http://www.bio.ntnu.no/ontology/ReTO/reto.rdf",
       "version": "",
       "description": "Regulation of Transcription Ontology",
@@ -1809,15 +1697,7 @@
       "prefix": "http://purl.obolibrary.org/obo/ReTO_"
     },
     {
-      "name": "REX",
-      "file": "http://purl.obolibrary.org/obo/rex.owl",
-      "version": "2026-03-31",
-      "description": "Physico-chemical process",
-      "details": "An ontology of physico-chemical processes, i.e. physico-chemical changes occurring in course of time.",
-      "prefix": ""
-    },
-    {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/REXO_",
+      "name": "REXO",
       "file": "http://www.bio.ntnu.no/ontology/ReXO/rexo.rdf",
       "version": "",
       "description": "Regulation of Gene Expression Ontology",
@@ -1825,7 +1705,7 @@
       "prefix": "http://purl.obolibrary.org/obo/ReXO_"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/BFO_0000050",
+      "name": "RO",
       "file": "http://purl.obolibrary.org/obo/ro.owl",
       "version": "2026-09-04",
       "description": "Relation Ontology",
@@ -1833,7 +1713,7 @@
       "prefix": "http://purl.obolibrary.org/obo/BFO_0000050"
     },
     {
-      "name": "HTTPS://ROR.ORG/",
+      "name": "ROR",
       "file": "https://w3id.org/biopragmatics/resources/ror/ror.owl.gz",
       "version": "2.0",
       "description": "Research Organization Registry",
@@ -1873,7 +1753,7 @@
       "prefix": "SCDO"
     },
     {
-      "name": "HTTP://SCHEMA.ORG/",
+      "name": "SCHEMAORG_HTTP",
       "file": "https://schema.org/version/latest/schemaorg-all-http.rdf",
       "version": "",
       "description": "",
@@ -1881,7 +1761,7 @@
       "prefix": "http://schema.org/"
     },
     {
-      "name": "HTTPS://SCHEMA.ORG/",
+      "name": "SCHEMAORG_HTTPS",
       "file": "https://schema.org/version/latest/schemaorg-all-https.rdf",
       "version": "",
       "description": "",
@@ -1889,7 +1769,7 @@
       "prefix": "https://schema.org/"
     },
     {
-      "name": "HTTPS://W3ID.ORG/SEMAPV/VOCAB/",
+      "name": "SEMAPV",
       "file": "https://raw.githubusercontent.com/mapping-commons/semantic-mapping-vocabulary/main/semapv.owl",
       "version": "",
       "description": "Semantic Mapping Vocabulary",
@@ -1921,7 +1801,7 @@
       "prefix": "SIBO"
     },
     {
-      "name": "HTTP://SEMANTICSCIENCE.ORG/RESOURCE/SIO_",
+      "name": "SIO",
       "file": "https://raw.githubusercontent.com/micheldumontier/semanticscience/master/ontology/sio/release/sio-release.owl",
       "version": "1.62",
       "description": "Semanticscience Integrated Ontology",
@@ -1929,7 +1809,7 @@
       "prefix": "http://semanticscience.org/resource/SIO_"
     },
     {
-      "name": "HTTP://WWW.W3.ORG/2004/02/SKOS/CORE#",
+      "name": "SKOS",
       "file": "http://www.w3.org/TR/skos-reference/skos.rdf",
       "version": "",
       "description": "",
@@ -1937,7 +1817,7 @@
       "prefix": "http://www.w3.org/2004/02/skos/core#"
     },
     {
-      "name": "HTTPS://SWISSLIPIDS.ORG/RDF/SLM_",
+      "name": "SLM",
       "file": "",
       "version": "",
       "description": "SwissLipids",
@@ -1953,7 +1833,7 @@
       "prefix": "SLSO"
     },
     {
-      "name": "HTTP://SNOMED.INFO/ID/",
+      "name": "SNOMED",
       "file": "http://snomed.info/sct/900000000000207008/version/20251017",
       "version": "",
       "description": "SNOMED CT (International Edition)",
@@ -1977,7 +1857,7 @@
       "prefix": "SPD"
     },
     {
-      "name": "HTTP://WWW.FAIRSHARING.ORG/ONTOLOGY/SUBJECT",
+      "name": "SRAO",
       "file": "https://github.com/FAIRsharing/subject-ontology/raw/master/SRAO.owl",
       "version": "2025-06-01",
       "description": "FAIRsharing Subject Ontology (SRAO)",
@@ -2017,22 +1897,6 @@
       "prefix": "T4FS"
     },
     {
-      "name": "TADS",
-      "file": "http://purl.obolibrary.org/obo/tads.owl",
-      "version": "",
-      "description": "Tick Anatomy Ontology",
-      "details": "The anatomy of the Tick, <i>Families: Ixodidae, Argassidae</i>",
-      "prefix": ""
-    },
-    {
-      "name": "TAO",
-      "file": "http://purl.obolibrary.org/obo/tao.owl",
-      "version": "",
-      "description": "Teleost Anatomy Ontology",
-      "details": "Multispecies fish anatomy ontology. Originally seeded from ZFA, but intended to cover terms relevant to other taxa",
-      "prefix": ""
-    },
-    {
       "name": "TAXRANK",
       "file": "http://purl.obolibrary.org/obo/taxrank.owl",
       "version": "",
@@ -2041,7 +1905,7 @@
       "prefix": "TAXRANK"
     },
     {
-      "name": "HTTP://IDENTIFIERS.ORG/TEDDY/TEDDY_",
+      "name": "TEDDY",
       "file": "http://identifiers.org/combine.specifications/teddy.rel-2014-04-24",
       "version": "rel-2014-04-24",
       "description": "Terminology for Description of Dynamics",
@@ -2049,20 +1913,12 @@
       "prefix": "http://identifiers.org/teddy/TEDDY_"
     },
     {
-      "name": "HTTP://OPENDATA.INRAE.FR/PO2/ONTOLOGY/TRANSFORMON/",
+      "name": "TFO",
       "file": "http://opendata.inrae.fr/PO2/Ontology/transformON.rdf",
       "version": "33.0",
       "description": "TransformON",
       "details": "A domain ontology on food and bioproduct processing and characterization that is a specialization of the PO2 ontology (Process and Observation Ontology).",
       "prefix": "http://opendata.inrae.fr/PO2/Ontology/TransformON/"
-    },
-    {
-      "name": "TGMA",
-      "file": "http://purl.obolibrary.org/obo/tgma.owl",
-      "version": "",
-      "description": "Mosquito gross anatomy ontology",
-      "details": "A structured controlled vocabulary of the anatomy of mosquitoes.",
-      "prefix": ""
     },
     {
       "name": "TO",
@@ -2105,20 +1961,12 @@
       "prefix": "UBERON"
     },
     {
-      "name": "HTTP://PURL.OBOLIBRARY.ORG/OBO/UNIMOD_",
+      "name": "UNIMOD",
       "file": "https://raw.githubusercontent.com/PRIDE-Utilities/pride-ontology/master/unimod.owl",
       "version": "",
       "description": "Unimod protein modification database for mass spectrometry",
       "details": "Unimod is a community supported, comprehensive database of protein modifications for mass spectrometry applications. That is, accurate and verifiable values, derived from elemental compositions, for the mass differences introduced by all types of natural and artificial modifications. Other important information includes any mass change, (neutral loss), that occurs during MS/MS analysis, an d site specificity, (which residues are susceptible to modification and any constraints on the position of the modification within the protein or peptide).",
       "prefix": "http://purl.obolibrary.org/obo/UNIMOD_"
-    },
-    {
-      "name": "UNIPROTRDFS",
-      "file": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/rdf/core.owl",
-      "version": "2026_03",
-      "description": "",
-      "details": "",
-      "prefix": ""
     },
     {
       "name": "UO",
@@ -2129,14 +1977,6 @@
       "prefix": "UO"
     },
     {
-      "name": "UPA",
-      "file": "http://purl.obolibrary.org/obo/upa.owl",
-      "version": "",
-      "description": "Unipathway",
-      "details": "A manually curated resource for the representation and annotation of metabolic pathways",
-      "prefix": ""
-    },
-    {
       "name": "UPHENO",
       "file": "http://purl.obolibrary.org/obo/upheno.owl",
       "version": "2026-10-19",
@@ -2145,7 +1985,7 @@
       "prefix": "UPHENO"
     },
     {
-      "name": "HTTPS://W3ID.ORG/LINKML/VALUESETS/",
+      "name": "VALUESETS",
       "file": "https://w3id.org/valuesets/valuesets.owl.ttl",
       "version": "",
       "description": "Value Sets",
@@ -2175,14 +2015,6 @@
       "description": "Vaccine Ontology",
       "details": "The Vaccine Ontology (VO) is a community-based biomedical ontology in the domain of vaccines and vaccination. VO aims to standardize vaccine types and annotations, integrate various vaccine data, and support computer-assisted reasoning. The VO supports basic vaccine R&D and clinical vaccine usage. VO is being developed as a community-based ontology with support and collaborations from the vaccine and bio-ontology communities.",
       "prefix": "VO"
-    },
-    {
-      "name": "VSAO",
-      "file": "http://purl.obolibrary.org/obo/vsao.owl",
-      "version": "",
-      "description": "Vertebrate Skeletal Anatomy Ontology-",
-      "details": "Vertebrate skeletal anatomy ontology.",
-      "prefix": ""
     },
     {
       "name": "VT",
@@ -2225,7 +2057,7 @@
       "prefix": "WBPhenotype"
     },
     {
-      "name": "HTTP://IDENTIFIERS.ORG/WIKIPATHWAYS/",
+      "name": "WIKIPATHWAYS",
       "file": "https://w3id.org/biopragmatics/resources/wikipathways/wikipathways.owl",
       "version": "20251010",
       "description": "WikiPathways",

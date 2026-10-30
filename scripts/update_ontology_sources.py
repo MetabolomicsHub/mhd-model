@@ -37,7 +37,11 @@ def fetch_ols_ontologies() -> OntologySourceReference:
             iri = ontology.get("versionIri", "") or ""
             description = ontology.get("description", "") or ""
             version = ontology.get("version", "") or ""
-            source_name = prefix or namespace.upper()
+            source_name = (
+                prefix
+                if not prefix.startswith(("http://", "https://"))
+                else namespace.upper()
+            )
             if not prefix:
                 logger.warning(
                     "OLS ontology has no preferred prefix for namespace %s. "
