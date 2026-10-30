@@ -1,8 +1,8 @@
 import abc
 import logging
 
-from build.lib.mhd_model.shared.model import CvDefinition
 from mhd_model.shared.base import BaseParentCvTerm, CvTerm
+from mhd_model.shared.model import CvDefinition
 
 logger = logging.getLogger(__name__)
 
