@@ -1,3 +1,11 @@
+## v1.0.8 (2026-10-30)
+
+### Fix
+
+- lint error
+- lint error
+- ontology definition search works only on ols. Local db search is required.
+
 ## v1.0.7 (2026-10-29)
 
 ### Fix
