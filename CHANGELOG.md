@@ -1,3 +1,9 @@
+## v1.0.10 (2026-10-30)
+
+### Fix
+
+- term suggession does not suggest if there is no cv_list
+
 ## v1.0.9 (2026-10-30)
 
 ### Fix
