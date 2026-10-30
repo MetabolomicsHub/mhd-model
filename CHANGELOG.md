@@ -1,3 +1,9 @@
+## v1.0.11 (2026-10-30)
+
+### Fix
+
+- missing module base_mhd_dataset_profile
+
 ## v1.0.10 (2026-10-30)
 
 ### Fix
