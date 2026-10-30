@@ -21,7 +21,6 @@ from mhd_model.shared.model import (
     MhdNode,
     MhdRelationship,
 )
-from mhd_model.shared.utils import search_ontology_definition
 from mhd_model.shared.validation.cv_term_helper import BaseCvTermHelper
 
 logger = logging.getLogger(__name__)
@@ -200,7 +199,7 @@ class MhDatasetBuilder[T]:
                 cv_definitions.append(definition)
                 cv_definitions_map[source] = definition
             else:
-                cv_definition = search_ontology_definition(source)
+                cv_definition = self.cv_term_helper.get_ontology_definition(source)
                 if not cv_definition:
                     cv_definitions.append(CvDefinition(label=source))
                 else:

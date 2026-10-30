@@ -1,40 +1,10 @@
 import logging
 
-import httpx2
 from pydantic import AnyUrl, BaseModel
 
-from mhd_model.shared.base import CvDefinition, CvTerm, CvTermValue
+from mhd_model.shared.base import CvTerm, CvTermValue
 
 logger = logging.getLogger(__name__)
-
-
-def search_ontology_definition(ontology_name: str) -> None | CvDefinition:
-    if not ontology_name:
-        return None
-    try:
-        url = "https://www.ebi.ac.uk/ols4/api/v2/ontologies/" + ontology_name.lower()
-        response = httpx2.get(url, timeout=2)
-        response.raise_for_status()
-        json_response = response.json()
-        base_uri = json_response.get("baseUris", [])
-
-        return CvDefinition(
-            name=json_response.get("label", [""])[0] or json_response.get("title"),
-            uri=json_response.get("versionIri")
-            or json_response.get("iri")
-            or json_response.get("ontologyIri", None),
-            prefix=base_uri[0] if base_uri else None,
-            label=json_response.get("preferredPrefix", "").upper()
-            or json_response.get("ontologyId", "").upper()
-            or None,
-        )
-    except Exception as e:
-        logger.error(
-            "Error while fetching ontology definition from OLS: '%s' - %s",
-            ontology_name,
-            e,
-        )
-        return None
 
 
 def generate_unique_id(

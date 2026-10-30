@@ -1,6 +1,7 @@
 import abc
 import logging
 
+from build.lib.mhd_model.shared.model import CvDefinition
 from mhd_model.shared.base import BaseParentCvTerm, CvTerm
 
 logger = logging.getLogger(__name__)
@@ -15,6 +16,9 @@ class BaseCvTermHelper(abc.ABC):
         allow_synonym_search: bool = False,
         allow_obsoletes: bool = True,
     ) -> tuple[bool, str]: ...
+
+    @abc.abstractmethod
+    def get_ontology_definition(self, ontology_name: str) -> None | CvDefinition: ...
 
     @abc.abstractmethod
     def get_uri(self, cv_term: CvTerm) -> str | None: ...

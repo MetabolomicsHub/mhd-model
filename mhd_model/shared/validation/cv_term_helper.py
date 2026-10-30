@@ -11,6 +11,7 @@ from pydantic.alias_generators import to_camel, to_pascal
 
 from mhd_model.shared.base import CvTerm
 from mhd_model.shared.cv_definitions import OTHER_COMMON_CV_DEFINITIONS
+from mhd_model.shared.model import CvDefinition
 from mhd_model.shared.validation.base_cv_term_helper import BaseCvTermHelper
 from mhd_model.shared.validation.definitions import ParentCvTerm
 
@@ -86,6 +87,36 @@ class CvTermHelper(BaseCvTermHelper):
         self.cache: dict[str, None | dict[str, CvTerm]] = {}
         self.search_cache: dict[str, tuple[bool, str | None]] = {}
         self.cv_term_cache: dict[str, None | CvTerm] = {}
+
+    def get_ontology_definition(self, ontology_name: str) -> None | CvDefinition:
+        if not ontology_name:
+            return None
+        try:
+            url = (
+                "https://www.ebi.ac.uk/ols4/api/v2/ontologies/" + ontology_name.lower()
+            )
+            response = search_ols(url=url)
+            response.raise_for_status()
+            json_response: dict = response.json()
+            base_uri = json_response.get("baseUris", [])
+
+            return CvDefinition(
+                name=json_response.get("label", [""])[0] or json_response.get("title"),
+                uri=json_response.get("versionIri")
+                or json_response.get("iri")
+                or json_response.get("ontologyIri", None),
+                prefix=base_uri[0] if base_uri else None,
+                label=json_response.get("preferredPrefix", "").upper()
+                or json_response.get("ontologyId", "").upper()
+                or None,
+            )
+        except Exception as e:
+            logger.error(
+                "Error while fetching ontology definition from OLS: '%s' - %s",
+                ontology_name,
+                e,
+            )
+            return None
 
     def save_children(self, parent: ParentCvTerm, children: dict[str, CvTerm]) -> None:
         file_path = self.get_children_cache_file_path(parent)

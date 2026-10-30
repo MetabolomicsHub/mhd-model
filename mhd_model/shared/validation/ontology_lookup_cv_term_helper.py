@@ -1,6 +1,6 @@
 import logging
 
-from ontology_lookup import OntologyLookupService
+from ontology_lookup import OntologyInfo, OntologyLookupService
 from ontology_lookup.models import (
     CurieResolutionResponse,
     IriResolutionResponse,
@@ -9,6 +9,7 @@ from ontology_lookup.models import (
 )
 
 from mhd_model.shared.base import CvTerm
+from mhd_model.shared.model import CvDefinition
 from mhd_model.shared.validation.cv_term_helper import (
     BaseCvTermHelper,
 )
@@ -20,6 +21,18 @@ logger = logging.getLogger(__name__)
 class OntologyLookupCvTermHelper(BaseCvTermHelper):
     def __init__(self, db_path: str, *args, **kwargs):
         self.svc = OntologyLookupService(db_path=db_path)
+
+    def get_ontology_definition(self, ontology_name: str) -> None | CvDefinition:
+        result: OntologyInfo = self.get_ontology(ontology=ontology_name)
+        if result:
+            return CvDefinition(
+                name=result.name,
+                uri=result.source_uri,
+                prefix=result.iri_prefix or None,
+                label=result.prefix,
+                version=result.version or None,
+            )
+        return None
 
     def check_cv_term(
         self,
