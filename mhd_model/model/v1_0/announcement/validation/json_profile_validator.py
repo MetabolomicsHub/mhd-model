@@ -26,6 +26,7 @@ from mhd_model.shared.mhd_cv_term_search import MhdCvTermSearch
 from mhd_model.shared.model import ProfileEnabledDataset
 from mhd_model.shared.ontology_lookup_cv_term_search import OntologyLookupCvTermSearch
 from mhd_model.shared.validation.base import BaseAnnouncementFileValidator
+from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 
 
 @cached(cache=TTLCache(maxsize=10, ttl=3600 * 24))
@@ -58,7 +59,8 @@ def new_announcement_validator(
             db_path=ontology_lookup_file_path
         )
     else:
-        mhd_cv_term_search = MhdCvTermSearch()
+        helper = CvTermHelper()
+        mhd_cv_term_search = MhdCvTermSearch(cv_term_helper=helper)
     validator = JsonValidator(
         json_schema=json_schema,
         profile=active_profile,

@@ -36,10 +36,10 @@ from mhd_model.shared.base import (
     CvTermKeyValue,
     CvTermValue,
 )
+from mhd_model.shared.base_mhd_dataset_profile import MhdModelValidationContext
 from mhd_model.shared.model import (
     BaseRelationshipModel,
     IdentifiableMhdModel,
-    MhdModelValidationContext,
     MhdNode,
 )
 

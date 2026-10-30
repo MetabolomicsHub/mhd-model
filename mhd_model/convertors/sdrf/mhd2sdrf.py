@@ -16,9 +16,9 @@ from mhd_model.model.v1_0.sdrf.model import (
     SdrfSampleProtocolDefinition,
 )
 from mhd_model.shared.base import BasicValueModel, CvTerm
+from mhd_model.shared.base_mhd_dataset_profile import MhdModelValidationContext
 from mhd_model.shared.model import (
     IdentifiableMhdModel,
-    MhdModelValidationContext,
     MhdNode,
     MhdRelationship,
 )

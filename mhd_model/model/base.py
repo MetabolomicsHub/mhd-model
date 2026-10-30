@@ -4,11 +4,8 @@ from typing import Annotated
 from pydantic import ConfigDict, Field
 
 from mhd_model.shared.base import CvTermValue
-from mhd_model.shared.model import (
-    BaseMhDatasetProfile,
-    CvEnabledDataset,
-    MhdObjectType,
-)
+from mhd_model.shared.base_mhd_dataset_profile import BaseMhDatasetProfile
+from mhd_model.shared.model import CvEnabledDataset, MhdObjectType
 
 
 class BaseMhdFile(BaseMhDatasetProfile):

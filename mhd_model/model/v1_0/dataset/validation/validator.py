@@ -36,11 +36,11 @@ from mhd_model.model.v1_0.dataset.profiles.ms.graph_validation import (
     MHD_MS_PROFILE_V1_0,
 )
 from mhd_model.model.v1_0.dataset.validation.base import (
-    MhdModelValidationContext,
     MhdModelValidator,
 )
 from mhd_model.schema_utils import load_mhd_json_schema
 from mhd_model.shared.base import NAMESPACE_VALUE, CvTermValue
+from mhd_model.shared.base_mhd_dataset_profile import MhdModelValidationContext
 from mhd_model.shared.exceptions import MhdValidationError
 from mhd_model.shared.model import ProfileEnabledDataset
 from mhd_model.shared.validation.base import BaseMhdFileValidator

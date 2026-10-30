@@ -19,7 +19,8 @@ from mhd_model.model.v1_0.announcement.validation.json_profile_validator import 
     MhdAnnouncementFileJsonProfileValidator_v1_0,
 )
 from mhd_model.model.v1_0.dataset.validation.validator import MhdFileValidator_v1_0
-from mhd_model.shared.model import MhdModelValidationContext, ProfileEnabledDataset
+from mhd_model.shared.base_mhd_dataset_profile import MhdModelValidationContext
+from mhd_model.shared.model import ProfileEnabledDataset
 from mhd_model.shared.validation.base import (
     BaseAnnouncementFileValidator,
     BaseMhdFileValidator,

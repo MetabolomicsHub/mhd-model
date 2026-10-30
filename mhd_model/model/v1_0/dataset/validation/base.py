@@ -25,11 +25,13 @@ from mhd_model.model.v1_0.dataset.validation.profile.definition import (
 )
 from mhd_model.model.v1_0.rules.managed_cv_terms import MANAGED_CV_TERM_OBJECTS
 from mhd_model.shared.base import CvTerm
+from mhd_model.shared.base_mhd_dataset_profile import (
+    MhdGraph,
+    MhdModelValidationContext,
+)
 from mhd_model.shared.model import (
     BaseRelationshipModel,
     IdentifiableMhdModel,
-    MhdGraph,
-    MhdModelValidationContext,
 )
 from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 from mhd_model.shared.validation.definitions import (

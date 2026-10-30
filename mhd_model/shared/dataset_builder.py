@@ -5,6 +5,7 @@ from typing import Annotated, Any, Self, TypeVar
 from pydantic import Field
 
 from mhd_model.domain_utils import get_ontology_sources
+from mhd_model.shared.base_mhd_dataset_profile import BaseMhDatasetProfile
 from mhd_model.shared.cv_definitions import (
     COMMON_CV_DEFINITIONS,
     OTHER_COMMON_CV_DEFINITIONS,
@@ -12,7 +13,6 @@ from mhd_model.shared.cv_definitions import (
 from mhd_model.shared.model import (
     BaseCvTermModel,
     BaseCvTermValueModel,
-    BaseMhDatasetProfile,
     BaseRelationshipModel,
     CvDefinition,
     CvTerm,

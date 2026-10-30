@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_GROUP_CV_MAPPING = {
     "organism part": ["BTO", "UBERON", "NCIT", "CHEBI"],
+    "tissue": ["BTO", "UBERON", "NCIT", "CHEBI"],
     "organism": ["NCBITAXON", "ENVO", "CHEBI"],
     "cell type": ["CL", "CLO"],
     "disease": ["MONDO", "MP", "SNOMED"],
@@ -67,6 +68,8 @@ class CvTermSuggestion:
             return None
         if group and not cv_list:
             cv_list = self.group_cv_maps.get(group, []) or []
+        cv_list = cv_list or []
+
         name = cv_term.name
         source = cv_term.source
         accession = cv_term.accession
@@ -76,9 +79,6 @@ class CvTermSuggestion:
         if not source and accession:
             source = accession.split(":")[0] if ":" in accession else ""
 
-        if not source or not accession:
-            source = ""
-            accession = ""
         search = None
         if accession and source:
             search, synonyms = self.cv_term_helper.find_cv_term_with_accession(
@@ -96,7 +96,7 @@ class CvTermSuggestion:
                 search = None
                 accession = ""
 
-        if not search:
+        if not search and cv_list:
             search = self.cv_term_helper.find_cv_term(
                 source=",".join(cv_list),
                 accession_or_label=cv_term.name,
@@ -281,8 +281,8 @@ if __name__ == "__main__":
     set_basic_logging_config()
     suggestion = CvTermSuggestion()
     result = suggestion.match_cv_term(
-        CvTerm(source="", accession="", name="Arabidopsis thaliana"),
-        group="organism",
+        CvTerm(source="ncit", accession="", name="per day"),
+        # group="organism",
         # cv_list=["BTO", "UBERON"],
     )
     logger.info(result)

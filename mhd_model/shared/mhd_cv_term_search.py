@@ -7,15 +7,15 @@ from jsonprofile.validator.base import (
 )
 
 from mhd_model.shared.base import CvTerm as MhdCvTerm
-from mhd_model.shared.validation.cv_term_helper import CvTermHelper
+from mhd_model.shared.validation.cv_term_helper import BaseCvTermHelper
 from mhd_model.shared.validation.definitions import ParentCvTerm as MhdParentCvTerm
 
 logger = logging.getLogger(__name__)
 
 
 class MhdCvTermSearch(CvTermSearch):
-    def __init__(self, *args, **kwargs):
-        self.cv_term_helper = CvTermHelper()
+    def __init__(self, cv_term_helper: None | BaseCvTermHelper = None, **kwargs):
+        self.cv_term_helper = cv_term_helper
 
     def get_iri(self, cv_term: ProfileCvTerm) -> str | None:
         return self.cv_term_helper.get_uri(
