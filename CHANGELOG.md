@@ -1,3 +1,9 @@
+## v1.0.9 (2026-10-30)
+
+### Fix
+
+- ontology definition json has invalid name values
+
 ## v1.0.8 (2026-10-30)
 
 ### Fix
