@@ -83,7 +83,7 @@
     {
       "name": "APO",
       "file": "http://purl.obolibrary.org/obo/apo.owl",
-      "version": "2026-09-30",
+      "version": "2026-10-30",
       "description": "Ascomycete Phenotype Ontology (APO)",
       "details": "A structured controlled vocabulary for the phenotypes of Ascomycete fungi.",
       "prefix": "APO"
@@ -427,7 +427,7 @@
     {
       "name": "DOID",
       "file": "https://purl.obolibrary.org/obo/doid/translations/doid-international.owl",
-      "version": "2026-09-30",
+      "version": "2026-10-29",
       "description": "Human Disease Ontology",
       "details": "The Disease Ontology has been developed as a standardized ontology for human disease with the purpose of providing the biomedical community with consistent, reusable and sustainable descriptions of human disease terms, phenotype characteristics and related medical vocabulary disease concepts.",
       "prefix": "DOID"
@@ -1131,7 +1131,7 @@
     {
       "name": "MP",
       "file": "http://purl.obolibrary.org/obo/mp/mp-international.owl",
-      "version": "2026-09-23",
+      "version": "2026-10-29",
       "description": "The Mammalian Phenotype Ontology",
       "details": "The Mammalian Phenotype Ontology is being developed by Cynthia L. Smith, Susan M. Bello, Anna V. Anagnostopoulos, Carroll W. Goldsmith and Janan T. Eppig, as part of the Mouse Genome Database (MGD) Project, Mouse Genome Informatics (MGI), The Jackson Laboratory, Bar Harbor, ME. This file contains pre-coordinated phenotype terms, definitions and synonyms that can be used to describe mammalian phenotypes. The ontology is represented as a directed acyclic graph (DAG). It organizes phenotype terms into major biological system headers such as nervous system and respiratory system.  This ontology is currently under development. Weekly updates are available at the Mouse Genome Informatics (MGI) ftp site (ftp://ftp.informatics.jax.org/pub/reports/index.html#pheno) as well as the OBO Foundry site (http://obofoundry.org/). Japanese labels of MP were created by the MP Japanese Translation Project (https://github.com/dbcls/MP_Japanese). Questions, comments and suggestions are welcome, and should be directed to pheno@jax.org, Susan.Bello@jax.org or to GitHub tracker (https://github.com/mgijax/mammalian-phenotype-ontology/issues) MGD is funded by NIH/NHGRI grant HG000330.",
       "prefix": "MP"

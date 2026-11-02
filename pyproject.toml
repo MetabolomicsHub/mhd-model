@@ -2,28 +2,33 @@
 name = "mhd-model"
 version = "1.0.11"
 description = "MetabolomicsHub Common Data Model"
-authors = [{"name"="MetabolomicsHub Team", "email"="help@metabolomicshub.org"}]
+authors = [
+  {name = "MetabolomicsHub Team", email = "help@metabolomicshub.org"}
+]
 license = "Apache-2.0"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "bioregistry>=0.15.0",
-    "cachetools>=7.0.5",
-    "charset-normalizer>=3.4.2",
+    "cachetools>=7.2.6",
+    "charset-normalizer>=3.5.2",
     "email-validator>=2.3.0",
-    "httpx2>=2.12.0",
-    "jsonpath-ng>=1.8.0",
+    "httpx2>=2.16.0",
+    "jsonpath-ng>=1.14.0",
     "jsonschema>=4.26.0",
-    "pydantic>=2.12.5",
+    "pydantic>=2.14.1",
     "python-dateutil>=2.9.0.post0",
-    "pytz>=2025.2",
+    "pytz>=2026.5",
     "pyyaml>=6.0.3",
     "reachable>=0.9.1",
     "pyjwt>=2.15.1",
     "cryptography>=50.0.2",
-    "jsonprofile>=0.1.0",
-    "ontology-lookup>=0.1.6",
+    "jsonprofile>=0.2.2",
+    "ontology-lookup>=0.2.1",
 ]
+[project.urls]
+Repository = "https://github.com/MetabolomicsHub/mhd-model"
+Documentation = "https://metabolomicshub.github.io/mhd-model"
 
 [dependency-groups]
 dev = [
