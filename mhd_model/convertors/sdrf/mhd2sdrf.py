@@ -252,7 +252,7 @@ def create_sdrf_files(
                     if (
                         isinstance(value, CvTermValueObject)
                         and value.value is not None
-                        and value.name is None
+                        and not value.name
                     ):
                         target_value = BasicValueModel.model_validate(
                             value.model_dump(by_alias=True)
@@ -293,7 +293,7 @@ def create_sdrf_files(
                             if (
                                 isinstance(value, CvTermValueObject)
                                 and value.value is not None
-                                and value.name is None
+                                and not value.name
                             ):
                                 target_value = BasicValueModel.model_validate(
                                     value.model_dump(by_alias=True)
@@ -401,7 +401,7 @@ def create_sdrf_files(
                             if (
                                 isinstance(value, CvTermValueObject)
                                 and value.value is not None
-                                and value.name is None
+                                and not value.name
                             ):
                                 target_value = BasicValueModel.model_validate(
                                     value.model_dump(by_alias=True)
