@@ -1,3 +1,9 @@
+## v1.0.13 (2026-11-03)
+
+### Fix
+
+- sdrf file unit value processing error
+
 ## v1.0.12 (2026-11-02)
 
 ### Fix
