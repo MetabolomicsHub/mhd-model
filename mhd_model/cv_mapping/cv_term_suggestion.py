@@ -178,11 +178,14 @@ class CvTermSuggestion:
             if transform:
                 result = cv_terms_map.get(transform.lower())
             else:
-                if (
-                    cv_term.source and search.source.lower() == cv_term.source.lower()
-                ) or (
-                    cv_list and search.source.lower() in {x.lower() for x in cv_list}
-                ):
+                if cv_list:
+                    cv_set = {x.lower() for x in cv_list}
+                    if (
+                        search.source == cv_term.source
+                        or search.source.lower() in cv_set
+                    ):
+                        result = search
+                else:
                     result = search
 
         if result:
@@ -191,7 +194,7 @@ class CvTermSuggestion:
                     "%s: %s is transformed to %s", group or "No group", cv_term, result
                 )
         else:
-            logger.info(
+            logger.debug(
                 "%s: %s does not match any ontology term", group or "No group", cv_term
             )
         return result
