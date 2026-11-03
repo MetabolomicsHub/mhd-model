@@ -1,3 +1,9 @@
+## v1.0.14 (2026-11-03)
+
+### Fix
+
+- suggestion error if cv term source is defined.
+
 ## v1.0.13 (2026-11-03)
 
 ### Fix
