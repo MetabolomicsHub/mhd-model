@@ -1,3 +1,9 @@
+## v1.0.15 (2026-11-04)
+
+### Fix
+
+- command refactor and cv_term_suggestion signature refactoring
+
 ## v1.0.14 (2026-11-03)
 
 ### Fix
