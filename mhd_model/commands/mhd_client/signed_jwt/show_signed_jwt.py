@@ -1,6 +1,7 @@
 import datetime
 import json
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -57,11 +58,12 @@ def show_signed_jwt_task(
 
     set_basic_logging_config()
     public_key = None
-    if public_key_path:
-        if not Path(public_key_path).exists():
-            click.echo("Public key file path does not exist.")
-            sys.exit(1)
-        public_key = Path(public_key_path).read_text()
+    if not public_key_path:
+        public_key_path = os.environ.get("MHD_REPOSITORY_PUBLIC_KEY_PATH")
+    if not public_key_path or not Path(public_key_path).exists():
+        click.echo("Repository public key path is not defined or does not exist.")
+        sys.exit(1)
+    public_key = Path(public_key_path).read_text()
 
     token, message = validate_repository_signed_jwt_token(
         signed_jwt_token=signed_jwt, audience=audience, public_key=public_key

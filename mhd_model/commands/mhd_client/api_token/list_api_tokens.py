@@ -1,6 +1,4 @@
-import os
 import sys
-from pathlib import Path
 
 import click
 
@@ -18,51 +16,21 @@ from mhd_model.mhd_client import MhdAuthClient
     help="""If it is set, response includes invalid tokens in response""",
     is_flag=True,
 )
-@click.option(
-    "--signed-jwt",
-    help="""A valid signed JWT token of the repository.
-    It is required if there is no MHD_CLIENT_SIGNED_JWT or
-    MHD_CLIENT_SIGNED_JWT_FILE_PATH environment variable.
-    """,
-)
-@click.option(
-    "--mhd-server-url",
-    default="",
-    help="MHD Server submission API URL",
-)
-@click.option(
-    "--mhd-server-api-version",
-    default="",
-    help="Version of MHD Server submission API."
-    "Default version will be used if it is not set",
-)
+@click.pass_context
 def list_api_tokens_task(
+    ctx: click.Context,
     token_name: None | str,
     include_invalid_api_tokens: None | bool,
     signed_jwt: None | str,
-    mhd_server_url: str,
-    mhd_server_api_version: str,
 ):
     """Lists the created MetabolomicsHub API tokens' summary.
     MetabolomicsHub stores only hash value and summary of a API token.
     Result will how only summary of API tokens.
     """
-    if not signed_jwt:
-        signed_jwt = os.environ.get("MHD_CLIENT_SIGNED_JWT")
-        if not signed_jwt:
-            signed_jwt_path = os.environ.get("MHD_CLIENT_SIGNED_JWT_FILE_PATH")
-            if not signed_jwt_path or not Path(signed_jwt_path).exists():
-                click.echo("Repository signed JWT token is not defined.")
-                sys.exit(1)
-            signed_jwt = Path(signed_jwt_path).read_text()
-    if not mhd_server_url:
-        mhd_server_url = os.environ.get("MHD_SERVER_URL")
-        if not mhd_server_url:
-            mhd_server_url = "https://www.metabolomicshub.org/api/submission"
-    if not mhd_server_api_version:
-        mhd_server_api_version = os.environ.get("MHD_SERVER_API_VERSION")
-        if not mhd_server_api_version:
-            mhd_server_api_version = ""
+    shared_options = ctx.parent.obj
+    mhd_server_url = shared_options["mhd_server_url"]
+    mhd_server_api_version = shared_options["mhd_server_api_version"]
+    signed_jwt = shared_options["signed_jwt"]
 
     set_basic_logging_config()
     try:

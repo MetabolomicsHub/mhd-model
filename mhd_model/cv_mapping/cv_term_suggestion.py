@@ -33,10 +33,14 @@ class CvTermSuggestion:
     def __init__(
         self,
         ontology_lookup_file_path: None | str = None,
+        ontology_lookup_service_url: None | str = None,
         group_cv_maps: None | dict[str, list[str]] = None,
     ):
         self.ontology_lookup_file_path = ontology_lookup_file_path
-        self.cv_term_helper = select_cv_term_helper(ontology_lookup_file_path)
+        self.cv_term_helper = select_cv_term_helper(
+            ontology_lookup_file_path,
+            ontology_lookup_service_url=ontology_lookup_service_url,
+        )
         self.group_cv_maps = group_cv_maps or DEFAULT_GROUP_CV_MAPPING
 
     @cached(cache=TTLCache(maxsize=4048, ttl=3600 * 24))

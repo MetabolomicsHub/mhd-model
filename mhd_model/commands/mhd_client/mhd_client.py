@@ -1,3 +1,4 @@
+import os
 import sys
 
 import click
@@ -12,8 +13,34 @@ from mhd_model.commands.mhd_client.submit_announcement_file import (
 
 
 @click.group(name="client", context_settings={"help_option_names": ["-h", "--help"]})
-def mhd_client_group():
+@click.option(
+    "--mhd-server-url",
+    default=None,
+    help="MHD Server submission API URL. MHD_SERVER_URL is used when omitted.",
+)
+@click.option(
+    "--mhd-server-api-version",
+    default=None,
+    help="MHD Server submission API version. MHD_SERVER_API_VERSION is used when omitted.",
+)
+@click.pass_context
+def mhd_client_group(
+    ctx: click.Context,
+    mhd_server_url: str | None,
+    mhd_server_api_version: str | None,
+):
     """utilities to communicate with MHD Server."""
+    if not mhd_server_url:
+        mhd_server_url = os.environ.get("MHD_SERVER_URL")
+        if not mhd_server_url:
+            mhd_server_url = "https://www.metabolomicshub.org/api/submission"
+    if not mhd_server_api_version:
+        mhd_server_api_version = os.environ.get("MHD_SERVER_API_VERSION") or ""
+
+    ctx.obj = {
+        "mhd_server_url": mhd_server_url,
+        "mhd_server_api_version": mhd_server_api_version,
+    }
 
 
 mhd_client_group.add_command(get_new_accession_task)

@@ -15,9 +15,14 @@ from mhd_model.mhd_client_utils import generate_rsa_key_pair
 @click.option(
     "--key-size", default=4096, type=int, help="Key size of the generated RSA keys."
 )
+@click.option(
+    "--password",
+    help="Optional password to encrypt the generated private key.",
+)
 def new_rsa_key_pair_task(
     output_folder: str,
     key_size: int,
+    password: str | None,
 ):
     """Generate RSA public private key pair to create signed JWT tokens.
     Public key file MUST be shared with MetabolomicsHub.
@@ -25,7 +30,9 @@ def new_rsa_key_pair_task(
     """
     set_basic_logging_config()
     output_folder = Path(output_folder).resolve()
-    private_pem, public_pem = generate_rsa_key_pair(key_size=key_size)
+    private_pem, public_pem = generate_rsa_key_pair(
+        key_size=key_size, password=password
+    )
     Path(output_folder).mkdir(exist_ok=True, parents=True)
     private_key_path = Path(f"{output_folder}/private_key.pem")
     private_key_path.write_bytes(private_pem)
@@ -43,7 +50,5 @@ def new_rsa_key_pair_task(
 
     click.echo(f"Public key: {public_key_path}")
     click.echo(
-        "If you want to use new key pair, "
-        "share public key file with MetabolomicsHub, "
-        "create signed JWT token to create new api tokens."
+        "If you want to use new key pair, share public key file with MetabolomicsHub."
     )

@@ -13,8 +13,8 @@ from dateutil.relativedelta import relativedelta
 logger = logging.getLogger(__name__)
 
 
-def generate_rsa_key_pair(key_size: int = 4096):
-    """Generates an RSA private key and its public counterpart."""
+def generate_rsa_key_pair(key_size: int = 4096, password: str | None = None):
+    """Generates an RSA key pair, optionally encrypting the private key with a password."""
     private_key = rsa.generate_private_key(
         public_exponent=65537, key_size=key_size, backend=default_backend()
     )
@@ -22,7 +22,11 @@ def generate_rsa_key_pair(key_size: int = 4096):
     private_pem = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption(),
+        encryption_algorithm=(
+            serialization.BestAvailableEncryption(password.encode("utf-8"))
+            if password
+            else serialization.NoEncryption()
+        ),
     )
 
     public_key = private_key.public_key()
@@ -146,11 +150,11 @@ def create_signed_jwt(
     repository_name: str,
     private_key_path: Path,
     public_key_path: Path,
-    validity_period_in_days: int,
+    validity_period_in_mins: int,
     signed_jwt_token_path: None | Path = None,
     audience: str = "https://www.metabolomicshub.org",
 ):
-    delta = relativedelta(days=validity_period_in_days)
+    delta = relativedelta(minutes=validity_period_in_mins)
     logger.info("Loading RS256 key pair...")
     # Security check: verify private key permissions are restrictive (0o600)
     if (private_key_path.stat().st_mode & 0o777) != 0o600:

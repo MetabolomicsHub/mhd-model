@@ -14,18 +14,6 @@ from mhd_model.mhd_client import AccessionType, MhdClient
 
 @click.command(name="fetch-mhd-accession", no_args_is_help=True)
 @click.option(
-    "--mhd-server-url",
-    default="",
-    help="MHD Server submission API URL. "
-    "It is required if there is no MHD_SERVER_URL environment variable",
-)
-@click.option(
-    "--mhd-server-api-version",
-    default="",
-    help="Version of MHD Server submission API."
-    "Default version will be used if it is not set",
-)
-@click.option(
     "--accession-type",
     default="mhd",
     help="""MHD accession type.
@@ -53,11 +41,11 @@ from mhd_model.mhd_client import AccessionType, MhdClient
     """,
     required=True,
 )
+@click.pass_context
 def get_new_accession_task(
+    ctx: click.Context,
     dataset_repository_identifier: str,
     accession_type: AccessionType,
-    mhd_server_url: str,
-    mhd_server_api_version: str,
     api_token: None | str,
     api_token_file_path: None | str,
 ):
@@ -78,14 +66,8 @@ def get_new_accession_task(
             if not api_token:
                 click.echo("Repository API token is not defined.")
                 sys.exit(1)
-    if not mhd_server_url:
-        mhd_server_url = os.environ.get("MHD_SERVER_URL")
-        if not mhd_server_url:
-            mhd_server_url = "https://www.metabolomicshub.org/api/submission"
-    if not mhd_server_api_version:
-        mhd_server_api_version = os.environ.get("MHD_SERVER_API_VERSION")
-        if not mhd_server_api_version:
-            mhd_server_api_version = ""
+    mhd_server_url = ctx.parent.obj["mhd_server_url"]
+    mhd_server_api_version = ctx.parent.obj["mhd_server_api_version"]
 
     if accession_type not in get_args(AccessionType):
         click.echo(f"{accession_type} is not valid. Select valid accession type")

@@ -26,6 +26,9 @@ from mhd_model.shared.validation.base import (
     BaseMhdFileValidator,
 )
 from mhd_model.shared.validation.cv_term_helper import CvTermHelper
+from mhd_model.shared.validation.mhd_ontology_lookup_cv_term_helper import (
+    MhdOntologyLookupCvTermHelper,
+)
 from mhd_model.shared.validation.ontology_lookup_cv_term_helper import (
     OntologyLookupCvTermHelper,
 )
@@ -50,8 +53,12 @@ ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
 
 
 @cached(cache={})
-def select_cv_term_helper(db_path: None | str):
+def select_cv_term_helper(
+    db_path: None | str, ontology_lookup_service_url: None | str = None
+):
     if not db_path:
+        if ontology_lookup_service_url:
+            return MhdOntologyLookupCvTermHelper(ontology_lookup_service_url)
         return CvTermHelper()
     return OntologyLookupCvTermHelper(db_path=db_path)
 
@@ -59,13 +66,17 @@ def select_cv_term_helper(db_path: None | str):
 def validate_mhd_file_json(
     json_data: dict[str, Any],
     ontology_lookup_file_path: None | str = None,
+    ontology_lookup_service_url: None | str = None,
 ) -> list[str]:
     dataset: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(json_data)
 
     validator = MHD_VALIDATORS[dataset.profile_uri]()
     try:
         mhd_model_validation_context = MhdModelValidationContext(
-            cv_term_helper=select_cv_term_helper(ontology_lookup_file_path),
+            cv_term_helper=select_cv_term_helper(
+                ontology_lookup_file_path,
+                ontology_lookup_service_url=ontology_lookup_service_url,
+            ),
         )
         return validator.validate(
             mhd_file_json=json_data,
@@ -79,9 +90,13 @@ def validate_mhd_file_json(
 def validate_mhd_model(
     mhd_file_path: str | Path,
     ontology_lookup_file_path: None | str = None,
+    ontology_lookup_service_url: None | str = None,
 ) -> list[str]:
     context = MhdModelValidationContext(
-        cv_term_helper=select_cv_term_helper(ontology_lookup_file_path),
+        cv_term_helper=select_cv_term_helper(
+            ontology_lookup_file_path,
+            ontology_lookup_service_url=ontology_lookup_service_url,
+        ),
     )
     if isinstance(mhd_file_path, str):
         mhd_file_path = Path(mhd_file_path)
