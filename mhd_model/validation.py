@@ -3,8 +3,6 @@ import traceback
 from pathlib import Path
 from typing import Any
 
-from cachetools import cached
-
 from mhd_model.model.definitions import (
     ANNOUNCEMENT_FILE_V0_1_LEGACY_PROFILE_NAME,
     ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME,
@@ -21,16 +19,10 @@ from mhd_model.model.v1_0.announcement.validation.json_profile_validator import 
 from mhd_model.model.v1_0.dataset.validation.validator import MhdFileValidator_v1_0
 from mhd_model.shared.base_mhd_dataset_profile import MhdModelValidationContext
 from mhd_model.shared.model import ProfileEnabledDataset
+from mhd_model.shared.validation import utils
 from mhd_model.shared.validation.base import (
     BaseAnnouncementFileValidator,
     BaseMhdFileValidator,
-)
-from mhd_model.shared.validation.cv_term_helper import CvTermHelper
-from mhd_model.shared.validation.mhd_ontology_lookup_cv_term_helper import (
-    MhdOntologyLookupCvTermHelper,
-)
-from mhd_model.shared.validation.ontology_lookup_cv_term_helper import (
-    OntologyLookupCvTermHelper,
 )
 from mhd_model.utils import load_json
 
@@ -52,17 +44,12 @@ ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
 }
 
 
-@cached(cache={})
 def select_cv_term_helper(
     db_path: None | str, ontology_lookup_service_url: None | str = None
 ):
-    if db_path and not Path(db_path).exists():
-        logger.warning("%s path is defined but does not exist")
-    if not db_path or not Path(db_path).exists():
-        if ontology_lookup_service_url:
-            return MhdOntologyLookupCvTermHelper(ontology_lookup_service_url)
-        return CvTermHelper()
-    return OntologyLookupCvTermHelper(db_path=db_path)
+    return utils.select_cv_term_helper(
+        db_path=db_path, ontology_lookup_service_url=ontology_lookup_service_url
+    )
 
 
 def validate_mhd_file_json(
