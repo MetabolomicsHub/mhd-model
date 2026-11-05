@@ -48,7 +48,7 @@ from mhd_model.shared.validation.mhd_ontology_lookup_cv_term_helper import (
 from mhd_model.shared.validation.ontology_lookup_cv_term_helper import (
     OntologyLookupCvTermHelper,
 )
-from mhd_model.validation import select_cv_term_helper
+from mhd_model.shared.validation.utils import select_cv_term_helper
 
 logger = logging.getLogger(__name__)
 

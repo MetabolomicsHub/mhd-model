@@ -44,14 +44,6 @@ ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
 }
 
 
-def select_cv_term_helper(
-    db_path: None | str, ontology_lookup_service_url: None | str = None
-):
-    return utils.select_cv_term_helper(
-        db_path=db_path, ontology_lookup_service_url=ontology_lookup_service_url
-    )
-
-
 def validate_mhd_file_json(
     json_data: dict[str, Any],
     ontology_lookup_file_path: None | str = None,
@@ -62,7 +54,7 @@ def validate_mhd_file_json(
     validator = MHD_VALIDATORS[dataset.profile_uri]()
     try:
         mhd_model_validation_context = MhdModelValidationContext(
-            cv_term_helper=select_cv_term_helper(
+            cv_term_helper=utils.select_cv_term_helper(
                 ontology_lookup_file_path,
                 ontology_lookup_service_url=ontology_lookup_service_url,
             ),
@@ -82,7 +74,7 @@ def validate_mhd_model(
     ontology_lookup_service_url: None | str = None,
 ) -> list[str]:
     context = MhdModelValidationContext(
-        cv_term_helper=select_cv_term_helper(
+        cv_term_helper=utils.select_cv_term_helper(
             ontology_lookup_file_path,
             ontology_lookup_service_url=ontology_lookup_service_url,
         ),

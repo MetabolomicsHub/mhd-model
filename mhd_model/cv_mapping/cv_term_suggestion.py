@@ -7,7 +7,7 @@ from cachetools import TTLCache, cached
 from mhd_model import cv_mapping
 from mhd_model.log_utils import set_basic_logging_config
 from mhd_model.shared.base import CvTerm
-from mhd_model.validation import select_cv_term_helper
+from mhd_model.shared.validation.utils import select_cv_term_helper
 
 logger = logging.getLogger(__name__)
 
