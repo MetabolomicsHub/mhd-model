@@ -1485,7 +1485,7 @@ wheels = [
 
 [[package]]
 name = "mhd-model"
-version = "1.0.17"
+version = "1.0.18"
 source = { editable = "." }
 default-groups = []
 dependencies = [
