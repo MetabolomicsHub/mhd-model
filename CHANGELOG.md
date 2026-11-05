@@ -1,3 +1,9 @@
+## v1.0.16 (2026-11-05)
+
+### Fix
+
+- onlotology looukup service integration errors.
+
 ## v1.0.15 (2026-11-04)
 
 ### Fix

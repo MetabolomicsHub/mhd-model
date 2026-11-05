@@ -1,6 +1,6 @@
 [project]
 name = "mhd-model"
-version = "1.0.15"
+version = "1.0.16"
 description = "MetabolomicsHub Common Data Model"
 authors = [
   {name = "MetabolomicsHub Team", email = "help@metabolomicshub.org"}
@@ -78,7 +78,7 @@ mhd-cli = "mhd_model.commands.cli:cli"
 [tool.commitizen]
 name = "cz_conventional_commits"
 version_provider = "uv"
-version = "1.0.15"
+version = "1.0.16"
 tag_format = "v$major.$minor.$patch"
 version_files = [
     "pyproject.toml:version",
