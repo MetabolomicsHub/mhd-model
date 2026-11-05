@@ -186,8 +186,11 @@ def validate_mhd_model(
     announcement_file_path: None | Path = None,
     mhd_file_url: None | str = None,
     mhd_model_validation_context: None | MhdModelValidationContext = None,
-    ontology_lookup_file_path: None | str = None,
 ):
+
+    if not mhd_model_validation_context:
+        mhd_model_validation_context = MhdModelValidationContext()
+    context = mhd_model_validation_context
     success = False
     all_validation_errors = {}
     if not mhd_file_path:
@@ -240,7 +243,8 @@ def validate_mhd_model(
                 announcement_file_json = json.loads(announcement_file_path.read_text())
                 validator = new_announcement_validator(
                     profile_uri=announcement_file_json.get("profile_uri"),
-                    ontology_lookup_file_path=ontology_lookup_file_path,
+                    ontology_lookup_file_path=context.ontology_lookup_file_path,
+                    ontology_lookup_service_url=context.ontology_lookup_service_url,
                 )
                 all_errors = validator.validate_json_file(announcement_file_json)
                 if all_errors:

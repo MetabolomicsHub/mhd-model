@@ -33,7 +33,6 @@ from mhd_model.shared.model import (
     BaseRelationshipModel,
     IdentifiableMhdModel,
 )
-from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,
@@ -41,6 +40,7 @@ from mhd_model.shared.validation.definitions import (
     AllowedCvTerms,
     ParentCvTerm,
 )
+from mhd_model.validation import select_cv_term_helper
 
 logger = logging.getLogger(__name__)
 
@@ -59,7 +59,11 @@ class MhdModelValidator:
         if not self.mhd_model_validation_context:
             self.mhd_model_validation_context = MhdModelValidationContext()
         if not self.mhd_model_validation_context.cv_term_helper:
-            self.mhd_model_validation_context.cv_term_helper = CvTermHelper()
+            context = self.mhd_model_validation_context
+            self.mhd_model_validation_context.cv_term_helper = select_cv_term_helper(
+                db_path=context.ontology_lookup_file_path,
+                ontology_lookup_service_url=context.ontology_lookup_service_url,
+            )
         self.cv_term_helper = self.mhd_model_validation_context.cv_term_helper
 
     def anyOf(self, validator, anyOf, instance, schema):

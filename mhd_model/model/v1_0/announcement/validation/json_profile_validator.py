@@ -27,12 +27,16 @@ from mhd_model.shared.model import ProfileEnabledDataset
 from mhd_model.shared.ontology_lookup_cv_term_search import OntologyLookupCvTermSearch
 from mhd_model.shared.validation.base import BaseAnnouncementFileValidator
 from mhd_model.shared.validation.cv_term_helper import CvTermHelper
+from mhd_model.shared.validation.mhd_ontology_lookup_cv_term_helper import (
+    MhdOntologyLookupCvTermHelper,
+)
 
 
 @cached(cache=TTLCache(maxsize=10, ttl=3600 * 24))
 def new_announcement_validator(
     profile_uri: str,
     ontology_lookup_file_path: None | str = None,
+    ontology_lookup_service_url: None | str = None,
 ) -> JsonValidator:
 
     _, json_schema = load_mhd_json_schema(
@@ -54,12 +58,15 @@ def new_announcement_validator(
         ANNOUNCEMENT_FILE_V0_1_MS_PROFILE_NAME: ms_profile,
     }
     active_profile = profiles.get(profile_uri)
-    if ontology_lookup_file_path:
+    if ontology_lookup_file_path and pathlib.Path(ontology_lookup_file_path).exists():
         mhd_cv_term_search = OntologyLookupCvTermSearch(
             db_path=ontology_lookup_file_path
         )
     else:
-        helper = CvTermHelper()
+        if ontology_lookup_service_url:
+            helper = MhdOntologyLookupCvTermHelper(ontology_lookup_service_url)
+        else:
+            helper = CvTermHelper()
         mhd_cv_term_search = MhdCvTermSearch(cv_term_helper=helper)
     validator = JsonValidator(
         json_schema=json_schema,
@@ -79,6 +86,7 @@ class MhdAnnouncementFileJsonProfileValidator_v1_0(BaseAnnouncementFileValidator
         self,
         announcement_file_json: dict[str, Any],
         ontology_lookup_file_path: None | str = None,
+        ontology_lookup_service_url: None | str = None,
     ) -> list[str]:
         profile: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(
             announcement_file_json
@@ -92,6 +100,7 @@ class MhdAnnouncementFileJsonProfileValidator_v1_0(BaseAnnouncementFileValidator
         validator = new_announcement_validator(
             profile_uri=profile.profile_uri,
             ontology_lookup_file_path=ontology_lookup_db_path,
+            ontology_lookup_service_url=ontology_lookup_service_url,
         )
         runtime_config = ValidationRuntimeConfiguration()
         result = validator.validate_dict(
@@ -109,9 +118,11 @@ class MhdAnnouncementFileJsonProfileValidator_v1_0(BaseAnnouncementFileValidator
         self,
         announcement_file_path: pathlib.Path,
         ontology_lookup_file_path: None | str = None,
+        ontology_lookup_service_url: None | str = None,
     ) -> list[str]:
         dict_object = orjson.loads(announcement_file_path.read_bytes())
         return self.validate(
             announcement_file_json=dict_object,
             ontology_lookup_file_path=ontology_lookup_file_path,
+            ontology_lookup_service_url=ontology_lookup_service_url,
         )

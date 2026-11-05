@@ -11,6 +11,7 @@ class BaseAnnouncementFileValidator(abc.ABC):
         self,
         announcement_file_json: dict[str, Any],
         ontology_lookup_file_path: None | str = None,
+        ontology_lookup_service_url: None | str = None,
     ) -> list[str]: ...
 
     @abc.abstractmethod
@@ -18,6 +19,7 @@ class BaseAnnouncementFileValidator(abc.ABC):
         self,
         announcement_file_path: pathlib.Path,
         ontology_lookup_file_path: None | str = None,
+        ontology_lookup_service_url: None | str = None,
     ) -> list[str]: ...
 
 

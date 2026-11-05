@@ -56,7 +56,9 @@ ANNOUNCEMENT_FILE_VALIDATORS: dict[str, type[BaseAnnouncementFileValidator]] = {
 def select_cv_term_helper(
     db_path: None | str, ontology_lookup_service_url: None | str = None
 ):
-    if not db_path:
+    if db_path and not Path(db_path).exists():
+        logger.warning("%s path is defined but does not exist")
+    if not db_path or not Path(db_path).exists():
         if ontology_lookup_service_url:
             return MhdOntologyLookupCvTermHelper(ontology_lookup_service_url)
         return CvTermHelper()
@@ -116,6 +118,7 @@ def validate_mhd_model(
 def validate_announcement_file(
     announcement_file_path: str | Path,
     ontology_lookup_file_path: None | str = None,
+    ontology_lookup_service_url: None | str = None,
 ) -> list[str]:
     if isinstance(announcement_file_path, str):
         announcement_file_path = Path(announcement_file_path)
@@ -127,7 +130,9 @@ def validate_announcement_file(
 
     try:
         return validator.validate(
-            json_data, ontology_lookup_file_path=ontology_lookup_file_path
+            json_data,
+            ontology_lookup_file_path=ontology_lookup_file_path,
+            ontology_lookup_service_url=ontology_lookup_service_url,
         )
     except Exception as ex:
         traceback.print_exc()
@@ -137,6 +142,7 @@ def validate_announcement_file(
 def validate_announcement_file_json(
     input_json: dict,
     ontology_lookup_file_path: None | str = None,
+    ontology_lookup_service_url: None | str = None,
 ) -> list[str]:
     dataset: ProfileEnabledDataset = ProfileEnabledDataset.model_validate(input_json)
     validator: BaseAnnouncementFileValidator = ANNOUNCEMENT_FILE_VALIDATORS[
@@ -144,7 +150,9 @@ def validate_announcement_file_json(
     ]()
     try:
         return validator.validate(
-            input_json, ontology_lookup_file_path=ontology_lookup_file_path
+            input_json,
+            ontology_lookup_file_path=ontology_lookup_file_path,
+            ontology_lookup_service_url=ontology_lookup_service_url,
         )
     except Exception as ex:
         traceback.print_exc()

@@ -38,6 +38,8 @@ class MhdModelValidationContext(MhdConfigModel):
 
     dataset_configuration: None | DatasetProfileConfiguration = None
     cv_term_helper: None | BaseCvTermHelper = None
+    ontology_lookup_file_path: None | str = None
+    ontology_lookup_service_url: None | str = None
 
 
 class MhdGraph(MhdConfigModel):
