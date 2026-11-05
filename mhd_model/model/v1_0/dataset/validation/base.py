@@ -2,6 +2,7 @@ import logging
 import re
 from collections import OrderedDict
 from collections.abc import Generator
+from pathlib import Path
 from typing import Any
 
 import jsonschema
@@ -33,12 +34,19 @@ from mhd_model.shared.model import (
     BaseRelationshipModel,
     IdentifiableMhdModel,
 )
+from mhd_model.shared.validation.cv_term_helper import CvTermHelper
 from mhd_model.shared.validation.definitions import (
     AllowAnyCvTerm,
     AllowedChildrenCvTerms,
     AllowedCvList,
     AllowedCvTerms,
     ParentCvTerm,
+)
+from mhd_model.shared.validation.mhd_ontology_lookup_cv_term_helper import (
+    MhdOntologyLookupCvTermHelper,
+)
+from mhd_model.shared.validation.ontology_lookup_cv_term_helper import (
+    OntologyLookupCvTermHelper,
 )
 from mhd_model.validation import select_cv_term_helper
 
@@ -64,6 +72,22 @@ class MhdModelValidator:
                 db_path=context.ontology_lookup_file_path,
                 ontology_lookup_service_url=context.ontology_lookup_service_url,
             )
+            valid_db_path = (
+                context.ontology_lookup_file_path
+                and Path(context.ontology_lookup_file_path).exists()
+            )
+            if not valid_db_path:
+                logger.warning("%s path is defined but does not exist")
+                if context.ontology_lookup_service_url:
+                    context.cv_term_helper = MhdOntologyLookupCvTermHelper(
+                        context.ontology_lookup_service_url
+                    )
+                else:
+                    context.cv_term_helper = CvTermHelper()
+            else:
+                context.cv_term_helper = OntologyLookupCvTermHelper(
+                    db_path=self.mhd_model_validation_context.ontology_lookup_file_path
+                )
         self.cv_term_helper = self.mhd_model_validation_context.cv_term_helper
 
     def anyOf(self, validator, anyOf, instance, schema):
