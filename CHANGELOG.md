@@ -1,3 +1,9 @@
+## v1.0.17 (2026-11-05)
+
+### Fix
+
+- cyclic dependency error
+
 ## v1.0.16 (2026-11-05)
 
 ### Fix
