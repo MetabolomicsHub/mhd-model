@@ -1,3 +1,9 @@
+## v1.0.20 (2026-11-24)
+
+### Fix
+
+- mhd_model organization requirement confict
+
 ## v1.0.19 (2026-11-05)
 
 ### Fix
