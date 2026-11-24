@@ -203,7 +203,7 @@
     {
       "name": "CHEBI",
       "file": "http://purl.obolibrary.org/obo/chebi.owl",
-      "version": "256",
+      "version": "257",
       "description": "Chemical Entities of Biological Interest",
       "details": "A structured classification of molecular entities of biological interest focusing on 'small' chemical compounds.",
       "prefix": "CHEBI"
@@ -233,6 +233,14 @@
       "prefix": "CHMO"
     },
     {
+      "name": "CHR",
+      "file": "https://raw.githubusercontent.com/monarch-initiative/monochrom/master/chr.owl",
+      "version": "2025-10-15",
+      "description": "Monochrom Ontology",
+      "details": "Automatic translation of UCSC chromosome bands to OWL classes",
+      "prefix": "http://purl.obolibrary.org/obo/CHR_"
+    },
+    {
       "name": "CIDO",
       "file": "http://purl.obolibrary.org/obo/cido.owl",
       "version": "2024-02-16",
@@ -259,7 +267,7 @@
     {
       "name": "CL",
       "file": "http://purl.obolibrary.org/obo/cl.owl",
-      "version": "2026-06-08",
+      "version": "2026-11-13",
       "description": "Cell Ontology",
       "details": "An ontology of cell types.",
       "prefix": "CL"
@@ -279,6 +287,14 @@
       "description": "Clytia hemisphaerica Development and Anatomy Ontology (CLYH)",
       "details": "Anatomy, development and life cycle stages - planula, polyp, medusa/jellyfish - of the cnidarian hydrozoan species, Clytia hemiphaerica.",
       "prefix": "http://purl.obolibrary.org/obo/CLYH_"
+    },
+    {
+      "name": "CMEO",
+      "file": "http://purl.obolibrary.org/obo/cmeo.owl",
+      "version": "2026-11-04",
+      "description": "Clinical Metadata Exploration Ontology",
+      "details": "CMEO (Clinical Metadata Exploration Ontology) is an ontology for representing and querying study- and variable-level metadata from clinical cohort studies in a consistent, machine-interpretable way. CMEO models the semantics of data elements (variables) and their key metadata needed for cross-cohort discovery and harmonization - such as human-readable labels/definitions, domain/type information (e.g., condition, measurement, medication), permissible categorical values, units, visit/timepoint context, derivation/provenance (e.g., computed variables), and basic descriptive statistics. It is designed to support metadata-driven tasks including cohort cataloguing, feasibility assessment, study retrieval, and identification of compatible variables across studies - without requiring access to patient-level data.\n\nCMEO is intended to interoperate with controlled vocabularies and common clinical terminologies by linking data elements and value sets to external concept identifiers (e.g., OMOP concept IDs, SNOMED CT, LOINC, RxNorm/ATC, UCUM) while remaining model-agnostic (i.e., not tied to a single CDM).",
+      "prefix": "CMEO"
     },
     {
       "name": "CMO",
@@ -409,6 +425,14 @@
       "prefix": "DDPHENO"
     },
     {
+      "name": "DHBA",
+      "file": "https://raw.githubusercontent.com/brain-bican/developing_human_brain_atlas_ontology/main/dhbao.owl",
+      "version": "2026-11-06",
+      "description": "Developing Human Brain Atlas Ontology",
+      "details": "An application ontology built by combining ontologised versions of the Allen Institute Developing Human Brain Atlas (DHBA) Structure Graph mapped to Uberon.",
+      "prefix": "https://purl.brain-bican.org/ontology/dhbao/DHBA_"
+    },
+    {
       "name": "DIDEO",
       "file": "http://purl.obolibrary.org/obo/dideo.owl",
       "version": "2023-10-16",
@@ -425,6 +449,14 @@
       "prefix": "DISDRIV"
     },
     {
+      "name": "DMBA",
+      "file": "https://raw.githubusercontent.com/brain-bican/developing_mouse_brain_atlas_ontology/main/dmbao.owl",
+      "version": "2025-02-10",
+      "description": "Developing Mouse Brain Atlas Ontology",
+      "details": "An application ontology built by combining ontologised versions of the Allen Institute Developing Mouse Brain Atlas (DMBA) StructureGraph mapped to Uberon.",
+      "prefix": "https://purl.brain-bican.org/ontology/dmbao/DMBA_"
+    },
+    {
       "name": "DOID",
       "file": "https://purl.obolibrary.org/obo/doid/translations/doid-international.owl",
       "version": "2026-10-29",
@@ -435,7 +467,7 @@
     {
       "name": "FBCV",
       "file": "http://purl.obolibrary.org/obo/dpo.owl",
-      "version": "2026-10-01",
+      "version": "2026-11-02",
       "description": "Drosophila Phenotype Ontology",
       "details": "An ontology of commonly encountered and/or high level Drosophila phenotypes.",
       "prefix": "FBcv"
@@ -507,7 +539,7 @@
     {
       "name": "EFO",
       "file": "http://www.ebi.ac.uk/efo/efo.owl",
-      "version": "3.95.0",
+      "version": "3.96.0",
       "description": "Experimental Factor Ontology",
       "details": "The Experimental Factor Ontology (EFO) provides a systematic description of many experimental variables available in EBI databases, and for projects such as the NHGRI-EBI GWAS catalog. It combines parts of several biological ontologies, such as UBERON anatomy, ChEBI chemical compounds, Cell Ontology and the Monarch Disease Ontology (MONDO). The scope of EFO is to support the annotation, analysis and visualization of data handled by many groups at the EBI and as the core ontology for Open Targets.",
       "prefix": "http://www.ebi.ac.uk/efo/EFO_"
@@ -531,7 +563,7 @@
     {
       "name": "EMRO",
       "file": "http://purl.obolibrary.org/obo/emro.owl",
-      "version": "2026-10-15",
+      "version": "2026-11-09",
       "description": "Emotion Response Ontology",
       "details": "The Emotion Response Ontology represents emotions as behavioral responses.",
       "prefix": "EMRO"
@@ -595,7 +627,7 @@
     {
       "name": "EXO",
       "file": "http://purl.obolibrary.org/obo/exo.owl",
-      "version": "2025-08-29",
+      "version": "2026-11-20",
       "description": "Exposure ontology (ExO)",
       "details": "ExO is intended to bridge the gap between exposure science and diverse environmental health disciplines including toxicology, epidemiology, disease surveillance, and epigenetics.",
       "prefix": "ExO"
@@ -619,7 +651,7 @@
     {
       "name": "FBBT",
       "file": "http://purl.obolibrary.org/obo/fbbt.owl",
-      "version": "2026-10-01",
+      "version": "2026-11-02",
       "description": "Drosophila gross anatomy",
       "details": "An ontology representing the gross anatomy of Drosophila melanogaster.",
       "prefix": "FBbt"
@@ -627,7 +659,7 @@
     {
       "name": "FBCV",
       "file": "http://purl.obolibrary.org/obo/fbcv.owl",
-      "version": "2026-10-01",
+      "version": "2026-11-02",
       "description": "FlyBase Controlled Vocabulary",
       "details": "A structured controlled vocabulary used for various aspects of annotation by FlyBase.",
       "prefix": "FBcv"
@@ -635,7 +667,7 @@
     {
       "name": "FBDV",
       "file": "http://purl.obolibrary.org/obo/fbdv.owl",
-      "version": "2026-09-30",
+      "version": "2026-11-02",
       "description": "Drosophila development",
       "details": "A structured controlled vocabulary of the development of Drosophila melanogaster.",
       "prefix": "FBdv"
@@ -651,7 +683,7 @@
     {
       "name": "FLOPO",
       "file": "http://purl.obolibrary.org/obo/flopo.owl",
-      "version": "2026-10-25",
+      "version": "2026-11-23",
       "description": "Flora Phenotype Ontology",
       "details": "Traits and phenotypes of flowering plants occurring in digitized Floras",
       "prefix": "FLOPO"
@@ -763,7 +795,7 @@
     {
       "name": "GNO",
       "file": "http://purl.obolibrary.org/obo/gno.owl",
-      "version": "V2.7.0",
+      "version": "V2.8.0",
       "description": "Glycan Naming Ontology",
       "details": "An ontology for glycans based on GlyTouCan, but organized by subsumption.",
       "prefix": "GNO"
@@ -787,7 +819,7 @@
     {
       "name": "GSSO",
       "file": "http://purl.obolibrary.org/obo/gsso.owl",
-      "version": "",
+      "version": "2.0.11",
       "description": "GSSO - the Gender, Sex, and Sexual Orientation ontology",
       "details": "GSSO is the Gender, Sex, and Sex Orientation ontology, including terms related to gender identity and expression, sexual and romantic identity and orientation, and sexual and reproductive behavior.",
       "prefix": "GSSO"
@@ -795,7 +827,7 @@
     {
       "name": "HANCESTRO",
       "file": "http://purl.obolibrary.org/obo/hancestro.owl",
-      "version": "2025-10-14",
+      "version": "2026-11-23",
       "description": "Human Ancestry Ontology",
       "details": "Human ancestry ontology for the NHGRI GWAS Catalog",
       "prefix": "HANCESTRO"
@@ -807,6 +839,14 @@
       "description": "Hymenoptera Anatomy Ontology",
       "details": "A structured controlled vocabulary of the anatomy of the Hymenoptera (bees, wasps, and ants)",
       "prefix": "HAO"
+    },
+    {
+      "name": "HBA",
+      "file": "https://raw.githubusercontent.com/brain-bican/human_brain_atlas_ontology/main/hbao.owl",
+      "version": "2025-02-10",
+      "description": "Human Brain Atlas Ontology",
+      "details": "An application ontology built by combining ontologised versions of the Allen Institute Human Brain Atlas (HBA) Structure Graph mapped to Uberon.",
+      "prefix": "https://purl.brain-bican.org/ontology/hbao/HBA_"
     },
     {
       "name": "HCAO",
@@ -831,6 +871,14 @@
       "description": "HUGO Gene Nomenclature Committee",
       "details": "The HGNC (HUGO Gene Nomenclature Committee) provides an approved gene name and symbol (short-form abbreviation) for each known human gene.  All approved symbols are stored in the HGNC database, and each symbol is unique. HGNC identifiers refer to records in the HGNC symbol database.",
       "prefix": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/"
+    },
+    {
+      "name": "HOMBA",
+      "file": "https://github.com/brain-bican/harmonized_ontology_of_mammalian_brain_anatomy_ontology/releases/latest/download/homba.owl",
+      "version": "2026-04-28",
+      "description": "Harmonized Ontology of Mammalian Brain Anatomy",
+      "details": "An ontology of mammalian brain anatomy harmonized across atlas and reference sources.",
+      "prefix": "https://purl.brain-bican.org/ontology/HOMBA_"
     },
     {
       "name": "HOM",
@@ -985,6 +1033,14 @@
       "prefix": "MAXO"
     },
     {
+      "name": "MBA",
+      "file": "https://raw.githubusercontent.com/brain-bican/mouse_brain_atlas_ontology/main/mbao.owl",
+      "version": "2026-11-05",
+      "description": "Mouse Brain Atlas Ontology",
+      "details": "An application ontology built by combining ontologised versions of the Allen Institute Mouse Brain Atlas (MBA) StructureGraph mapped to Uberon.",
+      "prefix": "https://purl.brain-bican.org/ontology/mbao/MBA_"
+    },
+    {
       "name": "MCO",
       "file": "http://purl.obolibrary.org/obo/mco.owl",
       "version": "",
@@ -1099,7 +1155,7 @@
     {
       "name": "MONDO",
       "file": "https://purl.obolibrary.org/obo/mondo/mondo-international.owl",
-      "version": "2026-10-06",
+      "version": "2026-11-03",
       "description": "Mondo Disease Ontology",
       "details": "A semi-automatically constructed ontology that merges in multiple disease resources to yield a coherent merged ontology.",
       "prefix": "MONDO"
@@ -1131,7 +1187,7 @@
     {
       "name": "MP",
       "file": "http://purl.obolibrary.org/obo/mp/mp-international.owl",
-      "version": "2026-10-29",
+      "version": "2026-11-18",
       "description": "The Mammalian Phenotype Ontology",
       "details": "The Mammalian Phenotype Ontology is being developed by Cynthia L. Smith, Susan M. Bello, Anna V. Anagnostopoulos, Carroll W. Goldsmith and Janan T. Eppig, as part of the Mouse Genome Database (MGD) Project, Mouse Genome Informatics (MGI), The Jackson Laboratory, Bar Harbor, ME. This file contains pre-coordinated phenotype terms, definitions and synonyms that can be used to describe mammalian phenotypes. The ontology is represented as a directed acyclic graph (DAG). It organizes phenotype terms into major biological system headers such as nervous system and respiratory system.  This ontology is currently under development. Weekly updates are available at the Mouse Genome Informatics (MGI) ftp site (ftp://ftp.informatics.jax.org/pub/reports/index.html#pheno) as well as the OBO Foundry site (http://obofoundry.org/). Japanese labels of MP were created by the MP Japanese Translation Project (https://github.com/dbcls/MP_Japanese). Questions, comments and suggestions are welcome, and should be directed to pheno@jax.org, Susan.Bello@jax.org or to GitHub tracker (https://github.com/mgijax/mammalian-phenotype-ontology/issues) MGD is funded by NIH/NHGRI grant HG000330.",
       "prefix": "MP"
@@ -1139,7 +1195,7 @@
     {
       "name": "MRO",
       "file": "http://purl.obolibrary.org/obo/mro.owl",
-      "version": "2026-10-20",
+      "version": "2026-11-18",
       "description": "MHC Restriction Ontology",
       "details": "The MHC Restriction Ontology is an application ontology capturing how Major Histocompatibility Complex (MHC) restriction is defined in experiments, spanning exact protein complexes, individual protein chains, serotypes, haplotypes and mutant molecules, as well as evidence for MHC restrictions.",
       "prefix": "MRO"
@@ -1171,7 +1227,7 @@
     {
       "name": "NCBITAXON",
       "file": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-      "version": "2026-07-12",
+      "version": "2026-11-09",
       "description": "NCBI organismal classification",
       "details": "An ontology representation of the NCBI organismal taxonomy",
       "prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
@@ -1259,7 +1315,7 @@
     {
       "name": "OBI",
       "file": "http://purl.obolibrary.org/obo/obi.owl",
-      "version": "2026-07-27",
+      "version": "2026-11-03",
       "description": "Ontology for Biomedical Investigations",
       "details": "An ontology for representing biomedical investigations, including study designs, the collection and preparation of the targets of investigation, assays, instrumentation and reagents used, as well as the data generated and the types of analysis performed on the data to reach conclusions, and their documentation.",
       "prefix": "OBI"
@@ -1291,7 +1347,7 @@
     {
       "name": "OHD",
       "file": "http://purl.obolibrary.org/obo/ohd.owl",
-      "version": "2026-10-01",
+      "version": "2026-11-18",
       "description": "Oral Health and Disease Ontology",
       "details": "The Oral Health and Disease Ontology is used for representing the diagnosis and treatment of dental maladies.",
       "prefix": "OHD"
@@ -1339,7 +1395,7 @@
     {
       "name": "OM",
       "file": "https://raw.githubusercontent.com/HajoRijgersberg/OM/master/om-2.0.rdf",
-      "version": "2.0.59",
+      "version": "2.0.60",
       "description": "Ontology of units of Measure (OM)",
       "details": "The Ontology of units of Measure (OM) 2.0 models concepts and relations important to scientific research. It has a strong focus on units, quantities, measures, and dimensions.",
       "prefix": "http://www.ontology-of-units-of-measure.org/resource/om-2/"
@@ -1467,7 +1523,7 @@
     {
       "name": "PAIN",
       "file": "http://purl.obolibrary.org/obo/pain.owl",
-      "version": "2026-10-15",
+      "version": "2026-11-04",
       "description": "The Pain Ontology",
       "details": "An ontology that formalizes IASP's definition of pain as both an unpleasant physical and emotional experience, and it provides terms and axioms to represent the multidimensional aspects of pain, such as temporality, quality, extent, biological mechanism, and anatomical location.",
       "prefix": "PAIN"
@@ -1491,7 +1547,7 @@
     {
       "name": "PCL",
       "file": "http://purl.obolibrary.org/obo/pcl.owl",
-      "version": "2025-07-07",
+      "version": "2026-11-16",
       "description": "Provisional Cell Ontology",
       "details": "Cell types that are provisionally defined by experimental techniques such as single cell transcriptomics rather than a straightforward & coherent set of properties.",
       "prefix": "PCL"
@@ -2003,7 +2059,7 @@
     {
       "name": "VBO",
       "file": "http://purl.obolibrary.org/obo/vbo.owl",
-      "version": "2026-04-15",
+      "version": "2026-11-17",
       "description": "Vertebrate Breed Ontology",
       "details": "Vertebrate Breed Ontology is an ontology created to serve as a single computable resource for vertebrate breed names.",
       "prefix": "VBO"
@@ -2011,7 +2067,7 @@
     {
       "name": "VO",
       "file": "http://purl.obolibrary.org/obo/vo.owl",
-      "version": "2026-06-12",
+      "version": "2026-11-02",
       "description": "Vaccine Ontology",
       "details": "The Vaccine Ontology (VO) is a community-based biomedical ontology in the domain of vaccines and vaccination. VO aims to standardize vaccine types and annotations, integrate various vaccine data, and support computer-assisted reasoning. The VO supports basic vaccine R&D and clinical vaccine usage. VO is being developed as a community-based ontology with support and collaborations from the vaccine and bio-ontology communities.",
       "prefix": "VO"
@@ -2019,7 +2075,7 @@
     {
       "name": "VT",
       "file": "http://purl.obolibrary.org/obo/vt.owl",
-      "version": "",
+      "version": "2026-11-06",
       "description": "The Vertebrate Trait Ontology",
       "details": "The Vertebrate Trait Ontology is a controlled vocabulary for the description of traits (measurable or observable characteristics) pertaining to the morphology, physiology, or development of vertebrate organisms.",
       "prefix": "VT"
@@ -2123,7 +2179,7 @@
     {
       "name": "ZP",
       "file": "http://purl.obolibrary.org/obo/zp.owl",
-      "version": "2026-10-08",
+      "version": "2026-11-10",
       "description": "Zebrafish Phenotype Ontology (ZP)",
       "details": "The Zebrafish Phenotype Ontology formally defines all phenotypes of the Zebrafish model organism.",
       "prefix": "ZP"

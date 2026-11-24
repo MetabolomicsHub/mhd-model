@@ -1,8 +1,8 @@
 # MetabolomicsHub Common Data Model Nodes - MHD MS Profile
 
-Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json</a>
+Profile Schema: <a href="https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json" target="_blank">https://metabolomicshub.github.io/mhd-model/schemas/v1_0/common-data-model-v1.0.ms-profile.json</a> 
 
-## Required Nodes & Relationships
+## Required Nodes & Relationships 
 
  **Required MHD Nodes**
 
@@ -504,7 +504,7 @@ An institution, company, university, or department associated with a study or co
 |**repository_identifier**|optional|<code>*str*<code>|Assigned identifier by the source repository|
 |**additional_identifier_list**|optional|<code>*list[CvTermValue]*<code>|List of additional database or secondary unique identifiers|
 |**alternative_id_list**|optional|<code>*list[Annotated]*<code>|List of additional ids populated from unique value contribution fields|
-|**name**|**required**|<code>*str*<code>|Name of the organization<br>Minimum length: <code>9</code><br>Validation Rule:<br> <code>Min Length: 9, Required</code>|
+|**name**|**required**|<code>*str*<code>|Name of the organization<br>Minimum length: <code>2</code><br>Validation Rule:<br> <code>Min Length: 2, Required</code>|
 |**ror_id**|optional|<code>*str*<code>|Research Organization Registry (ROR) identifier|
 |**department**|optional|<code>*str*<code>|Department within the organization|
 |**unit**|optional|<code>*str*<code>|Sub-unit or division within the organization or department|

@@ -586,7 +586,7 @@ MHD_MS_PROFILE_V1_0.mhd_nodes = [
                 identifier="organization-001-02",
                 node_type="organization",
                 node_property_name="name",
-                constraints=PropertyConstraint(required=True, min_length=9),
+                constraints=PropertyConstraint(required=True, min_length=2),
             ),
         ],
         relationships=[
